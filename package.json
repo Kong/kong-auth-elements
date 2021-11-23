@@ -10,6 +10,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@kongponents/kbutton": "^6.3.0",
+    "@kongponents/styles": "^6.3.0",
+    "@vue/compat": "^3.2.22",
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
