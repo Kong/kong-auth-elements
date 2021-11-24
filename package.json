@@ -2,17 +2,28 @@
   "name": "kauth-ui-poc",
   "version": "0.1.0",
   "private": true,
+  "main": "index.ts",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "vue-cli-service serve ./dev",
+    "demo": "yarn build && rm -rf ./demo/dist-copy && cp -R ./dist ./demo/dist-copy && echo \"\nNote: The demo does NOT support hot reload.\" && serve ./demo",
+    "build": "vue-cli-service build --target lib --name kauth --inline-vue ./src/index.ts",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@kongponents/kbutton": "^6.3.0",
-    "@kongponents/styles": "^6.3.0",
+    "@kongponents/kalert": "^6.5.2",
+    "@kongponents/kbutton": "^6.5.2",
+    "@kongponents/kcard": "^6.5.2",
+    "@kongponents/kcheckbox": "^6.5.2",
+    "@kongponents/kicon": "^6.5.2",
+    "@kongponents/kinput": "^6.5.2",
+    "@kongponents/klabel": "^6.5.2",
+    "@kongponents/kooltip": "^6.5.2",
+    "@kongponents/kskeleton": "^6.5.2",
+    "@kongponents/styles": "^6.5.2",
     "@vue/compat": "^3.2.22",
+    "@vue/composition-api": "^1.4.0",
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
@@ -44,5 +55,8 @@
     "sass-loader": "^8.0.2",
     "typescript": "~4.1.5",
     "vue-jest": "^5.0.0-0"
-  }
+  },
+  "files": [
+    "./dist/*"
+  ]
 }

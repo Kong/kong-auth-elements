@@ -1,0 +1,21 @@
+/*  Kongponent overrides and global theming
+========================================================================== */
+.k-modal {
+  --KModalBackdrop: rgba(255,255,255,.8);
+  .modal-backdrop {
+    overflow: auto;
+  }
+  .modal-dialog {
+    --KModalBorder: 1px solid var(--black-10);
+  }
+  &.no-footer {
+    .modal-body {
+      --KModalBottomMargin: 0;
+    }
+  }
+}
+
+.k-tabs .tab-container:focus { outline: none; }
+
+/** allows a ktable row element to still be clicked even when it's not a link **/
+[data-ktable-can-click-through] { pointer-events: none; }

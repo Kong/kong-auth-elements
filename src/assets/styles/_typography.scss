@@ -1,0 +1,32 @@
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+/* Bootstrap sizes. Need to revisit ALL headers to match Kong style guide */
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+hr {
+  margin-top: 1rem 0;
+  border: 0;
+  border-top: 1px solid var(--black-10);
+}
+
+ul {
+  list-style: none;
+}
+
+code, .uuid {
+  font-family: "Roboto Mono",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+
+.plugin-icon {
+  width: 22px;
+  margin-right: 12px;
+}
