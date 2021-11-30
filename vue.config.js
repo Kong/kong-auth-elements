@@ -11,7 +11,9 @@ module.exports = {
           ...options,
           compilerOptions: {
             compatConfig: {
-              MODE: 2
+              MODE: 3,
+              COMPILER_SFC_FUNCTIONAL: true,
+              INSTANCE_SCOPED_SLOTS: true
             },
             isCustomElement: tag => tag.startsWith('kong-')
           }

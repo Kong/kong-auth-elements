@@ -1,5 +1,5 @@
 import { defineCustomKongElement } from '@/utils/defineCustomKongElement'
-import App from '@/App.ce.vue'
+import KAuthApp from '@/KAuthApp.ce.vue'
 import router from '@/router'
 import { store } from '@/store'
 
@@ -17,7 +17,7 @@ import Kooltip from '@kongponents/kooltip'
 export default (() => {
   customElements.define(
     'kong-auth',
-    defineCustomKongElement(App, {
+    defineCustomKongElement(KAuthApp, {
       plugins: [
         router,
         store

@@ -1,5 +1,5 @@
 <template>
-  <div id="kong-app">
+  <div id="kauth-app-container">
     <nav id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
@@ -9,17 +9,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import '@kongponents/styles/styles.css'
-
-export default defineComponent({
-  name: 'MainView'
-})
 </script>
 
 <style lang="scss" scoped>
-#kong-app {
+#kauth-app-container {
   font-family: 'Maison Neue', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

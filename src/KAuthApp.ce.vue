@@ -1,29 +1,30 @@
 <template>
-  <div v-html="injectedStyles"></div>
-  <AppWrapper />
+  <div v-if="injectedStyles" v-html="injectedStyles"></div>
+  <KAuthContainer />
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, onUnmounted, ref, computed } from 'vue'
-import AppWrapper from '@/components/AppWrapper.ce.vue'
+import KAuthContainer from '@/components/KAuthContainer.ce.vue'
 
 export default defineComponent({
-  name: 'App',
+  name: 'KAuthApp',
   components: {
-    AppWrapper
+    KAuthContainer
   },
   setup () {
     const inlineStyles = ref<HTMLElement[]>([])
-    const injectedStyles = computed(() => {
-      return `<style data-extracted>${inlineStyles.value.map((style) => style.innerHTML).join('')}</style>`
-    })
+    const injectedStyles = computed((): string => `<style type="text/css">${inlineStyles.value.map((styleNode) => styleNode.innerHTML).join('')}</style>`)
 
-    const injectStyles = () => {
+    const injectStyles = (): void => {
       inlineStyles.value = Array.from(
         document.head.getElementsByTagName('style')
       ).filter((styleNode) => {
         // Only inject styles if they contain @kongponent prefix
         return styleNode.innerHTML.includes('.k-')
+      }).filter((styleNode, idx, arr) => {
+        // Only return unique nodes (based on the first 100 characters -- anything more is too intensive)
+        return arr.findIndex(node => (node.innerHTML.substring(0, 100) === styleNode.innerHTML.substring(0, 100))) === idx
       })
     }
 
