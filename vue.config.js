@@ -24,5 +24,8 @@ module.exports = {
     output: {
       libraryExport: 'default'
     }
-  }
+  },
+  transpileDependencies: [
+    /@kongponents\/.*/
+  ]
 }

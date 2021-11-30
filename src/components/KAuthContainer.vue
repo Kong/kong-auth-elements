@@ -13,12 +13,18 @@
 import '@kongponents/styles/styles.css'
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+/* KONG_AUTH_INJECT_STYLES */
+
+// Import custom styles from a single entrypoint
+@import '@/assets/styles/app.scss';
+
 #kauth-app-container {
   font-family: 'Maison Neue', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  text-align: center;
 
   #nav {
     text-align: center;
@@ -34,9 +40,4 @@ import '@kongponents/styles/styles.css'
     }
   }
 }
-</style>
-
-<style lang="scss">
-// Import custom styles from a single entrypoint
-@import '@/assets/styles/app.scss';
 </style>

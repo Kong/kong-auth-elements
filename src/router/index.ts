@@ -1,24 +1,52 @@
 import { createRouter, createMemoryHistory, RouteRecordRaw } from 'vue-router'
 
-import Home from '@/views/Home.ce.vue'
-import About from '@/views/About.ce.vue'
-import Login from '@/views/Login.ce.vue'
+import LoginView from '@/views/Login.vue'
+import RegisterView from '@/views/Register.vue'
+import ForgotPasswordView from '@/views/ForgotPassword.vue'
+import ResetPasswordView from '@/views/ResetPassword.vue'
+import NotFound from '@/views/NotFound.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: About
+    name: 'root',
+    redirect: '/login'
   },
   {
     path: '/login',
-    name: 'Login',
-    component: Login
+    name: 'login',
+    component: LoginView,
+    meta: {
+      title: 'Login'
+    }
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: RegisterView,
+    meta: {
+      title: 'Register'
+    }
+  },
+  {
+    path: '/forgot-password',
+    name: 'forgot-password',
+    component: ForgotPasswordView,
+    meta: {
+      title: 'Forgot Password'
+    }
+  },
+  {
+    path: '/reset-password',
+    name: 'reset-password',
+    component: ResetPasswordView,
+    meta: {
+      title: 'Reset Password'
+    }
+  },
+  {
+    path: '/:pathMatch(.*)',
+    component: NotFound
   }
 ]
 

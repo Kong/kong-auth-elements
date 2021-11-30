@@ -1,4 +1,5 @@
-import { defineCustomKongElement } from '@/utils/defineCustomKongElement'
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { defineCustomKongElement } from '@/utils'
 import KAuthApp from '@/KAuthApp.ce.vue'
 import router from '@/router'
 import { store } from '@/store'
@@ -18,20 +19,11 @@ export default (() => {
   customElements.define(
     'kong-auth',
     defineCustomKongElement(KAuthApp, {
-      plugins: [
-        router,
-        store
-      ],
+      // @ts-ignore
+      plugins: [router, store],
       components: [
-        KInput,
-        KCard,
-        KAlert,
-        KLabel,
-        KButton,
-        KIcon,
-        KCheckbox,
-        KSkeleton,
-        Kooltip
+        // @ts-ignore
+        KInput, KCard, KAlert, KLabel, KButton, KIcon, KCheckbox, KSkeleton, Kooltip
       ]
     })
   )
