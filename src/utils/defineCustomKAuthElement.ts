@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { defineCustomElement as VueDefineCustomElement, h, createApp, getCurrentInstance } from 'vue'
+import { defineCustomElement as rootDefineCustomElement, h, createApp, getCurrentInstance, provide, ref } from 'vue'
 
 const getNearestElementParent = (el: HTMLElement | null) => {
   while (el && el.nodeType !== 1) {
@@ -9,21 +9,27 @@ const getNearestElementParent = (el: HTMLElement | null) => {
 }
 
 // @ts-ignore
-export const defineCustomKongElement = (component, { plugins = [], components = [] }): Component =>
-  VueDefineCustomElement({
+export const defineCustomKAuthElement = (component, { plugins = [], components = [] }): Component =>
+  rootDefineCustomElement({
     render: () => h(component),
-    setup () {
-      // @ts-ignore
-      const app = createApp()
+    props: component.props,
+    setup (props) {
+      const app = createApp({})
 
-      // install plugins
+      // globally install plugins
       plugins.forEach(app.use)
 
-      // install components
+      // globally install components
       components.forEach(comp => {
         // @ts-ignore
         app.component(comp.name, comp)
       })
+
+      // Loop through props and 'provide' for consumption with 'inject'
+      for (const [propName, propValue] of Object.entries(props)) {
+        const propValueRef = ref<typeof propValue>(propValue)
+        provide(propName, propValueRef)
+      }
 
       app.mixin({
         mounted () {
@@ -58,5 +64,7 @@ export const defineCustomKongElement = (component, { plugins = [], components = 
       Object.assign(inst?.appContext, app._context)
       // @ts-ignore
       Object.assign(inst?.provides, app._context.provides)
+      // TODO: new
+      Object.assign(inst?.props, props)
     }
   })

@@ -3,7 +3,7 @@
 
     <h1>Demo Host App</h1>
     <div class="shadow-dom-border">
-      <kong-auth></kong-auth>
+      <kong-auth initial-view="forgot-password"></kong-auth>
     </div>
   </div>
 </template>

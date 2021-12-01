@@ -1,5 +1,7 @@
 <template>
-  <div class="view-registration"></div>
+  <div class="view-register">
+    <h1>Register</h1>
+  </div>
 </template>
 
 <style lang="scss" scoped>

@@ -1,5 +1,7 @@
 <template>
-  <div class="view-registration"></div>
+  <div class="view-forgot-password">
+    <h1>Forgot Password</h1>
+  </div>
 </template>
 
 <style lang="scss" scoped>

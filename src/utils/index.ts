@@ -1,5 +1,5 @@
-import { defineCustomKongElement } from './defineCustomKongElement'
+import { defineCustomKAuthElement } from './defineCustomKAuthElement'
 
 export {
-  defineCustomKongElement
+  defineCustomKAuthElement
 }

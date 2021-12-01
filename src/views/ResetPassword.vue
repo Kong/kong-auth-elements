@@ -1,5 +1,7 @@
 <template>
-  <div class="view-registration"></div>
+  <div class="view-reset-password">
+    <h1>Reset Password</h1>
+  </div>
 </template>
 
 <style lang="scss" scoped>

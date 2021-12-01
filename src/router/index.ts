@@ -1,4 +1,4 @@
-import { createRouter, createMemoryHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createMemoryHistory, RouteRecordRaw, RouteRecordName } from 'vue-router'
 
 import LoginView from '@/views/Login.vue'
 import RegisterView from '@/views/Register.vue'
@@ -10,7 +10,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'root',
-    redirect: '/login'
+    redirect: '/login',
   },
   {
     path: '/login',
@@ -46,9 +46,17 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/:pathMatch(.*)',
-    component: NotFound
+    component: NotFound,
+    name: '404',
+    meta: {
+      title: 'Page Not Found'
+    }
   }
 ]
+
+const isValidRouteName = (name: RouteRecordName): boolean => {
+  return routes.map((route: RouteRecordRaw) => route.name).includes(name)
+}
 
 const router = createRouter({
   history: createMemoryHistory('/'),
@@ -56,3 +64,8 @@ const router = createRouter({
 })
 
 export default router
+
+export {
+  routes,
+  isValidRouteName
+}

@@ -1,51 +1,41 @@
 <template>
-  <section>
+  <div class="view-login">
+    <h1>Login</h1>
     <div
-      class="login d-flex align-items-center justify-content-center flex-column">
-      <div class="login-card col-10 col-md-6">
-        <KCard has-shadow data-testid="login-form">
-          <template v-slot:body>
-            <div class="d-flex flex-column mb-5">
-              <AppLogo width="180" height="26" />
-            </div>
-            <div class="login-header type-xxxl mb-5">Login</div>
-            <form
-              @submit.prevent=""
-            >
-              <KLabel for="email"> Email </KLabel>
-              <input
-                id="email"
-                class="k-input w-100 mb-5"
-                autocomplete="email"
-                required
-                autofocus="autofocus"
-              />
+      class="d-flex align-items-center justify-content-center flex-column"
+    >
+      <div class="col-10 col-md-6">
+        <form @submit.prevent="">
+          <KLabel for="email"> Email *</KLabel>
+          <input
+            id="email"
+            class="k-input w-100 mb-5"
+            autocomplete="email"
+            required
+            autofocus
+          />
 
-              <KLabel for="password"> Password </KLabel>
-              <input
-                id="password"
-                type="password"
-                class="k-input w-100"
-                autocomplete="current-password"
-                required
-              />
-              <p class="help mt-3">
-                <router-link
-                  class="color-blue-500"
-                  to="#"
-                >
-                  Forgot your password?
-                </router-link>
-              </p>
+          <KLabel for="password"> Password *</KLabel>
+          <input
+            id="password"
+            type="password"
+            class="k-input w-100"
+            autocomplete="current-password"
+            required
+          />
+          <p class="help mt-3">
+            <router-link class="color-blue-500" to="/forgot-password">
+              Forgot your password?
+            </router-link>
+          </p>
 
-              <KButton
-                appearance="primary"
-                class="justify-content-center w-100 type-lg login-button"
-                type="submit"
-              >Login</KButton>
-            </form>
-          </template>
-        </KCard>
+          <KButton
+            appearance="primary"
+            class="justify-content-center w-100 type-lg login-button"
+            type="submit"
+            >Login</KButton
+          >
+        </form>
       </div>
 
       <div class="register-link text-center">
@@ -57,7 +47,7 @@
         </p>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <style lang="scss" scoped>
