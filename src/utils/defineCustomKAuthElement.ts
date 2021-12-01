@@ -17,13 +17,16 @@ const getNearestElementParent = (el: HTMLElement | null) => {
 
 // @ts-ignore
 export const defineCustomKAuthElement = (
+  // @ts-ignore
   component,
+  // @ts-ignore
   { plugins = [], components = [] },
-): Component =>
+): // @ts-ignore
+  Component =>
   rootDefineCustomElement({
     render: () => h(component),
     props: component.props,
-    setup(props) {
+    setup (props) {
       const app = createApp({})
 
       // globally install plugins
@@ -42,7 +45,7 @@ export const defineCustomKAuthElement = (
       }
 
       app.mixin({
-        mounted() {
+        mounted () {
           const insertStyles = (styles: []) => {
             if (styles && styles.length) {
               this.__style = document.createElement('style')
@@ -65,7 +68,7 @@ export const defineCustomKAuthElement = (
             }
           }
         },
-        unmounted() {
+        unmounted () {
           this.__style && this.__style.remove()
         },
       })

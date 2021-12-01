@@ -24,13 +24,21 @@ export default (() => {
       components: [
         // @ts-ignore
         KInput,
+        // @ts-ignore
         KCard,
+        // @ts-ignore
         KAlert,
+        // @ts-ignore
         KLabel,
+        // @ts-ignore
         KButton,
+        // @ts-ignore
         KIcon,
+        // @ts-ignore
         KCheckbox,
+        // @ts-ignore
         KSkeleton,
+        // @ts-ignore
         Kooltip,
       ],
     }),

@@ -30,7 +30,6 @@ const router = useRouter()
 onBeforeMount(() => {
   // Get initial-view prop from kong-auth custom element
   const initialView: Ref<string> = inject('initialView') || ref('')
-  console.log('initialView', initialView.value)
 
   // If initialView is set and matches a valid route.name, immediately redirect to view
   if (
