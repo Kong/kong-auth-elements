@@ -23,8 +23,16 @@ export default (() => {
       plugins: [router, store],
       components: [
         // @ts-ignore
-        KInput, KCard, KAlert, KLabel, KButton, KIcon, KCheckbox, KSkeleton, Kooltip
-      ]
-    })
+        KInput,
+        KCard,
+        KAlert,
+        KLabel,
+        KButton,
+        KIcon,
+        KCheckbox,
+        KSkeleton,
+        Kooltip,
+      ],
+    }),
   )
 })()

@@ -6,26 +6,24 @@ module.exports = {
     config.module
       .rule('vue')
       .use('vue-loader')
-      .tap(options => {
+      .tap((options) => {
         return {
           ...options,
           compilerOptions: {
             compatConfig: {
               MODE: 3,
               COMPILER_SFC_FUNCTIONAL: true,
-              INSTANCE_SCOPED_SLOTS: true
+              INSTANCE_SCOPED_SLOTS: true,
             },
-            isCustomElement: tag => tag.startsWith('kong-')
-          }
+            isCustomElement: (tag) => tag.startsWith('kong-'),
+          },
         }
       })
   },
   configureWebpack: {
     output: {
-      libraryExport: 'default'
-    }
+      libraryExport: 'default',
+    },
   },
-  transpileDependencies: [
-    /@kongponents\/.*/
-  ]
+  transpileDependencies: [/@kongponents\/.*/],
 }

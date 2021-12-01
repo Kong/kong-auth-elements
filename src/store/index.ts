@@ -11,11 +11,11 @@ export const key: InjectionKey<Store<State>> = Symbol('Vuex Store')
 
 export const store = createStore<State>({
   state: {
-    test: ''
+    test: '',
   },
   mutations: {},
   actions: {},
-  getters: {}
+  getters: {},
 })
 
 // define your own `useStore` composition function

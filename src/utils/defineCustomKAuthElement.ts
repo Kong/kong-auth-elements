@@ -1,5 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { defineCustomElement as rootDefineCustomElement, h, createApp, getCurrentInstance, provide, ref } from 'vue'
+import {
+  defineCustomElement as rootDefineCustomElement,
+  h,
+  createApp,
+  getCurrentInstance,
+  provide,
+  ref,
+} from 'vue'
 
 const getNearestElementParent = (el: HTMLElement | null) => {
   while (el && el.nodeType !== 1) {
@@ -9,18 +16,21 @@ const getNearestElementParent = (el: HTMLElement | null) => {
 }
 
 // @ts-ignore
-export const defineCustomKAuthElement = (component, { plugins = [], components = [] }): Component =>
+export const defineCustomKAuthElement = (
+  component,
+  { plugins = [], components = [] },
+): Component =>
   rootDefineCustomElement({
     render: () => h(component),
     props: component.props,
-    setup (props) {
+    setup(props) {
       const app = createApp({})
 
       // globally install plugins
       plugins.forEach(app.use)
 
       // globally install components
-      components.forEach(comp => {
+      components.forEach((comp) => {
         // @ts-ignore
         app.component(comp.name, comp)
       })
@@ -32,7 +42,7 @@ export const defineCustomKAuthElement = (component, { plugins = [], components =
       }
 
       app.mixin({
-        mounted () {
+        mounted() {
           const insertStyles = (styles: []) => {
             if (styles && styles.length) {
               this.__style = document.createElement('style')
@@ -55,9 +65,9 @@ export const defineCustomKAuthElement = (component, { plugins = [], components =
             }
           }
         },
-        unmounted () {
+        unmounted() {
           this.__style && this.__style.remove()
-        }
+        },
       })
 
       const inst = getCurrentInstance()
@@ -66,5 +76,5 @@ export const defineCustomKAuthElement = (component, { plugins = [], components =
       Object.assign(inst?.provides, app._context.provides)
       // TODO: new
       Object.assign(inst?.props, props)
-    }
+    },
   })

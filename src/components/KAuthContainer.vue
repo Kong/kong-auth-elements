@@ -2,8 +2,16 @@
   <div id="kauth-app-container">
     <nav v-if="routes && routes.length" class="nav">
       <ul>
-        <li v-for="route in routes.filter(r => r.meta && r.meta.title && r.name !== '404')" :key="route.name">
-          <router-link :to="{ name: route.name }">{{ route.meta!.title || 'no title' }}</router-link>
+        <li
+          v-for="route in routes.filter(
+            (r) => r.meta && r.meta.title && r.name !== '404',
+          )"
+          :key="route.name"
+        >
+          <router-link
+            :to="{ name: route.name }"
+            >{{ route.meta!.title || 'no title' }}</router-link
+          >
         </li>
       </ul>
     </nav>
@@ -25,7 +33,11 @@ onBeforeMount(() => {
   console.log('initialView', initialView.value)
 
   // If initialView is set and matches a valid route.name, immediately redirect to view
-  if (initialView.value && isValidRouteName(initialView.value) && router.currentRoute.value.name !== initialView.value) {
+  if (
+    initialView.value &&
+    isValidRouteName(initialView.value) &&
+    router.currentRoute.value.name !== initialView.value
+  ) {
     router.replace({ name: initialView.value })
   }
 })

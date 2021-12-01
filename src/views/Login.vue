@@ -1,9 +1,7 @@
 <template>
   <div class="view-login">
     <h1>Login</h1>
-    <div
-      class="d-flex align-items-center justify-content-center flex-column"
-    >
+    <div class="d-flex align-items-center justify-content-center flex-column">
       <div class="col-10 col-md-6">
         <form @submit.prevent="">
           <KLabel for="email"> Email *</KLabel>

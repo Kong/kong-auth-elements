@@ -1,4 +1,9 @@
-import { createRouter, createMemoryHistory, RouteRecordRaw, RouteRecordName } from 'vue-router'
+import {
+  createRouter,
+  createMemoryHistory,
+  RouteRecordRaw,
+  RouteRecordName,
+} from 'vue-router'
 
 import LoginView from '@/views/Login.vue'
 import RegisterView from '@/views/Register.vue'
@@ -17,41 +22,41 @@ const routes: Array<RouteRecordRaw> = [
     name: 'login',
     component: LoginView,
     meta: {
-      title: 'Login'
-    }
+      title: 'Login',
+    },
   },
   {
     path: '/register',
     name: 'register',
     component: RegisterView,
     meta: {
-      title: 'Register'
-    }
+      title: 'Register',
+    },
   },
   {
     path: '/forgot-password',
     name: 'forgot-password',
     component: ForgotPasswordView,
     meta: {
-      title: 'Forgot Password'
-    }
+      title: 'Forgot Password',
+    },
   },
   {
     path: '/reset-password',
     name: 'reset-password',
     component: ResetPasswordView,
     meta: {
-      title: 'Reset Password'
-    }
+      title: 'Reset Password',
+    },
   },
   {
     path: '/:pathMatch(.*)',
     component: NotFound,
     name: '404',
     meta: {
-      title: 'Page Not Found'
-    }
-  }
+      title: 'Page Not Found',
+    },
+  },
 ]
 
 const isValidRouteName = (name: RouteRecordName): boolean => {
@@ -60,12 +65,9 @@ const isValidRouteName = (name: RouteRecordName): boolean => {
 
 const router = createRouter({
   history: createMemoryHistory('/'),
-  routes
+  routes,
 })
 
 export default router
 
-export {
-  routes,
-  isValidRouteName
-}
+export { routes, isValidRouteName }
