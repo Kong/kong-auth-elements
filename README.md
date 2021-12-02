@@ -1,4 +1,4 @@
-# kauth-ui-poc
+# kong-auth-elements
 
 ## Project setup
 

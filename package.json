@@ -1,14 +1,14 @@
 {
-  "name": "kauth-ui-poc",
+  "name": "kong-auth-elements",
   "version": "0.1.0",
   "private": true,
-  "main": "kauth.umd.min.js",
+  "main": "kong-auth-elements.umd.min.js",
   "scripts": {
     "serve": "echo \"\nRun 'yarn serve:components' to use Vue Dev Tools.\n(may require additional imports in /dev/serve-components/ComponentsApp.vue)\n** This will not allow testing embedded styles and other Custom Element features. **\n\n-- OR --\n\nRun 'yarn serve:elements' to view HTML element usage.\n(may require additional imports in /dev/serve-components/index.ts)\n\n\"",
     "serve:components": "vue-cli-service serve ./dev/serve-components",
     "serve:elements": "vue-cli-service serve ./dev/serve-elements",
     "demo": "yarn build && rm -rf ./demo/dist-copy && cp -R ./dist ./demo/dist-copy && echo \"\nNote: The demo does NOT support hot reload.\" && serve ./demo",
-    "build": "vue-cli-service build --target lib --name kauth --inline-vue ./src/index.ts",
+    "build": "vue-cli-service build --target lib --name kong-auth-elements --inline-vue ./src/index.ts",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
