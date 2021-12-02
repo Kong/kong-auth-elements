@@ -6,6 +6,20 @@
 yarn install
 ```
 
+### Local Dev Against Non-Local API
+
+Create a file `.env.development.local` change `VUE_APP_AUTH_URL` to the environment you wish to hit. See `.env.development.local.example` for values.
+
+Caveat: We gate internal only environments like dev and stage with Pomerium. Pomerium sets a cookie automatically, so we will need to manually set that cookie.
+
+In your browser, go the the environment you wish to use, ie. https://kauth.konnect-dev.konghq.com. In the dev tools find the cookie named `_pomerium` and copy it's value. In your browser go to your local dev environment, ie. http://localhost:3000 and set a `_pomerium` cookie with that value. You can do this in the console like:
+
+```js
+document.cookie = '_pomerium={your copied value here}'
+```
+
+How it works: Vue cli has a built in proxy. We use it to forward all requests that go to /api/\* to the specified URL running on port 3000. You can see the configuration in vue.config.js file.
+
 ## Compiles components and hot-reloads for development
 
 ### Serve Components
@@ -39,20 +53,6 @@ yarn demo
 ```sh
 yarn build
 ```
-
-## Local Dev Against Non-Local API
-
-Create a file `.env.development.local` change `VUE_APP_AUTH_URL` to the environment you wish to hit. See `.env.development.local.example` for values.
-
-Caveat: We gate internal only environments like dev and stage with Pomerium. Pomerium sets a cookie automatically, so we will need to manually set that cookie.
-
-In your browser, go the the environment you wish to use, ie. https://kauth.konnect-dev.konghq.com. In the dev tools find the cookie named `_pomerium` and copy it's value. In your browser go to your local dev environment, ie. http://localhost:3000 and set a `_pomerium` cookie with that value. You can do this in the console like:
-
-```js
-document.cookie = '_pomerium={your copied value here}'
-```
-
-How it works: Vue cli has a built in proxy. We use it to forward all requests that go to /api/\* to the specified URL running on port 3000. You can see the configuration in vue.config.js file.
 
 ## Styles
 
