@@ -2,49 +2,55 @@
 
 ## Project setup
 
-```
+```sh
 yarn install
 ```
 
 ### Compiles components and hot-reloads for development
 
-```
+```sh
 yarn serve:components
 ```
 
 ### Compiles custom elements and hot-reloads for development
 
-```
+```sh
 yarn serve:elements
+```
+
+### Get info on the two serve commands
+
+```sh
+yarn serve:help
 ```
 
 ### Compiles and minifies for demo, and serves (without hot-reload)
 
-```
+```sh
 yarn demo
 ```
 
 ### Compiles and minifies for production
 
-```
+```sh
 yarn build
 ```
 
 ### Run your unit tests
 
-```
+```sh
 yarn test:unit
 ```
 
 ### Run your end-to-end tests
 
-```
+```sh
 yarn test:e2e
 ```
 
 ### Lints and fixes files
 
-```
+```sh
 yarn lint
 ```
 
