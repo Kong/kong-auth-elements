@@ -1,6 +1,7 @@
 {
   "arrowParens": "always",
   "bracketSpacing": true,
+  "bracketSameLine": true,
   "htmlWhitespaceSensitivity": "css",
   "semi": false,
   "singleQuote": true,

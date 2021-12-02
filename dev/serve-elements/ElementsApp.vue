@@ -6,7 +6,7 @@
       <!-- Kong Auth Login -->
       <kong-auth-login
         forgot-password-url="https://konnect-dev.konghq.com/login"
-      ></kong-auth-login>
+        register-url="https://konnect-dev.konghq.com/register"></kong-auth-login>
     </div>
   </div>
 </template>
@@ -24,6 +24,7 @@ body {
 }
 
 .shadow-dom-container {
+  background: #fff;
   border: 1px dotted #1155cb;
   margin: 20px;
 

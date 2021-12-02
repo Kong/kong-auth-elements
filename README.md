@@ -6,53 +6,53 @@
 yarn install
 ```
 
-### Compiles components and hot-reloads for development
+## Compiles components and hot-reloads for development
+
+### Serve Components
+
+Import elements as Vue components and utilize Vue Dev Tools during development (may require additional imports in `/dev/serve-components/ComponentsApp.vue`).
+
+_**Note**: This will not allow testing embedded styles and other Custom Element features._
 
 ```sh
 yarn serve:components
 ```
 
-### Compiles custom elements and hot-reloads for development
+### Serve Elements
+
+Import elements as HTML Custom Elements (may require additional imports in `/dev/serve-elements/index.ts`).
+
+_**Note**: This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported)._
 
 ```sh
 yarn serve:elements
 ```
 
-### Get info on the two serve commands
-
-```sh
-yarn serve:help
-```
-
-### Compiles and minifies for demo, and serves (without hot-reload)
+## Compiles and minifies for demo, and serves up fully-built demo on local server (without hot-reload)
 
 ```sh
 yarn demo
 ```
 
-### Compiles and minifies for production
+## Compiles and minifies for production
 
 ```sh
 yarn build
 ```
 
-### Run your unit tests
+## Local Dev Against Non-Local API
 
-```sh
-yarn test:unit
+Create a file `.env.development.local` change `VUE_APP_AUTH_URL` to the environment you wish to hit. See `.env.development.local.example` for values.
+
+Caveat: We gate internal only environments like dev and stage with Pomerium. Pomerium sets a cookie automatically, so we will need to manually set that cookie.
+
+In your browser, go the the environment you wish to use, ie. https://kauth.konnect-dev.konghq.com. In the dev tools find the cookie named `_pomerium` and copy it's value. In your browser go to your local dev environment, ie. http://localhost:3000 and set a `_pomerium` cookie with that value. You can do this in the console like:
+
+```js
+document.cookie = '_pomerium={your copied value here}'
 ```
 
-### Run your end-to-end tests
-
-```sh
-yarn test:e2e
-```
-
-### Lints and fixes files
-
-```sh
-yarn lint
-```
+How it works: Vue cli has a built in proxy. We use it to forward all requests that go to /api/\* to the specified URL running on port 3000. You can see the configuration in vue.config.js file.
 
 ## Styles
 
