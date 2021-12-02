@@ -9,6 +9,10 @@ export default function useInjectStyles (): Record<string, any> {
         .join('')}</style>`,
   )
 
+  /**
+   * Parses <style> tags found in the document.head and filters them based on the given parameters.
+   * Then the styles are injected into the element's shadow DOM for consumption.
+   */
   const injectStyles = (): void => {
     inlineStyles.value = Array.from(document.head.getElementsByTagName('style'))
       .filter((styleNode) => {

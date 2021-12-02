@@ -1,8 +1,4 @@
 <template>
-  <!-- This injected styles div, and its corresponding logic -->
-  <!-- in the setup function must be present in all custom elements -->
-  <div v-if="injectedStyles" v-html="injectedStyles"></div>
-  <!-- All custom elements contain KAuthWrapper in order to inject app styles -->
   <KAuthWrapper>
     <div class="d-flex align-items-center justify-content-center flex-column">
       <div class="col-10 col-md-6">
@@ -32,7 +28,7 @@
           </p>
 
           <KButton
-            appearance="primary"
+            appearance="secondary"
             class="justify-content-center w-100 type-lg login-button"
             type="submit"
             >Button text</KButton
@@ -45,7 +41,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import useInjectStyles from '@/composables/useInjectStyles'
 import KAuthWrapper from '@/components/KAuthWrapper.vue'
 import KButton from '@kongponents/kbutton'
 import KLabel from '@kongponents/klabel'
@@ -61,13 +56,6 @@ export default defineComponent({
     KAuthWrapper,
     KButton,
     KLabel,
-  },
-  setup(props, { emit }) {
-    const { injectedStyles } = useInjectStyles()
-
-    return {
-      injectedStyles,
-    }
   },
 })
 </script>

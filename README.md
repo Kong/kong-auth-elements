@@ -1,54 +1,86 @@
 # kauth-ui-poc
 
 ## Project setup
+
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles components and hot-reloads for development
+
 ```
-yarn serve
+yarn serve:components
+```
+
+### Compiles custom elements and hot-reloads for development
+
+```
+yarn serve:elements
+```
+
+### Compiles and minifies for demo, and serves (without hot-reload)
+
+```
+yarn demo
 ```
 
 ### Compiles and minifies for production
+
 ```
 yarn build
 ```
 
 ### Run your unit tests
+
 ```
 yarn test:unit
 ```
 
 ### Run your end-to-end tests
+
 ```
 yarn test:e2e
 ```
 
 ### Lints and fixes files
+
 ```
 yarn lint
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Styles
 
-Styles are auto-injected into the shadow DOM for any internal components and views. In order for the styles to be injected, you need to place this exact comment in **ALL** `<style>` elements inside of the `/src/` directory:
+Styles are auto-injected into the shadow DOM for any internal components and child components.
 
-``` css
+Requirements:
+
+1. All custom elements must follow the naming convention `{PascalCaseName}.ce.vue`
+2. All custom elements must utilize the `<KAuthWrapper/>` as the first child of their `<template/>` tag (this enables style injection for child components).
+
+In order for the styles to be injected, you need to place this exact comment in **ALL** `<style>` elements that are in components in the `/src/` directory, regardless of where in the directory structure they live:
+
+```css
 /* KONG_AUTH_INJECT_STYLES */
 ```
 
-For example:
+Example:
 
-``` html
+```html
+<template>
+  <div class="component-name">
+    <h1>This is my component template</h1>
+  </div>
+</template>
+
 <style lang="scss" scoped>
-/* KONG_AUTH_INJECT_STYLES */
-h1 {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  color: red;
-}
+  /* KONG_AUTH_INJECT_STYLES */
+  h1 {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    color: teal;
+  }
 </style>
 ```

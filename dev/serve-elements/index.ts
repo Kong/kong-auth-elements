@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
-import DevApp from './DevApp.vue'
+import ElementsApp from './ElementsApp.vue'
 
+// Import and register Custom Elements
 import { registerKongAuthLoginElement } from '@/elements/kong-auth-login'
-
 registerKongAuthLoginElement()
 
-const devApp = createApp(DevApp)
+const app = createApp(ElementsApp)
 
-devApp.mount('#app')
+app.mount('#app')

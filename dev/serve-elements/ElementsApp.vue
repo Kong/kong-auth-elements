@@ -1,6 +1,6 @@
 <template>
   <div class="demo-container">
-    <h1>Demo Host App</h1>
+    <h1>Elements App</h1>
 
     <div class="shadow-dom-container">
       <!-- Kong Auth Login -->
