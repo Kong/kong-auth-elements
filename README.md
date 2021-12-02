@@ -59,13 +59,15 @@ Styles are auto-injected into the shadow DOM for any internal components and chi
 Requirements:
 
 1. All custom elements must follow the naming convention `{PascalCaseName}.ce.vue`
-2. All custom elements must utilize the `<KAuthWrapper/>` as the first child of their `<template/>` tag (this enables style injection for child components).
+2. All custom elements must utilize the `<BaseCustomElement/>` as the first child of their `<template/>` tag (this enables style injection for child components).
 
-In order for the styles to be injected, you need to place this exact comment in **ALL** `<style>` elements that are in components in the `/src/` directory, regardless of where in the directory structure they live:
+In order for the styles to be injected, you need to place the exact comment (shown below) in **ALL** `<style>` elements that are in components in the `/src/` directory, regardless of where in the directory structure they live:
 
 ```css
-/* KONG_AUTH_INJECT_STYLES */
+/*! KONG_AUTH_INJECT_STYLES */
 ```
+
+The exclamation point at the beginning of the comment flags the comment as important to PurgeCSS and prevents it from being removed during the build.
 
 Example:
 
@@ -77,7 +79,7 @@ Example:
 </template>
 
 <style lang="scss" scoped>
-  /* KONG_AUTH_INJECT_STYLES */
+  /*! KONG_AUTH_INJECT_STYLES */
   h1 {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     color: teal;

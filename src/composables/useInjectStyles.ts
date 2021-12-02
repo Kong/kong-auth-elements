@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted, ref, computed } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 
 export default function useInjectStyles (): Record<string, any> {
   const inlineStyles = ref<HTMLElement[]>([])
@@ -17,10 +17,12 @@ export default function useInjectStyles (): Record<string, any> {
     inlineStyles.value = Array.from(document.head.getElementsByTagName('style'))
       .filter((styleNode) => {
         // Only inject styles if they contain @kongponent prefix,
-        // or this exact string: "/* KONG_AUTH_INJECT_STYLES */"
+        // or this exact string: "/*! KONG_AUTH_INJECT_STYLES */"
         return (
           styleNode.innerHTML.includes('.k-') ||
-          styleNode.innerHTML.includes('/* KONG_AUTH_INJECT_STYLES */')
+          styleNode.innerHTML.includes('.kool') ||
+          styleNode.innerHTML.includes('KONG_AUTH_INJECT_STYLES') ||
+          styleNode.innerHTML.includes('/*! KONG_AUTH_INJECT_STYLES */')
         )
       })
       .filter((styleNode, idx, arr) => {
