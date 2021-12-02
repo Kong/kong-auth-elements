@@ -54,10 +54,6 @@ yarn test:e2e
 yarn lint
 ```
 
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
 ## Styles
 
 Styles are auto-injected into the shadow DOM for any internal components and child components.
@@ -67,15 +63,13 @@ Requirements:
 1. All custom elements must follow the naming convention `{PascalCaseName}.ce.vue`
 2. All custom elements must utilize the `<BaseCustomElement/>` as the first child of their `<template/>` tag (this enables style injection for child components).
 
-In order for the styles to be injected, you need to place the exact comment (shown below) in **ALL** `<style>` elements that are in components in the `/src/` directory, regardless of where in the directory structure they live:
+In order for the styles to be injected, you need to place the exact comment (shown below) in **ALL** `<style>` elements that are located inside components within the `/src/` directory
 
 ```css
 /*! KONG_AUTH_INJECT_STYLES */
 ```
 
-The exclamation point at the beginning of the comment flags the comment as important to PurgeCSS and prevents it from being removed during the build.
-
-Example:
+The exclamation point at the beginning of the comment flags the comment as important to PurgeCSS and prevents it from being removed during the build. Here's an example
 
 ```html
 <template>
