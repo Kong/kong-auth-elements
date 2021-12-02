@@ -1,3 +1,4 @@
-import { defineCustomKAuthElement } from './defineCustomKAuthElement'
+import registerCustomElement from '@/utils/registerCustomElement'
+import kebabize from '@/utils/kebabize'
 
-export { defineCustomKAuthElement }
+export { registerCustomElement, kebabize }

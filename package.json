@@ -2,7 +2,7 @@
   "name": "kauth-ui-poc",
   "version": "0.1.0",
   "private": true,
-  "main": "index.ts",
+  "main": "kauth.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve ./dev",
     "demo": "yarn build && rm -rf ./demo/dist-copy && cp -R ./dist ./demo/dist-copy && echo \"\nNote: The demo does NOT support hot reload.\" && serve ./demo",
@@ -27,13 +27,11 @@
     "@openapitools/openapi-generator-cli": "^2.4.18",
     "@segment/analytics.js-core": "^4.1.11",
     "@vue/compat": "^3.2.22",
-    "@vue/composition-api": "^1.4.0",
     "@xstate/vue": "^0.8.1",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "swrv": "^0.9.4-2",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0",
     "xstate": "^4.26.1"
   },

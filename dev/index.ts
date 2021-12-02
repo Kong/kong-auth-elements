@@ -1,8 +1,9 @@
 import { createApp } from 'vue'
 import DevApp from './DevApp.vue'
 
-// Auto-registers kong-auth custom element
-import '@/index'
+import { registerKongAuthLoginElement } from '@/elements/kong-auth-login'
+
+registerKongAuthLoginElement()
 
 const devApp = createApp(DevApp)
 

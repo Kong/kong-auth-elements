@@ -8,6 +8,12 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Demo'
+  name: 'Demo',
 })
 </script>
+
+<style lang="scss" scoped>
+#demo-app {
+  background: #eee;
+}
+</style>
