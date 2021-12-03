@@ -24,6 +24,7 @@ export default defineComponent({
   },
 
   setup(props) {
+    // Provide custom element props to child components
     const forgotPasswordUrlRef = ref(props.forgotPasswordUrl)
     provide('forgot-password-url', forgotPasswordUrlRef)
 

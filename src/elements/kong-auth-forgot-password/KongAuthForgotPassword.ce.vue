@@ -23,6 +23,7 @@ export default defineComponent({
   },
 
   setup(props) {
+    // Provide custom element props to child components
     const loginUrlRef = ref(props.loginUrl)
     provide('login-url', loginUrlRef.value)
   },
