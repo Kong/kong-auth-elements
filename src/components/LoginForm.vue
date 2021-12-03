@@ -13,7 +13,7 @@
         </div>
 
         <form class="login-form" @submit.prevent="submitForm" novalidate>
-          <KLabel for="email" help="Just testing help text">Email</KLabel>
+          <KLabel for="email">Email</KLabel>
           <KInput
             id="email"
             v-model.trim="email"
