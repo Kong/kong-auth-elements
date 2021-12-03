@@ -1,7 +1,9 @@
 <template>
   <!-- This injected styles tag and its corresponding logic in the setup function must be present to import styles from child components. -->
   <div v-if="injectedStyles" v-html="injectedStyles"></div>
-  <slot />
+  <div class="kong-auth-element">
+    <slot />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -21,4 +23,11 @@ const { injectedStyles } = useInjectStyles()
 // Import custom app styles from a single entrypoint
 // (since this is wrapping all custom elements)
 @import '@/assets/styles/app.scss';
+
+.kong-auth-element {
+  position: relative;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 </style>
