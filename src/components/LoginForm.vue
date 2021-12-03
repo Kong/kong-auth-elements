@@ -3,21 +3,21 @@
     <KSkeleton
       v-if="currentState.matches('from_url')"
       type="fullscreen-kong"
-      :delay-milliseconds="0"
-      data-testid="global-walking-gruce" />
+      :delay-milliseconds="0" />
     <div
       v-else
       class="d-flex align-items-center justify-content-center flex-column">
-      <div class="col-10 col-md-6">
+      <div class="col-10 col-md-8">
         <div v-if="currentState.matches('error') && error" class="my-3">
           <ErrorMessage :error="error" />
         </div>
 
-        <form class="login-form" @submit.prevent="submitForm">
+        <form class="login-form" @submit.prevent="submitForm" novalidate>
           <KLabel for="email">Email</KLabel>
           <KInput
             id="email"
-            v-model.trim="username"
+            v-model.trim="email"
+            type="email"
             class="w-100 mb-5"
             autocomplete="email"
             :has-error="currentState.matches('error') && error"
@@ -72,6 +72,7 @@ import {
 } from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
+import { helpText } from '@/utils'
 import Api from '@/services/Api'
 import { AuthenticateAuthenticateRequest } from '@/services/kauth-api-client'
 import { TrackCategory } from '@/analytics/analytics.constants'
@@ -99,21 +100,12 @@ export default defineComponent({
     const registerUrl = inject('register-url', '')
 
     const formData = reactive({
-      username: '',
-      password: '',
       email: '',
-      message: '',
+      password: '',
+      message: '', // Being set, but not used?
     })
+    const error = ref<any>(null)
     const $api = new Api()
-    const error = ref(null)
-
-    const helpText = {
-      login: {
-        unauthenticated: 'Incorrect username or password. Please try again.',
-        accountLocked:
-          'Your account has been locked. Reset your password to log in now',
-      },
-    }
 
     const {
       state: currentState,
@@ -182,7 +174,7 @@ export default defineComponent({
 
     const btnDisabled = computed(() => {
       return (
-        !formData.username ||
+        !formData.email ||
         !formData.password ||
         ['pending', 'success'].some(currentState.value.matches)
       )
@@ -197,14 +189,24 @@ export default defineComponent({
 
       // Reset form error
       error.value = null
-      formData.message = ''
+
+      if (!formData.email || !formData.password) {
+        send('REJECT')
+
+        error.value = {
+          status: 401,
+        }
+
+        formData.message = helpText.login.unauthenticated
+        return
+      }
 
       // setTimeout for simulated feedback
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
         const response = await login({
-          username: formData.username,
+          username: formData.email,
           password: formData.password,
         })
 
@@ -220,11 +222,11 @@ export default defineComponent({
         }
 
         formData.message = helpText.login.unauthenticated
-      } catch (e: any) {
+      } catch (err: any) {
         send('REJECT')
 
-        if (e?.response) {
-          error.value = e.response
+        if (err?.response) {
+          error.value = err.response
         }
       }
     }
@@ -236,8 +238,8 @@ export default defineComponent({
           token,
         })
         send('RESOLVE')
-        setUserStatusCookie()
-        formData.username = response.data.email
+        // setUserStatusCookie()
+        formData.email = response.data.email
         // eslint-disable-next-line no-undef
         konnect.track('Confirmed Email', { category: TrackCategory.Account })
         send('CONFIRMED_EMAIL')
@@ -249,23 +251,23 @@ export default defineComponent({
       }
     }
 
-    const setUserStatusCookie = async () => {
-      // return domain if valid, empty string if not a valid domain (like localhost)
-      const getDomain = () => {
-        const hostname = window.location.hostname
+    // const setUserStatusCookie = async () => {
+    //   // return domain if valid, empty string if not a valid domain (like localhost)
+    //   const getDomain = () => {
+    //     const hostname = window.location.hostname
 
-        return hostname.indexOf('.') > -1
-          ? `domain=${hostname.substring(
-              hostname.lastIndexOf('.', hostname.lastIndexOf('.') - 1) + 1,
-            )};`
-          : ''
-      }
-      const date = new Date()
+    //     return hostname.indexOf('.') > -1
+    //       ? `domain=${hostname.substring(
+    //           hostname.lastIndexOf('.', hostname.lastIndexOf('.') - 1) + 1,
+    //         )};`
+    //       : ''
+    //   }
+    //   const date = new Date()
 
-      // Set expiration date to two months from current date
-      date.setTime(date.getTime() + 24 * 60 * 60 * 1000 * 60)
-      document.cookie = `userStatus=active; path=/; ${getDomain()} expires=${date.toUTCString()};`
-    }
+    //   // Set expiration date to two months from current date
+    //   date.setTime(date.getTime() + 24 * 60 * 60 * 1000 * 60)
+    //   document.cookie = `userStatus=active; path=/; ${getDomain()} expires=${date.toUTCString()};`
+    // }
 
     const paramCheck = (param: string | string[]) => {
       return Array.isArray(param) ? param.toString() : param
@@ -282,7 +284,7 @@ export default defineComponent({
       // if (passwordReset) send('RESET_PASSWORD')
 
       // if (emailInRouteParams) {
-      //   formData.username = emailInRouteParams
+      //   formData.email = emailInRouteParams
       //   setUserStatusCookie()
       //   send('FROM_INVITE')
 

@@ -55,6 +55,9 @@ export default defineComponent({
         errorMessage.value = 'Invalid access code'
       } else if (status === 503) {
         errorMessage.value = 'Service unavailable. Please try again later.'
+      } else if (!status && statusText) {
+        // Allow passing no status with statusText for display
+        errorMessage.value = statusText
       } else {
         errorMessage.value = `Error ${status}: ${statusText}`
       }

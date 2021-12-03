@@ -1,3 +1,3 @@
-import { registerKongAuthLoginElement } from '@/elements/kong-auth-login'
+import { registerKongAuthLogin } from '@/elements/kong-auth-login'
 
-registerKongAuthLoginElement()
+registerKongAuthLogin()

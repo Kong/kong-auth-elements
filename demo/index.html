@@ -12,8 +12,13 @@
   <body>
     <h1>Kong Auth Elements Demo</h1>
     <br>
-    <h3>Login Element</h3>
-    <kong-auth-login forgot-password-url="https://konnect-dev.konghq.com/login"></kong-auth-login>
+    <h4><code>kong-auth-login</code></h4>
+    <kong-auth-login forgot-password-url="https://konnect.konghq.com/forgot-password"
+      register-url="https://konnect-dev.konghq.com/register"></kong-auth-login>
+
+    <br>
+    <h4><code>kong-auth-forgot-password</code></h4>
+    <kong-auth-forgot-password login-url="https://konnect-dev.konghq.com/login"></kong-auth-forgot-password>
   </body>
 
 </html>
