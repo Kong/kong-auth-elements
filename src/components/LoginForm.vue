@@ -7,13 +7,13 @@
     <div
       v-else
       class="d-flex align-items-center justify-content-center flex-column">
-      <div class="col-10 col-md-8">
+      <div class="col-12">
         <div v-if="currentState.matches('error') && error" class="my-3">
           <ErrorMessage :error="error" />
         </div>
 
         <form class="login-form" @submit.prevent="submitForm" novalidate>
-          <KLabel for="email">Email</KLabel>
+          <KLabel for="email" help="Just testing help text">Email</KLabel>
           <KInput
             id="email"
             v-model.trim="email"

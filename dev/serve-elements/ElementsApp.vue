@@ -5,7 +5,7 @@
     <div class="component-container">
       <h4><code>kong-auth-login</code></h4>
       <kong-auth-login
-        forgot-password-url="https://konnect.konghq.com/forgot-password"
+        forgot-password-url="https://konnect-dev.konghq.com/forgot-password"
         register-url="https://konnect-dev.konghq.com/register"></kong-auth-login>
 
       <hr />

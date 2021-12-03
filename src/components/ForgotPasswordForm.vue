@@ -1,7 +1,7 @@
 <template>
   <div
     class="kong-auth-forgot-password-form d-flex align-items-center justify-content-center flex-column">
-    <div class="col-10 col-md-8">
+    <div class="col-12">
       <div v-if="currentState.matches('error') && error" class="my-3">
         <ErrorMessage :error="error" />
       </div>

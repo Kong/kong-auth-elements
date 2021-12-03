@@ -5,7 +5,7 @@
     <div class="component-container">
       <h4><code>KongAuthLogin.vue</code></h4>
       <KongAuthLogin
-        forgot-password-url="https://konnect.konghq.com/forgot-password"
+        forgot-password-url="https://konnect-dev.konghq.com/forgot-password"
         register-url="https://konnect-dev.konghq.com/register"></KongAuthLogin>
 
       <hr />
