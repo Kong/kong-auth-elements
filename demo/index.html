@@ -7,18 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K-Auth Demo</title>
     <script src="./dist-copy/kong-auth-elements.umd.min.js"></script>
+    <style type="text/css">
+      body {
+        padding: 20px;
+      }
+
+      /* Styles for demo page only */
+      .demo-app {
+        max-width: 600px;
+        margin: 20px auto;
+      }
+
+      h1,
+      h4 {
+        text-align: center;
+      }
+
+      hr {
+        margin: 40px 0;
+      }
+    </style>
   </head>
 
   <body>
-    <h1>Kong Auth Elements Demo</h1>
-    <br>
-    <h4><code>kong-auth-login</code></h4>
-    <kong-auth-login forgot-password-url="https://konnect.konghq.com/forgot-password"
-      register-url="https://konnect-dev.konghq.com/register"></kong-auth-login>
+    <div class="demo-app">
+      <h1>Kong Auth Elements Demo</h1>
+      <br>
+      <h4><code>kong-auth-login</code></h4>
+      <kong-auth-login forgot-password-url="https://konnect.konghq.com/forgot-password"
+        register-url="https://konnect-dev.konghq.com/register"></kong-auth-login>
 
-    <br>
-    <h4><code>kong-auth-forgot-password</code></h4>
-    <kong-auth-forgot-password login-url="https://konnect-dev.konghq.com/login"></kong-auth-forgot-password>
+      <hr>
+
+      <h4><code>kong-auth-forgot-password</code></h4>
+      <kong-auth-forgot-password login-url="https://konnect-dev.konghq.com/login"></kong-auth-forgot-password>
+    </div>
   </body>
 
 </html>
