@@ -45,7 +45,11 @@ export default function useInjectStyles (): Record<string, any> {
   })
 
   onMounted(injectStyles)
-  onUnmounted(observer.disconnect)
+  onUnmounted(() => {
+    if (observer) {
+      observer.disconnect()
+    }
+  })
 
   return {
     injectedStyles,
