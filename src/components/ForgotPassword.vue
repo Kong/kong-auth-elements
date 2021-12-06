@@ -96,9 +96,9 @@ export default defineComponent({
     ErrorMessage,
   },
 
-  emits: ['click-login-link'],
+  emits: ['click-login-link', 'forgot-password-success'],
 
-  setup() {
+  setup(props, { emit }) {
     // Get custom element props
     const showLoginLink: boolean = inject('show-login-link', false)
     const loginText: string = inject('login-link-text', '')
@@ -169,6 +169,11 @@ export default defineComponent({
         // eslint-disable-next-line no-undef
         konnect.track('Sent password recovery email', {
           category: TrackCategory.Account,
+        })
+
+        // Emit success
+        emit('forgot-password-success', {
+          email: formData.email,
         })
       } catch (err: any) {
         send('REJECT')

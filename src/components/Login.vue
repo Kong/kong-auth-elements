@@ -1,12 +1,6 @@
 <template>
   <div class="kong-auth-login-form">
-    <KSkeleton
-      v-if="currentState.matches('from_url')"
-      type="fullscreen-kong"
-      :delay-milliseconds="0" />
-    <div
-      v-else
-      class="d-flex align-items-center justify-content-center flex-column">
+    <div class="d-flex align-items-center justify-content-center flex-column">
       <div class="col-12">
         <div v-if="currentState.matches('error') && error" class="my-3">
           <ErrorMessage :error="error" />
@@ -70,15 +64,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  inject,
-  reactive,
-  ref,
-  toRefs,
-  computed,
-  onMounted,
-} from 'vue'
+import { defineComponent, inject, reactive, ref, toRefs, computed } from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
 import { helpText } from '@/utils'
@@ -89,7 +75,6 @@ import { TrackCategory } from '@/analytics/analytics.constants'
 import KButton from '@kongponents/kbutton'
 import KInput from '@kongponents/kinput'
 import KLabel from '@kongponents/klabel'
-import KSkeleton from '@kongponents/kskeleton/KSkeleton.vue'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 export default defineComponent({
@@ -101,7 +86,6 @@ export default defineComponent({
     KButton,
     KInput,
     KLabel,
-    KSkeleton,
     ErrorMessage,
   },
 
@@ -147,35 +131,7 @@ export default defineComponent({
         states: {
           idle: {
             on: {
-              FROM_INVITE: 'from_invite',
-              FROM_URL: 'from_url',
-              CONFIRMED_EMAIL: 'confirmed_email',
-              RESET_PASSWORD: 'reset_password',
               SUBMIT_LOGIN: 'pending',
-              REJECT: 'error',
-            },
-          },
-          confirmed_email: {
-            on: {
-              SUBMIT_LOGIN: 'pending',
-              REJECT: 'error',
-            },
-          },
-          from_invite: {
-            on: {
-              SUBMIT_LOGIN: 'pending',
-              REJECT: 'error',
-            },
-          },
-          reset_password: {
-            on: {
-              SUBMIT_LOGIN: 'pending',
-              REJECT: 'error',
-            },
-          },
-          from_url: {
-            on: {
-              IDP_PARAMS: 'pending',
               REJECT: 'error',
             },
           },
@@ -226,7 +182,7 @@ export default defineComponent({
           status: 401,
         }
 
-        formData.message = helpText.login.unauthenticated
+        formData.message = helpText.login.unauthenticated // not being used
         return
       }
 
@@ -240,20 +196,16 @@ export default defineComponent({
         })
 
         if (response.status >= 200 && response.status < 300) {
-          // redirect to Konnect or referal URL
-          // window.location.href = '/'
-
-          // TODO: EMIT RESPONSE DATA TO CONSUMING APP
           emit('login-success')
         }
         send('REJECT')
         if (response.status === 403) {
-          formData.message = helpText.login.accountLocked
+          formData.message = helpText.login.accountLocked // not being used
 
           return
         }
 
-        formData.message = helpText.login.unauthenticated
+        formData.message = helpText.login.unauthenticated // not being used
       } catch (err: any) {
         send('REJECT')
 
@@ -262,69 +214,6 @@ export default defineComponent({
         }
       }
     }
-
-    const setEmail = async (token: string) => {
-      let response
-      try {
-        response = await $api.auth.emailVerification.emailVerificationsPatch({
-          token,
-        })
-        send('RESOLVE')
-        // setUserStatusCookie()
-        formData.email = response.data.email
-        // eslint-disable-next-line no-undef
-        konnect.track('Confirmed Email', { category: TrackCategory.Account })
-        send('CONFIRMED_EMAIL')
-      } catch (err: any) {
-        send('REJECT')
-        formData.message = Array.isArray(err.message)
-          ? err.message.join('. ')
-          : err.message
-      }
-    }
-
-    // const setUserStatusCookie = async () => {
-    //   // return domain if valid, empty string if not a valid domain (like localhost)
-    //   const getDomain = () => {
-    //     const hostname = window.location.hostname
-
-    //     return hostname.indexOf('.') > -1
-    //       ? `domain=${hostname.substring(
-    //           hostname.lastIndexOf('.', hostname.lastIndexOf('.') - 1) + 1,
-    //         )};`
-    //       : ''
-    //   }
-    //   const date = new Date()
-
-    //   // Set expiration date to two months from current date
-    //   date.setTime(date.getTime() + 24 * 60 * 60 * 1000 * 60)
-    //   document.cookie = `userStatus=active; path=/; ${getDomain()} expires=${date.toUTCString()};`
-    // }
-
-    const paramCheck = (param: string | string[]) => {
-      return Array.isArray(param) ? param.toString() : param
-    }
-
-    onMounted(async () => {
-      // const route = useRoute()
-
-      const urlParams = new URLSearchParams(window.location.search)
-      // const emailInRouteParams = paramCheck(route.params.email)
-      // const passwordReset = paramCheck(route.params.passwordReset)
-      const tokenInQueryParams = urlParams.get('token')
-
-      // if (passwordReset) send('RESET_PASSWORD')
-
-      // if (emailInRouteParams) {
-      //   formData.email = emailInRouteParams
-      //   setUserStatusCookie()
-      //   send('FROM_INVITE')
-
-      //   return
-      // }
-
-      if (tokenInQueryParams) return setEmail(tokenInQueryParams)
-    })
 
     return {
       showForgotPasswordLink,
