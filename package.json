@@ -1,7 +1,6 @@
 {
   "name": "@kong/kong-auth-elements",
   "version": "0.0.0-development",
-  "private": true,
   "main": "./dist/kong-auth-elements.umd.min.js",
   "scripts": {
     "serve:components": "vue-cli-service serve ./dev/serve-components",
