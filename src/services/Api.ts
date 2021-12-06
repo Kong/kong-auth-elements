@@ -33,7 +33,7 @@ export default class Api {
     )
 
     const baseConfig = new Configuration({
-      basePath: 'api',
+      basePath: 'kauth/api',
     })
 
     this.auth = {
