@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, provide } from 'vue'
+import { defineComponent, provide } from 'vue'
 import BaseCustomElement from '@/elements/BaseCustomElement.vue'
 import ForgotPassword from '@/components/ForgotPassword.vue'
 
@@ -31,14 +31,9 @@ export default defineComponent({
 
   setup(props) {
     // Provide custom element props to child components
-    const showLoginLinkRef = ref(props.showLoginLink)
-    provide('show-login-link', showLoginLinkRef.value)
-
-    const loginLinkTextRef = ref(props.loginLinkText)
-    provide('login-link-text', loginLinkTextRef.value)
-
-    const instructionTextRef = ref(props.instructionText)
-    provide('instruction-text', instructionTextRef.value)
+    provide('show-login-link', props.showLoginLink)
+    provide('login-link-text', props.loginLinkText)
+    provide('instruction-text', props.instructionText)
   },
 })
 </script>

@@ -5,17 +5,38 @@
     <div class="component-container">
       <h4><code>kong-auth-login</code></h4>
       <kong-auth-login
-        forgot-password-url="https://konnect-dev.konghq.com/forgot-password"
-        register-url="https://konnect-dev.konghq.com/register"></kong-auth-login>
+        show-forgot-password-link
+        @login-success="onLoginSuccess"
+        @click-forgot-password-link="onUserClickForgotPassword"
+        @click-register-link="onUserClickRegister"></kong-auth-login>
 
       <hr />
 
       <h4><code>kong-auth-forgot-password</code></h4>
       <kong-auth-forgot-password
-        login-url="https://konnect-dev.konghq.com/login"></kong-auth-forgot-password>
+        instruction-text="Enter your verified email address and we will send you a password reset link."
+        @click-login-link="onUserClickLogin"></kong-auth-forgot-password>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const onUserClickForgotPassword = (): void => {
+  alert('User clicked forgot password')
+}
+
+const onUserClickRegister = (): void => {
+  alert('User clicked register')
+}
+
+const onLoginSuccess = async () => {
+  alert('User logged in!')
+}
+
+const onUserClickLogin = (): void => {
+  alert('User clicked login')
+}
+</script>
 
 <style lang="scss">
 html,

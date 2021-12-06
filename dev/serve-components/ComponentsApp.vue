@@ -5,14 +5,17 @@
     <div class="component-container">
       <h4><code>KongAuthLogin.vue</code></h4>
       <KongAuthLogin
-        forgot-password-url="https://konnect-dev.konghq.com/forgot-password"
-        register-url="https://konnect-dev.konghq.com/register"></KongAuthLogin>
+        show-forgot-password-link
+        @login-success="onLoginSuccess"
+        @click-forgot-password-link="onUserClickForgotPassword"
+        @click-register-link="onUserClickRegister"></KongAuthLogin>
 
       <hr />
 
       <h4><code>KongAuthForgotPassword.vue</code></h4>
       <KongAuthForgotPassword
-        login-url="https://konnect-dev.konghq.com/login" />
+        instruction-text="Enter your verified email address and we will send you a password reset link."
+        @click-login-link="onUserClickLogin" />
     </div>
   </div>
 </template>
@@ -21,6 +24,22 @@
 // Import and register Custom Elements as Components
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
+
+const onUserClickForgotPassword = (): void => {
+  alert('User clicked forgot password')
+}
+
+const onUserClickRegister = (): void => {
+  alert('User clicked register')
+}
+
+const onLoginSuccess = async () => {
+  alert('User logged in!')
+}
+
+const onUserClickLogin = (): void => {
+  alert('User clicked login')
+}
 </script>
 
 <style lang="scss">

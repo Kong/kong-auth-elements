@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, provide } from 'vue'
+import { defineComponent, provide } from 'vue'
 import BaseCustomElement from '@/elements/BaseCustomElement.vue'
 import Login from '@/components/Login.vue'
 
@@ -41,18 +41,13 @@ export default defineComponent({
     // Provide custom element props to child components
 
     // Forgot password
-    const showForgotPasswordLinkRef = ref(props.showForgotPasswordLink)
-    provide('show-forgot-password-link', showForgotPasswordLinkRef.value)
-    const forgotPasswordLinkTextRef = ref(props.forgotPasswordLinkText)
-    provide('forgot-password-link-text', forgotPasswordLinkTextRef.value)
+    provide('show-forgot-password-link', props.showForgotPasswordLink)
+    provide('forgot-password-link-text', props.forgotPasswordLinkText)
 
     // Register
-    const showRegisterLinkRef = ref(props.showRegisterLink)
-    provide('show-register-link', showRegisterLinkRef.value)
-    const registerHelpTextRef = ref(props.registerHelpText)
-    provide('register-help-text', registerHelpTextRef.value)
-    const registerLinkTextRef = ref(props.registerLinkText)
-    provide('register-link-text', registerLinkTextRef.value)
+    provide('show-register-link', props.showRegisterLink)
+    provide('register-help-text', props.registerHelpText)
+    provide('register-link-text', props.registerLinkText)
   },
 })
 </script>
