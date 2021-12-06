@@ -1,6 +1,10 @@
 <template>
   <BaseCustomElement>
-    <ForgotPassword @click-login-link="$emit('click-login-link')" />
+    <ForgotPassword
+      @click-login-link="(emitData) => $emit('click-login-link', emitData)"
+      @forgot-password-success="
+        (emitData) => $emit('forgot-password-success', emitData)
+      " />
   </BaseCustomElement>
 </template>
 
@@ -22,7 +26,7 @@ export default defineComponent({
     instructionText: String,
   },
 
-  emits: ['click-login-link'],
+  emits: ['click-login-link', 'forgot-password-success'],
 
   components: {
     BaseCustomElement,

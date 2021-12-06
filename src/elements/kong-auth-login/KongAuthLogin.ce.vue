@@ -1,9 +1,13 @@
 <template>
   <BaseCustomElement>
     <Login
-      @click-forgot-password-link="$emit('click-forgot-password-link')"
-      @click-register-link="$emit('click-register-link')"
-      @login-success="$emit('login-success')" />
+      @click-forgot-password-link="
+        (emitData) => $emit('click-forgot-password-link', emitData)
+      "
+      @click-register-link="
+        (emitData) => $emit('click-register-link', emitData)
+      "
+      @login-success="(emitData) => $emit('login-success', emitData)" />
   </BaseCustomElement>
 </template>
 
