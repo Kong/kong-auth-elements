@@ -23,8 +23,8 @@
         class="forgot-password-form"
         @submit.prevent="submitForm"
         novalidate>
-        <p class="color-black-45">
-          {{ helpText.forgotPassword.instructions }}
+        <p v-if="instructions" class="color-black-45">
+          {{ instructions }}
         </p>
 
         <KLabel for="email">Email</KLabel>
@@ -82,7 +82,7 @@ import KLabel from '@kongponents/klabel'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 export default defineComponent({
-  name: 'ForgotPasswordForm',
+  name: 'ForgotPassword',
 
   components: {
     KAlert,
@@ -96,6 +96,7 @@ export default defineComponent({
   setup() {
     // Get custom element props
     const loginUrl = inject('login-url', '')
+    const instructions = inject('instructions', '')
 
     const formData = reactive({
       email: '',
@@ -172,6 +173,7 @@ export default defineComponent({
     return {
       loginUrl,
       currentState,
+      instructions,
       btnText,
       btnDisabled,
       helpText,

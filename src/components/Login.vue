@@ -35,9 +35,9 @@
             required />
 
           <p v-if="forgotPasswordUrl" class="help my-3">
-            <a class="color-blue-500" :href="forgotPasswordUrl">
-              Forgot your password?
-            </a>
+            <a class="color-blue-500" :href="forgotPasswordUrl">{{
+              forgotPasswordLinkText
+            }}</a>
           </p>
 
           <KButton
@@ -84,7 +84,7 @@ import KSkeleton from '@kongponents/kskeleton/KSkeleton.vue'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 export default defineComponent({
-  name: 'LoginForm',
+  name: 'Login',
 
   components: {
     KButton,
@@ -96,8 +96,15 @@ export default defineComponent({
 
   setup() {
     // Get custom element props
-    const forgotPasswordUrl = inject('forgot-password-url', '')
-    const registerUrl = inject('register-url', '')
+    const forgotPasswordText = inject('forgot-password-text')
+    const forgotPasswordUrl = inject('forgot-password-url')
+    const registerUrl = inject('register-url')
+
+    const forgotPasswordLinkText = ref(
+      forgotPasswordText
+        ? forgotPasswordText
+        : helpText.login.forgotPasswordText,
+    )
 
     const formData = reactive({
       email: '',
@@ -295,6 +302,7 @@ export default defineComponent({
     })
 
     return {
+      forgotPasswordLinkText,
       forgotPasswordUrl,
       registerUrl,
       btnText,

@@ -34,6 +34,6 @@ export default function (
       defineCustomElement(elementComponent),
     )
   } catch (err) {
-    console.error(err)
+    console.warn(err)
   }
 }
