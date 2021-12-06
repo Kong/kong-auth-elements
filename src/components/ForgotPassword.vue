@@ -11,10 +11,10 @@
           appearance="info"
           class="mb-6" />
         <KButton
+          @click.prevent="$emit('click-login-link')"
           class="justify-content-center w-100 type-lg"
-          :to="loginUrl"
           appearance="primary">
-          Return to Login
+          {{ loginLinkText }}
         </KButton>
       </div>
 
@@ -23,8 +23,8 @@
         class="forgot-password-form"
         @submit.prevent="submitForm"
         novalidate>
-        <p v-if="instructions" class="color-black-45">
-          {{ instructions }}
+        <p v-if="instructionText" class="color-black-45">
+          {{ instructionText }}
         </p>
 
         <KLabel for="email">Email</KLabel>
@@ -54,11 +54,14 @@
       </form>
 
       <div
-        v-if="!currentState.matches('success') && loginUrl"
+        v-if="!currentState.matches('success') && showLoginLink"
         class="text-center mt-5">
         <p class="color-black-85 bold-500">
-          <a class="color-blue-500" :href="loginUrl">
-            Return to log in &rarr;
+          <a
+            @click.prevent="$emit('click-login-link')"
+            class="color-blue-500"
+            href="#">
+            {{ loginLinkText }}
           </a>
         </p>
       </div>
@@ -93,10 +96,16 @@ export default defineComponent({
     ErrorMessage,
   },
 
+  emits: ['click-login-link'],
+
   setup() {
     // Get custom element props
-    const loginUrl = inject('login-url', '')
-    const instructions = inject('instructions', '')
+    const showLoginLink: boolean = inject('show-login-link', false)
+    const loginText: string = inject('login-link-text', '')
+    const loginLinkText = ref(
+      loginText ? loginText : helpText.forgotPassword.loginLinkText,
+    )
+    const instructionText: string = inject('instruction-text', '')
 
     const formData = reactive({
       email: '',
@@ -171,9 +180,10 @@ export default defineComponent({
     }
 
     return {
-      loginUrl,
       currentState,
-      instructions,
+      showLoginLink,
+      loginLinkText,
+      instructionText,
       btnText,
       btnDisabled,
       helpText,

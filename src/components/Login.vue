@@ -34,9 +34,9 @@
             :has-error="currentState.matches('error') && error"
             required />
 
-          <p v-if="showForgotPassword" class="help mt-3">
+          <p v-if="showForgotPasswordLink" class="help mt-3">
             <a
-              @click.prevent="$emit('click-forgot-password')"
+              @click.prevent="$emit('click-forgot-password-link')"
               class="color-blue-500"
               href="#"
               >{{ forgotPasswordLinkText }}</a
@@ -47,16 +47,16 @@
             type="submit"
             appearance="primary"
             class="justify-content-center w-100 type-lg"
-            :class="[showForgotPassword ? 'mt-3' : 'mt-6']"
+            :class="[showForgotPasswordLink ? 'mt-3' : 'mt-6']"
             :disabled="btnDisabled"
             >{{ btnText }}</KButton
           >
 
-          <div v-if="showRegister" class="text-center mt-5">
+          <div v-if="showRegisterLink" class="text-center mt-5">
             <p class="color-black-85 bold-500">
               {{ registerHelpText }}
               <a
-                @click.prevent="$emit('click-register')"
+                @click.prevent="$emit('click-register-link')"
                 class="color-blue-500"
                 href="#"
                 >{{ registerLinkText }}</a
@@ -95,7 +95,7 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 export default defineComponent({
   name: 'Login',
 
-  emits: ['click-forgot-password', 'click-register'],
+  emits: ['click-forgot-password-link', 'click-register-link', 'login-success'],
 
   components: {
     KButton,
@@ -105,9 +105,12 @@ export default defineComponent({
     ErrorMessage,
   },
 
-  setup() {
+  setup(props, { emit }) {
     // Get custom element props
-    const showForgotPassword: boolean = inject('show-forgot-password', false)
+    const showForgotPasswordLink: boolean = inject(
+      'show-forgot-password-link',
+      false,
+    )
     const forgotPasswordText: string = inject('forgot-password-link-text', '')
     const forgotPasswordLinkText = ref(
       forgotPasswordText
@@ -115,7 +118,7 @@ export default defineComponent({
         : helpText.login.forgotPasswordLinkText,
     )
 
-    const showRegister: boolean = inject('show-register', false)
+    const showRegisterLink: boolean = inject('show-register-link', false)
     const registerText: string = inject('register-link-text', '')
     const registerLinkText = ref(
       registerText ? registerText : helpText.login.registerLinkText,
@@ -238,7 +241,10 @@ export default defineComponent({
 
         if (response.status >= 200 && response.status < 300) {
           // redirect to Konnect or referal URL
-          window.location.href = '/'
+          // window.location.href = '/'
+
+          // TODO: EMIT RESPONSE DATA TO CONSUMING APP
+          emit('login-success')
         }
         send('REJECT')
         if (response.status === 403) {
@@ -321,9 +327,9 @@ export default defineComponent({
     })
 
     return {
-      showForgotPassword,
+      showForgotPasswordLink,
       forgotPasswordLinkText,
-      showRegister,
+      showRegisterLink,
       registerHelpText,
       registerLinkText,
       btnText,

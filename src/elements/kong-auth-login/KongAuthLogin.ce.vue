@@ -1,8 +1,9 @@
 <template>
   <BaseCustomElement>
     <Login
-      @click-forgot-password="$emit('click-forgot-password')"
-      @click-register="$emit('click-register')" />
+      @click-forgot-password-link="$emit('click-forgot-password-link')"
+      @click-register-link="$emit('click-register-link')"
+      @login-success="$emit('login-success')" />
   </BaseCustomElement>
 </template>
 
@@ -16,12 +17,12 @@ export default defineComponent({
 
   // Props are defined here for use on the custom element tag
   props: {
-    showForgotPassword: {
+    showForgotPasswordLink: {
       type: Boolean,
       default: false,
     },
     forgotPasswordLinkText: String,
-    showRegister: {
+    showRegisterLink: {
       type: Boolean,
       default: false,
     },
@@ -29,7 +30,7 @@ export default defineComponent({
     registerLinkText: String,
   },
 
-  emits: ['click-forgot-password', 'click-register'],
+  emits: ['click-forgot-password-link', 'click-register-link', 'login-success'],
 
   components: {
     BaseCustomElement,
@@ -40,14 +41,14 @@ export default defineComponent({
     // Provide custom element props to child components
 
     // Forgot password
-    const showForgotPasswordRef = ref(props.showForgotPassword)
-    provide('show-forgot-password', showForgotPasswordRef.value)
+    const showForgotPasswordLinkRef = ref(props.showForgotPasswordLink)
+    provide('show-forgot-password-link', showForgotPasswordLinkRef.value)
     const forgotPasswordLinkTextRef = ref(props.forgotPasswordLinkText)
     provide('forgot-password-link-text', forgotPasswordLinkTextRef.value)
 
     // Register
-    const showRegisterRef = ref(props.showRegister)
-    provide('show-register', showRegisterRef.value)
+    const showRegisterLinkRef = ref(props.showRegisterLink)
+    provide('show-register-link', showRegisterLinkRef.value)
     const registerHelpTextRef = ref(props.registerHelpText)
     provide('register-help-text', registerHelpTextRef.value)
     const registerLinkTextRef = ref(props.registerLinkText)

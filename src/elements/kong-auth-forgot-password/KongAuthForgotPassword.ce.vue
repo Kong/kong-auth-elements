@@ -1,6 +1,6 @@
 <template>
   <BaseCustomElement>
-    <ForgotPassword />
+    <ForgotPassword @click-login-link="$emit('click-login-link')" />
   </BaseCustomElement>
 </template>
 
@@ -14,9 +14,15 @@ export default defineComponent({
 
   // Props are defined here for use on the custom element tag
   props: {
-    loginUrl: String,
-    instructions: String,
+    showLoginLink: {
+      type: Boolean,
+      default: false,
+    },
+    loginLinkText: String,
+    instructionText: String,
   },
+
+  emits: ['click-login-link'],
 
   components: {
     BaseCustomElement,
@@ -25,11 +31,14 @@ export default defineComponent({
 
   setup(props) {
     // Provide custom element props to child components
-    const loginUrlRef = ref(props.loginUrl)
-    provide('login-url', loginUrlRef.value)
+    const showLoginLinkRef = ref(props.showLoginLink)
+    provide('show-login-link', showLoginLinkRef.value)
 
-    const instructionsRef = ref(props.instructions)
-    provide('instructions', instructionsRef.value)
+    const loginLinkTextRef = ref(props.loginLinkText)
+    provide('login-link-text', loginLinkTextRef.value)
+
+    const instructionTextRef = ref(props.instructionText)
+    provide('instruction-text', instructionTextRef.value)
   },
 })
 </script>
