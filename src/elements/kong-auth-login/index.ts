@@ -1,3 +1,4 @@
+import { defineCustomElement } from 'vue'
 import { registerCustomElement } from '@/utils'
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 
@@ -6,5 +7,5 @@ import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
  * @param {string} [tagName=kong-auth-login] - The name of the custom element to be used as the HTML tag.
  */
 export function registerKongAuthLogin (tagName = 'kong-auth-login'): void {
-  registerCustomElement(tagName, KongAuthLogin)
+  registerCustomElement(tagName, defineCustomElement(KongAuthLogin))
 }

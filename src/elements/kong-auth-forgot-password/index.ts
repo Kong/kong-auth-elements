@@ -1,3 +1,4 @@
+import { defineCustomElement } from 'vue'
 import { registerCustomElement } from '@/utils'
 import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
 
@@ -8,5 +9,5 @@ import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAut
 export function registerKongAuthForgotPassword (
   tagName = 'kong-auth-forgot-password',
 ): void {
-  registerCustomElement(tagName, KongAuthForgotPassword)
+  registerCustomElement(tagName, defineCustomElement(KongAuthForgotPassword))
 }
