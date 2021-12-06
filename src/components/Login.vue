@@ -34,27 +34,36 @@
             :has-error="currentState.matches('error') && error"
             required />
 
-          <p v-if="forgotPasswordUrl" class="help my-3">
-            <a class="color-blue-500" :href="forgotPasswordUrl">{{
-              forgotPasswordLinkText
-            }}</a>
+          <p v-if="showForgotPassword" class="help mt-3">
+            <a
+              @click.prevent="$emit('click-forgot-password')"
+              class="color-blue-500"
+              href="#"
+              >{{ forgotPasswordLinkText }}</a
+            >
           </p>
 
           <KButton
             type="submit"
             appearance="primary"
             class="justify-content-center w-100 type-lg"
+            :class="[showForgotPassword ? 'mt-3' : 'mt-6']"
             :disabled="btnDisabled"
             >{{ btnText }}</KButton
           >
-        </form>
 
-        <div v-if="registerUrl" class="text-center mt-5">
-          <p class="color-black-85 bold-500">
-            Don't have an account?
-            <a class="color-blue-500" :href="registerUrl"> Sign Up &rarr; </a>
-          </p>
-        </div>
+          <div v-if="showRegister" class="text-center mt-5">
+            <p class="color-black-85 bold-500">
+              {{ registerHelpText }}
+              <a
+                @click.prevent="$emit('click-register')"
+                class="color-blue-500"
+                href="#"
+                >{{ registerLinkText }}</a
+              >
+            </p>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -86,6 +95,8 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 export default defineComponent({
   name: 'Login',
 
+  emits: ['click-forgot-password', 'click-register'],
+
   components: {
     KButton,
     KInput,
@@ -96,14 +107,22 @@ export default defineComponent({
 
   setup() {
     // Get custom element props
-    const forgotPasswordText = inject('forgot-password-text')
-    const forgotPasswordUrl = inject('forgot-password-url')
-    const registerUrl = inject('register-url')
-
+    const showForgotPassword: boolean = inject('show-forgot-password', false)
+    const forgotPasswordText: string = inject('forgot-password-link-text', '')
     const forgotPasswordLinkText = ref(
       forgotPasswordText
         ? forgotPasswordText
-        : helpText.login.forgotPasswordText,
+        : helpText.login.forgotPasswordLinkText,
+    )
+
+    const showRegister: boolean = inject('show-register', false)
+    const registerText: string = inject('register-link-text', '')
+    const registerLinkText = ref(
+      registerText ? registerText : helpText.login.registerLinkText,
+    )
+    const registerHelp: string = inject('register-help-text', '')
+    const registerHelpText = ref(
+      registerHelp ? registerHelp : helpText.login.registerHelpText,
     )
 
     const formData = reactive({
@@ -302,9 +321,11 @@ export default defineComponent({
     })
 
     return {
+      showForgotPassword,
       forgotPasswordLinkText,
-      forgotPasswordUrl,
-      registerUrl,
+      showRegister,
+      registerHelpText,
+      registerLinkText,
       btnText,
       btnDisabled,
       currentState,

@@ -1,6 +1,8 @@
 export default {
   login: {
-    forgotPasswordText: 'Forgot your password?',
+    forgotPasswordLinkText: 'Forgot your password?',
+    registerLinkText: 'Sign Up →',
+    registerHelpText: "Don't have an account?",
     unauthenticated: 'Incorrect username or password. Please try again.',
     accountLocked:
       'Your account has been locked. Reset your password to log in now',
