@@ -24,9 +24,14 @@ const { injectedStyles } = useInjectStyles()
 // (since this is wrapping all custom elements)
 @import '@/assets/styles/app.scss';
 
+:root {
+  --font-family-sans: var(--KongAuthFontFamily, 'Maison Neue', 'Roboto', 'Helvetica', 'Arial', sans-serif);
+}
+
 .kong-auth-element {
-  position: relative;
+  font-family: var(--font-family-sans);
   font-weight: 400;
+  position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

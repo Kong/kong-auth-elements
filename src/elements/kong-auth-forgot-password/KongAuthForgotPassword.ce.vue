@@ -2,9 +2,7 @@
   <BaseCustomElement>
     <ForgotPassword
       @click-login-link="(emitData) => $emit('click-login-link', emitData)"
-      @forgot-password-success="
-        (emitData) => $emit('forgot-password-success', emitData)
-      " />
+      @forgot-password-success="(emitData) => $emit('forgot-password-success', emitData)" />
   </BaseCustomElement>
 </template>
 
@@ -43,18 +41,12 @@ export default defineComponent({
 
     provide(
       'login-link-text',
-      computed((): string =>
-        props.loginLinkText
-          ? props.loginLinkText
-          : helpText.forgotPassword.loginLinkText,
-      ),
+      computed((): string => (props.loginLinkText ? props.loginLinkText : helpText.forgotPassword.loginLinkText)),
     )
 
     provide(
       'instruction-text',
-      computed((): string =>
-        props.instructionText ? props.instructionText : '',
-      ),
+      computed((): string => (props.instructionText ? props.instructionText : '')),
     )
   },
 })

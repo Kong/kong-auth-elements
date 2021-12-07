@@ -29,12 +29,7 @@
             required />
 
           <p v-if="showForgotPasswordLink" class="help mt-3">
-            <a
-              @click.prevent="$emit('click-forgot-password-link')"
-              class="color-blue-500"
-              href="#"
-              >{{ forgotPasswordLinkText }}</a
-            >
+            <a @click.prevent="$emit('click-forgot-password-link')" class="color-blue-500" href="#">{{ forgotPasswordLinkText }}</a>
           </p>
 
           <KButton
@@ -49,12 +44,7 @@
           <div v-if="showRegisterLink" class="text-center mt-5">
             <p class="color-black-85 bold-500">
               {{ registerHelpText }}
-              <a
-                @click.prevent="$emit('click-register-link')"
-                class="color-blue-500"
-                href="#"
-                >{{ registerLinkText }}</a
-              >
+              <a @click.prevent="$emit('click-register-link')" class="color-blue-500" href="#">{{ registerLinkText }}</a>
             </p>
           </div>
         </form>
@@ -64,15 +54,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  inject,
-  reactive,
-  ref,
-  Ref,
-  toRefs,
-  computed,
-} from 'vue'
+import { defineComponent, inject, reactive, ref, Ref, toRefs, computed } from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
 import { helpText } from '@/utils'
@@ -100,18 +82,9 @@ export default defineComponent({
   setup(props, { emit }) {
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
-    const showForgotPasswordLink: Ref<boolean> = inject(
-      'show-forgot-password-link',
-      ref(false),
-    )
-    const forgotPasswordLinkText: Ref<string> = inject(
-      'forgot-password-link-text',
-      ref(''),
-    )
-    const showRegisterLink: Ref<boolean> = inject(
-      'show-register-link',
-      ref(false),
-    )
+    const showForgotPasswordLink: Ref<boolean> = inject('show-forgot-password-link', ref(false))
+    const forgotPasswordLinkText: Ref<string> = inject('forgot-password-link-text', ref(''))
+    const showRegisterLink: Ref<boolean> = inject('show-register-link', ref(false))
     const registerLinkText: Ref<string> = inject('register-link-text', ref(''))
     const registerHelpText: Ref<string> = inject('register-help-text', ref(''))
 
@@ -155,17 +128,11 @@ export default defineComponent({
     )
 
     const btnText = computed(() => {
-      return ['pending', 'success'].some(currentState.value.matches)
-        ? 'Submitting'
-        : 'Login'
+      return ['pending', 'success'].some(currentState.value.matches) ? 'Submitting' : 'Login'
     })
 
     const btnDisabled = computed(() => {
-      return (
-        !formData.email ||
-        !formData.password ||
-        ['pending', 'success'].some(currentState.value.matches)
-      )
+      return !formData.email || !formData.password || ['pending', 'success'].some(currentState.value.matches)
     })
 
     const login = async (credentials: AuthenticateAuthenticateRequest) => {

@@ -103,6 +103,26 @@ The exclamation point at the beginning of the comment flags the comment as impor
 </style>
 ```
 
+### CSS Variables
+
+Several custom CSS variables are available to impact the styling of custom elements, shown below
+
+| Variable               | Purpose             |
+| :--------------------- | :------------------ |
+| `--KongAuthFontFamily` | Default font family |
+
+You may also utilize any CSS variables included in the [Kongponents component library](https://kongponents.konghq.com/guide/theming.html).
+
+Simply define values for the variables in your consuming application to make them available to the custom elements
+
+```css
+<style>
+:root {
+  --KongAuthFontFamily: 'Roboto';
+}
+</style>
+```
+
 ## How to use components
 
 > **NOTE**: This section is still a draft.
