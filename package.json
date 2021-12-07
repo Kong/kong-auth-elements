@@ -1,7 +1,7 @@
 {
   "name": "@kong/kong-auth-elements",
   "version": "0.0.0-development",
-  "main": "./dist/kong-auth-elements.umd.min.js",
+  "main": "dist/kong-auth-elements.umd.min.js",
   "scripts": {
     "serve:components": "vue-cli-service serve ./dev/serve-components",
     "serve:elements": "vue-cli-service serve ./dev/serve-elements",
@@ -78,7 +78,7 @@
     "semantic-release": "^18.0.1"
   },
   "files": [
-    "./dist"
+    "dist/*"
   ],
   "repository": {
     "type": "git",

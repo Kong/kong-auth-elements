@@ -13,6 +13,8 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: '16'
+    - name: build
+      run: yarn build
     - name: Semantic Release
       uses: cycjimmy/semantic-release-action@v2
       env:
