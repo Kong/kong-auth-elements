@@ -1,5 +1,5 @@
 <template>
-  <KAlert appearance="danger" class="error-message">
+  <KAlert appearance="danger" class="error-message" data-testid="kong-auth-error-message">
     <template v-if="passwordRequirements.length" #alertMessage>
       <p>{{ capitalizeFirstChar(errorMessage) }}:</p>
       <ul>

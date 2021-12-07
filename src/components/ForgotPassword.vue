@@ -5,11 +5,16 @@
         <ErrorMessage :error="error" />
       </div>
       <div v-else-if="currentState.matches('success')">
-        <KAlert :alert-message="helpText.forgotPassword.success" appearance="info" class="mb-6" />
+        <KAlert
+          :alert-message="helpText.forgotPassword.success"
+          appearance="info"
+          class="mb-6"
+          data-testid="kong-auth-forgot-password-success-message" />
         <KButton
           @click.prevent="$emit('click-login-link')"
           class="justify-content-center w-100 type-lg"
-          appearance="primary">
+          appearance="primary"
+          data-testid="kong-auth-forgot-password-return-to-login-btn">
           {{ loginLinkText }}
         </KButton>
       </div>
@@ -19,7 +24,7 @@
         class="forgot-password-form"
         @submit.prevent="submitForm"
         novalidate>
-        <p v-if="instructionText" class="color-black-45">
+        <p v-if="instructionText" class="color-black-45" data-testid="kong-auth-forgot-password-instruction-text">
           {{ instructionText }}
         </p>
 
@@ -33,13 +38,15 @@
           :has-error="currentState.matches('error') && error"
           placeholder="Email"
           required
-          autofocus />
+          autofocus
+          data-testid="kong-auth-forgot-password-email" />
 
         <KButton
           type="submit"
           appearance="primary"
           class="justify-content-center w-100 type-lg"
-          :disabled="btnDisabled">
+          :disabled="btnDisabled"
+          data-testid="kong-auth-forgot-password-submit">
           <KIcon v-if="currentState.matches('pending')" icon="spinner" view-box="0 0 16 16" class="pr-0 mr-2" />
           {{ btnText }}
         </KButton>
@@ -47,7 +54,11 @@
 
       <div v-if="!currentState.matches('success') && showLoginLink" class="text-center mt-5">
         <p class="color-black-85 bold-500">
-          <a @click.prevent="$emit('click-login-link')" class="color-blue-500" href="#">
+          <a
+            @click.prevent="$emit('click-login-link')"
+            class="color-blue-500"
+            href="#"
+            data-testid="kong-auth-forgot-password-return-to-login-link">
             {{ loginLinkText }}
           </a>
         </p>

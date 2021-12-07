@@ -16,7 +16,8 @@
             autocomplete="email"
             :has-error="currentState.matches('error') && error"
             required
-            autofocus />
+            autofocus
+            data-testid="kong-auth-login-email" />
 
           <KLabel for="password">Password</KLabel>
           <KInput
@@ -26,12 +27,17 @@
             class="w-100"
             autocomplete="current-password"
             :has-error="currentState.matches('error') && error"
-            required />
+            required
+            data-testid="kong-auth-login-password" />
 
           <p v-if="showForgotPasswordLink" class="help mt-3">
-            <a @click.prevent="$emit('click-forgot-password-link')" class="color-blue-500" href="#">{{
-              forgotPasswordLinkText
-            }}</a>
+            <a
+              @click.prevent="$emit('click-forgot-password-link')"
+              class="color-blue-500"
+              href="#"
+              data-testid="kong-auth-login-forgot-password-link"
+              >{{ forgotPasswordLinkText }}</a
+            >
           </p>
 
           <KButton
@@ -40,15 +46,20 @@
             class="justify-content-center w-100 type-lg"
             :class="[showForgotPasswordLink ? 'mt-3' : 'mt-6']"
             :disabled="btnDisabled"
+            data-testid="kong-auth-login-submit"
             >{{ btnText }}</KButton
           >
 
           <div v-if="showRegisterLink" class="text-center mt-5">
             <p class="color-black-85 bold-500">
               {{ registerHelpText }}
-              <a @click.prevent="$emit('click-register-link')" class="color-blue-500" href="#">{{
-                registerLinkText
-              }}</a>
+              <a
+                @click.prevent="$emit('click-register-link')"
+                class="color-blue-500"
+                href="#"
+                data-testid="kong-auth-login-register-link"
+                >{{ registerLinkText }}</a
+              >
             </p>
           </div>
         </form>
