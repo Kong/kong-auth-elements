@@ -1,12 +1,8 @@
 <template>
   <BaseCustomElement>
     <Login
-      @click-forgot-password-link="
-        (emitData) => $emit('click-forgot-password-link', emitData)
-      "
-      @click-register-link="
-        (emitData) => $emit('click-register-link', emitData)
-      "
+      @click-forgot-password-link="(emitData) => $emit('click-forgot-password-link', emitData)"
+      @click-register-link="(emitData) => $emit('click-register-link', emitData)"
       @login-success="(emitData) => $emit('login-success', emitData)" />
   </BaseCustomElement>
 </template>
@@ -52,11 +48,7 @@ export default defineComponent({
     )
     provide(
       'forgot-password-link-text',
-      computed((): string =>
-        props.forgotPasswordLinkText
-          ? props.forgotPasswordLinkText
-          : helpText.login.forgotPasswordLinkText,
-      ),
+      computed((): string => (props.forgotPasswordLinkText ? props.forgotPasswordLinkText : helpText.login.forgotPasswordLinkText)),
     )
 
     // Register
@@ -66,19 +58,11 @@ export default defineComponent({
     )
     provide(
       'register-help-text',
-      computed((): string =>
-        props.registerHelpText
-          ? props.registerHelpText
-          : helpText.login.registerHelpText,
-      ),
+      computed((): string => (props.registerHelpText ? props.registerHelpText : helpText.login.registerHelpText)),
     )
     provide(
       'register-link-text',
-      computed((): string =>
-        props.registerLinkText
-          ? props.registerLinkText
-          : helpText.login.registerLinkText,
-      ),
+      computed((): string => (props.registerLinkText ? props.registerLinkText : helpText.login.registerLinkText)),
     )
   },
 })

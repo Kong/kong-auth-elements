@@ -8,7 +8,7 @@
     "serve": "yarn serve:help",
     "serve:help": "echo \"\nRun 'yarn serve:components' to import components and use Vue Dev Tools.\n(may require additional imports in /dev/serve-components/ComponentsApp.vue)\n\\x1b[33m* This will not allow testing embedded styles and other Custom Element features. *\\x1b[0m\n\n-- OR --\n\nRun 'yarn serve:elements' to import HTML Custom Elements.\n(may require additional imports in /dev/serve-elements/index.ts)\n\\x1b[33m* This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported). *\\x1b[0m\n\n\"",
     "build": "vue-cli-service build --target lib --name kong-auth-elements --inline-vue ./src/index.ts",
-    "demo": "rm -rf ./demo/dist-copy && yarn build && cp -R ./dist ./demo/dist-copy && echo \"\n\\x1b[30m\\x1b[103m Note: The demo does NOT support hot reload \\x1b[0m\" && serve ./demo",
+    "demo": "rm -rf ./demo/dist-copy && yarn build && cp -R ./dist ./demo/dist-copy && rm ./demo/dist-copy/demo.html && rm -rf ./demo/dist-copy/fonts && echo \"\n\\x1b[30m\\x1b[103m Note: The demo does NOT support hot reload \\x1b[0m\" && serve ./demo",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
