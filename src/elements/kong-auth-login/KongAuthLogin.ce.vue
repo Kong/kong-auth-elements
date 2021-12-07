@@ -48,7 +48,9 @@ export default defineComponent({
     )
     provide(
       'forgot-password-link-text',
-      computed((): string => (props.forgotPasswordLinkText ? props.forgotPasswordLinkText : helpText.login.forgotPasswordLinkText)),
+      computed((): string =>
+        props.forgotPasswordLinkText ? props.forgotPasswordLinkText : helpText.login.forgotPasswordLinkText,
+      ),
     )
 
     // Register

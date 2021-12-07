@@ -9,5 +9,6 @@
   "trailingComma": "all",
   "useTabs": false,
   "vueIndentScriptAndStyle": false,
-  "printWidth": 160
+  "printWidth": 120,
+  "proseWrap": "preserve"
 }

@@ -1,15 +1,11 @@
 <template>
-  <div
-    class="kong-auth-forgot-password-form d-flex align-items-center justify-content-center flex-column">
+  <div class="kong-auth-forgot-password-form d-flex align-items-center justify-content-center flex-column">
     <div class="col-12">
       <div v-if="currentState.matches('error') && error" class="my-3">
         <ErrorMessage :error="error" />
       </div>
       <div v-else-if="currentState.matches('success')">
-        <KAlert
-          :alert-message="helpText.forgotPassword.success"
-          appearance="info"
-          class="mb-6" />
+        <KAlert :alert-message="helpText.forgotPassword.success" appearance="info" class="mb-6" />
         <KButton
           @click.prevent="$emit('click-login-link')"
           class="justify-content-center w-100 type-lg"
@@ -44,23 +40,14 @@
           appearance="primary"
           class="justify-content-center w-100 type-lg"
           :disabled="btnDisabled">
-          <KIcon
-            v-if="currentState.matches('pending')"
-            icon="spinner"
-            view-box="0 0 16 16"
-            class="pr-0 mr-2" />
+          <KIcon v-if="currentState.matches('pending')" icon="spinner" view-box="0 0 16 16" class="pr-0 mr-2" />
           {{ btnText }}
         </KButton>
       </form>
 
-      <div
-        v-if="!currentState.matches('success') && showLoginLink"
-        class="text-center mt-5">
+      <div v-if="!currentState.matches('success') && showLoginLink" class="text-center mt-5">
         <p class="color-black-85 bold-500">
-          <a
-            @click.prevent="$emit('click-login-link')"
-            class="color-blue-500"
-            href="#">
+          <a @click.prevent="$emit('click-login-link')" class="color-blue-500" href="#">
             {{ loginLinkText }}
           </a>
         </p>
@@ -70,15 +57,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  inject,
-  ref,
-  Ref,
-  reactive,
-  toRefs,
-  computed,
-} from 'vue'
+import { defineComponent, inject, ref, Ref, reactive, toRefs, computed } from 'vue'
 import { createMachine } from 'xstate'
 import { helpText } from '@/utils'
 import { useMachine } from '@xstate/vue'
@@ -138,9 +117,7 @@ export default defineComponent({
     )
 
     const btnText = computed(() => {
-      return ['pending', 'success'].some(currentState.value.matches)
-        ? 'Submitting'
-        : 'Recover Password'
+      return ['pending', 'success'].some(currentState.value.matches) ? 'Submitting' : 'Recover Password'
     })
 
     const btnDisabled = computed(() => {

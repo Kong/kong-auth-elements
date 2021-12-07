@@ -4,9 +4,7 @@ export default function useInjectStyles(): Record<string, any> {
   const inlineStyles = ref<HTMLElement[]>([])
   const injectedStyles = computed(
     (): string =>
-      `<style type="text/css">${inlineStyles.value
-        .map((styleNode) => styleNode.innerHTML)
-        .join('')}</style>`,
+      `<style type="text/css">${inlineStyles.value.map((styleNode) => styleNode.innerHTML).join('')}</style>`,
   )
 
   /**
@@ -28,11 +26,7 @@ export default function useInjectStyles(): Record<string, any> {
       .filter((styleNode, idx, arr) => {
         // Only return unique nodes (based on the first 100 characters -- anything more is too intensive)
         return (
-          arr.findIndex(
-            (node) =>
-              node.innerHTML.substring(0, 100) ===
-              styleNode.innerHTML.substring(0, 100),
-          ) === idx
+          arr.findIndex((node) => node.innerHTML.substring(0, 100) === styleNode.innerHTML.substring(0, 100)) === idx
         )
       })
   }

@@ -37,23 +37,11 @@ export default class Api {
     })
 
     this.auth = {
-      authentication: new AuthenticationApi(
-        baseConfig,
-        baseConfig.basePath,
-        this.client,
-      ),
-      emailVerification: new EmailVerificationApi(
-        baseConfig,
-        baseConfig.basePath,
-        this.client,
-      ),
+      authentication: new AuthenticationApi(baseConfig, baseConfig.basePath, this.client),
+      emailVerification: new EmailVerificationApi(baseConfig, baseConfig.basePath, this.client),
       invites: new InvitesApi(baseConfig, baseConfig.basePath, this.client),
       passwords: new PasswordsApi(baseConfig, baseConfig.basePath, this.client),
-      registration: new RegistrationApi(
-        baseConfig,
-        baseConfig.basePath,
-        this.client,
-      ),
+      registration: new RegistrationApi(baseConfig, baseConfig.basePath, this.client),
     }
   }
 }

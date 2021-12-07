@@ -29,7 +29,9 @@
             required />
 
           <p v-if="showForgotPasswordLink" class="help mt-3">
-            <a @click.prevent="$emit('click-forgot-password-link')" class="color-blue-500" href="#">{{ forgotPasswordLinkText }}</a>
+            <a @click.prevent="$emit('click-forgot-password-link')" class="color-blue-500" href="#">{{
+              forgotPasswordLinkText
+            }}</a>
           </p>
 
           <KButton
@@ -44,7 +46,9 @@
           <div v-if="showRegisterLink" class="text-center mt-5">
             <p class="color-black-85 bold-500">
               {{ registerHelpText }}
-              <a @click.prevent="$emit('click-register-link')" class="color-blue-500" href="#">{{ registerLinkText }}</a>
+              <a @click.prevent="$emit('click-register-link')" class="color-blue-500" href="#">{{
+                registerLinkText
+              }}</a>
             </p>
           </div>
         </form>
