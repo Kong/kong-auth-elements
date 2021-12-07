@@ -1,6 +1,6 @@
 import { computed, ref, onMounted, onUnmounted } from 'vue'
 
-export default function useInjectStyles (): Record<string, any> {
+export default function useInjectStyles(): Record<string, any> {
   const inlineStyles = ref<HTMLElement[]>([])
   const injectedStyles = computed(
     (): string =>

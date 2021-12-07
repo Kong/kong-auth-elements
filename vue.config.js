@@ -6,6 +6,11 @@ module.exports = {
         target: process.env.VUE_APP_AUTH_URL,
         changeOrigin: true,
       },
+      '^/kauth/api': {
+        target: process.env.VUE_APP_AUTH_URL,
+        changeOrigin: true,
+        cookieDomainRewrite: 'localhost',
+      },
     },
   },
   css: { extract: false },
