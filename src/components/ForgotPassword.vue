@@ -107,10 +107,11 @@ export default defineComponent({
   emits: ['click-login-link', 'forgot-password-success'],
 
   setup(props, { emit }) {
-    // Get custom element props
-    const showLoginLink = inject('show-login-link')
-    const loginLinkText = inject('login-link-text')
-    const instructionText = inject('instruction-text')
+    // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
+    // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
+    const showLoginLink: Ref<boolean> = inject('show-login-link', ref(false))
+    const loginLinkText: Ref<string> = inject('login-link-text', ref(''))
+    const instructionText: Ref<string> = inject('instruction-text', ref(''))
 
     const formData = reactive({
       email: '',

@@ -64,7 +64,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, reactive, ref, toRefs, computed } from 'vue'
+import {
+  defineComponent,
+  inject,
+  reactive,
+  ref,
+  Ref,
+  toRefs,
+  computed,
+} from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
 import { helpText } from '@/utils'
@@ -90,12 +98,22 @@ export default defineComponent({
   },
 
   setup(props, { emit }) {
-    // Get custom element props
-    const showForgotPasswordLink = inject('show-forgot-password-link')
-    const forgotPasswordLinkText = inject('forgot-password-link-text')
-    const showRegisterLink = inject('show-register-link')
-    const registerLinkText = inject('register-link-text')
-    const registerHelpText = inject('register-help-text')
+    // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
+    // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
+    const showForgotPasswordLink: Ref<boolean> = inject(
+      'show-forgot-password-link',
+      ref(false),
+    )
+    const forgotPasswordLinkText: Ref<string> = inject(
+      'forgot-password-link-text',
+      ref(''),
+    )
+    const showRegisterLink: Ref<boolean> = inject(
+      'show-register-link',
+      ref(false),
+    )
+    const registerLinkText: Ref<string> = inject('register-link-text', ref(''))
+    const registerHelpText: Ref<string> = inject('register-help-text', ref(''))
 
     const formData = reactive({
       email: '',
