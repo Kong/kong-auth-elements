@@ -1,14 +1,4 @@
-import { SegmentAnalytics } from '@segment/analytics.js-core'
-import { Analytics } from './src/analytics/analytics'
-
 declare global {
-  const konnect: Analytics
-
-  interface Window {
-    konnect: Analytics
-    analytics: SegmentAnalytics.AnalyticsJS & { invoked: boolean }
-  }
-
   /**
    * Note that all environment variable identifiers and values are (and must be) typed as string because environment variables are always strings according to the {@link https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html|POSIX Standards}, even if the string only contains numbers.
    *
