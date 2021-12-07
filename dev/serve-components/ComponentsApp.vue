@@ -9,7 +9,6 @@
         @login-success="onLoginSuccess"
         @click-forgot-password-link="onUserClickForgotPassword"
         @click-register-link="onUserClickRegister"></KongAuthLogin>
-
       <hr />
 
       <h4><code>KongAuthForgotPassword.vue</code></h4>

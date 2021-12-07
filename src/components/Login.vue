@@ -91,26 +91,11 @@ export default defineComponent({
 
   setup(props, { emit }) {
     // Get custom element props
-    const showForgotPasswordLink: boolean = inject(
-      'show-forgot-password-link',
-      false,
-    )
-    const forgotPasswordText: string = inject('forgot-password-link-text', '')
-    const forgotPasswordLinkText = ref(
-      forgotPasswordText
-        ? forgotPasswordText
-        : helpText.login.forgotPasswordLinkText,
-    )
-
-    const showRegisterLink: boolean = inject('show-register-link', false)
-    const registerText: string = inject('register-link-text', '')
-    const registerLinkText = ref(
-      registerText ? registerText : helpText.login.registerLinkText,
-    )
-    const registerHelp: string = inject('register-help-text', '')
-    const registerHelpText = ref(
-      registerHelp ? registerHelp : helpText.login.registerHelpText,
-    )
+    const showForgotPasswordLink = inject('show-forgot-password-link')
+    const forgotPasswordLinkText = inject('forgot-password-link-text')
+    const showRegisterLink = inject('show-register-link')
+    const registerLinkText = inject('register-link-text')
+    const registerHelpText = inject('register-help-text')
 
     const formData = reactive({
       email: '',
