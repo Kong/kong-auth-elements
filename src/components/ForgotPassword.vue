@@ -35,7 +35,7 @@
           type="email"
           class="w-100 mb-5"
           autocomplete="email"
-          :has-error="currentState.matches('error') && error"
+          :has-error="currentState.matches('error') && error ? true : false"
           placeholder="Email"
           required
           autofocus
@@ -70,8 +70,8 @@
 <script lang="ts">
 import { defineComponent, inject, ref, Ref, reactive, toRefs, computed } from 'vue'
 import { createMachine } from 'xstate'
-import { helpText } from '@/utils'
 import { useMachine } from '@xstate/vue'
+import { helpText } from '@/utils'
 import Api from '@/services/Api'
 // Components
 import KAlert from '@kongponents/kalert'

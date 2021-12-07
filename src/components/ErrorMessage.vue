@@ -16,6 +16,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
+import { helpText } from '@/utils'
 import KAlert from '@kongponents/kalert'
 
 export default defineComponent({
@@ -49,12 +50,12 @@ export default defineComponent({
       const { status, statusText } = props?.error
 
       if (status === 401) {
-        errorMessage.value = 'Incorrect username or password. Please try again.'
+        errorMessage.value = helpText.login.unauthenticated
       } else if (status === 403) {
         // see https://konghq.atlassian.net/browse/KHCP-591 for more information as to why this response was mutated
-        errorMessage.value = 'Invalid access code'
+        errorMessage.value = helpText.general.invalidAccessCode
       } else if (status === 503) {
-        errorMessage.value = 'Service unavailable. Please try again later.'
+        errorMessage.value = helpText.general.serviceUnavailable
       } else if (!status && statusText) {
         // Allow passing no status with statusText for display
         errorMessage.value = statusText

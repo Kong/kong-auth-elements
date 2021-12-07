@@ -107,9 +107,10 @@ The exclamation point at the beginning of the comment flags the comment as impor
 
 Several custom CSS variables are available to impact the styling of custom elements, shown below
 
-| Variable               | Purpose             |
-| :--------------------- | :------------------ |
-| `--KongAuthFontFamily` | Default font family |
+| Variable               | Purpose                                        |
+| :--------------------- | :--------------------------------------------- |
+| `--KongAuthFontFamily` | Default font family                            |
+| `--KongAuthFontWeight` | Default font weight when not set by Kongponent |
 
 You may also utilize any CSS variables included in the [Kongponents component library](https://kongponents.konghq.com/guide/theming.html).
 
@@ -119,6 +120,7 @@ Simply define values for the variables in your consuming application to make the
 <style>
 :root {
   --KongAuthFontFamily: 'Roboto';
+  --KongAuthFontWeight: 400;
 }
 </style>
 ```
