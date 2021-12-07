@@ -34,14 +34,35 @@
       <h1>Kong Auth Elements Demo</h1>
       <br>
       <h4><code>kong-auth-login</code></h4>
-      <kong-auth-login forgot-password-url="https://konnect-dev.konghq.com/forgot-password"
-        register-url="https://konnect-dev.konghq.com/register"></kong-auth-login>
+      <kong-auth-login show-forgot-password-link @login-success="onLoginSuccess"
+        @click-forgot-password-link="onUserClickForgotPassword" @click-register-link="onUserClickRegister">
+      </kong-auth-login>
 
       <hr>
 
       <h4><code>kong-auth-forgot-password</code></h4>
-      <kong-auth-forgot-password login-url="https://konnect-dev.konghq.com/login"></kong-auth-forgot-password>
+      <kong-auth-forgot-password
+        instruction-text="Enter your verified email address and we will send you a password reset link."
+        @click-login-link="onUserClickLogin"></kong-auth-forgot-password>
     </div>
+
+    <script>
+      var onUserClickForgotPassword = function () {
+        alert('User clicked forgot password')
+      }
+
+      var onUserClickRegister = function () {
+        alert('User clicked register')
+      }
+
+      var onLoginSuccess = function () {
+        alert('User logged in!')
+      }
+
+      var onUserClickLogin = function () {
+        alert('User clicked login')
+      }
+    </script>
   </body>
 
 </html>
