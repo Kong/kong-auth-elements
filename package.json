@@ -77,6 +77,9 @@
     "vue-jest": "^5.0.0-0",
     "semantic-release": "^18.0.1"
   },
+  "files": [
+    "./dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Kong/kong-auth-elements.git"

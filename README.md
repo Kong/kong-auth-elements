@@ -1,6 +1,8 @@
 # kong-auth-elements
 
-## Project setup
+## Project setup for local development
+
+> **NOTE**: This section is still a draft.
 
 ```sh
 yarn install
@@ -54,6 +56,20 @@ yarn demo
 yarn build
 ```
 
+## Link the local, built package into another local project for testing
+
+Inside `@kong/kong-auth-elements` run
+
+```sh
+yarn link
+```
+
+Next, inside of the local consuming project, run
+
+```sh
+yarn link "@kong/kong-auth-elements"
+```
+
 ## Styles
 
 Styles are auto-injected into the shadow DOM for any internal components and child components.
@@ -85,4 +101,78 @@ The exclamation point at the beginning of the comment flags the comment as impor
     color: teal;
   }
 </style>
+```
+
+## How to use components
+
+> **NOTE**: This section is still a draft.
+
+Install the package as a dependency in your app
+
+> TBD: Access via CDN?
+
+```sh
+yarn add @kong/kong-auth-elements
+```
+
+Next, import the package in the component where you wish to utilize one of the custom elements
+
+```html
+<script>
+  import '@kong/kong-auth-elements'
+</script>
+```
+
+Alternatively, you may import the package inside of your App's entry file (e.g. for Vue, `main.ts`).
+
+Once the package is imported, it will automatically register all custom components for usage.
+
+Wherever you want to utilze a custom element, simply include it just like you would any other HTML component, utilizing any props as needed
+
+```html
+<kong-auth-login
+  show-forgot-password-link
+  @login-success="onLoginSuccess"
+  @click-forgot-password-link="onUserClickForgotPassword"
+  @click-register-link="onUserClickRegister"></kong-auth-login>
+```
+
+### Webpack
+
+You may need to inform your consuming app (e.g. Vue) to recognize custom elements defined outside of the framework (e.g., using the Web Components APIs). If a component matches this condition, it won't need local or global registration and Vue won't throw a warning about an `Unknown custom element`.
+
+Regardless of whether your consuming application is a Vue app, you will also need to add an entry to `transpileDependencies`.
+
+If your consuming application is a Vue app, add the following code in `vue.config.js`
+
+```js
+// vue.config.js
+
+module.exports = {
+  chainWebpack: (config) => {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => {
+        return {
+          ...options,
+          compilerOptions: {
+            isCustomElement: (tag) => tag.startsWith('kong-auth'), // Tags with this prefix will be recognized as custom elements
+          },
+        }
+      })
+  },
+  transpileDependencies: ['@kong/kong-auth-elements'],
+}
+```
+
+If your consuming app does not utilize `vue.config.js` file, you can transpile dependencies in your webpack config with something like this
+
+```js
+{
+  // This is for the updated KButton / KModal
+  test: /\.js$/,
+  include: /(node_modules)\/(@kong/kong-auth-elements)/,
+  loader: 'babel-loader'
+},
 ```

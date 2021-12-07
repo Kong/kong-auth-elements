@@ -24,7 +24,7 @@ module.exports = {
               COMPILER_SFC_FUNCTIONAL: true,
               INSTANCE_SCOPED_SLOTS: true,
             },
-            isCustomElement: (tag) => tag.startsWith('kong-'),
+            isCustomElement: (tag) => tag.startsWith('kong-auth'),
           },
         }
       })
