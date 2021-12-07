@@ -60,7 +60,6 @@ import { createMachine } from 'xstate'
 import { helpText } from '@/utils'
 import Api from '@/services/Api'
 import { AuthenticateAuthenticateRequest } from '@/services/kauth-api-client'
-import { TrackCategory } from '@/analytics/analytics.constants'
 // Components
 import KButton from '@kongponents/kbutton'
 import KInput from '@kongponents/kinput'

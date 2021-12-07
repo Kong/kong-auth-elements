@@ -82,7 +82,6 @@ import {
 import { createMachine } from 'xstate'
 import { helpText } from '@/utils'
 import { useMachine } from '@xstate/vue'
-import { TrackCategory } from '@/analytics/analytics.constants'
 import Api from '@/services/Api'
 // Components
 import KAlert from '@kongponents/kalert'
@@ -172,10 +171,6 @@ export default defineComponent({
           email: formData.email,
         })
         send('RESOLVE')
-        // eslint-disable-next-line no-undef
-        konnect.track('Sent password recovery email', {
-          category: TrackCategory.Account,
-        })
 
         // Emit success
         emit('forgot-password-success', {
