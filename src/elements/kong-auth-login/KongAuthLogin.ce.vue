@@ -12,7 +12,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, provide } from 'vue'
+import { defineComponent, provide, computed } from 'vue'
+import { helpText } from '@/utils'
 import BaseCustomElement from '@/elements/BaseCustomElement.vue'
 import Login from '@/components/Login.vue'
 
@@ -45,13 +46,40 @@ export default defineComponent({
     // Provide custom element props to child components
 
     // Forgot password
-    provide('show-forgot-password-link', props.showForgotPasswordLink)
-    provide('forgot-password-link-text', props.forgotPasswordLinkText)
+    provide(
+      'show-forgot-password-link',
+      computed((): boolean => props.showForgotPasswordLink),
+    )
+    provide(
+      'forgot-password-link-text',
+      computed((): string =>
+        props.forgotPasswordLinkText
+          ? props.forgotPasswordLinkText
+          : helpText.login.forgotPasswordLinkText,
+      ),
+    )
 
     // Register
-    provide('show-register-link', props.showRegisterLink)
-    provide('register-help-text', props.registerHelpText)
-    provide('register-link-text', props.registerLinkText)
+    provide(
+      'show-register-link',
+      computed((): boolean => props.showRegisterLink),
+    )
+    provide(
+      'register-help-text',
+      computed((): string =>
+        props.registerHelpText
+          ? props.registerHelpText
+          : helpText.login.registerHelpText,
+      ),
+    )
+    provide(
+      'register-link-text',
+      computed((): string =>
+        props.registerLinkText
+          ? props.registerLinkText
+          : helpText.login.registerLinkText,
+      ),
+    )
   },
 })
 </script>

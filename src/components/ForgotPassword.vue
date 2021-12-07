@@ -70,7 +70,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, reactive, toRefs, computed } from 'vue'
+import {
+  defineComponent,
+  inject,
+  ref,
+  Ref,
+  reactive,
+  toRefs,
+  computed,
+} from 'vue'
 import { createMachine } from 'xstate'
 import { helpText } from '@/utils'
 import { useMachine } from '@xstate/vue'
@@ -100,12 +108,9 @@ export default defineComponent({
 
   setup(props, { emit }) {
     // Get custom element props
-    const showLoginLink: boolean = inject('show-login-link', false)
-    const loginText: string = inject('login-link-text', '')
-    const loginLinkText = ref(
-      loginText ? loginText : helpText.forgotPassword.loginLinkText,
-    )
-    const instructionText: string = inject('instruction-text', '')
+    const showLoginLink = inject('show-login-link')
+    const loginLinkText = inject('login-link-text')
+    const instructionText = inject('instruction-text')
 
     const formData = reactive({
       email: '',

@@ -9,7 +9,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, provide } from 'vue'
+import { defineComponent, provide, computed } from 'vue'
+import { helpText } from '@/utils'
 import BaseCustomElement from '@/elements/BaseCustomElement.vue'
 import ForgotPassword from '@/components/ForgotPassword.vue'
 
@@ -35,9 +36,26 @@ export default defineComponent({
 
   setup(props) {
     // Provide custom element props to child components
-    provide('show-login-link', props.showLoginLink)
-    provide('login-link-text', props.loginLinkText)
-    provide('instruction-text', props.instructionText)
+    provide(
+      'show-login-link',
+      computed((): boolean => props.showLoginLink),
+    )
+
+    provide(
+      'login-link-text',
+      computed((): string =>
+        props.loginLinkText
+          ? props.loginLinkText
+          : helpText.forgotPassword.loginLinkText,
+      ),
+    )
+
+    provide(
+      'instruction-text',
+      computed((): string =>
+        props.instructionText ? props.instructionText : '',
+      ),
+    )
   },
 })
 </script>
