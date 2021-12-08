@@ -280,9 +280,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 /*! KONG_AUTH_INJECT_STYLES */
 .kong-auth-register-form {
-  position: relative;
-  margin: 10px 0;
-
   .name-container {
     @media screen and (min-width: 768px) {
       display: flex;

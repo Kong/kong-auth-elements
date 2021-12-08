@@ -193,8 +193,4 @@ export default defineComponent({
 
 <style lang="scss">
 /*! KONG_AUTH_INJECT_STYLES */
-.kong-auth-forgot-password-form {
-  position: relative;
-  margin: 10px 0;
-}
 </style>
