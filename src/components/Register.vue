@@ -104,7 +104,13 @@
           class="register-submit justify-content-center w-100 type-lg mt-6"
           :disabled="btnDisabled"
           data-testid="kong-auth-register-submit">
-          <KIcon icon="spinner" size="16" color="white" view-box="0 0 16 16" class="pr-0 mr-2" />
+          <KIcon
+            v-if="currentState.matches('pending')"
+            icon="spinner"
+            size="16"
+            color="white"
+            view-box="0 0 16 16"
+            class="pr-0 mr-2" />
           {{ btnText }}
         </KButton>
       </form>
@@ -152,8 +158,9 @@ export default defineComponent({
       emailToken: propFormData.emailToken,
       organization: propFormData.organization,
       prepopulated: propFormData.prepopulated,
-      password: '',
+      accessCodeRequired: propFormData.accessCodeRequired,
       accessCode: '',
+      password: '',
       checked_agreement: false,
     })
 
@@ -180,31 +187,25 @@ export default defineComponent({
       }),
     )
 
-    const btnText = computed(() => {
-      return ['pending', 'success'].some(currentState.value.matches) ? 'Submitting' : 'Sign up for Free'
-    })
-
-    const btnDisabled = computed(() => {
-      const formDataValues = [
-        formData.firstName,
-        formData.lastName,
-        formData.organization,
-        formData.email,
-        formData.password,
-      ]
-
-      function formDataValuesLength(element: any) {
-        return element.length
-      }
-
+    const userCanSubmitForm = computed((): boolean => {
       return (
-        currentState.value.matches('pending') ||
-        !formDataValues.every(formDataValuesLength) ||
-        !formData.checked_agreement
+        formData.email &&
+        formData.firstName &&
+        formData.lastName &&
+        formData.organization &&
+        formData.password &&
+        formData.checked_agreement &&
+        (formData.accessCodeRequired ? !formData.emailToken && formData.accessCode : true)
       )
     })
 
-    const accessCodeRequired = ref<boolean>(false)
+    const btnText = computed((): string => {
+      return ['pending', 'success'].some(currentState.value.matches) ? 'Submitting' : 'Sign up for Free'
+    })
+
+    const btnDisabled = computed((): boolean => {
+      return currentState.value.matches('pending') || !userCanSubmitForm.value
+    })
 
     const submitForm = async () => {
       send('CLICK_REGISTER')
@@ -213,13 +214,7 @@ export default defineComponent({
       error.value = null
       passwordError.value = false
 
-      if (
-        !formData.email ||
-        !formData.firstName ||
-        !formData.lastName ||
-        !formData.organization ||
-        !formData.password
-      ) {
+      if (!userCanSubmitForm.value) {
         send('REJECT')
 
         error.value = {
@@ -275,7 +270,6 @@ export default defineComponent({
       submitForm,
       error,
       passwordError,
-      accessCodeRequired,
       ...toRefs(formData),
     }
   },
