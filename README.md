@@ -197,3 +197,22 @@ If your consuming app does not utilize `vue.config.js` file, you can transpile d
   loader: 'babel-loader'
 },
 ```
+
+### Testing in your app
+
+The custom elements have test attributes already placed with the standard format of: `data-testid="kong-auth-{identifier}"`. If these are not sufficient, you should be able to create your tests with a wrapping element and search downward through the child elements as needed.
+
+If you have a specific use-case, submit a PR for a new attribute to be added and please add an example use-case as to why the existing attributes are not sufficient.
+
+#### Cypress
+
+If your app utilizes [Cypress](https://www.cypress.io) for testing, you will need to add an entry to your `cypress.json` configuration file to allow it to traverse the shadow DOM.
+
+```json
+{
+  // ... other rules
+  "includeShadowDom": true
+}
+```
+
+Alternatively, [you can provide an options object](https://docs.cypress.io/api/commands/get#Arguments) to the `.get()` method with a `includeShadowDom` property set to `true`; however, you would have to replicate in every `.get()` reference, so it's easier to add to your `cypress.json` config file, if possible. Cypress also has a [`.shadow()` command](https://docs.cypress.io/api/commands/shadow), but again, the config setting is the easier way to go.
