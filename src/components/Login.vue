@@ -42,6 +42,7 @@
         <KButton
           type="submit"
           appearance="primary"
+          :is-rounded="false"
           class="justify-content-center w-100 type-lg"
           :class="[showForgotPasswordLink ? 'mt-3' : 'mt-6']"
           :disabled="btnDisabled"
