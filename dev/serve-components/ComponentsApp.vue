@@ -6,15 +6,20 @@
       <h4><code>KongAuthLogin.vue</code></h4>
       <KongAuthLogin
         show-forgot-password-link
-        @login-success="onLoginSuccess"
-        @click-forgot-password-link="onUserClickForgotPassword"
-        @click-register-link="onUserClickRegister"></KongAuthLogin>
+        @login-success="showAlert('Login success!')"
+        @click-forgot-password-link="showAlert('User clicked forgot password')"
+        @click-register-link="showAlert('User clicked register')"></KongAuthLogin>
       <hr />
 
       <h4><code>KongAuthForgotPassword.vue</code></h4>
       <KongAuthForgotPassword
         instruction-text="Enter your verified email address and we will send you a password reset link."
-        @click-login-link="onUserClickLogin" />
+        @click-login-link="showAlert('User clicked login')"
+        @forgot-password-success="showAlert('Forgot password success!')" />
+      <hr />
+
+      <h4><code>KongAuthRegister.vue</code></h4>
+      <KongAuthRegister @register-success="showAlert('Register success!')" />
     </div>
   </div>
 </template>
@@ -23,21 +28,13 @@
 // Import and register Custom Elements as Components
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
+import KongAuthRegister from '@/elements/kong-auth-register/KongAuthRegister.ce.vue'
 
-const onUserClickForgotPassword = (): void => {
-  alert('User clicked forgot password')
-}
-
-const onUserClickRegister = (): void => {
-  alert('User clicked register')
-}
-
-const onLoginSuccess = async () => {
-  alert('User logged in!')
-}
-
-const onUserClickLogin = (): void => {
-  alert('User clicked login')
+const showAlert = (text = ''): void => {
+  if (!text) {
+    return
+  }
+  alert(text)
 }
 </script>
 

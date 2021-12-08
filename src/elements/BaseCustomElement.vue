@@ -30,7 +30,7 @@ const { injectedStyles } = useInjectStyles()
 
 .kong-auth-element {
   font-family: var(--font-family-sans);
-  font-weight: 400;
+  font-weight: var(--KongAuthFontWeight, 200);
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

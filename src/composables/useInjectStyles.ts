@@ -1,6 +1,11 @@
 import { computed, ref, onMounted, onUnmounted } from 'vue'
 
-export default function useInjectStyles(): Record<string, any> {
+export default function useInjectStyles (): Record<string, any> {
+  const test = true
+  if (test) {
+    require('@kongponents/styles/styles.css')
+  }
+
   const inlineStyles = ref<HTMLElement[]>([])
   const injectedStyles = computed(
     (): string =>
@@ -17,10 +22,10 @@ export default function useInjectStyles(): Record<string, any> {
         // Only inject styles if they contain @kongponent prefix,
         // or this exact string: "/*! KONG_AUTH_INJECT_STYLES */"
         return (
-          styleNode.innerHTML.includes('.k-') ||
-          styleNode.innerHTML.includes('.kool') ||
           styleNode.innerHTML.includes('KONG_AUTH_INJECT_STYLES') ||
-          styleNode.innerHTML.includes('/*! KONG_AUTH_INJECT_STYLES */')
+          styleNode.innerHTML.includes('KONGPONENTS_STYLES') ||
+          styleNode.innerHTML.includes('.k-') ||
+          styleNode.innerHTML.includes('.kool')
         )
       })
       .filter((styleNode, idx, arr) => {

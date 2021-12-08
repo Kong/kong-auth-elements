@@ -6,35 +6,31 @@
       <h4><code>kong-auth-login</code></h4>
       <kong-auth-login
         show-forgot-password-link
-        @login-success="onLoginSuccess"
-        @click-forgot-password-link="onUserClickForgotPassword"
-        @click-register-link="onUserClickRegister"></kong-auth-login>
+        @login-success="showAlert('Login success!')"
+        @click-forgot-password-link="showAlert('User clicked forgot password')"
+        @click-register-link="showAlert('User clicked register')"></kong-auth-login>
 
       <hr />
 
       <h4><code>kong-auth-forgot-password</code></h4>
       <kong-auth-forgot-password
         instruction-text="Enter your verified email address and we will send you a password reset link."
-        @click-login-link="onUserClickLogin"></kong-auth-forgot-password>
+        @click-login-link="showAlert('User clicked login')"
+        @forgot-password-success="showAlert('Forgot password success!')"></kong-auth-forgot-password>
+      <hr />
+
+      <h4><code>KongAuthRegister.vue</code></h4>
+      <kong-auth-register @register-success="showAlert('Register success!')" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const onUserClickForgotPassword = (): void => {
-  alert('User clicked forgot password')
-}
-
-const onUserClickRegister = (): void => {
-  alert('User clicked register')
-}
-
-const onLoginSuccess = async () => {
-  alert('User logged in!')
-}
-
-const onUserClickLogin = (): void => {
-  alert('User clicked login')
+const showAlert = (text = ''): void => {
+  if (!text) {
+    return
+  }
+  alert(text)
 }
 </script>
 

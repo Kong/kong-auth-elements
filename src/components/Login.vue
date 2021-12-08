@@ -1,69 +1,67 @@
 <template>
-  <div class="kong-auth-login-form">
-    <div class="d-flex align-items-center justify-content-center flex-column">
-      <div class="col-12">
-        <div v-if="currentState.matches('error') && error" class="my-3">
-          <ErrorMessage :error="error" />
-        </div>
+  <div class="kong-auth-login-form d-flex align-items-center justify-content-center flex-column">
+    <div class="col-12">
+      <div v-if="currentState.matches('error') && error" class="my-3">
+        <ErrorMessage :error="error" />
+      </div>
 
-        <form class="login-form" @submit.prevent="submitForm" novalidate>
-          <KLabel for="email">Email</KLabel>
-          <KInput
-            id="email"
-            v-model.trim="email"
-            type="email"
-            class="w-100 mb-5"
-            autocomplete="email"
-            :has-error="currentState.matches('error') && error"
-            required
-            autofocus
-            data-testid="kong-auth-login-email" />
+      <form class="login-form" @submit.prevent="submitForm" novalidate>
+        <KLabel for="email">Email</KLabel>
+        <KInput
+          id="email"
+          v-model.trim="email"
+          type="email"
+          class="w-100 mb-5"
+          autocomplete="email"
+          :has-error="currentState.matches('error') && error ? true : false"
+          required
+          autofocus
+          data-testid="kong-auth-login-email" />
 
-          <KLabel for="password">Password</KLabel>
-          <KInput
-            id="password"
-            v-model="password"
-            type="password"
-            class="w-100"
-            autocomplete="current-password"
-            :has-error="currentState.matches('error') && error"
-            required
-            data-testid="kong-auth-login-password" />
+        <KLabel for="password">Password</KLabel>
+        <KInput
+          id="password"
+          v-model="password"
+          type="password"
+          class="w-100"
+          autocomplete="current-password"
+          :has-error="currentState.matches('error') && error ? true : false"
+          required
+          data-testid="kong-auth-login-password" />
 
-          <p v-if="showForgotPasswordLink" class="help mt-3">
+        <p v-if="showForgotPasswordLink" class="help mt-3">
+          <a
+            @click.prevent="$emit('click-forgot-password-link')"
+            class="color-blue-500"
+            href="#"
+            data-testid="kong-auth-login-forgot-password-link"
+            >{{ forgotPasswordLinkText }}</a
+          >
+        </p>
+
+        <KButton
+          type="submit"
+          appearance="primary"
+          class="justify-content-center w-100 type-lg"
+          :class="[showForgotPasswordLink ? 'mt-3' : 'mt-6']"
+          :disabled="btnDisabled"
+          data-testid="kong-auth-login-submit"
+          >{{ btnText }}</KButton
+        >
+
+        <div v-if="showRegisterLink" class="text-center mt-5">
+          <p class="color-black-85 bold-500">
+            {{ registerLinkHelpText }}
             <a
-              @click.prevent="$emit('click-forgot-password-link')"
+              @click.prevent="$emit('click-register-link')"
               class="color-blue-500"
               href="#"
-              data-testid="kong-auth-login-forgot-password-link"
-              >{{ forgotPasswordLinkText }}</a
+              data-testid="kong-auth-login-register-link"
+              >{{ registerLinkText }}</a
             >
           </p>
-
-          <KButton
-            type="submit"
-            appearance="primary"
-            class="justify-content-center w-100 type-lg"
-            :class="[showForgotPasswordLink ? 'mt-3' : 'mt-6']"
-            :disabled="btnDisabled"
-            data-testid="kong-auth-login-submit"
-            >{{ btnText }}</KButton
-          >
-
-          <div v-if="showRegisterLink" class="text-center mt-5">
-            <p class="color-black-85 bold-500">
-              {{ registerHelpText }}
-              <a
-                @click.prevent="$emit('click-register-link')"
-                class="color-blue-500"
-                href="#"
-                data-testid="kong-auth-login-register-link"
-                >{{ registerLinkText }}</a
-              >
-            </p>
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -100,12 +98,11 @@ export default defineComponent({
     const forgotPasswordLinkText: Ref<string> = inject('forgot-password-link-text', ref(''))
     const showRegisterLink: Ref<boolean> = inject('show-register-link', ref(false))
     const registerLinkText: Ref<string> = inject('register-link-text', ref(''))
-    const registerHelpText: Ref<string> = inject('register-help-text', ref(''))
+    const registerLinkHelpText: Ref<string> = inject('register-link-help-text', ref(''))
 
     const formData = reactive({
       email: '',
       password: '',
-      message: '', // Being set, but not used?
     })
     const error = ref<any>(null)
     const $api = new Api()
@@ -166,7 +163,6 @@ export default defineComponent({
           status: 401,
         }
 
-        formData.message = helpText.login.unauthenticated // not being used
         return
       }
 
@@ -184,12 +180,8 @@ export default defineComponent({
         }
         send('REJECT')
         if (response.status === 403) {
-          formData.message = helpText.login.accountLocked // not being used
-
           return
         }
-
-        formData.message = helpText.login.unauthenticated // not being used
       } catch (err: any) {
         send('REJECT')
 
@@ -203,7 +195,7 @@ export default defineComponent({
       showForgotPasswordLink,
       forgotPasswordLinkText,
       showRegisterLink,
-      registerHelpText,
+      registerLinkHelpText,
       registerLinkText,
       btnText,
       btnDisabled,

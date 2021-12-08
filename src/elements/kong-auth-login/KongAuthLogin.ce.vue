@@ -27,7 +27,7 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    registerHelpText: String,
+    registerLinkHelpText: String,
     registerLinkText: String,
   },
 
@@ -59,8 +59,10 @@ export default defineComponent({
       computed((): boolean => props.showRegisterLink),
     )
     provide(
-      'register-help-text',
-      computed((): string => (props.registerHelpText ? props.registerHelpText : helpText.login.registerHelpText)),
+      'register-link-help-text',
+      computed((): string =>
+        props.registerLinkHelpText ? props.registerLinkHelpText : helpText.login.registerLinkHelpText,
+      ),
     )
     provide(
       'register-link-text',
