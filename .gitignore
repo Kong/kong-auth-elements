@@ -2,6 +2,7 @@
 node_modules
 /dist
 /demo/dist-copy
+.tgz
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/
