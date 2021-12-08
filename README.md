@@ -192,7 +192,6 @@ If your consuming app does not utilize `vue.config.js` file, you can transpile d
 
 ```js
 {
-  // This is for the updated KButton / KModal
   test: /\.js$/,
   include: /(node_modules)\/(@kong/kong-auth-elements)/,
   loader: 'babel-loader'
