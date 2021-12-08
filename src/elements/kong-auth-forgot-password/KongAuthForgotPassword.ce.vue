@@ -23,6 +23,7 @@ export default defineComponent({
     },
     loginLinkText: String,
     instructionText: String,
+    successText: String,
   },
 
   emits: ['click-login-link', 'forgot-password-success'],
@@ -47,6 +48,11 @@ export default defineComponent({
     provide(
       'instruction-text',
       computed((): string => (props.instructionText ? props.instructionText : '')),
+    )
+
+    provide(
+      'success-text',
+      computed((): string => (props.successText ? props.successText : helpText.forgotPassword.success)),
     )
   },
 })

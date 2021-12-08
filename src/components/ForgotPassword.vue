@@ -5,7 +5,7 @@
     </div>
     <div v-else-if="currentState.matches('success')">
       <KAlert
-        :alert-message="helpText.forgotPassword.success"
+        :alert-message="successText"
         appearance="info"
         class="mb-6"
         data-testid="kong-auth-forgot-password-success-message" />
@@ -97,6 +97,7 @@ export default defineComponent({
     const showLoginLink: Ref<boolean> = inject('show-login-link', ref(false))
     const loginLinkText: Ref<string> = inject('login-link-text', ref(''))
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
+    const successText: Ref<string> = inject('success-text', ref(''))
 
     const formData = reactive({
       email: '',
@@ -174,6 +175,7 @@ export default defineComponent({
       showLoginLink,
       loginLinkText,
       instructionText,
+      successText,
       btnText,
       btnDisabled,
       helpText,
