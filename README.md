@@ -210,7 +210,6 @@ If your app utilizes [Cypress](https://www.cypress.io) for testing, you will nee
 
 ```json
 {
-  // ... other rules
   "includeShadowDom": true
 }
 ```
