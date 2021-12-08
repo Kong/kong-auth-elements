@@ -104,7 +104,7 @@
           class="register-submit justify-content-center w-100 type-lg mt-6"
           :disabled="btnDisabled"
           data-testid="kong-auth-register-submit">
-          <KIcon v-if="currentState.matches('pending')" icon="spinner" view-box="0 0 16 16" class="pr-0 mr-2" />
+          <KIcon icon="spinner" size="16" color="white" view-box="0 0 16 16" class="pr-0 mr-2" />
           {{ btnText }}
         </KButton>
       </form>
