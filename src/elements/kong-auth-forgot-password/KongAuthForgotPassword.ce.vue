@@ -26,7 +26,7 @@ export default defineComponent({
     successText: String,
   },
 
-  emits: ['click-login-link', 'forgot-password-success'],
+  emits: ['forgot-password-success', 'click-login-link'],
 
   components: {
     BaseCustomElement,

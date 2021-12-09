@@ -4,6 +4,24 @@
       <ErrorMessage :error="error" />
     </div>
 
+    <div v-else-if="currentState.matches('reset_password')" class="my-3">
+      <KAlert
+        :alert-message="helpText.login.passwordResetSuccess"
+        appearance="success"
+        class="justify-content-center" />
+    </div>
+
+    <div v-else-if="currentState.matches('confirmed_email')" class="my-3">
+      <KAlert
+        :alert-message="helpText.login.confirmedEmailSuccess"
+        appearance="success"
+        class="justify-content-center" />
+    </div>
+
+    <div v-else-if="currentState.matches('from_invite')" class="my-3">
+      <KAlert :alert-message="helpText.login.registerSuccess" appearance="success" class="justify-content-center" />
+    </div>
+
     <form class="login-form" @submit.prevent="submitForm" novalidate data-testid="kong-auth-login-form">
       <KLabel for="email">Email</KLabel>
       <KInput
@@ -66,12 +84,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, reactive, ref, Ref, toRefs, computed } from 'vue'
+import { defineComponent, inject, reactive, ref, Ref, toRefs, computed, onMounted } from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
 import Api from '@/services/Api'
 import { AuthenticateAuthenticateRequest } from '@/services/kauth-api-client'
+import { helpText } from '@/utils'
 // Components
+import KAlert from '@kongponents/kalert'
 import KButton from '@kongponents/kbutton'
 import KInput from '@kongponents/kinput'
 import KLabel from '@kongponents/klabel'
@@ -80,9 +100,10 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 export default defineComponent({
   name: 'Login',
 
-  emits: ['click-forgot-password-link', 'click-register-link', 'login-success'],
+  emits: ['login-success', 'confirm-email-success', 'click-forgot-password-link', 'click-register-link'],
 
   components: {
+    KAlert,
     KButton,
     KInput,
     KLabel,
@@ -116,7 +137,35 @@ export default defineComponent({
         states: {
           idle: {
             on: {
+              FROM_INVITE: 'from_invite',
+              FROM_URL: 'from_url',
+              CONFIRMED_EMAIL: 'confirmed_email',
+              RESET_PASSWORD: 'reset_password',
               SUBMIT_LOGIN: 'pending',
+              REJECT: 'error',
+            },
+          },
+          confirmed_email: {
+            on: {
+              SUBMIT_LOGIN: 'pending',
+              REJECT: 'error',
+            },
+          },
+          from_invite: {
+            on: {
+              SUBMIT_LOGIN: 'pending',
+              REJECT: 'error',
+            },
+          },
+          reset_password: {
+            on: {
+              SUBMIT_LOGIN: 'pending',
+              REJECT: 'error',
+            },
+          },
+          from_url: {
+            on: {
+              IDP_PARAMS: 'pending',
               REJECT: 'error',
             },
           },
@@ -143,6 +192,46 @@ export default defineComponent({
     const btnDisabled = computed(() => {
       return !formData.email || !formData.password || ['pending', 'success'].some(currentState.value.matches)
     })
+
+    const setUserStatusCookie = async () => {
+      // return domain if valid, empty string if not a valid domain (like localhost)
+      const getDomain = () => {
+        const hostname = window.location.hostname
+
+        return hostname.indexOf('.') > -1
+          ? `domain=${hostname.substring(hostname.lastIndexOf('.', hostname.lastIndexOf('.') - 1) + 1)};`
+          : ''
+      }
+      const date = new Date()
+
+      // Set expiration date to two months from current date
+      date.setTime(date.getTime() + 24 * 60 * 60 * 1000 * 60)
+      document.cookie = `userStatus=active; path=/; ${getDomain()} expires=${date.toUTCString()};`
+    }
+
+    const setEmail = async (token: string) => {
+      let response
+      try {
+        response = await $api.auth.emailVerification.emailVerificationsPatch({
+          token,
+        })
+        send('RESOLVE')
+
+        setUserStatusCookie()
+
+        formData.email = response.data.email
+        send('CONFIRMED_EMAIL')
+
+        emit('confirm-email-success', formData.email)
+      } catch (err: any) {
+        send('REJECT')
+
+        error.value = {
+          status: null,
+          statusText: Array.isArray(err.message) ? err.message.join('. ') : err.message,
+        }
+      }
+    }
 
     const login = async (credentials: AuthenticateAuthenticateRequest) => {
       return await $api.auth.authentication.authenticatePost(credentials)
@@ -189,10 +278,38 @@ export default defineComponent({
       }
     }
 
+    onMounted(() => {
+      // Get URL params
+      const urlParams = new URLSearchParams(window.location.search)
+
+      // Check if coming from password reset
+      if (urlParams.get('passwordReset')) {
+        console.log('here')
+        send('RESET_PASSWORD')
+      }
+
+      // Set email if in route params
+      const emailInParams = urlParams.get('email')
+      if (emailInParams) {
+        formData.email = emailInParams
+        setUserStatusCookie()
+        send('FROM_INVITE')
+
+        return
+      }
+
+      // If token in URL params
+      const token = urlParams.get('token')
+      if (token) {
+        setEmail(token)
+      }
+    })
+
     return {
       showForgotPasswordLink,
       forgotPasswordLinkText,
       showRegisterLink,
+      helpText,
       registerLinkHelpText,
       registerLinkText,
       btnText,

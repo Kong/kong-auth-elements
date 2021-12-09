@@ -3,7 +3,8 @@
     <Login
       @click-forgot-password-link="(emitData) => $emit('click-forgot-password-link', emitData)"
       @click-register-link="(emitData) => $emit('click-register-link', emitData)"
-      @login-success="(emitData) => $emit('login-success', emitData)" />
+      @login-success="(emitData) => $emit('login-success', emitData)"
+      @confirm-email-success="(emitData) => $emit('confirm-email-success', emitData)" />
   </BaseCustomElement>
 </template>
 
@@ -31,7 +32,7 @@ export default defineComponent({
     registerLinkText: String,
   },
 
-  emits: ['click-forgot-password-link', 'click-register-link', 'login-success'],
+  emits: ['login-success', 'confirm-email-success', 'click-forgot-password-link', 'click-register-link'],
 
   components: {
     BaseCustomElement,

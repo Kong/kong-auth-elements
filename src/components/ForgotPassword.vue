@@ -94,7 +94,7 @@ export default defineComponent({
     ErrorMessage,
   },
 
-  emits: ['click-login-link', 'forgot-password-success'],
+  emits: ['forgot-password-success', 'click-login-link'],
 
   setup(props, { emit }) {
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
