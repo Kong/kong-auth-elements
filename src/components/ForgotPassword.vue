@@ -19,7 +19,12 @@
       </KButton>
     </div>
 
-    <form v-if="!currentState.matches('success')" class="forgot-password-form" @submit.prevent="submitForm" novalidate>
+    <form
+      v-if="!currentState.matches('success')"
+      class="forgot-password-form"
+      @submit.prevent="submitForm"
+      novalidate
+      data-testid="kong-auth-forgot-password-form">
       <p v-if="instructionText" class="color-black-45" data-testid="kong-auth-forgot-password-instruction-text">
         {{ instructionText }}
       </p>

@@ -7,7 +7,12 @@
       <ErrorMessage :error="error" />
     </div>
 
-    <form v-if="!currentState.matches('success')" class="register-form" @submit.prevent="submitForm" novalidate>
+    <form
+      v-if="!currentState.matches('success')"
+      class="register-form"
+      @submit.prevent="submitForm"
+      novalidate
+      data-testid="kong-auth-register-form">
       <div class="name-container">
         <div class="name-field">
           <KLabel for="first_name">First Name *</KLabel>
@@ -18,7 +23,7 @@
             class="mb-4"
             autocomplete="given-name"
             :disabled="prepopulated"
-            :has-error="currentState.matches('error') && error ? true : false"
+            :has-error="currentState.matches('error') && error && fieldsHaveError && !firstName ? true : false"
             required
             data-testid="kong-auth-register-first-name" />
         </div>
@@ -31,7 +36,7 @@
             class="mb-4"
             autocomplete="family-name"
             :disabled="prepopulated"
-            :has-error="currentState.matches('error') && error ? true : false"
+            :has-error="currentState.matches('error') && error && fieldsHaveError && !lastName ? true : false"
             required
             data-testid="kong-auth-register-last-name" />
         </div>
@@ -45,7 +50,7 @@
         class="mb-4"
         autocomplete="organization"
         :disabled="prepopulated"
-        :has-error="currentState.matches('error') && error ? true : false"
+        :has-error="currentState.matches('error') && error && fieldsHaveError && !organization ? true : false"
         required
         data-testid="kong-auth-register-organization" />
 
@@ -59,7 +64,7 @@
         class="mb-4"
         autocomplete="email"
         :disabled="prepopulated"
-        :has-error="currentState.matches('error') && error ? true : false"
+        :has-error="currentState.matches('error') && error && fieldsHaveError && !email ? true : false"
         required
         data-testid="kong-auth-register-email" />
 
@@ -70,7 +75,7 @@
         type="password"
         class="mb-4"
         autocomplete="new-password"
-        :has-error="currentState.matches('error') && error ? true : false"
+        :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
         required
         data-testid="kong-auth-register-password" />
 
@@ -81,6 +86,7 @@
           v-model="accessCode"
           class="mb-4"
           type="password"
+          :has-error="currentState.matches('error') && error && fieldsHaveError && !accessCode ? true : false"
           required
           data-testid="kong-auth-register-access-code" />
       </div>
@@ -165,6 +171,7 @@ export default defineComponent({
 
     const error = ref<any>(null)
     const passwordError = ref<boolean>(false)
+    const fieldsHaveError = ref(false)
     const $api = new Api()
 
     const { state: currentState, send } = useMachine(
@@ -212,9 +219,12 @@ export default defineComponent({
       // Reset form errors
       error.value = null
       passwordError.value = false
+      fieldsHaveError.value = false
 
       if (!userCanSubmitForm.value) {
         send('REJECT')
+
+        fieldsHaveError.value = true
 
         error.value = {
           status: null,
@@ -269,6 +279,7 @@ export default defineComponent({
       submitForm,
       error,
       passwordError,
+      fieldsHaveError,
       ...toRefs(formData),
     }
   },

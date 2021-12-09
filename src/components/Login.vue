@@ -4,7 +4,7 @@
       <ErrorMessage :error="error" />
     </div>
 
-    <form class="login-form" @submit.prevent="submitForm" novalidate>
+    <form class="login-form" @submit.prevent="submitForm" novalidate data-testid="kong-auth-login-form">
       <KLabel for="email">Email</KLabel>
       <KInput
         id="email"
