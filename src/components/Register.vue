@@ -1,126 +1,124 @@
 <template>
-  <div class="kong-auth-register-form">
-    <div
-      v-if="currentState.matches('error') && !passwordError && error"
-      class="my-3"
-      data-testid="kong-auth-register-alert">
+  <div
+    v-if="currentState.matches('error') && !passwordError && error"
+    class="my-3"
+    data-testid="kong-auth-register-alert">
+    <ErrorMessage :error="error" />
+  </div>
+
+  <form
+    v-if="!currentState.matches('success')"
+    class="register-form"
+    @submit.prevent="submitForm"
+    novalidate
+    data-testid="kong-auth-register-form">
+    <div class="name-container">
+      <div class="name-field">
+        <KLabel for="first_name">First Name *</KLabel>
+        <KInput
+          id="first_name"
+          v-model.trim="firstName"
+          type="text"
+          class="mb-4"
+          autocomplete="given-name"
+          :disabled="prepopulated"
+          :has-error="currentState.matches('error') && error && fieldsHaveError && !firstName ? true : false"
+          required
+          data-testid="kong-auth-register-first-name" />
+      </div>
+      <div class="name-field">
+        <KLabel for="last_name">Last Name *</KLabel>
+        <KInput
+          id="last_name"
+          v-model.trim="lastName"
+          type="text"
+          class="mb-4"
+          autocomplete="family-name"
+          :disabled="prepopulated"
+          :has-error="currentState.matches('error') && error && fieldsHaveError && !lastName ? true : false"
+          required
+          data-testid="kong-auth-register-last-name" />
+      </div>
+    </div>
+
+    <KLabel for="organization">Organization *</KLabel>
+    <KInput
+      id="organization"
+      v-model.trim="organization"
+      type="text"
+      class="mb-4"
+      autocomplete="organization"
+      :disabled="prepopulated"
+      :has-error="currentState.matches('error') && error && fieldsHaveError && !organization ? true : false"
+      required
+      data-testid="kong-auth-register-organization" />
+
+    <input v-if="emailToken" id="emailToken" :value="emailToken" type="hidden" name="emailToken" />
+
+    <KLabel for="email">Email *</KLabel>
+    <KInput
+      id="email"
+      v-model.trim="email"
+      type="email"
+      class="mb-4"
+      autocomplete="email"
+      :disabled="prepopulated"
+      :has-error="currentState.matches('error') && error && fieldsHaveError && !email ? true : false"
+      required
+      data-testid="kong-auth-register-email" />
+
+    <KLabel for="password">Password *</KLabel>
+    <KInput
+      id="password"
+      v-model.trim="password"
+      type="password"
+      class="mb-4"
+      autocomplete="new-password"
+      :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
+      required
+      data-testid="kong-auth-register-password" />
+
+    <div v-if="!emailToken && accessCodeRequired">
+      <KLabel for="access_code">Access Code *</KLabel>
+      <KInput
+        id="access_code"
+        v-model="accessCode"
+        class="mb-4"
+        type="password"
+        :has-error="currentState.matches('error') && error && fieldsHaveError && !accessCode ? true : false"
+        required
+        data-testid="kong-auth-register-access-code" />
+    </div>
+
+    <div class="color-black-45 type-sm">
+      <KCheckbox v-model="checked_agreement" data-testid="kong-auth-register-check-agreement">
+        I agree to the
+        <a href="https://konghq.com/konnectcustomeragreement" target="_blank">Konnect customer agreement</a>
+        and <a href="https://konghq.com/privacy" target="_blank">privacy policy</a>.
+      </KCheckbox>
+    </div>
+
+    <div v-if="currentState.matches('error') && passwordError && error" data-testid="kong-auth-register-alert">
       <ErrorMessage :error="error" />
     </div>
 
-    <form
-      v-if="!currentState.matches('success')"
-      class="register-form"
-      @submit.prevent="submitForm"
-      novalidate
-      data-testid="kong-auth-register-form">
-      <div class="name-container">
-        <div class="name-field">
-          <KLabel for="first_name">First Name *</KLabel>
-          <KInput
-            id="first_name"
-            v-model.trim="firstName"
-            type="text"
-            class="mb-4"
-            autocomplete="given-name"
-            :disabled="prepopulated"
-            :has-error="currentState.matches('error') && error && fieldsHaveError && !firstName ? true : false"
-            required
-            data-testid="kong-auth-register-first-name" />
-        </div>
-        <div class="name-field">
-          <KLabel for="last_name">Last Name *</KLabel>
-          <KInput
-            id="last_name"
-            v-model.trim="lastName"
-            type="text"
-            class="mb-4"
-            autocomplete="family-name"
-            :disabled="prepopulated"
-            :has-error="currentState.matches('error') && error && fieldsHaveError && !lastName ? true : false"
-            required
-            data-testid="kong-auth-register-last-name" />
-        </div>
-      </div>
-
-      <KLabel for="organization">Organization *</KLabel>
-      <KInput
-        id="organization"
-        v-model.trim="organization"
-        type="text"
-        class="mb-4"
-        autocomplete="organization"
-        :disabled="prepopulated"
-        :has-error="currentState.matches('error') && error && fieldsHaveError && !organization ? true : false"
-        required
-        data-testid="kong-auth-register-organization" />
-
-      <input v-if="emailToken" id="emailToken" :value="emailToken" type="hidden" name="emailToken" />
-
-      <KLabel for="email">Email *</KLabel>
-      <KInput
-        id="email"
-        v-model.trim="email"
-        type="email"
-        class="mb-4"
-        autocomplete="email"
-        :disabled="prepopulated"
-        :has-error="currentState.matches('error') && error && fieldsHaveError && !email ? true : false"
-        required
-        data-testid="kong-auth-register-email" />
-
-      <KLabel for="password">Password *</KLabel>
-      <KInput
-        id="password"
-        v-model.trim="password"
-        type="password"
-        class="mb-4"
-        autocomplete="new-password"
-        :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
-        required
-        data-testid="kong-auth-register-password" />
-
-      <div v-if="!emailToken && accessCodeRequired">
-        <KLabel for="access_code">Access Code *</KLabel>
-        <KInput
-          id="access_code"
-          v-model="accessCode"
-          class="mb-4"
-          type="password"
-          :has-error="currentState.matches('error') && error && fieldsHaveError && !accessCode ? true : false"
-          required
-          data-testid="kong-auth-register-access-code" />
-      </div>
-
-      <div class="color-black-45 type-sm">
-        <KCheckbox v-model="checked_agreement" data-testid="kong-auth-register-check-agreement">
-          I agree to the
-          <a href="https://konghq.com/konnectcustomeragreement" target="_blank">Konnect customer agreement</a>
-          and <a href="https://konghq.com/privacy" target="_blank">privacy policy</a>.
-        </KCheckbox>
-      </div>
-
-      <div v-if="currentState.matches('error') && passwordError && error" data-testid="kong-auth-register-alert">
-        <ErrorMessage :error="error" />
-      </div>
-
-      <KButton
-        type="submit"
-        appearance="primary"
-        :is-rounded="false"
-        class="register-submit justify-content-center w-100 type-lg mt-6"
-        :disabled="btnDisabled"
-        data-testid="kong-auth-register-submit">
-        <KIcon
-          v-if="currentState.matches('pending')"
-          icon="spinner"
-          size="16"
-          color="white"
-          view-box="0 0 16 16"
-          class="pr-0 mr-2" />
-        {{ btnText }}
-      </KButton>
-    </form>
-  </div>
+    <KButton
+      type="submit"
+      appearance="primary"
+      :is-rounded="false"
+      class="register-submit justify-content-center w-100 type-lg mt-6"
+      :disabled="btnDisabled"
+      data-testid="kong-auth-register-submit">
+      <KIcon
+        v-if="currentState.matches('pending')"
+        icon="spinner"
+        size="16"
+        color="white"
+        view-box="0 0 16 16"
+        class="pr-0 mr-2" />
+      {{ btnText }}
+    </KButton>
+  </form>
 </template>
 
 <script lang="ts">
