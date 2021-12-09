@@ -1,68 +1,70 @@
 <template>
-  <div v-if="currentState.matches('error') && error" class="my-3">
-    <ErrorMessage :error="error" />
-  </div>
-  <div v-else-if="currentState.matches('success')">
-    <KAlert
-      :alert-message="successText"
-      appearance="info"
-      class="mb-6"
-      data-testid="kong-auth-forgot-password-success-message" />
-    <KButton
-      @click.prevent="$emit('click-login-link')"
-      class="justify-content-center w-100 type-lg"
-      appearance="primary"
-      :is-rounded="false"
-      data-testid="kong-auth-forgot-password-return-to-login-btn">
-      {{ loginLinkText }}
-    </KButton>
-  </div>
-
-  <form
-    v-if="!currentState.matches('success')"
-    class="forgot-password-form"
-    @submit.prevent="submitForm"
-    novalidate
-    data-testid="kong-auth-forgot-password-form">
-    <p v-if="instructionText" class="color-black-45" data-testid="kong-auth-forgot-password-instruction-text">
-      {{ instructionText }}
-    </p>
-
-    <KLabel for="email">Email</KLabel>
-    <KInput
-      id="email"
-      v-model.trim="email"
-      type="email"
-      class="w-100 mb-5"
-      autocomplete="email"
-      :has-error="currentState.matches('error') && error ? true : false"
-      placeholder="Email"
-      required
-      autofocus
-      data-testid="kong-auth-forgot-password-email" />
-
-    <KButton
-      type="submit"
-      appearance="primary"
-      :is-rounded="false"
-      class="justify-content-center w-100 type-lg"
-      :disabled="btnDisabled"
-      data-testid="kong-auth-forgot-password-submit">
-      <KIcon v-if="currentState.matches('pending')" icon="spinner" view-box="0 0 16 16" class="pr-0 mr-2" />
-      {{ btnText }}
-    </KButton>
-  </form>
-
-  <div v-if="!currentState.matches('success') && showLoginLink" class="text-center mt-5">
-    <p class="color-black-85 bold-500">
-      <a
+  <div class="kong-auth-forgot-password-form">
+    <div v-if="currentState.matches('error') && error" class="my-3">
+      <ErrorMessage :error="error" />
+    </div>
+    <div v-else-if="currentState.matches('success')">
+      <KAlert
+        :alert-message="successText"
+        appearance="info"
+        class="mb-6"
+        data-testid="kong-auth-forgot-password-success-message" />
+      <KButton
         @click.prevent="$emit('click-login-link')"
-        class="color-blue-500"
-        href="#"
-        data-testid="kong-auth-forgot-password-return-to-login-link">
+        class="justify-content-center w-100 type-lg"
+        appearance="primary"
+        :is-rounded="false"
+        data-testid="kong-auth-forgot-password-return-to-login-btn">
         {{ loginLinkText }}
-      </a>
-    </p>
+      </KButton>
+    </div>
+
+    <form
+      v-if="!currentState.matches('success')"
+      class="forgot-password-form"
+      @submit.prevent="submitForm"
+      novalidate
+      data-testid="kong-auth-forgot-password-form">
+      <p v-if="instructionText" class="color-black-45" data-testid="kong-auth-forgot-password-instruction-text">
+        {{ instructionText }}
+      </p>
+
+      <KLabel for="email">Email *</KLabel>
+      <KInput
+        id="email"
+        v-model.trim="email"
+        type="email"
+        class="w-100 mb-5"
+        autocomplete="email"
+        :has-error="currentState.matches('error') && error ? true : false"
+        placeholder="Email"
+        required
+        autofocus
+        data-testid="kong-auth-forgot-password-email" />
+
+      <KButton
+        type="submit"
+        appearance="primary"
+        :is-rounded="false"
+        class="justify-content-center w-100 type-lg"
+        :disabled="btnDisabled"
+        data-testid="kong-auth-forgot-password-submit">
+        <KIcon v-if="currentState.matches('pending')" icon="spinner" view-box="0 0 16 16" class="pr-0 mr-2" />
+        {{ btnText }}
+      </KButton>
+    </form>
+
+    <div v-if="!currentState.matches('success') && showLoginLink" class="text-center mt-5">
+      <p class="color-black-85 bold-500">
+        <a
+          @click.prevent="$emit('click-login-link')"
+          class="color-blue-500"
+          href="#"
+          data-testid="kong-auth-forgot-password-return-to-login-link">
+          {{ loginLinkText }}
+        </a>
+      </p>
+    </div>
   </div>
 </template>
 
