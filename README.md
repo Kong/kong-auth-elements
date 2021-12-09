@@ -121,10 +121,10 @@ yarn add @kong/kong-auth-elements
 
 Next, import the package inside of your App's entry file (e.g. for Vue, `main.ts`).
 
-```html
-<script>
-  import '@kong/kong-auth-elements'
-</script>
+```js
+// main.ts
+
+import '@kong/kong-auth-elements'
 ```
 
 Alternatively, you may import the package in the component where you wish to utilize one of the custom elements.
