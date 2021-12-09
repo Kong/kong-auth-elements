@@ -112,7 +112,7 @@ export default defineComponent({
 
     const { state: currentState, send } = useMachine(
       createMachine({
-        id: 'AUTH_LOGIN',
+        id: 'AUTH_FORGOT_PASSWORD',
         initial: 'idle',
         states: {
           idle: {

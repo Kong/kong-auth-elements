@@ -69,7 +69,6 @@
 import { defineComponent, inject, reactive, ref, Ref, toRefs, computed } from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
-import { helpText } from '@/utils'
 import Api from '@/services/Api'
 import { AuthenticateAuthenticateRequest } from '@/services/kauth-api-client'
 // Components

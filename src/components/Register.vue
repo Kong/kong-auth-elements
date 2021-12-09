@@ -176,7 +176,7 @@ export default defineComponent({
 
     const { state: currentState, send } = useMachine(
       createMachine({
-        id: 'AUTH_LOGIN',
+        id: 'AUTH_REGISTER',
         initial: 'idle',
         states: {
           idle: {
