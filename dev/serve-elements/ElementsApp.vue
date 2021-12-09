@@ -9,7 +9,6 @@
         @login-success="showAlert('Login success!')"
         @click-forgot-password-link="showAlert('User clicked forgot password')"
         @click-register-link="showAlert('User clicked register')"></kong-auth-login>
-
       <hr />
 
       <h4><code>kong-auth-forgot-password</code></h4>
@@ -17,6 +16,11 @@
         instruction-text="Enter your verified email address and we will send you a password reset link."
         @click-login-link="showAlert('User clicked login')"
         @forgot-password-success="showAlert('Forgot password success!')"></kong-auth-forgot-password>
+      <hr />
+
+      <h4><code>kong-auth-reset-password</code></h4>
+      <kong-auth-reset-password
+        @reset-password-success="showAlert('Reset password success!')"></kong-auth-reset-password>
       <hr />
 
       <h4><code>KongAuthRegister.vue</code></h4>

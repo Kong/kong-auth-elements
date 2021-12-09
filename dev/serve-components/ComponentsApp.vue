@@ -18,6 +18,10 @@
         @forgot-password-success="showAlert('Forgot password success!')" />
       <hr />
 
+      <h4><code>KongAuthResetPassword.vue</code></h4>
+      <KongAuthResetPassword @reset-password-success="showAlert('Reset password success!')" />
+      <hr />
+
       <h4><code>KongAuthRegister.vue</code></h4>
       <KongAuthRegister @register-success="showAlert('Register success!')" />
     </div>
@@ -28,6 +32,7 @@
 // Import and register Custom Elements as Components
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
+import KongAuthResetPassword from '@/elements/kong-auth-reset-password/KongAuthResetPassword.ce.vue'
 import KongAuthRegister from '@/elements/kong-auth-register/KongAuthRegister.ce.vue'
 
 const showAlert = (text = ''): void => {
