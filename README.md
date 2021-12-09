@@ -1,8 +1,8 @@
-# kong-auth-elements
+# @kong/kong-auth-elements
 
-## Project setup for local development
+> **NOTE**: Docs are still a work in progress
 
-> **NOTE**: This section is still a draft.
+## Local development
 
 ```sh
 yarn install
@@ -22,9 +22,7 @@ document.cookie = '_pomerium={your copied value here}'
 
 How it works: Vue cli has a built in proxy. We use it to forward all requests that go to /api/\* to the specified URL running on port 3000. You can see the configuration in vue.config.js file.
 
-## Compiles components and hot-reloads for development
-
-### Serve Components
+### Compile components and hot-reload for development
 
 Import elements as Vue components and utilize Vue Dev Tools during development (may require additional imports in `/dev/serve-components/ComponentsApp.vue`).
 
@@ -34,7 +32,7 @@ _**Note**: This will not allow testing embedded styles and other Custom Element 
 yarn serve:components
 ```
 
-### Serve Elements
+### Compile Custom Elements and hot-reload for development
 
 Import elements as HTML Custom Elements (may require additional imports in `/dev/serve-elements/index.ts`).
 
@@ -44,19 +42,21 @@ _**Note**: This will not allow you to utilize Vue Dev Tools in the browser (cust
 yarn serve:elements
 ```
 
-## Compiles and minifies for demo, and serves up fully-built demo on local server (without hot-reload)
+### Compile and minify for demo
+
+Serve production versions of Custom Elements (referenced from the compiled `umd` file) within a static HTML page on a local server (hot-reload not available).
 
 ```sh
 yarn demo
 ```
 
-## Compiles and minifies for production
+### Compile and minify for production
 
 ```sh
 yarn build
 ```
 
-## Link the local, built package into another local project for testing
+### Link the local, `@kong/kong-auth-elements` package into another local project for testing
 
 Inside `@kong/kong-auth-elements` run
 
@@ -70,16 +70,18 @@ Next, inside of the local consuming project, run
 yarn link "@kong/kong-auth-elements"
 ```
 
-## Styles
+## Custom Element Styles and the shadow DOM
 
 Styles are auto-injected into the shadow DOM for any internal components and child components.
 
 Requirements:
 
 1. All custom elements must follow the naming convention `{PascalCaseName}.ce.vue`
-2. All custom elements must utilize the `<BaseCustomElement/>` as the first child of their `<template/>` tag (this enables style injection for child components).
+2. All custom elements must utilize the `<BaseCustomElement />` component as the first child of their `<template/>` tag which will wrap any other structure/components (this enables style injection for child components).
 
-In order for the styles to be injected, you need to place the exact comment (shown below) in **ALL** `<style>` elements that are located inside components within the `/src/` directory
+In order for the styles to be injected, you need to place the exact comment (shown below) in **ALL** `<style>` blocks that are located inside a component within the `/src/` directory.
+
+> **Note**: No styles should be placed in the `<style>` blocks within the `src/elements/**/{CustomElement}.ce.vue` files.
 
 ```css
 /*! KONG_AUTH_INJECT_STYLES */
@@ -103,6 +105,46 @@ The exclamation point at the beginning of the comment flags the comment as impor
 </style>
 ```
 
+All styles from the [Kongponents component library](https://kongponents.konghq.com/guide/theming.html) will be automatically injected and available.
+
+## How to use components
+
+### Installation
+
+> TBD: Access via CDN?
+
+Install the package as a dependency in your app
+
+```sh
+yarn add @kong/kong-auth-elements
+```
+
+Next, import the package inside of your App's entry file (e.g. for Vue, `main.ts`).
+
+```html
+<script>
+  import '@kong/kong-auth-elements'
+</script>
+```
+
+Alternatively, you may import the package in the component where you wish to utilize one of the custom elements.
+
+Once the package is imported, it will automatically register all custom components for usage.
+
+Wherever you want to utilze a custom element, simply include it just like you would any other HTML component, utilizing any props as needed
+
+```html
+<kong-auth-login
+  show-forgot-password-link
+  @login-success="onLoginSuccess"
+  @click-forgot-password-link="onUserClickForgotPassword"
+  @click-register-link="onUserClickRegister"></kong-auth-login>
+```
+
+### Props
+
+> TODO
+
 ### CSS Variables
 
 Several custom CSS variables are available to impact the styling of custom elements, shown below
@@ -125,43 +167,9 @@ Simply define values for the variables in your consuming application to make the
 </style>
 ```
 
-## How to use components
-
-> **NOTE**: This section is still a draft.
-
-Install the package as a dependency in your app
-
-> TBD: Access via CDN?
-
-```sh
-yarn add @kong/kong-auth-elements
-```
-
-Next, import the package in the component where you wish to utilize one of the custom elements
-
-```html
-<script>
-  import '@kong/kong-auth-elements'
-</script>
-```
-
-Alternatively, you may import the package inside of your App's entry file (e.g. for Vue, `main.ts`).
-
-Once the package is imported, it will automatically register all custom components for usage.
-
-Wherever you want to utilze a custom element, simply include it just like you would any other HTML component, utilizing any props as needed
-
-```html
-<kong-auth-login
-  show-forgot-password-link
-  @login-success="onLoginSuccess"
-  @click-forgot-password-link="onUserClickForgotPassword"
-  @click-register-link="onUserClickRegister"></kong-auth-login>
-```
-
 ### Webpack
 
-You may need to inform your consuming app (e.g. Vue) to recognize custom elements defined outside of the framework (e.g., using the Web Components APIs). If a component matches this condition, it won't need local or global registration and Vue won't throw a warning about an `Unknown custom element`.
+You may need to inform your consuming app (e.g. Vue) to recognize custom elements defined outside of the framework (e.g. using the Web Components APIs). If a component matches this condition, it won't need local or global registration and Vue won't throw a warning about an `Unknown custom element`.
 
 Regardless of whether your consuming application is a Vue app, you will also need to add an entry to `transpileDependencies`.
 
@@ -188,19 +196,27 @@ module.exports = {
 }
 ```
 
-If your consuming app does not utilize `vue.config.js` file, you can transpile dependencies in your webpack config with something like this
+If your consuming app does not utilize `vue.config.js` file, you can transpile dependencies in your project's webpack config. As an example, if using `babel-loader`, you can include something like this in your `webpack.config.js` file
 
 ```js
-{
-  test: /\.js$/,
-  include: /(node_modules)\/(@kong/kong-auth-elements)/,
-  loader: 'babel-loader'
-},
+// webpack.config.js
+
+module.exports = {
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        include: /(node_modules)\/(@kong/kong-auth-elements)/,
+        loader: 'babel-loader'
+      }
+    ]
+  }
+}
 ```
 
 ### Testing in your app
 
-The custom elements have test attributes already placed with the standard format of: `data-testid="kong-auth-{identifier}"`. If these are not sufficient, you should be able to create your tests with a wrapping element and search downward through the child elements as needed.
+The custom elements have test attributes already placed with a standard format of `data-testid="kong-auth-{identifier}"`. If these test selectors are not sufficient, you should be able to create your tests by targeting a parent element and then searching downward through its child elements as needed.
 
 If you have a specific use-case, submit a PR for a new attribute to be added and please add an example use-case as to why the existing attributes are not sufficient.
 
