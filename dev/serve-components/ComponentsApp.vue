@@ -20,7 +20,7 @@
 
       <h4><code>KongAuthResetPassword.vue</code></h4>
       <KongAuthResetPassword
-        instruction-textx="Please enter in your new password and confirm it below."
+        instruction-text="Please enter in your new password and confirm it below."
         @reset-password-success="showAlert('Reset password success!')" />
       <hr />
 
