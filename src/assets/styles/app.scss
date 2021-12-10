@@ -1,7 +1,38 @@
+/*! KONG_AUTH_ELEMENTS_STYLES */
 @import "./globals/normalize";
 @import "./globals/reboot";
-@import "./globals/grid";
 @import "./typography";
 @import "./inputs";
-@import "./utilities";
-@import "./kongponents";
+
+@import "~@kongponents/styles/variables";
+
+// Loop all maps and set to root element
+:root {
+  // colors
+  @each $name, $color in $colors {
+    --#{$name}: #{$color};
+  }
+  // Spacings
+  @each $name, $space in $spacing {
+    --spacing-#{$name}: #{$space};
+  }
+  // Type
+  @each $name, $size in $type-sizes {
+    --type-#{$name}: #{$size};
+  }
+  // Font families
+  @each $name, $font in $fonts {
+    --font-family-#{$name}: #{$font};
+  }
+}
+
+.kong-auth-element {
+  // Import utility classes from Kongponents, but namespace them so they don't leak into page
+  @import "~@kongponents/styles/utils";
+
+  font-family: var(--font-family-sans);
+  font-weight: var(--KongAuthFontWeight, 200);
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
