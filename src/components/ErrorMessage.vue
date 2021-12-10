@@ -4,7 +4,7 @@
       <p>{{ capitalizeFirstChar(errorMessage) }}:</p>
       <ul>
         <li v-for="(error, idx) in passwordRequirements" :key="idx">
-          {{ capitalizeFirstChar(passwordRequirements[idx]) }}
+          {{ capitalizeFirstChar(error) }}
         </li>
       </ul>
     </template>
@@ -93,7 +93,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.error-message li {
-  list-style-type: disc;
+.error-message {
+  p,
+  ul {
+    line-height: 20px;
+  }
+
+  li {
+    list-style-type: disc;
+  }
 }
 </style>
