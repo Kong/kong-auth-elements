@@ -10,6 +10,10 @@
       @submit.prevent="submitForm"
       novalidate
       data-testid="kong-auth-reset-password-form">
+      <p v-if="instructionText" class="color-black-45" data-testid="kong-auth-reset-password-instruction-text">
+        {{ instructionText }}
+      </p>
+
       <KLabel for="password">New Password *</KLabel>
       <KInput
         id="password"
@@ -52,7 +56,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive, toRefs, computed, onMounted } from 'vue'
+import { defineComponent, ref, reactive, toRefs, Ref, inject, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText } from '@/utils'
@@ -80,6 +84,8 @@ export default defineComponent({
   setup(props, { emit }) {
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
+    const instructionText: Ref<string> = inject('instruction-text', ref(''))
+
     const formData = reactive({
       email: '',
       passwordToken: '',
@@ -211,6 +217,7 @@ export default defineComponent({
       btnText,
       btnDisabled,
       helpText,
+      instructionText,
       passwordIsInvalid,
       submitForm,
       error,

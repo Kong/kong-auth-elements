@@ -19,7 +19,9 @@
       <hr />
 
       <h4><code>KongAuthResetPassword.vue</code></h4>
-      <KongAuthResetPassword @reset-password-success="showAlert('Reset password success!')" />
+      <KongAuthResetPassword
+        instruction-textx="Please enter in your new password and confirm it below."
+        @reset-password-success="showAlert('Reset password success!')" />
       <hr />
 
       <h4><code>KongAuthRegister.vue</code></h4>

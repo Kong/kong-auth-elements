@@ -20,6 +20,7 @@
 
       <h4><code>kong-auth-reset-password</code></h4>
       <kong-auth-reset-password
+        instruction-textx="Please enter in your new password and confirm it below."
         @reset-password-success="showAlert('Reset password success!')"></kong-auth-reset-password>
       <hr />
 

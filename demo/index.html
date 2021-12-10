@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K-Auth Demo</title>
-    <script src="./dist-copy/kong-auth-elements.umd.min.js"></script>
+    <script src="./dist-copy/kong-auth-elements.umd.js"></script>
     <style type="text/css">
       body {
         padding: 20px;
@@ -33,11 +33,11 @@
     <div class="demo-app">
       <h1>Kong Auth Elements Demo</h1>
       <br>
+
       <h4><code>kong-auth-login</code></h4>
       <kong-auth-login show-forgot-password-link @login-success="showAlert('Login success!')"
         @click-forgot-password-link="showAlert('User clicked forgot password')"
         @click-register-link="showAlert('User clicked register')"></kong-auth-login>
-
       <hr>
 
       <h4><code>kong-auth-forgot-password</code></h4>
@@ -46,7 +46,11 @@
         @click-login-link="showAlert('User clicked login')"
         @forgot-password-success="showAlert('Forgot password success!')">
       </kong-auth-forgot-password>
+      <hr>
 
+      <h4><code>kong-auth-reset-password</code></h4>
+      <kong-auth-reset-password instruction-text="Please enter in your new password and confirm it below."
+        @reset-password-success="showAlert('Reset password success!')"></kong-auth-reset-password>
       <hr>
 
       <h4><code>kong-auth-register</code></h4>
