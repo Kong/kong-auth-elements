@@ -2,7 +2,7 @@
 
 <!-- Be sure to add the JIRA ticket number to the title of your Pull Request -->
 
-## Notable Changes
+### Notable Changes
 
 <!--
 Be sure to include any changes that might require additional context or backstory to aid with reviewing. Always have in mind that we review PR's months or years later, so the more detailed the better.

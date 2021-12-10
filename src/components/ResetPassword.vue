@@ -37,7 +37,10 @@
         required
         data-testid="kong-auth-reset-password-confirm-new-password" />
 
-      <div v-if="currentState.matches('error') && passwordError && error" data-testid="kong-auth-register-alert">
+      <div
+        v-if="currentState.matches('error') && passwordError && error"
+        data-testid="kong-auth-register-alert"
+        class="my-3">
         <ErrorMessage :error="error" />
       </div>
 

@@ -18,7 +18,6 @@ export default function useInjectStyles (): Record<string, any> {
         // or this exact string: "/*! KONG_AUTH_INJECT_STYLES */"
         return (
           styleNode.innerHTML.includes('KONG_AUTH_INJECT_STYLES') ||
-          styleNode.innerHTML.includes('KONGPONENTS_STYLES') ||
           styleNode.innerHTML.includes('.k-') ||
           styleNode.innerHTML.includes('.kool')
         )
