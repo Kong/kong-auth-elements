@@ -47,7 +47,8 @@ export default defineComponent({
     }
 
     const setGeneralErrorMessage = (): void => {
-      const { status, statusText } = props?.error
+      const { status, statusText, data } = props?.error
+      const errorDetail = data && data.errors ? data.errors[0]?.detail : null
 
       if (status === 401) {
         errorMessage.value = helpText.login.unauthenticated
@@ -59,6 +60,8 @@ export default defineComponent({
       } else if (!status && statusText) {
         // Allow passing no status with statusText for display
         errorMessage.value = statusText
+      } else if (status && errorDetail) {
+        errorMessage.value = capitalizeFirstChar(errorDetail)
       } else {
         errorMessage.value = `Error ${status}: ${statusText}`
       }
