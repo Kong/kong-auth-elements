@@ -90,5 +90,8 @@
     "branches": [
       "main"
     ]
+  },
+  "engines": {
+    "node": "<=14.18 <16"
   }
 }
