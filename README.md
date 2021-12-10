@@ -145,6 +145,27 @@ Wherever you want to utilze a custom element, simply include it just like you wo
 
 > TODO
 
+### Events
+
+Any events that are emitted from custom elements follow the [CustomEvent() Web API](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent). An example of consuming the events and `CustomEvent.details` (emitted data) in your app can be seen here
+
+```html
+<kong-auth-forgot-password
+  instruction-text="Enter your verified email address and we will send you a password reset link."
+  @click-login-link="onUserClickLogin"
+  @forgot-password-success="onForgotPasswordSuccess"
+/></kong-auth-forgot-password>
+
+<script lang="ts">
+// ... only showing a function example, this would typically belong in your setup() function, etc.
+const onForgotPasswordSuccess = (successEvent: CustomEvent): void => {
+  const eventData: Record<string, any> = Array.isArray(successEvent.detail) ? successEvent.detail[0] : successEvent.detail
+
+  console.log(`The user's email address is: ${eventData.email}`)
+}
+</script>
+```
+
 ### CSS Variables
 
 Several custom CSS variables are available to impact the styling of custom elements, shown below
