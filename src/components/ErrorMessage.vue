@@ -97,7 +97,7 @@ export default defineComponent({
 .error-message {
   p,
   ul {
-    line-height: 20px;
+    line-height: 24px;
   }
 
   p:last-of-type,
