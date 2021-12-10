@@ -93,19 +93,20 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+/*! KONG_AUTH_INJECT_STYLES */
 .error-message {
   p,
   ul {
-    line-height: 20px !important;
+    line-height: 20px;
   }
 
   p:last-of-type,
   ul:last-of-type {
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
   }
 
   p + ul {
-    margin-top: 10px !important;
+    margin-top: 10px;
   }
 
   li {
