@@ -116,6 +116,10 @@ select.form-control,
   content: "Semi-Optional";
 }
 
+.k-input-wrapper .k-input + .has-error {
+  font-size: 12px !important;
+}
+
 .vue-form-generator span.help {
   .icon {
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiI+ICA8cGF0aCBmaWxsPSIjMDA4NkU2IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02IDExYy0yLjc2MSAwLTUtMi4yMzktNS01czIuMjM5LTUgNS01IDUgMi4yMzkgNSA1LTIuMjM5IDUtNSA1TTYgMEMyLjY4NiAwIDAgMi42ODYgMCA2czIuNjg2IDYgNiA2IDYtMi42ODYgNi02LTIuNjg2LTYtNi02bTAgM2MtMS4xMDUgMC0yIC44OTUtMiAyaDFjMC0uNTUyLjQ0OC0xIDEtMXMxIC40NDggMSAxLS40NDggMS0xIDEtMSAuNDQ4LTEgMWgxYzEuMTA1IDAgMi0uODk1IDItMnMtLjg5NS0yLTItMnpNNSA5aDJWOEg1djF6Ii8+PC9zdmc+);

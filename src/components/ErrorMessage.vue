@@ -96,7 +96,16 @@ export default defineComponent({
 .error-message {
   p,
   ul {
-    line-height: 20px;
+    line-height: 20px !important;
+  }
+
+  p:last-of-type,
+  ul:last-of-type {
+    margin-bottom: 0 !important;
+  }
+
+  p + ul {
+    margin-top: 10px !important;
   }
 
   li {
