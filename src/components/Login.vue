@@ -291,8 +291,12 @@ export default defineComponent({
       const emailInParams = urlParams.get('email')
       if (emailInParams) {
         formData.email = emailInParams
-        setUserStatusCookie()
-        send('FROM_INVITE')
+
+        // If not coming from reset-password
+        if (!urlParams.get('passwordReset')) {
+          setUserStatusCookie()
+          send('FROM_INVITE')
+        }
 
         return
       }
