@@ -73,7 +73,8 @@ export default defineComponent({
       if (data?.errors?.length) {
         const errorDetail = data.errors[0]?.detail
 
-        if (errorDetail?.includes('password')) {
+        // If password requirements error
+        if (errorDetail?.includes('password') && errorDetail?.includes('requirement')) {
           const errorArr = errorDetail.split(':')
 
           errorMessage.value = errorArr[0]

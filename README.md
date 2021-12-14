@@ -150,6 +150,8 @@ To show the Reset Password Confirmation, the consuming app URL must include `pas
 
 Pass the user's encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input.
 
+---
+
 ### `kong-auth-forgot-password`
 
 Provides a forgot password UI along with corresponding `kauth` functionality to allow the user to request a reset password email.
