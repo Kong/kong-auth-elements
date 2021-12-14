@@ -81,13 +81,13 @@ Requirements:
 
 In order for the styles to be injected, you need to place the exact comment (shown below) in **ALL** `<style>` blocks that are located inside a component within the `/src/` directory.
 
-> **Note**: No styles should be placed in the `<style>` blocks within the `src/elements/**/{CustomElement}.ce.vue` files.
-
 ```css
 /*! KONG_AUTH_INJECT_STYLES */
 ```
 
 The exclamation point at the beginning of the comment flags the comment as important to PurgeCSS and prevents it from being removed during the build. Here's an example
+
+> **Note**: No styles should be placed in the `<style>` blocks within the `src/elements/**/{CustomElement}.ce.vue` files.
 
 ```html
 <template>
