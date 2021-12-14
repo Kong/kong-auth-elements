@@ -107,6 +107,53 @@ The exclamation point at the beginning of the comment flags the comment as impor
 
 All styles from the [Kongponents component library](https://kongponents.konghq.com/guide/theming.html) will be automatically injected and available.
 
+## Components
+
+### kong-auth-login
+
+> TODO
+
+Provides a login UI along with corresponding `kauth` authentication.
+
+Provides email confirmation, given a valid [`token` in the query string](#token-confirm-email).
+
+Also sets the `userStatus` cookie, along with other `kauth` cookies and localStorage entries.
+
+#### Query String Parameters
+
+##### `token` (Confirm Email)
+
+Pass a valid `token` entry in the URL query string to confirm the user's email address.
+
+##### `passwordReset`
+
+To show the Reset Password Confirmation, the consuming app URL must include `passwordReset=true` in the query string.
+
+In addition, you may pass the user's encoded (e.g. `encodeURIComponent()`) email address (e.g. `email=user%40foo.com`) in the query string to prepopulate the login form's email input.
+
+##### `email`
+
+Pass the user's encoded (e.g. `encodeURIComponent()`) email address (e.g. `email=user%40foo.com`) in the query string to prepopulate the login form's email input.
+
+#### Props
+
+| Prop                     | Type    | Default                  |
+| :----------------------- | :------ | :----------------------- |
+| `showForgotPasswordLink` | Boolean | `false`                  |
+| `forgotPasswordLinkText` | String  | `Forgot your password?`  |
+| `showRegisterLink`       | Boolean | `false`                  |
+| `registerLinkHelpText`   | String  | `Don't have an account?` |
+| `registerLinkText`       | String  | `Sign Up →`              |
+
+#### Emits Events
+
+- `login-success`
+- `confirm-email-success`
+- `click-forgot-password-link`
+- `click-register-link`
+
+To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details.
+
 ## Usage
 
 ### Installation
@@ -186,10 +233,6 @@ declare module 'vue/types/vue' {
   }
 }
 ```
-
-### Props
-
-> TODO
 
 ### Events
 
