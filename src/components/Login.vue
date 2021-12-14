@@ -87,7 +87,7 @@
 import { defineComponent, inject, reactive, ref, Ref, toRefs, computed, onMounted } from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
-import Api from '@/services/Api'
+import KongAuthApi from '@/services/KongAuthApi'
 import { AuthenticateAuthenticateRequest } from '@/services/kauth-api-client'
 import { helpText } from '@/utils'
 // Components
@@ -124,7 +124,7 @@ export default defineComponent({
       password: '',
     })
     const error = ref<any>(null)
-    const $api = new Api()
+    const $api = new KongAuthApi()
 
     const {
       state: currentState,

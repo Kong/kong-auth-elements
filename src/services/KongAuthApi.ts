@@ -6,9 +6,9 @@ import {
   InvitesApi,
   PasswordsApi,
   RegistrationApi,
-} from '@/services/kauth-api-client'
+} from './kauth-api-client'
 
-export default class Api {
+export default class KongAuthApi {
   auth: {
     authentication: AuthenticationApi
     emailVerification: EmailVerificationApi

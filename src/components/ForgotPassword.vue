@@ -73,7 +73,7 @@ import { defineComponent, inject, ref, Ref, reactive, toRefs, computed } from 'v
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText } from '@/utils'
-import Api from '@/services/Api'
+import KongAuthApi from '@/services/KongAuthApi'
 // Components
 import KAlert from '@kongponents/kalert'
 import KButton from '@kongponents/kbutton'
@@ -108,7 +108,7 @@ export default defineComponent({
       email: '',
     })
     const error = ref<any>(null)
-    const $api = new Api()
+    const $api = new KongAuthApi()
 
     const { state: currentState, send } = useMachine(
       createMachine({
