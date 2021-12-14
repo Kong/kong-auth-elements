@@ -1,0 +1,43 @@
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      ## Test
+      - name: Run Cypress tests
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CYPRESS_baseUrl: http://localhost:3000/
+        uses: cypress-io/github-action@v2
+        with:
+          spec: "tests/e2e/specs/**/*"
+          wait-on: http://localhost:3000/
+          config-file: cypress.json
+          start: npm start
+          install-command: yarn install --immutable --immutable-cache
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-artifacts
+          path: |
+            tests/e2e/videos/
+            tests/e2e/screenshots/
+
+      - name: Run unit tests
+        run: yarn run test:unit 
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        with:
+          files: junit.xml
+
+      - name: Lint
+        run: yarn run lint
