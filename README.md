@@ -107,33 +107,15 @@ The exclamation point at the beginning of the comment flags the comment as impor
 
 All styles from the [Kongponents component library](https://kongponents.konghq.com/guide/theming.html) will be automatically injected and available.
 
-## Components
+## Custom Elements
 
-### kong-auth-login
-
-> TODO
+### `kong-auth-login`
 
 Provides a login UI along with corresponding `kauth` authentication.
 
 Provides email confirmation, given a valid [`token` in the query string](#token-confirm-email).
 
 Also sets the `userStatus` cookie, along with other `kauth` cookies and localStorage entries.
-
-#### Query String Parameters
-
-##### `token` (Confirm Email)
-
-Pass a valid `token` entry in the URL query string to confirm the user's email address.
-
-##### `passwordReset`
-
-To show the Reset Password Confirmation, the consuming app URL must include `passwordReset=true` in the query string.
-
-In addition, you may pass the user's encoded (e.g. `encodeURIComponent()`) email address (e.g. `email=user%40foo.com`) in the query string to prepopulate the login form's email input.
-
-##### `email`
-
-Pass the user's encoded (e.g. `encodeURIComponent()`) email address (e.g. `email=user%40foo.com`) in the query string to prepopulate the login form's email input.
 
 #### Props
 
@@ -148,9 +130,43 @@ Pass the user's encoded (e.g. `encodeURIComponent()`) email address (e.g. `email
 #### Emits Events
 
 - `login-success`
-- `confirm-email-success`
+- `confirm-email-success({ email: String })`
 - `click-forgot-password-link`
 - `click-register-link`
+
+To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details.
+
+#### Query String Parameters
+
+##### `token` (Confirm Email)
+
+Pass a valid `token` entry in the URL query string to confirm the user's email address.
+
+##### `passwordReset`
+
+To show the Reset Password Confirmation, the consuming app URL must include `passwordReset=true` in the query string. You can choose to include the [`email`](#email) parameter as well.
+
+##### `email`
+
+Pass the user's encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input.
+
+### `kong-auth-forgot-password`
+
+Provides a forgot password UI along with corresponding `kauth` functionality to allow the user to request a reset password email.
+
+#### Props
+
+| Prop              | Type    | Default                                                                                                                  |
+| :---------------- | :------ | :----------------------------------------------------------------------------------------------------------------------- |
+| `showLoginLink`   | Boolean | `false`                                                                                                                  |
+| `loginLinkText`   | String  | `Return to log in →`                                                                                                     |
+| `instructionText` | String  | `''`                                                                                                                     |
+| `successText`     | String  | `Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.` |
+
+#### Emits Events
+
+- `forgot-password-success({ email: String })`
+- `click-login-link`
 
 To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details.
 

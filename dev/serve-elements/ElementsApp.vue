@@ -8,7 +8,8 @@
         show-forgot-password-link
         @login-success="showAlert('Login success!')"
         @click-forgot-password-link="showAlert('User clicked forgot password')"
-        @click-register-link="showAlert('User clicked register')"></kong-auth-login>
+        @click-register-link="showAlert('User clicked register')"
+        @confirm-email-success="showAlert('User confirmed email')"></kong-auth-login>
       <hr />
 
       <h4><code>kong-auth-forgot-password</code></h4>

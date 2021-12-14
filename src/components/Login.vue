@@ -222,7 +222,9 @@ export default defineComponent({
         formData.email = response.data.email
         send('CONFIRMED_EMAIL')
 
-        emit('confirm-email-success', formData.email)
+        emit('confirm-email-success', {
+          email: formData.email,
+        })
       } catch (err: any) {
         send('REJECT')
 
