@@ -1,5 +1,5 @@
 <template>
-  <KAlert appearance="danger" class="error-message" data-testid="kong-auth-error-message">
+  <KAlert appearance="danger" class="kong-auth-error-message error-message" data-testid="kong-auth-error-message">
     <template v-if="passwordRequirements.length" #alertMessage>
       <p>{{ capitalizeFirstChar(errorMessage) }}:</p>
       <ul>
@@ -96,25 +96,28 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 /*! KONG_AUTH_INJECT_STYLES */
-.error-message {
-  p,
-  ul {
+.kong-auth-error-message.error-message {
+  .k-alert-msg-text .k-alert-msg {
     line-height: 24px;
-  }
 
-  p:last-of-type,
-  ul:last-of-type {
-    margin-bottom: 0;
-  }
+    p,
+    ul {
+      line-height: 24px;
 
-  p + ul {
-    margin-top: 10px;
-  }
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
 
-  li {
-    list-style-type: disc;
+    p + ul {
+      margin-top: 10px;
+    }
+
+    li {
+      list-style-type: disc;
+    }
   }
 }
 </style>
