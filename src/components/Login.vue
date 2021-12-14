@@ -63,9 +63,10 @@
         class="justify-content-center w-100 type-lg"
         :class="[showForgotPasswordLink ? 'mt-3' : 'mt-6']"
         :disabled="btnDisabled"
-        data-testid="kong-auth-login-submit"
-        >{{ btnText }}</KButton
-      >
+        data-testid="kong-auth-login-submit">
+        <KIcon v-if="currentState.matches('pending')" icon="spinner" view-box="0 0 16 16" class="pr-0 mr-2" />
+        {{ btnText }}
+      </KButton>
 
       <div v-if="showRegisterLink" class="text-center mt-5">
         <p class="color-black-85 bold-500">
@@ -93,6 +94,7 @@ import { helpText } from '@/utils'
 // Components
 import KAlert from '@kongponents/kalert'
 import KButton from '@kongponents/kbutton'
+import KIcon from '@kongponents/kicon'
 import KInput from '@kongponents/kinput'
 import KLabel from '@kongponents/klabel'
 import ErrorMessage from '@/components/ErrorMessage.vue'
@@ -105,6 +107,7 @@ export default defineComponent({
   components: {
     KAlert,
     KButton,
+    KIcon,
     KInput,
     KLabel,
     ErrorMessage,
@@ -265,8 +268,11 @@ export default defineComponent({
         })
 
         if (response.status >= 200 && response.status < 300) {
+          send('RESOLVE')
           emit('login-success')
+          return
         }
+
         send('REJECT')
         if (response.status === 403) {
           return
