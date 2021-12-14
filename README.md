@@ -107,11 +107,9 @@ The exclamation point at the beginning of the comment flags the comment as impor
 
 All styles from the [Kongponents component library](https://kongponents.konghq.com/guide/theming.html) will be automatically injected and available.
 
-## How to use components
+## Usage
 
 ### Installation
-
-> TBD: Access via CDN?
 
 Install the package as a dependency in your app
 
@@ -139,6 +137,54 @@ Wherever you want to utilze a custom element, simply include it just like you wo
   @login-success="onLoginSuccess"
   @click-forgot-password-link="onUserClickForgotPassword"
   @click-register-link="onUserClickRegister"></kong-auth-login>
+```
+
+#### `KongAuthApi`
+
+If you would also like to utilize the `KongAuthApi` class and methods, just update your import to include the API. You can also create a global API instance and handle unauthorized/unauthenticated errors.
+
+```js
+// main.ts
+
+import KongAuthApi from '@kong/kong-auth-elements'
+
+// Create API instance, and handle unauthorized/unauthenticated errors
+const kongAuthApi = new KongAuthApi((err) => {
+  if (err.message.includes('code 403')) {
+    return
+  }
+
+  // Example from KHCP of using custom Vue Router function to redirect
+  if (err && !router.isAuthRoute(router.currentRoute.name)) {
+    globalStore.dispatch('auth/logout')
+    router.push({ name: 'login' })
+  }
+})
+
+// Vue 2
+// ==============================================================================
+// Allow using api via `this.$kongAuthApi`, or within setup, context.$kongAuthApi
+Vue.prototype.$kongAuthApi = kongAuthApi
+
+// -- OR
+
+// Vue 3
+// =========================================
+// Allow using api via `this.$kongAuthApi`, or within setup, context.$kongAuthApi
+const app = createApp({})
+app.config.globalProperties.$kongAuthApi = kongAuthApi
+```
+
+You should also declare the module in an `src/api.d.ts` file (or similar) like the following (you can add this to existing shim files)
+
+```js
+import KongAuthApi from '@kong/kong-auth-elements/dist/types/services/KongAuthApi'
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    $kongAuthApi: KongAuthApi
+  }
+}
 ```
 
 ### Props

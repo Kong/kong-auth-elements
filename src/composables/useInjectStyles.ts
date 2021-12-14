@@ -1,10 +1,12 @@
 import { computed, ref, onMounted, onUnmounted } from 'vue'
 
 export default function useInjectStyles (): Record<string, any> {
-  const inlineStyles = ref<HTMLElement[]>([])
+  const inlineStyles = ref<any>([])
   const injectedStyles = computed(
     (): string =>
-      `<style type="text/css">${inlineStyles.value.map((styleNode) => styleNode.innerHTML).join('')}</style>`,
+      `<style type="text/css">${inlineStyles.value
+        .map((styleNode: HTMLElement) => styleNode.innerHTML)
+        .join('')}</style>`,
   )
 
   /**

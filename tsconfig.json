@@ -9,6 +9,10 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "dist/types",
+    "outDir": "dist",
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
@@ -37,6 +41,7 @@
   ],
   "exclude": [
     "node_modules",
+    "**/*.spec.ts",
     "src/services/kauth-api-client/**"
   ]
 }
