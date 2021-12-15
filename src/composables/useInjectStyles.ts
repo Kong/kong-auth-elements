@@ -2,11 +2,12 @@ import { computed, ref, onMounted, onUnmounted } from 'vue'
 
 export default function useInjectStyles (): Record<string, any> {
   const inlineStyles = ref<any>([])
-  const injectedStyles = computed(
-    (): string =>
-      `<style type="text/css">${inlineStyles.value
+  const injectedStyles = computed((): string =>
+    inlineStyles.value && inlineStyles.value.length
+      ? `<style type="text/css">${inlineStyles.value
         .map((styleNode: HTMLElement) => styleNode.innerHTML)
-        .join('')}</style>`,
+        .join('')}</style>`
+      : '',
   )
 
   /**
@@ -41,6 +42,10 @@ export default function useInjectStyles (): Record<string, any> {
 
   onMounted(injectStyles)
   onUnmounted(() => {
+    // Clear styles
+    inlineStyles.value = []
+
+    // Disconnect observer
     if (observer) {
       observer.disconnect()
     }
