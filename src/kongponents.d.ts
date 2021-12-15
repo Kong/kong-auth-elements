@@ -1,5 +1,4 @@
 declare module '@kongponents/kinput'
-declare module '@kongponents/kcard'
 declare module '@kongponents/kalert'
 declare module '@kongponents/klabel'
 declare module '@kongponents/kbutton'
