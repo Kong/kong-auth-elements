@@ -254,7 +254,7 @@ declare module 'vue/types/vue' {
 
 ### Events
 
-Any events that are emitted from custom elements follow the [CustomEvent() Web API](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent). An example of consuming the events and `CustomEvent.details` (emitted data) in your app can be seen here
+Any events that are emitted from custom elements follow the [CustomEvent() Web API](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent). An example of consuming the events and `CustomEvent.details` (emitted data) in your Vue app can be seen here
 
 ```html
 <kong-auth-forgot-password
@@ -264,13 +264,26 @@ Any events that are emitted from custom elements follow the [CustomEvent() Web A
 /></kong-auth-forgot-password>
 
 <script lang="ts">
-// ... only showing a function example, this would typically belong in your setup() function, etc.
-const onForgotPasswordSuccess = (successEvent: CustomEvent): void => {
-  const eventData: Record<string, any> = Array.isArray(successEvent.detail) ? successEvent.detail[0] : successEvent.detail
+  setup () {
 
-  console.log(`The user's email address is: ${eventData.email}`)
-}
+    // function example
+    const onForgotPasswordSuccess = (successEvent: CustomEvent): void => {
+      const eventData: Record<string, any> = Array.isArray(successEvent.detail) ? successEvent.detail[0] : successEvent.detail
+
+      console.log(`The user's email address is: ${eventData.email}`)
+    }
+  }
 </script>
+```
+
+If your app does not utilize Vue, you can respond to the custom events just like any other event listener
+
+```js
+// Add an appropriate event listener
+document.addEventListener('forgot-password-success', function (successEvent) {
+  const eventData = Array.isArray(successEvent.detail) ? successEvent.detail[0] : successEvent.detail
+  console.log(`The user's email address is: ${eventData.email}`)
+})
 ```
 
 ### CSS Variables
