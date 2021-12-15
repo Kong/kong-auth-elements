@@ -169,18 +169,12 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        const response = await $api.auth.passwords.passwordResetsPatch({
+        const response: any = await $api.auth.passwords.passwordResetsPatch({
           password: formData.password,
           token: formData.passwordToken,
         })
 
-        // If email was not set by URL param
-        // Get email from response (TODO: https://konghq.atlassian.net/browse/TPS-182)
-        if (!formData.email) {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          formData.email = response.data.email || ''
-        }
+        formData.email = response.data?.email || formData.email || ''
 
         send('RESOLVE')
 

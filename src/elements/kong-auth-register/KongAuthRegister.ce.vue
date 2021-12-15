@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, computed, reactive } from 'vue'
+import { defineComponent, provide, computed } from 'vue'
 import BaseCustomElement from '@/elements/BaseCustomElement.vue'
 import Register from '@/components/Register.vue'
 
@@ -14,11 +14,10 @@ export default defineComponent({
 
   // Props are defined here for use on the custom element tag
   props: {
-    email: String,
-    emailToken: String,
-    firstName: String,
-    lastName: String,
-    organization: String,
+    accessCodeRequired: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   emits: ['register-success'],
@@ -30,18 +29,10 @@ export default defineComponent({
 
   setup(props) {
     // Provide custom element props to child components
-    const propFormData = reactive({
-      email: props.email ? props.email : '',
-      emailToken: props.emailToken ? props.emailToken : '',
-      firstName: props.firstName ? props.firstName : '',
-      lastName: props.lastName ? props.lastName : '',
-      organization: props.organization ? props.organization : '',
-      prepopulated: computed((): boolean =>
-        props.email && props.emailToken && props.firstName && props.lastName && props.organization ? true : false,
-      ),
-    })
-
-    provide('register-form-data', propFormData)
+    provide(
+      'access-code-required',
+      computed((): boolean => props.accessCodeRequired),
+    )
   },
 })
 </script>

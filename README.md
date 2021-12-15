@@ -113,7 +113,7 @@ All styles from the [Kongponents component library](https://kongponents.konghq.c
 
 Provides a login UI along with corresponding `kauth` authentication.
 
-Provides email confirmation, given a valid [`token` in the query string](#token-confirm-email).
+Provides email confirmation, given a valid `token` in the query string.
 
 Also sets the `userStatus` cookie, along with other `kauth` cookies and localStorage entries.
 
@@ -134,11 +134,11 @@ Also sets the `userStatus` cookie, along with other `kauth` cookies and localSto
 - `click-forgot-password-link`
 - `click-register-link`
 
-To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details.
+To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
 
 #### Query String Parameters
 
-##### `token` (Confirm Email)
+##### `token` (required)
 
 Pass a valid `token` entry in the URL query string to confirm the user's email address.
 
@@ -170,7 +170,79 @@ Provides a forgot password UI along with corresponding `kauth` functionality to 
 - `forgot-password-success({ email: String })`
 - `click-login-link`
 
-To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details.
+To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
+
+---
+
+### `kong-auth-reset-password`
+
+Provides a reset password UI along with corresponding `kauth` functionality to allow the user to reset their password when coming from the reset password email, provided a valid `token` is present in the query string.
+
+#### Props
+
+| Prop              | Type   | Default |
+| :---------------- | :----- | :------ |
+| `instructionText` | String | `''`    |
+
+#### Emits Events
+
+- `reset-password-success({ email: String })`
+
+To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
+
+#### Query String Parameters
+
+##### `token` (required)
+
+Pass a valid `token` entry in the URL query string to send to the reset password request.
+
+##### `email`
+
+Pass the user's encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input on redirect.
+
+---
+
+### `kong-auth-register`
+
+Provides a registration UI along with corresponding `kauth` functionality to allow the user to register and sending the confirmation email.
+
+#### Props
+
+| Prop                 | Type    | Default |
+| :------------------- | :------ | :------ |
+| `accessCodeRequired` | Boolean | `false` |
+
+#### Emits Events
+
+- `register-success({ email: String, fromInvite: Boolean })`
+
+To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
+
+#### Query String Parameters
+
+##### `token` (required if from invitation)
+
+Pass a valid `token` entry in the URL query string to send to the reset password request.
+
+##### `token` (required if from invitation)
+
+Pass an invite token in the query string if the user is originating from an invite.
+
+##### `email` (required if from invitation)
+
+Pass the user's encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string if the user is originating from an invite.
+
+##### `firstName` (required if from invitation)
+
+Pass the user's encoded first name in the query string if the user is originating from an invite.
+
+##### `lastName` (required if from invitation)
+
+Pass the user's encoded last name in the query string if the user is originating from an invite.
+
+##### `org` (required if from invitation)
+
+Pass the user's encoded organization in the query string if the user is originating from an invite.
 
 ## Usage
 
