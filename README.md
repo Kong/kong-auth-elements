@@ -220,27 +220,27 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 #### Query String Parameters
 
-##### `token` (required)
+##### `token` (required if from invitation)
 
 Pass a valid `token` entry in the URL query string to send to the reset password request.
 
-##### `token`
+##### `token` (required if from invitation)
 
 Pass an invite token in the query string if the user is originating from an invite.
 
-##### `email`
+##### `email` (required if from invitation)
 
 Pass the user's encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string if the user is originating from an invite.
 
-##### `firstName`
+##### `firstName` (required if from invitation)
 
 Pass the user's encoded first name in the query string if the user is originating from an invite.
 
-##### `lastName`
+##### `lastName` (required if from invitation)
 
 Pass the user's encoded last name in the query string if the user is originating from an invite.
 
-##### `org`
+##### `org` (required if from invitation)
 
 Pass the user's encoded organization in the query string if the user is originating from an invite.
 
