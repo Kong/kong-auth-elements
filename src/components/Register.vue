@@ -124,7 +124,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, reactive, toRefs, computed } from 'vue'
+import { defineComponent, inject, ref, Ref, reactive, toRefs, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText } from '@/utils'
@@ -154,16 +154,15 @@ export default defineComponent({
   setup(props, { emit }) {
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
-    const propFormData: any = inject('register-form-data')
+    const accessCodeRequired: Ref<boolean> = inject('access-code-required', ref(false))
 
     const formData = reactive({
-      email: propFormData.email,
-      firstName: propFormData.firstName,
-      lastName: propFormData.lastName,
-      emailToken: propFormData.emailToken,
-      organization: propFormData.organization,
-      prepopulated: propFormData.prepopulated,
-      accessCodeRequired: propFormData.accessCodeRequired,
+      email: '',
+      firstName: '',
+      lastName: '',
+      emailToken: '',
+      organization: '',
+      prepopulated: false,
       accessCode: '',
       password: '',
       checked_agreement: false,
@@ -194,15 +193,15 @@ export default defineComponent({
     )
 
     const userCanSubmitForm = computed((): boolean => {
-      return (
-        formData.email &&
+      return formData.email &&
         formData.firstName &&
         formData.lastName &&
         formData.organization &&
         formData.password &&
         formData.checked_agreement &&
-        (formData.accessCodeRequired ? !formData.emailToken && formData.accessCode : true)
-      )
+        (accessCodeRequired.value ? !formData.emailToken && formData.accessCode : true)
+        ? true
+        : false
     })
 
     const btnText = computed((): string => {
@@ -250,6 +249,7 @@ export default defineComponent({
         // Emit success
         emit('register-success', {
           email: formData.email,
+          fromInvite: formData.prepopulated,
         })
       } catch (err: any) {
         send('REJECT')
@@ -271,6 +271,26 @@ export default defineComponent({
       }
     }
 
+    onMounted(() => {
+      const urlParams = new URLSearchParams(window.location.search)
+
+      formData.email = urlParams.get('email') || ''
+      formData.emailToken = urlParams.get('token') || ''
+      formData.firstName = urlParams.get('firstName') || ''
+      formData.lastName = urlParams.get('lastName') || ''
+      formData.organization = urlParams.get('org') || ''
+
+      // If all values were passed in, set formData.prepopulated to true
+      formData.prepopulated =
+        urlParams.get('email') &&
+        urlParams.get('token') &&
+        urlParams.get('firstName') &&
+        urlParams.get('lastName') &&
+        urlParams.get('org')
+          ? true
+          : false
+    })
+
     return {
       currentState,
       btnText,
@@ -280,6 +300,7 @@ export default defineComponent({
       error,
       passwordError,
       fieldsHaveError,
+      accessCodeRequired,
       ...toRefs(formData),
     }
   },
