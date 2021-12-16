@@ -213,9 +213,8 @@ export default defineComponent({
     }
 
     const setEmail = async (token: string) => {
-      let response
       try {
-        response = await $api.auth.emailVerification.emailVerificationsPatch({
+        const response = await $api.auth.emailVerification.emailVerificationsPatch({
           token,
         })
         send('RESOLVE')
