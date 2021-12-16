@@ -3,34 +3,41 @@
     <h1>Components App</h1>
 
     <div class="component-container">
-      <h4><code>KongAuthLogin.vue</code></h4>
-      <KongAuthLogin
-        show-forgot-password-link
-        @login-success="showAlert('Login success!')"
-        @click-forgot-password-link="showAlert('User clicked forgot password')"
-        @click-register-link="showAlert('User clicked register')"></KongAuthLogin>
-      <hr />
+      <div v-if="urlPath.includes('/login') || urlPath === '/'" class="element-wrapper">
+        <h4><code>KongAuthLogin.vue</code></h4>
+        <KongAuthLogin
+          show-forgot-password-link
+          @login-success="showAlert('Login success!')"
+          @click-forgot-password-link="showAlert('User clicked forgot password')"
+          @click-register-link="showAlert('User clicked register')"></KongAuthLogin>
+      </div>
 
-      <h4><code>KongAuthForgotPassword.vue</code></h4>
-      <KongAuthForgotPassword
-        instruction-text="Enter your verified email address and we will send you a password reset link."
-        @click-login-link="showAlert('User clicked login')"
-        @forgot-password-success="showAlert('Forgot password success!')" />
-      <hr />
+      <div v-if="urlPath.includes('/forgot-password') || urlPath === '/'" class="element-wrapper">
+        <h4><code>KongAuthForgotPassword.vue</code></h4>
+        <KongAuthForgotPassword
+          instruction-text="Enter your verified email address and we will send you a password reset link."
+          @click-login-link="showAlert('User clicked login')"
+          @forgot-password-success="showAlert('Forgot password success!')" />
+      </div>
 
-      <h4><code>KongAuthResetPassword.vue</code></h4>
-      <KongAuthResetPassword
-        instruction-text="Please enter in your new password and confirm it below."
-        @reset-password-success="showAlert('Reset password success!')" />
-      <hr />
+      <div v-if="urlPath.includes('/reset-password') || urlPath === '/'" class="element-wrapper">
+        <h4><code>KongAuthResetPassword.vue</code></h4>
+        <KongAuthResetPassword
+          instruction-text="Please enter in your new password and confirm it below."
+          @reset-password-success="showAlert('Reset password success!')" />
+      </div>
 
-      <h4><code>KongAuthRegister.vue</code></h4>
-      <KongAuthRegister @register-success="showAlert('Register success!')" />
+      <div v-if="urlPath.includes('/register') || urlPath === '/'" class="element-wrapper">
+        <h4><code>KongAuthRegister.vue</code></h4>
+        <KongAuthRegister @register-success="showAlert('Register success!')" />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
+
 // Import and register Custom Elements as Components
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
@@ -43,6 +50,12 @@ const showAlert = (text = ''): void => {
   }
   alert(text)
 }
+
+const urlPath = ref('')
+
+onMounted(() => {
+  urlPath.value = window.location.pathname
+})
 </script>
 
 <style lang="scss">
@@ -73,8 +86,13 @@ body {
       margin: 40px auto 0;
     }
 
-    hr {
-      margin: 40px 0;
+    .element-wrapper {
+      border-bottom: 1px solid lightgray;
+      padding: 40px 0;
+
+      &:last-of-type {
+        border-bottom: none;
+      }
     }
   }
 }

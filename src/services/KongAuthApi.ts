@@ -1,8 +1,9 @@
 import axios, { AxiosInstance, AxiosError } from 'axios'
 import {
   AuthenticationApi,
-  EmailVerificationApi,
   Configuration,
+  EmailVerificationApi,
+  IdentityProviderAPIApi,
   InvitesApi,
   PasswordsApi,
   RegistrationApi,
@@ -11,10 +12,15 @@ import {
 export default class KongAuthApi {
   auth: {
     authentication: AuthenticationApi
+    passwords: PasswordsApi
+  }
+
+  idp: IdentityProviderAPIApi
+
+  register: {
+    registration: RegistrationApi
     emailVerification: EmailVerificationApi
     invites: InvitesApi
-    passwords: PasswordsApi
-    registration: RegistrationApi
   }
 
   client: AxiosInstance
@@ -38,10 +44,15 @@ export default class KongAuthApi {
 
     this.auth = {
       authentication: new AuthenticationApi(baseConfig, baseConfig.basePath, this.client),
+      passwords: new PasswordsApi(baseConfig, baseConfig.basePath, this.client),
+    }
+
+    this.idp = new IdentityProviderAPIApi(baseConfig, baseConfig.basePath, this.client)
+
+    this.register = {
+      registration: new RegistrationApi(baseConfig, baseConfig.basePath, this.client),
       emailVerification: new EmailVerificationApi(baseConfig, baseConfig.basePath, this.client),
       invites: new InvitesApi(baseConfig, baseConfig.basePath, this.client),
-      passwords: new PasswordsApi(baseConfig, baseConfig.basePath, this.client),
-      registration: new RegistrationApi(baseConfig, baseConfig.basePath, this.client),
     }
   }
 }

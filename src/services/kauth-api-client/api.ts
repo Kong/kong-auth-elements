@@ -86,11 +86,41 @@ export interface EmailverificationsVerifyResponse {
  */
 export interface ErrorResponse {
     /**
-     * 
-     * @type {Array<ModelError>}
+     * Code is an application-specific error code, expressed as a string value.
+     * @type {string}
      * @memberof ErrorResponse
      */
-    'errors'?: Array<ModelError>;
+    'code'?: string;
+    /**
+     * Detail is a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized.
+     * @type {string}
+     * @memberof ErrorResponse
+     */
+    'detail'?: string;
+    /**
+     * ID is a unique identifier for this particular occurrence of the problem.
+     * @type {string}
+     * @memberof ErrorResponse
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {ErrorSource}
+     * @memberof ErrorResponse
+     */
+    'source'?: ErrorSource;
+    /**
+     * Status is the HTTP status code applicable to this problem, expressed as a string value.
+     * @type {string}
+     * @memberof ErrorResponse
+     */
+    'status'?: string;
+    /**
+     * Title is a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization.
+     * @type {string}
+     * @memberof ErrorResponse
+     */
+    'title'?: string;
 }
 /**
  * 
@@ -114,6 +144,331 @@ export interface ErrorSource {
 /**
  * 
  * @export
+ * @interface ErrorsResponse
+ */
+export interface ErrorsResponse {
+    /**
+     * 
+     * @type {Array<ErrorResponse>}
+     * @memberof ErrorsResponse
+     */
+    'errors'?: Array<ErrorResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface HealthAPIProtobufAny
+ */
+export interface HealthAPIProtobufAny {
+    [key: string]: object | any;
+
+    /**
+     * 
+     * @type {string}
+     * @memberof HealthAPIProtobufAny
+     */
+    '@type'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface HealthAPIRpcStatus
+ */
+export interface HealthAPIRpcStatus {
+    /**
+     * 
+     * @type {number}
+     * @memberof HealthAPIRpcStatus
+     */
+    'code'?: number;
+    /**
+     * 
+     * @type {Array<HealthAPIProtobufAny>}
+     * @memberof HealthAPIRpcStatus
+     */
+    'details'?: Array<HealthAPIProtobufAny>;
+    /**
+     * 
+     * @type {string}
+     * @memberof HealthAPIRpcStatus
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface HealthAPIV1CheckResponse
+ */
+export interface HealthAPIV1CheckResponse {
+    /**
+     * 
+     * @type {HealthAPIV1ServingStatus}
+     * @memberof HealthAPIV1CheckResponse
+     */
+    'status'?: HealthAPIV1ServingStatus;
+    /**
+     * 
+     * @type {string}
+     * @memberof HealthAPIV1CheckResponse
+     */
+    'version'?: string;
+}
+/**
+ * - SERVING_STATUS_INVALID: Status is invalid/unknown  - SERVING_STATUS_SERVING: Service is serving  - SERVING_STATUS_NOT_SERVING: Service is not serving
+ * @export
+ * @enum {string}
+ */
+
+export enum HealthAPIV1ServingStatus {
+    Invalid = 'SERVING_STATUS_INVALID',
+    Serving = 'SERVING_STATUS_SERVING',
+    NotServing = 'SERVING_STATUS_NOT_SERVING'
+}
+
+/**
+ * 
+ * @export
+ * @interface IdentityProviderAPIProtobufAny
+ */
+export interface IdentityProviderAPIProtobufAny {
+    [key: string]: object | any;
+
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityProviderAPIProtobufAny
+     */
+    '@type'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface IdentityProviderAPIRpcStatus
+ */
+export interface IdentityProviderAPIRpcStatus {
+    /**
+     * 
+     * @type {number}
+     * @memberof IdentityProviderAPIRpcStatus
+     */
+    'code'?: number;
+    /**
+     * 
+     * @type {Array<IdentityProviderAPIProtobufAny>}
+     * @memberof IdentityProviderAPIRpcStatus
+     */
+    'details'?: Array<IdentityProviderAPIProtobufAny>;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityProviderAPIRpcStatus
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface IdentityProviderAPIV1Config
+ */
+export interface IdentityProviderAPIV1Config {
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityProviderAPIV1Config
+     */
+    'clientId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityProviderAPIV1Config
+     */
+    'clientSecret'?: string;
+    /**
+     * 
+     * @type {IdentityProviderAPIV1IDPType}
+     * @memberof IdentityProviderAPIV1Config
+     */
+    'idpType'?: IdentityProviderAPIV1IDPType;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityProviderAPIV1Config
+     */
+    'issuer'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface IdentityProviderAPIV1GetResponse
+ */
+export interface IdentityProviderAPIV1GetResponse {
+    /**
+     * 
+     * @type {IdentityProviderAPIV1IdentityProvider}
+     * @memberof IdentityProviderAPIV1GetResponse
+     */
+    'identityProvider'?: IdentityProviderAPIV1IdentityProvider;
+}
+/**
+ * - IDP_TYPE_INVALID: Invalid IdP  - IDP_TYPE_OIDC: Okta IdP
+ * @export
+ * @enum {string}
+ */
+
+export enum IdentityProviderAPIV1IDPType {
+    Invalid = 'IDP_TYPE_INVALID',
+    Oidc = 'IDP_TYPE_OIDC'
+}
+
+/**
+ * 
+ * @export
+ * @interface IdentityProviderAPIV1IdentityProvider
+ */
+export interface IdentityProviderAPIV1IdentityProvider {
+    /**
+     * 
+     * @type {Array<IdentityProviderAPIV1TeamAssignment>}
+     * @memberof IdentityProviderAPIV1IdentityProvider
+     */
+    'assignments'?: Array<IdentityProviderAPIV1TeamAssignment>;
+    /**
+     * 
+     * @type {IdentityProviderAPIV1Config}
+     * @memberof IdentityProviderAPIV1IdentityProvider
+     */
+    'config'?: IdentityProviderAPIV1Config;
+    /**
+     * 
+     * @type {IdentityProviderAPIV1Config}
+     * @memberof IdentityProviderAPIV1IdentityProvider
+     */
+    'pendingConfig'?: IdentityProviderAPIV1Config;
+}
+/**
+ * PromoteConfigRequest contains the request to promote an organization\'s pending idP config to active.
+ * @export
+ * @interface IdentityProviderAPIV1PromoteConfigRequest
+ */
+export interface IdentityProviderAPIV1PromoteConfigRequest {
+    /**
+     * 
+     * @type {IdentityProviderAPIV1Config}
+     * @memberof IdentityProviderAPIV1PromoteConfigRequest
+     */
+    'config'?: IdentityProviderAPIV1Config;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityProviderAPIV1PromoteConfigRequest
+     */
+    'organizationId'?: string;
+}
+/**
+ * PromoteConfigRequest contains the response from promote-config.
+ * @export
+ * @interface IdentityProviderAPIV1PromoteConfigResponse
+ */
+export interface IdentityProviderAPIV1PromoteConfigResponse {
+    /**
+     * 
+     * @type {IdentityProviderAPIV1Config}
+     * @memberof IdentityProviderAPIV1PromoteConfigResponse
+     */
+    'config'?: IdentityProviderAPIV1Config;
+}
+/**
+ * 
+ * @export
+ * @interface IdentityProviderAPIV1TeamAssignment
+ */
+export interface IdentityProviderAPIV1TeamAssignment {
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityProviderAPIV1TeamAssignment
+     */
+    'group'?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof IdentityProviderAPIV1TeamAssignment
+     */
+    'teamIds'?: Array<string>;
+}
+/**
+ * Request to update config. The given configuration will be stored as a pending configuration and a test login initiated.
+ * @export
+ * @interface IdentityProviderAPIV1UpdateConfigRequest
+ */
+export interface IdentityProviderAPIV1UpdateConfigRequest {
+    /**
+     * 
+     * @type {IdentityProviderAPIV1Config}
+     * @memberof IdentityProviderAPIV1UpdateConfigRequest
+     */
+    'config'?: IdentityProviderAPIV1Config;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityProviderAPIV1UpdateConfigRequest
+     */
+    'organizationId'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface IdentityProviderAPIV1UpdateConfigResponse
+ */
+export interface IdentityProviderAPIV1UpdateConfigResponse {
+    /**
+     * 
+     * @type {IdentityProviderAPIV1Config}
+     * @memberof IdentityProviderAPIV1UpdateConfigResponse
+     */
+    'config'?: IdentityProviderAPIV1Config;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityProviderAPIV1UpdateConfigResponse
+     */
+    'loginUrl'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface IdentityProviderAPIV1UpdateTeamAssignmentsRequest
+ */
+export interface IdentityProviderAPIV1UpdateTeamAssignmentsRequest {
+    /**
+     * 
+     * @type {Array<IdentityProviderAPIV1TeamAssignment>}
+     * @memberof IdentityProviderAPIV1UpdateTeamAssignmentsRequest
+     */
+    'assignments'?: Array<IdentityProviderAPIV1TeamAssignment>;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityProviderAPIV1UpdateTeamAssignmentsRequest
+     */
+    'organizationId'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface IdentityProviderAPIV1UpdateTeamAssignmentsResponse
+ */
+export interface IdentityProviderAPIV1UpdateTeamAssignmentsResponse {
+    /**
+     * 
+     * @type {Array<IdentityProviderAPIV1TeamAssignment>}
+     * @memberof IdentityProviderAPIV1UpdateTeamAssignmentsResponse
+     */
+    'assignments'?: Array<IdentityProviderAPIV1TeamAssignment>;
+}
+/**
+ * 
+ * @export
  * @interface InvitesAcceptRequest
  */
 export interface InvitesAcceptRequest {
@@ -131,47 +486,311 @@ export interface InvitesAcceptRequest {
     'token': string;
 }
 /**
+ * - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+ * @export
+ * @enum {string}
+ */
+
+export enum MeAPIOptionsSortOrder {
+    Invalid = 'SORT_ORDER_INVALID',
+    Ascending = 'SORT_ORDER_ASCENDING',
+    Descending = 'SORT_ORDER_DESCENDING'
+}
+
+/**
  * 
  * @export
- * @interface ModelError
+ * @interface MeAPIProtobufAny
  */
-export interface ModelError {
+export interface MeAPIProtobufAny {
+    [key: string]: object | any;
+
     /**
-     * Code is an application-specific error code, expressed as a string value.
+     * 
      * @type {string}
-     * @memberof ModelError
+     * @memberof MeAPIProtobufAny
      */
-    'code'?: string;
+    '@type'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface MeAPIRetrieveOptionsFilter
+ */
+export interface MeAPIRetrieveOptionsFilter {
     /**
-     * Detail is a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized.
+     * 
      * @type {string}
-     * @memberof ModelError
+     * @memberof MeAPIRetrieveOptionsFilter
      */
-    'detail'?: string;
+    'q'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface MeAPIRetrieveOptionsPagination
+ */
+export interface MeAPIRetrieveOptionsPagination {
     /**
-     * ID is a unique identifier for this particular occurrence of the problem.
+     * 
+     * @type {number}
+     * @memberof MeAPIRetrieveOptionsPagination
+     */
+    'limit'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof MeAPIRetrieveOptionsPagination
+     */
+    'offset'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface MeAPIRetrieveOptionsSort
+ */
+export interface MeAPIRetrieveOptionsSort {
+    /**
+     * 
      * @type {string}
-     * @memberof ModelError
+     * @memberof MeAPIRetrieveOptionsSort
+     */
+    'sortBy'?: string;
+    /**
+     * 
+     * @type {MeAPIOptionsSortOrder}
+     * @memberof MeAPIRetrieveOptionsSort
+     */
+    'sortOrder'?: MeAPIOptionsSortOrder;
+}
+/**
+ * 
+ * @export
+ * @interface MeAPIRpcStatus
+ */
+export interface MeAPIRpcStatus {
+    /**
+     * 
+     * @type {number}
+     * @memberof MeAPIRpcStatus
+     */
+    'code'?: number;
+    /**
+     * 
+     * @type {Array<MeAPIProtobufAny>}
+     * @memberof MeAPIRpcStatus
+     */
+    'details'?: Array<MeAPIProtobufAny>;
+    /**
+     * 
+     * @type {string}
+     * @memberof MeAPIRpcStatus
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface MeAPIV1Organization
+ */
+export interface MeAPIV1Organization {
+    /**
+     * 
+     * @type {string}
+     * @memberof MeAPIV1Organization
      */
     'id'?: string;
     /**
      * 
-     * @type {ErrorSource}
-     * @memberof ModelError
-     */
-    'source'?: ErrorSource;
-    /**
-     * Status is the HTTP status code applicable to this problem, expressed as a string value.
      * @type {string}
-     * @memberof ModelError
+     * @memberof MeAPIV1Organization
      */
-    'status'?: string;
+    'name'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface MeAPIV1Permission
+ */
+export interface MeAPIV1Permission {
     /**
-     * Title is a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization.
+     * 
      * @type {string}
-     * @memberof ModelError
+     * @memberof MeAPIV1Permission
      */
-    'title'?: string;
+    'action'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MeAPIV1Permission
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MeAPIV1Permission
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MeAPIV1Permission
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MeAPIV1Permission
+     */
+    'resource'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface MeAPIV1RetrieveTeamsResponse
+ */
+export interface MeAPIV1RetrieveTeamsResponse {
+    /**
+     * 
+     * @type {Array<MeAPIV1Team>}
+     * @memberof MeAPIV1RetrieveTeamsResponse
+     */
+    'teams'?: Array<MeAPIV1Team>;
+}
+/**
+ * 
+ * @export
+ * @interface MeAPIV1Team
+ */
+export interface MeAPIV1Team {
+    /**
+     * 
+     * @type {string}
+     * @memberof MeAPIV1Team
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MeAPIV1Team
+     */
+    'name'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface MeAPIV1User
+ */
+export interface MeAPIV1User {
+    /**
+     * 
+     * @type {string}
+     * @memberof MeAPIV1User
+     */
+    'email'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MeAPIV1User
+     */
+    'firstName'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MeAPIV1User
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MeAPIV1User
+     */
+    'lastName'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface MoveTeamRequest
+ */
+export interface MoveTeamRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof MoveTeamRequest
+     */
+    'parentTeamId'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface OrganizationAPIProtobufAny
+ */
+export interface OrganizationAPIProtobufAny {
+    [key: string]: object | any;
+
+    /**
+     * 
+     * @type {string}
+     * @memberof OrganizationAPIProtobufAny
+     */
+    '@type'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface OrganizationAPIRpcStatus
+ */
+export interface OrganizationAPIRpcStatus {
+    /**
+     * 
+     * @type {number}
+     * @memberof OrganizationAPIRpcStatus
+     */
+    'code'?: number;
+    /**
+     * 
+     * @type {Array<OrganizationAPIProtobufAny>}
+     * @memberof OrganizationAPIRpcStatus
+     */
+    'details'?: Array<OrganizationAPIProtobufAny>;
+    /**
+     * 
+     * @type {string}
+     * @memberof OrganizationAPIRpcStatus
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface OrganizationAPIV1Settings
+ */
+export interface OrganizationAPIV1Settings {
+    /**
+     * 
+     * @type {number}
+     * @memberof OrganizationAPIV1Settings
+     */
+    'maxPasswordAttempts'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface OrganizationAPIV1UpdateOrganizationSettingsRequest
+ */
+export interface OrganizationAPIV1UpdateOrganizationSettingsRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof OrganizationAPIV1UpdateOrganizationSettingsRequest
+     */
+    'organizationId'?: string;
+    /**
+     * 
+     * @type {OrganizationAPIV1Settings}
+     * @memberof OrganizationAPIV1UpdateOrganizationSettingsRequest
+     */
+    'settings'?: OrganizationAPIV1Settings;
 }
 /**
  * 
@@ -204,6 +823,19 @@ export interface PasswordresetsResetRequest {
      * @memberof PasswordresetsResetRequest
      */
     'token': string;
+}
+/**
+ * 
+ * @export
+ * @interface PasswordresetsResetResponse
+ */
+export interface PasswordresetsResetResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof PasswordresetsResetResponse
+     */
+    'email'?: string;
 }
 /**
  * 
@@ -246,7 +878,7 @@ export interface RegisterRegisterRequest {
      * @type {string}
      * @memberof RegisterRegisterRequest
      */
-    'registration-code'?: string;
+    'registrationCode'?: string;
 }
 /**
  * 
@@ -261,6 +893,344 @@ export interface RegisterRegisterResponse {
      */
     'organizationID'?: string;
 }
+/**
+ * - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+ * @export
+ * @enum {string}
+ */
+
+export enum TeamAPIOptionsSortOrder {
+    Invalid = 'SORT_ORDER_INVALID',
+    Ascending = 'SORT_ORDER_ASCENDING',
+    Descending = 'SORT_ORDER_DESCENDING'
+}
+
+/**
+ * 
+ * @export
+ * @interface TeamAPIProtobufAny
+ */
+export interface TeamAPIProtobufAny {
+    [key: string]: object | any;
+
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIProtobufAny
+     */
+    '@type'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface TeamAPIRetrieveOptionsFilter
+ */
+export interface TeamAPIRetrieveOptionsFilter {
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIRetrieveOptionsFilter
+     */
+    'q'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface TeamAPIRetrieveOptionsPagination
+ */
+export interface TeamAPIRetrieveOptionsPagination {
+    /**
+     * 
+     * @type {number}
+     * @memberof TeamAPIRetrieveOptionsPagination
+     */
+    'limit'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TeamAPIRetrieveOptionsPagination
+     */
+    'offset'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface TeamAPIRetrieveOptionsSort
+ */
+export interface TeamAPIRetrieveOptionsSort {
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIRetrieveOptionsSort
+     */
+    'sortBy'?: string;
+    /**
+     * 
+     * @type {TeamAPIOptionsSortOrder}
+     * @memberof TeamAPIRetrieveOptionsSort
+     */
+    'sortOrder'?: TeamAPIOptionsSortOrder;
+}
+/**
+ * 
+ * @export
+ * @interface TeamAPIRpcStatus
+ */
+export interface TeamAPIRpcStatus {
+    /**
+     * 
+     * @type {number}
+     * @memberof TeamAPIRpcStatus
+     */
+    'code'?: number;
+    /**
+     * 
+     * @type {Array<TeamAPIProtobufAny>}
+     * @memberof TeamAPIRpcStatus
+     */
+    'details'?: Array<TeamAPIProtobufAny>;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIRpcStatus
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface TeamAPIV1CreateTeamResponse
+ */
+export interface TeamAPIV1CreateTeamResponse {
+    /**
+     * 
+     * @type {TeamAPIV1Team}
+     * @memberof TeamAPIV1CreateTeamResponse
+     */
+    'team'?: TeamAPIV1Team;
+}
+/**
+ * 
+ * @export
+ * @interface TeamAPIV1MoveTeamResponse
+ */
+export interface TeamAPIV1MoveTeamResponse {
+    /**
+     * 
+     * @type {TeamAPIV1Team}
+     * @memberof TeamAPIV1MoveTeamResponse
+     */
+    'team'?: TeamAPIV1Team;
+}
+/**
+ * 
+ * @export
+ * @interface TeamAPIV1RetrieveChildTeamsResponse
+ */
+export interface TeamAPIV1RetrieveChildTeamsResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof TeamAPIV1RetrieveChildTeamsResponse
+     */
+    'count'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIV1RetrieveChildTeamsResponse
+     */
+    'parentTeamId'?: string;
+    /**
+     * 
+     * @type {Array<TeamAPIV1Team>}
+     * @memberof TeamAPIV1RetrieveChildTeamsResponse
+     */
+    'teams'?: Array<TeamAPIV1Team>;
+}
+/**
+ * 
+ * @export
+ * @interface TeamAPIV1RetrieveTeamsResponse
+ */
+export interface TeamAPIV1RetrieveTeamsResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof TeamAPIV1RetrieveTeamsResponse
+     */
+    'count'?: number;
+    /**
+     * 
+     * @type {Array<TeamAPIV1Team>}
+     * @memberof TeamAPIV1RetrieveTeamsResponse
+     */
+    'teams'?: Array<TeamAPIV1Team>;
+}
+/**
+ * 
+ * @export
+ * @interface TeamAPIV1Team
+ */
+export interface TeamAPIV1Team {
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIV1Team
+     */
+    'createdAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIV1Team
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIV1Team
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIV1Team
+     */
+    'updatedAt'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface TeamAPIV1UpdateTeamResponse
+ */
+export interface TeamAPIV1UpdateTeamResponse {
+    /**
+     * 
+     * @type {TeamAPIV1Team}
+     * @memberof TeamAPIV1UpdateTeamResponse
+     */
+    'team'?: TeamAPIV1Team;
+}
+/**
+ * 
+ * @export
+ * @interface UserAPIProtobufAny
+ */
+export interface UserAPIProtobufAny {
+    [key: string]: object | any;
+
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIProtobufAny
+     */
+    '@type'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UserAPIRetrieveOptionsPagination
+ */
+export interface UserAPIRetrieveOptionsPagination {
+    /**
+     * 
+     * @type {number}
+     * @memberof UserAPIRetrieveOptionsPagination
+     */
+    'limit'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserAPIRetrieveOptionsPagination
+     */
+    'offset'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface UserAPIRpcStatus
+ */
+export interface UserAPIRpcStatus {
+    /**
+     * 
+     * @type {number}
+     * @memberof UserAPIRpcStatus
+     */
+    'code'?: number;
+    /**
+     * 
+     * @type {Array<UserAPIProtobufAny>}
+     * @memberof UserAPIRpcStatus
+     */
+    'details'?: Array<UserAPIProtobufAny>;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIRpcStatus
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UserAPIV1RetrieveUsersResponse
+ */
+export interface UserAPIV1RetrieveUsersResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof UserAPIV1RetrieveUsersResponse
+     */
+    'count'?: number;
+    /**
+     * 
+     * @type {Array<UserAPIV1User>}
+     * @memberof UserAPIV1RetrieveUsersResponse
+     */
+    'users'?: Array<UserAPIV1User>;
+}
+/**
+ * 
+ * @export
+ * @interface UserAPIV1User
+ */
+export interface UserAPIV1User {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIV1User
+     */
+    'createdAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIV1User
+     */
+    'email'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIV1User
+     */
+    'firstName'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIV1User
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIV1User
+     */
+    'lastName'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIV1User
+     */
+    'updatedAt'?: string;
+}
 
 /**
  * AuthenticationApi - axios parameter creator
@@ -268,6 +1238,50 @@ export interface RegisterRegisterResponse {
  */
 export const AuthenticationApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
+         * @summary Redirects a user to the correct location for organization
+         * @param {string} organizationId Organization ID
+         * @param {string} [returnTo] Path to return to after authentication has completed
+         * @param {string} [test] Configuration test mode
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticateOrganizationIdGet: async (organizationId: string, returnTo?: string, test?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'organizationId' is not null or undefined
+            assertParamExists('authenticateOrganizationIdGet', 'organizationId', organizationId)
+            const localVarPath = `/authenticate/{organizationId}`
+                .replace(`{${"organizationId"}}`, encodeURIComponent(String(organizationId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (returnTo !== undefined) {
+                localVarQueryParameter['returnTo'] = returnTo;
+            }
+
+            if (test !== undefined) {
+                localVarQueryParameter['test'] = test;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * This will authenticate a user...
          * @summary Authenticates a user given a username and password
@@ -351,6 +1365,19 @@ export const AuthenticationApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = AuthenticationApiAxiosParamCreator(configuration)
     return {
         /**
+         * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
+         * @summary Redirects a user to the correct location for organization
+         * @param {string} organizationId Organization ID
+         * @param {string} [returnTo] Path to return to after authentication has completed
+         * @param {string} [test] Configuration test mode
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async authenticateOrganizationIdGet(organizationId: string, returnTo?: string, test?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticateOrganizationIdGet(organizationId, returnTo, test, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * This will authenticate a user...
          * @summary Authenticates a user given a username and password
          * @param {AuthenticateAuthenticateRequest} message Authentication request
@@ -383,6 +1410,18 @@ export const AuthenticationApiFactory = function (configuration?: Configuration,
     const localVarFp = AuthenticationApiFp(configuration)
     return {
         /**
+         * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
+         * @summary Redirects a user to the correct location for organization
+         * @param {string} organizationId Organization ID
+         * @param {string} [returnTo] Path to return to after authentication has completed
+         * @param {string} [test] Configuration test mode
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticateOrganizationIdGet(organizationId: string, returnTo?: string, test?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.authenticateOrganizationIdGet(organizationId, returnTo, test, options).then((request) => request(axios, basePath));
+        },
+        /**
          * This will authenticate a user...
          * @summary Authenticates a user given a username and password
          * @param {AuthenticateAuthenticateRequest} message Authentication request
@@ -412,6 +1451,20 @@ export const AuthenticationApiFactory = function (configuration?: Configuration,
  * @extends {BaseAPI}
  */
 export class AuthenticationApi extends BaseAPI {
+    /**
+     * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
+     * @summary Redirects a user to the correct location for organization
+     * @param {string} organizationId Organization ID
+     * @param {string} [returnTo] Path to return to after authentication has completed
+     * @param {string} [test] Configuration test mode
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticationApi
+     */
+    public authenticateOrganizationIdGet(organizationId: string, returnTo?: string, test?: string, options?: AxiosRequestConfig) {
+        return AuthenticationApiFp(this.configuration).authenticateOrganizationIdGet(organizationId, returnTo, test, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * This will authenticate a user...
      * @summary Authenticates a user given a username and password
@@ -537,127 +1590,6 @@ export class ClientConfigApi extends BaseAPI {
 
 
 /**
- * DefaultApi - axios parameter creator
- * @export
- */
-export const DefaultApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
-         * @summary Redirects a user to the correct location for organization
-         * @param {string} organizationId Organization ID
-         * @param {string} [returnTo] Path to return to after authentication has completed
-         * @param {string} [test] Configuration test mode
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticateOrganizationIdGet: async (organizationId: string, returnTo?: string, test?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'organizationId' is not null or undefined
-            assertParamExists('authenticateOrganizationIdGet', 'organizationId', organizationId)
-            const localVarPath = `/authenticate/{organizationId}`
-                .replace(`{${"organizationId"}}`, encodeURIComponent(String(organizationId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (returnTo !== undefined) {
-                localVarQueryParameter['returnTo'] = returnTo;
-            }
-
-            if (test !== undefined) {
-                localVarQueryParameter['test'] = test;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * DefaultApi - functional programming interface
- * @export
- */
-export const DefaultApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
-         * @summary Redirects a user to the correct location for organization
-         * @param {string} organizationId Organization ID
-         * @param {string} [returnTo] Path to return to after authentication has completed
-         * @param {string} [test] Configuration test mode
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async authenticateOrganizationIdGet(organizationId: string, returnTo?: string, test?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticateOrganizationIdGet(organizationId, returnTo, test, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-    }
-};
-
-/**
- * DefaultApi - factory interface
- * @export
- */
-export const DefaultApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = DefaultApiFp(configuration)
-    return {
-        /**
-         * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
-         * @summary Redirects a user to the correct location for organization
-         * @param {string} organizationId Organization ID
-         * @param {string} [returnTo] Path to return to after authentication has completed
-         * @param {string} [test] Configuration test mode
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticateOrganizationIdGet(organizationId: string, returnTo?: string, test?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.authenticateOrganizationIdGet(organizationId, returnTo, test, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * DefaultApi - object-oriented interface
- * @export
- * @class DefaultApi
- * @extends {BaseAPI}
- */
-export class DefaultApi extends BaseAPI {
-    /**
-     * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
-     * @summary Redirects a user to the correct location for organization
-     * @param {string} organizationId Organization ID
-     * @param {string} [returnTo] Path to return to after authentication has completed
-     * @param {string} [test] Configuration test mode
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public authenticateOrganizationIdGet(organizationId: string, returnTo?: string, test?: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).authenticateOrganizationIdGet(organizationId, returnTo, test, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-/**
  * EmailVerificationApi - axios parameter creator
  * @export
  */
@@ -760,6 +1692,425 @@ export class EmailVerificationApi extends BaseAPI {
      */
     public emailVerificationsPatch(message: EmailverificationsVerifyRequest, options?: AxiosRequestConfig) {
         return EmailVerificationApiFp(this.configuration).emailVerificationsPatch(message, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * HealthAPIApi - axios parameter creator
+ * @export
+ */
+export const HealthAPIApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Check returns the status of the service
+         * @param {string} [service] service to check, can be blank.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        healthAPICheck: async (service?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/health`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (service !== undefined) {
+                localVarQueryParameter['service'] = service;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * HealthAPIApi - functional programming interface
+ * @export
+ */
+export const HealthAPIApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = HealthAPIApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Check returns the status of the service
+         * @param {string} [service] service to check, can be blank.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async healthAPICheck(service?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HealthAPIV1CheckResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.healthAPICheck(service, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * HealthAPIApi - factory interface
+ * @export
+ */
+export const HealthAPIApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = HealthAPIApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Check returns the status of the service
+         * @param {string} [service] service to check, can be blank.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        healthAPICheck(service?: string, options?: any): AxiosPromise<HealthAPIV1CheckResponse> {
+            return localVarFp.healthAPICheck(service, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * HealthAPIApi - object-oriented interface
+ * @export
+ * @class HealthAPIApi
+ * @extends {BaseAPI}
+ */
+export class HealthAPIApi extends BaseAPI {
+    /**
+     * 
+     * @summary Check returns the status of the service
+     * @param {string} [service] service to check, can be blank.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HealthAPIApi
+     */
+    public healthAPICheck(service?: string, options?: AxiosRequestConfig) {
+        return HealthAPIApiFp(this.configuration).healthAPICheck(service, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * IdentityProviderAPIApi - axios parameter creator
+ * @export
+ */
+export const IdentityProviderAPIApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Gets the IdP configured for an organization
+         * @param {string} [organizationId] UUID of the org to create the IdP for.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        identityProviderAPIGet: async (organizationId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/identity-provider`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (organizationId !== undefined) {
+                localVarQueryParameter['organizationId'] = organizationId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Promote \"pending\" third-party IdP config to current
+         * @param {IdentityProviderAPIV1PromoteConfigRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        identityProviderAPIPromoteConfig: async (body: IdentityProviderAPIV1PromoteConfigRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('identityProviderAPIPromoteConfig', 'body', body)
+            const localVarPath = `/api/v1/identity-provider/promote-config`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Updates a third party IdP config for an organization
+         * @param {IdentityProviderAPIV1UpdateConfigRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        identityProviderAPIUpdateConfig: async (body: IdentityProviderAPIV1UpdateConfigRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('identityProviderAPIUpdateConfig', 'body', body)
+            const localVarPath = `/api/v1/identity-provider`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Updates the group to team assignments for the IdP
+         * @param {IdentityProviderAPIV1UpdateTeamAssignmentsRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        identityProviderAPIUpdateTeamAssignments: async (body: IdentityProviderAPIV1UpdateTeamAssignmentsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('identityProviderAPIUpdateTeamAssignments', 'body', body)
+            const localVarPath = `/api/v1/identity-provider/team-assignments`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * IdentityProviderAPIApi - functional programming interface
+ * @export
+ */
+export const IdentityProviderAPIApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = IdentityProviderAPIApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Gets the IdP configured for an organization
+         * @param {string} [organizationId] UUID of the org to create the IdP for.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async identityProviderAPIGet(organizationId?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IdentityProviderAPIV1GetResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.identityProviderAPIGet(organizationId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Promote \"pending\" third-party IdP config to current
+         * @param {IdentityProviderAPIV1PromoteConfigRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async identityProviderAPIPromoteConfig(body: IdentityProviderAPIV1PromoteConfigRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IdentityProviderAPIV1PromoteConfigResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.identityProviderAPIPromoteConfig(body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Updates a third party IdP config for an organization
+         * @param {IdentityProviderAPIV1UpdateConfigRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async identityProviderAPIUpdateConfig(body: IdentityProviderAPIV1UpdateConfigRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IdentityProviderAPIV1UpdateConfigResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.identityProviderAPIUpdateConfig(body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Updates the group to team assignments for the IdP
+         * @param {IdentityProviderAPIV1UpdateTeamAssignmentsRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async identityProviderAPIUpdateTeamAssignments(body: IdentityProviderAPIV1UpdateTeamAssignmentsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IdentityProviderAPIV1UpdateTeamAssignmentsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.identityProviderAPIUpdateTeamAssignments(body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * IdentityProviderAPIApi - factory interface
+ * @export
+ */
+export const IdentityProviderAPIApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = IdentityProviderAPIApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Gets the IdP configured for an organization
+         * @param {string} [organizationId] UUID of the org to create the IdP for.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        identityProviderAPIGet(organizationId?: string, options?: any): AxiosPromise<IdentityProviderAPIV1GetResponse> {
+            return localVarFp.identityProviderAPIGet(organizationId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Promote \"pending\" third-party IdP config to current
+         * @param {IdentityProviderAPIV1PromoteConfigRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        identityProviderAPIPromoteConfig(body: IdentityProviderAPIV1PromoteConfigRequest, options?: any): AxiosPromise<IdentityProviderAPIV1PromoteConfigResponse> {
+            return localVarFp.identityProviderAPIPromoteConfig(body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Updates a third party IdP config for an organization
+         * @param {IdentityProviderAPIV1UpdateConfigRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        identityProviderAPIUpdateConfig(body: IdentityProviderAPIV1UpdateConfigRequest, options?: any): AxiosPromise<IdentityProviderAPIV1UpdateConfigResponse> {
+            return localVarFp.identityProviderAPIUpdateConfig(body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Updates the group to team assignments for the IdP
+         * @param {IdentityProviderAPIV1UpdateTeamAssignmentsRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        identityProviderAPIUpdateTeamAssignments(body: IdentityProviderAPIV1UpdateTeamAssignmentsRequest, options?: any): AxiosPromise<IdentityProviderAPIV1UpdateTeamAssignmentsResponse> {
+            return localVarFp.identityProviderAPIUpdateTeamAssignments(body, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * IdentityProviderAPIApi - object-oriented interface
+ * @export
+ * @class IdentityProviderAPIApi
+ * @extends {BaseAPI}
+ */
+export class IdentityProviderAPIApi extends BaseAPI {
+    /**
+     * 
+     * @summary Gets the IdP configured for an organization
+     * @param {string} [organizationId] UUID of the org to create the IdP for.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IdentityProviderAPIApi
+     */
+    public identityProviderAPIGet(organizationId?: string, options?: AxiosRequestConfig) {
+        return IdentityProviderAPIApiFp(this.configuration).identityProviderAPIGet(organizationId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Promote \"pending\" third-party IdP config to current
+     * @param {IdentityProviderAPIV1PromoteConfigRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IdentityProviderAPIApi
+     */
+    public identityProviderAPIPromoteConfig(body: IdentityProviderAPIV1PromoteConfigRequest, options?: AxiosRequestConfig) {
+        return IdentityProviderAPIApiFp(this.configuration).identityProviderAPIPromoteConfig(body, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Updates a third party IdP config for an organization
+     * @param {IdentityProviderAPIV1UpdateConfigRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IdentityProviderAPIApi
+     */
+    public identityProviderAPIUpdateConfig(body: IdentityProviderAPIV1UpdateConfigRequest, options?: AxiosRequestConfig) {
+        return IdentityProviderAPIApiFp(this.configuration).identityProviderAPIUpdateConfig(body, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Updates the group to team assignments for the IdP
+     * @param {IdentityProviderAPIV1UpdateTeamAssignmentsRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IdentityProviderAPIApi
+     */
+    public identityProviderAPIUpdateTeamAssignments(body: IdentityProviderAPIV1UpdateTeamAssignmentsRequest, options?: AxiosRequestConfig) {
+        return IdentityProviderAPIApiFp(this.configuration).identityProviderAPIUpdateTeamAssignments(body, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -872,6 +2223,309 @@ export class InvitesApi extends BaseAPI {
 
 
 /**
+ * LogoutApi - axios parameter creator
+ * @export
+ */
+export const LogoutApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Logout will clear the auth cookies
+         * @summary logout by clearing the auth cookies
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        logoutPost: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/logout`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * LogoutApi - functional programming interface
+ * @export
+ */
+export const LogoutApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = LogoutApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Logout will clear the auth cookies
+         * @summary logout by clearing the auth cookies
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async logoutPost(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.logoutPost(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * LogoutApi - factory interface
+ * @export
+ */
+export const LogoutApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = LogoutApiFp(configuration)
+    return {
+        /**
+         * Logout will clear the auth cookies
+         * @summary logout by clearing the auth cookies
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        logoutPost(options?: any): AxiosPromise<object> {
+            return localVarFp.logoutPost(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * LogoutApi - object-oriented interface
+ * @export
+ * @class LogoutApi
+ * @extends {BaseAPI}
+ */
+export class LogoutApi extends BaseAPI {
+    /**
+     * Logout will clear the auth cookies
+     * @summary logout by clearing the auth cookies
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LogoutApi
+     */
+    public logoutPost(options?: AxiosRequestConfig) {
+        return LogoutApiFp(this.configuration).logoutPost(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * MeAPIApi - axios parameter creator
+ * @export
+ */
+export const MeAPIApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary RetrieveTeams retrieves the team the current user belongs to
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        meAPIRetrieveTeams: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/me/teams`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * MeAPIApi - functional programming interface
+ * @export
+ */
+export const MeAPIApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = MeAPIApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary RetrieveTeams retrieves the team the current user belongs to
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async meAPIRetrieveTeams(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MeAPIV1RetrieveTeamsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.meAPIRetrieveTeams(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * MeAPIApi - factory interface
+ * @export
+ */
+export const MeAPIApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = MeAPIApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary RetrieveTeams retrieves the team the current user belongs to
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        meAPIRetrieveTeams(options?: any): AxiosPromise<MeAPIV1RetrieveTeamsResponse> {
+            return localVarFp.meAPIRetrieveTeams(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * MeAPIApi - object-oriented interface
+ * @export
+ * @class MeAPIApi
+ * @extends {BaseAPI}
+ */
+export class MeAPIApi extends BaseAPI {
+    /**
+     * 
+     * @summary RetrieveTeams retrieves the team the current user belongs to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MeAPIApi
+     */
+    public meAPIRetrieveTeams(options?: AxiosRequestConfig) {
+        return MeAPIApiFp(this.configuration).meAPIRetrieveTeams(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * OrganizationAPIApi - axios parameter creator
+ * @export
+ */
+export const OrganizationAPIApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Updates an existing organization
+         * @param {OrganizationAPIV1UpdateOrganizationSettingsRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        organizationAPIUpdateOrganizationSettings: async (body: OrganizationAPIV1UpdateOrganizationSettingsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('organizationAPIUpdateOrganizationSettings', 'body', body)
+            const localVarPath = `/api/organizations`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * OrganizationAPIApi - functional programming interface
+ * @export
+ */
+export const OrganizationAPIApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = OrganizationAPIApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Updates an existing organization
+         * @param {OrganizationAPIV1UpdateOrganizationSettingsRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async organizationAPIUpdateOrganizationSettings(body: OrganizationAPIV1UpdateOrganizationSettingsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.organizationAPIUpdateOrganizationSettings(body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * OrganizationAPIApi - factory interface
+ * @export
+ */
+export const OrganizationAPIApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = OrganizationAPIApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Updates an existing organization
+         * @param {OrganizationAPIV1UpdateOrganizationSettingsRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        organizationAPIUpdateOrganizationSettings(body: OrganizationAPIV1UpdateOrganizationSettingsRequest, options?: any): AxiosPromise<object> {
+            return localVarFp.organizationAPIUpdateOrganizationSettings(body, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * OrganizationAPIApi - object-oriented interface
+ * @export
+ * @class OrganizationAPIApi
+ * @extends {BaseAPI}
+ */
+export class OrganizationAPIApi extends BaseAPI {
+    /**
+     * 
+     * @summary Updates an existing organization
+     * @param {OrganizationAPIV1UpdateOrganizationSettingsRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OrganizationAPIApi
+     */
+    public organizationAPIUpdateOrganizationSettings(body: OrganizationAPIV1UpdateOrganizationSettingsRequest, options?: AxiosRequestConfig) {
+        return OrganizationAPIApiFp(this.configuration).organizationAPIUpdateOrganizationSettings(body, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
  * PasswordsApi - axios parameter creator
  * @export
  */
@@ -966,7 +2620,7 @@ export const PasswordsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async passwordResetsPatch(message: PasswordresetsResetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+        async passwordResetsPatch(message: PasswordresetsResetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PasswordresetsResetResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.passwordResetsPatch(message, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -998,7 +2652,7 @@ export const PasswordsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        passwordResetsPatch(message: PasswordresetsResetRequest, options?: any): AxiosPromise<object> {
+        passwordResetsPatch(message: PasswordresetsResetRequest, options?: any): AxiosPromise<PasswordresetsResetResponse> {
             return localVarFp.passwordResetsPatch(message, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1150,6 +2804,785 @@ export class RegistrationApi extends BaseAPI {
      */
     public registerPost(message: RegisterRegisterRequest, options?: AxiosRequestConfig) {
         return RegistrationApiFp(this.configuration).registerPost(message, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * TeamAPIApi - axios parameter creator
+ * @export
+ */
+export const TeamAPIApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Adds a user to a team
+         * @param {string} teamId ID of the team under which the user should be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIAddUserToTeam: async (teamId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'teamId' is not null or undefined
+            assertParamExists('teamAPIAddUserToTeam', 'teamId', teamId)
+            const localVarPath = `/api/v1/teams/{teamId}/users`
+                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create a team
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPICreateTeam: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/teams`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Moves a team to be a child of an existing team
+         * @param {string} teamId ID of the team to be moved
+         * @param {MoveTeamRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIMoveTeam: async (teamId: string, body: MoveTeamRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'teamId' is not null or undefined
+            assertParamExists('teamAPIMoveTeam', 'teamId', teamId)
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('teamAPIMoveTeam', 'body', body)
+            const localVarPath = `/api/v1/teams/{teamId}:move`
+                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Removes a team and all its sub-teams
+         * @param {string} teamId ID of the team that will be removed
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIRemoveTeam: async (teamId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'teamId' is not null or undefined
+            assertParamExists('teamAPIRemoveTeam', 'teamId', teamId)
+            const localVarPath = `/api/v1/teams/{teamId}`
+                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Removes a user from a team
+         * @param {string} teamId ID of the team from which the user should be removed
+         * @param {string} [userId] ID of the user to remove from the team.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIRemoveUserFromTeam: async (teamId: string, userId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'teamId' is not null or undefined
+            assertParamExists('teamAPIRemoveUserFromTeam', 'teamId', teamId)
+            const localVarPath = `/api/v1/teams/{teamId}/users`
+                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (userId !== undefined) {
+                localVarQueryParameter['userId'] = userId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Gets child teams
+         * @param {string} teamId ID of the team from which permissions should be retrieved
+         * @param {string} [optionsFilterQ] The query to filter on.
+         * @param {number} [optionsPaginationOffset] Pagination offset.
+         * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING'} [optionsSortSortOrder] result order.   - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+         * @param {string} [optionsSortSortBy] sort field.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIRetrieveChildTeams: async (teamId: string, optionsFilterQ?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsSortSortOrder?: 'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING', optionsSortSortBy?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'teamId' is not null or undefined
+            assertParamExists('teamAPIRetrieveChildTeams', 'teamId', teamId)
+            const localVarPath = `/api/v1/teams/{teamId}/teams`
+                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (optionsFilterQ !== undefined) {
+                localVarQueryParameter['options.filter.q'] = optionsFilterQ;
+            }
+
+            if (optionsPaginationOffset !== undefined) {
+                localVarQueryParameter['options.pagination.offset'] = optionsPaginationOffset;
+            }
+
+            if (optionsPaginationLimit !== undefined) {
+                localVarQueryParameter['options.pagination.limit'] = optionsPaginationLimit;
+            }
+
+            if (optionsSortSortOrder !== undefined) {
+                localVarQueryParameter['options.sort.sortOrder'] = optionsSortSortOrder;
+            }
+
+            if (optionsSortSortBy !== undefined) {
+                localVarQueryParameter['options.sort.sortBy'] = optionsSortSortBy;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Gets teams
+         * @param {string} [optionsFilterQ] The query to filter on.
+         * @param {number} [optionsPaginationOffset] Pagination offset.
+         * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING'} [optionsSortSortOrder] result order.   - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+         * @param {string} [optionsSortSortBy] sort field.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIRetrieveTeams: async (optionsFilterQ?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsSortSortOrder?: 'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING', optionsSortSortBy?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/teams`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (optionsFilterQ !== undefined) {
+                localVarQueryParameter['options.filter.q'] = optionsFilterQ;
+            }
+
+            if (optionsPaginationOffset !== undefined) {
+                localVarQueryParameter['options.pagination.offset'] = optionsPaginationOffset;
+            }
+
+            if (optionsPaginationLimit !== undefined) {
+                localVarQueryParameter['options.pagination.limit'] = optionsPaginationLimit;
+            }
+
+            if (optionsSortSortOrder !== undefined) {
+                localVarQueryParameter['options.sort.sortOrder'] = optionsSortSortOrder;
+            }
+
+            if (optionsSortSortBy !== undefined) {
+                localVarQueryParameter['options.sort.sortBy'] = optionsSortSortBy;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update a team
+         * @param {string} teamId ID of the team to be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIUpdateTeam: async (teamId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'teamId' is not null or undefined
+            assertParamExists('teamAPIUpdateTeam', 'teamId', teamId)
+            const localVarPath = `/api/v1/teams/{teamId}`
+                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * TeamAPIApi - functional programming interface
+ * @export
+ */
+export const TeamAPIApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = TeamAPIApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Adds a user to a team
+         * @param {string} teamId ID of the team under which the user should be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async teamAPIAddUserToTeam(teamId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPIAddUserToTeam(teamId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Create a team
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async teamAPICreateTeam(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TeamAPIV1CreateTeamResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPICreateTeam(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Moves a team to be a child of an existing team
+         * @param {string} teamId ID of the team to be moved
+         * @param {MoveTeamRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async teamAPIMoveTeam(teamId: string, body: MoveTeamRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TeamAPIV1MoveTeamResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPIMoveTeam(teamId, body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Removes a team and all its sub-teams
+         * @param {string} teamId ID of the team that will be removed
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async teamAPIRemoveTeam(teamId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPIRemoveTeam(teamId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Removes a user from a team
+         * @param {string} teamId ID of the team from which the user should be removed
+         * @param {string} [userId] ID of the user to remove from the team.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async teamAPIRemoveUserFromTeam(teamId: string, userId?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPIRemoveUserFromTeam(teamId, userId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Gets child teams
+         * @param {string} teamId ID of the team from which permissions should be retrieved
+         * @param {string} [optionsFilterQ] The query to filter on.
+         * @param {number} [optionsPaginationOffset] Pagination offset.
+         * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING'} [optionsSortSortOrder] result order.   - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+         * @param {string} [optionsSortSortBy] sort field.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async teamAPIRetrieveChildTeams(teamId: string, optionsFilterQ?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsSortSortOrder?: 'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING', optionsSortSortBy?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TeamAPIV1RetrieveChildTeamsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPIRetrieveChildTeams(teamId, optionsFilterQ, optionsPaginationOffset, optionsPaginationLimit, optionsSortSortOrder, optionsSortSortBy, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Gets teams
+         * @param {string} [optionsFilterQ] The query to filter on.
+         * @param {number} [optionsPaginationOffset] Pagination offset.
+         * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING'} [optionsSortSortOrder] result order.   - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+         * @param {string} [optionsSortSortBy] sort field.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async teamAPIRetrieveTeams(optionsFilterQ?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsSortSortOrder?: 'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING', optionsSortSortBy?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TeamAPIV1RetrieveTeamsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPIRetrieveTeams(optionsFilterQ, optionsPaginationOffset, optionsPaginationLimit, optionsSortSortOrder, optionsSortSortBy, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Update a team
+         * @param {string} teamId ID of the team to be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async teamAPIUpdateTeam(teamId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TeamAPIV1UpdateTeamResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPIUpdateTeam(teamId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * TeamAPIApi - factory interface
+ * @export
+ */
+export const TeamAPIApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = TeamAPIApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Adds a user to a team
+         * @param {string} teamId ID of the team under which the user should be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIAddUserToTeam(teamId: string, options?: any): AxiosPromise<object> {
+            return localVarFp.teamAPIAddUserToTeam(teamId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Create a team
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPICreateTeam(options?: any): AxiosPromise<TeamAPIV1CreateTeamResponse> {
+            return localVarFp.teamAPICreateTeam(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Moves a team to be a child of an existing team
+         * @param {string} teamId ID of the team to be moved
+         * @param {MoveTeamRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIMoveTeam(teamId: string, body: MoveTeamRequest, options?: any): AxiosPromise<TeamAPIV1MoveTeamResponse> {
+            return localVarFp.teamAPIMoveTeam(teamId, body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Removes a team and all its sub-teams
+         * @param {string} teamId ID of the team that will be removed
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIRemoveTeam(teamId: string, options?: any): AxiosPromise<object> {
+            return localVarFp.teamAPIRemoveTeam(teamId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Removes a user from a team
+         * @param {string} teamId ID of the team from which the user should be removed
+         * @param {string} [userId] ID of the user to remove from the team.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIRemoveUserFromTeam(teamId: string, userId?: string, options?: any): AxiosPromise<object> {
+            return localVarFp.teamAPIRemoveUserFromTeam(teamId, userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Gets child teams
+         * @param {string} teamId ID of the team from which permissions should be retrieved
+         * @param {string} [optionsFilterQ] The query to filter on.
+         * @param {number} [optionsPaginationOffset] Pagination offset.
+         * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING'} [optionsSortSortOrder] result order.   - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+         * @param {string} [optionsSortSortBy] sort field.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIRetrieveChildTeams(teamId: string, optionsFilterQ?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsSortSortOrder?: 'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING', optionsSortSortBy?: string, options?: any): AxiosPromise<TeamAPIV1RetrieveChildTeamsResponse> {
+            return localVarFp.teamAPIRetrieveChildTeams(teamId, optionsFilterQ, optionsPaginationOffset, optionsPaginationLimit, optionsSortSortOrder, optionsSortSortBy, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Gets teams
+         * @param {string} [optionsFilterQ] The query to filter on.
+         * @param {number} [optionsPaginationOffset] Pagination offset.
+         * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING'} [optionsSortSortOrder] result order.   - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+         * @param {string} [optionsSortSortBy] sort field.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIRetrieveTeams(optionsFilterQ?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsSortSortOrder?: 'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING', optionsSortSortBy?: string, options?: any): AxiosPromise<TeamAPIV1RetrieveTeamsResponse> {
+            return localVarFp.teamAPIRetrieveTeams(optionsFilterQ, optionsPaginationOffset, optionsPaginationLimit, optionsSortSortOrder, optionsSortSortBy, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update a team
+         * @param {string} teamId ID of the team to be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIUpdateTeam(teamId: string, options?: any): AxiosPromise<TeamAPIV1UpdateTeamResponse> {
+            return localVarFp.teamAPIUpdateTeam(teamId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * TeamAPIApi - object-oriented interface
+ * @export
+ * @class TeamAPIApi
+ * @extends {BaseAPI}
+ */
+export class TeamAPIApi extends BaseAPI {
+    /**
+     * 
+     * @summary Adds a user to a team
+     * @param {string} teamId ID of the team under which the user should be added
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeamAPIApi
+     */
+    public teamAPIAddUserToTeam(teamId: string, options?: AxiosRequestConfig) {
+        return TeamAPIApiFp(this.configuration).teamAPIAddUserToTeam(teamId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Create a team
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeamAPIApi
+     */
+    public teamAPICreateTeam(options?: AxiosRequestConfig) {
+        return TeamAPIApiFp(this.configuration).teamAPICreateTeam(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Moves a team to be a child of an existing team
+     * @param {string} teamId ID of the team to be moved
+     * @param {MoveTeamRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeamAPIApi
+     */
+    public teamAPIMoveTeam(teamId: string, body: MoveTeamRequest, options?: AxiosRequestConfig) {
+        return TeamAPIApiFp(this.configuration).teamAPIMoveTeam(teamId, body, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Removes a team and all its sub-teams
+     * @param {string} teamId ID of the team that will be removed
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeamAPIApi
+     */
+    public teamAPIRemoveTeam(teamId: string, options?: AxiosRequestConfig) {
+        return TeamAPIApiFp(this.configuration).teamAPIRemoveTeam(teamId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Removes a user from a team
+     * @param {string} teamId ID of the team from which the user should be removed
+     * @param {string} [userId] ID of the user to remove from the team.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeamAPIApi
+     */
+    public teamAPIRemoveUserFromTeam(teamId: string, userId?: string, options?: AxiosRequestConfig) {
+        return TeamAPIApiFp(this.configuration).teamAPIRemoveUserFromTeam(teamId, userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Gets child teams
+     * @param {string} teamId ID of the team from which permissions should be retrieved
+     * @param {string} [optionsFilterQ] The query to filter on.
+     * @param {number} [optionsPaginationOffset] Pagination offset.
+     * @param {number} [optionsPaginationLimit] Result limit.
+     * @param {'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING'} [optionsSortSortOrder] result order.   - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+     * @param {string} [optionsSortSortBy] sort field.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeamAPIApi
+     */
+    public teamAPIRetrieveChildTeams(teamId: string, optionsFilterQ?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsSortSortOrder?: 'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING', optionsSortSortBy?: string, options?: AxiosRequestConfig) {
+        return TeamAPIApiFp(this.configuration).teamAPIRetrieveChildTeams(teamId, optionsFilterQ, optionsPaginationOffset, optionsPaginationLimit, optionsSortSortOrder, optionsSortSortBy, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Gets teams
+     * @param {string} [optionsFilterQ] The query to filter on.
+     * @param {number} [optionsPaginationOffset] Pagination offset.
+     * @param {number} [optionsPaginationLimit] Result limit.
+     * @param {'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING'} [optionsSortSortOrder] result order.   - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+     * @param {string} [optionsSortSortBy] sort field.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeamAPIApi
+     */
+    public teamAPIRetrieveTeams(optionsFilterQ?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsSortSortOrder?: 'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING', optionsSortSortBy?: string, options?: AxiosRequestConfig) {
+        return TeamAPIApiFp(this.configuration).teamAPIRetrieveTeams(optionsFilterQ, optionsPaginationOffset, optionsPaginationLimit, optionsSortSortOrder, optionsSortSortBy, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update a team
+     * @param {string} teamId ID of the team to be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeamAPIApi
+     */
+    public teamAPIUpdateTeam(teamId: string, options?: AxiosRequestConfig) {
+        return TeamAPIApiFp(this.configuration).teamAPIUpdateTeam(teamId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * UserAPIApi - axios parameter creator
+ * @export
+ */
+export const UserAPIApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Retrieves the users that belong to a specific org
+         * @param {string} [organizationId] organization id of the users desired.
+         * @param {number} [optionsPaginationOffset] Pagination offset.
+         * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userAPIRetrieveUsers: async (organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/users`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (organizationId !== undefined) {
+                localVarQueryParameter['organizationId'] = organizationId;
+            }
+
+            if (optionsPaginationOffset !== undefined) {
+                localVarQueryParameter['options.pagination.offset'] = optionsPaginationOffset;
+            }
+
+            if (optionsPaginationLimit !== undefined) {
+                localVarQueryParameter['options.pagination.limit'] = optionsPaginationLimit;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * UserAPIApi - functional programming interface
+ * @export
+ */
+export const UserAPIApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = UserAPIApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Retrieves the users that belong to a specific org
+         * @param {string} [organizationId] organization id of the users desired.
+         * @param {number} [optionsPaginationOffset] Pagination offset.
+         * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userAPIRetrieveUsers(organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserAPIV1RetrieveUsersResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userAPIRetrieveUsers(organizationId, optionsPaginationOffset, optionsPaginationLimit, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * UserAPIApi - factory interface
+ * @export
+ */
+export const UserAPIApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = UserAPIApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Retrieves the users that belong to a specific org
+         * @param {string} [organizationId] organization id of the users desired.
+         * @param {number} [optionsPaginationOffset] Pagination offset.
+         * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userAPIRetrieveUsers(organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, options?: any): AxiosPromise<UserAPIV1RetrieveUsersResponse> {
+            return localVarFp.userAPIRetrieveUsers(organizationId, optionsPaginationOffset, optionsPaginationLimit, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * UserAPIApi - object-oriented interface
+ * @export
+ * @class UserAPIApi
+ * @extends {BaseAPI}
+ */
+export class UserAPIApi extends BaseAPI {
+    /**
+     * 
+     * @summary Retrieves the users that belong to a specific org
+     * @param {string} [organizationId] organization id of the users desired.
+     * @param {number} [optionsPaginationOffset] Pagination offset.
+     * @param {number} [optionsPaginationLimit] Result limit.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserAPIApi
+     */
+    public userAPIRetrieveUsers(organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, options?: AxiosRequestConfig) {
+        return UserAPIApiFp(this.configuration).userAPIRetrieveUsers(organizationId, optionsPaginationOffset, optionsPaginationLimit, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

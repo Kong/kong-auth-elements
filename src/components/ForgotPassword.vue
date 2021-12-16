@@ -137,7 +137,7 @@ export default defineComponent({
       return !formData.email || currentState.value.matches('pending')
     })
 
-    const submitForm = async () => {
+    const submitForm = async (): Promise<void> => {
       send('CLICK_FORGOT_PASSWORD')
 
       // Reset form error
@@ -160,6 +160,7 @@ export default defineComponent({
         await $api.auth.passwords.passwordResetsPost({
           email: formData.email,
         })
+
         send('RESOLVE')
 
         // Emit success

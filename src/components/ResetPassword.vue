@@ -64,6 +64,8 @@ import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText } from '@/utils'
 import KongAuthApi from '@/services/KongAuthApi'
+import { PasswordresetsResetResponse } from '@/services/kauth-api-client/api'
+import { AxiosResponse } from 'axios'
 // Components
 import KButton from '@kongponents/kbutton'
 import KIcon from '@kongponents/kicon'
@@ -136,7 +138,7 @@ export default defineComponent({
       )
     })
 
-    const submitForm = async () => {
+    const submitForm = async (): Promise<void> => {
       send('CLICK_RESET_PASSWORD')
 
       // Reset form errors
@@ -169,7 +171,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        const response: any = await $api.auth.passwords.passwordResetsPatch({
+        const response: AxiosResponse<PasswordresetsResetResponse> = await $api.auth.passwords.passwordResetsPatch({
           password: formData.password,
           token: formData.passwordToken,
         })

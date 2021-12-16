@@ -1,41 +1,1594 @@
 {
-  "schemes": [],
-  "swagger": "2.0",
+  "basePath": "/api",
+  "definitions": {
+    "HealthAPI.protobufAny": {
+      "additionalProperties": {},
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "HealthAPI.rpcStatus": {
+      "properties": {
+        "code": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/HealthAPI.protobufAny"
+          },
+          "type": "array"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "HealthAPI.v1CheckResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/HealthAPI.v1ServingStatus"
+        },
+        "version": {
+          "title": "Version of the service that is running",
+          "type": "string"
+        }
+      },
+      "title": "CheckResponse is the service status",
+      "type": "object"
+    },
+    "HealthAPI.v1ServingStatus": {
+      "default": "SERVING_STATUS_INVALID",
+      "description": "- SERVING_STATUS_INVALID: Status is invalid/unknown\n - SERVING_STATUS_SERVING: Service is serving\n - SERVING_STATUS_NOT_SERVING: Service is not serving",
+      "enum": [
+        "SERVING_STATUS_INVALID",
+        "SERVING_STATUS_SERVING",
+        "SERVING_STATUS_NOT_SERVING"
+      ],
+      "title": "ServingStatus defines the valid status",
+      "type": "string"
+    },
+    "IdentityProviderAPI.protobufAny": {
+      "additionalProperties": {},
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IdentityProviderAPI.rpcStatus": {
+      "properties": {
+        "code": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/IdentityProviderAPI.protobufAny"
+          },
+          "type": "array"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IdentityProviderAPI.v1Config": {
+      "properties": {
+        "clientId": {
+          "title": "Client ID of the IdP",
+          "type": "string"
+        },
+        "clientSecret": {
+          "title": "Client secret of the IdP",
+          "type": "string"
+        },
+        "idpType": {
+          "$ref": "#/definitions/IdentityProviderAPI.v1IDPType"
+        },
+        "issuer": {
+          "title": "Issuer of the IdP",
+          "type": "string"
+        }
+      },
+      "title": "IdpConfig defines the configuration of an identity provider",
+      "type": "object"
+    },
+    "IdentityProviderAPI.v1GetResponse": {
+      "properties": {
+        "identityProvider": {
+          "$ref": "#/definitions/IdentityProviderAPI.v1IdentityProvider"
+        }
+      },
+      "title": "Response of get request",
+      "type": "object"
+    },
+    "IdentityProviderAPI.v1IDPType": {
+      "default": "IDP_TYPE_INVALID",
+      "description": "- IDP_TYPE_INVALID: Invalid IdP\n - IDP_TYPE_OIDC: Okta IdP",
+      "enum": [
+        "IDP_TYPE_INVALID",
+        "IDP_TYPE_OIDC"
+      ],
+      "title": "The type of IdP config",
+      "type": "string"
+    },
+    "IdentityProviderAPI.v1IdentityProvider": {
+      "properties": {
+        "assignments": {
+          "items": {
+            "$ref": "#/definitions/IdentityProviderAPI.v1TeamAssignment"
+          },
+          "title": "Group to team mapping",
+          "type": "array"
+        },
+        "config": {
+          "$ref": "#/definitions/IdentityProviderAPI.v1Config"
+        },
+        "pendingConfig": {
+          "$ref": "#/definitions/IdentityProviderAPI.v1Config"
+        }
+      },
+      "title": "An Identity Provider for an organization",
+      "type": "object"
+    },
+    "IdentityProviderAPI.v1PromoteConfigRequest": {
+      "description": "PromoteConfigRequest contains the request to promote an organization's\npending idP config to active.",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/IdentityProviderAPI.v1Config"
+        },
+        "organizationId": {
+          "title": "UUID of the org to update assignments for",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IdentityProviderAPI.v1PromoteConfigResponse": {
+      "description": "PromoteConfigRequest contains the response from promote-config.",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/IdentityProviderAPI.v1Config"
+        }
+      },
+      "type": "object"
+    },
+    "IdentityProviderAPI.v1TeamAssignment": {
+      "properties": {
+        "group": {
+          "title": "Group is the group name from the IdP",
+          "type": "string"
+        },
+        "teamIds": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Team IDs are the IDs of teams to assign group users to",
+          "type": "array"
+        }
+      },
+      "title": "TeamAssignment is an assignment from one IdP group to some number of teams",
+      "type": "object"
+    },
+    "IdentityProviderAPI.v1UpdateConfigRequest": {
+      "description": "Request to update config. The given configuration will be stored as a pending\nconfiguration and a test login initiated.",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/IdentityProviderAPI.v1Config"
+        },
+        "organizationId": {
+          "title": "UUID of the org to create the IdP for",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IdentityProviderAPI.v1UpdateConfigResponse": {
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/IdentityProviderAPI.v1Config"
+        },
+        "loginUrl": {
+          "title": "login_url indicates the url to use for a test login after saving pending\nIdP config",
+          "type": "string"
+        }
+      },
+      "title": "Response of update config",
+      "type": "object"
+    },
+    "IdentityProviderAPI.v1UpdateTeamAssignmentsRequest": {
+      "properties": {
+        "assignments": {
+          "items": {
+            "$ref": "#/definitions/IdentityProviderAPI.v1TeamAssignment"
+          },
+          "title": "New assigments of groups to teams",
+          "type": "array"
+        },
+        "organizationId": {
+          "title": "UUID of the org to update assignments for",
+          "type": "string"
+        }
+      },
+      "title": "Request to update team assignments",
+      "type": "object"
+    },
+    "IdentityProviderAPI.v1UpdateTeamAssignmentsResponse": {
+      "properties": {
+        "assignments": {
+          "items": {
+            "$ref": "#/definitions/IdentityProviderAPI.v1TeamAssignment"
+          },
+          "title": "The updated assignments",
+          "type": "array"
+        }
+      },
+      "title": "Response to update group team assignments",
+      "type": "object"
+    },
+    "MeAPI.RetrieveOptionsFilter": {
+      "properties": {
+        "q": {
+          "title": "The query to filter on",
+          "type": "string"
+        }
+      },
+      "title": "filter options group",
+      "type": "object"
+    },
+    "MeAPI.RetrieveOptionsPagination": {
+      "properties": {
+        "limit": {
+          "format": "int64",
+          "title": "Result limit",
+          "type": "integer"
+        },
+        "offset": {
+          "format": "int64",
+          "title": "Pagination offset",
+          "type": "integer"
+        }
+      },
+      "title": "pagination options group",
+      "type": "object"
+    },
+    "MeAPI.RetrieveOptionsSort": {
+      "properties": {
+        "sortBy": {
+          "title": "sort field",
+          "type": "string"
+        },
+        "sortOrder": {
+          "$ref": "#/definitions/MeAPI.optionsSortOrder"
+        }
+      },
+      "title": "sort options group",
+      "type": "object"
+    },
+    "MeAPI.optionsSortOrder": {
+      "default": "SORT_ORDER_INVALID",
+      "description": "- SORT_ORDER_INVALID: Invalid default\n - SORT_ORDER_ASCENDING: Ascending\n - SORT_ORDER_DESCENDING: Descending",
+      "enum": [
+        "SORT_ORDER_INVALID",
+        "SORT_ORDER_ASCENDING",
+        "SORT_ORDER_DESCENDING"
+      ],
+      "title": "Sort order defines valid sort ordering",
+      "type": "string"
+    },
+    "MeAPI.protobufAny": {
+      "additionalProperties": {},
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "MeAPI.rpcStatus": {
+      "properties": {
+        "code": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/MeAPI.protobufAny"
+          },
+          "type": "array"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "MeAPI.v1Organization": {
+      "properties": {
+        "id": {
+          "title": "ID of the organization",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name of the organization",
+          "type": "string"
+        }
+      },
+      "title": "Organization details returned from Me API",
+      "type": "object"
+    },
+    "MeAPI.v1Permission": {
+      "properties": {
+        "action": {
+          "title": "Action performed on the resource",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "id": {
+          "title": "ID of the permission",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name of the permission",
+          "type": "string"
+        },
+        "resource": {
+          "title": "Resource being protected by the permission",
+          "type": "string"
+        }
+      },
+      "title": "Permission represents a user or team permission",
+      "type": "object"
+    },
+    "MeAPI.v1RetrieveTeamsResponse": {
+      "properties": {
+        "teams": {
+          "items": {
+            "$ref": "#/definitions/MeAPI.v1Team"
+          },
+          "title": "The teams the user belongs to",
+          "type": "array"
+        }
+      },
+      "title": "The teams the user belongs to",
+      "type": "object"
+    },
+    "MeAPI.v1Team": {
+      "properties": {
+        "id": {
+          "title": "ID of the team",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name of the team",
+          "type": "string"
+        }
+      },
+      "title": "A team resource",
+      "type": "object"
+    },
+    "MeAPI.v1User": {
+      "properties": {
+        "email": {
+          "title": "Email of the user",
+          "type": "string"
+        },
+        "firstName": {
+          "title": "First name of the user",
+          "type": "string"
+        },
+        "id": {
+          "title": "ID of the user",
+          "type": "string"
+        },
+        "lastName": {
+          "title": "Last name of the user",
+          "type": "string"
+        }
+      },
+      "title": "User details returned from Me API",
+      "type": "object"
+    },
+    "OrganizationAPI.protobufAny": {
+      "additionalProperties": {},
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "OrganizationAPI.rpcStatus": {
+      "properties": {
+        "code": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/OrganizationAPI.protobufAny"
+          },
+          "type": "array"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "OrganizationAPI.v1Settings": {
+      "properties": {
+        "maxPasswordAttempts": {
+          "format": "int64",
+          "title": "Number of password-based login attempts before the user is locked",
+          "type": "integer"
+        }
+      },
+      "title": "Settings at the organization level",
+      "type": "object"
+    },
+    "OrganizationAPI.v1UpdateOrganizationSettingsRequest": {
+      "properties": {
+        "organizationId": {
+          "title": "The uuid of the organziation to update",
+          "type": "string"
+        },
+        "settings": {
+          "$ref": "#/definitions/OrganizationAPI.v1Settings"
+        }
+      },
+      "title": "Update organization request",
+      "type": "object"
+    },
+    "OrganizationAPI.v1UpdateOrganizationSettingsResponse": {
+      "title": "Update organization response",
+      "type": "object"
+    },
+    "TeamAPI.RetrieveOptionsFilter": {
+      "properties": {
+        "q": {
+          "title": "The query to filter on",
+          "type": "string"
+        }
+      },
+      "title": "filter options group",
+      "type": "object"
+    },
+    "TeamAPI.RetrieveOptionsPagination": {
+      "properties": {
+        "limit": {
+          "format": "int64",
+          "title": "Result limit",
+          "type": "integer"
+        },
+        "offset": {
+          "format": "int64",
+          "title": "Pagination offset",
+          "type": "integer"
+        }
+      },
+      "title": "pagination options group",
+      "type": "object"
+    },
+    "TeamAPI.RetrieveOptionsSort": {
+      "properties": {
+        "sortBy": {
+          "title": "sort field",
+          "type": "string"
+        },
+        "sortOrder": {
+          "$ref": "#/definitions/TeamAPI.optionsSortOrder"
+        }
+      },
+      "title": "sort options group",
+      "type": "object"
+    },
+    "TeamAPI.optionsSortOrder": {
+      "default": "SORT_ORDER_INVALID",
+      "description": "- SORT_ORDER_INVALID: Invalid default\n - SORT_ORDER_ASCENDING: Ascending\n - SORT_ORDER_DESCENDING: Descending",
+      "enum": [
+        "SORT_ORDER_INVALID",
+        "SORT_ORDER_ASCENDING",
+        "SORT_ORDER_DESCENDING"
+      ],
+      "title": "Sort order defines valid sort ordering",
+      "type": "string"
+    },
+    "TeamAPI.protobufAny": {
+      "additionalProperties": {},
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "TeamAPI.rpcStatus": {
+      "properties": {
+        "code": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/TeamAPI.protobufAny"
+          },
+          "type": "array"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "TeamAPI.v1AddUserToTeamResponse": {
+      "title": "Add user to team response",
+      "type": "object"
+    },
+    "TeamAPI.v1CreateTeamResponse": {
+      "properties": {
+        "team": {
+          "$ref": "#/definitions/TeamAPI.v1Team"
+        }
+      },
+      "title": "Create team response",
+      "type": "object"
+    },
+    "TeamAPI.v1MoveTeamResponse": {
+      "properties": {
+        "team": {
+          "$ref": "#/definitions/TeamAPI.v1Team"
+        }
+      },
+      "title": "Move team response",
+      "type": "object"
+    },
+    "TeamAPI.v1RemoveTeamResponse": {
+      "title": "Remove team response",
+      "type": "object"
+    },
+    "TeamAPI.v1RemoveUserFromTeamResponse": {
+      "title": "Remove user from team response",
+      "type": "object"
+    },
+    "TeamAPI.v1RetrieveChildTeamsResponse": {
+      "properties": {
+        "count": {
+          "format": "int64",
+          "title": "Total number of available teams",
+          "type": "integer"
+        },
+        "parentTeamId": {
+          "title": "Parent team ID",
+          "type": "string"
+        },
+        "teams": {
+          "items": {
+            "$ref": "#/definitions/TeamAPI.v1Team"
+          },
+          "title": "Child teams",
+          "type": "array"
+        }
+      },
+      "title": "Retrieve child teams response",
+      "type": "object"
+    },
+    "TeamAPI.v1RetrieveTeamsResponse": {
+      "properties": {
+        "count": {
+          "format": "int64",
+          "title": "Total number of available teams",
+          "type": "integer"
+        },
+        "teams": {
+          "items": {
+            "$ref": "#/definitions/TeamAPI.v1Team"
+          },
+          "title": "Retrieved teams",
+          "type": "array"
+        }
+      },
+      "title": "Retrieve team response",
+      "type": "object"
+    },
+    "TeamAPI.v1Team": {
+      "properties": {
+        "createdAt": {
+          "format": "date-time",
+          "title": "Timestamp of the user creation",
+          "type": "string"
+        },
+        "id": {
+          "title": "ID of the team",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name of the team",
+          "type": "string"
+        },
+        "updatedAt": {
+          "format": "date-time",
+          "title": "Timestamp of the user last update",
+          "type": "string"
+        }
+      },
+      "title": "A team resource",
+      "type": "object"
+    },
+    "TeamAPI.v1UpdateTeamResponse": {
+      "properties": {
+        "team": {
+          "$ref": "#/definitions/TeamAPI.v1Team"
+        }
+      },
+      "title": "Update team response",
+      "type": "object"
+    },
+    "UserAPI.RetrieveOptionsPagination": {
+      "properties": {
+        "limit": {
+          "format": "int64",
+          "title": "Result limit",
+          "type": "integer"
+        },
+        "offset": {
+          "format": "int64",
+          "title": "Pagination offset",
+          "type": "integer"
+        }
+      },
+      "title": "pagination options group",
+      "type": "object"
+    },
+    "UserAPI.protobufAny": {
+      "additionalProperties": {},
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "UserAPI.rpcStatus": {
+      "properties": {
+        "code": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/UserAPI.protobufAny"
+          },
+          "type": "array"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "UserAPI.v1RetrieveUsersResponse": {
+      "properties": {
+        "count": {
+          "format": "int64",
+          "title": "Total number of available teams",
+          "type": "integer"
+        },
+        "users": {
+          "items": {
+            "$ref": "#/definitions/UserAPI.v1User"
+          },
+          "title": "users belonging to the specified org",
+          "type": "array"
+        }
+      },
+      "title": "RetrieveUsers Response",
+      "type": "object"
+    },
+    "UserAPI.v1User": {
+      "properties": {
+        "createdAt": {
+          "format": "date-time",
+          "title": "Timestamp of the user creation",
+          "type": "string"
+        },
+        "email": {
+          "title": "email of user",
+          "type": "string"
+        },
+        "firstName": {
+          "title": "first name of user",
+          "type": "string"
+        },
+        "id": {
+          "title": "id of user",
+          "type": "string"
+        },
+        "lastName": {
+          "title": "last name of user",
+          "type": "string"
+        },
+        "updatedAt": {
+          "format": "date-time",
+          "title": "Timestamp of the user last update",
+          "type": "string"
+        }
+      },
+      "title": "A user",
+      "type": "object"
+    },
+    "authenticate.authenticateRequest": {
+      "properties": {
+        "password": {
+          "description": "Password is the password for the user",
+          "example": "notagoodpassword",
+          "type": "string"
+        },
+        "username": {
+          "description": "Username is the name of the user to authenticate",
+          "example": "user@example.com",
+          "type": "string"
+        }
+      },
+      "required": [
+        "password",
+        "username"
+      ],
+      "type": "object"
+    },
+    "authenticate.authenticateResponse": {
+      "type": "object"
+    },
+    "clientconfig.clientConfigResponse": {
+      "properties": {
+        "require-registration-access-code": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "emailverifications.verifyRequest": {
+      "properties": {
+        "token": {
+          "description": "Token is an email verification token",
+          "example": "5ae75b14-991b-40c9-806a-83b159ee2abb",
+          "type": "string"
+        }
+      },
+      "required": [
+        "token"
+      ],
+      "type": "object"
+    },
+    "emailverifications.verifyResponse": {
+      "properties": {
+        "email": {
+          "example": "john.doe@kong.com",
+          "type": "string"
+        }
+      },
+      "required": [
+        "email"
+      ],
+      "type": "object"
+    },
+    "errorResponse": {
+      "properties": {
+        "code": {
+          "description": "Code is an application-specific error code, expressed as a string value.",
+          "example": "1",
+          "type": "string"
+        },
+        "detail": {
+          "description": "Detail is a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized.",
+          "example": "organization not found with id 9",
+          "type": "string"
+        },
+        "id": {
+          "description": "ID is a unique identifier for this particular occurrence of the problem.",
+          "example": "b53c52dd-9d33-4f1b-99bf-7deae3c60fe9",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/errorSource"
+        },
+        "status": {
+          "description": "Status is the HTTP status code applicable to this problem, expressed as a string value.",
+          "example": "404",
+          "type": "string"
+        },
+        "title": {
+          "description": "Title is a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization.",
+          "example": "not found",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "errorSource": {
+      "properties": {
+        "parameter": {
+          "description": "Parameter is a string indicating which URI query parameter caused the error",
+          "example": "id",
+          "type": "string"
+        },
+        "pointer": {
+          "description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]",
+          "example": "/id",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "errorsResponse": {
+      "properties": {
+        "errors": {
+          "items": {
+            "$ref": "#/definitions/errorResponse"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "invites.acceptRequest": {
+      "properties": {
+        "password": {
+          "description": "Password is the user's new password",
+          "example": "notagoodpassword",
+          "type": "string"
+        },
+        "token": {
+          "description": "Token is an invitation token",
+          "example": "5ae75b14-991b-40c9-806a-83b159ee2abb",
+          "type": "string"
+        }
+      },
+      "required": [
+        "password",
+        "token"
+      ],
+      "type": "object"
+    },
+    "invites.acceptResponse": {
+      "type": "object"
+    },
+    "logout.logoutResponse": {
+      "type": "object"
+    },
+    "passwordresets.requestResetRequest": {
+      "properties": {
+        "email": {
+          "description": "Email is the email of the user requesting a password reset",
+          "example": "user@example.com",
+          "type": "string"
+        }
+      },
+      "required": [
+        "email"
+      ],
+      "type": "object"
+    },
+    "passwordresets.requestResetResponse": {
+      "type": "object"
+    },
+    "passwordresets.resetRequest": {
+      "properties": {
+        "password": {
+          "description": "Password is the user's new password",
+          "example": "notagoodpassword",
+          "type": "string"
+        },
+        "token": {
+          "description": "Token is a password reset token",
+          "example": "5ae75b14-991b-40c9-806a-83b159ee2abb",
+          "type": "string"
+        }
+      },
+      "required": [
+        "password",
+        "token"
+      ],
+      "type": "object"
+    },
+    "passwordresets.resetResponse": {
+      "properties": {
+        "email": {
+          "example": "annie@ruokay.com",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "refresh.refreshRequest": {
+      "type": "object"
+    },
+    "refresh.refreshResponse": {
+      "type": "object"
+    },
+    "register.registerRequest": {
+      "properties": {
+        "email": {
+          "description": "Email is the email of the new user",
+          "example": "annie@ruokay.com",
+          "type": "string"
+        },
+        "firstName": {
+          "description": "FirstName is the first name of the new user",
+          "example": "Annie",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "LastName is the last name of the new user",
+          "example": "Ruokay",
+          "type": "string"
+        },
+        "organization": {
+          "description": "Organization is the name of the new organization to create",
+          "example": "Acme",
+          "type": "string"
+        },
+        "password": {
+          "description": "Password is the password of the new user",
+          "example": "notagoodpassword",
+          "type": "string"
+        },
+        "registrationCode": {
+          "description": "Registration Code is the code required to register a new user",
+          "example": "12fjsd34",
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "firstName",
+        "lastName",
+        "organization",
+        "password"
+      ],
+      "type": "object"
+    },
+    "register.registerResponse": {
+      "properties": {
+        "organizationID": {
+          "example": "187e2b65-ec69-421c-a7ba-3e946c4e5077",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "kauth.konnect-dev.konghq.com",
   "info": {
-    "description": "REST API for KAuth service",
-    "title": "KAuth",
     "contact": {},
+    "description": "REST API for KAuth service",
     "license": {
       "name": "Proprietary License"
     },
+    "title": "KAuth",
     "version": "1.0.0"
   },
-  "host": "kauth.konnect-dev.konghq.com",
-  "basePath": "/api",
   "paths": {
+    "/api/organizations": {
+      "patch": {
+        "operationId": "OrganizationAPI_UpdateOrganizationSettings",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrganizationAPI.v1UpdateOrganizationSettingsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OrganizationAPI.v1UpdateOrganizationSettingsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/OrganizationAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Updates an existing organization",
+        "tags": [
+          "OrganizationAPI"
+        ]
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "operationId": "HealthAPI_Check",
+        "parameters": [
+          {
+            "description": "service to check, can be blank.",
+            "in": "query",
+            "name": "service",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/HealthAPI.v1CheckResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/HealthAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Check returns the status of the service",
+        "tags": [
+          "HealthAPI"
+        ]
+      }
+    },
+    "/api/v1/identity-provider": {
+      "get": {
+        "operationId": "IdentityProviderAPI_Get",
+        "parameters": [
+          {
+            "description": "UUID of the org to create the IdP for.",
+            "in": "query",
+            "name": "organizationId",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/IdentityProviderAPI.v1GetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/IdentityProviderAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Gets the IdP configured for an organization",
+        "tags": [
+          "IdentityProviderAPI"
+        ]
+      },
+      "put": {
+        "operationId": "IdentityProviderAPI_UpdateConfig",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IdentityProviderAPI.v1UpdateConfigRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/IdentityProviderAPI.v1UpdateConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/IdentityProviderAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Updates a third party IdP config for an organization",
+        "tags": [
+          "IdentityProviderAPI"
+        ]
+      }
+    },
+    "/api/v1/identity-provider/promote-config": {
+      "put": {
+        "operationId": "IdentityProviderAPI_PromoteConfig",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IdentityProviderAPI.v1PromoteConfigRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/IdentityProviderAPI.v1PromoteConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/IdentityProviderAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Promote \"pending\" third-party IdP config to current",
+        "tags": [
+          "IdentityProviderAPI"
+        ]
+      }
+    },
+    "/api/v1/identity-provider/team-assignments": {
+      "put": {
+        "operationId": "IdentityProviderAPI_UpdateTeamAssignments",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IdentityProviderAPI.v1UpdateTeamAssignmentsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/IdentityProviderAPI.v1UpdateTeamAssignmentsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/IdentityProviderAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Updates the group to team assignments for the IdP",
+        "tags": [
+          "IdentityProviderAPI"
+        ]
+      }
+    },
+    "/api/v1/me/teams": {
+      "get": {
+        "operationId": "MeAPI_RetrieveTeams",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MeAPI.v1RetrieveTeamsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/MeAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "RetrieveTeams retrieves the team the current user belongs to",
+        "tags": [
+          "MeAPI"
+        ]
+      }
+    },
+    "/api/v1/teams": {
+      "get": {
+        "operationId": "TeamAPI_RetrieveTeams",
+        "parameters": [
+          {
+            "description": "The query to filter on.",
+            "in": "query",
+            "name": "options.filter.q",
+            "type": "string"
+          },
+          {
+            "description": "Pagination offset.",
+            "format": "int64",
+            "in": "query",
+            "name": "options.pagination.offset",
+            "type": "integer"
+          },
+          {
+            "description": "Result limit.",
+            "format": "int64",
+            "in": "query",
+            "name": "options.pagination.limit",
+            "type": "integer"
+          },
+          {
+            "default": "SORT_ORDER_INVALID",
+            "description": "result order.\n\n - SORT_ORDER_INVALID: Invalid default\n - SORT_ORDER_ASCENDING: Ascending\n - SORT_ORDER_DESCENDING: Descending",
+            "enum": [
+              "SORT_ORDER_INVALID",
+              "SORT_ORDER_ASCENDING",
+              "SORT_ORDER_DESCENDING"
+            ],
+            "in": "query",
+            "name": "options.sort.sortOrder",
+            "type": "string"
+          },
+          {
+            "description": "sort field.",
+            "in": "query",
+            "name": "options.sort.sortBy",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.v1RetrieveTeamsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Gets teams",
+        "tags": [
+          "TeamAPI"
+        ]
+      },
+      "post": {
+        "operationId": "TeamAPI_CreateTeam",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.v1CreateTeamResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Create a team",
+        "tags": [
+          "TeamAPI"
+        ]
+      }
+    },
+    "/api/v1/teams/{teamId}": {
+      "delete": {
+        "operationId": "TeamAPI_RemoveTeam",
+        "parameters": [
+          {
+            "description": "ID of the team that will be removed",
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.v1RemoveTeamResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Removes a team and all its sub-teams",
+        "tags": [
+          "TeamAPI"
+        ]
+      },
+      "patch": {
+        "operationId": "TeamAPI_UpdateTeam",
+        "parameters": [
+          {
+            "description": "ID of the team to be updated",
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.v1UpdateTeamResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Update a team",
+        "tags": [
+          "TeamAPI"
+        ]
+      }
+    },
+    "/api/v1/teams/{teamId}/teams": {
+      "get": {
+        "operationId": "TeamAPI_RetrieveChildTeams",
+        "parameters": [
+          {
+            "description": "ID of the team from which permissions should be retrieved",
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The query to filter on.",
+            "in": "query",
+            "name": "options.filter.q",
+            "type": "string"
+          },
+          {
+            "description": "Pagination offset.",
+            "format": "int64",
+            "in": "query",
+            "name": "options.pagination.offset",
+            "type": "integer"
+          },
+          {
+            "description": "Result limit.",
+            "format": "int64",
+            "in": "query",
+            "name": "options.pagination.limit",
+            "type": "integer"
+          },
+          {
+            "default": "SORT_ORDER_INVALID",
+            "description": "result order.\n\n - SORT_ORDER_INVALID: Invalid default\n - SORT_ORDER_ASCENDING: Ascending\n - SORT_ORDER_DESCENDING: Descending",
+            "enum": [
+              "SORT_ORDER_INVALID",
+              "SORT_ORDER_ASCENDING",
+              "SORT_ORDER_DESCENDING"
+            ],
+            "in": "query",
+            "name": "options.sort.sortOrder",
+            "type": "string"
+          },
+          {
+            "description": "sort field.",
+            "in": "query",
+            "name": "options.sort.sortBy",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.v1RetrieveChildTeamsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Gets child teams",
+        "tags": [
+          "TeamAPI"
+        ]
+      }
+    },
+    "/api/v1/teams/{teamId}/users": {
+      "delete": {
+        "operationId": "TeamAPI_RemoveUserFromTeam",
+        "parameters": [
+          {
+            "description": "ID of the team from which the user should be removed",
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "ID of the user to remove from the team.",
+            "in": "query",
+            "name": "userId",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.v1RemoveUserFromTeamResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Removes a user from a team",
+        "tags": [
+          "TeamAPI"
+        ]
+      },
+      "post": {
+        "operationId": "TeamAPI_AddUserToTeam",
+        "parameters": [
+          {
+            "description": "ID of the team under which the user should be added",
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.v1AddUserToTeamResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Adds a user to a team",
+        "tags": [
+          "TeamAPI"
+        ]
+      }
+    },
+    "/api/v1/teams/{teamId}:move": {
+      "post": {
+        "operationId": "TeamAPI_MoveTeam",
+        "parameters": [
+          {
+            "description": "ID of the team to be moved",
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "parentTeamId": {
+                  "title": "New team's parent",
+                  "type": "string"
+                }
+              },
+              "title": "Move team request",
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.v1MoveTeamResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Moves a team to be a child of an existing team",
+        "tags": [
+          "TeamAPI"
+        ]
+      }
+    },
+    "/api/v1/users": {
+      "get": {
+        "operationId": "UserAPI_RetrieveUsers",
+        "parameters": [
+          {
+            "description": "organization id of the users desired.",
+            "in": "query",
+            "name": "organizationId",
+            "type": "string"
+          },
+          {
+            "description": "Pagination offset.",
+            "format": "int64",
+            "in": "query",
+            "name": "options.pagination.offset",
+            "type": "integer"
+          },
+          {
+            "description": "Result limit.",
+            "format": "int64",
+            "in": "query",
+            "name": "options.pagination.limit",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserAPI.v1RetrieveUsersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/UserAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Retrieves the users that belong to a specific org",
+        "tags": [
+          "UserAPI"
+        ]
+      }
+    },
     "/authenticate": {
       "post": {
-        "description": "This will authenticate a user...",
         "consumes": [
           "application/json"
         ],
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "authentication"
-        ],
-        "summary": "Authenticates a user given a username and password",
+        "description": "This will authenticate a user...",
         "parameters": [
           {
             "description": "Authentication request",
-            "name": "message",
             "in": "body",
+            "name": "message",
             "required": true,
             "schema": {
               "$ref": "#/definitions/authenticate.authenticateRequest"
             }
           }
+        ],
+        "produces": [
+          "application/json"
         ],
         "responses": {
           "200": {
@@ -47,47 +1600,50 @@
           "400": {
             "description": "Bad request",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "404": {
             "description": "Not Found",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "500": {
             "description": "Internal server error",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           }
-        }
+        },
+        "summary": "Authenticates a user given a username and password",
+        "tags": [
+          "authentication"
+        ]
       }
     },
     "/authenticate/{organizationId}": {
       "get": {
         "description": "If the organization has an IdP setup, they will be redirected through\nthat IdP, otherwise they will be redirected to the Konnect user login",
-        "summary": "Redirects a user to the correct location for organization",
         "parameters": [
           {
-            "type": "string",
             "description": "Organization ID",
-            "name": "organizationId",
             "in": "path",
-            "required": true
+            "name": "organizationId",
+            "required": true,
+            "type": "string"
           },
           {
-            "type": "string",
             "description": "Path to return to after authentication has completed",
+            "in": "query",
             "name": "returnTo",
-            "in": "query"
+            "type": "string"
           },
           {
-            "type": "string",
             "description": "Configuration test mode",
+            "in": "query",
             "name": "test",
-            "in": "query"
+            "type": "string"
           }
         ],
         "responses": {
@@ -97,7 +1653,11 @@
               "type": "string"
             }
           }
-        }
+        },
+        "summary": "Redirects a user to the correct location for organization",
+        "tags": [
+          "authentication"
+        ]
       }
     },
     "/client-config/": {
@@ -106,10 +1666,6 @@
         "produces": [
           "application/json"
         ],
-        "tags": [
-          "client config"
-        ],
-        "summary": "returns a json with wether the require-registration-access-code (bool) has been set",
         "responses": {
           "200": {
             "description": "OK",
@@ -117,32 +1673,32 @@
               "$ref": "#/definitions/clientconfig.clientConfigResponse"
             }
           }
-        }
+        },
+        "summary": "returns a json with wether the require-registration-access-code (bool) has been set",
+        "tags": [
+          "client config"
+        ]
       }
     },
     "/email-verifications": {
       "patch": {
-        "description": "This endpoint verifies a user's email given an email verification token.",
         "consumes": [
           "application/json"
         ],
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "email verification"
-        ],
-        "summary": "Verifies a user's email address",
+        "description": "This endpoint verifies a user's email given an email verification token.",
         "parameters": [
           {
             "description": "Verify email",
-            "name": "message",
             "in": "body",
+            "name": "message",
             "required": true,
             "schema": {
               "$ref": "#/definitions/emailverifications.verifyRequest"
             }
           }
+        ],
+        "produces": [
+          "application/json"
         ],
         "responses": {
           "200": {
@@ -154,53 +1710,53 @@
           "400": {
             "description": "Bad request",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "404": {
             "description": "Not Found",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "410": {
             "description": "Token expired",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "500": {
             "description": "Internal server error",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           }
-        }
+        },
+        "summary": "Verifies a user's email address",
+        "tags": [
+          "email verification"
+        ]
       }
     },
     "/invites": {
       "patch": {
-        "description": "This endpoint accepts an invitation and sets the user's initial password. It will also mark the user's email address as verified.",
         "consumes": [
           "application/json"
         ],
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "invites"
-        ],
-        "summary": "Accepts an invitation",
+        "description": "This endpoint accepts an invitation and sets the user's initial password. It will also mark the user's email address as verified.",
         "parameters": [
           {
             "description": "Verify email",
-            "name": "message",
             "in": "body",
+            "name": "message",
             "required": true,
             "schema": {
               "$ref": "#/definitions/invites.acceptRequest"
             }
           }
+        ],
+        "produces": [
+          "application/json"
         ],
         "responses": {
           "200": {
@@ -212,97 +1768,76 @@
           "400": {
             "description": "Bad request",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "404": {
             "description": "Not Found",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "410": {
             "description": "Token expired",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "500": {
             "description": "Internal server error",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           }
-        }
+        },
+        "summary": "Accepts an invitation",
+        "tags": [
+          "invites"
+        ]
+      }
+    },
+    "/logout": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Logout will clear the auth cookies",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/logout.logoutResponse"
+            }
+          }
+        },
+        "summary": "logout by clearing the auth cookies",
+        "tags": [
+          "logout"
+        ]
       }
     },
     "/password-resets": {
-      "post": {
-        "description": "This endpoint creates a reset request entry and sends the user an email with a link to\nreset their password. It will return success if the email address is not found.",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "passwords"
-        ],
-        "summary": "Creates a password reset request",
-        "parameters": [
-          {
-            "description": "Request Reset Password",
-            "name": "message",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/passwordresets.requestResetRequest"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created",
-            "schema": {
-              "$ref": "#/definitions/passwordresets.requestResetResponse"
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "schema": {
-              "$ref": "#/definitions/errorResponse"
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "schema": {
-              "$ref": "#/definitions/errorResponse"
-            }
-          }
-        }
-      },
       "patch": {
-        "description": "This endpoint updates a user's password given a reset token.",
         "consumes": [
           "application/json"
         ],
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "passwords"
-        ],
-        "summary": "Resets a user's password",
+        "description": "This endpoint updates a user's password given a reset token.",
         "parameters": [
           {
             "description": "Reset Password",
-            "name": "message",
             "in": "body",
+            "name": "message",
             "required": true,
             "schema": {
               "$ref": "#/definitions/passwordresets.resetRequest"
             }
           }
+        ],
+        "produces": [
+          "application/json"
         ],
         "responses": {
           "200": {
@@ -314,53 +1849,97 @@
           "400": {
             "description": "Bad request",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "404": {
             "description": "Not Found",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "410": {
             "description": "Token expired",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "500": {
             "description": "Internal server error",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           }
-        }
-      }
-    },
-    "/refresh": {
+        },
+        "summary": "Resets a user's password",
+        "tags": [
+          "passwords"
+        ]
+      },
       "post": {
-        "description": "Refresh will set a new access and refresh token if the user is still valid.",
         "consumes": [
           "application/json"
+        ],
+        "description": "This endpoint creates a reset request entry and sends the user an email with a link to\nreset their password. It will return success if the email address is not found.",
+        "parameters": [
+          {
+            "description": "Request Reset Password",
+            "in": "body",
+            "name": "message",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/passwordresets.requestResetRequest"
+            }
+          }
         ],
         "produces": [
           "application/json"
         ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/passwordresets.requestResetResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          }
+        },
+        "summary": "Creates a password reset request",
         "tags": [
-          "authentication"
+          "passwords"
+        ]
+      }
+    },
+    "/refresh": {
+      "post": {
+        "consumes": [
+          "application/json"
         ],
-        "summary": "Refreshes a user if a valid refresh token is provided",
+        "description": "Refresh will set a new access and refresh token if the user is still valid.",
         "parameters": [
           {
             "description": "refresh request",
-            "name": "message",
             "in": "body",
+            "name": "message",
             "required": true,
             "schema": {
               "$ref": "#/definitions/refresh.refreshRequest"
             }
           }
+        ],
+        "produces": [
+          "application/json"
         ],
         "responses": {
           "200": {
@@ -372,53 +1951,53 @@
           "400": {
             "description": "Bad request",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "401": {
             "description": "Invalid Token",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "404": {
             "description": "Not Found",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "500": {
             "description": "Internal server error",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           }
-        }
+        },
+        "summary": "Refreshes a user if a valid refresh token is provided",
+        "tags": [
+          "authentication"
+        ]
       }
     },
     "/register": {
       "post": {
-        "description": "This endpoint will create a new organization and user. The user will not\nbe able to log in until they have verified their email address. The email address must be\nunique and not used for any other basic auth login.",
         "consumes": [
           "application/json"
         ],
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "registration"
-        ],
-        "summary": "Registers a new organization",
+        "description": "This endpoint will create a new organization and user. The user will not\nbe able to log in until they have verified their email address. The email address must be\nunique and not used for any other basic auth login.",
         "parameters": [
           {
             "description": "Registration request",
-            "name": "message",
             "in": "body",
+            "name": "message",
             "required": true,
             "schema": {
               "$ref": "#/definitions/register.registerRequest"
             }
           }
+        ],
+        "produces": [
+          "application/json"
         ],
         "responses": {
           "201": {
@@ -430,258 +2009,33 @@
           "400": {
             "description": "Bad request",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "401": {
             "description": "Unauthorized",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           },
           "500": {
             "description": "Internal server error",
             "schema": {
-              "$ref": "#/definitions/errorResponse"
+              "$ref": "#/definitions/errorsResponse"
             }
           }
-        }
+        },
+        "summary": "Registers a new organization",
+        "tags": [
+          "registration"
+        ]
       }
     }
   },
-  "definitions": {
-    "authenticate.authenticateRequest": {
-      "type": "object",
-      "required": [
-        "password",
-        "username"
-      ],
-      "properties": {
-        "password": {
-          "description": "Password is the password for the user",
-          "type": "string",
-          "example": "notagoodpassword"
-        },
-        "username": {
-          "description": "Username is the name of the user to authenticate",
-          "type": "string",
-          "example": "user@example.com"
-        }
-      }
-    },
-    "authenticate.authenticateResponse": {
-      "type": "object"
-    },
-    "clientconfig.clientConfigResponse": {
-      "type": "object",
-      "properties": {
-        "require-registration-access-code": {
-          "type": "boolean"
-        }
-      }
-    },
-    "emailverifications.verifyRequest": {
-      "type": "object",
-      "required": [
-        "token"
-      ],
-      "properties": {
-        "token": {
-          "description": "Token is an email verification token",
-          "type": "string",
-          "example": "5ae75b14-991b-40c9-806a-83b159ee2abb"
-        }
-      }
-    },
-    "emailverifications.verifyResponse": {
-      "type": "object",
-      "required": [
-        "email"
-      ],
-      "properties": {
-        "email": {
-          "type": "string",
-          "example": "john.doe@kong.com"
-        }
-      }
-    },
-    "error": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "description": "Code is an application-specific error code, expressed as a string value.",
-          "type": "string",
-          "example": "1"
-        },
-        "detail": {
-          "description": "Detail is a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized.",
-          "type": "string",
-          "example": "organization not found with id 9"
-        },
-        "id": {
-          "description": "ID is a unique identifier for this particular occurrence of the problem.",
-          "type": "string",
-          "example": "b53c52dd-9d33-4f1b-99bf-7deae3c60fe9"
-        },
-        "source": {
-          "$ref": "#/definitions/errorSource"
-        },
-        "status": {
-          "description": "Status is the HTTP status code applicable to this problem, expressed as a string value.",
-          "type": "string",
-          "example": "404"
-        },
-        "title": {
-          "description": "Title is a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization.",
-          "type": "string",
-          "example": "not found"
-        }
-      }
-    },
-    "errorResponse": {
-      "type": "object",
-      "properties": {
-        "errors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/error"
-          }
-        }
-      }
-    },
-    "errorSource": {
-      "type": "object",
-      "properties": {
-        "parameter": {
-          "description": "Parameter is a string indicating which URI query parameter caused the error",
-          "type": "string",
-          "example": "id"
-        },
-        "pointer": {
-          "description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]",
-          "type": "string",
-          "example": "/id"
-        }
-      }
-    },
-    "invites.acceptRequest": {
-      "type": "object",
-      "required": [
-        "password",
-        "token"
-      ],
-      "properties": {
-        "password": {
-          "description": "Password is the user's new password",
-          "type": "string",
-          "example": "notagoodpassword"
-        },
-        "token": {
-          "description": "Token is an invitation token",
-          "type": "string",
-          "example": "5ae75b14-991b-40c9-806a-83b159ee2abb"
-        }
-      }
-    },
-    "invites.acceptResponse": {
-      "type": "object"
-    },
-    "passwordresets.requestResetRequest": {
-      "type": "object",
-      "required": [
-        "email"
-      ],
-      "properties": {
-        "email": {
-          "description": "Email is the email of the user requesting a password reset",
-          "type": "string",
-          "example": "user@example.com"
-        }
-      }
-    },
-    "passwordresets.requestResetResponse": {
-      "type": "object"
-    },
-    "passwordresets.resetRequest": {
-      "type": "object",
-      "required": [
-        "password",
-        "token"
-      ],
-      "properties": {
-        "password": {
-          "description": "Password is the user's new password",
-          "type": "string",
-          "example": "notagoodpassword"
-        },
-        "token": {
-          "description": "Token is a password reset token",
-          "type": "string",
-          "example": "5ae75b14-991b-40c9-806a-83b159ee2abb"
-        }
-      }
-    },
-    "passwordresets.resetResponse": {
-      "type": "object"
-    },
-    "refresh.refreshRequest": {
-      "type": "object"
-    },
-    "refresh.refreshResponse": {
-      "type": "object"
-    },
-    "register.registerRequest": {
-      "type": "object",
-      "required": [
-        "email",
-        "firstName",
-        "lastName",
-        "organization",
-        "password"
-      ],
-      "properties": {
-        "email": {
-          "description": "Email is the email of the new user",
-          "type": "string",
-          "example": "annie@ruokay.com"
-        },
-        "firstName": {
-          "description": "FirstName is the first name of the new user",
-          "type": "string",
-          "example": "Annie"
-        },
-        "lastName": {
-          "description": "LastName is the last name of the new user",
-          "type": "string",
-          "example": "Ruokay"
-        },
-        "organization": {
-          "description": "Organization is the name of the new organization to create",
-          "type": "string",
-          "example": "Acme"
-        },
-        "password": {
-          "description": "Password is the password of the new user",
-          "type": "string",
-          "example": "notagoodpassword"
-        },
-        "registration-code": {
-          "description": "Registration Code is the code required to register a new user",
-          "type": "string",
-          "example": "12fjsd34"
-        }
-      }
-    },
-    "register.registerResponse": {
-      "type": "object",
-      "properties": {
-        "organizationID": {
-          "type": "string",
-          "example": "187e2b65-ec69-421c-a7ba-3e946c4e5077"
-        }
-      }
-    }
-  },
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
   "tags": [
     {
       "description": "Authentication endpoints",

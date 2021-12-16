@@ -212,7 +212,7 @@ export default defineComponent({
       return currentState.value.matches('pending') || !userCanSubmitForm.value
     })
 
-    const submitForm = async () => {
+    const submitForm = async (): Promise<void> => {
       send('CLICK_REGISTER')
 
       // Reset form errors
@@ -236,7 +236,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        await $api.auth.registration.registerPost({
+        await $api.register.registration.registerPost({
           email: formData.email,
           firstName: formData.firstName,
           lastName: formData.lastName,

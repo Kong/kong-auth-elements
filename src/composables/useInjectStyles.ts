@@ -1,6 +1,10 @@
-import { computed, ref, onMounted, onUnmounted } from 'vue'
+import { computed, ref, ComputedRef, onMounted, onUnmounted } from 'vue'
 
-export default function useInjectStyles (): Record<string, any> {
+interface InjectStylesComposable {
+  injectedStyles: ComputedRef<string>
+}
+
+export default function useInjectStyles (): InjectStylesComposable {
   const inlineStyles = ref<any>([])
   const injectedStyles = computed((): string =>
     inlineStyles.value && inlineStyles.value.length
