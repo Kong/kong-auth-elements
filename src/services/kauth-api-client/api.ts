@@ -24,6 +24,19 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 /**
  * 
  * @export
+ * @interface AuthenticateAuthOrganizationResponse
+ */
+export interface AuthenticateAuthOrganizationResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof AuthenticateAuthOrganizationResponse
+     */
+    'redirectURL'?: string;
+}
+/**
+ * 
+ * @export
  * @interface AuthenticateAuthenticateRequest
  */
 export interface AuthenticateAuthenticateRequest {
@@ -39,6 +52,19 @@ export interface AuthenticateAuthenticateRequest {
      * @memberof AuthenticateAuthenticateRequest
      */
     'username': string;
+}
+/**
+ * 
+ * @export
+ * @interface AuthenticateOidcCallbackResponse
+ */
+export interface AuthenticateOidcCallbackResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof AuthenticateOidcCallbackResponse
+     */
+    'redirectURL'?: string;
 }
 /**
  * 
@@ -1329,19 +1355,61 @@ export interface UserAPIV1User {
 export const AuthenticationApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
+         * This should be called with the query parameters received from the OIDC callback
+         * @summary Returns redirect url for organization login
+         * @param {string} code OIDC code
+         * @param {string} [state] OIDC state
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticateOidcCallbackGet: async (code: string, state?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'code' is not null or undefined
+            assertParamExists('authenticateOidcCallbackGet', 'code', code)
+            const localVarPath = `/authenticate/oidc-callback`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (code !== undefined) {
+                localVarQueryParameter['code'] = code;
+            }
+
+            if (state !== undefined) {
+                localVarQueryParameter['state'] = state;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
-         * @summary Redirects a user to the correct location for organization
-         * @param {string} organizationId Organization ID
+         * @summary Returns redirect url for organization login
+         * @param {string} organizationLoginPath Organization Login Path
          * @param {string} [returnTo] Path to return to after authentication has completed
          * @param {string} [test] Configuration test mode
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authenticateOrganizationIdGet: async (organizationId: string, returnTo?: string, test?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'organizationId' is not null or undefined
-            assertParamExists('authenticateOrganizationIdGet', 'organizationId', organizationId)
-            const localVarPath = `/authenticate/{organizationId}`
-                .replace(`{${"organizationId"}}`, encodeURIComponent(String(organizationId)));
+        authenticateOrganizationLoginPathGet: async (organizationLoginPath: string, returnTo?: string, test?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'organizationLoginPath' is not null or undefined
+            assertParamExists('authenticateOrganizationLoginPathGet', 'organizationLoginPath', organizationLoginPath)
+            const localVarPath = `/authenticate/{organizationLoginPath}`
+                .replace(`{${"organizationLoginPath"}}`, encodeURIComponent(String(organizationLoginPath)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1455,16 +1523,28 @@ export const AuthenticationApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = AuthenticationApiAxiosParamCreator(configuration)
     return {
         /**
+         * This should be called with the query parameters received from the OIDC callback
+         * @summary Returns redirect url for organization login
+         * @param {string} code OIDC code
+         * @param {string} [state] OIDC state
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async authenticateOidcCallbackGet(code: string, state?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticateOidcCallbackResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticateOidcCallbackGet(code, state, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
-         * @summary Redirects a user to the correct location for organization
-         * @param {string} organizationId Organization ID
+         * @summary Returns redirect url for organization login
+         * @param {string} organizationLoginPath Organization Login Path
          * @param {string} [returnTo] Path to return to after authentication has completed
          * @param {string} [test] Configuration test mode
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authenticateOrganizationIdGet(organizationId: string, returnTo?: string, test?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticateOrganizationIdGet(organizationId, returnTo, test, options);
+        async authenticateOrganizationLoginPathGet(organizationLoginPath: string, returnTo?: string, test?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticateAuthOrganizationResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticateOrganizationLoginPathGet(organizationLoginPath, returnTo, test, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1500,16 +1580,27 @@ export const AuthenticationApiFactory = function (configuration?: Configuration,
     const localVarFp = AuthenticationApiFp(configuration)
     return {
         /**
+         * This should be called with the query parameters received from the OIDC callback
+         * @summary Returns redirect url for organization login
+         * @param {string} code OIDC code
+         * @param {string} [state] OIDC state
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticateOidcCallbackGet(code: string, state?: string, options?: any): AxiosPromise<AuthenticateOidcCallbackResponse> {
+            return localVarFp.authenticateOidcCallbackGet(code, state, options).then((request) => request(axios, basePath));
+        },
+        /**
          * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
-         * @summary Redirects a user to the correct location for organization
-         * @param {string} organizationId Organization ID
+         * @summary Returns redirect url for organization login
+         * @param {string} organizationLoginPath Organization Login Path
          * @param {string} [returnTo] Path to return to after authentication has completed
          * @param {string} [test] Configuration test mode
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authenticateOrganizationIdGet(organizationId: string, returnTo?: string, test?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.authenticateOrganizationIdGet(organizationId, returnTo, test, options).then((request) => request(axios, basePath));
+        authenticateOrganizationLoginPathGet(organizationLoginPath: string, returnTo?: string, test?: string, options?: any): AxiosPromise<AuthenticateAuthOrganizationResponse> {
+            return localVarFp.authenticateOrganizationLoginPathGet(organizationLoginPath, returnTo, test, options).then((request) => request(axios, basePath));
         },
         /**
          * This will authenticate a user...
@@ -1542,17 +1633,30 @@ export const AuthenticationApiFactory = function (configuration?: Configuration,
  */
 export class AuthenticationApi extends BaseAPI {
     /**
+     * This should be called with the query parameters received from the OIDC callback
+     * @summary Returns redirect url for organization login
+     * @param {string} code OIDC code
+     * @param {string} [state] OIDC state
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticationApi
+     */
+    public authenticateOidcCallbackGet(code: string, state?: string, options?: AxiosRequestConfig) {
+        return AuthenticationApiFp(this.configuration).authenticateOidcCallbackGet(code, state, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
-     * @summary Redirects a user to the correct location for organization
-     * @param {string} organizationId Organization ID
+     * @summary Returns redirect url for organization login
+     * @param {string} organizationLoginPath Organization Login Path
      * @param {string} [returnTo] Path to return to after authentication has completed
      * @param {string} [test] Configuration test mode
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthenticationApi
      */
-    public authenticateOrganizationIdGet(organizationId: string, returnTo?: string, test?: string, options?: AxiosRequestConfig) {
-        return AuthenticationApiFp(this.configuration).authenticateOrganizationIdGet(organizationId, returnTo, test, options).then((request) => request(this.axios, this.basePath));
+    public authenticateOrganizationLoginPathGet(organizationLoginPath: string, returnTo?: string, test?: string, options?: AxiosRequestConfig) {
+        return AuthenticationApiFp(this.configuration).authenticateOrganizationLoginPathGet(organizationLoginPath, returnTo, test, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

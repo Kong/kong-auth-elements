@@ -1,5 +1,12 @@
 <template>
-  <div class="kong-auth-login-form">
+  <KSkeleton
+    v-if="currentState.matches('from_url')"
+    class="idp-loading"
+    type="fullscreen-kong"
+    :delay-milliseconds="0"
+    data-testid="global-walking-gruce" />
+
+  <div v-else class="kong-auth-login-form">
     <div v-if="currentState.matches('error') && error" class="my-3">
       <ErrorMessage :error="error" />
     </div>
@@ -85,18 +92,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, reactive, ref, Ref, toRefs, computed, onMounted } from 'vue'
+import { defineComponent, inject, reactive, ref, Ref, toRefs, computed, onMounted, watch } from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
 import KongAuthApi from '@/services/KongAuthApi'
-import { AuthenticateAuthenticateRequest } from '@/services/kauth-api-client'
+import { AuthenticateAuthenticateRequest, EmailverificationsVerifyResponse } from '@/services/kauth-api-client'
+import { AxiosResponse } from 'axios'
 import { helpText } from '@/utils'
+import useIdentityProvider from '@/composables/useIdentityProvider'
 // Components
 import KAlert from '@kongponents/kalert'
 import KButton from '@kongponents/kbutton'
 import KIcon from '@kongponents/kicon'
 import KInput from '@kongponents/kinput'
 import KLabel from '@kongponents/klabel'
+import { KSkeleton } from '@kongponents/kskeleton'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 export default defineComponent({
@@ -110,6 +120,7 @@ export default defineComponent({
     KIcon,
     KInput,
     KLabel,
+    KSkeleton,
     ErrorMessage,
   },
 
@@ -121,6 +132,7 @@ export default defineComponent({
     const showRegisterLink: Ref<boolean> = inject('show-register-link', ref(false))
     const registerLinkText: Ref<string> = inject('register-link-text', ref(''))
     const registerLinkHelpText: Ref<string> = inject('register-link-help-text', ref(''))
+    const enableIdpLogin: Ref<boolean> = inject('enable-idp-login', ref(false))
 
     const formData = reactive({
       email: '',
@@ -212,11 +224,13 @@ export default defineComponent({
       document.cookie = `userStatus=active; path=/; ${getDomain()} expires=${date.toUTCString()};`
     }
 
-    const setEmail = async (token: string) => {
+    const setEmail = async (token: string): Promise<void> => {
       try {
-        const response = await $api.register.emailVerification.emailVerificationsPatch({
-          token,
-        })
+        const response: AxiosResponse<EmailverificationsVerifyResponse> =
+          await $api.register.emailVerification.emailVerificationsPatch({
+            token,
+          })
+
         send('RESOLVE')
 
         setUserStatusCookie()
@@ -241,7 +255,7 @@ export default defineComponent({
       return await $api.auth.authentication.authenticatePost(credentials)
     }
 
-    const submitForm = async () => {
+    const submitForm = async (): Promise<void> => {
       send('SUBMIT_LOGIN')
 
       // Reset form error
@@ -284,6 +298,16 @@ export default defineComponent({
         }
       }
     }
+
+    // Setup and automatically trigger IDP (or ignore it, depending on the passed boolean)
+    const { idpIsLoading } = useIdentityProvider(enableIdpLogin.value)
+
+    // Automatically trigger state change based on IDP
+    watch(idpIsLoading, (val) => {
+      if (val) {
+        send('FROM_URL')
+      }
+    })
 
     onMounted(() => {
       // Get URL params
@@ -333,6 +357,9 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 /*! KONG_AUTH_INJECT_STYLES */
+.idp-loading {
+  justify-content: center;
+}
 </style>

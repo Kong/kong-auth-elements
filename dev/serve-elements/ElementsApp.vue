@@ -7,6 +7,7 @@
         <h4><code>kong-auth-login</code></h4>
         <kong-auth-login
           show-forgot-password-link
+          enable-idp-login
           @login-success="showAlert('Login success!')"
           @click-forgot-password-link="showAlert('User clicked forgot password')"
           @click-register-link="showAlert('User clicked register')"

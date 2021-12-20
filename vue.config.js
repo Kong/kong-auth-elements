@@ -1,10 +1,11 @@
 module.exports = {
   devServer: {
-    port: '3000',
+    port: 3000,
     proxy: {
       '^/api': {
         target: process.env.VUE_APP_AUTH_URL,
         changeOrigin: true,
+        cookieDomainRewrite: 'localhost',
       },
       '^/kauth/api': {
         target: process.env.VUE_APP_AUTH_URL,
