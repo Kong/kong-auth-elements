@@ -447,16 +447,16 @@
           "title": "Email of the user",
           "type": "string"
         },
-        "firstName": {
-          "title": "First name of the user",
+        "fullName": {
+          "title": "Full name of the user",
           "type": "string"
         },
         "id": {
           "title": "ID of the user",
           "type": "string"
         },
-        "lastName": {
-          "title": "Last name of the user",
+        "preferredName": {
+          "title": "Preferred name of the user",
           "type": "string"
         }
       },
@@ -770,16 +770,16 @@
           "title": "email of user",
           "type": "string"
         },
-        "firstName": {
-          "title": "first name of user",
+        "fullName": {
+          "title": "full name of user",
           "type": "string"
         },
         "id": {
           "title": "id of user",
           "type": "string"
         },
-        "lastName": {
-          "title": "last name of user",
+        "preferredName": {
+          "title": "optional preferred name of the user",
           "type": "string"
         },
         "updatedAt": {
@@ -987,14 +987,9 @@
           "example": "annie@ruokay.com",
           "type": "string"
         },
-        "firstName": {
-          "description": "FirstName is the first name of the new user",
-          "example": "Annie",
-          "type": "string"
-        },
-        "lastName": {
-          "description": "LastName is the last name of the new user",
-          "example": "Ruokay",
+        "fullName": {
+          "description": "FullName is the full name of the new user",
+          "example": "Annette Ruokay",
           "type": "string"
         },
         "organization": {
@@ -1007,6 +1002,11 @@
           "example": "notagoodpassword",
           "type": "string"
         },
+        "preferredName": {
+          "description": "PreferredName is an optional preferred name of the new user",
+          "example": "Annie",
+          "type": "string"
+        },
         "registrationCode": {
           "description": "Registration Code is the code required to register a new user",
           "example": "12fjsd34",
@@ -1015,8 +1015,7 @@
       },
       "required": [
         "email",
-        "firstName",
-        "lastName",
+        "fullName",
         "organization",
         "password"
       ],

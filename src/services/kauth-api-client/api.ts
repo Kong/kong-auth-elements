@@ -783,7 +783,7 @@ export interface MeAPIV1User {
      * @type {string}
      * @memberof MeAPIV1User
      */
-    'firstName'?: string;
+    'fullName'?: string;
     /**
      * 
      * @type {string}
@@ -795,7 +795,7 @@ export interface MeAPIV1User {
      * @type {string}
      * @memberof MeAPIV1User
      */
-    'lastName'?: string;
+    'preferredName'?: string;
 }
 /**
  * 
@@ -940,17 +940,11 @@ export interface RegisterRegisterRequest {
      */
     'email': string;
     /**
-     * FirstName is the first name of the new user
+     * FullName is the full name of the new user
      * @type {string}
      * @memberof RegisterRegisterRequest
      */
-    'firstName': string;
-    /**
-     * LastName is the last name of the new user
-     * @type {string}
-     * @memberof RegisterRegisterRequest
-     */
-    'lastName': string;
+    'fullName': string;
     /**
      * Organization is the name of the new organization to create
      * @type {string}
@@ -963,6 +957,12 @@ export interface RegisterRegisterRequest {
      * @memberof RegisterRegisterRequest
      */
     'password': string;
+    /**
+     * PreferredName is an optional preferred name of the new user
+     * @type {string}
+     * @memberof RegisterRegisterRequest
+     */
+    'preferredName'?: string;
     /**
      * Registration Code is the code required to register a new user
      * @type {string}
@@ -1301,7 +1301,7 @@ export interface UserAPIV1User {
      * @type {string}
      * @memberof UserAPIV1User
      */
-    'firstName'?: string;
+    'fullName'?: string;
     /**
      * 
      * @type {string}
@@ -1313,7 +1313,7 @@ export interface UserAPIV1User {
      * @type {string}
      * @memberof UserAPIV1User
      */
-    'lastName'?: string;
+    'preferredName'?: string;
     /**
      * 
      * @type {string}

@@ -263,10 +263,7 @@ export default defineComponent({
 
       // If all values were passed in, set formData.prepopulated to true
       formData.prepopulated =
-        urlParams.get('email') &&
-        urlParams.get('token') &&
-        urlParams.get('fullName') &&
-        urlParams.get('org')
+        urlParams.get('email') && urlParams.get('token') && urlParams.get('fullName') && urlParams.get('org')
           ? true
           : false
     })
