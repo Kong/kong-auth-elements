@@ -8,6 +8,8 @@
 yarn install
 ```
 
+> **Note**: The `yarn generate:api-client` script requires that you have [Java Runtime installed](https://www.java.com/en/download/) on your machine.
+
 ### Local Dev Against Non-Local API
 
 Create a file `.env.development.local` change `VUE_APP_AUTH_URL` to the environment you wish to hit. See `.env.development.local.example` for values.

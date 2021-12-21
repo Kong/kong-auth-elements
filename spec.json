@@ -95,6 +95,10 @@
         "issuer": {
           "title": "Issuer of the IdP",
           "type": "string"
+        },
+        "loginPath": {
+          "title": "Login path of the IdP",
+          "type": "string"
         }
       },
       "title": "IdpConfig defines the configuration of an identity provider",
@@ -231,6 +235,66 @@
         }
       },
       "title": "Response to update group team assignments",
+      "type": "object"
+    },
+    "InviteAPI.protobufAny": {
+      "additionalProperties": {},
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InviteAPI.rpcStatus": {
+      "properties": {
+        "code": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/InviteAPI.protobufAny"
+          },
+          "type": "array"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InviteAPI.v1Invite": {
+      "properties": {
+        "createdAt": {
+          "format": "date-time",
+          "title": "Timestamp of the invite creation",
+          "type": "string"
+        },
+        "id": {
+          "title": "The invite ID",
+          "type": "string"
+        },
+        "updatedAt": {
+          "format": "date-time",
+          "title": "Timestamp of the invite last update",
+          "type": "string"
+        },
+        "userId": {
+          "title": "The user ID created for this invite",
+          "type": "string"
+        }
+      },
+      "title": "An invite, used in responses",
+      "type": "object"
+    },
+    "InviteAPI.v1InviteUserResponse": {
+      "properties": {
+        "invite": {
+          "$ref": "#/definitions/InviteAPI.v1Invite"
+        }
+      },
+      "title": "InviteUserResponse",
       "type": "object"
     },
     "MeAPI.RetrieveOptionsFilter": {
@@ -1168,6 +1232,29 @@
         "summary": "Updates the group to team assignments for the IdP",
         "tags": [
           "IdentityProviderAPI"
+        ]
+      }
+    },
+    "/api/v1/invites": {
+      "post": {
+        "operationId": "InviteAPI_InviteUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InviteAPI.v1InviteUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/InviteAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "InviteUser adds a user to the organization and sends an invite email to the new user.",
+        "tags": [
+          "InviteAPI"
         ]
       }
     },

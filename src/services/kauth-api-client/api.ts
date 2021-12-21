@@ -295,6 +295,12 @@ export interface IdentityProviderAPIV1Config {
      * @memberof IdentityProviderAPIV1Config
      */
     'issuer'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityProviderAPIV1Config
+     */
+    'loginPath'?: string;
 }
 /**
  * 
@@ -465,6 +471,90 @@ export interface IdentityProviderAPIV1UpdateTeamAssignmentsResponse {
      * @memberof IdentityProviderAPIV1UpdateTeamAssignmentsResponse
      */
     'assignments'?: Array<IdentityProviderAPIV1TeamAssignment>;
+}
+/**
+ * 
+ * @export
+ * @interface InviteAPIProtobufAny
+ */
+export interface InviteAPIProtobufAny {
+    [key: string]: object | any;
+
+    /**
+     * 
+     * @type {string}
+     * @memberof InviteAPIProtobufAny
+     */
+    '@type'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface InviteAPIRpcStatus
+ */
+export interface InviteAPIRpcStatus {
+    /**
+     * 
+     * @type {number}
+     * @memberof InviteAPIRpcStatus
+     */
+    'code'?: number;
+    /**
+     * 
+     * @type {Array<InviteAPIProtobufAny>}
+     * @memberof InviteAPIRpcStatus
+     */
+    'details'?: Array<InviteAPIProtobufAny>;
+    /**
+     * 
+     * @type {string}
+     * @memberof InviteAPIRpcStatus
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface InviteAPIV1Invite
+ */
+export interface InviteAPIV1Invite {
+    /**
+     * 
+     * @type {string}
+     * @memberof InviteAPIV1Invite
+     */
+    'createdAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InviteAPIV1Invite
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InviteAPIV1Invite
+     */
+    'updatedAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InviteAPIV1Invite
+     */
+    'userId'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface InviteAPIV1InviteUserResponse
+ */
+export interface InviteAPIV1InviteUserResponse {
+    /**
+     * 
+     * @type {InviteAPIV1Invite}
+     * @memberof InviteAPIV1InviteUserResponse
+     */
+    'invite'?: InviteAPIV1Invite;
 }
 /**
  * 
@@ -2111,6 +2201,104 @@ export class IdentityProviderAPIApi extends BaseAPI {
      */
     public identityProviderAPIUpdateTeamAssignments(body: IdentityProviderAPIV1UpdateTeamAssignmentsRequest, options?: AxiosRequestConfig) {
         return IdentityProviderAPIApiFp(this.configuration).identityProviderAPIUpdateTeamAssignments(body, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * InviteAPIApi - axios parameter creator
+ * @export
+ */
+export const InviteAPIApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary InviteUser adds a user to the organization and sends an invite email to the new user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        inviteAPIInviteUser: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/invites`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * InviteAPIApi - functional programming interface
+ * @export
+ */
+export const InviteAPIApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = InviteAPIApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary InviteUser adds a user to the organization and sends an invite email to the new user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async inviteAPIInviteUser(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InviteAPIV1InviteUserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.inviteAPIInviteUser(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * InviteAPIApi - factory interface
+ * @export
+ */
+export const InviteAPIApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = InviteAPIApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary InviteUser adds a user to the organization and sends an invite email to the new user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        inviteAPIInviteUser(options?: any): AxiosPromise<InviteAPIV1InviteUserResponse> {
+            return localVarFp.inviteAPIInviteUser(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * InviteAPIApi - object-oriented interface
+ * @export
+ * @class InviteAPIApi
+ * @extends {BaseAPI}
+ */
+export class InviteAPIApi extends BaseAPI {
+    /**
+     * 
+     * @summary InviteUser adds a user to the organization and sends an invite email to the new user.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InviteAPIApi
+     */
+    public inviteAPIInviteUser(options?: AxiosRequestConfig) {
+        return InviteAPIApiFp(this.configuration).inviteAPIInviteUser(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
