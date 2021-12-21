@@ -20,7 +20,7 @@
           v-model.trim="fullName"
           type="text"
           class="mb-4"
-          autocomplete="given-name"
+          autocomplete="name"
           :disabled="prepopulated"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !fullName ? true : false"
           required
