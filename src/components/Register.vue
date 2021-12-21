@@ -13,33 +13,18 @@
       @submit.prevent="submitForm"
       novalidate
       data-testid="kong-auth-register-form">
-      <div class="name-container">
-        <div class="name-field">
-          <KLabel for="first_name">First Name *</KLabel>
-          <KInput
-            id="first_name"
-            v-model.trim="firstName"
-            type="text"
-            class="mb-4"
-            autocomplete="given-name"
-            :disabled="prepopulated"
-            :has-error="currentState.matches('error') && error && fieldsHaveError && !firstName ? true : false"
-            required
-            data-testid="kong-auth-register-first-name" />
-        </div>
-        <div class="name-field">
-          <KLabel for="last_name">Last Name *</KLabel>
-          <KInput
-            id="last_name"
-            v-model.trim="lastName"
-            type="text"
-            class="mb-4"
-            autocomplete="family-name"
-            :disabled="prepopulated"
-            :has-error="currentState.matches('error') && error && fieldsHaveError && !lastName ? true : false"
-            required
-            data-testid="kong-auth-register-last-name" />
-        </div>
+      <div>
+        <KLabel for="full_name">Full Name *</KLabel>
+        <KInput
+          id="full_name"
+          v-model.trim="fullName"
+          type="text"
+          class="mb-4"
+          autocomplete="given-name"
+          :disabled="prepopulated"
+          :has-error="currentState.matches('error') && error && fieldsHaveError && !fullName ? true : false"
+          required
+          data-testid="kong-auth-register-full-name" />
       </div>
 
       <KLabel for="organization">Organization *</KLabel>
@@ -158,8 +143,7 @@ export default defineComponent({
 
     const formData = reactive({
       email: '',
-      firstName: '',
-      lastName: '',
+      fullName: '',
       emailToken: '',
       organization: '',
       prepopulated: false,
@@ -194,8 +178,7 @@ export default defineComponent({
 
     const userCanSubmitForm = computed((): boolean => {
       return formData.email &&
-        formData.firstName &&
-        formData.lastName &&
+        formData.fullName &&
         formData.organization &&
         formData.password &&
         formData.checked_agreement &&
@@ -238,8 +221,7 @@ export default defineComponent({
       try {
         await $api.register.registration.registerPost({
           email: formData.email,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
+          fullName: formData.fullName,
           organization: formData.organization,
           password: formData.password,
         })
@@ -276,16 +258,14 @@ export default defineComponent({
 
       formData.email = urlParams.get('email') || ''
       formData.emailToken = urlParams.get('token') || ''
-      formData.firstName = urlParams.get('firstName') || ''
-      formData.lastName = urlParams.get('lastName') || ''
+      formData.fullName = urlParams.get('fullName') || ''
       formData.organization = urlParams.get('org') || ''
 
       // If all values were passed in, set formData.prepopulated to true
       formData.prepopulated =
         urlParams.get('email') &&
         urlParams.get('token') &&
-        urlParams.get('firstName') &&
-        urlParams.get('lastName') &&
+        urlParams.get('fullName') &&
         urlParams.get('org')
           ? true
           : false
@@ -309,22 +289,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 /*! KONG_AUTH_INJECT_STYLES */
-.kong-auth-register-form {
-  .name-container {
-    @media screen and (min-width: 768px) {
-      display: flex;
-
-      .name-field {
-        flex: 1;
-
-        &:first-of-type {
-          margin-right: 20px;
-        }
-      }
-    }
-  }
-}
-
 .register-submit {
   --KButtonPrimaryBase: var(--green-400);
 
