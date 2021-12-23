@@ -6,6 +6,7 @@ import {
   IdentityProviderAPIApi,
   InvitesApi,
   PasswordsApi,
+  UserAPIApi,
   RegistrationApi,
 } from './kauth-api-client'
 
@@ -22,6 +23,8 @@ export default class KongAuthApi {
     emailVerification: EmailVerificationApi
     invites: InvitesApi
   }
+
+  users: UserAPIApi
 
   client: AxiosInstance
 
@@ -56,5 +59,7 @@ export default class KongAuthApi {
       emailVerification: new EmailVerificationApi(baseConfig, baseConfig.basePath, this.client),
       invites: new InvitesApi(baseConfig, baseConfig.basePath, this.client),
     }
+
+    this.users = new UserAPIApi(baseConfig, baseConfig.basePath, this.client)
   }
 }
