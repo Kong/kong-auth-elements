@@ -791,6 +791,14 @@
       "title": "A user",
       "type": "object"
     },
+    "authenticate.authOrganizationResponse": {
+      "properties": {
+        "redirectURL": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "authenticate.authenticateRequest": {
       "properties": {
         "password": {
@@ -811,6 +819,14 @@
       "type": "object"
     },
     "authenticate.authenticateResponse": {
+      "type": "object"
+    },
+    "authenticate.oidcCallbackResponse": {
+      "properties": {
+        "redirectURL": {
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "clientconfig.clientConfigResponse": {
@@ -1708,14 +1724,61 @@
         ]
       }
     },
-    "/authenticate/{organizationId}": {
+    "/authenticate/oidc-callback": {
+      "get": {
+        "description": "This should be called with the query parameters received from the OIDC callback",
+        "parameters": [
+          {
+            "description": "OIDC code",
+            "in": "query",
+            "name": "code",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "OIDC state",
+            "in": "query",
+            "name": "state",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/authenticate.oidcCallbackResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          }
+        },
+        "summary": "Returns redirect url for organization login",
+        "tags": [
+          "authentication"
+        ]
+      }
+    },
+    "/authenticate/{organizationLoginPath}": {
       "get": {
         "description": "If the organization has an IdP setup, they will be redirected through\nthat IdP, otherwise they will be redirected to the Konnect user login",
         "parameters": [
           {
-            "description": "Organization ID",
+            "description": "Organization Login Path",
             "in": "path",
-            "name": "organizationId",
+            "name": "organizationLoginPath",
             "required": true,
             "type": "string"
           },
@@ -1732,15 +1795,18 @@
             "type": "string"
           }
         ],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
-          "302": {
-            "description": "Found",
+          "200": {
+            "description": "OK",
             "schema": {
-              "type": "string"
+              "$ref": "#/definitions/authenticate.authOrganizationResponse"
             }
           }
         },
-        "summary": "Redirects a user to the correct location for organization",
+        "summary": "Returns redirect url for organization login",
         "tags": [
           "authentication"
         ]

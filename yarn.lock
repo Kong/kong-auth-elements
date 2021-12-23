@@ -1256,6 +1256,14 @@
     popper.js "^1.15.0"
     vue-uuid "^2.0.2"
 
+"@kongponents/kskeleton@^6.7.7":
+  version "6.7.7"
+  resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.7.7.tgz#d089de2eb2b450d00192e9a831a02638b9481a3d"
+  integrity sha512-iZe0L2syHuylRz6SnVC0k2JUKK9ZEIv9GjAbuL9ntbEDO9KjBQKL9lbWXC3TXLHybOaxTsE0uuJ3PTdTMzMqgA==
+  dependencies:
+    "@kongponents/kicon" "^6.7.7"
+    "@kongponents/styles" "^6.7.7"
+
 "@kongponents/styles@^6.7.7":
   version "6.7.7"
   resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.7.7.tgz#a4f92f4d2a74741184fa70e2142bf9ce4fb37449"
@@ -11916,9 +11924,9 @@ prettier-linter-helpers@^1.0.0:
   integrity sha1-Zx4RyJwUpM/Ids5WQQbEpnJsn1w=
 
 prettier@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.5.0.tgz#a6370e2d4594e093270419d9cc47f7670488f893"
-  integrity sha512-FM/zAKgWTxj40rH03VxzIPdXmj39SwSjwG0heUcNFwI+EMZJnY93yAiKXM3dObIKAM5TA88werc8T/EwhB45eg==
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.5.1.tgz#fff75fa9d519c54cf0fce328c1017d94546bc56a"
+  integrity sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==
 
 pretty-bytes@^5.6.0:
   version "5.6.0"
