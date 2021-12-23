@@ -34,6 +34,9 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    idpLoginRedirectTo: {
+      type: String,
+    },
   },
 
   emits: ['login-success', 'confirm-email-success', 'click-forgot-password-link', 'click-register-link'],
@@ -78,6 +81,11 @@ export default defineComponent({
     provide(
       'enable-idp-login',
       computed((): boolean => props.enableIdpLogin),
+    )
+
+    provide(
+      'idp-login-redirect-to',
+      computed((): string => (props.idpLoginRedirectTo ? props.idpLoginRedirectTo : '')),
     )
   },
 })
