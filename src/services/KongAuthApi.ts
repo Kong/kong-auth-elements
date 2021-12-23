@@ -5,6 +5,7 @@ import {
   EmailVerificationApi,
   IdentityProviderAPIApi,
   InvitesApi,
+  LogoutApi,
   PasswordsApi,
   UserAPIApi,
   RegistrationApi,
@@ -17,6 +18,8 @@ export default class KongAuthApi {
   }
 
   idp: IdentityProviderAPIApi
+
+  logout: LogoutApi
 
   register: {
     registration: RegistrationApi
@@ -53,6 +56,8 @@ export default class KongAuthApi {
     }
 
     this.idp = new IdentityProviderAPIApi(baseConfig, baseConfig.basePath, this.client)
+
+    this.logout = new LogoutApi(baseConfig, baseConfig.basePath, this.client)
 
     this.register = {
       registration: new RegistrationApi(baseConfig, baseConfig.basePath, this.client),
