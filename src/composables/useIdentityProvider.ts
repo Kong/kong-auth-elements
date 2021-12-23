@@ -88,7 +88,7 @@ export default function useIdentityProvider (
     const redirectParams = '?' + [returnToParam, testingIdpParam].filter(Boolean).join('&')
 
     // Redirect user to kauth endpoint
-    window.location.href = `${process.env.VUE_APP_AUTH_URL}/kauth/api/authenticate/${organizationLoginPath.value}${redirectParams}`
+    window.location.href = `/kauth/api/authenticate/${organizationLoginPath.value}${redirectParams}`
   }
 
   /**
@@ -129,7 +129,7 @@ export default function useIdentityProvider (
     }
 
     // Redirect user to kauth endpoint
-    window.location.href = `${process.env.VUE_APP_AUTH_URL}/kauth/api/authenticate/oidc-callback?code=${code.value}&state=${state.value}`
+    window.location.href = `/kauth/api/authenticate/oidc-callback?code=${code.value}&state=${state.value}`
   }
 
   onMounted(() => {
