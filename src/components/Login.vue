@@ -132,8 +132,8 @@ export default defineComponent({
     const showRegisterLink: Ref<boolean> = inject('show-register-link', ref(false))
     const registerLinkText: Ref<string> = inject('register-link-text', ref(''))
     const registerLinkHelpText: Ref<string> = inject('register-link-help-text', ref(''))
-    const enableIdpLogin: Ref<boolean> = inject('enable-idp-login', ref(false))
-    const idpLoginRedirectTo: Ref<string> = inject('idp-login-redirect-to', ref(''))
+    const idpLoginReturnTo: Ref<string> = inject('idp-login-return-to', ref(''))
+    const enableIdpLogin = computed((): boolean => !!idpLoginReturnTo.value)
 
     const formData = reactive({
       email: '',
@@ -301,7 +301,7 @@ export default defineComponent({
     }
 
     // Setup and automatically trigger IDP (or ignore it, depending on the passed boolean)
-    const { idpIsLoading } = useIdentityProvider(enableIdpLogin.value, idpLoginRedirectTo.value)
+    const { idpIsLoading } = useIdentityProvider(enableIdpLogin.value, idpLoginReturnTo.value)
 
     // Automatically trigger state change based on IDP
     watch(idpIsLoading, (val) => {

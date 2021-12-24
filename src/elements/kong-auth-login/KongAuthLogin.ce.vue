@@ -30,11 +30,7 @@ export default defineComponent({
     },
     registerLinkHelpText: String,
     registerLinkText: String,
-    enableIdpLogin: {
-      type: Boolean,
-      default: false,
-    },
-    idpLoginRedirectTo: {
+    idpLoginReturnTo: {
       type: String,
     },
   },
@@ -79,13 +75,8 @@ export default defineComponent({
 
     // IDP
     provide(
-      'enable-idp-login',
-      computed((): boolean => props.enableIdpLogin),
-    )
-
-    provide(
-      'idp-login-redirect-to',
-      computed((): string => (props.idpLoginRedirectTo ? props.idpLoginRedirectTo : '')),
+      'idp-login-return-to',
+      computed((): string => (props.idpLoginReturnTo ? props.idpLoginReturnTo : '')),
     )
   },
 })
