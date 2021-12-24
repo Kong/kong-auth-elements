@@ -116,7 +116,6 @@ export default function useIdentityProvider (
   }
 
   const authenticateWithIdp = () => {
-    // TODO
     if (!code.value || !state.value) {
       idpIsLoading.value = false
       return
