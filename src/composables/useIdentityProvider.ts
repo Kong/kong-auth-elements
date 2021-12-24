@@ -64,15 +64,9 @@ export default function useIdentityProvider (
       return
     }
 
-    if (!returnTo) {
-      idpIsLoading.value = false
-      console.error("'redirectToIdp' requires a 'returnTo' URL.")
-      return
-    }
-
     if (!['konghq.com', 'localhost'].some((path) => returnTo.includes(path))) {
       idpIsLoading.value = false
-      console.error("'redirectToIdp' must include konghq.com or localhost.")
+      console.error("'redirectToIdp' is required and must include konghq.com or localhost.")
       return
     }
 
