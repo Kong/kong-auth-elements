@@ -47,7 +47,7 @@ export default class KongAuthApi {
     const baseConfig = new Configuration({
       // This base path MUST start with a leading slash in order to properly
       // resolve within container applications, especially when called from nested routes (e.g. /organizations/users)
-      basePath: '/kauth/api',
+      basePath: '/kauth',
     })
 
     this.auth = {
