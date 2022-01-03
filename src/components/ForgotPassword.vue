@@ -157,7 +157,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        await $api.auth.passwords.requestPasswordReset({
+        await $api.passwords.requestPasswordReset({
           email: formData.email,
         })
 

@@ -171,7 +171,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        const response: AxiosResponse<PasswordresetsResetResponse> = await $api.auth.passwords.resetPassword({
+        const response: AxiosResponse<PasswordresetsResetResponse> = await $api.passwords.resetPassword({
           password: formData.password,
           token: formData.passwordToken,
         })

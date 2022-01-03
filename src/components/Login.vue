@@ -230,10 +230,9 @@ export default defineComponent({
 
     const setEmail = async (token: string): Promise<void> => {
       try {
-        const response: AxiosResponse<EmailverificationsVerifyResponse> =
-          await $api.register.emailVerification.verifyEmail({
-            token,
-          })
+        const response: AxiosResponse<EmailverificationsVerifyResponse> = await $api.emailVerification.verifyEmail({
+          token,
+        })
 
         send('RESOLVE')
 
@@ -256,7 +255,7 @@ export default defineComponent({
     }
 
     const login = async (credentials: AuthenticateAuthenticateRequest) => {
-      return await $api.auth.authentication.authenticate(credentials)
+      return await $api.authentication.authenticate(credentials)
     }
 
     const submitForm = async (): Promise<void> => {

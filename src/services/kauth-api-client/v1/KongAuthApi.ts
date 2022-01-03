@@ -12,24 +12,15 @@ import {
 } from './source'
 
 export default class KongAuthApi {
-  auth: {
-    authentication: AuthenticationApi
-    passwords: PasswordsApi
-  }
-
-  idp: IdentityProviderAPIApi
-
-  logout: LogoutApi
-
-  register: {
-    registration: RegistrationApi
-    emailVerification: EmailVerificationApi
-    invites: InvitesApi
-  }
-
-  users: UserAPIApi
-
+  authentication: AuthenticationApi
   client: AxiosInstance
+  emailVerification: EmailVerificationApi
+  idp: IdentityProviderAPIApi
+  invites: InvitesApi
+  logout: LogoutApi
+  passwords: PasswordsApi
+  registration: RegistrationApi
+  users: UserAPIApi
 
   constructor(authErrorCallback?: (error: AxiosError) => void) {
     this.client = axios.create({ withCredentials: true })
@@ -50,21 +41,13 @@ export default class KongAuthApi {
       basePath: '/kauth',
     })
 
-    this.auth = {
-      authentication: new AuthenticationApi(baseConfig, baseConfig.basePath, this.client),
-      passwords: new PasswordsApi(baseConfig, baseConfig.basePath, this.client),
-    }
-
+    this.authentication = new AuthenticationApi(baseConfig, baseConfig.basePath, this.client)
+    this.emailVerification = new EmailVerificationApi(baseConfig, baseConfig.basePath, this.client)
     this.idp = new IdentityProviderAPIApi(baseConfig, baseConfig.basePath, this.client)
-
+    this.invites = new InvitesApi(baseConfig, baseConfig.basePath, this.client)
     this.logout = new LogoutApi(baseConfig, baseConfig.basePath, this.client)
-
-    this.register = {
-      registration: new RegistrationApi(baseConfig, baseConfig.basePath, this.client),
-      emailVerification: new EmailVerificationApi(baseConfig, baseConfig.basePath, this.client),
-      invites: new InvitesApi(baseConfig, baseConfig.basePath, this.client),
-    }
-
+    this.passwords = new PasswordsApi(baseConfig, baseConfig.basePath, this.client)
+    this.registration = new RegistrationApi(baseConfig, baseConfig.basePath, this.client)
     this.users = new UserAPIApi(baseConfig, baseConfig.basePath, this.client)
   }
 }

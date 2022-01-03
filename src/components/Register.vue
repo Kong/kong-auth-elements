@@ -219,7 +219,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        await $api.register.registration.register({
+        await $api.registration.register({
           email: formData.email,
           fullName: formData.fullName,
           organization: formData.organization,
