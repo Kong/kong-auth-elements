@@ -6,6 +6,7 @@
       <div v-if="urlPath.includes('/login') || urlPath === '/'" class="element-wrapper">
         <h4><code>kong-auth-login</code></h4>
         <kong-auth-login
+          idp-login-enabled
           idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/login"
           show-forgot-password-link
           @login-success="showAlert('Login success!')"

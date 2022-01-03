@@ -128,6 +128,8 @@ Also sets the `userStatus` cookie, along with other `kauth` cookies and localSto
 | `showRegisterLink`       | Boolean | `false`                  |
 | `registerLinkHelpText`   | String  | `Don't have an account?` |
 | `registerLinkText`       | String  | `Sign Up →`              |
+| `idpLoginEnabled`        | Boolean | `false`                  |
+| `idpLoginReturnTo`       | String  | ``                       |
 
 #### Emits Events
 
