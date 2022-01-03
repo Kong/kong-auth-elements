@@ -1,4 +1,4 @@
-import { onMounted, ref, Ref } from 'vue'
+import { onMounted, ref, Ref, watch } from 'vue'
 import KongAuthApi from '@/services/KongAuthApi'
 
 interface IdentityProviderComposable {
@@ -12,15 +12,16 @@ interface IdentityProviderComposable {
 /**
  * Composable function to utilize the IDP-related kauth flow.
  * @export IdentityProviderComposable
- * @param {boolean} initializeOnMounted - If true, automatically handle IDP in the onMounted lifecycle hook.
- * @param {string} idpLoginRedirectTo - Pass the returnTo URL. Must include 'konghq.com' or 'localhost' (localhost does not work currently).
+ * @param {ref<boolean>} idpIsEnabled - If true, automatically handle IDP in the onMounted lifecycle hook.
+ * @param {ref<string>} idpLoginRedirectTo - Pass the returnTo URL. Must include 'konghq.com' or 'localhost' (localhost does not work currently).
  * @return {*}  {IdentityProviderComposable}
  */
 export default function useIdentityProvider (
-  initializeOnMounted: boolean,
-  idpLoginRedirectTo: string,
+  idpIsEnabled: Ref<boolean>,
+  idpLoginRedirectTo: Ref<string>,
 ): IdentityProviderComposable {
   const idpIsLoading = ref(false)
+  const isRedirecting = ref(false)
   const organizationLoginPath = ref<string>('')
   const code = ref<string>('')
   const state = ref<string>('')
@@ -59,6 +60,8 @@ export default function useIdentityProvider (
    * @param {string} [returnTo] - The full URL (including https://) where to return the user to with the code and state.
    */
   const redirectToIdp = (returnTo: string, isTest = false): void => {
+    console.info('redirectToIdp: ', `'${returnTo}'`)
+
     if (!organizationLoginPath.value) {
       idpIsLoading.value = false
       return
@@ -69,6 +72,9 @@ export default function useIdentityProvider (
       console.error("'redirectToIdp' is required and must include konghq.com or localhost.")
       return
     }
+
+    // Prevent additional redirects while processing
+    isRedirecting.value = true
 
     // If returnTo is set, and starts with 'http', accept as-is. Otherwise, set to 'window.location.origin/login'. Also encode for query string.
     const returnToParam = `returnTo=${encodeURIComponent(
@@ -121,19 +127,30 @@ export default function useIdentityProvider (
       return
     }
 
+    // Prevent additional redirects while processing
+    isRedirecting.value = true
+
     // Redirect user to kauth endpoint
     window.location.href = `/kauth/api/authenticate/oidc-callback?code=${code.value}&state=${state.value}`
   }
 
+  // Add watcher to allow `kong-auth-login` element time to load and retrigger redirect.
+  // `idp-login-return-to` prop value will likely not be available ASAP onMounted within containing app, so this will still fire.
+  watch(idpLoginRedirectTo, (loginUrl) => {
+    if (idpIsEnabled.value && !!loginUrl.trim() && shouldTriggerIdpLogin() && !isRedirecting.value) {
+      redirectToIdp(loginUrl)
+    }
+  })
+
   onMounted(() => {
-    // If not set to initialize on mounted, exit
-    if (!initializeOnMounted) {
+    // If IDP is not enabled on login component, do not trigger listeners in onMounted function
+    if (!idpIsEnabled.value) {
       return
     }
 
     // Check for IDP login
     if (shouldTriggerIdpLogin()) {
-      redirectToIdp(idpLoginRedirectTo)
+      redirectToIdp(idpLoginRedirectTo.value)
       return
     }
 
