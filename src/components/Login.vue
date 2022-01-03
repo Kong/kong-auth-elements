@@ -95,8 +95,11 @@
 import { defineComponent, inject, reactive, ref, Ref, toRefs, computed, onMounted, watch } from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
-import KongAuthApi from '@/services/KongAuthApi'
-import { AuthenticateAuthenticateRequest, EmailverificationsVerifyResponse } from '@/services/kauth-api-client'
+import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
+import {
+  AuthenticateAuthenticateRequest,
+  EmailverificationsVerifyResponse,
+} from '@/services/kauth-api-client/v1/source'
 import { AxiosResponse } from 'axios'
 import { helpText } from '@/utils'
 import useIdentityProvider from '@/composables/useIdentityProvider'
@@ -228,7 +231,7 @@ export default defineComponent({
     const setEmail = async (token: string): Promise<void> => {
       try {
         const response: AxiosResponse<EmailverificationsVerifyResponse> =
-          await $api.register.emailVerification.emailVerificationsPatch({
+          await $api.register.emailVerification.verifyEmail({
             token,
           })
 
@@ -253,7 +256,7 @@ export default defineComponent({
     }
 
     const login = async (credentials: AuthenticateAuthenticateRequest) => {
-      return await $api.auth.authentication.authenticatePost(credentials)
+      return await $api.auth.authentication.authenticate(credentials)
     }
 
     const submitForm = async (): Promise<void> => {

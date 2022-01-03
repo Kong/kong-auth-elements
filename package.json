@@ -13,8 +13,7 @@
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "spec:download": "curl http://localhost:8080/api/swagger/doc.json > spec.json",
-    "generate:api-client": "yarn openapi-generator-cli generate --skip-validate-spec -i spec.json -g typescript-axios -o src/services/kauth-api-client -p modelPropertyNaming=original",
+    "generate:api-client": "yarn openapi-generator-cli generate --skip-validate-spec -i src/services/kauth-api-client/v1/spec.json -g typescript-axios -o src/services/kauth-api-client/v1/source -p modelPropertyNaming=original",
     "semantic-release": "semantic-release"
   },
   "dependencies": {

@@ -63,8 +63,8 @@ import { defineComponent, ref, reactive, toRefs, Ref, inject, computed, onMounte
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText } from '@/utils'
-import KongAuthApi from '@/services/KongAuthApi'
-import { PasswordresetsResetResponse } from '@/services/kauth-api-client/api'
+import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
+import { PasswordresetsResetResponse } from '@/services/kauth-api-client/v1/source'
 import { AxiosResponse } from 'axios'
 // Components
 import KButton from '@kongponents/kbutton'
@@ -171,7 +171,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        const response: AxiosResponse<PasswordresetsResetResponse> = await $api.auth.passwords.passwordResetsPatch({
+        const response: AxiosResponse<PasswordresetsResetResponse> = await $api.auth.passwords.resetPassword({
           password: formData.password,
           token: formData.passwordToken,
         })

@@ -73,7 +73,7 @@ import { defineComponent, inject, ref, Ref, reactive, toRefs, computed } from 'v
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText } from '@/utils'
-import KongAuthApi from '@/services/KongAuthApi'
+import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
 // Components
 import KAlert from '@kongponents/kalert'
 import KButton from '@kongponents/kbutton'
@@ -157,7 +157,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        await $api.auth.passwords.passwordResetsPost({
+        await $api.auth.passwords.requestPasswordReset({
           email: formData.email,
         })
 

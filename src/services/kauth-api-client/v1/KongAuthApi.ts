@@ -9,7 +9,7 @@ import {
   PasswordsApi,
   UserAPIApi,
   RegistrationApi,
-} from './kauth-api-client'
+} from './source'
 
 export default class KongAuthApi {
   auth: {

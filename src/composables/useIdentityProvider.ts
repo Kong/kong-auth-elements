@@ -1,5 +1,5 @@
 import { onMounted, ref, Ref, watch } from 'vue'
-import KongAuthApi from '@/services/KongAuthApi'
+import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
 
 interface IdentityProviderComposable {
   idpIsLoading: Ref<boolean>

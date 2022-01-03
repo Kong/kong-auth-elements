@@ -113,7 +113,7 @@ import { defineComponent, inject, ref, Ref, reactive, toRefs, computed, onMounte
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText } from '@/utils'
-import KongAuthApi from '@/services/KongAuthApi'
+import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
 // Components
 import KButton from '@kongponents/kbutton'
 import KIcon from '@kongponents/kicon'
@@ -219,7 +219,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        await $api.register.registration.registerPost({
+        await $api.register.registration.register({
           email: formData.email,
           fullName: formData.fullName,
           organization: formData.organization,
