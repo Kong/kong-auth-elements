@@ -24,19 +24,6 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 /**
  * 
  * @export
- * @interface AuthenticateAuthOrganizationResponse
- */
-export interface AuthenticateAuthOrganizationResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthenticateAuthOrganizationResponse
-     */
-    'redirectURL'?: string;
-}
-/**
- * 
- * @export
  * @interface AuthenticateAuthenticateRequest
  */
 export interface AuthenticateAuthenticateRequest {
@@ -52,19 +39,6 @@ export interface AuthenticateAuthenticateRequest {
      * @memberof AuthenticateAuthenticateRequest
      */
     'username': string;
-}
-/**
- * 
- * @export
- * @interface AuthenticateOidcCallbackResponse
- */
-export interface AuthenticateOidcCallbackResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthenticateOidcCallbackResponse
-     */
-    'redirectURL'?: string;
 }
 /**
  * 
@@ -1244,6 +1218,19 @@ export interface UserAPIProtobufAny {
 /**
  * 
  * @export
+ * @interface UserAPIRetrieveOptionsFilter
+ */
+export interface UserAPIRetrieveOptionsFilter {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIRetrieveOptionsFilter
+     */
+    'q'?: string;
+}
+/**
+ * 
+ * @export
  * @interface UserAPIRetrieveOptionsPagination
  */
 export interface UserAPIRetrieveOptionsPagination {
@@ -1288,6 +1275,32 @@ export interface UserAPIRpcStatus {
 /**
  * 
  * @export
+ * @interface UserAPIV1RetrieveTeamsForUserResponse
+ */
+export interface UserAPIV1RetrieveTeamsForUserResponse {
+    /**
+     * 
+     * @type {Array<UserAPIV1Team>}
+     * @memberof UserAPIV1RetrieveTeamsForUserResponse
+     */
+    'teams'?: Array<UserAPIV1Team>;
+}
+/**
+ * 
+ * @export
+ * @interface UserAPIV1RetrieveUserResponse
+ */
+export interface UserAPIV1RetrieveUserResponse {
+    /**
+     * 
+     * @type {UserAPIV1User}
+     * @memberof UserAPIV1RetrieveUserResponse
+     */
+    'user'?: UserAPIV1User;
+}
+/**
+ * 
+ * @export
  * @interface UserAPIV1RetrieveUsersResponse
  */
 export interface UserAPIV1RetrieveUsersResponse {
@@ -1303,6 +1316,37 @@ export interface UserAPIV1RetrieveUsersResponse {
      * @memberof UserAPIV1RetrieveUsersResponse
      */
     'users'?: Array<UserAPIV1User>;
+}
+/**
+ * 
+ * @export
+ * @interface UserAPIV1Team
+ */
+export interface UserAPIV1Team {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIV1Team
+     */
+    'createdAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIV1Team
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIV1Team
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIV1Team
+     */
+    'updatedAt'?: string;
 }
 /**
  * 
@@ -1355,61 +1399,19 @@ export interface UserAPIV1User {
 export const AuthenticationApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * This should be called with the query parameters received from the OIDC callback
-         * @summary Returns redirect url for organization login
-         * @param {string} code OIDC code
-         * @param {string} [state] OIDC state
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticateOidcCallbackGet: async (code: string, state?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'code' is not null or undefined
-            assertParamExists('authenticateOidcCallbackGet', 'code', code)
-            const localVarPath = `/authenticate/oidc-callback`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (code !== undefined) {
-                localVarQueryParameter['code'] = code;
-            }
-
-            if (state !== undefined) {
-                localVarQueryParameter['state'] = state;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
-         * @summary Returns redirect url for organization login
-         * @param {string} organizationLoginPath Organization Login Path
+         * @summary Redirects a user to the correct location for organization
+         * @param {string} organizationId Organization ID
          * @param {string} [returnTo] Path to return to after authentication has completed
          * @param {string} [test] Configuration test mode
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authenticateOrganizationLoginPathGet: async (organizationLoginPath: string, returnTo?: string, test?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'organizationLoginPath' is not null or undefined
-            assertParamExists('authenticateOrganizationLoginPathGet', 'organizationLoginPath', organizationLoginPath)
-            const localVarPath = `/authenticate/{organizationLoginPath}`
-                .replace(`{${"organizationLoginPath"}}`, encodeURIComponent(String(organizationLoginPath)));
+        apiV1AuthenticateOrganizationIdGet: async (organizationId: string, returnTo?: string, test?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'organizationId' is not null or undefined
+            assertParamExists('apiV1AuthenticateOrganizationIdGet', 'organizationId', organizationId)
+            const localVarPath = `/api/v1/authenticate/{organizationId}`
+                .replace(`{${"organizationId"}}`, encodeURIComponent(String(organizationId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1447,10 +1449,10 @@ export const AuthenticationApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authenticatePost: async (message: AuthenticateAuthenticateRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiV1AuthenticatePost: async (message: AuthenticateAuthenticateRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'message' is not null or undefined
-            assertParamExists('authenticatePost', 'message', message)
-            const localVarPath = `/authenticate`;
+            assertParamExists('apiV1AuthenticatePost', 'message', message)
+            const localVarPath = `/api/v1/authenticate`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1483,10 +1485,10 @@ export const AuthenticationApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        refreshPost: async (message: object, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiV1RefreshPost: async (message: object, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'message' is not null or undefined
-            assertParamExists('refreshPost', 'message', message)
-            const localVarPath = `/refresh`;
+            assertParamExists('apiV1RefreshPost', 'message', message)
+            const localVarPath = `/api/v1/refresh`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1523,28 +1525,16 @@ export const AuthenticationApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = AuthenticationApiAxiosParamCreator(configuration)
     return {
         /**
-         * This should be called with the query parameters received from the OIDC callback
-         * @summary Returns redirect url for organization login
-         * @param {string} code OIDC code
-         * @param {string} [state] OIDC state
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async authenticateOidcCallbackGet(code: string, state?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticateOidcCallbackResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticateOidcCallbackGet(code, state, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
-         * @summary Returns redirect url for organization login
-         * @param {string} organizationLoginPath Organization Login Path
+         * @summary Redirects a user to the correct location for organization
+         * @param {string} organizationId Organization ID
          * @param {string} [returnTo] Path to return to after authentication has completed
          * @param {string} [test] Configuration test mode
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authenticateOrganizationLoginPathGet(organizationLoginPath: string, returnTo?: string, test?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticateAuthOrganizationResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticateOrganizationLoginPathGet(organizationLoginPath, returnTo, test, options);
+        async apiV1AuthenticateOrganizationIdGet(organizationId: string, returnTo?: string, test?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1AuthenticateOrganizationIdGet(organizationId, returnTo, test, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1554,8 +1544,8 @@ export const AuthenticationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authenticatePost(message: AuthenticateAuthenticateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticatePost(message, options);
+        async apiV1AuthenticatePost(message: AuthenticateAuthenticateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1AuthenticatePost(message, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1565,8 +1555,8 @@ export const AuthenticationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async refreshPost(message: object, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.refreshPost(message, options);
+        async apiV1RefreshPost(message: object, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1RefreshPost(message, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1580,27 +1570,16 @@ export const AuthenticationApiFactory = function (configuration?: Configuration,
     const localVarFp = AuthenticationApiFp(configuration)
     return {
         /**
-         * This should be called with the query parameters received from the OIDC callback
-         * @summary Returns redirect url for organization login
-         * @param {string} code OIDC code
-         * @param {string} [state] OIDC state
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticateOidcCallbackGet(code: string, state?: string, options?: any): AxiosPromise<AuthenticateOidcCallbackResponse> {
-            return localVarFp.authenticateOidcCallbackGet(code, state, options).then((request) => request(axios, basePath));
-        },
-        /**
          * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
-         * @summary Returns redirect url for organization login
-         * @param {string} organizationLoginPath Organization Login Path
+         * @summary Redirects a user to the correct location for organization
+         * @param {string} organizationId Organization ID
          * @param {string} [returnTo] Path to return to after authentication has completed
          * @param {string} [test] Configuration test mode
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authenticateOrganizationLoginPathGet(organizationLoginPath: string, returnTo?: string, test?: string, options?: any): AxiosPromise<AuthenticateAuthOrganizationResponse> {
-            return localVarFp.authenticateOrganizationLoginPathGet(organizationLoginPath, returnTo, test, options).then((request) => request(axios, basePath));
+        apiV1AuthenticateOrganizationIdGet(organizationId: string, returnTo?: string, test?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.apiV1AuthenticateOrganizationIdGet(organizationId, returnTo, test, options).then((request) => request(axios, basePath));
         },
         /**
          * This will authenticate a user...
@@ -1609,8 +1588,8 @@ export const AuthenticationApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authenticatePost(message: AuthenticateAuthenticateRequest, options?: any): AxiosPromise<object> {
-            return localVarFp.authenticatePost(message, options).then((request) => request(axios, basePath));
+        apiV1AuthenticatePost(message: AuthenticateAuthenticateRequest, options?: any): AxiosPromise<object> {
+            return localVarFp.apiV1AuthenticatePost(message, options).then((request) => request(axios, basePath));
         },
         /**
          * Refresh will set a new access and refresh token if the user is still valid.
@@ -1619,8 +1598,8 @@ export const AuthenticationApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        refreshPost(message: object, options?: any): AxiosPromise<object> {
-            return localVarFp.refreshPost(message, options).then((request) => request(axios, basePath));
+        apiV1RefreshPost(message: object, options?: any): AxiosPromise<object> {
+            return localVarFp.apiV1RefreshPost(message, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1633,30 +1612,17 @@ export const AuthenticationApiFactory = function (configuration?: Configuration,
  */
 export class AuthenticationApi extends BaseAPI {
     /**
-     * This should be called with the query parameters received from the OIDC callback
-     * @summary Returns redirect url for organization login
-     * @param {string} code OIDC code
-     * @param {string} [state] OIDC state
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthenticationApi
-     */
-    public authenticateOidcCallbackGet(code: string, state?: string, options?: AxiosRequestConfig) {
-        return AuthenticationApiFp(this.configuration).authenticateOidcCallbackGet(code, state, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * If the organization has an IdP setup, they will be redirected through that IdP, otherwise they will be redirected to the Konnect user login
-     * @summary Returns redirect url for organization login
-     * @param {string} organizationLoginPath Organization Login Path
+     * @summary Redirects a user to the correct location for organization
+     * @param {string} organizationId Organization ID
      * @param {string} [returnTo] Path to return to after authentication has completed
      * @param {string} [test] Configuration test mode
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthenticationApi
      */
-    public authenticateOrganizationLoginPathGet(organizationLoginPath: string, returnTo?: string, test?: string, options?: AxiosRequestConfig) {
-        return AuthenticationApiFp(this.configuration).authenticateOrganizationLoginPathGet(organizationLoginPath, returnTo, test, options).then((request) => request(this.axios, this.basePath));
+    public apiV1AuthenticateOrganizationIdGet(organizationId: string, returnTo?: string, test?: string, options?: AxiosRequestConfig) {
+        return AuthenticationApiFp(this.configuration).apiV1AuthenticateOrganizationIdGet(organizationId, returnTo, test, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1667,8 +1633,8 @@ export class AuthenticationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticationApi
      */
-    public authenticatePost(message: AuthenticateAuthenticateRequest, options?: AxiosRequestConfig) {
-        return AuthenticationApiFp(this.configuration).authenticatePost(message, options).then((request) => request(this.axios, this.basePath));
+    public apiV1AuthenticatePost(message: AuthenticateAuthenticateRequest, options?: AxiosRequestConfig) {
+        return AuthenticationApiFp(this.configuration).apiV1AuthenticatePost(message, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1679,8 +1645,8 @@ export class AuthenticationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticationApi
      */
-    public refreshPost(message: object, options?: AxiosRequestConfig) {
-        return AuthenticationApiFp(this.configuration).refreshPost(message, options).then((request) => request(this.axios, this.basePath));
+    public apiV1RefreshPost(message: object, options?: AxiosRequestConfig) {
+        return AuthenticationApiFp(this.configuration).apiV1RefreshPost(message, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -1697,8 +1663,8 @@ export const ClientConfigApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        clientConfigGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/client-config/`;
+        apiV1ClientConfigGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/client-config/`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1737,8 +1703,8 @@ export const ClientConfigApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async clientConfigGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClientconfigClientConfigResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.clientConfigGet(options);
+        async apiV1ClientConfigGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClientconfigClientConfigResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1ClientConfigGet(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1757,8 +1723,8 @@ export const ClientConfigApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        clientConfigGet(options?: any): AxiosPromise<ClientconfigClientConfigResponse> {
-            return localVarFp.clientConfigGet(options).then((request) => request(axios, basePath));
+        apiV1ClientConfigGet(options?: any): AxiosPromise<ClientconfigClientConfigResponse> {
+            return localVarFp.apiV1ClientConfigGet(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1777,8 +1743,8 @@ export class ClientConfigApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClientConfigApi
      */
-    public clientConfigGet(options?: AxiosRequestConfig) {
-        return ClientConfigApiFp(this.configuration).clientConfigGet(options).then((request) => request(this.axios, this.basePath));
+    public apiV1ClientConfigGet(options?: AxiosRequestConfig) {
+        return ClientConfigApiFp(this.configuration).apiV1ClientConfigGet(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -1796,10 +1762,10 @@ export const EmailVerificationApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        emailVerificationsPatch: async (message: EmailverificationsVerifyRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiV1EmailVerificationsPatch: async (message: EmailverificationsVerifyRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'message' is not null or undefined
-            assertParamExists('emailVerificationsPatch', 'message', message)
-            const localVarPath = `/email-verifications`;
+            assertParamExists('apiV1EmailVerificationsPatch', 'message', message)
+            const localVarPath = `/api/v1/email-verifications`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1842,8 +1808,8 @@ export const EmailVerificationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async emailVerificationsPatch(message: EmailverificationsVerifyRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EmailverificationsVerifyResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.emailVerificationsPatch(message, options);
+        async apiV1EmailVerificationsPatch(message: EmailverificationsVerifyRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EmailverificationsVerifyResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1EmailVerificationsPatch(message, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1863,8 +1829,8 @@ export const EmailVerificationApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        emailVerificationsPatch(message: EmailverificationsVerifyRequest, options?: any): AxiosPromise<EmailverificationsVerifyResponse> {
-            return localVarFp.emailVerificationsPatch(message, options).then((request) => request(axios, basePath));
+        apiV1EmailVerificationsPatch(message: EmailverificationsVerifyRequest, options?: any): AxiosPromise<EmailverificationsVerifyResponse> {
+            return localVarFp.apiV1EmailVerificationsPatch(message, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1884,8 +1850,8 @@ export class EmailVerificationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EmailVerificationApi
      */
-    public emailVerificationsPatch(message: EmailverificationsVerifyRequest, options?: AxiosRequestConfig) {
-        return EmailVerificationApiFp(this.configuration).emailVerificationsPatch(message, options).then((request) => request(this.axios, this.basePath));
+    public apiV1EmailVerificationsPatch(message: EmailverificationsVerifyRequest, options?: AxiosRequestConfig) {
+        return EmailVerificationApiFp(this.configuration).apiV1EmailVerificationsPatch(message, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -2420,10 +2386,10 @@ export const InvitesApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        invitesPatch: async (message: InvitesAcceptRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiV1AcceptInvitePatch: async (message: InvitesAcceptRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'message' is not null or undefined
-            assertParamExists('invitesPatch', 'message', message)
-            const localVarPath = `/invites`;
+            assertParamExists('apiV1AcceptInvitePatch', 'message', message)
+            const localVarPath = `/api/v1/accept-invite`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2466,8 +2432,8 @@ export const InvitesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async invitesPatch(message: InvitesAcceptRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.invitesPatch(message, options);
+        async apiV1AcceptInvitePatch(message: InvitesAcceptRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1AcceptInvitePatch(message, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -2487,8 +2453,8 @@ export const InvitesApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        invitesPatch(message: InvitesAcceptRequest, options?: any): AxiosPromise<object> {
-            return localVarFp.invitesPatch(message, options).then((request) => request(axios, basePath));
+        apiV1AcceptInvitePatch(message: InvitesAcceptRequest, options?: any): AxiosPromise<object> {
+            return localVarFp.apiV1AcceptInvitePatch(message, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2508,8 +2474,8 @@ export class InvitesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvitesApi
      */
-    public invitesPatch(message: InvitesAcceptRequest, options?: AxiosRequestConfig) {
-        return InvitesApiFp(this.configuration).invitesPatch(message, options).then((request) => request(this.axios, this.basePath));
+    public apiV1AcceptInvitePatch(message: InvitesAcceptRequest, options?: AxiosRequestConfig) {
+        return InvitesApiFp(this.configuration).apiV1AcceptInvitePatch(message, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -2526,8 +2492,8 @@ export const LogoutApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logoutPost: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/logout`;
+        apiV1LogoutPost: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/logout`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2566,8 +2532,8 @@ export const LogoutApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async logoutPost(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.logoutPost(options);
+        async apiV1LogoutPost(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1LogoutPost(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -2586,8 +2552,8 @@ export const LogoutApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logoutPost(options?: any): AxiosPromise<object> {
-            return localVarFp.logoutPost(options).then((request) => request(axios, basePath));
+        apiV1LogoutPost(options?: any): AxiosPromise<object> {
+            return localVarFp.apiV1LogoutPost(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2606,8 +2572,8 @@ export class LogoutApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof LogoutApi
      */
-    public logoutPost(options?: AxiosRequestConfig) {
-        return LogoutApiFp(this.configuration).logoutPost(options).then((request) => request(this.axios, this.basePath));
+    public apiV1LogoutPost(options?: AxiosRequestConfig) {
+        return LogoutApiFp(this.configuration).apiV1LogoutPost(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -2830,10 +2796,10 @@ export const PasswordsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        passwordResetsPatch: async (message: PasswordresetsResetRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiV1PasswordResetsPatch: async (message: PasswordresetsResetRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'message' is not null or undefined
-            assertParamExists('passwordResetsPatch', 'message', message)
-            const localVarPath = `/password-resets`;
+            assertParamExists('apiV1PasswordResetsPatch', 'message', message)
+            const localVarPath = `/api/v1/password-resets`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2866,10 +2832,10 @@ export const PasswordsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        passwordResetsPost: async (message: PasswordresetsRequestResetRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiV1PasswordResetsPost: async (message: PasswordresetsRequestResetRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'message' is not null or undefined
-            assertParamExists('passwordResetsPost', 'message', message)
-            const localVarPath = `/password-resets`;
+            assertParamExists('apiV1PasswordResetsPost', 'message', message)
+            const localVarPath = `/api/v1/password-resets`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2912,8 +2878,8 @@ export const PasswordsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async passwordResetsPatch(message: PasswordresetsResetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PasswordresetsResetResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.passwordResetsPatch(message, options);
+        async apiV1PasswordResetsPatch(message: PasswordresetsResetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PasswordresetsResetResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1PasswordResetsPatch(message, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2923,8 +2889,8 @@ export const PasswordsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async passwordResetsPost(message: PasswordresetsRequestResetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.passwordResetsPost(message, options);
+        async apiV1PasswordResetsPost(message: PasswordresetsRequestResetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1PasswordResetsPost(message, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -2944,8 +2910,8 @@ export const PasswordsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        passwordResetsPatch(message: PasswordresetsResetRequest, options?: any): AxiosPromise<PasswordresetsResetResponse> {
-            return localVarFp.passwordResetsPatch(message, options).then((request) => request(axios, basePath));
+        apiV1PasswordResetsPatch(message: PasswordresetsResetRequest, options?: any): AxiosPromise<PasswordresetsResetResponse> {
+            return localVarFp.apiV1PasswordResetsPatch(message, options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint creates a reset request entry and sends the user an email with a link to reset their password. It will return success if the email address is not found.
@@ -2954,8 +2920,8 @@ export const PasswordsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        passwordResetsPost(message: PasswordresetsRequestResetRequest, options?: any): AxiosPromise<object> {
-            return localVarFp.passwordResetsPost(message, options).then((request) => request(axios, basePath));
+        apiV1PasswordResetsPost(message: PasswordresetsRequestResetRequest, options?: any): AxiosPromise<object> {
+            return localVarFp.apiV1PasswordResetsPost(message, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2975,8 +2941,8 @@ export class PasswordsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PasswordsApi
      */
-    public passwordResetsPatch(message: PasswordresetsResetRequest, options?: AxiosRequestConfig) {
-        return PasswordsApiFp(this.configuration).passwordResetsPatch(message, options).then((request) => request(this.axios, this.basePath));
+    public apiV1PasswordResetsPatch(message: PasswordresetsResetRequest, options?: AxiosRequestConfig) {
+        return PasswordsApiFp(this.configuration).apiV1PasswordResetsPatch(message, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2987,8 +2953,8 @@ export class PasswordsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PasswordsApi
      */
-    public passwordResetsPost(message: PasswordresetsRequestResetRequest, options?: AxiosRequestConfig) {
-        return PasswordsApiFp(this.configuration).passwordResetsPost(message, options).then((request) => request(this.axios, this.basePath));
+    public apiV1PasswordResetsPost(message: PasswordresetsRequestResetRequest, options?: AxiosRequestConfig) {
+        return PasswordsApiFp(this.configuration).apiV1PasswordResetsPost(message, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -3006,10 +2972,10 @@ export const RegistrationApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        registerPost: async (message: RegisterRegisterRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiV1RegisterPost: async (message: RegisterRegisterRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'message' is not null or undefined
-            assertParamExists('registerPost', 'message', message)
-            const localVarPath = `/register`;
+            assertParamExists('apiV1RegisterPost', 'message', message)
+            const localVarPath = `/api/v1/register`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -3052,8 +3018,8 @@ export const RegistrationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async registerPost(message: RegisterRegisterRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RegisterRegisterResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.registerPost(message, options);
+        async apiV1RegisterPost(message: RegisterRegisterRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RegisterRegisterResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1RegisterPost(message, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -3073,8 +3039,8 @@ export const RegistrationApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        registerPost(message: RegisterRegisterRequest, options?: any): AxiosPromise<RegisterRegisterResponse> {
-            return localVarFp.registerPost(message, options).then((request) => request(axios, basePath));
+        apiV1RegisterPost(message: RegisterRegisterRequest, options?: any): AxiosPromise<RegisterRegisterResponse> {
+            return localVarFp.apiV1RegisterPost(message, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -3094,8 +3060,8 @@ export class RegistrationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RegistrationApi
      */
-    public registerPost(message: RegisterRegisterRequest, options?: AxiosRequestConfig) {
-        return RegistrationApiFp(this.configuration).registerPost(message, options).then((request) => request(this.axios, this.basePath));
+    public apiV1RegisterPost(message: RegisterRegisterRequest, options?: AxiosRequestConfig) {
+        return RegistrationApiFp(this.configuration).apiV1RegisterPost(message, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -3765,14 +3731,83 @@ export const UserAPIApiAxiosParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
+         * @summary Retrieves the teams a user is on
+         * @param {string} userId id of the user to retrieve the team of which they are a member of
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userAPIRetrieveTeamsForUser: async (userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('userAPIRetrieveTeamsForUser', 'userId', userId)
+            const localVarPath = `/api/v1/users/{userId}/teams`
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieve user retrieves a user\'s details
+         * @param {string} id id of the user to retrieve
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userAPIRetrieveUser: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('userAPIRetrieveUser', 'id', id)
+            const localVarPath = `/api/v1/users/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Retrieves the users that belong to a specific org
          * @param {string} [organizationId] organization id of the users desired.
          * @param {number} [optionsPaginationOffset] Pagination offset.
          * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {string} [optionsFilterQ] The query to filter on.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userAPIRetrieveUsers: async (organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        userAPIRetrieveUsers: async (organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsFilterQ?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/v1/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3795,6 +3830,10 @@ export const UserAPIApiAxiosParamCreator = function (configuration?: Configurati
 
             if (optionsPaginationLimit !== undefined) {
                 localVarQueryParameter['options.pagination.limit'] = optionsPaginationLimit;
+            }
+
+            if (optionsFilterQ !== undefined) {
+                localVarQueryParameter['options.filter.q'] = optionsFilterQ;
             }
 
 
@@ -3820,15 +3859,38 @@ export const UserAPIApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Retrieves the teams a user is on
+         * @param {string} userId id of the user to retrieve the team of which they are a member of
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userAPIRetrieveTeamsForUser(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserAPIV1RetrieveTeamsForUserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userAPIRetrieveTeamsForUser(userId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Retrieve user retrieves a user\'s details
+         * @param {string} id id of the user to retrieve
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userAPIRetrieveUser(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserAPIV1RetrieveUserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userAPIRetrieveUser(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Retrieves the users that belong to a specific org
          * @param {string} [organizationId] organization id of the users desired.
          * @param {number} [optionsPaginationOffset] Pagination offset.
          * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {string} [optionsFilterQ] The query to filter on.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userAPIRetrieveUsers(organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserAPIV1RetrieveUsersResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userAPIRetrieveUsers(organizationId, optionsPaginationOffset, optionsPaginationLimit, options);
+        async userAPIRetrieveUsers(organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsFilterQ?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserAPIV1RetrieveUsersResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userAPIRetrieveUsers(organizationId, optionsPaginationOffset, optionsPaginationLimit, optionsFilterQ, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -3843,15 +3905,36 @@ export const UserAPIApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
+         * @summary Retrieves the teams a user is on
+         * @param {string} userId id of the user to retrieve the team of which they are a member of
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userAPIRetrieveTeamsForUser(userId: string, options?: any): AxiosPromise<UserAPIV1RetrieveTeamsForUserResponse> {
+            return localVarFp.userAPIRetrieveTeamsForUser(userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Retrieve user retrieves a user\'s details
+         * @param {string} id id of the user to retrieve
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userAPIRetrieveUser(id: string, options?: any): AxiosPromise<UserAPIV1RetrieveUserResponse> {
+            return localVarFp.userAPIRetrieveUser(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Retrieves the users that belong to a specific org
          * @param {string} [organizationId] organization id of the users desired.
          * @param {number} [optionsPaginationOffset] Pagination offset.
          * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {string} [optionsFilterQ] The query to filter on.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userAPIRetrieveUsers(organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, options?: any): AxiosPromise<UserAPIV1RetrieveUsersResponse> {
-            return localVarFp.userAPIRetrieveUsers(organizationId, optionsPaginationOffset, optionsPaginationLimit, options).then((request) => request(axios, basePath));
+        userAPIRetrieveUsers(organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsFilterQ?: string, options?: any): AxiosPromise<UserAPIV1RetrieveUsersResponse> {
+            return localVarFp.userAPIRetrieveUsers(organizationId, optionsPaginationOffset, optionsPaginationLimit, optionsFilterQ, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -3865,16 +3948,41 @@ export const UserAPIApiFactory = function (configuration?: Configuration, basePa
 export class UserAPIApi extends BaseAPI {
     /**
      * 
-     * @summary Retrieves the users that belong to a specific org
-     * @param {string} [organizationId] organization id of the users desired.
-     * @param {number} [optionsPaginationOffset] Pagination offset.
-     * @param {number} [optionsPaginationLimit] Result limit.
+     * @summary Retrieves the teams a user is on
+     * @param {string} userId id of the user to retrieve the team of which they are a member of
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserAPIApi
      */
-    public userAPIRetrieveUsers(organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, options?: AxiosRequestConfig) {
-        return UserAPIApiFp(this.configuration).userAPIRetrieveUsers(organizationId, optionsPaginationOffset, optionsPaginationLimit, options).then((request) => request(this.axios, this.basePath));
+    public userAPIRetrieveTeamsForUser(userId: string, options?: AxiosRequestConfig) {
+        return UserAPIApiFp(this.configuration).userAPIRetrieveTeamsForUser(userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Retrieve user retrieves a user\'s details
+     * @param {string} id id of the user to retrieve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserAPIApi
+     */
+    public userAPIRetrieveUser(id: string, options?: AxiosRequestConfig) {
+        return UserAPIApiFp(this.configuration).userAPIRetrieveUser(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Retrieves the users that belong to a specific org
+     * @param {string} [organizationId] organization id of the users desired.
+     * @param {number} [optionsPaginationOffset] Pagination offset.
+     * @param {number} [optionsPaginationLimit] Result limit.
+     * @param {string} [optionsFilterQ] The query to filter on.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserAPIApi
+     */
+    public userAPIRetrieveUsers(organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsFilterQ?: string, options?: AxiosRequestConfig) {
+        return UserAPIApiFp(this.configuration).userAPIRetrieveUsers(organizationId, optionsPaginationOffset, optionsPaginationLimit, optionsFilterQ, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

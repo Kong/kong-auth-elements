@@ -1,5 +1,5 @@
 {
-  "basePath": "/api",
+  "basePath": "/",
   "definitions": {
     "HealthAPI.protobufAny": {
       "additionalProperties": {},
@@ -698,6 +698,16 @@
       "title": "Update team response",
       "type": "object"
     },
+    "UserAPI.RetrieveOptionsFilter": {
+      "properties": {
+        "q": {
+          "title": "The query to filter on",
+          "type": "string"
+        }
+      },
+      "title": "filter options group",
+      "type": "object"
+    },
     "UserAPI.RetrieveOptionsPagination": {
       "properties": {
         "limit": {
@@ -741,6 +751,28 @@
       },
       "type": "object"
     },
+    "UserAPI.v1RetrieveTeamsForUserResponse": {
+      "properties": {
+        "teams": {
+          "items": {
+            "$ref": "#/definitions/UserAPI.v1Team"
+          },
+          "title": "The teams a user is a member of",
+          "type": "array"
+        }
+      },
+      "title": "RetrieveUserTeams response",
+      "type": "object"
+    },
+    "UserAPI.v1RetrieveUserResponse": {
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/UserAPI.v1User"
+        }
+      },
+      "title": "Retrieve user response",
+      "type": "object"
+    },
     "UserAPI.v1RetrieveUsersResponse": {
       "properties": {
         "count": {
@@ -757,6 +789,30 @@
         }
       },
       "title": "RetrieveUsers Response",
+      "type": "object"
+    },
+    "UserAPI.v1Team": {
+      "properties": {
+        "createdAt": {
+          "format": "date-time",
+          "title": "Timestamp of the user creation",
+          "type": "string"
+        },
+        "id": {
+          "title": "ID of the team",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name of the team",
+          "type": "string"
+        },
+        "updatedAt": {
+          "format": "date-time",
+          "title": "Timestamp of the user last update",
+          "type": "string"
+        }
+      },
+      "title": "/ A team resource",
       "type": "object"
     },
     "UserAPI.v1User": {
@@ -791,14 +847,6 @@
       "title": "A user",
       "type": "object"
     },
-    "authenticate.authOrganizationResponse": {
-      "properties": {
-        "redirectURL": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "authenticate.authenticateRequest": {
       "properties": {
         "password": {
@@ -819,14 +867,6 @@
       "type": "object"
     },
     "authenticate.authenticateResponse": {
-      "type": "object"
-    },
-    "authenticate.oidcCallbackResponse": {
-      "properties": {
-        "redirectURL": {
-          "type": "string"
-        }
-      },
       "type": "object"
     },
     "clientconfig.clientConfigResponse": {
@@ -1091,6 +1131,232 @@
         ]
       }
     },
+    "/api/v1/accept-invite": {
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "This endpoint accepts an invitation and sets the user's initial password. It will also mark the user's email address as verified.",
+        "parameters": [
+          {
+            "description": "Verify email",
+            "in": "body",
+            "name": "message",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/invites.acceptRequest"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/invites.acceptResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "410": {
+            "description": "Token expired",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          }
+        },
+        "summary": "Accepts an invitation",
+        "tags": [
+          "invites"
+        ]
+      }
+    },
+    "/api/v1/authenticate": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "This will authenticate a user...",
+        "parameters": [
+          {
+            "description": "Authentication request",
+            "in": "body",
+            "name": "message",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/authenticate.authenticateRequest"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/authenticate.authenticateResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          }
+        },
+        "summary": "Authenticates a user given a username and password",
+        "tags": [
+          "authentication"
+        ]
+      }
+    },
+    "/api/v1/authenticate/{organizationId}": {
+      "get": {
+        "description": "If the organization has an IdP setup, they will be redirected through\nthat IdP, otherwise they will be redirected to the Konnect user login",
+        "parameters": [
+          {
+            "description": "Organization ID",
+            "in": "path",
+            "name": "organizationId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Path to return to after authentication has completed",
+            "in": "query",
+            "name": "returnTo",
+            "type": "string"
+          },
+          {
+            "description": "Configuration test mode",
+            "in": "query",
+            "name": "test",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": "Found",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "summary": "Redirects a user to the correct location for organization",
+        "tags": [
+          "authentication"
+        ]
+      }
+    },
+    "/api/v1/client-config/": {
+      "get": {
+        "description": "this endpoint will check if the `require-registration-access-code`\nhas been set in the config",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/clientconfig.clientConfigResponse"
+            }
+          }
+        },
+        "summary": "returns a json with wether the require-registration-access-code (bool) has been set",
+        "tags": [
+          "client config"
+        ]
+      }
+    },
+    "/api/v1/email-verifications": {
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "This endpoint verifies a user's email given an email verification token.",
+        "parameters": [
+          {
+            "description": "Verify email",
+            "in": "body",
+            "name": "message",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/emailverifications.verifyRequest"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/emailverifications.verifyResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "410": {
+            "description": "Token expired",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          }
+        },
+        "summary": "Verifies a user's email address",
+        "tags": [
+          "email verification"
+        ]
+      }
+    },
     "/api/v1/health": {
       "get": {
         "operationId": "HealthAPI_Check",
@@ -1273,6 +1539,29 @@
         ]
       }
     },
+    "/api/v1/logout": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Logout will clear the auth cookies",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/logout.logoutResponse"
+            }
+          }
+        },
+        "summary": "logout by clearing the auth cookies",
+        "tags": [
+          "logout"
+        ]
+      }
+    },
     "/api/v1/me/teams": {
       "get": {
         "operationId": "MeAPI_RetrieveTeams",
@@ -1293,6 +1582,218 @@
         "summary": "RetrieveTeams retrieves the team the current user belongs to",
         "tags": [
           "MeAPI"
+        ]
+      }
+    },
+    "/api/v1/password-resets": {
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "This endpoint updates a user's password given a reset token.",
+        "parameters": [
+          {
+            "description": "Reset Password",
+            "in": "body",
+            "name": "message",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/passwordresets.resetRequest"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/passwordresets.resetResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "410": {
+            "description": "Token expired",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          }
+        },
+        "summary": "Resets a user's password",
+        "tags": [
+          "passwords"
+        ]
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "This endpoint creates a reset request entry and sends the user an email with a link to\nreset their password. It will return success if the email address is not found.",
+        "parameters": [
+          {
+            "description": "Request Reset Password",
+            "in": "body",
+            "name": "message",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/passwordresets.requestResetRequest"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/passwordresets.requestResetResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          }
+        },
+        "summary": "Creates a password reset request",
+        "tags": [
+          "passwords"
+        ]
+      }
+    },
+    "/api/v1/refresh": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Refresh will set a new access and refresh token if the user is still valid.",
+        "parameters": [
+          {
+            "description": "refresh request",
+            "in": "body",
+            "name": "message",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/refresh.refreshRequest"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/refresh.refreshResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "401": {
+            "description": "Invalid Token",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          }
+        },
+        "summary": "Refreshes a user if a valid refresh token is provided",
+        "tags": [
+          "authentication"
+        ]
+      }
+    },
+    "/api/v1/register": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "This endpoint will create a new organization and user. The user will not\nbe able to log in until they have verified their email address. The email address must be\nunique and not used for any other basic auth login.",
+        "parameters": [
+          {
+            "description": "Registration request",
+            "in": "body",
+            "name": "message",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/register.registerRequest"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/register.registerResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/errorsResponse"
+            }
+          }
+        },
+        "summary": "Registers a new organization",
+        "tags": [
+          "registration"
         ]
       }
     },
@@ -1650,6 +2151,12 @@
             "in": "query",
             "name": "options.pagination.limit",
             "type": "integer"
+          },
+          {
+            "description": "The query to filter on.",
+            "in": "query",
+            "name": "options.filter.q",
+            "type": "string"
           }
         ],
         "responses": {
@@ -1672,514 +2179,67 @@
         ]
       }
     },
-    "/authenticate": {
-      "post": {
-        "consumes": [
-          "application/json"
-        ],
-        "description": "This will authenticate a user...",
-        "parameters": [
-          {
-            "description": "Authentication request",
-            "in": "body",
-            "name": "message",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/authenticate.authenticateRequest"
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/authenticate.authenticateResponse"
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          }
-        },
-        "summary": "Authenticates a user given a username and password",
-        "tags": [
-          "authentication"
-        ]
-      }
-    },
-    "/authenticate/oidc-callback": {
+    "/api/v1/users/{id}": {
       "get": {
-        "description": "This should be called with the query parameters received from the OIDC callback",
+        "operationId": "UserAPI_RetrieveUser",
         "parameters": [
           {
-            "description": "OIDC code",
-            "in": "query",
-            "name": "code",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "OIDC state",
-            "in": "query",
-            "name": "state",
-            "type": "string"
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/authenticate.oidcCallbackResponse"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          }
-        },
-        "summary": "Returns redirect url for organization login",
-        "tags": [
-          "authentication"
-        ]
-      }
-    },
-    "/authenticate/{organizationLoginPath}": {
-      "get": {
-        "description": "If the organization has an IdP setup, they will be redirected through\nthat IdP, otherwise they will be redirected to the Konnect user login",
-        "parameters": [
-          {
-            "description": "Organization Login Path",
+            "description": "id of the user to retrieve",
             "in": "path",
-            "name": "organizationLoginPath",
+            "name": "id",
             "required": true,
             "type": "string"
-          },
-          {
-            "description": "Path to return to after authentication has completed",
-            "in": "query",
-            "name": "returnTo",
-            "type": "string"
-          },
-          {
-            "description": "Configuration test mode",
-            "in": "query",
-            "name": "test",
-            "type": "string"
           }
-        ],
-        "produces": [
-          "application/json"
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/authenticate.authOrganizationResponse"
+              "$ref": "#/definitions/UserAPI.v1RetrieveUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/UserAPI.rpcStatus"
             }
           }
         },
-        "summary": "Returns redirect url for organization login",
+        "summary": "Retrieve user retrieves a user's details",
         "tags": [
-          "authentication"
+          "UserAPI"
         ]
       }
     },
-    "/client-config/": {
+    "/api/v1/users/{userId}/teams": {
       "get": {
-        "description": "this endpoint will check if the `require-registration-access-code`\nhas been set in the config",
-        "produces": [
-          "application/json"
+        "operationId": "UserAPI_RetrieveTeamsForUser",
+        "parameters": [
+          {
+            "description": "id of the user to retrieve the team of which they are a member of",
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/clientconfig.clientConfigResponse"
+              "$ref": "#/definitions/UserAPI.v1RetrieveTeamsForUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/UserAPI.rpcStatus"
             }
           }
         },
-        "summary": "returns a json with wether the require-registration-access-code (bool) has been set",
+        "summary": "Retrieves the teams a user is on",
         "tags": [
-          "client config"
-        ]
-      }
-    },
-    "/email-verifications": {
-      "patch": {
-        "consumes": [
-          "application/json"
-        ],
-        "description": "This endpoint verifies a user's email given an email verification token.",
-        "parameters": [
-          {
-            "description": "Verify email",
-            "in": "body",
-            "name": "message",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/emailverifications.verifyRequest"
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/emailverifications.verifyResponse"
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "410": {
-            "description": "Token expired",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          }
-        },
-        "summary": "Verifies a user's email address",
-        "tags": [
-          "email verification"
-        ]
-      }
-    },
-    "/invites": {
-      "patch": {
-        "consumes": [
-          "application/json"
-        ],
-        "description": "This endpoint accepts an invitation and sets the user's initial password. It will also mark the user's email address as verified.",
-        "parameters": [
-          {
-            "description": "Verify email",
-            "in": "body",
-            "name": "message",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/invites.acceptRequest"
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/invites.acceptResponse"
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "410": {
-            "description": "Token expired",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          }
-        },
-        "summary": "Accepts an invitation",
-        "tags": [
-          "invites"
-        ]
-      }
-    },
-    "/logout": {
-      "post": {
-        "consumes": [
-          "application/json"
-        ],
-        "description": "Logout will clear the auth cookies",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/logout.logoutResponse"
-            }
-          }
-        },
-        "summary": "logout by clearing the auth cookies",
-        "tags": [
-          "logout"
-        ]
-      }
-    },
-    "/password-resets": {
-      "patch": {
-        "consumes": [
-          "application/json"
-        ],
-        "description": "This endpoint updates a user's password given a reset token.",
-        "parameters": [
-          {
-            "description": "Reset Password",
-            "in": "body",
-            "name": "message",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/passwordresets.resetRequest"
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/passwordresets.resetResponse"
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "410": {
-            "description": "Token expired",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          }
-        },
-        "summary": "Resets a user's password",
-        "tags": [
-          "passwords"
-        ]
-      },
-      "post": {
-        "consumes": [
-          "application/json"
-        ],
-        "description": "This endpoint creates a reset request entry and sends the user an email with a link to\nreset their password. It will return success if the email address is not found.",
-        "parameters": [
-          {
-            "description": "Request Reset Password",
-            "in": "body",
-            "name": "message",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/passwordresets.requestResetRequest"
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "Created",
-            "schema": {
-              "$ref": "#/definitions/passwordresets.requestResetResponse"
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          }
-        },
-        "summary": "Creates a password reset request",
-        "tags": [
-          "passwords"
-        ]
-      }
-    },
-    "/refresh": {
-      "post": {
-        "consumes": [
-          "application/json"
-        ],
-        "description": "Refresh will set a new access and refresh token if the user is still valid.",
-        "parameters": [
-          {
-            "description": "refresh request",
-            "in": "body",
-            "name": "message",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/refresh.refreshRequest"
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/refresh.refreshResponse"
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "401": {
-            "description": "Invalid Token",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          }
-        },
-        "summary": "Refreshes a user if a valid refresh token is provided",
-        "tags": [
-          "authentication"
-        ]
-      }
-    },
-    "/register": {
-      "post": {
-        "consumes": [
-          "application/json"
-        ],
-        "description": "This endpoint will create a new organization and user. The user will not\nbe able to log in until they have verified their email address. The email address must be\nunique and not used for any other basic auth login.",
-        "parameters": [
-          {
-            "description": "Registration request",
-            "in": "body",
-            "name": "message",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/register.registerRequest"
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "Created",
-            "schema": {
-              "$ref": "#/definitions/register.registerResponse"
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "schema": {
-              "$ref": "#/definitions/errorsResponse"
-            }
-          }
-        },
-        "summary": "Registers a new organization",
-        "tags": [
-          "registration"
+          "UserAPI"
         ]
       }
     }
