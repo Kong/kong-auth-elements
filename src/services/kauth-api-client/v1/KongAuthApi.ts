@@ -7,8 +7,9 @@ import {
   InvitesApi,
   LogoutApi,
   PasswordsApi,
-  UserAPIApi,
   RegistrationApi,
+  TeamAPIApi,
+  UserAPIApi,
 } from './source'
 
 export default class KongAuthApi {
@@ -20,6 +21,7 @@ export default class KongAuthApi {
   logout: LogoutApi
   passwords: PasswordsApi
   registration: RegistrationApi
+  teams: TeamAPIApi
   users: UserAPIApi
 
   constructor(authErrorCallback?: (error: AxiosError) => void) {
@@ -48,6 +50,7 @@ export default class KongAuthApi {
     this.logout = new LogoutApi(baseConfig, baseConfig.basePath, this.client)
     this.passwords = new PasswordsApi(baseConfig, baseConfig.basePath, this.client)
     this.registration = new RegistrationApi(baseConfig, baseConfig.basePath, this.client)
+    this.teams = new TeamAPIApi(baseConfig, baseConfig.basePath, this.client)
     this.users = new UserAPIApi(baseConfig, baseConfig.basePath, this.client)
   }
 }
