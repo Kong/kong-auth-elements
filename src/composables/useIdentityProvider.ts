@@ -37,6 +37,11 @@ export default function useIdentityProvider (
       return false
     }
 
+    // If redirectTo value is not set, exit
+    if (!idpLoginRedirectTo.value.trim()) {
+      return false
+    }
+
     const urlPath: string = window.location.pathname
     const urlPathArray: string[] = urlPath.split('/')
 
@@ -59,8 +64,6 @@ export default function useIdentityProvider (
    * @param {string} [returnTo] - The full URL (including https://) where to return the user to with the code and state.
    */
   const redirectToIdp = (returnTo: string, isTest = false): void => {
-    console.info('redirectToIdp: ', `'${returnTo}'`)
-
     if (!organizationLoginPath.value) {
       idpIsLoading.value = false
       return
