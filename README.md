@@ -252,6 +252,8 @@ Pass the user's encoded organization in the query string if the user is originat
 
 ### Installation
 
+> TBD: Install via CDN
+
 Install the package as a dependency in your app
 
 ```sh
