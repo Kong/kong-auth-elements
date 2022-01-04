@@ -6,6 +6,7 @@ import {
   IdentityProviderAPIApi,
   InvitesApi,
   LogoutApi,
+  MeAPIApi,
   PasswordsApi,
   RegistrationApi,
   TeamAPIApi,
@@ -19,6 +20,7 @@ export default class KongAuthApi {
   idp: IdentityProviderAPIApi
   invites: InvitesApi
   logout: LogoutApi
+  me: MeAPIApi
   passwords: PasswordsApi
   registration: RegistrationApi
   teams: TeamAPIApi
@@ -48,6 +50,7 @@ export default class KongAuthApi {
     this.idp = new IdentityProviderAPIApi(baseConfig, baseConfig.basePath, this.client)
     this.invites = new InvitesApi(baseConfig, baseConfig.basePath, this.client)
     this.logout = new LogoutApi(baseConfig, baseConfig.basePath, this.client)
+    this.me = new MeAPIApi(baseConfig, baseConfig.basePath, this.client)
     this.passwords = new PasswordsApi(baseConfig, baseConfig.basePath, this.client)
     this.registration = new RegistrationApi(baseConfig, baseConfig.basePath, this.client)
     this.teams = new TeamAPIApi(baseConfig, baseConfig.basePath, this.client)
