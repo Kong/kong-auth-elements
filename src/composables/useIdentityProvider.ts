@@ -88,7 +88,7 @@ export default function useIdentityProvider (
     const redirectParams = '?' + [returnToParam, testingIdpParam].filter(Boolean).join('&')
 
     // Redirect user to kauth endpoint
-    window.location.href = `/kauth/api/authenticate/${organizationLoginPath.value}${redirectParams}`
+    window.location.href = `/kauth/api/${process.env.VUE_APP_KAUTH_API_VERSION}/authenticate/${organizationLoginPath.value}${redirectParams}`
   }
 
   /**
@@ -131,7 +131,7 @@ export default function useIdentityProvider (
     isRedirecting.value = true
 
     // Redirect user to kauth endpoint
-    window.location.href = `/kauth/api/authenticate/oidc-callback?code=${code.value}&state=${state.value}`
+    window.location.href = `/kauth/api/${process.env.VUE_APP_KAUTH_API_VERSION}/authenticate/oidc-callback?code=${code.value}&state=${state.value}`
   }
 
   // Add watcher to allow `kong-auth-login` element time to load and retrigger redirect.
