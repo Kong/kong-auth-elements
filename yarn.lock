@@ -13949,10 +13949,10 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-swrv@^0.9.4-2:
-  version "0.9.4-2"
-  resolved "https://registry.yarnpkg.com/swrv/-/swrv-0.9.4-2.tgz#38b000937f999db240a31629a373864535e4bb6c"
-  integrity sha512-00LFOe1ItMGDxHTYZr5pCYn3qX5H/6MNl8Lg4OntblAG7FJSQol9gHFYF9inU1PUxrk6Q/KMZi7Gr0D36JLYVA==
+swrv@^0.9.5:
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/swrv/-/swrv-0.9.5.tgz#052bb85b16facff569eac723083fa2492ee007ca"
+  integrity sha512-SGF9JLmIFadQf+cP49ISCUo9Nd3aUMg22n/FoTyOz4hzwPQy1HBLnJxKjNoO0Ys/LqiUDImSTa5jnKRotFoaQg==
   dependencies:
     swrv "^1.0.0-beta.8"
 
