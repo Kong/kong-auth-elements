@@ -1,5 +1,4 @@
 import { onMounted, ref, Ref, watch } from 'vue'
-import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
 
 interface IdentityProviderComposable {
   idpIsLoading: Ref<boolean>
@@ -25,7 +24,7 @@ export default function useIdentityProvider (
   const organizationLoginPath = ref<string>('')
   const code = ref<string>('')
   const state = ref<string>('')
-  const $api = new KongAuthApi()
+  const apiVersion = ref('v1')
 
   /**
    * Returns if user is on /login/{org-id} route in container application with valid org-id in path.
@@ -88,7 +87,7 @@ export default function useIdentityProvider (
     const redirectParams = '?' + [returnToParam, testingIdpParam].filter(Boolean).join('&')
 
     // Redirect user to kauth endpoint
-    window.location.href = `/kauth/api/${process.env.VUE_APP_KAUTH_API_VERSION}/authenticate/${organizationLoginPath.value}${redirectParams}`
+    window.location.href = `/kauth/api/${apiVersion.value}/authenticate/${organizationLoginPath.value}${redirectParams}`
   }
 
   /**
@@ -131,7 +130,7 @@ export default function useIdentityProvider (
     isRedirecting.value = true
 
     // Redirect user to kauth endpoint
-    window.location.href = `/kauth/api/${process.env.VUE_APP_KAUTH_API_VERSION}/authenticate/oidc-callback?code=${code.value}&state=${state.value}`
+    window.location.href = `/kauth/api/${apiVersion.value}/authenticate/oidc-callback?code=${code.value}&state=${state.value}`
   }
 
   // Add watcher to allow `kong-auth-login` element time to load and retrigger redirect.
