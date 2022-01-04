@@ -4,7 +4,7 @@ import {
   Configuration,
   EmailVerificationApi,
   IdentityProviderAPIApi,
-  InvitesApi,
+  InviteAPIApi,
   LogoutApi,
   MeAPIApi,
   PasswordsApi,
@@ -18,7 +18,7 @@ export default class KongAuthApi {
   client: AxiosInstance
   emailVerification: EmailVerificationApi
   idp: IdentityProviderAPIApi
-  invites: InvitesApi
+  invites: InviteAPIApi
   logout: LogoutApi
   me: MeAPIApi
   passwords: PasswordsApi
@@ -48,7 +48,7 @@ export default class KongAuthApi {
     this.authentication = new AuthenticationApi(baseConfig, baseConfig.basePath, this.client)
     this.emailVerification = new EmailVerificationApi(baseConfig, baseConfig.basePath, this.client)
     this.idp = new IdentityProviderAPIApi(baseConfig, baseConfig.basePath, this.client)
-    this.invites = new InvitesApi(baseConfig, baseConfig.basePath, this.client)
+    this.invites = new InviteAPIApi(baseConfig, baseConfig.basePath, this.client)
     this.logout = new LogoutApi(baseConfig, baseConfig.basePath, this.client)
     this.me = new MeAPIApi(baseConfig, baseConfig.basePath, this.client)
     this.passwords = new PasswordsApi(baseConfig, baseConfig.basePath, this.client)
