@@ -37,7 +37,7 @@
         type="email"
         class="w-100 mb-5"
         autocomplete="email"
-        :has-error="currentState.matches('error') && error ? true : false"
+        :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
         required
         autofocus
         data-testid="kong-auth-login-email" />
@@ -49,7 +49,7 @@
         type="password"
         class="w-100"
         autocomplete="current-password"
-        :has-error="currentState.matches('error') && error ? true : false"
+        :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
         required
         data-testid="kong-auth-login-password" />
 
@@ -143,6 +143,7 @@ export default defineComponent({
       password: '',
     })
     const error = ref<any>(null)
+    const fieldsHaveError = ref(false)
     const $api = new KongAuthApi()
 
     const {
@@ -247,9 +248,10 @@ export default defineComponent({
       } catch (err: any) {
         send('REJECT')
 
-        error.value = {
-          status: null,
-          statusText: Array.isArray(err.message) ? err.message.join('. ') : err.message,
+        fieldsHaveError.value = false
+
+        if (err?.response) {
+          error.value = err.response
         }
       }
     }
@@ -261,11 +263,14 @@ export default defineComponent({
     const submitForm = async (): Promise<void> => {
       send('SUBMIT_LOGIN')
 
-      // Reset form error
+      // Reset form errors
       error.value = null
+      fieldsHaveError.value = false
 
       if (!formData.email || !formData.password) {
         send('REJECT')
+
+        fieldsHaveError.value = true
 
         error.value = {
           status: 401,
@@ -290,11 +295,15 @@ export default defineComponent({
         }
 
         send('REJECT')
+        fieldsHaveError.value = true
+
         if (response.status === 403) {
           return
         }
       } catch (err: any) {
         send('REJECT')
+
+        fieldsHaveError.value = true
 
         if (err?.response) {
           error.value = err.response
@@ -313,7 +322,7 @@ export default defineComponent({
       }
     })
 
-    onMounted(() => {
+    onMounted(async () => {
       // Get URL params
       const urlParams = new URLSearchParams(window.location.search)
 
@@ -339,7 +348,7 @@ export default defineComponent({
       // If token in URL params
       const token = urlParams.get('token')
       if (token) {
-        setEmail(token)
+        await setEmail(token)
       }
     })
 
@@ -355,6 +364,7 @@ export default defineComponent({
       currentState,
       submitForm,
       error,
+      fieldsHaveError,
       ...toRefs(formData),
     }
   },
