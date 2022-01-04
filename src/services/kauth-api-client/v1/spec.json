@@ -2251,12 +2251,6 @@
         "operationId": "UserAPI_RetrieveUsers",
         "parameters": [
           {
-            "description": "organization id of the users desired.",
-            "in": "query",
-            "name": "organizationId",
-            "type": "string"
-          },
-          {
             "description": "Pagination offset.",
             "format": "int64",
             "in": "query",

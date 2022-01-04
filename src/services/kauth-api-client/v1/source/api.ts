@@ -3957,14 +3957,13 @@ export const UserAPIApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Retrieves the users that belong to a specific org
-         * @param {string} [organizationId] organization id of the users desired.
          * @param {number} [optionsPaginationOffset] Pagination offset.
          * @param {number} [optionsPaginationLimit] Result limit.
          * @param {string} [optionsFilterQ] The query to filter on.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userAPIRetrieveUsers: async (organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsFilterQ?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        userAPIRetrieveUsers: async (optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsFilterQ?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/v1/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3976,10 +3975,6 @@ export const UserAPIApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (organizationId !== undefined) {
-                localVarQueryParameter['organizationId'] = organizationId;
-            }
 
             if (optionsPaginationOffset !== undefined) {
                 localVarQueryParameter['options.pagination.offset'] = optionsPaginationOffset;
@@ -4039,15 +4034,14 @@ export const UserAPIApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Retrieves the users that belong to a specific org
-         * @param {string} [organizationId] organization id of the users desired.
          * @param {number} [optionsPaginationOffset] Pagination offset.
          * @param {number} [optionsPaginationLimit] Result limit.
          * @param {string} [optionsFilterQ] The query to filter on.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userAPIRetrieveUsers(organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsFilterQ?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserAPIV1RetrieveUsersResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userAPIRetrieveUsers(organizationId, optionsPaginationOffset, optionsPaginationLimit, optionsFilterQ, options);
+        async userAPIRetrieveUsers(optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsFilterQ?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserAPIV1RetrieveUsersResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userAPIRetrieveUsers(optionsPaginationOffset, optionsPaginationLimit, optionsFilterQ, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -4083,15 +4077,14 @@ export const UserAPIApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Retrieves the users that belong to a specific org
-         * @param {string} [organizationId] organization id of the users desired.
          * @param {number} [optionsPaginationOffset] Pagination offset.
          * @param {number} [optionsPaginationLimit] Result limit.
          * @param {string} [optionsFilterQ] The query to filter on.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userAPIRetrieveUsers(organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsFilterQ?: string, options?: any): AxiosPromise<UserAPIV1RetrieveUsersResponse> {
-            return localVarFp.userAPIRetrieveUsers(organizationId, optionsPaginationOffset, optionsPaginationLimit, optionsFilterQ, options).then((request) => request(axios, basePath));
+        userAPIRetrieveUsers(optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsFilterQ?: string, options?: any): AxiosPromise<UserAPIV1RetrieveUsersResponse> {
+            return localVarFp.userAPIRetrieveUsers(optionsPaginationOffset, optionsPaginationLimit, optionsFilterQ, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -4130,7 +4123,6 @@ export class UserAPIApi extends BaseAPI {
     /**
      * 
      * @summary Retrieves the users that belong to a specific org
-     * @param {string} [organizationId] organization id of the users desired.
      * @param {number} [optionsPaginationOffset] Pagination offset.
      * @param {number} [optionsPaginationLimit] Result limit.
      * @param {string} [optionsFilterQ] The query to filter on.
@@ -4138,8 +4130,8 @@ export class UserAPIApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserAPIApi
      */
-    public userAPIRetrieveUsers(organizationId?: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsFilterQ?: string, options?: AxiosRequestConfig) {
-        return UserAPIApiFp(this.configuration).userAPIRetrieveUsers(organizationId, optionsPaginationOffset, optionsPaginationLimit, optionsFilterQ, options).then((request) => request(this.axios, this.basePath));
+    public userAPIRetrieveUsers(optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsFilterQ?: string, options?: AxiosRequestConfig) {
+        return UserAPIApiFp(this.configuration).userAPIRetrieveUsers(optionsPaginationOffset, optionsPaginationLimit, optionsFilterQ, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
