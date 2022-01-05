@@ -67,7 +67,7 @@
     "faker": "^5.5.3",
     "jest-junit": "^13.0.0",
     "node-sass": "^4.11.0",
-    "postcss-custom-properties": "^8.0.10",
+    "postcss-custom-properties": "^10.0.0",
     "prettier": "^2.5.0",
     "sass-loader": "^8.0.2",
     "semantic-release": "^18.0.1",
