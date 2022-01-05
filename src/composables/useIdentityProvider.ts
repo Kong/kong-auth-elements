@@ -71,7 +71,8 @@ export default function useIdentityProvider (
 
     if (!['konghq.com', 'localhost'].some((path) => returnTo.includes(path))) {
       idpIsLoading.value = false
-      console.error("'redirectToIdp' is required and must include konghq.com or localhost.")
+      // Console warning references the element prop name instead of local variable
+      console.error("'idpLoginReturnTo' is required and must include 'konghq.com' or 'localhost'.")
       return
     }
 
