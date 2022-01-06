@@ -81,7 +81,12 @@ export default function useIdentityProvider (
     let returnToParam
 
     try {
-      returnToParam = `returnTo=${encodeURIComponent(new URL(returnTo).href)}`
+      // Create new URL from returnTo
+      const returnToUrl = new URL(returnTo)
+      // Append a query string to let container app know the user went through IdP auth
+      returnToUrl.searchParams.append('fromIdp', 'true')
+      // Encode for query string param
+      returnToParam = `returnTo=${encodeURIComponent(returnToUrl.href)}`
     } catch (_) {
       idpIsLoading.value = false
       // Console warning references the element prop name instead of local variable
