@@ -690,6 +690,10 @@
           "title": "Timestamp of the user creation",
           "type": "string"
         },
+        "description": {
+          "title": "Description of the team",
+          "type": "string"
+        },
         "id": {
           "title": "ID of the team",
           "type": "string"
@@ -836,6 +840,10 @@
         "createdAt": {
           "format": "date-time",
           "title": "Timestamp of the user creation",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description of the team",
           "type": "string"
         },
         "id": {

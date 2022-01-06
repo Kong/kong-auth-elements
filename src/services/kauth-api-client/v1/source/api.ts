@@ -1192,6 +1192,12 @@ export interface TeamAPIV1Team {
      * @type {string}
      * @memberof TeamAPIV1Team
      */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIV1Team
+     */
     'id'?: string;
     /**
      * 
@@ -1379,6 +1385,12 @@ export interface UserAPIV1Team {
      * @memberof UserAPIV1Team
      */
     'createdAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIV1Team
+     */
+    'description'?: string;
     /**
      * 
      * @type {string}
