@@ -83,8 +83,10 @@ export default function useIdentityProvider (
     try {
       // Create new URL from returnTo
       const returnToUrl = new URL(returnTo)
-      // Append a query string to let container app know the user went through IdP auth
-      returnToUrl.searchParams.append('fromIdp', 'true')
+
+      // Enable to append a query string to let container app know the user went through IdP auth
+      // returnToUrl.searchParams.append('fromIdp', 'true')
+
       // Encode for query string param
       returnToParam = `returnTo=${encodeURIComponent(returnToUrl.href)}`
     } catch (_) {
