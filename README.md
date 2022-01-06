@@ -117,19 +117,19 @@ Provides a login UI along with corresponding `kauth` authentication.
 
 Provides email confirmation, given a valid `token` in the query string.
 
-Also sets the `userStatus` cookie, along with other `kauth` cookies and localStorage entries.
+Also sets the `userStatus` cookie, along with other `kauth` cookies.
 
 #### Props
 
-| Prop                     | Type    | Default                  |
-| :----------------------- | :------ | :----------------------- |
-| `showForgotPasswordLink` | Boolean | `false`                  |
-| `forgotPasswordLinkText` | String  | `Forgot your password?`  |
-| `showRegisterLink`       | Boolean | `false`                  |
-| `registerLinkHelpText`   | String  | `Don't have an account?` |
-| `registerLinkText`       | String  | `Sign Up →`              |
-| `idpLoginEnabled`        | Boolean | `false`                  |
-| `idpLoginReturnTo`       | String  | ``                       |
+| Prop                     | Type    | Default                  | Description                                           |
+| :----------------------- | :------ | :----------------------- | :---------------------------------------------------- |
+| `showForgotPasswordLink` | Boolean | `false`                  | Show a forgot password link under the password field. |
+| `forgotPasswordLinkText` | String  | `Forgot your password?`  | Set the text for the forgot password link.            |
+| `showRegisterLink`       | Boolean | `false`                  | Show a register link under the login button.          |
+| `registerLinkHelpText`   | String  | `Don't have an account?` | Set the register link help text.                      |
+| `registerLinkText`       | String  | `Sign Up →`              | Set the text for the register link.                   |
+| `idpLoginEnabled`        | Boolean | `false`                  | Enable IdP login detection.                           |
+| `idpLoginReturnTo`       | URL     | ``                       | Set the URL to return to upon successful IdP login.   |
 
 #### Emits Events
 
@@ -162,12 +162,12 @@ Provides a forgot password UI along with corresponding `kauth` functionality to 
 
 #### Props
 
-| Prop              | Type    | Default                                                                                                                  |
-| :---------------- | :------ | :----------------------------------------------------------------------------------------------------------------------- |
-| `showLoginLink`   | Boolean | `false`                                                                                                                  |
-| `loginLinkText`   | String  | `Return to log in →`                                                                                                     |
-| `instructionText` | String  | `''`                                                                                                                     |
-| `successText`     | String  | `Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.` |
+| Prop              | Type    | Default                                                                                                                  | Description                                                     |
+| :---------------- | :------ | :----------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------- |
+| `showLoginLink`   | Boolean | `false`                                                                                                                  | Show a login link under the password fields.                    |
+| `loginLinkText`   | String  | `Return to log in →`                                                                                                     | Set the text for the login link.                                |
+| `instructionText` | String  | `''`                                                                                                                     | Set the instruction text to display above the inputs.           |
+| `successText`     | String  | `Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.` | Set the text to display upon successful reset password request. |
 
 #### Emits Events
 
@@ -184,9 +184,9 @@ Provides a reset password UI along with corresponding `kauth` functionality to a
 
 #### Props
 
-| Prop              | Type   | Default |
-| :---------------- | :----- | :------ |
-| `instructionText` | String | `''`    |
+| Prop              | Type   | Default | Description                                          |
+| :---------------- | :----- | :------ | :--------------------------------------------------- |
+| `instructionText` | String | `''`    | Set the instruction text to display above the input. |
 
 #### Emits Events
 
@@ -212,9 +212,9 @@ Provides a registration UI along with corresponding `kauth` functionality to all
 
 #### Props
 
-| Prop                 | Type    | Default |
-| :------------------- | :------ | :------ |
-| `accessCodeRequired` | Boolean | `false` |
+| Prop                 | Type    | Default | Description                              |
+| :------------------- | :------ | :------ | :--------------------------------------- |
+| `accessCodeRequired` | Boolean | `false` | Require an access code for registration. |
 
 #### Emits Events
 
