@@ -69,6 +69,7 @@ export default function useIdentityProvider (
       return
     }
 
+    // If returnTo URL does not contain valid domain
     if (!['konghq.com', 'localhost'].some((path) => returnTo.includes(path))) {
       idpIsLoading.value = false
       // Console warning references the element prop name instead of local variable
@@ -76,13 +77,20 @@ export default function useIdentityProvider (
       return
     }
 
+    // Create a URL from returnTo and encode for query string. Fail if not a valid URL.
+    let returnToParam
+
+    try {
+      returnToParam = `returnTo=${encodeURIComponent(new URL(returnTo).href)}`
+    } catch (_) {
+      idpIsLoading.value = false
+      // Console warning references the element prop name instead of local variable
+      console.error("'idpLoginReturnTo' must be a valid URL.")
+      return
+    }
+
     // Prevent additional redirects while processing
     isRedirecting.value = true
-
-    // If returnTo is set, and starts with 'http', accept as-is. Otherwise, set to 'window.location.origin/login'. Also encode for query string.
-    const returnToParam = `returnTo=${encodeURIComponent(
-      returnTo.startsWith('http') ? returnTo : window.location.origin + '/login',
-    )}`
 
     // Add parameter for testing, if set
     const testingIdpParam = isTest ? 'test=true' : null

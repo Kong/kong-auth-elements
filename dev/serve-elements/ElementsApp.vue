@@ -7,7 +7,7 @@
         <h4><code>kong-auth-login</code></h4>
         <kong-auth-login
           idp-login-enabled
-          idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/login"
+          idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
           show-forgot-password-link
           @login-success="showAlert('Login success!')"
           @click-forgot-password-link="showAlert('User clicked forgot password')"
