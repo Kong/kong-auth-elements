@@ -16,7 +16,7 @@ Create a file `.env.development.local` change `VUE_APP_AUTH_URL` to the environm
 
 Caveat: We gate internal only environments like dev and stage with Pomerium. Pomerium sets a cookie automatically, so we will need to manually set that cookie.
 
-In your browser, go the the environment you wish to use, ie. https://kauth.konnect-dev.konghq.com. In the dev tools find the cookie named `_pomerium` and copy it's value. In your browser go to your local dev environment, ie. http://localhost:3000 and set a `_pomerium` cookie with that value. You can do this in the console like:
+In your browser, go the the environment you wish to use, ie. <https://kauth.konnect-dev.konghq.com>. In the dev tools find the cookie named `_pomerium` and copy it's value. In your browser go to your local dev environment, ie. http://localhost:3000 and set a `_pomerium` cookie with that value. You can do this in the console like:
 
 ```js
 document.cookie = '_pomerium={your copied value here}'
