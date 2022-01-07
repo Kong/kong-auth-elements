@@ -147,10 +147,6 @@
       "properties": {
         "config": {
           "$ref": "#/definitions/IdentityProviderAPI.v1Config"
-        },
-        "organizationId": {
-          "title": "UUID of the org to update assignments for",
-          "type": "string"
         }
       },
       "type": "object"
@@ -186,10 +182,6 @@
       "properties": {
         "config": {
           "$ref": "#/definitions/IdentityProviderAPI.v1Config"
-        },
-        "organizationId": {
-          "title": "UUID of the org to create the IdP for",
-          "type": "string"
         }
       },
       "type": "object"
@@ -215,10 +207,6 @@
           },
           "title": "New assigments of groups to teams",
           "type": "array"
-        },
-        "organizationId": {
-          "title": "UUID of the org to update assignments for",
-          "type": "string"
         }
       },
       "title": "Request to update team assignments",
@@ -645,6 +633,15 @@
         }
       },
       "title": "Retrieve child teams response",
+      "type": "object"
+    },
+    "TeamAPI.v1RetrieveTeamResponse": {
+      "properties": {
+        "team": {
+          "$ref": "#/definitions/TeamAPI.v1Team"
+        }
+      },
+      "title": "Retrieve team response",
       "type": "object"
     },
     "TeamAPI.v1RetrieveTeamsResponse": {
@@ -1411,14 +1408,6 @@
     "/api/v1/identity-provider": {
       "get": {
         "operationId": "IdentityProviderAPI_Get",
-        "parameters": [
-          {
-            "description": "UUID of the org to create the IdP for.",
-            "in": "query",
-            "name": "organizationId",
-            "type": "string"
-          }
-        ],
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1970,6 +1959,36 @@
           "TeamAPI"
         ]
       },
+      "get": {
+        "operationId": "TeamAPI_RetrieveTeam",
+        "parameters": [
+          {
+            "description": "ID of the team to be updated",
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.v1RetrieveTeamResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Get a team",
+        "tags": [
+          "TeamAPI"
+        ]
+      },
       "patch": {
         "operationId": "TeamAPI_UpdateTeam",
         "parameters": [
@@ -2185,6 +2204,21 @@
             "name": "teamId",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "userId": {
+                  "title": "ID of the user to add to the team",
+                  "type": "string"
+                }
+              },
+              "title": "Add user to team request",
+              "type": "object"
+            }
           }
         ],
         "responses": {
