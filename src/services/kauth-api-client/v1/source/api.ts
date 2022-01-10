@@ -541,6 +541,31 @@ export interface InviteAPIV1Invite {
 /**
  * 
  * @export
+ * @interface InviteAPIV1InviteUserRequest
+ */
+export interface InviteAPIV1InviteUserRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof InviteAPIV1InviteUserRequest
+     */
+    'email'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InviteAPIV1InviteUserRequest
+     */
+    'fullName'?: string;
+    /**
+     * A list of team IDs to add the new user to.
+     * @type {Array<string>}
+     * @memberof InviteAPIV1InviteUserRequest
+     */
+    'teamIds'?: Array<string>;
+}
+/**
+ * 
+ * @export
  * @interface InviteAPIV1InviteUserResponse
  */
 export interface InviteAPIV1InviteUserResponse {
@@ -1084,6 +1109,25 @@ export interface TeamAPIRpcStatus {
 /**
  * 
  * @export
+ * @interface TeamAPIV1CreateTeamRequest
+ */
+export interface TeamAPIV1CreateTeamRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIV1CreateTeamRequest
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIV1CreateTeamRequest
+     */
+    'name'?: string;
+}
+/**
+ * 
+ * @export
  * @interface TeamAPIV1CreateTeamResponse
  */
 export interface TeamAPIV1CreateTeamResponse {
@@ -1263,6 +1307,25 @@ export interface TeamAPIV1User {
      * @memberof TeamAPIV1User
      */
     'preferredName'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateTeamRequest
+ */
+export interface UpdateTeamRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateTeamRequest
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateTeamRequest
+     */
+    'name'?: string;
 }
 /**
  * 
@@ -2346,10 +2409,13 @@ export const InviteAPIApiAxiosParamCreator = function (configuration?: Configura
         /**
          * 
          * @summary InviteUser adds a user to the organization and sends an invite email to the new user.
+         * @param {InviteAPIV1InviteUserRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        inviteAPIInviteUser: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        inviteAPIInviteUser: async (body: InviteAPIV1InviteUserRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('inviteAPIInviteUser', 'body', body)
             const localVarPath = `/api/v1/invites`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2364,9 +2430,12 @@ export const InviteAPIApiAxiosParamCreator = function (configuration?: Configura
 
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2386,11 +2455,12 @@ export const InviteAPIApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary InviteUser adds a user to the organization and sends an invite email to the new user.
+         * @param {InviteAPIV1InviteUserRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async inviteAPIInviteUser(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InviteAPIV1InviteUserResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.inviteAPIInviteUser(options);
+        async inviteAPIInviteUser(body: InviteAPIV1InviteUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InviteAPIV1InviteUserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.inviteAPIInviteUser(body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -2406,11 +2476,12 @@ export const InviteAPIApiFactory = function (configuration?: Configuration, base
         /**
          * 
          * @summary InviteUser adds a user to the organization and sends an invite email to the new user.
+         * @param {InviteAPIV1InviteUserRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        inviteAPIInviteUser(options?: any): AxiosPromise<InviteAPIV1InviteUserResponse> {
-            return localVarFp.inviteAPIInviteUser(options).then((request) => request(axios, basePath));
+        inviteAPIInviteUser(body: InviteAPIV1InviteUserRequest, options?: any): AxiosPromise<InviteAPIV1InviteUserResponse> {
+            return localVarFp.inviteAPIInviteUser(body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2425,12 +2496,13 @@ export class InviteAPIApi extends BaseAPI {
     /**
      * 
      * @summary InviteUser adds a user to the organization and sends an invite email to the new user.
+     * @param {InviteAPIV1InviteUserRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InviteAPIApi
      */
-    public inviteAPIInviteUser(options?: AxiosRequestConfig) {
-        return InviteAPIApiFp(this.configuration).inviteAPIInviteUser(options).then((request) => request(this.axios, this.basePath));
+    public inviteAPIInviteUser(body: InviteAPIV1InviteUserRequest, options?: AxiosRequestConfig) {
+        return InviteAPIApiFp(this.configuration).inviteAPIInviteUser(body, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -3177,10 +3249,13 @@ export const TeamAPIApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Create a team
+         * @param {TeamAPIV1CreateTeamRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        teamAPICreateTeam: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        teamAPICreateTeam: async (body: TeamAPIV1CreateTeamRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('teamAPICreateTeam', 'body', body)
             const localVarPath = `/api/v1/teams`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3195,9 +3270,12 @@ export const TeamAPIApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3528,12 +3606,15 @@ export const TeamAPIApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Update a team
          * @param {string} teamId ID of the team to be updated
+         * @param {UpdateTeamRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        teamAPIUpdateTeam: async (teamId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        teamAPIUpdateTeam: async (teamId: string, body: UpdateTeamRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'teamId' is not null or undefined
             assertParamExists('teamAPIUpdateTeam', 'teamId', teamId)
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('teamAPIUpdateTeam', 'body', body)
             const localVarPath = `/api/v1/teams/{teamId}`
                 .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3549,9 +3630,12 @@ export const TeamAPIApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3583,11 +3667,12 @@ export const TeamAPIApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create a team
+         * @param {TeamAPIV1CreateTeamRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async teamAPICreateTeam(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TeamAPIV1CreateTeamResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPICreateTeam(options);
+        async teamAPICreateTeam(body: TeamAPIV1CreateTeamRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TeamAPIV1CreateTeamResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPICreateTeam(body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -3687,11 +3772,12 @@ export const TeamAPIApiFp = function(configuration?: Configuration) {
          * 
          * @summary Update a team
          * @param {string} teamId ID of the team to be updated
+         * @param {UpdateTeamRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async teamAPIUpdateTeam(teamId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TeamAPIV1UpdateTeamResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPIUpdateTeam(teamId, options);
+        async teamAPIUpdateTeam(teamId: string, body: UpdateTeamRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TeamAPIV1UpdateTeamResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPIUpdateTeam(teamId, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -3718,11 +3804,12 @@ export const TeamAPIApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Create a team
+         * @param {TeamAPIV1CreateTeamRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        teamAPICreateTeam(options?: any): AxiosPromise<TeamAPIV1CreateTeamResponse> {
-            return localVarFp.teamAPICreateTeam(options).then((request) => request(axios, basePath));
+        teamAPICreateTeam(body: TeamAPIV1CreateTeamRequest, options?: any): AxiosPromise<TeamAPIV1CreateTeamResponse> {
+            return localVarFp.teamAPICreateTeam(body, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3814,11 +3901,12 @@ export const TeamAPIApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Update a team
          * @param {string} teamId ID of the team to be updated
+         * @param {UpdateTeamRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        teamAPIUpdateTeam(teamId: string, options?: any): AxiosPromise<TeamAPIV1UpdateTeamResponse> {
-            return localVarFp.teamAPIUpdateTeam(teamId, options).then((request) => request(axios, basePath));
+        teamAPIUpdateTeam(teamId: string, body: UpdateTeamRequest, options?: any): AxiosPromise<TeamAPIV1UpdateTeamResponse> {
+            return localVarFp.teamAPIUpdateTeam(teamId, body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -3846,12 +3934,13 @@ export class TeamAPIApi extends BaseAPI {
     /**
      * 
      * @summary Create a team
+     * @param {TeamAPIV1CreateTeamRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TeamAPIApi
      */
-    public teamAPICreateTeam(options?: AxiosRequestConfig) {
-        return TeamAPIApiFp(this.configuration).teamAPICreateTeam(options).then((request) => request(this.axios, this.basePath));
+    public teamAPICreateTeam(body: TeamAPIV1CreateTeamRequest, options?: AxiosRequestConfig) {
+        return TeamAPIApiFp(this.configuration).teamAPICreateTeam(body, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3958,12 +4047,13 @@ export class TeamAPIApi extends BaseAPI {
      * 
      * @summary Update a team
      * @param {string} teamId ID of the team to be updated
+     * @param {UpdateTeamRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TeamAPIApi
      */
-    public teamAPIUpdateTeam(teamId: string, options?: AxiosRequestConfig) {
-        return TeamAPIApiFp(this.configuration).teamAPIUpdateTeam(teamId, options).then((request) => request(this.axios, this.basePath));
+    public teamAPIUpdateTeam(teamId: string, body: UpdateTeamRequest, options?: AxiosRequestConfig) {
+        return TeamAPIApiFp(this.configuration).teamAPIUpdateTeam(teamId, body, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

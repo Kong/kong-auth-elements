@@ -276,6 +276,27 @@
       "title": "An invite, used in responses",
       "type": "object"
     },
+    "InviteAPI.v1InviteUserRequest": {
+      "properties": {
+        "email": {
+          "title": "The email address of the user to invite",
+          "type": "string"
+        },
+        "fullName": {
+          "title": "The full name of the user to invite",
+          "type": "string"
+        },
+        "teamIds": {
+          "description": "A list of team IDs to add the new user to.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "title": "InviteUserRequest",
+      "type": "object"
+    },
     "InviteAPI.v1InviteUserResponse": {
       "properties": {
         "invite": {
@@ -585,6 +606,20 @@
     },
     "TeamAPI.v1AddUserToTeamResponse": {
       "title": "Add user to team response",
+      "type": "object"
+    },
+    "TeamAPI.v1CreateTeamRequest": {
+      "properties": {
+        "description": {
+          "title": "Description of team",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name of the team to be created",
+          "type": "string"
+        }
+      },
+      "title": "Create team request",
       "type": "object"
     },
     "TeamAPI.v1CreateTeamResponse": {
@@ -1528,6 +1563,16 @@
     "/api/v1/invites": {
       "post": {
         "operationId": "InviteAPI_InviteUser",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InviteAPI.v1InviteUserRequest"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1908,6 +1953,16 @@
       },
       "post": {
         "operationId": "TeamAPI_CreateTeam",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.v1CreateTeamRequest"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1998,6 +2053,25 @@
             "name": "teamId",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "description": {
+                  "title": "New description of team",
+                  "type": "string"
+                },
+                "name": {
+                  "title": "New team name",
+                  "type": "string"
+                }
+              },
+              "title": "Update team request",
+              "type": "object"
+            }
           }
         ],
         "responses": {
