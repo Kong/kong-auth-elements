@@ -4,7 +4,7 @@ interface IdentityProviderComposable {
   idpIsLoading: Ref<boolean>
   shouldTriggerIdpLogin (): boolean
   shouldTriggerIdpAuthentication (): boolean
-  redirectToIdp (returnTo: string, isTest?: boolean): void
+  redirectToIdp (returnTo: string): void
   authenticateWithIdp (): void
 }
 
@@ -60,10 +60,10 @@ export default function useIdentityProvider (
   }
 
   /**
-   * Redirect the user to the kauth/authenticate/{org-id} endpoint, and provide a returnTo path. Optionally indicate whether you are testing the config.
+   * Redirect the user to the kauth/authenticate/{org-id} endpoint, and provide a returnTo path.
    * @param {string} [returnTo] - The full URL (including https://) where to return the user to with the code and state.
    */
-  const redirectToIdp = (returnTo: string, isTest = false): void => {
+  const redirectToIdp = (returnTo: string): void => {
     if (!organizationLoginPath.value) {
       idpIsLoading.value = false
       return
@@ -99,11 +99,8 @@ export default function useIdentityProvider (
     // Prevent additional redirects while processing
     isRedirecting.value = true
 
-    // Add parameter for testing, if set
-    const testingIdpParam = isTest ? 'test=true' : null
-
     // Combine URL params, skipping any that are empty
-    const redirectParams = '?' + [returnToParam, testingIdpParam].filter(Boolean).join('&')
+    const redirectParams = '?' + [returnToParam].filter(Boolean).join('&')
 
     // Redirect user to kauth endpoint
     window.location.href = `/kauth/api/${apiVersion.value}/authenticate/${organizationLoginPath.value}${redirectParams}`
