@@ -596,6 +596,25 @@ export interface InvitesAcceptRequest {
     'token': string;
 }
 /**
+ * 
+ * @export
+ * @interface LogoutLogoutResponse
+ */
+export interface LogoutLogoutResponse {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof LogoutLogoutResponse
+     */
+    'singleLogoutEnabled'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof LogoutLogoutResponse
+     */
+    'singleLogoutURL'?: string;
+}
+/**
  * - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
  * @export
  * @enum {string}
@@ -1487,6 +1506,12 @@ export interface UserAPIV1Team {
  * @interface UserAPIV1User
  */
 export interface UserAPIV1User {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserAPIV1User
+     */
+    'active'?: boolean;
     /**
      * 
      * @type {string}
@@ -2621,7 +2646,7 @@ export class InvitesApi extends BaseAPI {
 export const LogoutApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Logout will clear the auth cookies
+         * Logout will clear the auth cookies and return an IdP single logout url if configured. Configured url is currently statically coded to \"{issuer}/login/signout\" to align with Okta single sign out.
          * @summary logout by clearing the auth cookies
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2661,12 +2686,12 @@ export const LogoutApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = LogoutApiAxiosParamCreator(configuration)
     return {
         /**
-         * Logout will clear the auth cookies
+         * Logout will clear the auth cookies and return an IdP single logout url if configured. Configured url is currently statically coded to \"{issuer}/login/signout\" to align with Okta single sign out.
          * @summary logout by clearing the auth cookies
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async logout(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+        async logout(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LogoutLogoutResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.logout(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2681,12 +2706,12 @@ export const LogoutApiFactory = function (configuration?: Configuration, basePat
     const localVarFp = LogoutApiFp(configuration)
     return {
         /**
-         * Logout will clear the auth cookies
+         * Logout will clear the auth cookies and return an IdP single logout url if configured. Configured url is currently statically coded to \"{issuer}/login/signout\" to align with Okta single sign out.
          * @summary logout by clearing the auth cookies
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logout(options?: any): AxiosPromise<object> {
+        logout(options?: any): AxiosPromise<LogoutLogoutResponse> {
             return localVarFp.logout(options).then((request) => request(axios, basePath));
         },
     };
@@ -2700,7 +2725,7 @@ export const LogoutApiFactory = function (configuration?: Configuration, basePat
  */
 export class LogoutApi extends BaseAPI {
     /**
-     * Logout will clear the auth cookies
+     * Logout will clear the auth cookies and return an IdP single logout url if configured. Configured url is currently statically coded to \"{issuer}/login/signout\" to align with Okta single sign out.
      * @summary logout by clearing the auth cookies
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

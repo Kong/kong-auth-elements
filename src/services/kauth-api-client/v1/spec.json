@@ -897,6 +897,10 @@
     },
     "UserAPI.v1User": {
       "properties": {
+        "active": {
+          "title": "Active status",
+          "type": "boolean"
+        },
         "createdAt": {
           "format": "date-time",
           "title": "Timestamp of the user creation",
@@ -1064,6 +1068,14 @@
       "type": "object"
     },
     "logout.logoutResponse": {
+      "properties": {
+        "singleLogoutEnabled": {
+          "type": "boolean"
+        },
+        "singleLogoutURL": {
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "passwordresets.requestResetRequest": {
@@ -1598,7 +1610,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Logout will clear the auth cookies",
+        "description": "Logout will clear the auth cookies and return an IdP single logout url if configured.\nConfigured url is currently statically coded to \"{issuer}/login/signout\" to align\nwith Okta single sign out.",
         "operationId": "logout",
         "produces": [
           "application/json"
