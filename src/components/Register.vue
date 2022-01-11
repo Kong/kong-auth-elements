@@ -290,7 +290,7 @@ export default defineComponent({
   --KButtonPrimaryBase: var(--green-400);
 
   &:hover:not(:disabled) {
-    background-color: var(--green-300);
+    background-color: var(--green-300) !important;
   }
 }
 </style>
