@@ -93,6 +93,149 @@ export interface EmailverificationsVerifyResponse {
     'email': string;
 }
 /**
+ * - PRODUCT_INVALID: Invalid  - PRODUCT_RUNTIME_GROUPS: Runtime Groups  - PRODUCT_CATALOG: Catalog  - PRODUCT_VITALS: Vitals  - PRODUCT_REPORTS: Reports  - PRODUCT_IMMUNITY: Immunity  - PRODUCT_INSOMNIA: Insomnia
+ * @export
+ * @enum {string}
+ */
+
+export enum EntitlementAPIEntitlementProduct {
+    Invalid = 'PRODUCT_INVALID',
+    RuntimeGroups = 'PRODUCT_RUNTIME_GROUPS',
+    Catalog = 'PRODUCT_CATALOG',
+    Vitals = 'PRODUCT_VITALS',
+    Reports = 'PRODUCT_REPORTS',
+    Immunity = 'PRODUCT_IMMUNITY',
+    Insomnia = 'PRODUCT_INSOMNIA'
+}
+
+/**
+ * - TIER_INVALID: Invalid  - TIER_FREE: Free  - TIER_PLUS: Plus  - TIER_ENTERPRISE: Enteprise  - TIER_AWS_MARKETPLACE: AWS Marketplace
+ * @export
+ * @enum {string}
+ */
+
+export enum EntitlementAPIEntitlementTier {
+    Invalid = 'TIER_INVALID',
+    Free = 'TIER_FREE',
+    Plus = 'TIER_PLUS',
+    Enterprise = 'TIER_ENTERPRISE',
+    AwsMarketplace = 'TIER_AWS_MARKETPLACE'
+}
+
+/**
+ * 
+ * @export
+ * @interface EntitlementAPIProtobufAny
+ */
+export interface EntitlementAPIProtobufAny {
+    [key: string]: object | any;
+
+    /**
+     * 
+     * @type {string}
+     * @memberof EntitlementAPIProtobufAny
+     */
+    '@type'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface EntitlementAPIRpcStatus
+ */
+export interface EntitlementAPIRpcStatus {
+    /**
+     * 
+     * @type {number}
+     * @memberof EntitlementAPIRpcStatus
+     */
+    'code'?: number;
+    /**
+     * 
+     * @type {Array<EntitlementAPIProtobufAny>}
+     * @memberof EntitlementAPIRpcStatus
+     */
+    'details'?: Array<EntitlementAPIProtobufAny>;
+    /**
+     * 
+     * @type {string}
+     * @memberof EntitlementAPIRpcStatus
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface EntitlementAPIV1Entitlement
+ */
+export interface EntitlementAPIV1Entitlement {
+    /**
+     * 
+     * @type {number}
+     * @memberof EntitlementAPIV1Entitlement
+     */
+    'apiCollections'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof EntitlementAPIV1Entitlement
+     */
+    'designDocuments'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof EntitlementAPIV1Entitlement
+     */
+    'konnectservices'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof EntitlementAPIV1Entitlement
+     */
+    'portals'?: number;
+    /**
+     * 
+     * @type {Array<EntitlementAPIEntitlementProduct>}
+     * @memberof EntitlementAPIV1Entitlement
+     */
+    'products'?: Array<EntitlementAPIEntitlementProduct>;
+    /**
+     * 
+     * @type {number}
+     * @memberof EntitlementAPIV1Entitlement
+     */
+    'reports'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof EntitlementAPIV1Entitlement
+     */
+    'runtimeGroups'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof EntitlementAPIV1Entitlement
+     */
+    'seats'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof EntitlementAPIV1Entitlement
+     */
+    'sso'?: boolean;
+    /**
+     * 
+     * @type {EntitlementAPIEntitlementTier}
+     * @memberof EntitlementAPIV1Entitlement
+     */
+    'tier'?: EntitlementAPIEntitlementTier;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof EntitlementAPIV1Entitlement
+     */
+    'vanityDomain'?: boolean;
+}
+/**
  * 
  * @export
  * @interface ErrorResponse
@@ -314,6 +457,12 @@ export interface IdentityProviderAPIV1Config {
      * @memberof IdentityProviderAPIV1Config
      */
     'loginPath'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof IdentityProviderAPIV1Config
+     */
+    'singleLogoutEnabled'?: boolean;
 }
 /**
  * 
@@ -363,6 +512,12 @@ export interface IdentityProviderAPIV1IdentityProvider {
      * @memberof IdentityProviderAPIV1IdentityProvider
      */
     'pendingConfig'?: IdentityProviderAPIV1Config;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof IdentityProviderAPIV1IdentityProvider
+     */
+    'pendingConfigPromotable'?: boolean;
 }
 /**
  * PromoteConfigRequest contains the request to promote an organization\'s pending idP config to active.
@@ -601,6 +756,12 @@ export interface InvitesAcceptRequest {
  * @interface LogoutLogoutResponse
  */
 export interface LogoutLogoutResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof LogoutLogoutResponse
+     */
+    'loginPath'?: string;
     /**
      * 
      * @type {boolean}
@@ -2010,6 +2171,187 @@ export class EmailVerificationApi extends BaseAPI {
      */
     public verifyEmail(message: EmailverificationsVerifyRequest, options?: AxiosRequestConfig) {
         return EmailVerificationApiFp(this.configuration).verifyEmail(message, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * EntitlementAPIApi - axios parameter creator
+ * @export
+ */
+export const EntitlementAPIApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Retrieve the entitlement of a organization
+         * @param {string} orgId Id of the organization for which the entitlement should be retrieved
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        entitlementAPIRetrieveEntitlement: async (orgId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'orgId' is not null or undefined
+            assertParamExists('entitlementAPIRetrieveEntitlement', 'orgId', orgId)
+            const localVarPath = `/api/v1/organizations/{orgId}/entitlements`
+                .replace(`{${"orgId"}}`, encodeURIComponent(String(orgId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update the entitlement of an organization
+         * @param {string} orgId Id of the organization for which the entitlement should be updated
+         * @param {EntitlementAPIV1Entitlement} body Entitlement to be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        entitlementAPIUpdateEntitlement: async (orgId: string, body: EntitlementAPIV1Entitlement, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'orgId' is not null or undefined
+            assertParamExists('entitlementAPIUpdateEntitlement', 'orgId', orgId)
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('entitlementAPIUpdateEntitlement', 'body', body)
+            const localVarPath = `/api/v1/organizations/{orgId}/entitlements`
+                .replace(`{${"orgId"}}`, encodeURIComponent(String(orgId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * EntitlementAPIApi - functional programming interface
+ * @export
+ */
+export const EntitlementAPIApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = EntitlementAPIApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Retrieve the entitlement of a organization
+         * @param {string} orgId Id of the organization for which the entitlement should be retrieved
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async entitlementAPIRetrieveEntitlement(orgId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EntitlementAPIV1Entitlement>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.entitlementAPIRetrieveEntitlement(orgId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Update the entitlement of an organization
+         * @param {string} orgId Id of the organization for which the entitlement should be updated
+         * @param {EntitlementAPIV1Entitlement} body Entitlement to be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async entitlementAPIUpdateEntitlement(orgId: string, body: EntitlementAPIV1Entitlement, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.entitlementAPIUpdateEntitlement(orgId, body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * EntitlementAPIApi - factory interface
+ * @export
+ */
+export const EntitlementAPIApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = EntitlementAPIApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Retrieve the entitlement of a organization
+         * @param {string} orgId Id of the organization for which the entitlement should be retrieved
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        entitlementAPIRetrieveEntitlement(orgId: string, options?: any): AxiosPromise<EntitlementAPIV1Entitlement> {
+            return localVarFp.entitlementAPIRetrieveEntitlement(orgId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update the entitlement of an organization
+         * @param {string} orgId Id of the organization for which the entitlement should be updated
+         * @param {EntitlementAPIV1Entitlement} body Entitlement to be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        entitlementAPIUpdateEntitlement(orgId: string, body: EntitlementAPIV1Entitlement, options?: any): AxiosPromise<object> {
+            return localVarFp.entitlementAPIUpdateEntitlement(orgId, body, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * EntitlementAPIApi - object-oriented interface
+ * @export
+ * @class EntitlementAPIApi
+ * @extends {BaseAPI}
+ */
+export class EntitlementAPIApi extends BaseAPI {
+    /**
+     * 
+     * @summary Retrieve the entitlement of a organization
+     * @param {string} orgId Id of the organization for which the entitlement should be retrieved
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EntitlementAPIApi
+     */
+    public entitlementAPIRetrieveEntitlement(orgId: string, options?: AxiosRequestConfig) {
+        return EntitlementAPIApiFp(this.configuration).entitlementAPIRetrieveEntitlement(orgId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update the entitlement of an organization
+     * @param {string} orgId Id of the organization for which the entitlement should be updated
+     * @param {EntitlementAPIV1Entitlement} body Entitlement to be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EntitlementAPIApi
+     */
+    public entitlementAPIUpdateEntitlement(orgId: string, body: EntitlementAPIV1Entitlement, options?: AxiosRequestConfig) {
+        return EntitlementAPIApiFp(this.configuration).entitlementAPIUpdateEntitlement(orgId, body, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

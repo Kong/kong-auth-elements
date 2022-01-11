@@ -1,6 +1,124 @@
 {
   "basePath": "/",
   "definitions": {
+    "EntitlementAPI.EntitlementProduct": {
+      "default": "PRODUCT_INVALID",
+      "description": "- PRODUCT_INVALID: Invalid\n - PRODUCT_RUNTIME_GROUPS: Runtime Groups\n - PRODUCT_CATALOG: Catalog\n - PRODUCT_VITALS: Vitals\n - PRODUCT_REPORTS: Reports\n - PRODUCT_IMMUNITY: Immunity\n - PRODUCT_INSOMNIA: Insomnia",
+      "enum": [
+        "PRODUCT_INVALID",
+        "PRODUCT_RUNTIME_GROUPS",
+        "PRODUCT_CATALOG",
+        "PRODUCT_VITALS",
+        "PRODUCT_REPORTS",
+        "PRODUCT_IMMUNITY",
+        "PRODUCT_INSOMNIA"
+      ],
+      "title": "Product",
+      "type": "string"
+    },
+    "EntitlementAPI.EntitlementTier": {
+      "default": "TIER_INVALID",
+      "description": "- TIER_INVALID: Invalid\n - TIER_FREE: Free\n - TIER_PLUS: Plus\n - TIER_ENTERPRISE: Enteprise\n - TIER_AWS_MARKETPLACE: AWS Marketplace",
+      "enum": [
+        "TIER_INVALID",
+        "TIER_FREE",
+        "TIER_PLUS",
+        "TIER_ENTERPRISE",
+        "TIER_AWS_MARKETPLACE"
+      ],
+      "title": "Tier",
+      "type": "string"
+    },
+    "EntitlementAPI.protobufAny": {
+      "additionalProperties": {},
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "EntitlementAPI.rpcStatus": {
+      "properties": {
+        "code": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/EntitlementAPI.protobufAny"
+          },
+          "type": "array"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "EntitlementAPI.v1Entitlement": {
+      "properties": {
+        "apiCollections": {
+          "format": "int32",
+          "title": "API Collections",
+          "type": "integer"
+        },
+        "designDocuments": {
+          "format": "int32",
+          "title": "Design Documents",
+          "type": "integer"
+        },
+        "konnectservices": {
+          "format": "int32",
+          "title": "Services",
+          "type": "integer"
+        },
+        "portals": {
+          "format": "int32",
+          "title": "Portals",
+          "type": "integer"
+        },
+        "products": {
+          "items": {
+            "$ref": "#/definitions/EntitlementAPI.EntitlementProduct"
+          },
+          "title": "Products",
+          "type": "array"
+        },
+        "reports": {
+          "format": "int32",
+          "title": "Reports",
+          "type": "integer"
+        },
+        "runtimeGroups": {
+          "format": "int32",
+          "title": "Runtime Groups",
+          "type": "integer"
+        },
+        "seats": {
+          "format": "int32",
+          "title": "Seats",
+          "type": "integer"
+        },
+        "sso": {
+          "title": "SSO",
+          "type": "boolean"
+        },
+        "tier": {
+          "$ref": "#/definitions/EntitlementAPI.EntitlementTier"
+        },
+        "vanityDomain": {
+          "title": "Vanity Domain",
+          "type": "boolean"
+        }
+      },
+      "title": "An entitlement",
+      "type": "object"
+    },
+    "EntitlementAPI.v1UpdateEntitlementResponse": {
+      "title": "Update entitlement response",
+      "type": "object"
+    },
     "HealthAPI.protobufAny": {
       "additionalProperties": {},
       "properties": {
@@ -99,6 +217,10 @@
         "loginPath": {
           "title": "Login path of the IdP",
           "type": "string"
+        },
+        "singleLogoutEnabled": {
+          "title": "Single logout enabled",
+          "type": "boolean"
         }
       },
       "title": "IdpConfig defines the configuration of an identity provider",
@@ -137,6 +259,10 @@
         },
         "pendingConfig": {
           "$ref": "#/definitions/IdentityProviderAPI.v1Config"
+        },
+        "pendingConfigPromotable": {
+          "title": "Pending config promotable",
+          "type": "boolean"
         }
       },
       "title": "An Identity Provider for an organization",
@@ -1069,6 +1195,9 @@
     },
     "logout.logoutResponse": {
       "properties": {
+        "loginPath": {
+          "type": "string"
+        },
         "singleLogoutEnabled": {
           "type": "boolean"
         },
@@ -1682,6 +1811,77 @@
         "summary": "Updates an existing organization",
         "tags": [
           "OrganizationAPI"
+        ]
+      }
+    },
+    "/api/v1/organizations/{orgId}/entitlements": {
+      "get": {
+        "operationId": "EntitlementAPI_RetrieveEntitlement",
+        "parameters": [
+          {
+            "description": "Id of the organization for which the entitlement should be retrieved",
+            "in": "path",
+            "name": "orgId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieve entitlement",
+            "schema": {
+              "$ref": "#/definitions/EntitlementAPI.v1Entitlement"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/EntitlementAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Retrieve the entitlement of a organization",
+        "tags": [
+          "EntitlementAPI"
+        ]
+      },
+      "post": {
+        "operationId": "EntitlementAPI_UpdateEntitlement",
+        "parameters": [
+          {
+            "description": "Id of the organization for which the entitlement should be updated",
+            "in": "path",
+            "name": "orgId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Entitlement to be updated",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EntitlementAPI.v1Entitlement"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EntitlementAPI.v1UpdateEntitlementResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/EntitlementAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Update the entitlement of an organization",
+        "tags": [
+          "EntitlementAPI"
         ]
       }
     },
