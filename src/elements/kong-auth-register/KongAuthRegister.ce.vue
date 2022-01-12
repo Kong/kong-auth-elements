@@ -14,10 +14,7 @@ export default defineComponent({
 
   // Props are defined here for use on the custom element tag
   props: {
-    accessCodeRequired: {
-      type: Boolean,
-      default: false,
-    },
+    instructionText: String,
   },
 
   emits: ['register-success'],
@@ -30,8 +27,8 @@ export default defineComponent({
   setup(props) {
     // Provide custom element props to child components
     provide(
-      'access-code-required',
-      computed((): boolean => props.accessCodeRequired),
+      'instruction-text',
+      computed((): string => (props.instructionText ? props.instructionText : '')),
     )
   },
 })

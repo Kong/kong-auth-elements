@@ -64,7 +64,7 @@ export interface ClientconfigClientConfigResponse {
      * @type {boolean}
      * @memberof ClientconfigClientConfigResponse
      */
-    'require-registration-access-code'?: boolean;
+    'requireRegistrationAccessCode'?: boolean;
 }
 /**
  * 

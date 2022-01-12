@@ -1,10 +1,12 @@
 import axios, { AxiosInstance, AxiosError } from 'axios'
 import {
   AuthenticationApi,
+  ClientConfigApi,
   Configuration,
   EmailVerificationApi,
   IdentityProviderAPIApi,
   InviteAPIApi,
+  InvitesApi,
   LogoutApi,
   MeAPIApi,
   PasswordsApi,
@@ -16,9 +18,11 @@ import {
 export default class KongAuthApi {
   authentication: AuthenticationApi
   client: AxiosInstance
+  clientConfig: ClientConfigApi
   emailVerification: EmailVerificationApi
   idp: IdentityProviderAPIApi
   invites: InviteAPIApi
+  inviteAccept: InvitesApi
   logout: LogoutApi
   me: MeAPIApi
   passwords: PasswordsApi
@@ -26,7 +30,7 @@ export default class KongAuthApi {
   teams: TeamAPIApi
   users: UserAPIApi
 
-  constructor(authErrorCallback?: (error: AxiosError) => void) {
+  constructor (authErrorCallback?: (error: AxiosError) => void) {
     this.client = axios.create({ withCredentials: true })
 
     this.client.interceptors.response.use(
@@ -46,9 +50,11 @@ export default class KongAuthApi {
     })
 
     this.authentication = new AuthenticationApi(baseConfig, baseConfig.basePath, this.client)
+    this.clientConfig = new ClientConfigApi(baseConfig, baseConfig.basePath, this.client)
     this.emailVerification = new EmailVerificationApi(baseConfig, baseConfig.basePath, this.client)
     this.idp = new IdentityProviderAPIApi(baseConfig, baseConfig.basePath, this.client)
     this.invites = new InviteAPIApi(baseConfig, baseConfig.basePath, this.client)
+    this.inviteAccept = new InvitesApi(baseConfig, baseConfig.basePath, this.client)
     this.logout = new LogoutApi(baseConfig, baseConfig.basePath, this.client)
     this.me = new MeAPIApi(baseConfig, baseConfig.basePath, this.client)
     this.passwords = new PasswordsApi(baseConfig, baseConfig.basePath, this.client)
