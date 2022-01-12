@@ -8,7 +8,7 @@
 yarn install
 ```
 
-> **Note**: The `yarn generate:api-client` script requires that you have [Java Runtime installed](https://www.java.com/en/download/) on your machine.
+> **Note**: The `yarn generate:api-client` script requires that you have [Java Runtime installed](https://www.java.com/en/download/) on your machine, or that you run it from a Docker container.
 
 ### Local Dev Against Non-Local API
 
