@@ -224,6 +224,7 @@ export default defineComponent({
           fullName: formData.fullName,
           organization: formData.organization,
           password: formData.password,
+          registrationCode: accessCodeRequired && formData.accessCode ? formData.accessCode : undefined,
         })
 
         send('RESOLVE')
