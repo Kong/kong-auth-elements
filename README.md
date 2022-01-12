@@ -129,7 +129,7 @@ Also sets the `userStatus` cookie, along with other `kauth` cookies.
 | `registerLinkHelpText`   | String  | `Don't have an account?` | Set the register link help text.                      |
 | `registerLinkText`       | String  | `Sign Up →`              | Set the text for the register link.                   |
 | `idpLoginEnabled`        | Boolean | `false`                  | Enable IdP login detection.                           |
-| `idpLoginReturnTo`       | URL     | ``                       | Set the URL to return to upon successful IdP login.   |
+| `idpLoginReturnTo`       | URL     | `''`                     | Set the URL to return to upon successful IdP login.   |
 
 #### Emits Events
 
