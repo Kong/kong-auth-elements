@@ -127,7 +127,13 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 export default defineComponent({
   name: 'Login',
 
-  emits: ['login-success', 'confirm-email-success', 'click-forgot-password-link', 'click-register-link'],
+  emits: [
+    'login-success',
+    'confirm-email-success',
+    'click-forgot-password-link',
+    'click-register-link',
+    'idp-is-loading',
+  ],
 
   components: {
     KAlert,
@@ -167,6 +173,9 @@ export default defineComponent({
       if (val) {
         send('FROM_URL')
       }
+      emit('idp-is-loading', {
+        isLoading: val,
+      })
     })
 
     const {

@@ -12,7 +12,8 @@
           @login-success="showAlert('Login success!')"
           @click-forgot-password-link="showAlert('User clicked forgot password')"
           @click-register-link="showAlert('User clicked register')"
-          @confirm-email-success="showAlert('User confirmed email')"></kong-auth-login>
+          @confirm-email-success="showAlert('User confirmed email')"
+          @idp-is-loading="showAlert('IDP loading state changed')"></kong-auth-login>
       </div>
 
       <div v-if="urlPath.includes('/forgot-password') || urlPath === '/'" class="element-wrapper">

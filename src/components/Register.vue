@@ -13,6 +13,10 @@
       @submit.prevent="submitForm"
       novalidate
       data-testid="kong-auth-register-form">
+      <p v-if="instructionText" class="color-black-45" data-testid="kong-auth-register-instruction-text">
+        {{ instructionText }}
+      </p>
+
       <div>
         <KLabel for="full_name">Full Name *</KLabel>
         <KInput
@@ -38,8 +42,6 @@
         :has-error="currentState.matches('error') && error && fieldsHaveError && !organization ? true : false"
         required
         data-testid="kong-auth-register-organization" />
-
-      <input v-if="emailToken" id="emailToken" :value="emailToken" type="hidden" />
 
       <KLabel for="email">Email *</KLabel>
       <KInput
@@ -139,7 +141,7 @@ export default defineComponent({
   setup(props, { emit }) {
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
-    const accessCodeRequired: Ref<boolean> = inject('access-code-required', ref(false))
+    const instructionText: Ref<string> = inject('instruction-text', ref(''))
 
     const formData = reactive({
       email: '',
@@ -152,6 +154,7 @@ export default defineComponent({
       checked_agreement: false,
     })
 
+    const accessCodeRequired = ref(false)
     const error = ref<any>(null)
     const passwordError = ref<boolean>(false)
     const fieldsHaveError = ref(false)
@@ -219,12 +222,22 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        await $api.registration.register({
-          email: formData.email,
-          fullName: formData.fullName,
-          organization: formData.organization,
-          password: formData.password,
-        })
+        if (formData.emailToken) {
+          // Accept the invite and set the password
+          await $api.inviteAccept.acceptInvite({
+            password: formData.password,
+            token: formData.emailToken,
+          })
+        } else {
+          // Register a new user
+          await $api.registration.register({
+            email: formData.email,
+            fullName: formData.fullName,
+            organization: formData.organization,
+            password: formData.password,
+            registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
+          })
+        }
 
         send('RESOLVE')
 
@@ -253,11 +266,24 @@ export default defineComponent({
       }
     }
 
-    onMounted(() => {
+    const checkForAccessCodeRequirement = async (): Promise<void> => {
+      try {
+        // Check if access code is required
+        const clientConfigResponse = await $api.clientConfig.clientConfig()
+        accessCodeRequired.value = clientConfigResponse?.data?.requireRegistrationAccessCode === true
+      } catch (_) {
+        // Set to true to guard Registration
+        accessCodeRequired.value = true
+      }
+    }
+
+    onMounted(async () => {
+      await checkForAccessCodeRequirement()
+
       const urlParams: URLSearchParams = new URLSearchParams(window.location.search)
 
-      formData.email = urlParams.get('email') || ''
       formData.emailToken = urlParams.get('token') || ''
+      formData.email = urlParams.get('email') || ''
       formData.fullName = urlParams.get('fullName') || ''
       formData.organization = urlParams.get('org') || ''
 
@@ -278,6 +304,7 @@ export default defineComponent({
       passwordError,
       fieldsHaveError,
       accessCodeRequired,
+      instructionText,
       ...toRefs(formData),
     }
   },

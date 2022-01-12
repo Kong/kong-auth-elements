@@ -137,6 +137,7 @@ Also sets the `userStatus` cookie, along with other `kauth` cookies.
 - `confirm-email-success({ email: String })`
 - `click-forgot-password-link`
 - `click-register-link`
+- `idp-is-loading({ isLoading: Boolean })`
 
 To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
 
@@ -212,9 +213,9 @@ Provides a registration UI along with corresponding `kauth` functionality to all
 
 #### Props
 
-| Prop                 | Type    | Default | Description                              |
-| :------------------- | :------ | :------ | :--------------------------------------- |
-| `accessCodeRequired` | Boolean | `false` | Require an access code for registration. |
+| Prop              | Type   | Default | Description                                                |
+| :---------------- | :----- | :------ | :--------------------------------------------------------- |
+| `instructionText` | String | `''`    | Set the instruction text to display above the form inputs. |
 
 #### Emits Events
 
