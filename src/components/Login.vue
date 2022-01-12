@@ -77,7 +77,7 @@
         {{ btnText }}
       </KButton>
 
-      <div v-if="isIdpLogin" class="help mt-3 text-center">
+      <p v-if="isIdpLogin" class="help mt-3 text-center">
         <a
           @click.prevent="loginWithCredentials"
           class="color-blue-500"
@@ -85,7 +85,7 @@
           data-testid="kong-auth-login-credentials-link"
           >{{ helpText.login.loginWithCredentials }}</a
         >
-      </div>
+      </p>
 
       <div v-if="showRegisterLink" class="text-center mt-5">
         <p class="color-black-85 bold-500">
