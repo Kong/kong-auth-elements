@@ -1,6 +1,7 @@
 import { onMounted, ref, Ref, watch } from 'vue'
 
 interface IdentityProviderComposable {
+  isIdpLogin: Ref<boolean>
   idpIsLoading: Ref<boolean>
   shouldTriggerIdpLogin (): boolean
   shouldTriggerIdpAuthentication (): boolean
@@ -19,6 +20,7 @@ export default function useIdentityProvider (
   idpIsEnabled: Ref<boolean>,
   idpLoginRedirectTo: Ref<string>,
 ): IdentityProviderComposable {
+  const isIdpLogin = ref(false)
   const idpIsLoading = ref(false)
   const isRedirecting = ref(false)
   const organizationLoginPath = ref<string>('')
@@ -27,7 +29,7 @@ export default function useIdentityProvider (
   const apiVersion = ref('v1')
 
   /**
-   * Returns if user is on /login/{org-id} route in container application with valid org-id in path.
+   * Returns true if user is on /login/{org-id} route in container application with valid org-id in path, and no logout=true in query string.
    * @return {*}  {boolean}
    */
   const shouldTriggerIdpLogin = (): boolean => {
@@ -37,16 +39,21 @@ export default function useIdentityProvider (
       return false
     }
 
-    // If redirectTo value is not set, exit
-    if (!idpLoginRedirectTo.value.trim()) {
+    const urlPath: string = window.location.pathname
+    const urlPathArray: string[] = urlPath.split('/')
+    // Check for IDP organization login path (only on login page, just in case)
+    isIdpLogin.value = urlPathArray[1].toLowerCase() === 'login' && !!urlPathArray[2]
+
+    // Get URL params
+    const urlParams: URLSearchParams = new URLSearchParams(window.location.search)
+
+    // If not IdP login, or if logout in URL params (user came from logout), exit
+    if (!isIdpLogin.value || !!urlParams.get('logout')) {
       return false
     }
 
-    const urlPath: string = window.location.pathname
-    const urlPathArray: string[] = urlPath.split('/')
-
-    // Check for IDP organization login path (only on login page, just in case)
-    if (urlPathArray[1].toLowerCase() !== 'login' || !urlPathArray[2]) {
+    // If redirectTo value is not set, exit
+    if (!idpLoginRedirectTo.value.trim()) {
       return false
     }
 
@@ -119,7 +126,7 @@ export default function useIdentityProvider (
       return false
     }
 
-    const urlParams = new URLSearchParams(window.location.search)
+    const urlParams: URLSearchParams = new URLSearchParams(window.location.search)
     code.value = urlParams.get('code') || ''
     state.value = urlParams.get('state') || ''
 
@@ -176,6 +183,7 @@ export default function useIdentityProvider (
   })
 
   return {
+    isIdpLogin,
     idpIsLoading,
     shouldTriggerIdpLogin,
     shouldTriggerIdpAuthentication,

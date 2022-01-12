@@ -30,38 +30,40 @@
     </div>
 
     <form class="login-form" @submit.prevent="submitForm" novalidate data-testid="kong-auth-login-form">
-      <KLabel for="email">Email *</KLabel>
-      <KInput
-        id="email"
-        v-model.trim="email"
-        type="email"
-        class="w-100 mb-5"
-        autocomplete="email"
-        :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
-        required
-        autofocus
-        data-testid="kong-auth-login-email" />
+      <div v-if="!isIdpLogin">
+        <KLabel for="email">Email *</KLabel>
+        <KInput
+          id="email"
+          v-model.trim="email"
+          type="email"
+          class="w-100 mb-5"
+          autocomplete="email"
+          :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+          required
+          autofocus
+          data-testid="kong-auth-login-email" />
 
-      <KLabel for="password">Password *</KLabel>
-      <KInput
-        id="password"
-        v-model="password"
-        type="password"
-        class="w-100"
-        autocomplete="current-password"
-        :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
-        required
-        data-testid="kong-auth-login-password" />
+        <KLabel for="password">Password *</KLabel>
+        <KInput
+          id="password"
+          v-model="password"
+          type="password"
+          class="w-100"
+          autocomplete="current-password"
+          :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+          required
+          data-testid="kong-auth-login-password" />
 
-      <p v-if="showForgotPasswordLink" class="help mt-3">
-        <a
-          @click.prevent="$emit('click-forgot-password-link')"
-          class="color-blue-500"
-          href="#"
-          data-testid="kong-auth-login-forgot-password-link"
-          >{{ forgotPasswordLinkText }}</a
-        >
-      </p>
+        <p v-if="showForgotPasswordLink" class="help mt-3">
+          <a
+            @click.prevent="$emit('click-forgot-password-link')"
+            class="color-blue-500"
+            href="#"
+            data-testid="kong-auth-login-forgot-password-link"
+            >{{ forgotPasswordLinkText }}</a
+          >
+        </p>
+      </div>
 
       <KButton
         type="submit"
@@ -146,6 +148,17 @@ export default defineComponent({
     const fieldsHaveError = ref(false)
     const $api = new KongAuthApi()
 
+    // Setup and automatically trigger IDP (or ignore it, depending on the props)
+    // Passing the refs on purpose so values are reactive.
+    const { isIdpLogin, idpIsLoading } = useIdentityProvider(idpLoginEnabled, idpLoginReturnTo)
+
+    // Automatically trigger state change based on IDP
+    watch(idpIsLoading, (val) => {
+      if (val) {
+        send('FROM_URL')
+      }
+    })
+
     const {
       state: currentState,
       send,
@@ -210,7 +223,10 @@ export default defineComponent({
     })
 
     const btnDisabled = computed(() => {
-      return !formData.email || !formData.password || ['pending', 'success'].some(currentState.value.matches)
+      return (
+        ((!formData.email || !formData.password) && !isIdpLogin.value) ||
+        ['pending', 'success'].some(currentState.value.matches)
+      )
     })
 
     const setUserStatusCookie = async () => {
@@ -261,6 +277,23 @@ export default defineComponent({
     }
 
     const submitForm = async (): Promise<void> => {
+      // If IdP login form
+      if (isIdpLogin.value) {
+        try {
+          // Get current href
+          const loginUrl = new URL(window.location.href)
+          // Remove the logout query param
+          loginUrl.searchParams.delete('logout')
+          // Redirect the user back to the page without the logout which should initialize IdP login
+          window.location.href = loginUrl.href
+          return
+        } catch (_) {
+          // If the above fails, just redirect them to the same page without any params
+          window.location.href = window.location.origin + window.location.pathname
+          return
+        }
+      }
+
       send('SUBMIT_LOGIN')
 
       // Reset form errors
@@ -311,17 +344,6 @@ export default defineComponent({
       }
     }
 
-    // Setup and automatically trigger IDP (or ignore it, depending on the props)
-    // Passing the refs on purpose so values are reactive.
-    const { idpIsLoading } = useIdentityProvider(idpLoginEnabled, idpLoginReturnTo)
-
-    // Automatically trigger state change based on IDP
-    watch(idpIsLoading, (val) => {
-      if (val) {
-        send('FROM_URL')
-      }
-    })
-
     onMounted(async () => {
       // Get URL params
       const urlParams = new URLSearchParams(window.location.search)
@@ -365,6 +387,7 @@ export default defineComponent({
       submitForm,
       error,
       fieldsHaveError,
+      isIdpLogin,
       ...toRefs(formData),
     }
   },
