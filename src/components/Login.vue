@@ -77,6 +77,16 @@
         {{ btnText }}
       </KButton>
 
+      <div v-if="isIdpLogin" class="help mt-3 text-center">
+        <a
+          @click.prevent="loginWithCredentials"
+          class="color-blue-500 credentials-link"
+          href="#"
+          data-testid="kong-auth-login-credentials-link"
+          >{{ helpText.login.loginWithCredentials }}</a
+        >
+      </div>
+
       <div v-if="showRegisterLink" class="text-center mt-5">
         <p class="color-black-85 bold-500">
           {{ registerLinkHelpText }}
@@ -344,6 +354,11 @@ export default defineComponent({
       }
     }
 
+    const loginWithCredentials = (): void => {
+      // Redirect the user to the same login page without anything else in the path
+      window.location.href = window.location.origin + '/login'
+    }
+
     onMounted(async () => {
       // Get URL params
       const urlParams = new URLSearchParams(window.location.search)
@@ -385,6 +400,7 @@ export default defineComponent({
       btnDisabled,
       currentState,
       submitForm,
+      loginWithCredentials,
       error,
       fieldsHaveError,
       isIdpLogin,
@@ -398,5 +414,9 @@ export default defineComponent({
 /*! KONG_AUTH_INJECT_STYLES */
 .idp-loading {
   justify-content: center;
+}
+
+.text-center {
+  text-align: center;
 }
 </style>

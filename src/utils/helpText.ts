@@ -8,6 +8,7 @@ export default {
     passwordResetSuccess: 'Password successfuly reset!',
     confirmedEmailSuccess: 'Email successfully confirmed!',
     registerSuccess: 'Successfully registered!',
+    loginWithCredentials: 'Login with credentials →'
   },
   forgotPassword: {
     loginLinkText: 'Return to log in →',
