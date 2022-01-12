@@ -80,7 +80,7 @@
       <div v-if="isIdpLogin" class="help mt-3 text-center">
         <a
           @click.prevent="loginWithCredentials"
-          class="color-blue-500 credentials-link"
+          class="color-blue-500"
           href="#"
           data-testid="kong-auth-login-credentials-link"
           >{{ helpText.login.loginWithCredentials }}</a
