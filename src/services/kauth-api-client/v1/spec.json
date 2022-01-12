@@ -30,7 +30,9 @@
       "type": "string"
     },
     "EntitlementAPI.protobufAny": {
-      "additionalProperties": {},
+      "additionalProperties": {
+
+      },
       "properties": {
         "@type": {
           "type": "string"
@@ -120,7 +122,9 @@
       "type": "object"
     },
     "HealthAPI.protobufAny": {
-      "additionalProperties": {},
+      "additionalProperties": {
+
+      },
       "properties": {
         "@type": {
           "type": "string"
@@ -171,7 +175,9 @@
       "type": "string"
     },
     "IdentityProviderAPI.protobufAny": {
-      "additionalProperties": {},
+      "additionalProperties": {
+
+      },
       "properties": {
         "@type": {
           "type": "string"
@@ -352,7 +358,9 @@
       "type": "object"
     },
     "InviteAPI.protobufAny": {
-      "additionalProperties": {},
+      "additionalProperties": {
+
+      },
       "properties": {
         "@type": {
           "type": "string"
@@ -483,7 +491,9 @@
       "type": "string"
     },
     "MeAPI.protobufAny": {
-      "additionalProperties": {},
+      "additionalProperties": {
+
+      },
       "properties": {
         "@type": {
           "type": "string"
@@ -599,7 +609,9 @@
       "type": "object"
     },
     "OrganizationAPI.protobufAny": {
-      "additionalProperties": {},
+      "additionalProperties": {
+
+      },
       "properties": {
         "@type": {
           "type": "string"
@@ -704,7 +716,9 @@
       "type": "string"
     },
     "TeamAPI.protobufAny": {
-      "additionalProperties": {},
+      "additionalProperties": {
+
+      },
       "properties": {
         "@type": {
           "type": "string"
@@ -927,7 +941,9 @@
       "type": "object"
     },
     "UserAPI.protobufAny": {
-      "additionalProperties": {},
+      "additionalProperties": {
+
+      },
       "properties": {
         "@type": {
           "type": "string"
@@ -1310,7 +1326,9 @@
   },
   "host": "kauth.konnect-dev.konghq.com",
   "info": {
-    "contact": {},
+    "contact": {
+
+    },
     "description": "REST API for KAuth service",
     "license": {
       "name": "Proprietary License"
