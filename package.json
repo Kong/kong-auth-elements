@@ -76,6 +76,9 @@
     "vue-jest": "^5.0.0-0",
     "vue-tsc": "^0.29.8"
   },
+  "peerDependencies": {
+    "axios": "^0.24.0"
+  },
   "files": [
     "dist/**/*.{js,map,d.ts}"
   ],

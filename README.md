@@ -113,53 +113,62 @@ All styles from the [Kongponents component library](https://kongponents.konghq.c
 
 ### `kong-auth-login`
 
-Provides a login UI along with corresponding `kauth` authentication.
-
-Provides email confirmation, given a valid `token` in the query string.
-
-Also sets the `userStatus` cookie, along with other `kauth` cookies.
+- Provides a login UI along with corresponding `kauth` authentication.
+- Provides Identity Provider (IdP) login, if enabled.
+- Provides email verification, given a valid `token` in the query string.
+- Sets the `kauth` cookies, along with the `userStatus` cookie (possibly unused).
 
 #### Props
 
-| Prop                     | Type    | Default                  | Description                                           |
-| :----------------------- | :------ | :----------------------- | :---------------------------------------------------- |
-| `showForgotPasswordLink` | Boolean | `false`                  | Show a forgot password link under the password field. |
-| `forgotPasswordLinkText` | String  | `Forgot your password?`  | Set the text for the forgot password link.            |
-| `showRegisterLink`       | Boolean | `false`                  | Show a register link under the login button.          |
-| `registerLinkHelpText`   | String  | `Don't have an account?` | Set the register link help text.                      |
-| `registerLinkText`       | String  | `Sign Up →`              | Set the text for the register link.                   |
-| `idpLoginEnabled`        | Boolean | `false`                  | Enable IdP login detection.                           |
-| `idpLoginReturnTo`       | URL     | `''`                     | Set the URL to return to upon successful IdP login.   |
+| Prop                     | Type    | Default                  | Description                                                                                                       |
+| :----------------------- | :------ | :----------------------- | :---------------------------------------------------------------------------------------------------------------- |
+| `showForgotPasswordLink` | Boolean | `false`                  | Show a forgot password link under the password field.                                                             |
+| `forgotPasswordLinkText` | String  | `Forgot your password?`  | Set the text for the forgot password link.                                                                        |
+| `showRegisterLink`       | Boolean | `false`                  | Show a register link under the login button.                                                                      |
+| `registerLinkHelpText`   | String  | `Don't have an account?` | Set the register link help text.                                                                                  |
+| `registerLinkText`       | String  | `Sign Up →`              | Set the text for the register link.                                                                               |
+| `idpLoginEnabled`        | Boolean | `false`                  | Enable IdP login detection.                                                                                       |
+| `idpLoginReturnTo`       | URL     | `''`                     | Set the URL to return to upon successful IdP login. In most cases, this should be set to `window.location.origin` |
 
 #### Emits Events
 
-- `login-success`
-- `confirm-email-success({ email: String })`
-- `click-forgot-password-link`
-- `click-register-link`
-- `idp-is-loading({ isLoading: Boolean })`
+| Event                        |         Payload          | Description                                      |
+| :--------------------------- | :----------------------: | :----------------------------------------------- |
+| `login-success`              |                          | User successfully logged in.                     |
+| `confirm-email-success`      |   `{ email: String }`    | User successfully confirmed their email address. |
+| `click-forgot-password-link` |                          | User clicked the included forgot password link.  |
+| `click-register-link`        |                          | User clicked the included register link.         |
+| `idp-is-loading`             | `{ isLoading: Boolean }` | IdP authentication is processing.                |
 
 To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
 
 #### Query String Parameters
 
-##### `token` (required)
+| Param           | Required                     | Description                                                                                                                                                                    |
+| :-------------- | :--------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `token`         | `true` if email verification | Pass a valid `token` entry in the URL query string to verify the user's email address.                                                                                         |
+| `passwordReset` | `true` if password reset     | To show the Reset Password Confirmation, the consuming app URL must include `passwordReset=true` in the query string. You can choose to include the `email` parameter as well. |
+| `email`         | `false`                      | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input.            |
 
-Pass a valid `token` entry in the URL query string to confirm the user's email address.
+#### IdP Login
 
-##### `passwordReset`
+##### Auto-initialization
 
-To show the Reset Password Confirmation, the consuming app URL must include `passwordReset=true` in the query string. You can choose to include the [`email`](#email) parameter as well.
+When a user lands on your app on the route `/login/{login-path}`, the `<kong-auth-login>` element will automatically initialize IdP login if the `idpLoginEnabled` prop is set to `true`, and the `idpLoginReturnTo` prop contains a valid URL to redirect the user to after successful authentication.
 
-##### `email`
+##### Logging back in
 
-Pass the user's encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input.
+Upon logging out, if the user is sent to `/login/{login-path}?logout=true` (notice the `logout` query param) this will prevent IdP auto-initialization, and will hide the `email` and `password` fields and instead will show a Login button along with a separate link to login with credentials. This allows your app to log out the user, send them back to their organization's login path without actually logging them back in (preventing a loop).
+
+If the user clicks the Login button, they will be sent to `/login/{login-path}` which will start [auto-initialization](#auto-initialization).
+
+If the user clicks the link to login with credentials, they will be sent to `/login`, and will be able to authenticate with an email and password (if they are an Organization Owner, or their organization allows credentialed login).
 
 ---
 
 ### `kong-auth-forgot-password`
 
-Provides a forgot password UI along with corresponding `kauth` functionality to allow the user to request a reset password email.
+- Provides a forgot password UI along with corresponding `kauth` functionality to allow the user to request a reset password email.
 
 #### Props
 
@@ -172,8 +181,10 @@ Provides a forgot password UI along with corresponding `kauth` functionality to 
 
 #### Emits Events
 
-- `forgot-password-success({ email: String })`
-- `click-login-link`
+| Event                     |       Payload       | Description                                         |
+| :------------------------ | :-----------------: | :-------------------------------------------------- |
+| `forgot-password-success` | `{ email: String }` | User successfully requested a reset password email. |
+| `click-login-link`        |                     | User clicked the included login link.               |
 
 To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
 
@@ -181,7 +192,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 ### `kong-auth-reset-password`
 
-Provides a reset password UI along with corresponding `kauth` functionality to allow the user to reset their password when coming from the reset password email, provided a valid `token` is present in the query string.
+- Provides a reset password UI along with corresponding `kauth` functionality to allow the user to reset their password when coming from the reset password email, provided a valid `token` is present in the query string.
 
 #### Props
 
@@ -191,25 +202,26 @@ Provides a reset password UI along with corresponding `kauth` functionality to a
 
 #### Emits Events
 
-- `reset-password-success({ email: String })`
+| Event                    |       Payload       | Description                             |
+| :----------------------- | :-----------------: | :-------------------------------------- |
+| `reset-password-success` | `{ email: String }` | User successfully reset their password. |
 
 To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
 
 #### Query String Parameters
 
-##### `token` (required)
-
-Pass a valid `token` entry in the URL query string to send to the reset password request.
-
-##### `email`
-
-Pass the user's encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input on redirect.
+| Param   | Required | Description                                                                                                                                                                     |
+| :------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `token` | `true`   | Pass a valid `token` entry in the URL query string to send to the reset password request.                                                                                       |
+| `email` | `false`  | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input on redirect. |
 
 ---
 
 ### `kong-auth-register`
 
-Provides a registration UI along with corresponding `kauth` functionality to allow the user to register and sending the confirmation email.
+- Provides a registration UI along with corresponding `kauth` functionality to allow the user to register and sending the confirmation email.
+- Checks the client config to determine if registration access codes are required.
+- If the user arrives via an invite link, the registration form will be pre-populated and the user will just provide a new password and click the agreement checkbox.
 
 #### Props
 
@@ -219,35 +231,20 @@ Provides a registration UI along with corresponding `kauth` functionality to all
 
 #### Emits Events
 
-- `register-success({ email: String, fromInvite: Boolean })`
+| Event              |                 Payload                  | Description                   |
+| :----------------- | :--------------------------------------: | :---------------------------- |
+| `register-success` | `{ email: String, fromInvite: Boolean }` | User successfully registered. |
 
 To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
 
 #### Query String Parameters
 
-##### `token` (required if from invitation)
-
-Pass a valid `token` entry in the URL query string to send to the reset password request.
-
-##### `token` (required if from invitation)
-
-Pass an invite token in the query string if the user is originating from an invite.
-
-##### `email` (required if from invitation)
-
-Pass the user's encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string if the user is originating from an invite.
-
-##### `firstName` (required if from invitation)
-
-Pass the user's encoded first name in the query string if the user is originating from an invite.
-
-##### `lastName` (required if from invitation)
-
-Pass the user's encoded last name in the query string if the user is originating from an invite.
-
-##### `org` (required if from invitation)
-
-Pass the user's encoded organization in the query string if the user is originating from an invite.
+| Param      | Required              | Description                                                                                                                                                       |
+| :--------- | :-------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `token`    | `true` if from invite | Pass an invite token in the query string if the user is originating from an invite.                                                                               |
+| `email`    | `true` if from invite | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string if the user is originating from an invite. |
+| `fullName` | `true` if from invite | Pass the user's URL encoded full name in the query string if the user is originating from an invite.                                                              |
+| `org`      | `true` if from invite | Pass the user's URL encoded organization in the query string if the user is originating from an invite.                                                           |
 
 ## Usage
 
@@ -282,6 +279,10 @@ Wherever you want to utilze a custom element, simply include it just like you wo
   @click-forgot-password-link="onUserClickForgotPassword"
   @click-register-link="onUserClickRegister"></kong-auth-login>
 ```
+
+#### Axios
+
+This package depends on [axios](https://github.com/axios/axios); specifically a minimum version of `0.24.0`. If your project is pinned to a version of **axios** less than `0.24.0` you will need to upgrade to prevent type interface conflicts.
 
 #### `KongAuthApi`
 
