@@ -12,3 +12,4 @@ registerKongAuthResetPassword()
 registerKongAuthRegister()
 
 export default KongAuthApi
+export * from './services/kauth-api-client/v1/source'
