@@ -153,11 +153,12 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 #### Query String Parameters
 
-| Param           | Required                     | Description                                                                                                                                                                    |
-| :-------------- | :--------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `token`         | `true` if email verification | Pass a valid `token` entry in the URL query string to verify the user's email address.                                                                                         |
-| `passwordReset` | `true` if password reset     | To show the Reset Password Confirmation, the consuming app URL must include `passwordReset=true` in the query string. You can choose to include the `email` parameter as well. |
-| `email`         | `false`                      | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input.            |
+| Param           | Required                                             | Description                                                                                                                                                                    |
+| :-------------- | :--------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `token`         | `true` if email verification                         | Pass a valid `token` entry in the URL query string to verify the user's email address.                                                                                         |
+| `passwordReset` | `true` if password reset                             | To show the Reset Password Confirmation, the consuming app URL must include `passwordReset=true` in the query string. You can choose to include the `email` parameter as well. |
+| `registered`    | `true` if register success (from register or invite) | To show the Register Confirmation, the consuming app URL must include `registered=true` in the query string. You can choose to include the `email` parameter as well.          |
+| `email`         | `false`                                              | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input.            |
 
 #### IdP Login
 

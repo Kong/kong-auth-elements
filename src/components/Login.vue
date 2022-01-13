@@ -25,7 +25,7 @@
         class="justify-content-center" />
     </div>
 
-    <div v-else-if="currentState.matches('from_invite')" class="my-3">
+    <div v-else-if="currentState.matches('from_register')" class="my-3">
       <KAlert :alert-message="helpText.login.registerSuccess" appearance="success" class="justify-content-center" />
     </div>
 
@@ -189,7 +189,7 @@ export default defineComponent({
         states: {
           idle: {
             on: {
-              FROM_INVITE: 'from_invite',
+              FROM_REGISTER: 'from_register',
               FROM_URL: 'from_url',
               CONFIRMED_EMAIL: 'confirmed_email',
               RESET_PASSWORD: 'reset_password',
@@ -203,7 +203,7 @@ export default defineComponent({
               REJECT: 'error',
             },
           },
-          from_invite: {
+          from_register: {
             on: {
               SUBMIT_LOGIN: 'pending',
               REJECT: 'error',
@@ -264,11 +264,13 @@ export default defineComponent({
       document.cookie = `userStatus=active; path=/; ${getDomain()} expires=${date.toUTCString()};`
     }
 
-    const setEmail = async (token: string): Promise<void> => {
+    const verifyEmailAddress = async (token: string): Promise<void> => {
       try {
         const response: AxiosResponse<EmailverificationsVerifyResponse> = await $api.emailVerification.verifyEmail({
           token,
         })
+
+        console.log('emailVerification', response.data)
 
         send('RESOLVE')
 
@@ -372,29 +374,29 @@ export default defineComponent({
       // Get URL params
       const urlParams = new URLSearchParams(window.location.search)
 
-      // Check if coming from password reset
-      if (urlParams.get('passwordReset')) {
-        send('RESET_PASSWORD')
+      // If token in URL params
+      const token = urlParams.get('token')
+      if (token) {
+        // Verify email address and set email on success
+        await verifyEmailAddress(token)
+        return
       }
 
       // Set email if in route params
       const emailInParams = urlParams.get('email')
       if (emailInParams) {
         formData.email = emailInParams
-
-        // If not coming from reset-password
-        if (!urlParams.get('passwordReset')) {
-          setUserStatusCookie()
-          send('FROM_INVITE')
-        }
-
-        return
       }
 
-      // If token in URL params
-      const token = urlParams.get('token')
-      if (token) {
-        await setEmail(token)
+      // Check if coming from password reset
+      if (urlParams.get('passwordReset')) {
+        send('RESET_PASSWORD')
+      }
+
+      // If coming from registration (or an invite registration)
+      if (urlParams.get('registered')) {
+        setUserStatusCookie()
+        send('FROM_REGISTER')
       }
     })
 
