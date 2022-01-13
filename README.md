@@ -111,6 +111,11 @@ The exclamation point at the beginning of the comment flags the comment as impor
 
 All styles from the [Kongponents component library](https://kongponents.konghq.com/guide/theming.html) will be automatically injected and available.
 
+## Current Issues
+
+- There is currently an issue in Vue 3 custom elements (which we are using here) whereby with our setup, all `.ce.vue` files within the `/src/elements/` directory **MUST** have at least one `prop` defined. I'm still looking into why.
+  - **This in no way impacts production or using `kong-auth-elements` within your application; all elements have at least one `prop` defined.**
+
 ## Custom Elements
 
 ### `kong-auth-login`
