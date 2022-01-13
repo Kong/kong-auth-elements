@@ -125,6 +125,8 @@ All styles from the [Kongponents component library](https://kongponents.konghq.c
 - Provides email verification, given a valid `token` in the query string.
 - Sets the `kauth` cookies, along with the `userStatus` cookie (possibly unused).
 
+The login element **must** reside at the `{window.location.origin}/login` path in your application. 
+
 #### Props
 
 | Prop                     | Type    | Default                  | Description                                                                                                       |
@@ -330,7 +332,7 @@ app.config.globalProperties.$kongAuthApi = kongAuthApi
 You should also declare the module in an `src/api.d.ts` file (or similar) like the following (you can add this to existing shim files)
 
 ```js
-import KongAuthApi from '@kong/kong-auth-elements/dist/types/services/KongAuthApi'
+import KongAuthApi from '@kong/kong-auth-elements'
 
 declare module 'vue/types/vue' {
   interface Vue {
