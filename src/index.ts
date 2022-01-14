@@ -11,5 +11,8 @@ registerKongAuthForgotPassword()
 registerKongAuthResetPassword()
 registerKongAuthRegister()
 
+// Export API Class
 export default KongAuthApi
+
+// Export API Interfaces
 export * from './services/kauth-api-client/v1/source'
