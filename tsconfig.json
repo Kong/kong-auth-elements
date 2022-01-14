@@ -10,6 +10,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
+    "emitDeclarationOnly": true,
     "declarationMap": true,
     "declarationDir": "dist/types",
     "outDir": "dist",
