@@ -1,0 +1,15 @@
+name: Publish
+
+on:
+  # Allow workflow to be called manually
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    uses: Kong/kong-auth-elements/.github/workflows/test.yml@main
+
+  log-success:
+    needs: run-tests
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "The tests appeared to have passed."
