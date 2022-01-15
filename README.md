@@ -1,5 +1,7 @@
 # @kong/kong-auth-elements
 
+[![Tests](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yml/badge.svg)](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yml)
+
 > **NOTE**: Docs are still a work in progress
 
 ## Local development
@@ -125,7 +127,7 @@ All styles from the [Kongponents component library](https://kongponents.konghq.c
 - Provides email verification, given a valid `token` in the query string.
 - Sets the `kauth` cookies, along with the `userStatus` cookie (possibly unused).
 
-The login element **must** reside at the `{window.location.origin}/login` path in your application. 
+The login element **must** reside at the `{window.location.origin}/login` path in your application.
 
 #### Props
 
