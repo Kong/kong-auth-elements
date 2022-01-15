@@ -16,9 +16,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Read .nvmrc
+      - id: nvm
+        name: Read .nvmrc
         run: echo ::set-output name=NVMRC::$(cat .nvmrc)
-        id: nvm
 
       - name: Use Node.js
         uses: actions/setup-node@v2
@@ -28,12 +28,13 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Lint
-        run: yarn lint
-
+        # Only to make sure this doesn't fail
       - name: Generate API Client
         run: yarn generate:api-client
 
-      # Run Tests
+      - name: Lint
+        run: yarn lint
+
+      # Run unit tests
       - name: Run unit tests
         run: yarn run test:unit
