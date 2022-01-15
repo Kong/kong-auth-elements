@@ -4,23 +4,23 @@
 version: 2
 updates:
   # Maintain dependencies for npm
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: npm
+    directory: /
     schedule:
-      interval: "daily"
+      interval: daily
     commit-message:
       # Prefix commit messages with "fix" (to trigger a release from semantic-versioning)
-      prefix: "fix"
+      prefix: fix
       # Prefix devDepedencies commits with "chore" (no release needed)
-      prefix-development: "chore"
-      include: "scope"
+      prefix-development: chore
+      include: scope
     open-pull-requests-limit: 10
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
 
   # Maintain dependencies for GitHub Actions
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: "daily"
+      interval: daily
