@@ -6,7 +6,7 @@ on:
 
 jobs:
   run-tests:
-    name: Run Tests
+    name: Test before publish
     uses: Kong/kong-auth-elements/.github/workflows/test.yml@main
   publish:
     needs: run-tests
