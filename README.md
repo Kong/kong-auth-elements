@@ -76,14 +76,71 @@ Next, inside of the local consuming project, run
 yarn link "@kong/kong-auth-elements"
 ```
 
+## Creating a New Custom Element
+
+### Requirements
+
+1. Custom elements must follow the naming convention `{PascalCaseName}.ce.vue`
+2. The first tag within the `<template>` of a custom element `*.ce.vue` file must be `<div class="kong-auth-element">` and it must wrap all other content within the template.
+3. Custom elements must utilize the `<BaseCustomElement />` component as the first child of the `<div class="kong-auth-element">` element which will wrap any other structure/components (this enables style injection for child components).
+4. Custom elements must be added to the following path `/src/elements/{kebab-case-element-name}/{PascalCaseElementName}.ce.vue`
+5. Custom elements must have an `index.ts` file at the root of their `/src/elements/{kebab-case-element-name}/` directory that exports a registration function.
+6. Custom element templates (the contents of the `{PascalCaseElementName}.ce.vue` file) must utilize the template shown below:
+
+    <details>
+
+    <summary>Click to view the starter Custom Element template</summary>
+
+    ```html
+    <template>
+      <div class="kong-auth-element">
+        <BaseCustomElement>
+          <!-- Components from /src/components may be used in this default slot -->
+          <ExampleComponent @example-event="(emitData) => $emit('example-event', emitData)" />
+        </BaseCustomElement>
+      </div>
+    </template>
+
+    <script lang="ts">
+    import { defineComponent, computed, provide } from 'vue'
+    import BaseCustomElement from '@/components/BaseCustomElement.vue'
+    import ExampleComponent from '@/components/ExampleComponent.vue'
+
+    export default defineComponent({
+      name: 'KongAuthExampleElement',
+
+      // Props are defined here for use on the custom element tag, and all elements MUST have at least 1 prop
+      props: {
+        exampleProp: String,
+      },
+
+      emits: ['example-event'],
+
+      components: {
+        BaseCustomElement,
+        ExampleComponent,
+      },
+
+      setup(props) {
+        // Provide custom element props to child components
+        provide(
+          'example-prop',
+          computed((): string => (props.exampleProp ? props.exampleProp : '')),
+        )
+      },
+    })
+    </script>
+
+    <style lang="scss">
+    // No styles should be added to this component; add styles to child components
+    </style>
+    ```
+
+    </details>
+
 ## Custom Element Styles and the shadow DOM
 
 Styles are auto-injected into the shadow DOM for any internal components and child components.
-
-Requirements:
-
-1. All custom elements must follow the naming convention `{PascalCaseName}.ce.vue`
-2. All custom elements must utilize the `<BaseCustomElement />` component as the first child of their `<template/>` tag which will wrap any other structure/components (this enables style injection for child components).
 
 In order for the styles to be injected, you need to place the exact comment (shown below) in **ALL** `<style>` blocks that are located inside a component within the `/src/` directory.
 
