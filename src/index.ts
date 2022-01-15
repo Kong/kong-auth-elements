@@ -15,4 +15,4 @@ registerKongAuthRegister()
 export default KongAuthApi
 
 // Export API Interfaces
-export * from './services/kauth-api-client/v1/source'
+export * from './services/kauth-api-client/v1/api'

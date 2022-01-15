@@ -13,7 +13,7 @@ import {
   RegistrationApi,
   TeamAPIApi,
   UserAPIApi,
-} from './source'
+} from './api'
 
 export default class KongAuthApi {
   authentication: AuthenticationApi

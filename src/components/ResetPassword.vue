@@ -64,7 +64,7 @@ import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText } from '@/utils'
 import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
-import { PasswordresetsResetResponse } from '@/services/kauth-api-client/v1/source'
+import { PasswordresetsResetResponse } from '@/services/kauth-api-client/v1/api'
 import { AxiosResponse } from 'axios'
 // Components
 import KButton from '@kongponents/kbutton'
