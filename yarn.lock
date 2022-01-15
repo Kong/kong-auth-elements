@@ -1256,13 +1256,13 @@
     popper.js "^1.15.0"
     vue-uuid "^2.0.2"
 
-"@kongponents/kskeleton@^6.7.7":
-  version "6.7.7"
-  resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.7.7.tgz#d089de2eb2b450d00192e9a831a02638b9481a3d"
-  integrity sha512-iZe0L2syHuylRz6SnVC0k2JUKK9ZEIv9GjAbuL9ntbEDO9KjBQKL9lbWXC3TXLHybOaxTsE0uuJ3PTdTMzMqgA==
+"@kongponents/kskeleton@^6.7.10":
+  version "6.7.10"
+  resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.7.10.tgz#6354a21cc488e8c02ddb196babd1d3b624464bbf"
+  integrity sha512-2J8UCW0d4Mnw4Gq+skmOSmEUSbQx39K8yA44AoVMwuggTlognpSod6lV4sBvvrQ3xcRwuGnMZks+yc9ZYmXv1g==
   dependencies:
-    "@kongponents/kicon" "^6.7.7"
-    "@kongponents/styles" "^6.7.7"
+    "@kongponents/kicon" "^6.7.10"
+    "@kongponents/styles" "^6.7.10"
 
 "@kongponents/styles@^6.7.10", "@kongponents/styles@^6.7.7":
   version "6.7.10"
