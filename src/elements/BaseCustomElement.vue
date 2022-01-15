@@ -8,7 +8,6 @@
 
 <script setup lang="ts">
 import useInjectStyles from '@/composables/useInjectStyles'
-// import '@kongponents/styles/styles.css'
 
 // Must be present to inject child component styles for
 // elements rendered inside of the KAuthWrapper <slot/>
