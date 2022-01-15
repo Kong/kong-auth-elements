@@ -1192,14 +1192,14 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@kongponents/kalert@^6.7.7":
-  version "6.7.7"
-  resolved "https://registry.yarnpkg.com/@kongponents/kalert/-/kalert-6.7.7.tgz#3469b3a412809293858f3fec4c860a190fb3af80"
-  integrity sha512-k0y7YakUUtxhaywYSD5rZonORGqsIv934VGGhMsM9NlP1GQFO/Vvz6tKlN8gZOs54NQnHRz4Xih/sEG+ioXYlw==
+"@kongponents/kalert@^6.7.10":
+  version "6.7.10"
+  resolved "https://registry.yarnpkg.com/@kongponents/kalert/-/kalert-6.7.10.tgz#4cbb94bee13940c07216afed471a0bb37d8dca94"
+  integrity sha512-OMIUF6+SqFLq0UpBtmRN/WBEd/n/40QRVpW8WDsiNVISl50sfTNBv7EcsjT0+Oz7559JeAO6EXchjvNS6qbBPQ==
   dependencies:
-    "@kongponents/kbutton" "^6.7.7"
-    "@kongponents/kicon" "^6.7.7"
-    "@kongponents/styles" "^6.7.7"
+    "@kongponents/kbutton" "^6.7.10"
+    "@kongponents/kicon" "^6.7.10"
+    "@kongponents/styles" "^6.7.10"
 
 "@kongponents/kbutton@^6.7.10", "@kongponents/kbutton@^6.7.7":
   version "6.7.10"
