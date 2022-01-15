@@ -1,18 +1,21 @@
 <template>
-  <BaseCustomElement>
-    <Login
-      @click-forgot-password-link="(emitData) => $emit('click-forgot-password-link', emitData)"
-      @click-register-link="(emitData) => $emit('click-register-link', emitData)"
-      @login-success="(emitData) => $emit('login-success', emitData)"
-      @confirm-email-success="(emitData) => $emit('confirm-email-success', emitData)"
-      @idp-is-loading="(emitData) => $emit('idp-is-loading', emitData)" />
-  </BaseCustomElement>
+  <div class="kong-auth-element">
+    <BaseCustomElement>
+      <Login
+        @click-forgot-password-link="(emitData) => $emit('click-forgot-password-link', emitData)"
+        @click-register-link="(emitData) => $emit('click-register-link', emitData)"
+        @login-success="(emitData) => $emit('login-success', emitData)"
+        @confirm-email-success="(emitData) => $emit('confirm-email-success', emitData)"
+        @idp-is-loading="(emitData) => $emit('idp-is-loading', emitData)"
+      />
+    </BaseCustomElement>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
 import { helpText } from '@/utils'
-import BaseCustomElement from '@/elements/BaseCustomElement.vue'
+import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import Login from '@/components/Login.vue'
 
 export default defineComponent({

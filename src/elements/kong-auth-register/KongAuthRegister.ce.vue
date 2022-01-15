@@ -1,12 +1,14 @@
 <template>
-  <BaseCustomElement>
-    <Register @register-success="(emitData) => $emit('register-success', emitData)" />
-  </BaseCustomElement>
+  <div class="kong-auth-element">
+    <BaseCustomElement>
+      <Register @register-success="(emitData) => $emit('register-success', emitData)" />
+    </BaseCustomElement>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
-import BaseCustomElement from '@/elements/BaseCustomElement.vue'
+import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import Register from '@/components/Register.vue'
 
 export default defineComponent({

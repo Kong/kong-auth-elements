@@ -1,9 +1,32 @@
 import { mount } from '@vue/test-utils'
+import BaseCustomElement from '@/components/BaseCustomElement.vue'
+import Login from '@/components/Login.vue'
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 
-describe('Login.vue', () => {
-  it('renders a login form with email, password, and button elements', () => {
-    const wrapper = mount(KongAuthLogin)
+describe('KongAuthLogin.ce.vue', () => {
+  it('renders correctly and matches snapshot', async () => {
+    const wrapper = await mount(KongAuthLogin)
+
+    // Components exist
+    expect(wrapper.findComponent(BaseCustomElement).exists()).toBe(true)
+    expect(wrapper.findComponent(Login).exists()).toBe(true)
+
+    // Ensure it matches the snapshot
+    expect(wrapper.element).toMatchSnapshot()
+  })
+
+  // Ensure class is wrapped so that syles will be applied correctly
+  it('wraps all child elements in .kong-auth-element class', async () => {
+    const wrapper = await mount(KongAuthLogin)
+    // Elements
+    const parentDiv = wrapper.find('.kong-auth-element')
+    // Ensure custom element contains class, and it is the parent of the BaseCustomElement
+    expect(parentDiv.exists()).toBe(true)
+    expect(parentDiv.findComponent(BaseCustomElement).exists()).toBe(true)
+  })
+
+  it('renders a login form with email, password, and button elements', async () => {
+    const wrapper = await mount(KongAuthLogin)
     // Elements
     const loginForm = wrapper.find('[data-testid="kong-auth-login-form"]')
     const emailInput = wrapper.find('[data-testid="kong-auth-login-email"]')
@@ -27,8 +50,8 @@ describe('Login.vue', () => {
   /* ==============================
    * Forgot password link
    * ============================== */
-  it('shows a forgot password link if showForgotPasswordLink prop is true', () => {
-    const wrapper = mount(KongAuthLogin, {
+  it('shows a forgot password link if showForgotPasswordLink prop is true', async () => {
+    const wrapper = await mount(KongAuthLogin, {
       props: {
         showForgotPasswordLink: true,
       },
@@ -39,9 +62,9 @@ describe('Login.vue', () => {
     expect(forgotPasswordLink.exists()).toBe(true)
   })
 
-  it('customizes the forgot password link text if props are set', () => {
+  it('customizes the forgot password link text if props are set', async () => {
     const customText = 'This is custom link text'
-    const wrapper = mount(KongAuthLogin, {
+    const wrapper = await mount(KongAuthLogin, {
       props: {
         showForgotPasswordLink: true,
         forgotPasswordLinkText: customText,
@@ -55,7 +78,7 @@ describe('Login.vue', () => {
   })
 
   it('emits an event when user clicks forgot password link', async () => {
-    const wrapper = mount(KongAuthLogin, {
+    const wrapper = await mount(KongAuthLogin, {
       props: {
         showForgotPasswordLink: true,
       },
@@ -72,8 +95,8 @@ describe('Login.vue', () => {
   /* ==============================
    * Register link
    * ============================== */
-  it('shows a register link if showRegisterLink prop is true', () => {
-    const wrapper = mount(KongAuthLogin, {
+  it('shows a register link if showRegisterLink prop is true', async () => {
+    const wrapper = await mount(KongAuthLogin, {
       props: {
         showRegisterLink: true,
       },
@@ -84,10 +107,10 @@ describe('Login.vue', () => {
     expect(registerLink.exists()).toBe(true)
   })
 
-  it('customizes the register link text if props are set', () => {
+  it('customizes the register link text if props are set', async () => {
     const customText = 'This is custom link text'
     const customHelpText = 'This is custom help text'
-    const wrapper = mount(KongAuthLogin, {
+    const wrapper = await mount(KongAuthLogin, {
       props: {
         showRegisterLink: true,
         registerLinkHelpText: customHelpText,
@@ -104,7 +127,7 @@ describe('Login.vue', () => {
   })
 
   it('emits an event when user clicks register link', async () => {
-    const wrapper = mount(KongAuthLogin, {
+    const wrapper = await mount(KongAuthLogin, {
       props: {
         showRegisterLink: true,
       },

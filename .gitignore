@@ -4,6 +4,7 @@ node_modules
 /demo/dist-copy
 .tgz
 
+coverage
 /tests/e2e/videos/
 /tests/e2e/screenshots/
 
