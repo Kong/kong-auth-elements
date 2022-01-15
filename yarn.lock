@@ -1279,20 +1279,20 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nestjs/common@8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-8.2.3.tgz#77ac1ef59c36dd9ae131f5c5ddabfc6258802d1c"
-  integrity sha512-slXVVMc9tZG6ZaARXkTUsSqZbkEcc0hVKb4mPLxS9mjXmDspUleGQakZ5OzniiEWqzO299BVlEbm6TGyoGbpNg==
+"@nestjs/common@8.2.5":
+  version "8.2.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-8.2.5.tgz#6630d446ee6e925476d2401a71b647c00c75dfa9"
+  integrity sha512-8VOZmHcCyhBtfvxehDfudsCrNghUoqDpZA5W8d/PUhMgz4Y1eT0M2ENBIuxr3C3j1vLypFOo30La2ymfQlOC8Q==
   dependencies:
     axios "0.24.0"
     iterare "1.2.1"
     tslib "2.3.1"
     uuid "8.3.2"
 
-"@nestjs/core@8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-8.2.3.tgz#26fb3858df586b00362d1bd492ba432698590d67"
-  integrity sha512-CP/Z+uTEdblTZQXRf+xvZHvESZ6v2vxX/YaRcpJDv/ytgxxOafmOJ/RDKSzNOGBkt8kVwYNFpWXzzll4P5AJ0g==
+"@nestjs/core@8.2.5":
+  version "8.2.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-8.2.5.tgz#3c4322bf72bbb934909d5d43218b0f321ec949b8"
+  integrity sha512-R0vp0VlAQFP7qBTZMzMspwOCO6MpsMJON/MsrfHVGgZS5Sd5DInfboWhe2COPnAr+VAT0o4FAKObW08Pdb5hMg==
   dependencies:
     "@nuxtjs/opencollective" "0.3.2"
     fast-safe-stringify "2.1.1"
@@ -1590,25 +1590,25 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@openapitools/openapi-generator-cli@^2.4.18":
-  version "2.4.18"
-  resolved "https://registry.yarnpkg.com/@openapitools/openapi-generator-cli/-/openapi-generator-cli-2.4.18.tgz#00864c64eab7edad769039cd282d377ddb51a8dd"
-  integrity sha512-43qJVsQh0uqAkwciuuOZr5ckWqebxxKm5I1K3T6D7NCXL8RG7ssKH0vmkk37Gi4OAW58wgFuuzN+1l9xm4ga6g==
+"@openapitools/openapi-generator-cli@^2.4.25":
+  version "2.4.25"
+  resolved "https://registry.yarnpkg.com/@openapitools/openapi-generator-cli/-/openapi-generator-cli-2.4.25.tgz#af94ce7284e7a41c5769ca36b7a01a946cbd1596"
+  integrity sha512-n2RExPLkscjgjryEW+SbhJNs22LHsCLIlBtD5FaZsW84tTcii2YcbyHOIfz9xAoNKbpshk2hgxjtnXqTK92mGg==
   dependencies:
-    "@nestjs/common" "8.2.3"
-    "@nestjs/core" "8.2.3"
+    "@nestjs/common" "8.2.5"
+    "@nestjs/core" "8.2.5"
     "@nuxtjs/opencollective" "0.3.2"
     chalk "4.1.2"
     commander "8.3.0"
     compare-versions "3.6.0"
-    concurrently "6.4.0"
+    concurrently "6.5.1"
     console.table "0.10.0"
     fs-extra "10.0.0"
     glob "7.1.6"
     inquirer "8.2.0"
     lodash "4.17.21"
     reflect-metadata "0.1.13"
-    rxjs "7.4.0"
+    rxjs "7.5.2"
     tslib "2.0.3"
 
 "@semantic-release/commit-analyzer@^9.0.2":
@@ -4601,10 +4601,10 @@ concat-stream@1.6.2, concat-stream@^1.5.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-concurrently@6.4.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-6.4.0.tgz#5387ee86be435a0eb51c292ade8a00acf479f170"
-  integrity sha512-HZ3D0RTQMH3oS4gvtYj1P+NBc6PzE2McEra6yEFcQKrUQ9HvtTGU4Dbne083F034p+LRb7kWU0tPRNvSGs1UCQ==
+concurrently@6.5.1:
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-6.5.1.tgz#4518c67f7ac680cf5c34d5adf399a2a2047edc8c"
+  integrity sha512-FlSwNpGjWQfRwPLXvJ/OgysbBxPkWpiVjy1042b0U7on7S7qwwMIILRj7WTN1mTgqa582bG6NFuScOoh6Zgdag==
   dependencies:
     chalk "^4.1.0"
     date-fns "^2.16.1"
@@ -12881,12 +12881,12 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@7.4.0, rxjs@^7.2.0, rxjs@^7.4.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.4.0.tgz#a12a44d7eebf016f5ff2441b87f28c9a51cebc68"
-  integrity sha512-7SQDi7xeTMCJpqViXh8gL/lebcwlp3d831F05+9B44A4B0WfsEwUQHR64gsH1kvJ+Ep/J9K2+n1hVl1CsGN23w==
+rxjs@7.5.2, rxjs@^7.2.0, rxjs@^7.4.0:
+  version "7.5.2"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.2.tgz#11e4a3a1dfad85dbf7fb6e33cbba17668497490b"
+  integrity sha512-PwDt186XaL3QN5qXj/H9DGyHhP3/RYYgZZwqBv9Tv8rsAaiwFH1IsJJlcgD37J7UW5a6O67qX0KWKS3/pu0m4w==
   dependencies:
-    tslib "~2.1.0"
+    tslib "^2.1.0"
 
 rxjs@^5.0.0-beta.11:
   version "5.5.12"
@@ -14367,7 +14367,7 @@ tslib@2.0.3:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
   integrity sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==
 
-tslib@2.3.1:
+tslib@2.3.1, tslib@^2.1.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
@@ -14376,11 +14376,6 @@ tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.nlark.com/tslib/download/tslib-1.14.1.tgz?cache=0&sync_timestamp=1628722556410&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftslib%2Fdownload%2Ftslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
-
-tslib@~2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
-  integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==
 
 tslint@^5.20.1:
   version "5.20.1"
