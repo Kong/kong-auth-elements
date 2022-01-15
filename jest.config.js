@@ -4,4 +4,6 @@ module.exports = {
     '^.+\\.vue$': 'vue-jest',
   },
   reporters: ['default', 'jest-junit'],
+  // Tell @vue/test-utils to use @vue/compat
+  moduleNameMapper: { '^vue$': '@vue/compat' },
 }

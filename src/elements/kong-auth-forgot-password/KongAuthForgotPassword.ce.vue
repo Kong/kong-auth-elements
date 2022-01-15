@@ -1,15 +1,17 @@
 <template>
-  <BaseCustomElement>
-    <ForgotPassword
-      @click-login-link="(emitData) => $emit('click-login-link', emitData)"
-      @forgot-password-success="(emitData) => $emit('forgot-password-success', emitData)" />
-  </BaseCustomElement>
+  <div class="kong-auth-element">
+    <BaseCustomElement>
+      <ForgotPassword
+        @click-login-link="(emitData) => $emit('click-login-link', emitData)"
+        @forgot-password-success="(emitData) => $emit('forgot-password-success', emitData)" />
+    </BaseCustomElement>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
 import { helpText } from '@/utils'
-import BaseCustomElement from '@/elements/BaseCustomElement.vue'
+import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import ForgotPassword from '@/components/ForgotPassword.vue'
 
 export default defineComponent({

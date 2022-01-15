@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="9" failures="0" errors="0" time="1.645">
+  <testsuite name="KongAuthLogin.ce.vue" errors="0" failures="0" skipped="0" timestamp="2022-01-15T21:24:31" time="1.184" tests="9">
+    <testcase classname="KongAuthLogin.ce.vue renders correctly and matches snapshot" name="KongAuthLogin.ce.vue renders correctly and matches snapshot" time="0.068">
+    </testcase>
+    <testcase classname="KongAuthLogin.ce.vue wraps all child elements in .kong-auth-element class" name="KongAuthLogin.ce.vue wraps all child elements in .kong-auth-element class" time="0.023">
+    </testcase>
+    <testcase classname="KongAuthLogin.ce.vue renders a login form with email, password, and button elements" name="KongAuthLogin.ce.vue renders a login form with email, password, and button elements" time="0.024">
+    </testcase>
+    <testcase classname="KongAuthLogin.ce.vue shows a forgot password link if showForgotPasswordLink prop is true" name="KongAuthLogin.ce.vue shows a forgot password link if showForgotPasswordLink prop is true" time="0.016">
+    </testcase>
+    <testcase classname="KongAuthLogin.ce.vue customizes the forgot password link text if props are set" name="KongAuthLogin.ce.vue customizes the forgot password link text if props are set" time="0.017">
+    </testcase>
+    <testcase classname="KongAuthLogin.ce.vue emits an event when user clicks forgot password link" name="KongAuthLogin.ce.vue emits an event when user clicks forgot password link" time="0.014">
+    </testcase>
+    <testcase classname="KongAuthLogin.ce.vue shows a register link if showRegisterLink prop is true" name="KongAuthLogin.ce.vue shows a register link if showRegisterLink prop is true" time="0.017">
+    </testcase>
+    <testcase classname="KongAuthLogin.ce.vue customizes the register link text if props are set" name="KongAuthLogin.ce.vue customizes the register link text if props are set" time="0.012">
+    </testcase>
+    <testcase classname="KongAuthLogin.ce.vue emits an event when user clicks register link" name="KongAuthLogin.ce.vue emits an event when user clicks register link" time="0.018">
+    </testcase>
+  </testsuite>
+</testsuites>

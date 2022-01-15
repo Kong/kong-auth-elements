@@ -1,17 +1,29 @@
 <template>
   <!-- This injected styles tag and its corresponding logic in the setup function must be present to import styles from child components. -->
   <div v-if="injectedStyles" v-html="injectedStyles"></div>
-  <div class="kong-auth-element">
-    <slot />
+  <div class="base-custom-element">
+    <slot name="default"></slot>
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue'
 import useInjectStyles from '@/composables/useInjectStyles'
 
-// Must be present to inject child component styles for
-// elements rendered inside of the KAuthWrapper <slot/>
-const { injectedStyles } = useInjectStyles()
+export default defineComponent({
+  name: 'BaseCustomElement',
+
+  setup() {
+    // Must be present to inject child component styles for
+    // elements rendered inside of the KAuthWrapper <slot/>
+    const { injectedStyles } = useInjectStyles()
+
+    return {
+      injectedStyles,
+    }
+  },
+})
+
 </script>
 
 <style lang="scss">
