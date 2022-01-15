@@ -108,7 +108,7 @@ import { defineComponent, inject, reactive, ref, Ref, toRefs, computed, onMounte
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
 import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
-import { AuthenticateAuthenticateRequest, EmailverificationsVerifyResponse } from '@/services/kauth-api-client/v1/api'
+import { AuthenticateAuthenticateRequest, EmailverificationsVerifyResponse, NotARealResponse } from '@/services/kauth-api-client/v1/api'
 import { AxiosResponse } from 'axios'
 import { helpText } from '@/utils'
 import useIdentityProvider from '@/composables/useIdentityProvider'
