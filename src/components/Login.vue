@@ -89,7 +89,7 @@
 
       <div v-if="showRegisterLink" class="text-center mt-5">
         <p class="color-black-85 bold-500">
-          {{ registerLinkHelpText }}
+          <span data-testid="kong-auth-login-register-help-text">{{ registerLinkHelpText }}</span>
           <a
             @click.prevent="$emit('click-register-link')"
             class="color-blue-500"

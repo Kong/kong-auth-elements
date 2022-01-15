@@ -34,12 +34,6 @@ jobs:
       - name: Generate API Client
         run: yarn generate:api-client
 
-      # Run Tests -- disabled for now and passing if successful build
-      # - name: Run unit tests
-      #   run: yarn run test:unit
-
-      # Use a successful build as an indicator of no issues until tests are ready
-      - name: Build (TODO - this should be replaced with running tests)
-        run: yarn build
-
-
+      # Run Tests
+      - name: Run unit tests
+        run: yarn run test:unit

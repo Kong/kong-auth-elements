@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="7" failures="0" errors="0" time="3.554">
+  <testsuite name="Login.vue" errors="0" failures="0" skipped="0" timestamp="2022-01-15T18:59:24" time="3.01" tests="7">
+    <testcase classname="Login.vue renders a login form with email, password, and button elements" name="Login.vue renders a login form with email, password, and button elements" time="0.065">
+    </testcase>
+    <testcase classname="Login.vue shows a forgot password link if showForgotPasswordLink prop is true" name="Login.vue shows a forgot password link if showForgotPasswordLink prop is true" time="0.018">
+    </testcase>
+    <testcase classname="Login.vue customizes the forgot password link text if props are set" name="Login.vue customizes the forgot password link text if props are set" time="0.015">
+    </testcase>
+    <testcase classname="Login.vue emits an event when user clicks forgot password link" name="Login.vue emits an event when user clicks forgot password link" time="0.014">
+    </testcase>
+    <testcase classname="Login.vue shows a register link if showRegisterLink prop is true" name="Login.vue shows a register link if showRegisterLink prop is true" time="0.021">
+    </testcase>
+    <testcase classname="Login.vue customizes the register link text if props are set" name="Login.vue customizes the register link text if props are set" time="0.014">
+    </testcase>
+    <testcase classname="Login.vue emits an event when user clicks register link" name="Login.vue emits an event when user clicks register link" time="0.02">
+    </testcase>
+  </testsuite>
+</testsuites>
