@@ -39,7 +39,7 @@ jobs:
       #   run: yarn run test:unit
 
       # Use a successful build as an indicator of no issues until tests are ready
-      - name: Build
+      - name: Build (TODO - this should be replaced with running tests)
         run: yarn build
 
 
