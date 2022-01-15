@@ -29,6 +29,7 @@ export default function(
 
     customElements.define(customElementName, customElementComponent)
   } catch (err: any) {
+    // eslint-disable-next-line no-console
     console.error(err?.message)
   }
 }
