@@ -1201,13 +1201,13 @@
     "@kongponents/kicon" "^6.7.7"
     "@kongponents/styles" "^6.7.7"
 
-"@kongponents/kbutton@^6.7.7":
-  version "6.7.7"
-  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.7.7.tgz#0827db3805afbb6cc5a7bb38828f454c80a47195"
-  integrity sha512-co+B8HCxGBHGNjqwjrPmbIp0jfsyk3h7HCGJftXfLRoKSuhZ5pu5G+fSjPacfhxxZYyWMyvWnYF2CKRiBw0B/w==
+"@kongponents/kbutton@^6.7.10", "@kongponents/kbutton@^6.7.7":
+  version "6.7.10"
+  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.7.10.tgz#892f818b7c3ac93b449ce069ec2a3e68b66055bb"
+  integrity sha512-8ESMbCz3ru6PxYhbbrRiv5z7ple4WnGg/G/hHoPW2BUNKhkNcRHIVJv5anVTTAwP3VaEU6wkNr3Ut1sO6Ybgaw==
   dependencies:
-    "@kongponents/kicon" "^6.7.7"
-    "@kongponents/styles" "^6.7.7"
+    "@kongponents/kicon" "^6.7.10"
+    "@kongponents/styles" "^6.7.10"
 
 "@kongponents/kcheckbox@^6.7.7":
   version "6.7.7"
@@ -1216,10 +1216,10 @@
   dependencies:
     "@kongponents/styles" "^6.7.7"
 
-"@kongponents/kicon@^6.7.7":
-  version "6.7.7"
-  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.7.7.tgz#5d87886b453953ed15d6ce8d5a7dd169277af3e2"
-  integrity sha512-Hksoqofctz/d40FVSGziD94BxHSVSKcwnVa7Cm5O5Pj8rJ+qWFFMgJEkOvwYGuYi+KQy4ELGLYcBITy73sMiUQ==
+"@kongponents/kicon@^6.7.10", "@kongponents/kicon@^6.7.7":
+  version "6.7.10"
+  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.7.10.tgz#e02d468dbf08b19c561eecc54dfeee73286b26dc"
+  integrity sha512-5Ruk8sxfXEMoaa4WHJMhlWJiXbxwbVXnrf9gZGJXN0+3/uy6RGZ0dO8eperULt6gaj58bMOZfXgm4PF05r6G3A==
 
 "@kongponents/kinput@^6.7.7":
   version "6.7.7"
@@ -1264,10 +1264,10 @@
     "@kongponents/kicon" "^6.7.7"
     "@kongponents/styles" "^6.7.7"
 
-"@kongponents/styles@^6.7.7":
-  version "6.7.7"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.7.7.tgz#a4f92f4d2a74741184fa70e2142bf9ce4fb37449"
-  integrity sha512-/RftQlId6Jjk59Tj5ZktObuIR1eW6hzqrNyZFNxdIv1ITt/cLQa03Im9svjo037j/3vz2R0JTUmgPUwnMITOBg==
+"@kongponents/styles@^6.7.10", "@kongponents/styles@^6.7.7":
+  version "6.7.10"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.7.10.tgz#d40f95320409661c41f9f6c79756d5bff6239e3c"
+  integrity sha512-ucO2kvDpemlqRzDNE/Y+q3bzhmzAUEtO0GMXuX9H2pkdmSWISlE54qd8cyurBhKxCEDpIcj63MnsOIsLixy3sA==
   dependencies:
     tailwindcss "^1.4.6"
 
