@@ -14,21 +14,21 @@ export default function(
     const customElementName = kebabize(tagName)
 
     if (!customElementName) {
-      throw 'registerCustomElement: You must provide a valid string for the custom element tag name.'
+      throw new Error('registerCustomElement: You must provide a valid string for the custom element tag name.')
     } else if (!customElementName.includes('-')) {
-      throw "registerCustomElement: You must provide a kebab-case string for the custom element tag name. Example: 'my-element'"
+      throw new Error("registerCustomElement: You must provide a kebab-case string for the custom element tag name. Example: 'my-element'")
     }
 
     if (!customElementComponent) {
-      throw 'registerCustomElement: You must provide a valid Vue Element.'
+      throw new Error('registerCustomElement: You must provide a valid Vue Element.')
     }
 
     if (window.customElements.get(customElementName)) {
-      throw 'registerCustomElement: Unable to register custom element <kong-auth-login> -- the name has already been registered.'
+      throw new Error('registerCustomElement: Unable to register custom element <kong-auth-login> -- the name has already been registered.')
     }
 
     customElements.define(customElementName, customElementComponent)
-  } catch (err) {
-    console.warn(err)
+  } catch (err: any) {
+    console.error(err?.message)
   }
 }

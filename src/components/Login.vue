@@ -178,7 +178,6 @@ export default defineComponent({
     const {
       state: currentState,
       send,
-      service,
     } = useMachine(
       createMachine({
         id: 'AUTH_LOGIN',
