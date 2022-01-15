@@ -180,14 +180,12 @@ export default defineComponent({
     )
 
     const userCanSubmitForm = computed((): boolean => {
-      return formData.email &&
+      return !!(formData.email &&
         formData.fullName &&
         formData.organization &&
         formData.password &&
         formData.checked_agreement &&
-        (accessCodeRequired.value ? !formData.emailToken && formData.accessCode : true)
-        ? true
-        : false
+        (accessCodeRequired.value ? !formData.emailToken && formData.accessCode : true))
     })
 
     const btnText = computed((): string => {
@@ -289,9 +287,7 @@ export default defineComponent({
 
       // If all values were passed in, set formData.prepopulated to true
       formData.prepopulated =
-        urlParams.get('email') && urlParams.get('token') && urlParams.get('fullName') && urlParams.get('org')
-          ? true
-          : false
+        !!(urlParams.get('email') && urlParams.get('token') && urlParams.get('fullName') && urlParams.get('org'))
     })
 
     return {

@@ -6,6 +6,6 @@ import KongAuthResetPassword from '@/elements/kong-auth-reset-password/KongAuthR
  * Registers the custom element.
  * @param {string} tagName - The name of the custom element to be used as the HTML tag.
  */
-export function registerKongAuthResetPassword (tagName = 'kong-auth-reset-password'): void {
+export function registerKongAuthResetPassword(tagName = 'kong-auth-reset-password'): void {
   registerCustomElement(tagName, defineCustomElement(KongAuthResetPassword))
 }

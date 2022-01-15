@@ -3,10 +3,10 @@ import { onMounted, ref, Ref, watch } from 'vue'
 interface IdentityProviderComposable {
   isIdpLogin: Ref<boolean>
   idpIsLoading: Ref<boolean>
-  shouldTriggerIdpLogin (): boolean
-  shouldTriggerIdpAuthentication (): boolean
-  redirectToIdp (returnTo: string): void
-  authenticateWithIdp (): void
+  shouldTriggerIdpLogin(): boolean
+  shouldTriggerIdpAuthentication(): boolean
+  redirectToIdp(returnTo: string): void
+  authenticateWithIdp(): void
 }
 
 /**
@@ -16,7 +16,7 @@ interface IdentityProviderComposable {
  * @param {ref<string>} idpLoginRedirectTo - Pass the returnTo URL. Must include 'konghq.com' or 'localhost' (localhost does not work currently).
  * @return {*}  {IdentityProviderComposable}
  */
-export default function useIdentityProvider (
+export default function useIdentityProvider(
   idpIsEnabled: Ref<boolean>,
   idpLoginRedirectTo: Ref<string>,
 ): IdentityProviderComposable {
@@ -178,7 +178,6 @@ export default function useIdentityProvider (
 
     if (shouldTriggerIdpAuthentication()) {
       authenticateWithIdp()
-      return
     }
   })
 

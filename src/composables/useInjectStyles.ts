@@ -4,7 +4,7 @@ interface InjectStylesComposable {
   injectedStyles: ComputedRef<string>
 }
 
-export default function useInjectStyles (): InjectStylesComposable {
+export default function useInjectStyles(): InjectStylesComposable {
   const inlineStyles = ref<any>([])
   const injectedStyles = computed((): string =>
     inlineStyles.value && inlineStyles.value.length

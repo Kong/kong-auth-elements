@@ -6,7 +6,7 @@ import { kebabize } from '@/utils'
  * @param {string} tagName - The name of the custom element to be used as the HTML tag.
  * @param {VueComponent} customElementComponent - The Vue component.
  */
-export default function (
+export default function(
   tagName: string,
   customElementComponent: VueElementConstructor<Record<string, unknown>>,
 ): void {
