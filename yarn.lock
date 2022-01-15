@@ -1238,21 +1238,21 @@
     "@kongponents/kooltip" "^6.7.7"
     "@kongponents/styles" "^6.7.7"
 
-"@kongponents/kooltip@^6.7.7":
-  version "6.7.7"
-  resolved "https://registry.yarnpkg.com/@kongponents/kooltip/-/kooltip-6.7.7.tgz#1e2a80ab52cf29c964e2e663620313f018aad544"
-  integrity sha512-I0ElTCCHqWeIF3cEj0uNDl8nwFn5tLiNY5ErtufkUYkYM+Q8CCuCd7i/ixPu3QURAkxB3CXXTJP5XP+HQA8Uow==
+"@kongponents/kooltip@^6.7.10", "@kongponents/kooltip@^6.7.7":
+  version "6.7.10"
+  resolved "https://registry.yarnpkg.com/@kongponents/kooltip/-/kooltip-6.7.10.tgz#317ee6ea2531c0aadfb1d2cf789855eb5531f40d"
+  integrity sha512-tDJ4Z65IIaxKYN/yWY/hjmV+TksZgbBu1WD0OsOF+B1zij43ETRY0kfNSJpUlJYkb6eGzHPW1fBYhFNAJU/yag==
   dependencies:
-    "@kongponents/kpop" "^6.7.7"
-    "@kongponents/styles" "^6.7.7"
+    "@kongponents/kpop" "^6.7.10"
+    "@kongponents/styles" "^6.7.10"
 
-"@kongponents/kpop@^6.7.7":
-  version "6.7.7"
-  resolved "https://registry.yarnpkg.com/@kongponents/kpop/-/kpop-6.7.7.tgz#fd6a1df069a08c77f1c520f8ce9876422d40395e"
-  integrity sha512-SMQvtfcAAaG3KH65pK9nLSrHVtiutDlzzRpyGpOahGlCb1+aNddPRToq/sPd5tMhg2NRajxAGe5y8RjeWnBkHw==
+"@kongponents/kpop@^6.7.10":
+  version "6.7.10"
+  resolved "https://registry.yarnpkg.com/@kongponents/kpop/-/kpop-6.7.10.tgz#cf3dacaa71ef626711745fa23255d184e05e7395"
+  integrity sha512-5MYfhah8U+Kx7jWY3Ev5GJaxneDKRjOicopFOIGLn6HR1+zh5yp6CXbPSwbfSpmO8c5AYhsNUjI2nfcsiJlRxg==
   dependencies:
-    "@kongponents/kbutton" "^6.7.7"
-    "@kongponents/styles" "^6.7.7"
+    "@kongponents/kbutton" "^6.7.10"
+    "@kongponents/styles" "^6.7.10"
     popper.js "^1.15.0"
     vue-uuid "^2.0.2"
 
