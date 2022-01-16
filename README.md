@@ -408,18 +408,21 @@ Any events that are emitted from custom elements follow the [CustomEvent() Web A
 ```html
 <kong-auth-forgot-password
   instruction-text="Enter your verified email address and we will send you a password reset link."
-  @click-login-link="onUserClickLogin"
   @forgot-password-success="onForgotPasswordSuccess"
-/></kong-auth-forgot-password>
+></kong-auth-forgot-password>
 
 <script lang="ts">
   setup () {
 
-    // function example
+    // Respond to a successful reset password request 
     const onForgotPasswordSuccess = (successEvent: CustomEvent): void => {
       const eventData: Record<string, any> = Array.isArray(successEvent.detail) ? successEvent.detail[0] : successEvent.detail
 
-      console.log(`The user's email address is: ${eventData.email}`)
+      console.log(`User with email '${eventData.email}' successfully requested a password reset email.`)
+    }
+
+    return {
+      onForgotPasswordSuccess
     }
   }
 </script>
