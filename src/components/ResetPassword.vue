@@ -6,7 +6,7 @@
 
     <form
       v-if="!currentState.matches('success')"
-      class="register-form"
+      class="reset-password-form"
       @submit.prevent="submitForm"
       novalidate
       data-testid="kong-auth-reset-password-form"
@@ -44,7 +44,7 @@
 
       <div
         v-if="currentState.matches('error') && passwordError && error"
-        data-testid="kong-auth-register-alert"
+        data-testid="kong-auth-reset-password-alert"
         class="my-3"
       >
         <ErrorMessage :error="error" />

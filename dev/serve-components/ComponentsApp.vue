@@ -4,7 +4,9 @@
 
     <div class="component-container">
       <div v-if="urlPath.includes('/login') || urlPath === '/'" class="element-wrapper">
-        <h4><code>KongAuthLogin.vue</code></h4>
+        <h4>
+          <code>KongAuthLogin.vue</code>
+        </h4>
         <KongAuthLogin
           idp-login-enabled
           idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
@@ -12,26 +14,35 @@
           @login-success="showAlert('Login success!')"
           @click-forgot-password-link="showAlert('User clicked forgot password')"
           @click-register-link="showAlert('User clicked register')"
-          @idp-is-loading="showAlert('IDP loading state changed')"></KongAuthLogin>
+          @idp-is-loading="showAlert('IDP loading state changed')"
+        ></KongAuthLogin>
       </div>
 
       <div v-if="urlPath.includes('/forgot-password') || urlPath === '/'" class="element-wrapper">
-        <h4><code>KongAuthForgotPassword.vue</code></h4>
+        <h4>
+          <code>KongAuthForgotPassword.vue</code>
+        </h4>
         <KongAuthForgotPassword
           instruction-text="Enter your verified email address and we will send you a password reset link."
           @click-login-link="showAlert('User clicked login')"
-          @forgot-password-success="showAlert('Forgot password success!')" />
+          @forgot-password-success="showAlert('Forgot password success!')"
+        />
       </div>
 
       <div v-if="urlPath.includes('/reset-password') || urlPath === '/'" class="element-wrapper">
-        <h4><code>KongAuthResetPassword.vue</code></h4>
+        <h4>
+          <code>KongAuthResetPassword.vue</code>
+        </h4>
         <KongAuthResetPassword
           instruction-text="Please enter in your new password and confirm it below."
-          @reset-password-success="showAlert('Reset password success!')" />
+          @reset-password-success="showAlert('Reset password success!')"
+        />
       </div>
 
       <div v-if="urlPath.includes('/register') || urlPath === '/'" class="element-wrapper">
-        <h4><code>KongAuthRegister.vue</code></h4>
+        <h4>
+          <code>KongAuthRegister.vue</code>
+        </h4>
         <KongAuthRegister @register-success="showAlert('Register success!')" />
       </div>
     </div>
