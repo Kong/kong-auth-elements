@@ -1,43 +1,48 @@
-import { mount } from '@vue/test-utils'
+import { mount, config } from '@vue/test-utils'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import Login from '@/components/Login.vue'
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 
+// Supress @vue/compat warnings just for tests
+config.global.config.warnHandler = (msg) => {
+  if (msg.includes('compatConfig')) {
+    return null
+  }
+}
+
 describe('KongAuthLogin.ce.vue', () => {
-  it('renders correctly and matches snapshot', async () => {
+  // Ensure class is wrapped so that syles will be applied correctly
+  it('renders correctly and wraps all child elements in .kong-auth-element class', async () => {
     const wrapper = await mount(KongAuthLogin)
+    // Elements
+    const parentDiv = wrapper.find('.kong-auth-element')
 
     // Components exist
     expect(wrapper.findComponent(BaseCustomElement).exists()).toBe(true)
     expect(wrapper.findComponent(Login).exists()).toBe(true)
 
-    // Ensure it matches the snapshot
-    expect(wrapper.element).toMatchSnapshot()
-  })
-
-  // Ensure class is wrapped so that syles will be applied correctly
-  it('wraps all child elements in .kong-auth-element class', async () => {
-    const wrapper = await mount(KongAuthLogin)
-    // Elements
-    const parentDiv = wrapper.find('.kong-auth-element')
-    // Ensure custom element contains class, and it is the parent of the BaseCustomElement
+    // Ensure custom element contains .kong-auth-element, and it is the parent of the BaseCustomElement
     expect(parentDiv.exists()).toBe(true)
     expect(parentDiv.findComponent(BaseCustomElement).exists()).toBe(true)
+
+    // Ensure it matches the snapshot
+    expect(wrapper.element).toMatchSnapshot()
   })
 
   it('renders a login form with email, password, and button elements', async () => {
     const wrapper = await mount(KongAuthLogin)
     // Elements
-    const loginForm = wrapper.find('[data-testid="kong-auth-login-form"]')
+    const form = wrapper.find('[data-testid="kong-auth-login-form"]')
     const emailInput = wrapper.find('[data-testid="kong-auth-login-email"]')
     const passwordInput = wrapper.find('[data-testid="kong-auth-login-password"]')
     const submitBtn = wrapper.find('[data-testid="kong-auth-login-submit"]')
     // Elements that should not exist
     const forgotPasswordLink = wrapper.find('[data-testid="kong-auth-login-forgot-password-link"]')
     const registerLink = wrapper.find('[data-testid="kong-auth-login-register-link"]')
+    const errorMessage = wrapper.find('[data-testid="kong-auth-error-message"]')
 
     // Form should exist
-    expect(loginForm.exists()).toBe(true)
+    expect(form.exists()).toBe(true)
     // Elements should exist
     expect(emailInput.exists()).toBe(true)
     expect(passwordInput.exists()).toBe(true)
@@ -45,6 +50,46 @@ describe('KongAuthLogin.ce.vue', () => {
     // Elements should not exist
     expect(forgotPasswordLink.exists()).toBe(false)
     expect(registerLink.exists()).toBe(false)
+    expect(errorMessage.exists()).toBe(false)
+
+    // Ensure it matches the snapshot
+    expect(wrapper.element).toMatchSnapshot()
+  })
+
+  it('prevents submit and shows error if email field is empty', async () => {
+    const wrapper = await mount(KongAuthLogin)
+    // Elements
+    const form = wrapper.find('[data-testid="kong-auth-login-form"]')
+    const emailInput = wrapper.find('[data-testid="kong-auth-login-email"]')
+    const passwordInput = wrapper.find('[data-testid="kong-auth-login-password"]')
+
+    emailInput.setValue('')
+    passwordInput.setValue('not-a-real-password')
+    await form.trigger('submit.prevent')
+
+    const errorMessage = wrapper.find('[data-testid="kong-auth-error-message"]')
+    expect(errorMessage.exists()).toBe(true)
+
+    // Ensure it matches the snapshot
+    expect(wrapper.element).toMatchSnapshot()
+  })
+
+  it('prevents submit and shows error if password field is empty', async () => {
+    const wrapper = await mount(KongAuthLogin)
+    // Elements
+    const form = wrapper.find('[data-testid="kong-auth-login-form"]')
+    const emailInput = wrapper.find('[data-testid="kong-auth-login-email"]')
+    const passwordInput = wrapper.find('[data-testid="kong-auth-login-password"]')
+
+    emailInput.setValue('user1@email.com')
+    passwordInput.setValue('')
+    await form.trigger('submit.prevent')
+
+    const errorMessage = wrapper.find('[data-testid="kong-auth-error-message"]')
+    expect(errorMessage.exists()).toBe(true)
+
+    // Ensure it matches the snapshot
+    expect(wrapper.element).toMatchSnapshot()
   })
 
   /* ==============================
@@ -60,6 +105,9 @@ describe('KongAuthLogin.ce.vue', () => {
     const forgotPasswordLink = wrapper.find('[data-testid="kong-auth-login-forgot-password-link"]')
 
     expect(forgotPasswordLink.exists()).toBe(true)
+
+    // Ensure it matches the snapshot
+    expect(wrapper.element).toMatchSnapshot()
   })
 
   it('customizes the forgot password link text if props are set', async () => {
@@ -75,6 +123,9 @@ describe('KongAuthLogin.ce.vue', () => {
 
     expect(forgotPasswordLink.exists()).toBe(true)
     expect(forgotPasswordLink.text()).toEqual(customText)
+
+    // Ensure it matches the snapshot
+    expect(wrapper.element).toMatchSnapshot()
   })
 
   it('emits an event when user clicks forgot password link', async () => {
@@ -90,6 +141,9 @@ describe('KongAuthLogin.ce.vue', () => {
 
     // Expect emitted event (no payload)
     expect(wrapper.emitted()).toHaveProperty('click-forgot-password-link')
+
+    // Ensure it matches the snapshot
+    expect(wrapper.element).toMatchSnapshot()
   })
 
   /* ==============================
@@ -105,6 +159,9 @@ describe('KongAuthLogin.ce.vue', () => {
     const registerLink = wrapper.find('[data-testid="kong-auth-login-register-link"]')
 
     expect(registerLink.exists()).toBe(true)
+
+    // Ensure it matches the snapshot
+    expect(wrapper.element).toMatchSnapshot()
   })
 
   it('customizes the register link text if props are set', async () => {
@@ -124,6 +181,9 @@ describe('KongAuthLogin.ce.vue', () => {
     expect(registerLink.exists()).toBe(true)
     expect(registerLink.text()).toEqual(customText)
     expect(registerHelpText.text()).toEqual(customHelpText)
+
+    // Ensure it matches the snapshot
+    expect(wrapper.element).toMatchSnapshot()
   })
 
   it('emits an event when user clicks register link', async () => {
@@ -139,5 +199,8 @@ describe('KongAuthLogin.ce.vue', () => {
 
     // Expect emitted event (no payload)
     expect(wrapper.emitted()).toHaveProperty('click-register-link')
+
+    // Ensure it matches the snapshot
+    expect(wrapper.element).toMatchSnapshot()
   })
 })
