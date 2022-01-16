@@ -3,7 +3,8 @@
     <div
       v-if="currentState.matches('error') && !passwordError && error"
       class="my-3"
-      data-testid="kong-auth-register-alert">
+      data-testid="kong-auth-register-alert"
+    >
       <ErrorMessage :error="error" />
     </div>
 
@@ -12,10 +13,13 @@
       class="register-form"
       @submit.prevent="submitForm"
       novalidate
-      data-testid="kong-auth-register-form">
-      <p v-if="instructionText" class="color-black-45" data-testid="kong-auth-register-instruction-text">
-        {{ instructionText }}
-      </p>
+      data-testid="kong-auth-register-form"
+    >
+      <p
+        v-if="instructionText"
+        class="color-black-45"
+        data-testid="kong-auth-register-instruction-text"
+      >{{ instructionText }}</p>
 
       <div>
         <KLabel for="full_name">Full Name *</KLabel>
@@ -28,7 +32,8 @@
           :disabled="prepopulated"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !fullName ? true : false"
           required
-          data-testid="kong-auth-register-full-name" />
+          data-testid="kong-auth-register-full-name"
+        />
       </div>
 
       <KLabel for="organization">Organization *</KLabel>
@@ -41,7 +46,8 @@
         :disabled="prepopulated"
         :has-error="currentState.matches('error') && error && fieldsHaveError && !organization ? true : false"
         required
-        data-testid="kong-auth-register-organization" />
+        data-testid="kong-auth-register-organization"
+      />
 
       <KLabel for="email">Email *</KLabel>
       <KInput
@@ -53,7 +59,8 @@
         :disabled="prepopulated"
         :has-error="currentState.matches('error') && error && fieldsHaveError && !email ? true : false"
         required
-        data-testid="kong-auth-register-email" />
+        data-testid="kong-auth-register-email"
+      />
 
       <KLabel for="password">Password *</KLabel>
       <KInput
@@ -64,7 +71,8 @@
         autocomplete="new-password"
         :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
         required
-        data-testid="kong-auth-register-password" />
+        data-testid="kong-auth-register-password"
+      />
 
       <div v-if="!emailToken && accessCodeRequired">
         <KLabel for="access_code">Access Code *</KLabel>
@@ -75,18 +83,26 @@
           type="password"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !accessCode ? true : false"
           required
-          data-testid="kong-auth-register-access-code" />
+          data-testid="kong-auth-register-access-code"
+        />
       </div>
 
       <div class="color-black-45 type-sm">
         <KCheckbox v-model="checked_agreement" data-testid="kong-auth-register-check-agreement">
           I agree to the
-          <a href="https://konghq.com/konnectcustomeragreement" target="_blank">Konnect customer agreement</a>
-          and <a href="https://konghq.com/privacy" target="_blank">privacy policy</a>.
+          <a
+            href="https://konghq.com/konnectcustomeragreement"
+            target="_blank"
+          >Konnect customer agreement</a>
+          and
+          <a href="https://konghq.com/privacy" target="_blank">privacy policy</a>.
         </KCheckbox>
       </div>
 
-      <div v-if="currentState.matches('error') && passwordError && error" data-testid="kong-auth-register-alert">
+      <div
+        v-if="currentState.matches('error') && passwordError && error"
+        data-testid="kong-auth-register-alert"
+      >
         <ErrorMessage :error="error" />
       </div>
 
@@ -96,14 +112,16 @@
         :is-rounded="false"
         class="register-submit justify-content-center w-100 type-lg mt-6"
         :disabled="btnDisabled"
-        data-testid="kong-auth-register-submit">
+        data-testid="kong-auth-register-submit"
+      >
         <KIcon
           v-if="currentState.matches('pending')"
           icon="spinner"
           size="16"
           color="white"
           view-box="0 0 16 16"
-          class="pr-0 mr-2" />
+          class="pr-0 mr-2"
+        />
         {{ btnText }}
       </KButton>
     </form>

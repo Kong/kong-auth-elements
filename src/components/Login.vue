@@ -4,7 +4,8 @@
     class="idp-loading"
     type="fullscreen-kong"
     :delay-milliseconds="0"
-    data-testid="global-walking-gruce" />
+    data-testid="global-walking-gruce"
+  />
 
   <div v-else class="kong-auth-login-form">
     <div v-if="currentState.matches('error') && error" class="my-3">
@@ -15,21 +16,32 @@
       <KAlert
         :alert-message="helpText.login.passwordResetSuccess"
         appearance="success"
-        class="justify-content-center" />
+        class="justify-content-center"
+      />
     </div>
 
     <div v-else-if="currentState.matches('confirmed_email')" class="my-3">
       <KAlert
         :alert-message="helpText.login.confirmedEmailSuccess"
         appearance="success"
-        class="justify-content-center" />
+        class="justify-content-center"
+      />
     </div>
 
     <div v-else-if="currentState.matches('from_register')" class="my-3">
-      <KAlert :alert-message="helpText.login.registerSuccess" appearance="success" class="justify-content-center" />
+      <KAlert
+        :alert-message="helpText.login.registerSuccess"
+        appearance="success"
+        class="justify-content-center"
+      />
     </div>
 
-    <form class="login-form" @submit.prevent="submitForm" novalidate data-testid="kong-auth-login-form">
+    <form
+      class="login-form"
+      @submit.prevent="submitForm"
+      novalidate
+      data-testid="kong-auth-login-form"
+    >
       <div v-if="!isIdpLogin">
         <KLabel for="email">Email *</KLabel>
         <KInput
@@ -41,7 +53,8 @@
           :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
           required
           autofocus
-          data-testid="kong-auth-login-email" />
+          data-testid="kong-auth-login-email"
+        />
 
         <KLabel for="password">Password *</KLabel>
         <KInput
@@ -52,7 +65,8 @@
           autocomplete="current-password"
           :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
           required
-          data-testid="kong-auth-login-password" />
+          data-testid="kong-auth-login-password"
+        />
 
         <p v-if="showForgotPasswordLink" class="help mt-3">
           <a
@@ -60,8 +74,7 @@
             class="color-blue-500"
             href="#"
             data-testid="kong-auth-login-forgot-password-link"
-            >{{ forgotPasswordLinkText }}</a
-          >
+          >{{ forgotPasswordLinkText }}</a>
         </p>
       </div>
 
@@ -72,8 +85,14 @@
         class="justify-content-center w-100 type-lg"
         :class="[showForgotPasswordLink ? 'mt-3' : 'mt-6']"
         :disabled="btnDisabled"
-        data-testid="kong-auth-login-submit">
-        <KIcon v-if="currentState.matches('pending')" icon="spinner" view-box="0 0 16 16" class="pr-0 mr-2" />
+        data-testid="kong-auth-login-submit"
+      >
+        <KIcon
+          v-if="currentState.matches('pending')"
+          icon="spinner"
+          view-box="0 0 16 16"
+          class="pr-0 mr-2"
+        />
         {{ btnText }}
       </KButton>
 
@@ -83,8 +102,7 @@
           class="color-blue-500"
           href="#"
           data-testid="kong-auth-login-credentials-link"
-          >{{ helpText.login.loginWithCredentials }}</a
-        >
+        >{{ helpText.login.loginWithCredentials }}</a>
       </p>
 
       <div v-if="showRegisterLink" class="text-center mt-5">
@@ -95,8 +113,7 @@
             class="color-blue-500"
             href="#"
             data-testid="kong-auth-login-register-link"
-            >{{ registerLinkText }}</a
-          >
+          >{{ registerLinkText }}</a>
         </p>
       </div>
     </form>

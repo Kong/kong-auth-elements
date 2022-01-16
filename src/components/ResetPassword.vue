@@ -9,10 +9,13 @@
       class="register-form"
       @submit.prevent="submitForm"
       novalidate
-      data-testid="kong-auth-reset-password-form">
-      <p v-if="instructionText" class="color-black-45" data-testid="kong-auth-reset-password-instruction-text">
-        {{ instructionText }}
-      </p>
+      data-testid="kong-auth-reset-password-form"
+    >
+      <p
+        v-if="instructionText"
+        class="color-black-45"
+        data-testid="kong-auth-reset-password-instruction-text"
+      >{{ instructionText }}</p>
 
       <KLabel for="password">New Password *</KLabel>
       <KInput
@@ -23,7 +26,8 @@
         autocomplete="new-password"
         :has-error="currentState.matches('error') && error ? true : false"
         required
-        data-testid="kong-auth-reset-password-new-password" />
+        data-testid="kong-auth-reset-password-new-password"
+      />
 
       <KLabel for="password">Confirm New Password *</KLabel>
       <KInput
@@ -35,12 +39,14 @@
         :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
         :error-message="passwordIsInvalid ? helpText.resetPassword.passwordMismatch : null"
         required
-        data-testid="kong-auth-reset-password-confirm-new-password" />
+        data-testid="kong-auth-reset-password-confirm-new-password"
+      />
 
       <div
         v-if="currentState.matches('error') && passwordError && error"
         data-testid="kong-auth-register-alert"
-        class="my-3">
+        class="my-3"
+      >
         <ErrorMessage :error="error" />
       </div>
 
@@ -50,8 +56,14 @@
         :is-rounded="false"
         class="justify-content-center w-100 type-lg"
         :disabled="btnDisabled"
-        data-testid="kong-auth-reset-password-submit">
-        <KIcon v-if="currentState.matches('pending')" icon="spinner" view-box="0 0 16 16" class="pr-0 mr-2" />
+        data-testid="kong-auth-reset-password-submit"
+      >
+        <KIcon
+          v-if="currentState.matches('pending')"
+          icon="spinner"
+          view-box="0 0 16 16"
+          class="pr-0 mr-2"
+        />
         {{ btnText }}
       </KButton>
     </form>

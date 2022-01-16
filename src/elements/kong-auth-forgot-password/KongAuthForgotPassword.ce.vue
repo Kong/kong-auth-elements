@@ -3,7 +3,8 @@
     <BaseCustomElement>
       <ForgotPassword
         @click-login-link="(emitData) => $emit('click-login-link', emitData)"
-        @forgot-password-success="(emitData) => $emit('forgot-password-success', emitData)" />
+        @forgot-password-success="(emitData) => $emit('forgot-password-success', emitData)"
+      />
     </BaseCustomElement>
   </div>
 </template>

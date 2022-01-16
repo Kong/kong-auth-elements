@@ -1,7 +1,9 @@
 <template>
   <div class="kong-auth-element">
     <BaseCustomElement>
-      <ResetPassword @reset-password-success="(emitData) => $emit('reset-password-success', emitData)" />
+      <ResetPassword
+        @reset-password-success="(emitData) => $emit('reset-password-success', emitData)"
+      />
     </BaseCustomElement>
   </div>
 </template>
