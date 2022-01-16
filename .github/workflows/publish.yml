@@ -1,4 +1,4 @@
-name: Publish
+name: Test and Publish
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   run-tests:
-    name: Test before publish
+    name: Test
     uses: Kong/kong-auth-elements/.github/workflows/test.yml@main
   publish:
     needs: run-tests
