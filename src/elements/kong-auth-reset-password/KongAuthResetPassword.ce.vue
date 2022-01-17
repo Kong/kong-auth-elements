@@ -11,7 +11,7 @@
 <script lang="ts">
 import { defineComponent, computed, provide } from 'vue'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
-import ResetPassword from '@/components/ResetPassword.vue'
+import ResetPassword, { resetPasswordEmits } from '@/components/ResetPassword.vue'
 
 export default defineComponent({
   name: 'KongAuthResetPassword',
@@ -21,7 +21,8 @@ export default defineComponent({
     instructionText: String,
   },
 
-  emits: ['reset-password-success'],
+  // Import emits from child component with validation, where necessary
+  emits: resetPasswordEmits,
 
   components: {
     BaseCustomElement,
