@@ -3,7 +3,7 @@ import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import ForgotPassword from '@/components/ForgotPassword.vue'
 import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
 
-// Supress @vue/compat warnings just for tests
+// Suppress @vue/compat warnings just for tests
 config.global.config.warnHandler = (msg) => {
   if (msg.includes('compatConfig')) {
     return null
