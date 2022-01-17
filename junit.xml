@@ -1,55 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="23" failures="0" errors="0" time="4.498">
-  <testsuite name="KongAuthForgotPassword.ce.vue" errors="0" failures="0" skipped="0" timestamp="2022-01-16T18:01:51" time="3.55" tests="7">
-    <testcase classname="KongAuthForgotPassword.ce.vue renders correctly and wraps all child elements in .kong-auth-element class" name="KongAuthForgotPassword.ce.vue renders correctly and wraps all child elements in .kong-auth-element class" time="0.07">
+<testsuites name="jest tests" tests="8" failures="0" errors="0" time="3.743">
+  <testsuite name="KongAuthRegister.ce.vue" errors="0" failures="0" skipped="0" timestamp="2022-01-17T18:04:06" time="2.979" tests="8">
+    <testcase classname="KongAuthRegister.ce.vue renders correctly and wraps all child elements in .kong-auth-element class" name="KongAuthRegister.ce.vue renders correctly and wraps all child elements in .kong-auth-element class" time="0.104">
     </testcase>
-    <testcase classname="KongAuthForgotPassword.ce.vue renders a forgot password form with email and button elements" name="KongAuthForgotPassword.ce.vue renders a forgot password form with email and button elements" time="0.021">
+    <testcase classname="KongAuthRegister.ce.vue renders a register form with default field and button elements" name="KongAuthRegister.ce.vue renders a register form with default field and button elements" time="0.041">
     </testcase>
-    <testcase classname="KongAuthForgotPassword.ce.vue prevents submit and shows error if email field is empty" name="KongAuthForgotPassword.ce.vue prevents submit and shows error if email field is empty" time="0.034">
+    <testcase classname="KongAuthRegister.ce.vue prevents submit and shows error if full name field is empty" name="KongAuthRegister.ce.vue prevents submit and shows error if full name field is empty" time="0.036">
     </testcase>
-    <testcase classname="KongAuthForgotPassword.ce.vue shows instruction text if instructionText prop is set" name="KongAuthForgotPassword.ce.vue shows instruction text if instructionText prop is set" time="0.018">
+    <testcase classname="KongAuthRegister.ce.vue prevents submit and shows error if organization field is empty" name="KongAuthRegister.ce.vue prevents submit and shows error if organization field is empty" time="0.032">
     </testcase>
-    <testcase classname="KongAuthForgotPassword.ce.vue shows a login link if showLoginLink prop is true" name="KongAuthForgotPassword.ce.vue shows a login link if showLoginLink prop is true" time="0.018">
+    <testcase classname="KongAuthRegister.ce.vue prevents submit and shows error if email field is empty" name="KongAuthRegister.ce.vue prevents submit and shows error if email field is empty" time="0.027">
     </testcase>
-    <testcase classname="KongAuthForgotPassword.ce.vue customizes the login link text if props are set" name="KongAuthForgotPassword.ce.vue customizes the login link text if props are set" time="0.017">
+    <testcase classname="KongAuthRegister.ce.vue prevents submit and shows error if password field is empty" name="KongAuthRegister.ce.vue prevents submit and shows error if password field is empty" time="0.031">
     </testcase>
-    <testcase classname="KongAuthForgotPassword.ce.vue emits an event when user clicks login link" name="KongAuthForgotPassword.ce.vue emits an event when user clicks login link" time="0.016">
+    <testcase classname="KongAuthRegister.ce.vue prevents submit and shows error if agree checkbox is not checked" name="KongAuthRegister.ce.vue prevents submit and shows error if agree checkbox is not checked" time="0.031">
     </testcase>
-  </testsuite>
-  <testsuite name="KongAuthResetPassword.ce.vue" errors="0" failures="0" skipped="0" timestamp="2022-01-16T18:01:51" time="3.561" tests="6">
-    <testcase classname="KongAuthResetPassword.ce.vue renders correctly and wraps all child elements in .kong-auth-element class" name="KongAuthResetPassword.ce.vue renders correctly and wraps all child elements in .kong-auth-element class" time="0.075">
-    </testcase>
-    <testcase classname="KongAuthResetPassword.ce.vue renders a reset password form with email and button elements" name="KongAuthResetPassword.ce.vue renders a reset password form with email and button elements" time="0.023">
-    </testcase>
-    <testcase classname="KongAuthResetPassword.ce.vue prevents submit and shows error if password field is empty" name="KongAuthResetPassword.ce.vue prevents submit and shows error if password field is empty" time="0.038">
-    </testcase>
-    <testcase classname="KongAuthResetPassword.ce.vue prevents submit and shows error if password confirm field is empty" name="KongAuthResetPassword.ce.vue prevents submit and shows error if password confirm field is empty" time="0.025">
-    </testcase>
-    <testcase classname="KongAuthResetPassword.ce.vue prevents submit and shows error if password and password confirm fields do not match" name="KongAuthResetPassword.ce.vue prevents submit and shows error if password and password confirm fields do not match" time="0.027">
-    </testcase>
-    <testcase classname="KongAuthResetPassword.ce.vue shows instruction text if instructionText prop is set" name="KongAuthResetPassword.ce.vue shows instruction text if instructionText prop is set" time="0.018">
-    </testcase>
-  </testsuite>
-  <testsuite name="KongAuthLogin.ce.vue" errors="0" failures="0" skipped="0" timestamp="2022-01-16T18:01:51" time="3.68" tests="10">
-    <testcase classname="KongAuthLogin.ce.vue renders correctly and wraps all child elements in .kong-auth-element class" name="KongAuthLogin.ce.vue renders correctly and wraps all child elements in .kong-auth-element class" time="0.074">
-    </testcase>
-    <testcase classname="KongAuthLogin.ce.vue renders a login form with email, password, and button elements" name="KongAuthLogin.ce.vue renders a login form with email, password, and button elements" time="0.026">
-    </testcase>
-    <testcase classname="KongAuthLogin.ce.vue prevents submit and shows error if email field is empty" name="KongAuthLogin.ce.vue prevents submit and shows error if email field is empty" time="0.038">
-    </testcase>
-    <testcase classname="KongAuthLogin.ce.vue prevents submit and shows error if password field is empty" name="KongAuthLogin.ce.vue prevents submit and shows error if password field is empty" time="0.024">
-    </testcase>
-    <testcase classname="KongAuthLogin.ce.vue shows a forgot password link if showForgotPasswordLink prop is true" name="KongAuthLogin.ce.vue shows a forgot password link if showForgotPasswordLink prop is true" time="0.018">
-    </testcase>
-    <testcase classname="KongAuthLogin.ce.vue customizes the forgot password link text if props are set" name="KongAuthLogin.ce.vue customizes the forgot password link text if props are set" time="0.019">
-    </testcase>
-    <testcase classname="KongAuthLogin.ce.vue emits an event when user clicks forgot password link" name="KongAuthLogin.ce.vue emits an event when user clicks forgot password link" time="0.015">
-    </testcase>
-    <testcase classname="KongAuthLogin.ce.vue shows a register link if showRegisterLink prop is true" name="KongAuthLogin.ce.vue shows a register link if showRegisterLink prop is true" time="0.013">
-    </testcase>
-    <testcase classname="KongAuthLogin.ce.vue customizes the register link text if props are set" name="KongAuthLogin.ce.vue customizes the register link text if props are set" time="0.017">
-    </testcase>
-    <testcase classname="KongAuthLogin.ce.vue emits an event when user clicks register link" name="KongAuthLogin.ce.vue emits an event when user clicks register link" time="0.013">
+    <testcase classname="KongAuthRegister.ce.vue shows instruction text if instructionText prop is set" name="KongAuthRegister.ce.vue shows instruction text if instructionText prop is set" time="0.026">
     </testcase>
   </testsuite>
 </testsuites>

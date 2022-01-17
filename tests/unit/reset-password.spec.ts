@@ -1,14 +1,7 @@
-import { mount, config } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import ResetPassword from '@/components/ResetPassword.vue'
 import KongAuthResetPassword from '@/elements/kong-auth-reset-password/KongAuthResetPassword.ce.vue'
-
-// Suppress @vue/compat warnings just for tests
-config.global.config.warnHandler = (msg) => {
-  if (msg.includes('compatConfig')) {
-    return null
-  }
-}
 
 describe('KongAuthResetPassword.ce.vue', () => {
   // Ensure class is wrapped so that syles will be applied correctly
@@ -37,8 +30,8 @@ describe('KongAuthResetPassword.ce.vue', () => {
     const passwordConfirmInput = wrapper.find('[data-testid="kong-auth-reset-password-confirm-new-password"]')
     const submitBtn = wrapper.find('[data-testid="kong-auth-reset-password-submit"]')
     // Elements that should not exist
-    const instructionText = wrapper.find('[data-testid="kong-auth-reset-password-instruction-text"]')
     const errorMessage = wrapper.find('[data-testid="kong-auth-error-message"]')
+    const instructionText = wrapper.find('[data-testid="kong-auth-reset-password-instruction-text"]')
 
     // Form should exist
     expect(form.exists()).toBe(true)
@@ -47,8 +40,8 @@ describe('KongAuthResetPassword.ce.vue', () => {
     expect(passwordConfirmInput.exists()).toBe(true)
     expect(submitBtn.exists()).toBe(true)
     // Elements should not exist
-    expect(instructionText.exists()).toBe(false)
     expect(errorMessage.exists()).toBe(false)
+    expect(instructionText.exists()).toBe(false)
 
     // Ensure it matches the snapshot
     expect(wrapper.element).toMatchSnapshot()

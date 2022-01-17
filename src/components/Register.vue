@@ -296,7 +296,7 @@ export default defineComponent({
     onMounted(async () => {
       await checkForAccessCodeRequirement()
 
-      const urlParams: URLSearchParams = new URLSearchParams(window?.location.search)
+      const urlParams: URLSearchParams = new URLSearchParams(window.location.search)
 
       formData.emailToken = urlParams?.get('token') || ''
       formData.email = urlParams?.get('email') || ''
