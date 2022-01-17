@@ -9,7 +9,7 @@
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
-import Register from '@/components/Register.vue'
+import Register, { registerEmits } from '@/components/Register.vue'
 
 export default defineComponent({
   name: 'KongAuthRegister',
@@ -19,14 +19,15 @@ export default defineComponent({
     instructionText: String,
   },
 
-  emits: ['register-success'],
+  // Import emits from child component with validation, where necessary
+  emits: registerEmits,
 
   components: {
     BaseCustomElement,
     Register,
   },
 
-  setup(props) {
+  setup(props, { emit }) {
     // Provide custom element props to child components
     provide(
       'instruction-text',

@@ -142,6 +142,12 @@ import KLabel from '@kongponents/klabel'
 import KCheckbox from '@kongponents/kcheckbox'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
+export const registerEmits = {
+  'register-success': (payload: { email: string, fromInvite: boolean }): boolean => {
+    return !!payload?.email.trim() && typeof payload?.fromInvite === 'boolean'
+  },
+}
+
 export default defineComponent({
   name: 'Register',
 
@@ -154,7 +160,8 @@ export default defineComponent({
     ErrorMessage,
   },
 
-  emits: ['register-success'],
+  // Define emits with validation, where necessary
+  emits: registerEmits,
 
   setup(props, { emit }) {
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
