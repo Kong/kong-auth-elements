@@ -1,12 +1,28 @@
-import { mount } from '@vue/test-utils'
+import { wrapperFactory, initWindowLocation } from './utils'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import Login from '@/components/Login.vue'
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 
+// Component data-testid strings
+const testids = {
+  form: 'kong-auth-login-form',
+  email: 'kong-auth-login-email',
+  password: 'kong-auth-login-password',
+  submitBtn: 'kong-auth-login-submit',
+  errorMessage: 'kong-auth-error-message',
+  forgotPasswordLink: 'kong-auth-login-forgot-password-link',
+  registerLink: 'kong-auth-login-register-link',
+  registerHelpText: 'kong-auth-login-register-help-text',
+}
+
 describe('KongAuthLogin.ce.vue', () => {
+  // Set the URL where the tests will run
+  const mockUrl = new URL('http://localhost/login')
+  initWindowLocation(mockUrl)
+
   // Ensure class is wrapped so that syles will be applied correctly
   it('renders correctly and wraps all child elements in .kong-auth-element class', async () => {
-    const wrapper = await mount(KongAuthLogin)
+    const { wrapper } = await wrapperFactory(KongAuthLogin)
     // Elements
     const parentDiv = wrapper.find('.kong-auth-element')
 
@@ -23,63 +39,47 @@ describe('KongAuthLogin.ce.vue', () => {
   })
 
   it('renders a login form with email, password, and button elements', async () => {
-    const wrapper = await mount(KongAuthLogin)
-    // Elements
-    const form = wrapper.find('[data-testid="kong-auth-login-form"]')
-    const emailInput = wrapper.find('[data-testid="kong-auth-login-email"]')
-    const passwordInput = wrapper.find('[data-testid="kong-auth-login-password"]')
-    const submitBtn = wrapper.find('[data-testid="kong-auth-login-submit"]')
-    // Elements that should not exist
-    const errorMessage = wrapper.find('[data-testid="kong-auth-error-message"]')
-    const forgotPasswordLink = wrapper.find('[data-testid="kong-auth-login-forgot-password-link"]')
-    const registerLink = wrapper.find('[data-testid="kong-auth-login-register-link"]')
+    const { wrapper, findByTestId } = await wrapperFactory(KongAuthLogin)
 
     // Form should exist
-    expect(form.exists()).toBe(true)
+    expect(findByTestId(testids.form).exists()).toBe(true)
     // Elements should exist
-    expect(emailInput.exists()).toBe(true)
-    expect(passwordInput.exists()).toBe(true)
-    expect(submitBtn.exists()).toBe(true)
+    expect(findByTestId(testids.email).exists()).toBe(true)
+    expect(findByTestId(testids.password).exists()).toBe(true)
+    expect(findByTestId(testids.submitBtn).exists()).toBe(true)
     // Elements should not exist
-    expect(errorMessage.exists()).toBe(false)
-    expect(forgotPasswordLink.exists()).toBe(false)
-    expect(registerLink.exists()).toBe(false)
+    expect(findByTestId(testids.errorMessage).exists()).toBe(false)
+    expect(findByTestId(testids.forgotPasswordLink).exists()).toBe(false)
+    expect(findByTestId(testids.registerHelpText).exists()).toBe(false)
+    expect(findByTestId(testids.registerLink).exists()).toBe(false)
 
     // Ensure it matches the snapshot
     expect(wrapper.element).toMatchSnapshot()
   })
 
   it('prevents submit and shows error if email field is empty', async () => {
-    const wrapper = await mount(KongAuthLogin)
-    // Elements
-    const form = wrapper.find('[data-testid="kong-auth-login-form"]')
-    const emailInput = wrapper.find('[data-testid="kong-auth-login-email"]')
-    const passwordInput = wrapper.find('[data-testid="kong-auth-login-password"]')
+    const { wrapper, findByTestId } = await wrapperFactory(KongAuthLogin)
 
-    emailInput.setValue('')
-    passwordInput.setValue('not-a-real-password')
-    await form.trigger('submit.prevent')
+    findByTestId(testids.email).setValue('')
+    findByTestId(testids.password).setValue('not-a-real-password')
+    await findByTestId(testids.form).trigger('submit.prevent')
 
-    const errorMessage = wrapper.find('[data-testid="kong-auth-error-message"]')
-    expect(errorMessage.exists()).toBe(true)
+    // Error should exist
+    expect(findByTestId(testids.errorMessage).exists()).toBe(true)
 
     // Ensure it matches the snapshot
     expect(wrapper.element).toMatchSnapshot()
   })
 
   it('prevents submit and shows error if password field is empty', async () => {
-    const wrapper = await mount(KongAuthLogin)
-    // Elements
-    const form = wrapper.find('[data-testid="kong-auth-login-form"]')
-    const emailInput = wrapper.find('[data-testid="kong-auth-login-email"]')
-    const passwordInput = wrapper.find('[data-testid="kong-auth-login-password"]')
+    const { wrapper, findByTestId } = await wrapperFactory(KongAuthLogin)
 
-    emailInput.setValue('user1@email.com')
-    passwordInput.setValue('')
-    await form.trigger('submit.prevent')
+    findByTestId(testids.email).setValue('user1@email.com')
+    findByTestId(testids.password).setValue('')
+    await findByTestId(testids.form).trigger('submit.prevent')
 
-    const errorMessage = wrapper.find('[data-testid="kong-auth-error-message"]')
-    expect(errorMessage.exists()).toBe(true)
+    // Error should exist
+    expect(findByTestId(testids.errorMessage).exists()).toBe(true)
 
     // Ensure it matches the snapshot
     expect(wrapper.element).toMatchSnapshot()
@@ -89,15 +89,13 @@ describe('KongAuthLogin.ce.vue', () => {
    * Forgot password link
    * ============================== */
   it('shows a forgot password link if showForgotPasswordLink prop is true', async () => {
-    const wrapper = await mount(KongAuthLogin, {
+    const { wrapper, findByTestId } = await wrapperFactory(KongAuthLogin, {
       props: {
         showForgotPasswordLink: true,
       },
     })
-    // Elements
-    const forgotPasswordLink = wrapper.find('[data-testid="kong-auth-login-forgot-password-link"]')
 
-    expect(forgotPasswordLink.exists()).toBe(true)
+    expect(findByTestId(testids.forgotPasswordLink).exists()).toBe(true)
 
     // Ensure it matches the snapshot
     expect(wrapper.element).toMatchSnapshot()
@@ -105,32 +103,28 @@ describe('KongAuthLogin.ce.vue', () => {
 
   it('customizes the forgot password link text if props are set', async () => {
     const customText = 'This is custom link text'
-    const wrapper = await mount(KongAuthLogin, {
+    const { wrapper, findByTestId } = await wrapperFactory(KongAuthLogin, {
       props: {
         showForgotPasswordLink: true,
         forgotPasswordLinkText: customText,
       },
     })
-    // Elements
-    const forgotPasswordLink = wrapper.find('[data-testid="kong-auth-login-forgot-password-link"]')
 
-    expect(forgotPasswordLink.exists()).toBe(true)
-    expect(forgotPasswordLink.text()).toEqual(customText)
+    expect(findByTestId(testids.forgotPasswordLink).exists()).toBe(true)
+    expect(findByTestId(testids.forgotPasswordLink).text()).toEqual(customText)
 
     // Ensure it matches the snapshot
     expect(wrapper.element).toMatchSnapshot()
   })
 
   it('emits an event when user clicks forgot password link', async () => {
-    const wrapper = await mount(KongAuthLogin, {
+    const { wrapper, findByTestId } = await wrapperFactory(KongAuthLogin, {
       props: {
         showForgotPasswordLink: true,
       },
     })
-    // Elements
-    const forgotPasswordLink = wrapper.find('[data-testid="kong-auth-login-forgot-password-link"]')
 
-    await forgotPasswordLink.trigger('click')
+    await findByTestId(testids.forgotPasswordLink).trigger('click')
 
     // Expect emitted event (no payload)
     expect(wrapper.emitted()).toHaveProperty('click-forgot-password-link')
@@ -143,15 +137,13 @@ describe('KongAuthLogin.ce.vue', () => {
    * Register link
    * ============================== */
   it('shows a register link if showRegisterLink prop is true', async () => {
-    const wrapper = await mount(KongAuthLogin, {
+    const { wrapper, findByTestId } = await wrapperFactory(KongAuthLogin, {
       props: {
         showRegisterLink: true,
       },
     })
-    // Elements
-    const registerLink = wrapper.find('[data-testid="kong-auth-login-register-link"]')
 
-    expect(registerLink.exists()).toBe(true)
+    expect(findByTestId(testids.registerLink).exists()).toBe(true)
 
     // Ensure it matches the snapshot
     expect(wrapper.element).toMatchSnapshot()
@@ -160,35 +152,30 @@ describe('KongAuthLogin.ce.vue', () => {
   it('customizes the register link text if props are set', async () => {
     const customText = 'This is custom link text'
     const customHelpText = 'This is custom help text'
-    const wrapper = await mount(KongAuthLogin, {
+    const { wrapper, findByTestId } = await wrapperFactory(KongAuthLogin, {
       props: {
         showRegisterLink: true,
         registerLinkHelpText: customHelpText,
         registerLinkText: customText,
       },
     })
-    // Elements
-    const registerLink = wrapper.find('[data-testid="kong-auth-login-register-link"]')
-    const registerHelpText = wrapper.find('[data-testid="kong-auth-login-register-help-text"]')
 
-    expect(registerLink.exists()).toBe(true)
-    expect(registerLink.text()).toEqual(customText)
-    expect(registerHelpText.text()).toEqual(customHelpText)
+    expect(findByTestId(testids.registerLink).exists()).toBe(true)
+    expect(findByTestId(testids.registerLink).text()).toEqual(customText)
+    expect(findByTestId(testids.registerHelpText).text()).toEqual(customHelpText)
 
     // Ensure it matches the snapshot
     expect(wrapper.element).toMatchSnapshot()
   })
 
   it('emits an event when user clicks register link', async () => {
-    const wrapper = await mount(KongAuthLogin, {
+    const { wrapper, findByTestId } = await wrapperFactory(KongAuthLogin, {
       props: {
         showRegisterLink: true,
       },
     })
-    // Elements
-    const registerLink = wrapper.find('[data-testid="kong-auth-login-register-link"]')
 
-    await registerLink.trigger('click')
+    await findByTestId(testids.registerLink).trigger('click')
 
     // Expect emitted event (no payload)
     expect(wrapper.emitted()).toHaveProperty('click-register-link')

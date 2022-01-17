@@ -88,7 +88,7 @@
       </div>
 
       <div class="color-black-45 type-sm">
-        <KCheckbox v-model="checked_agreement" data-testid="kong-auth-register-check-agreement">
+        <KCheckbox v-model="checked_agreement" data-testid="kong-auth-register-agree-checkbox">
           I agree to the
           <a
             href="https://konghq.com/konnectcustomeragreement"
