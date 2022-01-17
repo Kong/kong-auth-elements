@@ -219,8 +219,8 @@ export default defineComponent({
     onMounted(() => {
       const urlParams: URLSearchParams = new URLSearchParams(window.location.search)
 
-      formData.email = urlParams.get('email') || ''
-      formData.passwordToken = urlParams.get('token') || ''
+      formData.email = urlParams?.get('email') || ''
+      formData.passwordToken = urlParams?.get('token') || ''
     })
 
     return {

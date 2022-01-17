@@ -388,7 +388,7 @@ export default defineComponent({
       const urlParams = new URLSearchParams(window.location.search)
 
       // If token in URL params
-      const token = urlParams.get('token')
+      const token = urlParams?.get('token')
       if (token) {
         // Verify email address and set email on success
         await verifyEmailAddress(token)
@@ -396,7 +396,7 @@ export default defineComponent({
       }
 
       // Set email if in route params
-      const emailInParams = urlParams.get('email')
+      const emailInParams = urlParams?.get('email')
       if (emailInParams) {
         formData.email = emailInParams
       }
