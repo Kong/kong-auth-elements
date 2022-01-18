@@ -27,11 +27,11 @@
     "@kongponents/kskeleton": "^6.7.10",
     "@kongponents/styles": "^6.7.7",
     "@openapitools/openapi-generator-cli": "^2.4.25",
-    "@vue/compat": "^3.2.26",
+    "@vue/compat": "^3.2.27",
     "@xstate/vue": "^0.8.1",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
-    "vue": "^3.2.26",
+    "vue": "^3.2.27",
     "xstate": "^4.26.1"
   },
   "devDependencies": {
@@ -48,13 +48,13 @@
     "@vue/cli-plugin-unit-jest": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.2.26",
+    "@vue/compiler-sfc": "3.2.27",
     "@vue/eslint-config-standard": "^5.1.2",
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^2.0.0-rc.18",
     "axe-core": "^4.3.5",
-    "cypress": "^9.1.0",
-    "cypress-axe": "^0.13.0",
+    "cypress": "^9.2.1",
+    "cypress-axe": "^0.14.0",
     "eslint": "^6.7.2",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.25.4",
@@ -88,6 +88,7 @@
   "publishConfig": {
     "access": "restricted"
   },
+  "license": "UNLICENSED",
   "release": {
     "branches": [
       "main"
@@ -99,16 +100,5 @@
   "volta": {
     "node": "14.18.2",
     "yarn": "1.22.17"
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "jest-serializer-vue"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "./dist",
-      "./dev",
-      "./demo"
-    ]
   }
 }

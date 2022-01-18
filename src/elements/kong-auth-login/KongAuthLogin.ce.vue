@@ -16,7 +16,7 @@
 import { defineComponent, provide, computed } from 'vue'
 import { helpText } from '@/utils'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
-import Login from '@/components/Login.vue'
+import Login, { loginEmits } from '@/components/Login.vue'
 
 export default defineComponent({
   name: 'KongAuthLogin',
@@ -43,13 +43,8 @@ export default defineComponent({
     },
   },
 
-  emits: [
-    'login-success',
-    'confirm-email-success',
-    'click-forgot-password-link',
-    'click-register-link',
-    'idp-is-loading',
-  ],
+  // Import emits from child component with validation, where necessary
+  emits: loginEmits,
 
   components: {
     BaseCustomElement,

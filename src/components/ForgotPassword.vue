@@ -8,15 +8,15 @@
         :alert-message="successText"
         appearance="info"
         class="mb-6"
-        data-testid="kong-auth-forgot-password-success-message" />
+        data-testid="kong-auth-forgot-password-success-message"
+      />
       <KButton
         @click.prevent="$emit('click-login-link')"
         class="justify-content-center w-100 type-lg"
         appearance="primary"
         :is-rounded="false"
-        data-testid="kong-auth-forgot-password-return-to-login-btn">
-        {{ loginLinkText }}
-      </KButton>
+        data-testid="kong-auth-forgot-password-return-to-login-btn"
+      >{{ loginLinkText }}</KButton>
     </div>
 
     <form
@@ -24,10 +24,13 @@
       class="forgot-password-form"
       @submit.prevent="submitForm"
       novalidate
-      data-testid="kong-auth-forgot-password-form">
-      <p v-if="instructionText" class="color-black-45" data-testid="kong-auth-forgot-password-instruction-text">
-        {{ instructionText }}
-      </p>
+      data-testid="kong-auth-forgot-password-form"
+    >
+      <p
+        v-if="instructionText"
+        class="color-black-45"
+        data-testid="kong-auth-forgot-password-instruction-text"
+      >{{ instructionText }}</p>
 
       <KLabel for="email">Email *</KLabel>
       <KInput
@@ -40,7 +43,8 @@
         placeholder="Email"
         required
         autofocus
-        data-testid="kong-auth-forgot-password-email" />
+        data-testid="kong-auth-forgot-password-email"
+      />
 
       <KButton
         type="submit"
@@ -48,8 +52,14 @@
         :is-rounded="false"
         class="justify-content-center w-100 type-lg"
         :disabled="btnDisabled"
-        data-testid="kong-auth-forgot-password-submit">
-        <KIcon v-if="currentState.matches('pending')" icon="spinner" view-box="0 0 16 16" class="pr-0 mr-2" />
+        data-testid="kong-auth-forgot-password-submit"
+      >
+        <KIcon
+          v-if="currentState.matches('pending')"
+          icon="spinner"
+          view-box="0 0 16 16"
+          class="pr-0 mr-2"
+        />
         {{ btnText }}
       </KButton>
     </form>
@@ -60,9 +70,8 @@
           @click.prevent="$emit('click-login-link')"
           class="color-blue-500"
           href="#"
-          data-testid="kong-auth-forgot-password-return-to-login-link">
-          {{ loginLinkText }}
-        </a>
+          data-testid="kong-auth-forgot-password-return-to-login-link"
+        >{{ loginLinkText }}</a>
       </p>
     </div>
   </div>
@@ -82,6 +91,13 @@ import KInput from '@kongponents/kinput'
 import KLabel from '@kongponents/klabel'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
+export const forgotPasswordEmits = {
+  'forgot-password-success': (payload: { email: string }): boolean => {
+    return !!payload?.email.trim()
+  },
+  'click-login-link': null,
+}
+
 export default defineComponent({
   name: 'ForgotPassword',
 
@@ -94,7 +110,8 @@ export default defineComponent({
     ErrorMessage,
   },
 
-  emits: ['forgot-password-success', 'click-login-link'],
+  // Define emits with validation, where necessary
+  emits: forgotPasswordEmits,
 
   setup(props, { emit }) {
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value

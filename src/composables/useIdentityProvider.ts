@@ -49,7 +49,7 @@ export default function useIdentityProvider(
     const urlParams: URLSearchParams = new URLSearchParams(window.location.search)
 
     // If not IdP login, or if logout in URL params (user came from logout), exit
-    if (!isIdpLogin.value || !!urlParams.get('logout')) {
+    if (!isIdpLogin.value || !!urlParams?.get('logout')) {
       return false
     }
 
@@ -131,8 +131,8 @@ export default function useIdentityProvider(
     }
 
     const urlParams: URLSearchParams = new URLSearchParams(window.location.search)
-    code.value = urlParams.get('code') || ''
-    state.value = urlParams.get('state') || ''
+    code.value = urlParams?.get('code') || ''
+    state.value = urlParams?.get('state') || ''
 
     // Check for url params
     if (!code.value || !state.value) {
