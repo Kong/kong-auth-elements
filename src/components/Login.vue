@@ -138,16 +138,20 @@ import KLabel from '@kongponents/klabel'
 import { KSkeleton } from '@kongponents/kskeleton'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
+export const loginEmits = {
+  'login-success': null,
+  'confirm-email-success': (payload: { email: string }): boolean => {
+    return !!payload?.email.trim()
+  },
+  'click-forgot-password-link': null,
+  'click-register-link': null,
+  'idp-is-loading': (payload: { isLoading: boolean }): boolean => {
+    return typeof payload?.isLoading === 'boolean'
+  },
+}
+
 export default defineComponent({
   name: 'Login',
-
-  emits: [
-    'login-success',
-    'confirm-email-success',
-    'click-forgot-password-link',
-    'click-register-link',
-    'idp-is-loading',
-  ],
 
   components: {
     KAlert,
@@ -158,6 +162,9 @@ export default defineComponent({
     KSkeleton,
     ErrorMessage,
   },
+
+  // Define emits with validation, where necessary
+  emits: loginEmits,
 
   setup(props, { emit }) {
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value

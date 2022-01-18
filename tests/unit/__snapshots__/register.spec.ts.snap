@@ -184,7 +184,7 @@ exports[`KongAuthRegister.ce.vue prevents submit and shows error if agree checkb
           >
             <input
               class="k-input"
-              data-testid="kong-auth-register-check-agreement"
+              data-testid="kong-auth-register-agree-checkbox"
               data-v-15027e06=""
               type="checkbox"
             />
@@ -424,7 +424,7 @@ exports[`KongAuthRegister.ce.vue prevents submit and shows error if email field 
           >
             <input
               class="k-input"
-              data-testid="kong-auth-register-check-agreement"
+              data-testid="kong-auth-register-agree-checkbox"
               data-v-15027e06=""
               type="checkbox"
             />
@@ -664,7 +664,7 @@ exports[`KongAuthRegister.ce.vue prevents submit and shows error if full name fi
           >
             <input
               class="k-input"
-              data-testid="kong-auth-register-check-agreement"
+              data-testid="kong-auth-register-agree-checkbox"
               data-v-15027e06=""
               type="checkbox"
             />
@@ -904,7 +904,7 @@ exports[`KongAuthRegister.ce.vue prevents submit and shows error if organization
           >
             <input
               class="k-input"
-              data-testid="kong-auth-register-check-agreement"
+              data-testid="kong-auth-register-agree-checkbox"
               data-v-15027e06=""
               type="checkbox"
             />
@@ -1138,7 +1138,7 @@ exports[`KongAuthRegister.ce.vue prevents submit and shows error if password fie
           >
             <input
               class="k-input"
-              data-testid="kong-auth-register-check-agreement"
+              data-testid="kong-auth-register-agree-checkbox"
               data-v-15027e06=""
               type="checkbox"
             />
@@ -1188,7 +1188,7 @@ exports[`KongAuthRegister.ce.vue prevents submit and shows error if password fie
 </div>
 `;
 
-exports[`KongAuthRegister.ce.vue renders a register form with default field and button elements 1`] = `
+exports[`KongAuthRegister.ce.vue renders a register form with default fields and button elements 1`] = `
 <div
   class="kong-auth-element"
 >
@@ -1331,7 +1331,7 @@ exports[`KongAuthRegister.ce.vue renders a register form with default field and 
           >
             <input
               class="k-input"
-              data-testid="kong-auth-register-check-agreement"
+              data-testid="kong-auth-register-agree-checkbox"
               data-v-15027e06=""
               type="checkbox"
             />
@@ -1524,7 +1524,7 @@ exports[`KongAuthRegister.ce.vue renders correctly and wraps all child elements 
           >
             <input
               class="k-input"
-              data-testid="kong-auth-register-check-agreement"
+              data-testid="kong-auth-register-agree-checkbox"
               data-v-15027e06=""
               type="checkbox"
             />
@@ -1722,7 +1722,7 @@ exports[`KongAuthRegister.ce.vue shows instruction text if instructionText prop 
           >
             <input
               class="k-input"
-              data-testid="kong-auth-register-check-agreement"
+              data-testid="kong-auth-register-agree-checkbox"
               data-v-15027e06=""
               type="checkbox"
             />

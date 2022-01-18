@@ -91,6 +91,13 @@ import KInput from '@kongponents/kinput'
 import KLabel from '@kongponents/klabel'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
+export const forgotPasswordEmits = {
+  'forgot-password-success': (payload: { email: string }): boolean => {
+    return !!payload?.email.trim()
+  },
+  'click-login-link': null,
+}
+
 export default defineComponent({
   name: 'ForgotPassword',
 
@@ -103,7 +110,8 @@ export default defineComponent({
     ErrorMessage,
   },
 
-  emits: ['forgot-password-success', 'click-login-link'],
+  // Define emits with validation, where necessary
+  emits: forgotPasswordEmits,
 
   setup(props, { emit }) {
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value

@@ -2,8 +2,8 @@
   <div class="kong-auth-element">
     <BaseCustomElement>
       <ForgotPassword
-        @click-login-link="(emitData) => $emit('click-login-link', emitData)"
         @forgot-password-success="(emitData) => $emit('forgot-password-success', emitData)"
+        @click-login-link="(emitData) => $emit('click-login-link', emitData)"
       />
     </BaseCustomElement>
   </div>
@@ -13,7 +13,7 @@
 import { defineComponent, provide, computed } from 'vue'
 import { helpText } from '@/utils'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
-import ForgotPassword from '@/components/ForgotPassword.vue'
+import ForgotPassword, { forgotPasswordEmits } from '@/components/ForgotPassword.vue'
 
 export default defineComponent({
   name: 'KongAuthForgotPassword',
@@ -29,7 +29,8 @@ export default defineComponent({
     successText: String,
   },
 
-  emits: ['forgot-password-success', 'click-login-link'],
+  // Import emits from child component with validation, where necessary
+  emits: forgotPasswordEmits,
 
   components: {
     BaseCustomElement,
