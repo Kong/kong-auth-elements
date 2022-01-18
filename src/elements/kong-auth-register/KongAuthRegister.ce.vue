@@ -27,7 +27,7 @@ export default defineComponent({
     Register,
   },
 
-  setup(props, { emit }) {
+  setup(props) {
     // Provide custom element props to child components
     provide(
       'instruction-text',
