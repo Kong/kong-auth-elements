@@ -29,7 +29,7 @@
     "@openapitools/openapi-generator-cli": "^2.4.25",
     "@vue/compat": "^3.2.27",
     "@xstate/vue": "^0.8.1",
-    "axios": "^0.24.0",
+    "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "vue": "^3.2.27",
     "xstate": "^4.26.1"
@@ -75,7 +75,7 @@
     "vue-tsc": "^0.29.8"
   },
   "peerDependencies": {
-    "axios": "^0.24.0"
+    "axios": "^0.25.0"
   },
   "files": [
     "dist/**/*.{md,js,map,d.ts}"
