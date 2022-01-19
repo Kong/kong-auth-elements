@@ -147,7 +147,7 @@ export default defineComponent({
     )
 
     const btnText = computed(() => {
-      return ['pending', 'success'].some(currentState.value.matches) ? 'Submitting' : 'Recover Password'
+      return ['pending', 'success'].some(currentState.value.matches) ? helpText.forgotPassword.submittingText : helpText.forgotPassword.submitText
     })
 
     const btnDisabled = computed(() => {

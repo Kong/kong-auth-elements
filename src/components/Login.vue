@@ -265,7 +265,7 @@ export default defineComponent({
     )
 
     const btnText = computed(() => {
-      return ['pending', 'success'].some(currentState.value.matches) ? 'Submitting' : 'Login'
+      return ['pending', 'success'].some(currentState.value.matches) ? helpText.login.submittingText : isIdpLogin.value ? helpText.login.loginTextSSO : helpText.login.loginText
     })
 
     const btnDisabled = computed(() => {

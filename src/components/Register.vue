@@ -214,7 +214,7 @@ export default defineComponent({
     })
 
     const btnText = computed((): string => {
-      return ['pending', 'success'].some(currentState.value.matches) ? 'Submitting' : 'Sign up for Free'
+      return ['pending', 'success'].some(currentState.value.matches) ? helpText.register.submittingText : helpText.register.submitText
     })
 
     const btnDisabled = computed((): boolean => {
