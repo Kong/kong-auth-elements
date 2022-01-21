@@ -15,7 +15,6 @@ module.exports = {
     '/node_modules/',
     './dist/',
     './dev/',
-    './demo/',
   ],
   setupFiles: ['<rootDir>/jest.init.ts'], // Run code on jest init
 }

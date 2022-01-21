@@ -48,14 +48,6 @@ _**Note**: This will not allow you to utilize Vue Dev Tools in the browser (cust
 yarn serve:elements
 ```
 
-### Compile and minify for demo
-
-Serve production versions of Custom Elements (referenced from the compiled `umd` file) within a static HTML page on a local server (hot-reload not available).
-
-```sh
-yarn demo
-```
-
 ### Compile and minify for production
 
 ```sh
