@@ -4,8 +4,8 @@ node_modules
 .tgz
 
 coverage
-/tests/component/videos/
-/tests/component/screenshots/
+/cypress/videos/
+/cypress/screenshots/
 
 # local env files
 .env.local
