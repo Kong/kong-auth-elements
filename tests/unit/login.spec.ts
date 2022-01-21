@@ -10,6 +10,7 @@ const testids = {
   password: 'kong-auth-login-password',
   submitBtn: 'kong-auth-login-submit',
   errorMessage: 'kong-auth-error-message',
+  instructionText: 'kong-auth-login-instruction-text',
   forgotPasswordLink: 'kong-auth-login-forgot-password-link',
   registerLink: 'kong-auth-login-register-link',
   registerHelpText: 'kong-auth-login-register-help-text',
@@ -49,6 +50,7 @@ describe('KongAuthLogin.ce.vue', () => {
     expect(findByTestId(testids.submitBtn).exists()).toBe(true)
     // Elements should not exist
     expect(findByTestId(testids.errorMessage).exists()).toBe(false)
+    expect(findByTestId(testids.instructionText).exists()).toBe(false)
     expect(findByTestId(testids.forgotPasswordLink).exists()).toBe(false)
     expect(findByTestId(testids.registerHelpText).exists()).toBe(false)
     expect(findByTestId(testids.registerLink).exists()).toBe(false)
@@ -80,6 +82,24 @@ describe('KongAuthLogin.ce.vue', () => {
 
     // Error should exist
     expect(findByTestId(testids.errorMessage).exists()).toBe(true)
+
+    // Ensure it matches the snapshot
+    expect(wrapper.element).toMatchSnapshot()
+  })
+
+  /* ==============================
+   * Instruction Text
+   * ============================== */
+  it('shows instruction text if instructionText prop is set', async () => {
+    const customText = 'This is custom instruction text'
+    const { wrapper, findByTestId } = await wrapperFactory(KongAuthLogin, {
+      props: {
+        instructionText: customText,
+      },
+    })
+
+    expect(findByTestId(testids.instructionText).exists()).toBe(true)
+    expect(findByTestId(testids.instructionText).text()).toEqual(customText)
 
     // Ensure it matches the snapshot
     expect(wrapper.element).toMatchSnapshot()
