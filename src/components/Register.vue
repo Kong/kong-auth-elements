@@ -179,7 +179,7 @@ export default defineComponent({
       checked_agreement: false,
     })
 
-    const accessCodeRequired = ref(false)
+    const accessCodeRequired = ref(false) // False by default so the backend can guard registration
     const error = ref<any>(null)
     const passwordError = ref<boolean>(false)
     const fieldsHaveError = ref(false)
@@ -214,7 +214,7 @@ export default defineComponent({
     })
 
     const btnText = computed((): string => {
-      return ['pending', 'success'].some(currentState.value.matches) ? 'Submitting' : 'Sign up for Free'
+      return ['pending', 'success'].some(currentState.value.matches) ? helpText.register.submittingText : helpText.register.submitText
     })
 
     const btnDisabled = computed((): boolean => {
@@ -295,8 +295,8 @@ export default defineComponent({
         const clientConfigResponse = await $api.clientConfig.clientConfig()
         accessCodeRequired.value = clientConfigResponse?.data?.requireRegistrationAccessCode === true
       } catch (_) {
-        // Set to true to guard Registration
-        accessCodeRequired.value = true
+        // Set to false in case of error and let the backend guard Registration
+        accessCodeRequired.value = false
       }
     }
 

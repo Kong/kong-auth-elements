@@ -190,6 +190,7 @@ The login element **must** reside at the `{window.location.origin}/login` path i
 
 | Prop                     | Type    | Default                  | Description                                                                                                       |
 | :----------------------- | :------ | :----------------------- | :---------------------------------------------------------------------------------------------------------------- |
+| `instructionText`        | String  | `''`                     | Set the instruction text to display above the inputs.                                                             |
 | `showForgotPasswordLink` | Boolean | `false`                  | Show a forgot password link under the password field.                                                             |
 | `forgotPasswordLinkText` | String  | `Forgot your password?`  | Set the text for the forgot password link.                                                                        |
 | `showRegisterLink`       | Boolean | `false`                  | Show a register link under the login button.                                                                      |
@@ -414,7 +415,7 @@ Any events that are emitted from custom elements follow the [CustomEvent() Web A
 <script lang="ts">
   setup () {
 
-    // Respond to a successful reset password request 
+    // Respond to a successful reset password request
     const onForgotPasswordSuccess = (successEvent: CustomEvent): void => {
       const eventData: Record<string, any> = Array.isArray(successEvent.detail) ? successEvent.detail[0] : successEvent.detail
 
