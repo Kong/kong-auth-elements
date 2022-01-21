@@ -9,8 +9,9 @@
     "serve:help": "echo \"\nRun 'yarn serve:components' to import components and use Vue Dev Tools.\n(may require additional imports in /dev/serve-components/ComponentsApp.vue)\n\\x1b[33m* This will not allow testing embedded styles and other Custom Element features. *\\x1b[0m\n\n-- OR --\n\nRun 'yarn serve:elements' to import HTML Custom Elements.\n(may require additional imports in /dev/serve-elements/index.ts)\n\\x1b[33m* This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported). *\\x1b[0m\n\n\"",
     "build": "vue-cli-service build --target lib --name kong-auth-elements --inline-vue ./src/index.ts && rm ./dist/demo.html && yarn build:types",
     "build:types": "vue-tsc --declaration --emitDeclarationOnly",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e",
+    "test": "cypress run-ct",
+    "test:open": "yarn cypress:open",
+    "cypress:open": "cypress open-ct",
     "lint": "vue-cli-service lint",
     "generate:api-client": "yarn openapi-generator-cli generate --skip-validate-spec -i src/services/kauth-api-client/v1/spec.json -g typescript-axios -o src/services/kauth-api-client/v1/api -p modelPropertyNaming=original",
     "semantic-release": "semantic-release"
@@ -34,8 +35,9 @@
     "xstate": "^4.26.1"
   },
   "devDependencies": {
+    "@cypress/vue": "^3.1.0",
+    "@cypress/webpack-dev-server": "^1.8.0",
     "@types/faker": "^5.5.9",
-    "@types/jest": "^24.0.19",
     "@types/node": "^16.11.21",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
@@ -44,7 +46,6 @@
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "3.2.27",
@@ -62,14 +63,12 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^7.0.0",
     "faker": "^5.5.3",
-    "jest-junit": "^13.0.0",
-    "jest-serializer-vue": "^2.0.2",
+    "html-webpack-plugin": "4",
     "node-sass": "^4.11.0",
     "postcss-custom-properties": "^10.0.0",
     "sass-loader": "^8.0.2",
     "semantic-release": "^18.0.1",
     "typescript": "~4.1.5",
-    "vue-jest": "^5.0.0-0",
     "vue-tsc": "^0.29.8"
   },
   "peerDependencies": {

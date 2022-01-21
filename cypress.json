@@ -1,4 +1,13 @@
 {
-  "pluginsFile": "tests/e2e/plugins/index.js",
+  "baseUrl": "http://localhost:3000",
+  "defaultCommandTimeout": 7000,
+  "requestTimeout": 10000,
+  "retries": 1,
+  "component": {
+    "componentFolder": "src",
+    "testFiles": "**/*.spec.ts",
+    "viewportWidth": 1366,
+    "viewportHeight": 1024
+  },
   "includeShadowDom": true
 }

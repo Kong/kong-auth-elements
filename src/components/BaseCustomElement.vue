@@ -1,6 +1,6 @@
 <template>
   <!-- This injected styles tag and its corresponding logic in the setup function must be present to import styles from child components. -->
-  <div v-if="injectedStyles" v-html="injectedStyles"></div>
+  <div data-testid="kong-auth-injected-styles" v-if="injectedStyles" v-html="injectedStyles"></div>
   <div class="base-custom-element">
     <slot name="default"></slot>
   </div>
