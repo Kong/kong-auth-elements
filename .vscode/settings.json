@@ -21,6 +21,6 @@
     "*.vue": "vue"
   },
   "[vue]": {
-    "editor.defaultFormatter": "johnsoncodehk.volar"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
 }

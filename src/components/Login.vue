@@ -43,6 +43,12 @@
       data-testid="kong-auth-login-form"
     >
       <div v-if="!isIdpLogin">
+        <p
+          v-if="instructionText"
+          class="color-black-45"
+          data-testid="kong-auth-login-instruction-text"
+        >{{ instructionText }}</p>
+
         <KLabel for="email">Email *</KLabel>
         <KInput
           id="email"
@@ -169,6 +175,7 @@ export default defineComponent({
   setup(props, { emit }) {
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
+    const instructionText: Ref<string> = inject('instruction-text', ref(''))
     const showForgotPasswordLink: Ref<boolean> = inject('show-forgot-password-link', ref(false))
     const forgotPasswordLinkText: Ref<string> = inject('forgot-password-link-text', ref(''))
     const showRegisterLink: Ref<boolean> = inject('show-register-link', ref(false))
@@ -258,7 +265,7 @@ export default defineComponent({
     )
 
     const btnText = computed(() => {
-      return ['pending', 'success'].some(currentState.value.matches) ? 'Submitting' : 'Login'
+      return ['pending', 'success'].some(currentState.value.matches) ? helpText.login.submittingText : isIdpLogin.value ? helpText.login.loginTextSSO : helpText.login.loginText
     })
 
     const btnDisabled = computed(() => {
@@ -421,6 +428,7 @@ export default defineComponent({
     })
 
     return {
+      instructionText,
       showForgotPasswordLink,
       forgotPasswordLinkText,
       showRegisterLink,

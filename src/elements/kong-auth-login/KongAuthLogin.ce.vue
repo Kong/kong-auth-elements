@@ -23,6 +23,7 @@ export default defineComponent({
 
   // Props are defined here for use on the custom element tag
   props: {
+    instructionText: String,
     showForgotPasswordLink: {
       type: Boolean,
       default: false,
@@ -53,6 +54,11 @@ export default defineComponent({
 
   setup(props) {
     // Provide custom element props to child components
+
+    provide(
+      'instruction-text',
+      computed((): string => (props.instructionText ? props.instructionText : '')),
+    )
 
     // Forgot password
     provide(
