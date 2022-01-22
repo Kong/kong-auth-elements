@@ -105,7 +105,7 @@ describe('KongAuthLogin.ce.vue', () => {
   /* ==============================
   * Forgot password link
   * ============================== */
-  it('shows a forgot password link if showForgotPasswordLink prop is true', async () => {
+  it('shows a forgot password link if showForgotPasswordLink prop is true', () => {
     mount(KongAuthLogin, {
       props: {
         showForgotPasswordLink: true,
@@ -136,6 +136,47 @@ describe('KongAuthLogin.ce.vue', () => {
 
     findByTestId(testids.forgotPasswordLink).click().then(() => {
       cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'click-forgot-password-link')
+    })
+  })
+
+  /* ==============================
+   * Register link
+   * ============================== */
+  it('shows a register link if showRegisterLink prop is true', () => {
+    mount(KongAuthLogin, {
+      props: {
+        showRegisterLink: true,
+      },
+    })
+
+    findByTestId(testids.registerHelpText).should('be.visible')
+    findByTestId(testids.registerLink).should('be.visible')
+  })
+
+  it('customizes the register link text if props are set', () => {
+    const customText = 'This is custom link text'
+    const customHelpText = 'This is custom help text'
+    mount(KongAuthLogin, {
+      props: {
+        showRegisterLink: true,
+        registerLinkHelpText: customHelpText,
+        registerLinkText: customText,
+      },
+    })
+
+    findByTestId(testids.registerHelpText).should('be.visible').should('have.text', customHelpText)
+    findByTestId(testids.registerLink).should('be.visible').should('have.text', customText)
+  })
+
+  it('emits an event when user clicks register link', () => {
+    mount(KongAuthLogin, {
+      props: {
+        showRegisterLink: true,
+      },
+    })
+
+    findByTestId(testids.registerLink).click().then(() => {
+      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'click-register-link')
     })
   })
 })
