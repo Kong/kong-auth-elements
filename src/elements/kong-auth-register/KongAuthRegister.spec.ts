@@ -3,6 +3,7 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthRegister from '@/elements/kong-auth-register/KongAuthRegister.ce.vue'
+import helpText from '@/utils/helpText'
 
 // Component data-testid strings
 const testids = {
@@ -18,6 +19,8 @@ const testids = {
   accessCode: 'kong-auth-register-access-code',
   injectedStyles: 'kong-auth-injected-styles',
 }
+
+const requiredFields = [testids.fullName, testids.organization, testids.email, testids.password, testids.agreeCheckbox]
 
 describe('KongAuthRegister.ce.vue', () => {
   // Required for all Custom Elements
@@ -55,94 +58,30 @@ describe('KongAuthRegister.ce.vue', () => {
     cy.getTestId(testids.accessCode).should('not.exist')
   })
 
-  it('prevents submit and shows error if full name field is empty', () => {
-    mount(KongAuthRegister)
+  // Loop through required fields and ensure form cannot be submitted if any are blank/unchecked
+  requiredFields.forEach((requiredField) => {
+    const requiredFieldName = requiredField.replace(/kong-auth-register-/gi, '')
 
-    // Error should not exist
-    cy.getTestId(testids.errorMessage).should('not.exist')
+    it(`prevents submit and shows error if ${requiredFieldName} field is ${requiredField === testids.agreeCheckbox ? 'unchecked' : 'blank'}`, () => {
+      mount(KongAuthRegister)
 
-    cy.getTestId(testids.organization).type('Test Org')
-    cy.getTestId(testids.email).type('user1@email.com')
-    cy.getTestId(testids.password).type('not-a-real-password')
-    cy.getTestId(testids.agreeCheckbox).check()
+      // Error should not exist
+      cy.getTestId(testids.errorMessage).should('not.exist')
 
-    // Submit
-    cy.getTestId(testids.form).submit()
+      requiredFields.filter(field => field !== requiredField).forEach(field => {
+        if (field === testids.agreeCheckbox) {
+          cy.getTestId(field).check()
+        } else {
+          cy.getTestId(field).type('This is fake field text')
+        }
+      })
 
-    // Error should exist
-    cy.getTestId(testids.errorMessage).should('be.visible')
-  })
+      // Submit
+      cy.getTestId(testids.form).submit()
 
-  it('prevents submit and shows error if organization field is empty', () => {
-    mount(KongAuthRegister)
-
-    // Error should not exist
-    cy.getTestId(testids.errorMessage).should('not.exist')
-
-    cy.getTestId(testids.fullName).type('Player One')
-    cy.getTestId(testids.email).type('user1@email.com')
-    cy.getTestId(testids.password).type('not-a-real-password')
-    cy.getTestId(testids.agreeCheckbox).check()
-
-    // Submit
-    cy.getTestId(testids.form).submit()
-
-    // Error should exist
-    cy.getTestId(testids.errorMessage).should('be.visible')
-  })
-
-  it('prevents submit and shows error if email field is empty', () => {
-    mount(KongAuthRegister)
-
-    // Error should not exist
-    cy.getTestId(testids.errorMessage).should('not.exist')
-
-    cy.getTestId(testids.fullName).type('Player One')
-    cy.getTestId(testids.organization).type('Test Org')
-    cy.getTestId(testids.password).type('not-a-real-password')
-    cy.getTestId(testids.agreeCheckbox).check()
-
-    // Submit
-    cy.getTestId(testids.form).submit()
-
-    // Error should exist
-    cy.getTestId(testids.errorMessage).should('be.visible')
-  })
-
-  it('prevents submit and shows error if password field is empty', () => {
-    mount(KongAuthRegister)
-
-    // Error should not exist
-    cy.getTestId(testids.errorMessage).should('not.exist')
-
-    cy.getTestId(testids.fullName).type('Player One')
-    cy.getTestId(testids.email).type('user1@email.com')
-    cy.getTestId(testids.organization).type('Test Org')
-    cy.getTestId(testids.agreeCheckbox).check()
-
-    // Submit
-    cy.getTestId(testids.form).submit()
-
-    // Error should exist
-    cy.getTestId(testids.errorMessage).should('be.visible')
-  })
-
-  it('prevents submit and shows error if agree checkbox is not checked', () => {
-    mount(KongAuthRegister)
-
-    // Error should not exist
-    cy.getTestId(testids.errorMessage).should('not.exist')
-
-    cy.getTestId(testids.fullName).type('Player One')
-    cy.getTestId(testids.email).type('user1@email.com')
-    cy.getTestId(testids.organization).type('Test Org')
-    cy.getTestId(testids.password).type('not-a-real-password')
-
-    // Submit
-    cy.getTestId(testids.form).submit()
-
-    // Error should exist
-    cy.getTestId(testids.errorMessage).should('be.visible')
+      // Error should exist
+      cy.getTestId(testids.errorMessage).should('be.visible').should('contain.text', helpText.general.missingInfo)
+    })
   })
 
   // TODO: Check for access code required
