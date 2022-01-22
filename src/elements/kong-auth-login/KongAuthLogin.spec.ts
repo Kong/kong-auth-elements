@@ -1,16 +1,6 @@
 import { mount } from '@cypress/vue'
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 
-/**
-   * @description Find an element based on the 'data-testid' attribute
-   * @param {string} selector Value of 'data-testid' attribute
-   * @return {*}  {HTMLElement}
-   */
-const findByTestId = (selector: string) => {
-  const dataSelector = `[data-testid='${selector}']`
-  return cy.get(dataSelector)
-}
-
 // Component data-testid strings
 const testids = {
   form: 'kong-auth-login-form',
@@ -35,57 +25,57 @@ describe('KongAuthLogin.ce.vue', () => {
     elementDiv.should('not.be.empty')
 
     // Should have BaseCustomElement as a child component
-    elementDiv.find('base-custom-element').should('not.be.empty')
+    elementDiv.find('.base-custom-element').should('not.be.empty')
 
     // Should have injected styles
-    findByTestId(testids.injectedStyles).should('not.be.empty')
+    cy.getTestId(testids.injectedStyles).should('not.be.empty')
   })
 
   it('renders a login form with email, password, and button elements', () => {
     mount(KongAuthLogin)
 
     // Form should exist
-    findByTestId(testids.form).should('be.visible')
-    findByTestId(testids.form).within(() => {
+    cy.getTestId(testids.form).should('be.visible')
+    cy.getTestId(testids.form).within(() => {
       // Elements should exist
-      findByTestId(testids.email).should('be.visible')
-      findByTestId(testids.password).should('be.visible')
-      findByTestId(testids.submitBtn).should('be.visible')
+      cy.getTestId(testids.email).should('be.visible')
+      cy.getTestId(testids.password).should('be.visible')
+      cy.getTestId(testids.submitBtn).should('be.visible')
     })
     // Elements should not exist
-    findByTestId(testids.errorMessage).should('not.exist')
-    findByTestId(testids.instructionText).should('not.exist')
-    findByTestId(testids.forgotPasswordLink).should('not.exist')
-    findByTestId(testids.registerHelpText).should('not.exist')
-    findByTestId(testids.registerLink).should('not.exist')
+    cy.getTestId(testids.errorMessage).should('not.exist')
+    cy.getTestId(testids.instructionText).should('not.exist')
+    cy.getTestId(testids.forgotPasswordLink).should('not.exist')
+    cy.getTestId(testids.registerHelpText).should('not.exist')
+    cy.getTestId(testids.registerLink).should('not.exist')
   })
 
   it('prevents submit and shows error if email field is empty', () => {
     mount(KongAuthLogin)
 
     // Error should not exist
-    findByTestId(testids.errorMessage).should('not.exist')
+    cy.getTestId(testids.errorMessage).should('not.exist')
 
     // Only type a password
-    findByTestId(testids.password).type('not-a-real-password')
-    findByTestId(testids.form).submit()
+    cy.getTestId(testids.password).type('not-a-real-password')
+    cy.getTestId(testids.form).submit()
 
     // Error should exist
-    findByTestId(testids.errorMessage).should('be.visible')
+    cy.getTestId(testids.errorMessage).should('be.visible')
   })
 
   it('prevents submit and shows error if password field is empty', () => {
     mount(KongAuthLogin)
 
     // Error should not exist
-    findByTestId(testids.errorMessage).should('not.exist')
+    cy.getTestId(testids.errorMessage).should('not.exist')
 
     // Only type an email
-    findByTestId(testids.email).type('user1@email.com')
-    findByTestId(testids.form).submit()
+    cy.getTestId(testids.email).type('user1@email.com')
+    cy.getTestId(testids.form).submit()
 
     // Error should exist
-    findByTestId(testids.errorMessage).should('be.visible')
+    cy.getTestId(testids.errorMessage).should('be.visible')
   })
 
   /* ==============================
@@ -99,7 +89,7 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
-    findByTestId(testids.instructionText).should('be.visible').should('have.text', customText)
+    cy.getTestId(testids.instructionText).should('be.visible').should('have.text', customText)
   })
 
   /* ==============================
@@ -112,7 +102,7 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
-    findByTestId(testids.forgotPasswordLink).should('be.visible')
+    cy.getTestId(testids.forgotPasswordLink).should('be.visible')
   })
 
   it('customizes the forgot password link text if props are set', () => {
@@ -124,7 +114,7 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
-    findByTestId(testids.forgotPasswordLink).should('be.visible').should('have.text', customText)
+    cy.getTestId(testids.forgotPasswordLink).should('be.visible').should('have.text', customText)
   })
 
   it('emits an event when user clicks forgot password link', () => {
@@ -134,7 +124,7 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
-    findByTestId(testids.forgotPasswordLink).click().then(() => {
+    cy.getTestId(testids.forgotPasswordLink).click().then(() => {
       cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'click-forgot-password-link')
     })
   })
@@ -149,8 +139,8 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
-    findByTestId(testids.registerHelpText).should('be.visible')
-    findByTestId(testids.registerLink).should('be.visible')
+    cy.getTestId(testids.registerHelpText).should('be.visible')
+    cy.getTestId(testids.registerLink).should('be.visible')
   })
 
   it('customizes the register link text if props are set', () => {
@@ -164,8 +154,8 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
-    findByTestId(testids.registerHelpText).should('be.visible').should('have.text', customHelpText)
-    findByTestId(testids.registerLink).should('be.visible').should('have.text', customText)
+    cy.getTestId(testids.registerHelpText).should('be.visible').should('have.text', customHelpText)
+    cy.getTestId(testids.registerLink).should('be.visible').should('have.text', customText)
   })
 
   it('emits an event when user clicks register link', () => {
@@ -175,7 +165,7 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
-    findByTestId(testids.registerLink).click().then(() => {
+    cy.getTestId(testids.registerLink).click().then(() => {
       cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'click-register-link')
     })
   })
