@@ -84,7 +84,9 @@ describe('KongAuthRegister.ce.vue', () => {
     })
   })
 
-  // TODO: Check for access code required
+  it('prevents submit and shows error if an access code is required and the user did not provide one')
+
+  it("emits a 'register-success' event with an payload: { email } on successful registration")
 
   /* ==============================
    * Instruction Text
