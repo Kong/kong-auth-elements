@@ -35,6 +35,6 @@ jobs:
       - name: Lint
         run: yarn lint
 
-      # Run unit tests
-      - name: Run unit tests
-        run: yarn run test:unit
+      # Run tests
+      - name: Run Cypress component tests
+        run: yarn test
