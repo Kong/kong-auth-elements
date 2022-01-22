@@ -40,13 +40,8 @@ module.exports = {
   overrides: [
     {
       files: [
-        'src/services/khcp-api-client/**/api/*.ts',
-        '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/**/*.spec.{j,t}s?(x)'
-      ],
-      env: {
-        jest: true
-      }
+        'src/services/khcp-api-client/**/api/*.ts'
+      ]
     }
   ]
 }

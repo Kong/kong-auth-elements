@@ -17,7 +17,7 @@ Is this PR ready to be reviewed?
 - Yes: great! be sure to have all these checked before asking for review
 -->
 
-- [ ] **Tests:** Includes any unit/e2e tests
+- [ ] **Tests:** Includes any new/updated component tests
 - [ ] **Docs:** updates [documentation](https://github.com/Kong/khcp/tree/master/packages/docs) as needed
 - [ ] **Commit format/atomicity:** the commits follow the guidelines [outlined here](https://github.com/Kong/kong-ee/blob/next/2.1.x.x/CONTRIBUTING.md#commit-atomicity)
 
