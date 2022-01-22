@@ -17,7 +17,7 @@ const testids = {
 
 describe('KongAuthForgotPassword.ce.vue', () => {
   // Required for all Custom Elements
-  it('has proper structure with required classes', () => {
+  it('has proper structure and required classes', () => {
     mount(KongAuthForgotPassword)
 
     // Should have .kong-auth-element as parent class
@@ -53,6 +53,7 @@ describe('KongAuthForgotPassword.ce.vue', () => {
     // Error should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
 
+    // Submit
     cy.getTestId(testids.form).submit()
 
     // Error should exist

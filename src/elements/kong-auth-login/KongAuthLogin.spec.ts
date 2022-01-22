@@ -20,7 +20,7 @@ const testids = {
 
 describe('KongAuthLogin.ce.vue', () => {
   // Required for all Custom Elements
-  it('has proper structure with required classes', () => {
+  it('has proper structure and required classes', () => {
     mount(KongAuthLogin)
 
     // Should have .kong-auth-element as parent class
@@ -61,6 +61,8 @@ describe('KongAuthLogin.ce.vue', () => {
 
     // Only type a password
     cy.getTestId(testids.password).type('not-a-real-password')
+
+    // Submit
     cy.getTestId(testids.form).submit()
 
     // Error should exist
@@ -75,6 +77,8 @@ describe('KongAuthLogin.ce.vue', () => {
 
     // Only type an email
     cy.getTestId(testids.email).type('user1@email.com')
+
+    // Submit
     cy.getTestId(testids.form).submit()
 
     // Error should exist

@@ -10,8 +10,8 @@
     "build": "vue-cli-service build --target lib --name kong-auth-elements --inline-vue ./src/index.ts && rm ./dist/demo.html && yarn build:types",
     "build:types": "vue-tsc --declaration --emitDeclarationOnly",
     "test": "cypress run-ct",
-    "test:open": "yarn cypress:open",
-    "cypress:open": "cypress open-ct",
+    "test:open": "cypress open-ct",
+    "cypress:open": "yarn test:open",
     "lint": "vue-cli-service lint",
     "generate:api-client": "yarn openapi-generator-cli generate --skip-validate-spec -i src/services/kauth-api-client/v1/spec.json -g typescript-axios -o src/services/kauth-api-client/v1/api -p modelPropertyNaming=original",
     "semantic-release": "semantic-release"
