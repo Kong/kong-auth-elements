@@ -9,5 +9,10 @@
     "viewportWidth": 768,
     "viewportHeight": 1024
   },
-  "includeShadowDom": true
+  "includeShadowDom": true,
+  "pluginsFile": "cypress/plugins/index.js",
+  "fixturesFolder": "cypress/fixtures",
+  "screenshotsFolder": "cypress/screenshots",
+  "videosFolder": "cypress/videos",
+  "supportFile": "cypress/support/index.ts"
 }

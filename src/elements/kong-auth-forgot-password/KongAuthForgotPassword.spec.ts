@@ -1,3 +1,6 @@
+// Import types for custom commands
+/// <reference types="../../cypress/support" />
+
 import { mount } from '@cypress/vue'
 import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
 

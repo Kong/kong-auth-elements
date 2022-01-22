@@ -7,7 +7,7 @@
     ],
     "types": [
       "cypress",
-      "**/*.d.ts"
+      "./support"
     ]
   },
   "include": [
