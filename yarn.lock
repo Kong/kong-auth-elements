@@ -1087,7 +1087,7 @@
   dependencies:
     "@kongponents/styles" "^6.7.11"
 
-"@kongponents/kicon@^6.7.10", "@kongponents/kicon@^6.7.11", "@kongponents/kicon@^6.7.7":
+"@kongponents/kicon@^6.7.11", "@kongponents/kicon@^6.7.7":
   version "6.7.11"
   resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.7.11.tgz#abc6bb3cec2ef75204527aa48ec1a721daf40114"
   integrity sha512-IjYVsDOVSh+H35HCzs4eE+JTTHNrG4xp6JTLbbFkkC2qNPY39EKfDgtxeDF2BHAzF6TWs1IpDbRGpoRSr6G9hA==
@@ -1127,13 +1127,13 @@
     popper.js "^1.15.0"
     vue-uuid "^2.0.2"
 
-"@kongponents/kskeleton@^6.7.10":
-  version "6.7.10"
-  resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.7.10.tgz#6354a21cc488e8c02ddb196babd1d3b624464bbf"
-  integrity sha512-2J8UCW0d4Mnw4Gq+skmOSmEUSbQx39K8yA44AoVMwuggTlognpSod6lV4sBvvrQ3xcRwuGnMZks+yc9ZYmXv1g==
+"@kongponents/kskeleton@^6.7.11":
+  version "6.7.11"
+  resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.7.11.tgz#dd791a2199e3a265cf04c59a68a18476f811df42"
+  integrity sha512-vjEPkUZJclBqu8Ax7qRCidwsg5+0JD1sCdFjDhIZAAlhRsGsEyvZ33ovsTs+QHRf/TG9b06VLM2VIjTTjkt71w==
   dependencies:
-    "@kongponents/kicon" "^6.7.10"
-    "@kongponents/styles" "^6.7.10"
+    "@kongponents/kicon" "^6.7.11"
+    "@kongponents/styles" "^6.7.11"
 
 "@kongponents/styles@^6.7.10", "@kongponents/styles@^6.7.11", "@kongponents/styles@^6.7.7":
   version "6.7.11"
