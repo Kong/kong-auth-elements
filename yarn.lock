@@ -1080,12 +1080,12 @@
     "@kongponents/kicon" "^6.7.11"
     "@kongponents/styles" "^6.7.11"
 
-"@kongponents/kcheckbox@^6.7.10":
-  version "6.7.10"
-  resolved "https://registry.yarnpkg.com/@kongponents/kcheckbox/-/kcheckbox-6.7.10.tgz#8676aa6bde8ec33c9b9e7ba715210ebcd38adea5"
-  integrity sha512-0y/dqXHSo1giRgWX2tW6kXZ6emzO07Xe0nPWd6uX+fcDVNIihnGqQhdu4vPrssyt1qLpLeDHGuXc7cBjlii2tQ==
+"@kongponents/kcheckbox@^6.7.11":
+  version "6.7.11"
+  resolved "https://registry.yarnpkg.com/@kongponents/kcheckbox/-/kcheckbox-6.7.11.tgz#b031148a8effe37587d730b78f5d37e13db3af6f"
+  integrity sha512-/tCuvavDqaDwL8ULQuNmF6qNP/UmLXYh7EyXhZzMCi/bLbR6f99vCbEvJ+Xc0WF2FNeRNHTtTDpnhzANq1XFIA==
   dependencies:
-    "@kongponents/styles" "^6.7.10"
+    "@kongponents/styles" "^6.7.11"
 
 "@kongponents/kicon@^6.7.10", "@kongponents/kicon@^6.7.11", "@kongponents/kicon@^6.7.7":
   version "6.7.11"
