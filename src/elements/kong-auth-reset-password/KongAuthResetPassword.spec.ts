@@ -40,7 +40,7 @@ describe('KongAuthResetPassword.ce.vue', () => {
       // Elements should exist
       cy.getTestId(testids.password).should('be.visible')
       cy.getTestId(testids.confirmPassword).should('be.visible')
-      cy.getTestId(testids.submitBtn).should('be.visible')
+      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
     })
     // Elements should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
@@ -91,6 +91,29 @@ describe('KongAuthResetPassword.ce.vue', () => {
 
     // Error should exist
     cy.getTestId(testids.errorMessage).should('be.visible')
+  })
+
+  it("emits a 'reset-password-success' event with payload on successful password reset", () => {
+    mount(KongAuthResetPassword)
+
+    cy.getTestId(testids.password).type('TestPassword1!')
+    cy.getTestId(testids.confirmPassword).type('TestPassword1!')
+    cy.getTestId(testids.form).submit()
+
+    // Stub 200 response
+    cy.intercept('PATCH', '**/password-resets', {
+      statusCode: 200,
+      body: {
+        email: 'user1@email.com',
+      },
+    }).as('password-reset')
+
+    cy.wait('@password-reset').then(() => {
+      // Check for emitted event
+      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'reset-password-success').then(() => {
+        cy.wrap(Cypress.vueWrapper.emitted('reset-password-success')[0][0]).should('have.property', 'email')
+      })
+    })
   })
 
   /* ==============================

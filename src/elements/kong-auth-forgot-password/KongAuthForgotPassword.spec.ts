@@ -3,6 +3,7 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
+import helpText from '@/utils/helpText'
 
 // Component data-testid strings
 const testids = {
@@ -10,6 +11,7 @@ const testids = {
   email: 'kong-auth-forgot-password-email',
   submitBtn: 'kong-auth-forgot-password-submit',
   errorMessage: 'kong-auth-error-message',
+  successMessage: 'kong-auth-forgot-password-success-message',
   instructionText: 'kong-auth-forgot-password-instruction-text',
   loginLink: 'kong-auth-forgot-password-return-to-login-link',
   injectedStyles: 'kong-auth-injected-styles',
@@ -39,10 +41,11 @@ describe('KongAuthForgotPassword.ce.vue', () => {
     cy.getTestId(testids.form).within(() => {
       // Elements should exist
       cy.getTestId(testids.email).should('be.visible')
-      cy.getTestId(testids.submitBtn).should('be.visible')
+      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
     })
     // Elements should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
+    cy.getTestId(testids.successMessage).should('not.exist')
     cy.getTestId(testids.instructionText).should('not.exist')
     cy.getTestId(testids.loginLink).should('not.exist')
   })
@@ -58,6 +61,40 @@ describe('KongAuthForgotPassword.ce.vue', () => {
 
     // Error should exist
     cy.getTestId(testids.errorMessage).should('be.visible')
+  })
+
+  it("emits a 'click-login-link' event when user clicks login link", () => {
+    mount(KongAuthForgotPassword, {
+      props: {
+        showLoginLink: true,
+      },
+    })
+
+    cy.getTestId(testids.loginLink).click().then(() => {
+      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'click-login-link')
+    })
+  })
+
+  it("shows success message and emits a 'forgot-password-success' event with payload on successful password reset request", () => {
+    mount(KongAuthForgotPassword)
+
+    cy.getTestId(testids.email).type('user1@email.com')
+    cy.getTestId(testids.form).submit()
+
+    // Stub 200 response
+    cy.intercept('POST', '**/password-resets', {
+      statusCode: 200,
+    }).as('password-reset-request')
+
+    cy.wait('@password-reset-request').then(() => {
+      // Check for emitted event
+      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'forgot-password-success').then(() => {
+        cy.wrap(Cypress.vueWrapper.emitted('forgot-password-success')[0][0]).should('have.property', 'email')
+      })
+
+      // Success messsage should exist
+      cy.getTestId(testids.successMessage).should('be.visible').should('contain.text', helpText.forgotPassword.success)
+    })
   })
 
   /* ==============================
@@ -97,17 +134,5 @@ describe('KongAuthForgotPassword.ce.vue', () => {
     })
 
     cy.getTestId(testids.loginLink).should('be.visible').should('have.text', customText)
-  })
-
-  it('emits an event when user clicks login link', () => {
-    mount(KongAuthForgotPassword, {
-      props: {
-        showLoginLink: true,
-      },
-    })
-
-    cy.getTestId(testids.loginLink).click().then(() => {
-      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'click-login-link')
-    })
   })
 })
