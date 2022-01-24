@@ -1,4 +1,4 @@
-import { onMounted, ref, Ref, watch } from 'vue'
+import { onMounted, ref, Ref, watch, computed } from 'vue'
 
 interface IdentityProviderComposable {
   isIdpLogin: Ref<boolean>
@@ -26,7 +26,8 @@ export default function useIdentityProvider(
   const organizationLoginPath = ref<string>('')
   const code = ref<string>('')
   const state = ref<string>('')
-  const apiVersion = ref('v1')
+  // const apiVersion = ref('v1')
+  const apiVersion = computed((): string => process.env.VUE_APP_KAUTH_API_VERSION || 'v1')
 
   /**
    * Returns true if user is on /login/{org-id} route in container application with valid org-id in path, and no logout=true in query string.
