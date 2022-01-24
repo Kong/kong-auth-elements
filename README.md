@@ -77,6 +77,7 @@ yarn link "@kong/kong-auth-elements"
 3. Custom elements must utilize the `<BaseCustomElement />` component as the first child of the `<div class="kong-auth-element">` element which will wrap any other structure/components (this enables style injection for child components).
 4. Custom elements must be added to the following path `/src/elements/{kebab-case-element-name}/{PascalCaseElementName}.ce.vue`
 5. Custom elements must have an export function added in the `/src/elements/index.ts` file that exports the registration function for the element. Note the proper names/paths in the file.
+6. The registration function (created in Step 5) must be imported and called in `/src/index.ts` (as well as in `/dev/serve-elements/index.ts` for testing).
 6. Custom element templates (the contents of the `{PascalCaseElementName}.ce.vue` file) must utilize the template shown below:
 
     <details>
