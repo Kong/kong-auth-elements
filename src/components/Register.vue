@@ -303,8 +303,6 @@ export default defineComponent({
     onMounted(async () => {
       await checkForAccessCodeRequirement()
 
-      console.log('component log', window.location.search)
-
       const urlParams: URLSearchParams = new URLSearchParams(window.location.search)
 
       formData.emailToken = urlParams?.get('token') || ''
