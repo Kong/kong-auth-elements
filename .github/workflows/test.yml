@@ -28,13 +28,31 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-        # Only to make sure this doesn't fail
+      # Only to make sure this doesn't fail
       - name: Generate API Client
         run: yarn generate:api-client
 
       - name: Lint
         run: yarn lint
 
-      # Run tests
       - name: Run Cypress component tests
-        run: yarn test
+        uses: cypress-io/github-action@v2
+        with:
+          install: false
+          build: yarn build
+          command: yarn test
+          browser: chrome
+
+      - name: Upload Cypress Screenshots
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress_screenshots
+          path: cypress/screenshots/
+
+      - name: Upload Cypress Videos
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress_videos
+          path: cypress/videos/
