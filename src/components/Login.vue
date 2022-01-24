@@ -297,8 +297,6 @@ export default defineComponent({
           token,
         })
 
-        console.log('emailVerification', response.data)
-
         send('RESOLVE')
 
         setUserStatusCookie()
