@@ -84,9 +84,48 @@ describe('KongAuthRegister.ce.vue', () => {
     })
   })
 
+  it('requires an access code if set by the client config API endpoint', () => {
+    // mount(KongAuthRegister)
+
+    // cy.intercept('GET', '**/client-config', {
+    //   body: {
+    //     requireRegistrationAccessCode: true,
+    //   },
+    // }).as('client-config')
+
+    // cy.wait('@client-config')
+  })
+
   it('prevents submit and shows error if an access code is required and the user did not provide one')
 
-  it("emits a 'register-success' event with an payload: { email } on successful registration")
+  it("emits a 'register-success' event with a payload on successful registration", () => {
+    mount(KongAuthRegister)
+
+    cy.intercept('POST', '**/register', {
+      body: {
+        organizationID: '187e2b65-ec69-421c-a7ba-3e946c4e5077',
+      },
+    }).as('register-request')
+
+    cy.getTestId(testids.fullName).type('Player One')
+    cy.getTestId(testids.organization).type('Test Organization')
+    cy.getTestId(testids.email).type('user1@email.com')
+    cy.getTestId(testids.password).type('TestPassword1!')
+    cy.getTestId(testids.agreeCheckbox).check()
+    cy.getTestId(testids.form).submit()
+
+    cy.wait('@register-request').its('response.body').should('have.property', 'organizationID').then(() => {
+      // Check for emitted event
+      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'register-success').then(() => {
+        cy.wrap(Cypress.vueWrapper.emitted('register-success')[0][0]).should('have.property', 'email')
+        cy.wrap(Cypress.vueWrapper.emitted('register-success')[0][0]).should('have.property', 'fromInvite')
+      })
+    })
+  })
+
+  it('prepopulates form fields when user came from an invitation')
+
+  it('accepts an invitation instead of registering when coming from an invite')
 
   /* ==============================
    * Instruction Text
