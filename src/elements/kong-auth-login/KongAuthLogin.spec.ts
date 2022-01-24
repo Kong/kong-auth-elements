@@ -43,7 +43,7 @@ describe('KongAuthLogin.ce.vue', () => {
       // Elements should exist
       cy.getTestId(testids.email).should('be.visible')
       cy.getTestId(testids.password).should('be.visible')
-      cy.getTestId(testids.submitBtn).should('be.visible')
+      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
     })
     // Elements should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
@@ -83,6 +83,23 @@ describe('KongAuthLogin.ce.vue', () => {
 
     // Error should exist
     cy.getTestId(testids.errorMessage).should('be.visible')
+  })
+
+  it.only("emits a 'login-success' event on successful login", () => {
+    mount(KongAuthLogin)
+
+    cy.intercept('POST', '**/authenticate', {
+      statusCode: 200,
+    }).as('login-request')
+
+    cy.getTestId(testids.email).type('user1@email.com')
+    cy.getTestId(testids.password).type('TestPassword1!')
+    cy.getTestId(testids.form).submit()
+
+    cy.wait('@login-request').then(() => {
+      // Check for emitted event
+      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'login-success')
+    })
   })
 
   /* ==============================

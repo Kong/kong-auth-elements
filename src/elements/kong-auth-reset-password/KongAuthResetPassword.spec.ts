@@ -40,7 +40,7 @@ describe('KongAuthResetPassword.ce.vue', () => {
       // Elements should exist
       cy.getTestId(testids.password).should('be.visible')
       cy.getTestId(testids.confirmPassword).should('be.visible')
-      cy.getTestId(testids.submitBtn).should('be.visible')
+      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
     })
     // Elements should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')

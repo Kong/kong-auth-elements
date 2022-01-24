@@ -4,6 +4,7 @@
 import { mount } from '@cypress/vue'
 import KongAuthRegister from '@/elements/kong-auth-register/KongAuthRegister.ce.vue'
 import helpText from '@/utils/helpText'
+import { onBeforeMount } from 'vue'
 
 // Component data-testid strings
 const testids = {
@@ -50,7 +51,7 @@ describe('KongAuthRegister.ce.vue', () => {
       cy.getTestId(testids.email).should('be.visible')
       cy.getTestId(testids.password).should('be.visible')
       cy.getTestId(testids.agreeCheckbox).should('be.visible')
-      cy.getTestId(testids.submitBtn).should('be.visible')
+      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
     })
     // Elements should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
@@ -84,17 +85,7 @@ describe('KongAuthRegister.ce.vue', () => {
     })
   })
 
-  it('requires an access code if set by the client config API endpoint', () => {
-    // mount(KongAuthRegister)
-
-    // cy.intercept('GET', '**/client-config', {
-    //   body: {
-    //     requireRegistrationAccessCode: true,
-    //   },
-    // }).as('client-config')
-
-    // cy.wait('@client-config')
-  })
+  it('requires an access code if set by the client config API endpoint')
 
   it('prevents submit and shows error if an access code is required and the user did not provide one')
 
@@ -122,10 +113,6 @@ describe('KongAuthRegister.ce.vue', () => {
       })
     })
   })
-
-  it('prepopulates form fields when user came from an invitation')
-
-  it('accepts an invitation instead of registering when coming from an invite')
 
   /* ==============================
    * Instruction Text

@@ -41,7 +41,7 @@ describe('KongAuthForgotPassword.ce.vue', () => {
     cy.getTestId(testids.form).within(() => {
       // Elements should exist
       cy.getTestId(testids.email).should('be.visible')
-      cy.getTestId(testids.submitBtn).should('be.visible')
+      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
     })
     // Elements should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
