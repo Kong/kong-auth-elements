@@ -40,7 +40,6 @@ jobs:
         with:
           install: false
           command: yarn test
-          browser: chrome
 
       - name: Upload Cypress screenshots (on failure)
         uses: actions/upload-artifact@v2
