@@ -1,8 +1,5 @@
 // Elements
-import { registerKongAuthLogin } from '@/elements/kong-auth-login'
-import { registerKongAuthForgotPassword } from '@/elements/kong-auth-forgot-password'
-import { registerKongAuthResetPassword } from '@/elements/kong-auth-reset-password'
-import { registerKongAuthRegister } from '@/elements/kong-auth-register'
+import { registerKongAuthForgotPassword, registerKongAuthLogin, registerKongAuthRegister, registerKongAuthResetPassword } from '@/elements'
 // Import API - Do not use '@' alias in path here so that imports within a consuming project resolve properly.
 import KongAuthApi from './services/kauth-api-client/v1/KongAuthApi'
 
