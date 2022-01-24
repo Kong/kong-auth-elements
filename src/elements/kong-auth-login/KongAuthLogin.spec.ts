@@ -85,7 +85,7 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.errorMessage).should('be.visible')
   })
 
-  it.only("emits a 'login-success' event on successful login", () => {
+  it("emits a 'login-success' event on successful login", () => {
     mount(KongAuthLogin)
 
     cy.intercept('POST', '**/authenticate', {
