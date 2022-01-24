@@ -4,7 +4,6 @@
 import { mount } from '@cypress/vue'
 import KongAuthRegister from '@/elements/kong-auth-register/KongAuthRegister.ce.vue'
 import helpText from '@/utils/helpText'
-import { onBeforeMount } from 'vue'
 
 // Component data-testid strings
 const testids = {
