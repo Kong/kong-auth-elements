@@ -43,14 +43,14 @@ jobs:
           command: yarn test
           browser: chrome
 
-      - name: Upload Cypress Screenshots
+      - name: Upload Cypress screenshots (on failure)
         uses: actions/upload-artifact@v2
         if: failure()
         with:
           name: cypress_screenshots
           path: cypress/screenshots/
 
-      - name: Upload Cypress Videos
+      - name: Upload Cypress videos (always)
         uses: actions/upload-artifact@v2
         if: always()
         with:
