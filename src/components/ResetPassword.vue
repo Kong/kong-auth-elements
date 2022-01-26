@@ -74,7 +74,7 @@
 import { defineComponent, ref, reactive, toRefs, Ref, inject, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
-import { helpText } from '@/utils'
+import { helpText, win } from '@/utils'
 import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
 import { PasswordresetsResetResponse } from '@/services/kauth-api-client/v1/api'
 import { AxiosResponse } from 'axios'
@@ -224,7 +224,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      const urlParams: URLSearchParams = new URLSearchParams(window.location.search)
+      const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
 
       formData.email = urlParams?.get('email') || ''
       formData.passwordToken = urlParams?.get('token') || ''
