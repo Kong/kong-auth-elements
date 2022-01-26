@@ -76,6 +76,8 @@ describe('KongAuthRegister.ce.vue', () => {
         }
       })
 
+      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+
       // Submit
       cy.getTestId(testids.form).submit()
 
@@ -89,13 +91,13 @@ describe('KongAuthRegister.ce.vue', () => {
   it('prevents submit and shows error if an access code is required and the user did not provide one')
 
   it("emits a 'register-success' event with a payload on successful registration", () => {
-    mount(KongAuthRegister)
-
     cy.intercept('POST', '**/register', {
       body: {
         organizationID: '187e2b65-ec69-421c-a7ba-3e946c4e5077',
       },
     }).as('register-request')
+
+    mount(KongAuthRegister)
 
     cy.getTestId(testids.fullName).type('Player One')
     cy.getTestId(testids.organization).type('Test Organization')
@@ -104,11 +106,14 @@ describe('KongAuthRegister.ce.vue', () => {
     cy.getTestId(testids.agreeCheckbox).check()
     cy.getTestId(testids.form).submit()
 
+    const eventName = 'register-success'
+
     cy.wait('@register-request').its('response.body').should('have.property', 'organizationID').then(() => {
       // Check for emitted event
-      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'register-success').then(() => {
-        cy.wrap(Cypress.vueWrapper.emitted('register-success')[0][0]).should('have.property', 'email')
-        cy.wrap(Cypress.vueWrapper.emitted('register-success')[0][0]).should('have.property', 'fromInvite')
+      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
+        // Verify emit payload
+        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
+        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'fromInvite')
       })
     })
   })

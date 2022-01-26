@@ -3,6 +3,7 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
+import { helpText, win } from '@/utils'
 
 // Component data-testid strings
 const testids = {
@@ -16,7 +17,14 @@ const testids = {
   registerLink: 'kong-auth-login-register-link',
   registerHelpText: 'kong-auth-login-register-help-text',
   injectedStyles: 'kong-auth-injected-styles',
+  passwordResetMessage: 'kong-auth-login-password-reset-message',
+  confirmedEmailMessage: 'kong-auth-login-confirmed-email-message',
+  registerSuccessMessage: 'kong-auth-login-register-success-message',
+  gruceLoader: 'kong-auth-login-gruce-loader',
 }
+
+const userEmail = 'user1@email.com'
+const userPassword = 'TestPassword1!'
 
 describe('KongAuthLogin.ce.vue', () => {
   // Required for all Custom Elements
@@ -51,6 +59,10 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.forgotPasswordLink).should('not.exist')
     cy.getTestId(testids.registerHelpText).should('not.exist')
     cy.getTestId(testids.registerLink).should('not.exist')
+    cy.getTestId(testids.passwordResetMessage).should('not.exist')
+    cy.getTestId(testids.confirmedEmailMessage).should('not.exist')
+    cy.getTestId(testids.registerSuccessMessage).should('not.exist')
+    cy.getTestId(testids.gruceLoader).should('not.exist')
   })
 
   it('prevents submit and shows error if email field is empty', () => {
@@ -60,7 +72,9 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.errorMessage).should('not.exist')
 
     // Only type a password
-    cy.getTestId(testids.password).type('not-a-real-password')
+    cy.getTestId(testids.password).type(userPassword)
+
+    cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
 
     // Submit
     cy.getTestId(testids.form).submit()
@@ -76,7 +90,9 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.errorMessage).should('not.exist')
 
     // Only type an email
-    cy.getTestId(testids.email).type('user1@email.com')
+    cy.getTestId(testids.email).type(userEmail)
+
+    cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
 
     // Submit
     cy.getTestId(testids.form).submit()
@@ -86,19 +102,97 @@ describe('KongAuthLogin.ce.vue', () => {
   })
 
   it("emits a 'login-success' event on successful login", () => {
-    mount(KongAuthLogin)
-
     cy.intercept('POST', '**/authenticate', {
       statusCode: 200,
     }).as('login-request')
 
-    cy.getTestId(testids.email).type('user1@email.com')
-    cy.getTestId(testids.password).type('TestPassword1!')
+    mount(KongAuthLogin)
+
+    cy.getTestId(testids.email).type(userEmail)
+    cy.getTestId(testids.password).type(userPassword)
     cy.getTestId(testids.form).submit()
 
     cy.wait('@login-request').then(() => {
       // Check for emitted event
       cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'login-success')
+    })
+  })
+
+  describe('Respond to URL Parameters', () => {
+    it('pre-populates the email input from search params', () => {
+    // Stub search params
+      cy.stub(win, 'getLocationSearch').returns(`?email=${encodeURIComponent(userEmail)}`)
+
+      mount(KongAuthLogin)
+
+      // Email input should be pre-populated
+      cy.getTestId(testids.email).should('have.value', userEmail)
+    })
+
+    it("should verify email and emit 'confirm-email-success' event if query params include 'token'", () => {
+    // Stub search params
+      cy.stub(win, 'getLocationSearch').returns('?token=12345')
+
+      cy.intercept('PATCH', '**/email-verifications', {
+        statusCode: 200,
+        body: {
+          email: userEmail,
+        },
+      }).as('email-verification-request')
+
+      mount(KongAuthLogin)
+
+      const eventName = 'confirm-email-success'
+
+      cy.wait('@email-verification-request').then(() => {
+        cy.getTestId(testids.confirmedEmailMessage).should('be.visible').should('contain.text', helpText.login.confirmedEmailSuccess)
+        // Check for emitted event
+        cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
+        // Verify emit payload
+          cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
+        })
+      })
+    })
+
+    it("should show password reset message if query params include 'passwordReset'", () => {
+    // Stub search params
+      cy.stub(win, 'getLocationSearch').returns('?passwordReset=true')
+
+      mount(KongAuthLogin)
+
+      cy.getTestId(testids.passwordResetMessage).should('be.visible').should('contain.text', helpText.login.passwordResetSuccess)
+    })
+
+    it("should show register success message if query params include 'registered'", () => {
+    // Stub search params
+      cy.stub(win, 'getLocationSearch').returns('?registered=true')
+
+      mount(KongAuthLogin)
+
+      cy.getTestId(testids.registerSuccessMessage).should('be.visible').should('contain.text', helpText.login.registerSuccess)
+    })
+  })
+
+  /* ==============================
+   * IdP Login Flow
+   * ============================== */
+  describe('IdP Login', () => {
+    it.only("should initiate IdP login if props are set and URL is '/login/{login-path}'", () => {
+      const loginPath = 'test-login-path'
+      const redirectPath = `/authenticate/${loginPath}?returnTo=${encodeURIComponent(win.getLocationOrigin())}`
+      // Stub URL path
+      cy.stub(win, 'getLocationPathname').returns(`/login/${loginPath}`)
+      cy.stub(win, 'setLocationHref').as('set-location').returns(redirectPath)
+
+      mount(KongAuthLogin, {
+        props: {
+          idpLoginEnabled: true,
+          idpLoginReturnTo: win.getLocationOrigin(),
+        },
+      })
+
+      cy.get('@set-location').should('have.been.calledOnce')
+      cy.getTestId(testids.gruceLoader).should('exist').find('.fullscreen-loading-container').should('be.visible')
     })
   })
 
