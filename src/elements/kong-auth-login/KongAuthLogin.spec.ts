@@ -177,7 +177,7 @@ describe('KongAuthLogin.ce.vue', () => {
    * IdP Login Flow
    * ============================== */
   describe('IdP Login', () => {
-    it.only("should initiate IdP login if props are set and URL is '/login/{login-path}'", () => {
+    it("should initiate IdP login if props are set and URL is '/login/{login-path}'", () => {
       const loginPath = 'test-login-path'
       const redirectPath = `/authenticate/${loginPath}?returnTo=${encodeURIComponent(win.getLocationOrigin())}`
       // Stub URL path
