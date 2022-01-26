@@ -133,7 +133,7 @@ import { createMachine } from 'xstate'
 import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
 import { AuthenticateAuthenticateRequest, EmailverificationsVerifyResponse } from '@/services/kauth-api-client/v1/api'
 import { AxiosResponse } from 'axios'
-import { helpText } from '@/utils'
+import { win, helpText } from '@/utils'
 import useIdentityProvider from '@/composables/useIdentityProvider'
 // Components
 import KAlert from '@kongponents/kalert'
@@ -397,7 +397,8 @@ export default defineComponent({
 
     onMounted(async () => {
       // Get URL params
-      const urlParams = new URLSearchParams(window.location.search)
+      const searchParams = win.getLocationSearch()
+      const urlParams = new URLSearchParams(searchParams)
 
       // If token in URL params
       const token = urlParams?.get('token')

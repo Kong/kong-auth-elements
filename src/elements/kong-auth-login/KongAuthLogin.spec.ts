@@ -3,6 +3,7 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
+import { win } from '@/utils'
 
 // Component data-testid strings
 const testids = {
@@ -17,6 +18,9 @@ const testids = {
   registerHelpText: 'kong-auth-login-register-help-text',
   injectedStyles: 'kong-auth-injected-styles',
 }
+
+const userEmail = 'user1@email.com'
+const userPassword = 'TestPassword1!'
 
 describe('KongAuthLogin.ce.vue', () => {
   // Required for all Custom Elements
@@ -76,7 +80,7 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.errorMessage).should('not.exist')
 
     // Only type an email
-    cy.getTestId(testids.email).type('user1@email.com')
+    cy.getTestId(testids.email).type(userEmail)
 
     // Submit
     cy.getTestId(testids.form).submit()
@@ -92,8 +96,8 @@ describe('KongAuthLogin.ce.vue', () => {
       statusCode: 200,
     }).as('login-request')
 
-    cy.getTestId(testids.email).type('user1@email.com')
-    cy.getTestId(testids.password).type('TestPassword1!')
+    cy.getTestId(testids.email).type(userEmail)
+    cy.getTestId(testids.password).type(userPassword)
     cy.getTestId(testids.form).submit()
 
     cy.wait('@login-request').then(() => {
@@ -192,5 +196,13 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.registerLink).click().then(() => {
       cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'click-register-link')
     })
+  })
+
+  it('fills the email input using search params', () => {
+    cy.stub(win, 'getLocationSearch').returns(`?email=${userEmail}`)
+
+    mount(KongAuthLogin)
+
+    cy.getTestId(testids.email).should('have.value', userEmail)
   })
 })
