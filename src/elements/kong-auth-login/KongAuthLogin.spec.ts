@@ -23,8 +23,10 @@ const testids = {
   gruceLoader: 'kong-auth-login-gruce-loader',
 }
 
-const userEmail = 'user1@email.com'
-const userPassword = 'TestPassword1!'
+const user = {
+  email: 'user1@email.com',
+  password: 'TestPassword1!',
+}
 
 describe('KongAuthLogin.ce.vue', () => {
   // Required for all Custom Elements
@@ -72,7 +74,7 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.errorMessage).should('not.exist')
 
     // Only type a password
-    cy.getTestId(testids.password).type(userPassword)
+    cy.getTestId(testids.password).type(user.password)
 
     cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
 
@@ -90,7 +92,7 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.errorMessage).should('not.exist')
 
     // Only type an email
-    cy.getTestId(testids.email).type(userEmail)
+    cy.getTestId(testids.email).type(user.email)
 
     cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
 
@@ -108,8 +110,8 @@ describe('KongAuthLogin.ce.vue', () => {
 
     mount(KongAuthLogin)
 
-    cy.getTestId(testids.email).type(userEmail)
-    cy.getTestId(testids.password).type(userPassword)
+    cy.getTestId(testids.email).type(user.email)
+    cy.getTestId(testids.password).type(user.password)
     cy.getTestId(testids.form).submit()
 
     cy.wait('@login-request').then(() => {
@@ -121,12 +123,12 @@ describe('KongAuthLogin.ce.vue', () => {
   describe('Respond to URL Parameters', () => {
     it('pre-populates the email input from search params', () => {
     // Stub search params
-      cy.stub(win, 'getLocationSearch').returns(`?email=${encodeURIComponent(userEmail)}`)
+      cy.stub(win, 'getLocationSearch').returns(`?email=${encodeURIComponent(user.email)}`)
 
       mount(KongAuthLogin)
 
       // Email input should be pre-populated
-      cy.getTestId(testids.email).should('have.value', userEmail)
+      cy.getTestId(testids.email).should('have.value', user.email)
     })
 
     it("should verify email and emit 'confirm-email-success' event if query params include 'token'", () => {
@@ -136,7 +138,7 @@ describe('KongAuthLogin.ce.vue', () => {
       cy.intercept('PATCH', '**/email-verifications', {
         statusCode: 200,
         body: {
-          email: userEmail,
+          email: user.email,
         },
       }).as('email-verification-request')
 

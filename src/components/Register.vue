@@ -306,13 +306,13 @@ export default defineComponent({
       const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
 
       formData.emailToken = urlParams?.get('token') || ''
-      formData.email = urlParams?.get('email') || ''
       formData.fullName = urlParams?.get('fullName') || ''
       formData.organization = urlParams?.get('org') || ''
+      formData.email = urlParams?.get('email') || ''
 
       // If all values were passed in, set formData.prepopulated to true
       formData.prepopulated =
-        !!(urlParams?.get('email') && urlParams?.get('token') && urlParams?.get('fullName') && urlParams?.get('org'))
+        !!(urlParams?.get('token') && urlParams?.get('fullName') && urlParams?.get('org') && urlParams?.get('email'))
     })
 
     return {

@@ -3,7 +3,7 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
-import helpText from '@/utils/helpText'
+import { helpText } from '@/utils'
 
 // Component data-testid strings
 const testids = {
@@ -15,6 +15,10 @@ const testids = {
   instructionText: 'kong-auth-forgot-password-instruction-text',
   loginLink: 'kong-auth-forgot-password-return-to-login-link',
   injectedStyles: 'kong-auth-injected-styles',
+}
+
+const user = {
+  email: 'user1@email.com',
 }
 
 describe('KongAuthForgotPassword.ce.vue', () => {
@@ -84,7 +88,7 @@ describe('KongAuthForgotPassword.ce.vue', () => {
 
     mount(KongAuthForgotPassword)
 
-    cy.getTestId(testids.email).type('user1@email.com')
+    cy.getTestId(testids.email).type(user.email)
     cy.getTestId(testids.form).submit()
 
     const eventName = 'forgot-password-success'

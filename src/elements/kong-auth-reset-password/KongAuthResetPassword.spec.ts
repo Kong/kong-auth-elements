@@ -15,6 +15,10 @@ const testids = {
   injectedStyles: 'kong-auth-injected-styles',
 }
 
+const user = {
+  password: 'TestPassword1!',
+}
+
 describe('KongAuthResetPassword.ce.vue', () => {
   // Required for all Custom Elements
   it('has proper structure and required classes', () => {
@@ -53,7 +57,7 @@ describe('KongAuthResetPassword.ce.vue', () => {
     // Error should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
 
-    cy.getTestId(testids.confirmPassword).type('not-a-real-password')
+    cy.getTestId(testids.confirmPassword).type(user.password)
 
     cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
 
@@ -70,7 +74,7 @@ describe('KongAuthResetPassword.ce.vue', () => {
     // Error should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
 
-    cy.getTestId(testids.password).type('not-a-real-password')
+    cy.getTestId(testids.password).type(user.password)
 
     cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
 
@@ -87,7 +91,7 @@ describe('KongAuthResetPassword.ce.vue', () => {
     // Error should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
 
-    cy.getTestId(testids.password).type('not-a-real-password')
+    cy.getTestId(testids.password).type(user.password)
     cy.getTestId(testids.confirmPassword).type('a-different-password')
 
     cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
@@ -110,8 +114,8 @@ describe('KongAuthResetPassword.ce.vue', () => {
 
     mount(KongAuthResetPassword)
 
-    cy.getTestId(testids.password).type('TestPassword1!')
-    cy.getTestId(testids.confirmPassword).type('TestPassword1!')
+    cy.getTestId(testids.password).type(user.password)
+    cy.getTestId(testids.confirmPassword).type(user.password)
     cy.getTestId(testids.form).submit()
 
     const eventName = 'reset-password-success'

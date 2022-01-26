@@ -3,7 +3,7 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthRegister from '@/elements/kong-auth-register/KongAuthRegister.ce.vue'
-import helpText from '@/utils/helpText'
+import { helpText, win } from '@/utils'
 
 // Component data-testid strings
 const testids = {
@@ -18,6 +18,13 @@ const testids = {
   instructionText: 'kong-auth-register-instruction-text',
   accessCode: 'kong-auth-register-access-code',
   injectedStyles: 'kong-auth-injected-styles',
+}
+
+const user = {
+  name: 'Player One',
+  email: 'user1@email.com',
+  org: 'Test Organization',
+  password: 'TestPassword1!',
 }
 
 const requiredFields = [testids.fullName, testids.organization, testids.email, testids.password, testids.agreeCheckbox]
@@ -86,9 +93,56 @@ describe('KongAuthRegister.ce.vue', () => {
     })
   })
 
-  it('requires an access code if set by the client config API endpoint')
+  it.only('shows and requires an access code if set by the client config API endpoint', () => {
+    cy.intercept('GET', '**/client-config', {
+      statusCode: 200,
+      body: {
+        requireRegistrationAccessCode: true,
+      },
+    }).as('client-config-request')
 
-  it('prevents submit and shows error if an access code is required and the user did not provide one')
+    mount(KongAuthRegister)
+
+    cy.wait('@client-config-request').then(() => {
+      // Access code fields should be visible
+      cy.getTestId(testids.accessCode).should('be.visible')
+
+      // Fill out all fields other than access code
+      requiredFields.forEach(field => {
+        if (field === testids.agreeCheckbox) {
+          cy.getTestId(field).check()
+        } else {
+          cy.getTestId(field).type('This is fake field text')
+        }
+      })
+
+      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+
+      // Submit
+      cy.getTestId(testids.form).submit()
+
+      // Error should exist
+      cy.getTestId(testids.errorMessage).should('be.visible').should('contain.text', helpText.general.missingInfo)
+    })
+  })
+
+  describe('Respond to URL Parameters', () => {
+    it('pre-populates the form from search params', () => {
+      // Stub search params
+      cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
+
+      mount(KongAuthRegister)
+
+      // Inputs should be pre-populated and disabled
+      cy.getTestId(testids.fullName).should('have.value', user.name).should('be.disabled')
+      cy.getTestId(testids.organization).should('have.value', user.org).should('be.disabled')
+      cy.getTestId(testids.email).should('have.value', user.email).should('be.disabled')
+
+      cy.getTestId(testids.password).should('not.be.disabled').should('be.empty')
+      cy.getTestId(testids.agreeCheckbox).should('not.be.disabled').should('not.be.checked')
+      cy.getTestId(testids.submitBtn).should('be.disabled')
+    })
+  })
 
   it("emits a 'register-success' event with a payload on successful registration", () => {
     cy.intercept('POST', '**/register', {
@@ -99,10 +153,10 @@ describe('KongAuthRegister.ce.vue', () => {
 
     mount(KongAuthRegister)
 
-    cy.getTestId(testids.fullName).type('Player One')
-    cy.getTestId(testids.organization).type('Test Organization')
-    cy.getTestId(testids.email).type('user1@email.com')
-    cy.getTestId(testids.password).type('TestPassword1!')
+    cy.getTestId(testids.fullName).type(user.name)
+    cy.getTestId(testids.organization).type(user.org)
+    cy.getTestId(testids.email).type(user.email)
+    cy.getTestId(testids.password).type(user.password)
     cy.getTestId(testids.agreeCheckbox).check()
     cy.getTestId(testids.form).submit()
 
