@@ -182,7 +182,7 @@ describe('KongAuthLogin.ce.vue', () => {
       const redirectPath = `/authenticate/${loginPath}?returnTo=${encodeURIComponent(win.getLocationOrigin())}`
       // Stub URL path
       cy.stub(win, 'getLocationPathname').returns(`/login/${loginPath}`)
-      cy.stub(win, 'setLocationHref').as('set-location').returns(redirectPath)
+      cy.stub(win, 'setLocationHref').as('set-location')
 
       mount(KongAuthLogin, {
         props: {
@@ -191,7 +191,7 @@ describe('KongAuthLogin.ce.vue', () => {
         },
       })
 
-      cy.get('@set-location').should('have.been.calledOnce')
+      cy.get('@set-location').should('have.been.calledOnce').should('have.been.calledWithMatch', redirectPath)
       cy.getTestId(testids.gruceLoader).should('exist').find('.fullscreen-loading-container').should('be.visible')
     })
   })
