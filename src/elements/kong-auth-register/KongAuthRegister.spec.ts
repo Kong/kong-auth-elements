@@ -93,7 +93,7 @@ describe('KongAuthRegister.ce.vue', () => {
     })
   })
 
-  it.only('shows and requires an access code if set by the client config API endpoint', () => {
+  it('shows and requires an access code if set by the client config API endpoint', () => {
     cy.intercept('GET', '**/client-config', {
       statusCode: 200,
       body: {
