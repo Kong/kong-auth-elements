@@ -52,6 +52,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { win } from '@/utils'
 
 const showAlert = (text = ''): void => {
   if (!text) {
@@ -63,7 +64,7 @@ const showAlert = (text = ''): void => {
 const urlPath = ref('')
 
 onMounted(() => {
-  urlPath.value = window.location.pathname
+  urlPath.value = win.getLocationPathname()
 })
 </script>
 

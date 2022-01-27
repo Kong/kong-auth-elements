@@ -132,7 +132,7 @@
 import { defineComponent, inject, ref, Ref, reactive, toRefs, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
-import { helpText } from '@/utils'
+import { helpText, win } from '@/utils'
 import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
 // Components
 import KButton from '@kongponents/kbutton'
@@ -303,16 +303,16 @@ export default defineComponent({
     onMounted(async () => {
       await checkForAccessCodeRequirement()
 
-      const urlParams: URLSearchParams = new URLSearchParams(window.location.search)
+      const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
 
       formData.emailToken = urlParams?.get('token') || ''
-      formData.email = urlParams?.get('email') || ''
       formData.fullName = urlParams?.get('fullName') || ''
       formData.organization = urlParams?.get('org') || ''
+      formData.email = urlParams?.get('email') || ''
 
       // If all values were passed in, set formData.prepopulated to true
       formData.prepopulated =
-        !!(urlParams?.get('email') && urlParams?.get('token') && urlParams?.get('fullName') && urlParams?.get('org'))
+        !!(urlParams?.get('token') && urlParams?.get('fullName') && urlParams?.get('org') && urlParams?.get('email'))
     })
 
     return {

@@ -4,7 +4,7 @@
     class="idp-loading"
     type="fullscreen-kong"
     :delay-milliseconds="0"
-    data-testid="global-walking-gruce"
+    data-testid="kong-auth-login-gruce-loader"
   />
 
   <div v-else class="kong-auth-login-form">
@@ -17,6 +17,7 @@
         :alert-message="helpText.login.passwordResetSuccess"
         appearance="success"
         class="justify-content-center"
+        data-testid="kong-auth-login-password-reset-message"
       />
     </div>
 
@@ -25,6 +26,7 @@
         :alert-message="helpText.login.confirmedEmailSuccess"
         appearance="success"
         class="justify-content-center"
+        data-testid="kong-auth-login-confirmed-email-message"
       />
     </div>
 
@@ -33,6 +35,7 @@
         :alert-message="helpText.login.registerSuccess"
         appearance="success"
         class="justify-content-center"
+        data-testid="kong-auth-login-register-success-message"
       />
     </div>
 
@@ -133,7 +136,7 @@ import { createMachine } from 'xstate'
 import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
 import { AuthenticateAuthenticateRequest, EmailverificationsVerifyResponse } from '@/services/kauth-api-client/v1/api'
 import { AxiosResponse } from 'axios'
-import { helpText } from '@/utils'
+import { helpText, win } from '@/utils'
 import useIdentityProvider from '@/composables/useIdentityProvider'
 // Components
 import KAlert from '@kongponents/kalert'
@@ -278,7 +281,7 @@ export default defineComponent({
     const setUserStatusCookie = async () => {
       // return domain if valid, empty string if not a valid domain (like localhost)
       const getDomain = () => {
-        const hostname = window.location.hostname
+        const hostname = win.getLocationHostname()
 
         return hostname.indexOf('.') > -1
           ? `domain=${hostname.substring(hostname.lastIndexOf('.', hostname.lastIndexOf('.') - 1) + 1)};`
@@ -327,15 +330,15 @@ export default defineComponent({
       if (isIdpLogin.value) {
         try {
           // Get current href
-          const loginUrl = new URL(window.location.href)
+          const loginUrl = new URL(win.getLocationHref())
           // Remove the logout query param
           loginUrl.searchParams.delete('logout')
           // Redirect the user back to the page without the logout which should initialize IdP login
-          window.location.href = loginUrl.href
+          win.setLocationHref(loginUrl.href)
           return
         } catch (_) {
           // If the above fails, just redirect them to the same page without any params
-          window.location.href = window.location.origin + window.location.pathname
+          win.setLocationHref(win.getLocationOrigin() + win.getLocationPathname())
           return
         }
       }
@@ -392,12 +395,12 @@ export default defineComponent({
 
     const loginWithCredentials = (): void => {
       // Redirect the user to the same login page without anything else in the path
-      window.location.href = window.location.origin + '/login'
+      win.setLocationHref(win.getLocationOrigin() + '/login')
     }
 
     onMounted(async () => {
       // Get URL params
-      const urlParams = new URLSearchParams(window.location.search)
+      const urlParams = new URLSearchParams(win.getLocationSearch())
 
       // If token in URL params
       const token = urlParams?.get('token')

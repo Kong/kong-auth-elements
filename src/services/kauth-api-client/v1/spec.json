@@ -740,6 +740,10 @@
           "title": "Description of team",
           "type": "string"
         },
+        "displayName": {
+          "title": "Display name of the team",
+          "type": "string"
+        },
         "name": {
           "title": "Name of the team to be created",
           "type": "string"
@@ -850,6 +854,10 @@
         },
         "description": {
           "title": "Description of the team",
+          "type": "string"
+        },
+        "displayName": {
+          "title": "Display name of the team",
           "type": "string"
         },
         "id": {
@@ -2274,6 +2282,10 @@
               "properties": {
                 "description": {
                   "title": "New description of team",
+                  "type": "string"
+                },
+                "displayName": {
+                  "title": "New display name of the team",
                   "type": "string"
                 },
                 "name": {

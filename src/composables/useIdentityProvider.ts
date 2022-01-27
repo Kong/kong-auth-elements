@@ -1,4 +1,5 @@
 import { onMounted, ref, Ref, watch } from 'vue'
+import { win } from '@/utils'
 
 interface IdentityProviderComposable {
   isIdpLogin: Ref<boolean>
@@ -40,13 +41,13 @@ export default function useIdentityProvider(
       return false
     }
 
-    const urlPath: string = window.location.pathname
+    const urlPath: string = win.getLocationPathname()
     const urlPathArray: string[] = urlPath.split('/')
     // Check for IDP organization login path (only on login page, just in case)
     isIdpLogin.value = urlPathArray[1].toLowerCase() === 'login' && !!urlPathArray[2]
 
     // Get URL params
-    const urlParams: URLSearchParams = new URLSearchParams(window.location.search)
+    const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
 
     // If not IdP login, or if logout in URL params (user came from logout), exit
     if (!isIdpLogin.value || !!urlParams?.get('logout')) {
@@ -113,7 +114,7 @@ export default function useIdentityProvider(
     const redirectParams = '?' + [returnToParam].filter(Boolean).join('&')
 
     // Redirect user to kauth endpoint
-    window.location.href = `/kauth/api/${apiVersion.value}/authenticate/${organizationLoginPath.value}${redirectParams}`
+    win.setLocationHref(`/kauth/api/${apiVersion.value}/authenticate/${organizationLoginPath.value}${redirectParams}`)
   }
 
   /**
@@ -130,7 +131,7 @@ export default function useIdentityProvider(
       return false
     }
 
-    const urlParams: URLSearchParams = new URLSearchParams(window.location.search)
+    const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
     code.value = urlParams?.get('code') || ''
     state.value = urlParams?.get('state') || ''
 
@@ -157,7 +158,7 @@ export default function useIdentityProvider(
     isRedirecting.value = true
 
     // Redirect user to kauth endpoint
-    window.location.href = `/kauth/api/${apiVersion.value}/authenticate/oidc-callback?code=${code.value}&state=${state.value}`
+    win.setLocationHref(`/kauth/api/${apiVersion.value}/authenticate/oidc-callback?code=${code.value}&state=${state.value}`)
   }
 
   // Add watcher to allow `kong-auth-login` element time to load and retrigger redirect.
