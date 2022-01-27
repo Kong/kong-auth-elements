@@ -3,7 +3,7 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
-import helpText from '@/utils/helpText'
+import { helpText } from '@/utils'
 
 // Component data-testid strings
 const testids = {
@@ -15,6 +15,10 @@ const testids = {
   instructionText: 'kong-auth-forgot-password-instruction-text',
   loginLink: 'kong-auth-forgot-password-return-to-login-link',
   injectedStyles: 'kong-auth-injected-styles',
+}
+
+const user = {
+  email: 'user1@email.com',
 }
 
 describe('KongAuthForgotPassword.ce.vue', () => {
@@ -56,6 +60,8 @@ describe('KongAuthForgotPassword.ce.vue', () => {
     // Error should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
 
+    cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+
     // Submit
     cy.getTestId(testids.form).submit()
 
@@ -76,20 +82,21 @@ describe('KongAuthForgotPassword.ce.vue', () => {
   })
 
   it("shows success message and emits a 'forgot-password-success' event with payload on successful password reset request", () => {
-    mount(KongAuthForgotPassword)
-
-    cy.getTestId(testids.email).type('user1@email.com')
-    cy.getTestId(testids.form).submit()
-
-    // Stub 200 response
     cy.intercept('POST', '**/password-resets', {
       statusCode: 200,
     }).as('password-reset-request')
 
+    mount(KongAuthForgotPassword)
+
+    cy.getTestId(testids.email).type(user.email)
+    cy.getTestId(testids.form).submit()
+
+    const eventName = 'forgot-password-success'
+
     cy.wait('@password-reset-request').then(() => {
       // Check for emitted event
-      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'forgot-password-success').then(() => {
-        cy.wrap(Cypress.vueWrapper.emitted('forgot-password-success')[0][0]).should('have.property', 'email')
+      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
+        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
       })
 
       // Success messsage should exist

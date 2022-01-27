@@ -51,6 +51,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { win } from '@/utils'
 
 // Import and register Custom Elements as Components
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
@@ -68,7 +69,7 @@ const showAlert = (text = ''): void => {
 const urlPath = ref('')
 
 onMounted(() => {
-  urlPath.value = window.location.pathname
+  urlPath.value = win.getLocationPathname()
 })
 </script>
 

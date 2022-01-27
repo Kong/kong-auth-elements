@@ -1303,6 +1303,12 @@ export interface TeamAPIV1CreateTeamRequest {
      * @type {string}
      * @memberof TeamAPIV1CreateTeamRequest
      */
+    'displayName'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIV1CreateTeamRequest
+     */
     'name'?: string;
 }
 /**
@@ -1430,6 +1436,12 @@ export interface TeamAPIV1Team {
      * @type {string}
      * @memberof TeamAPIV1Team
      */
+    'displayName'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIV1Team
+     */
     'id'?: string;
     /**
      * 
@@ -1500,6 +1512,12 @@ export interface UpdateTeamRequest {
      * @memberof UpdateTeamRequest
      */
     'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateTeamRequest
+     */
+    'displayName'?: string;
     /**
      * 
      * @type {string}
