@@ -32,7 +32,7 @@
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "vue": "^3.2.29",
-    "xstate": "^4.26.1"
+    "xstate": "^4.28.1"
   },
   "devDependencies": {
     "@cypress/vue": "^3.1.0",
