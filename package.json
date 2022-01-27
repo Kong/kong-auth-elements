@@ -28,7 +28,7 @@
     "@kongponents/styles": "^6.7.7",
     "@openapitools/openapi-generator-cli": "^2.4.25",
     "@vue/compat": "^3.2.29",
-    "@xstate/vue": "^0.8.1",
+    "@xstate/vue": "^0.8.2",
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "vue": "^3.2.29",

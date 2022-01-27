@@ -2508,10 +2508,10 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@xstate/vue@^0.8.1":
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/@xstate/vue/-/vue-0.8.1.tgz#96a144fe72eb6bccb8be98c7192bbed1b26ed3ff"
-  integrity sha512-m4Ejd08eUHzlTD7P6aGscwpjeHRXVZQ5iVyv5RxYi5WKoFqOMeurO2dxvI8QDfTxF27NqODj30LWYsMzZZ9lsg==
+"@xstate/vue@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@xstate/vue/-/vue-0.8.2.tgz#6e4672fbb4d4211c34bcf9facd27769cc5189ec9"
+  integrity sha512-JAFHSqvJo8tIWsn0L49Oz3dCRA3q7/wa8YTc/ltEbs3kDNEjvHhb12bQEOfoGuD3K5ZWH4nqo5quB9YVTd8Now==
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
