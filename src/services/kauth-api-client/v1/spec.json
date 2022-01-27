@@ -1012,6 +1012,10 @@
           "title": "Description of the team",
           "type": "string"
         },
+        "displayName": {
+          "title": "New display name of the team",
+          "type": "string"
+        },
         "id": {
           "title": "ID of the team",
           "type": "string"
