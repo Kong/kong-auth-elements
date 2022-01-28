@@ -122,7 +122,7 @@ describe('KongAuthLogin.ce.vue', () => {
 
   describe('Respond to URL Parameters', () => {
     it('pre-populates the email input from search params', () => {
-    // Stub search params
+      // Stub search params
       cy.stub(win, 'getLocationSearch').returns(`?email=${encodeURIComponent(user.email)}`)
 
       mount(KongAuthLogin)
@@ -132,7 +132,7 @@ describe('KongAuthLogin.ce.vue', () => {
     })
 
     it("should verify email and emit 'confirm-email-success' event if query params include 'token'", () => {
-    // Stub search params
+      // Stub search params
       cy.stub(win, 'getLocationSearch').returns('?token=12345')
 
       cy.intercept('PATCH', '**/email-verifications', {
@@ -146,11 +146,18 @@ describe('KongAuthLogin.ce.vue', () => {
 
       const eventName = 'confirm-email-success'
 
+      // Loader should show on load
+      cy.getTestId(testids.gruceLoader).should('exist').find('.fullscreen-loading-container').should('be.visible')
+
       cy.wait('@email-verification-request').then(() => {
+        // Verify UI
+        cy.getTestId(testids.gruceLoader).should('not.exist')
         cy.getTestId(testids.confirmedEmailMessage).should('be.visible').should('contain.text', helpText.login.confirmedEmailSuccess)
+        cy.getTestId(testids.email).should('have.value', user.email)
+
         // Check for emitted event
         cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
-        // Verify emit payload
+          // Verify emit payload
           cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
         })
       })
