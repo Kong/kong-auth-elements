@@ -14,7 +14,10 @@
     "cypress:open": "yarn test:open",
     "lint": "vue-cli-service lint",
     "generate:api-client": "yarn openapi-generator-cli generate --skip-validate-spec -i src/services/kauth-api-client/v1/spec.json -g typescript-axios -o src/services/kauth-api-client/v1/api -p modelPropertyNaming=original",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
   },
   "dependencies": {
     "@kongponents/kalert": "^6.7.11",
@@ -35,6 +38,8 @@
     "xstate": "^4.28.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
     "@cypress/vue": "^3.1.0",
     "@cypress/webpack-dev-server": "^1.8.0",
     "@types/node": "^16.11.22",
@@ -60,6 +65,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^7.0.0",
     "html-webpack-plugin": "4",
+    "husky": "^7.0.4",
     "node-sass": "^4.11.0",
     "postcss-custom-properties": "^10.0.0",
     "sass-loader": "^8.0.2",
