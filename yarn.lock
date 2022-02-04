@@ -1216,22 +1216,22 @@
   resolved "https://registry.npmjs.org/@isaacs/string-locale-compare/-/string-locale-compare-1.1.0.tgz#291c227e93fd407a96ecd59879a35809120e432b"
   integrity sha512-SQ7Kzhh9+D+ZW9MA0zkYv3VXhIDNx+LzM6EJ+/65I3QY+enU6Itte7E5XX7EWrqLW2FN4n06GWzBnPoC3th2aQ==
 
-"@kongponents/kalert@^6.7.11":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/kalert/-/kalert-6.7.11.tgz#65b59e11e322ac78b8ba13ec548ef9c484192f4c"
-  integrity sha512-xNF44+mCtbasGIFwe7K8tiOxOgO+8l4Kxrn+fH4zdMTUGQQj5Ty1W5/Pkg8ag4J1hpFN4Cs5U5nk5ceifdbTCA==
+"@kongponents/kalert@^6.9.0":
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/@kongponents/kalert/-/kalert-6.9.0.tgz#25d2ed89cb49e00ddca6ff2a633147cbf961de5e"
+  integrity sha512-m2a7YXDGTZk/X0mnzOhKvaCuvxwPkWQCJCSicG1dLUu7bNkuuijfaIi33GU0eblDTpzVMMRZJidq5a0/eJ14Uw==
   dependencies:
-    "@kongponents/kbutton" "^6.7.11"
-    "@kongponents/kicon" "^6.7.11"
-    "@kongponents/styles" "^6.7.11"
+    "@kongponents/kbutton" "^6.9.0"
+    "@kongponents/kicon" "^6.9.0"
+    "@kongponents/styles" "^6.9.0"
 
-"@kongponents/kbutton@^6.7.10", "@kongponents/kbutton@^6.7.11":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.7.11.tgz#68caba70075d01d615a506a19aecc5527d2b7294"
-  integrity sha512-MpoTe7vW+ZbRoTznFwaszTGtCdffco/uVjfInCz2nLXzmJ/GaJHtPXTBYGSgvsE1L1O6wmuoA4AG0nW0CfUgJg==
+"@kongponents/kbutton@^6.7.10", "@kongponents/kbutton@^6.7.11", "@kongponents/kbutton@^6.9.0":
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.9.0.tgz#84ff7a36aaea9a72deed6d457f7c36ebfe5ef014"
+  integrity sha512-eiY24NKiPGRSzseLs+GV8MDoOxeIuChV9E22iQk9fjwbT/qsiuKDChB+YN02iQ4fuN1Iy3E6VZ8Jpt3UukMkHw==
   dependencies:
-    "@kongponents/kicon" "^6.7.11"
-    "@kongponents/styles" "^6.7.11"
+    "@kongponents/kicon" "^6.9.0"
+    "@kongponents/styles" "^6.9.0"
 
 "@kongponents/kcheckbox@^6.7.11":
   version "6.7.11"
@@ -1240,10 +1240,10 @@
   dependencies:
     "@kongponents/styles" "^6.7.11"
 
-"@kongponents/kicon@^6.7.11", "@kongponents/kicon@^6.7.7":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.7.11.tgz#abc6bb3cec2ef75204527aa48ec1a721daf40114"
-  integrity sha512-IjYVsDOVSh+H35HCzs4eE+JTTHNrG4xp6JTLbbFkkC2qNPY39EKfDgtxeDF2BHAzF6TWs1IpDbRGpoRSr6G9hA==
+"@kongponents/kicon@^6.7.11", "@kongponents/kicon@^6.7.7", "@kongponents/kicon@^6.9.0":
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.9.0.tgz#ceb972f893deebfac709f7bb262d28051f826ea9"
+  integrity sha512-aLy9u0+yIvPFraCp12yj4ZcL/qcwq667BgKioILvKdCm64Mhf2du1I9ny7qBU6mHy8mEsY1F/XSysWGUCO7PtA==
 
 "@kongponents/kinput@^6.7.11":
   version "6.7.11"
@@ -1288,10 +1288,10 @@
     "@kongponents/kicon" "^6.7.11"
     "@kongponents/styles" "^6.7.11"
 
-"@kongponents/styles@^6.7.11", "@kongponents/styles@^6.7.7":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.7.11.tgz#6091459a10b2666f7319288b9742e8932bbfc705"
-  integrity sha512-tB2AYPuJdlbESxWS84RoYXYZUYq+5Rt+0bFLn7IG6W0DNso741k38CY98YL4QOh3EUlI8yf3kBJNVzzJrCOvkA==
+"@kongponents/styles@^6.7.11", "@kongponents/styles@^6.7.7", "@kongponents/styles@^6.9.0":
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.9.0.tgz#22af2420ed5600a6bd85b6ccdcf9c35af40326e0"
+  integrity sha512-f0OA20LX6p98bTrZNTwr9HgHQKESpmQjXw8LDg7drArKXce+O1ZyImEyeKM8UDU323UfvfHq/QvC1rgqWgKMsg==
   dependencies:
     tailwindcss "^1.4.6"
 
