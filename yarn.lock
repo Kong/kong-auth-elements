@@ -1245,12 +1245,12 @@
   resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.7.11.tgz#abc6bb3cec2ef75204527aa48ec1a721daf40114"
   integrity sha512-IjYVsDOVSh+H35HCzs4eE+JTTHNrG4xp6JTLbbFkkC2qNPY39EKfDgtxeDF2BHAzF6TWs1IpDbRGpoRSr6G9hA==
 
-"@kongponents/kinput@^6.7.11":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/kinput/-/kinput-6.7.11.tgz#14b524e4d005a528509ede50dfdc72c631056758"
-  integrity sha512-GGs5Wj6PpMsE5zKeAB5RXOjueCLfp7BnjmZokUUcR8NYCMbv05SM0t1J47yxNyn4i9Yokrx79XRtkunIJDlLAg==
+"@kongponents/kinput@^6.9.0":
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/@kongponents/kinput/-/kinput-6.9.0.tgz#07d1f6a6d2ecc3080ced24d8a6cc19d50caaf8e2"
+  integrity sha512-s6vOX7MTLqR4VP4nlHd0ucaxzflJcuBC4dFBMa7yVv3GK1MbnyScIV2fb22iQA1ZR2TyzrPOwh6aNIq5cH9ajg==
   dependencies:
-    "@kongponents/styles" "^6.7.11"
+    "@kongponents/styles" "^6.9.0"
     vue-uuid "^2.0.2"
 
 "@kongponents/klabel@^6.7.11":
@@ -1288,10 +1288,10 @@
     "@kongponents/kicon" "^6.7.11"
     "@kongponents/styles" "^6.7.11"
 
-"@kongponents/styles@^6.7.11", "@kongponents/styles@^6.7.7":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.7.11.tgz#6091459a10b2666f7319288b9742e8932bbfc705"
-  integrity sha512-tB2AYPuJdlbESxWS84RoYXYZUYq+5Rt+0bFLn7IG6W0DNso741k38CY98YL4QOh3EUlI8yf3kBJNVzzJrCOvkA==
+"@kongponents/styles@^6.7.11", "@kongponents/styles@^6.7.7", "@kongponents/styles@^6.9.0":
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.9.0.tgz#22af2420ed5600a6bd85b6ccdcf9c35af40326e0"
+  integrity sha512-f0OA20LX6p98bTrZNTwr9HgHQKESpmQjXw8LDg7drArKXce+O1ZyImEyeKM8UDU323UfvfHq/QvC1rgqWgKMsg==
   dependencies:
     tailwindcss "^1.4.6"
 
