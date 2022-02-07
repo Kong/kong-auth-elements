@@ -1288,10 +1288,10 @@
     "@kongponents/kicon" "^6.7.11"
     "@kongponents/styles" "^6.7.11"
 
-"@kongponents/styles@^6.7.11", "@kongponents/styles@^6.7.7":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.7.11.tgz#6091459a10b2666f7319288b9742e8932bbfc705"
-  integrity sha512-tB2AYPuJdlbESxWS84RoYXYZUYq+5Rt+0bFLn7IG6W0DNso741k38CY98YL4QOh3EUlI8yf3kBJNVzzJrCOvkA==
+"@kongponents/styles@^6.7.11", "@kongponents/styles@^6.9.4":
+  version "6.9.4"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.9.4.tgz#3edd1b215d8e4b80f16c191f7c6417871d1902c4"
+  integrity sha512-cJ9HY0Q/ZF/vMI7pLS8hQ8XyTpSKdoqXgU7yFCzsVk8X8y3hLOgJEjXiCGi/Nbhlc6bGOvQ3Chakv6shrKmipA==
   dependencies:
     tailwindcss "^1.4.6"
 
