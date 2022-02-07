@@ -1225,13 +1225,13 @@
     "@kongponents/kicon" "^6.7.11"
     "@kongponents/styles" "^6.7.11"
 
-"@kongponents/kbutton@^6.7.10", "@kongponents/kbutton@^6.7.11":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.7.11.tgz#68caba70075d01d615a506a19aecc5527d2b7294"
-  integrity sha512-MpoTe7vW+ZbRoTznFwaszTGtCdffco/uVjfInCz2nLXzmJ/GaJHtPXTBYGSgvsE1L1O6wmuoA4AG0nW0CfUgJg==
+"@kongponents/kbutton@^6.7.11", "@kongponents/kbutton@^6.9.4":
+  version "6.9.4"
+  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.9.4.tgz#234d82e0f2a389a010126237229fb51ee7fcd836"
+  integrity sha512-Z6E273BRhieVcbXDZswt0u5vopdku1oZmVNYG5g4AIHs4Y9ABnsxuazL0tLwY+ODe9yym0ckhR3LA49pIdpzdQ==
   dependencies:
-    "@kongponents/kicon" "^6.7.11"
-    "@kongponents/styles" "^6.7.11"
+    "@kongponents/kicon" "^6.9.4"
+    "@kongponents/styles" "^6.9.4"
 
 "@kongponents/kcheckbox@^6.7.11":
   version "6.7.11"
@@ -1240,10 +1240,10 @@
   dependencies:
     "@kongponents/styles" "^6.7.11"
 
-"@kongponents/kicon@^6.7.11", "@kongponents/kicon@^6.7.7":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.7.11.tgz#abc6bb3cec2ef75204527aa48ec1a721daf40114"
-  integrity sha512-IjYVsDOVSh+H35HCzs4eE+JTTHNrG4xp6JTLbbFkkC2qNPY39EKfDgtxeDF2BHAzF6TWs1IpDbRGpoRSr6G9hA==
+"@kongponents/kicon@^6.7.11", "@kongponents/kicon@^6.7.7", "@kongponents/kicon@^6.9.4":
+  version "6.9.4"
+  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.9.4.tgz#19c037e4d164f690dc914a3017b32887d2c4206a"
+  integrity sha512-idOD/peT3/Lp+LUagbAdw3Xfq/9n4QKORzNqErjfkMochsitkMayuQPmqAAfscX4cbib/y+brm8hvH2qAX2few==
 
 "@kongponents/kinput@^6.7.11":
   version "6.7.11"
@@ -1288,10 +1288,10 @@
     "@kongponents/kicon" "^6.7.11"
     "@kongponents/styles" "^6.7.11"
 
-"@kongponents/styles@^6.7.11", "@kongponents/styles@^6.7.7":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.7.11.tgz#6091459a10b2666f7319288b9742e8932bbfc705"
-  integrity sha512-tB2AYPuJdlbESxWS84RoYXYZUYq+5Rt+0bFLn7IG6W0DNso741k38CY98YL4QOh3EUlI8yf3kBJNVzzJrCOvkA==
+"@kongponents/styles@^6.7.11", "@kongponents/styles@^6.7.7", "@kongponents/styles@^6.9.4":
+  version "6.9.4"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.9.4.tgz#3edd1b215d8e4b80f16c191f7c6417871d1902c4"
+  integrity sha512-cJ9HY0Q/ZF/vMI7pLS8hQ8XyTpSKdoqXgU7yFCzsVk8X8y3hLOgJEjXiCGi/Nbhlc6bGOvQ3Chakv6shrKmipA==
   dependencies:
     tailwindcss "^1.4.6"
 
