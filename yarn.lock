@@ -1245,12 +1245,12 @@
   resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.9.4.tgz#19c037e4d164f690dc914a3017b32887d2c4206a"
   integrity sha512-idOD/peT3/Lp+LUagbAdw3Xfq/9n4QKORzNqErjfkMochsitkMayuQPmqAAfscX4cbib/y+brm8hvH2qAX2few==
 
-"@kongponents/kinput@^6.7.11":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/kinput/-/kinput-6.7.11.tgz#14b524e4d005a528509ede50dfdc72c631056758"
-  integrity sha512-GGs5Wj6PpMsE5zKeAB5RXOjueCLfp7BnjmZokUUcR8NYCMbv05SM0t1J47yxNyn4i9Yokrx79XRtkunIJDlLAg==
+"@kongponents/kinput@^6.9.4":
+  version "6.9.4"
+  resolved "https://registry.yarnpkg.com/@kongponents/kinput/-/kinput-6.9.4.tgz#a2c6dc6b58d0352a4c68d887640b5993d27a96ac"
+  integrity sha512-sfuqXOMPXWyq1WNiL0T75q9Yx//tt5X9BT0Yrs4sQOGyZYEsOnSuS4jET/Dfm2d61b9Qotu1VuVaFMmH4yMeGQ==
   dependencies:
-    "@kongponents/styles" "^6.7.11"
+    "@kongponents/styles" "^6.9.4"
     vue-uuid "^2.0.2"
 
 "@kongponents/klabel@^6.7.11":
