@@ -33,7 +33,9 @@
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "vue": "^3.2.29",
-    "xstate": "^4.28.1"
+    "vue-password-strength-meter": "^1.7.2",
+    "xstate": "^4.28.1",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",

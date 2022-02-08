@@ -17,6 +17,7 @@ export default defineComponent({
   // Props are defined here for use on the custom element tag
   props: {
     instructionText: String,
+    showPasswordStrengthMeter: Boolean,
   },
 
   // Import emits from child component with validation, where necessary
@@ -32,6 +33,10 @@ export default defineComponent({
     provide(
       'instruction-text',
       computed((): string => (props.instructionText ? props.instructionText : '')),
+    )
+    provide(
+      'show-password-strength-meter',
+      computed((): boolean => (props.showPasswordStrengthMeter ? props.showPasswordStrengthMeter : false)),
     )
   },
 })

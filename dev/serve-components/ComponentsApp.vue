@@ -35,6 +35,7 @@
         </h4>
         <KongAuthResetPassword
           instruction-text="Please enter in your new password and confirm it below."
+          :show-password-strength-meter="true"
           @reset-password-success="showAlert('Reset password success!')"
         />
       </div>
@@ -43,7 +44,9 @@
         <h4>
           <code>KongAuthRegister.vue</code>
         </h4>
-        <KongAuthRegister @register-success="showAlert('Register success!')" />
+        <KongAuthRegister
+          show-password-strength-meter
+          @register-success="showAlert('Register success!')" />
       </div>
     </div>
   </div>

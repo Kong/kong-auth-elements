@@ -41,6 +41,11 @@
         required
         data-testid="kong-auth-reset-password-confirm-new-password"
       />
+      <Password
+        v-if="showPasswordStrengthMeter"
+        v-model="password"
+        :strength-meter-only="true"
+      />
 
       <div
         v-if="currentState.matches('error') && passwordError && error"
@@ -84,6 +89,7 @@ import KIcon from '@kongponents/kicon'
 import KInput from '@kongponents/kinput'
 import KLabel from '@kongponents/klabel'
 import ErrorMessage from '@/components/ErrorMessage.vue'
+import Password from 'vue-password-strength-meter'
 
 export const resetPasswordEmits = {
   'reset-password-success': (payload: { email: string }): boolean => {
@@ -100,6 +106,7 @@ export default defineComponent({
     KInput,
     KLabel,
     ErrorMessage,
+    Password,
   },
 
   // Define emits with validation, where necessary
@@ -109,6 +116,7 @@ export default defineComponent({
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
+    const showPasswordStrengthMeter: Ref<boolean> = inject('show-password-strength-meter', ref(false))
 
     const formData = reactive({
       email: '',
@@ -236,6 +244,7 @@ export default defineComponent({
       btnDisabled,
       helpText,
       instructionText,
+      showPasswordStrengthMeter,
       passwordIsInvalid,
       submitForm,
       error,
