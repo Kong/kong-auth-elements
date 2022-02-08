@@ -1,6 +1,6 @@
 <template>
   <KSkeleton
-    v-if="currentState.matches('from_url')"
+    v-if="currentState.matches('from_url') || currentState.matches('verify_email')"
     class="idp-loading"
     type="fullscreen-kong"
     :delay-milliseconds="0"
@@ -221,6 +221,7 @@ export default defineComponent({
             on: {
               FROM_REGISTER: 'from_register',
               FROM_URL: 'from_url',
+              VERIFY_EMAIL: 'verify_email',
               CONFIRMED_EMAIL: 'confirmed_email',
               RESET_PASSWORD: 'reset_password',
               SUBMIT_LOGIN: 'pending',
@@ -248,6 +249,13 @@ export default defineComponent({
           from_url: {
             on: {
               IDP_PARAMS: 'pending',
+              REJECT: 'error',
+            },
+          },
+          verify_email: {
+            on: {
+              RESOLVE: 'idle',
+              SUBMIT_LOGIN: 'pending',
               REJECT: 'error',
             },
           },
@@ -296,6 +304,11 @@ export default defineComponent({
 
     const verifyEmailAddress = async (token: string): Promise<void> => {
       try {
+        send('VERIFY_EMAIL')
+
+        // setTimeout for simulated feedback
+        await new Promise((resolve) => setTimeout(resolve, 250))
+
         const response: AxiosResponse<EmailverificationsVerifyResponse> = await $api.emailVerification.verifyEmail({
           token,
         })

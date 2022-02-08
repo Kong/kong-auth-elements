@@ -86,6 +86,7 @@ body {
   }
 
   .component-container {
+    position: relative;
     background: #fff;
     border: 1px dotted #1155cb;
     margin: 20px;

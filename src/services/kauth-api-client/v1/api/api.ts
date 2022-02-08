@@ -1665,6 +1665,12 @@ export interface UserAPIV1Team {
      * @type {string}
      * @memberof UserAPIV1Team
      */
+    'displayName'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIV1Team
+     */
     'id'?: string;
     /**
      * 
