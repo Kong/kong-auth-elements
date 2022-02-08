@@ -26,7 +26,8 @@ export default function useInjectStyles(): InjectStylesComposable {
         return (
           styleNode.innerHTML.includes('KONG_AUTH_INJECT_STYLES') ||
           styleNode.innerHTML.includes('.k-') ||
-          styleNode.innerHTML.includes('.kool')
+          styleNode.innerHTML.includes('.kool') ||
+          styleNode.innerHTML.includes('.Password__')
         )
       })
       .filter((styleNode, idx, arr) => {
