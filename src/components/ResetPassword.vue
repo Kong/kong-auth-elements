@@ -22,11 +22,18 @@
         id="password"
         v-model.trim="password"
         type="password"
-        class="mb-4"
+        :class="[showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
         autocomplete="new-password"
         :has-error="currentState.matches('error') && error ? true : false"
         required
         data-testid="kong-auth-reset-password-new-password"
+      />
+
+      <Password
+        v-if="showPasswordStrengthMeter"
+        class="password-strength-meter mb-4"
+        v-model="password"
+        :strength-meter-only="true"
       />
 
       <KLabel for="password">Confirm New Password *</KLabel>
@@ -40,11 +47,6 @@
         :error-message="passwordIsInvalid ? helpText.resetPassword.passwordMismatch : null"
         required
         data-testid="kong-auth-reset-password-confirm-new-password"
-      />
-      <Password
-        v-if="showPasswordStrengthMeter"
-        v-model="password"
-        :strength-meter-only="true"
       />
 
       <div
@@ -257,4 +259,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 /*! KONG_AUTH_INJECT_STYLES */
+.password-strength-meter {
+  max-width: none;
+}
 </style>

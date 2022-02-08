@@ -67,14 +67,16 @@
         id="password"
         v-model.trim="password"
         type="password"
-        class="mb-4"
+        :class="[showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
         autocomplete="new-password"
         :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
         required
         data-testid="kong-auth-register-password"
       />
+
       <Password
         v-if="showPasswordStrengthMeter"
+        class="password-strength-meter"
         v-model="password"
         :strength-meter-only="true"
       />
@@ -349,5 +351,9 @@ export default defineComponent({
   &:hover:not(:disabled) {
     background-color: var(--green-300) !important;
   }
+}
+
+.password-strength-meter {
+  max-width: none;
 }
 </style>

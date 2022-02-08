@@ -152,6 +152,6 @@ describe('KongAuthResetPassword.ce.vue', () => {
       },
     })
     /* password strength component does not handle data-testid attributes nicely */
-    cy.get('[class=Password]').should('be.visible')
+    cy.get('.password-strength-meter').should('be.visible')
   })
 })
