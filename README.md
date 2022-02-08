@@ -263,7 +263,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 | Prop              | Type   | Default | Description                                          |
 | :---------------- | :----- | :------ | :--------------------------------------------------- |
 | `instructionText` | String | `''`    | Set the instruction text to display above the input. |
-| `showPasswordStrenghtMeter` | Boolean | `false`    | Show the password strenght meter. |
+| `showPasswordStrengthMeter` | Boolean | `false`    | Show the password strength meter. |
 
 #### Emits Events
 
@@ -293,7 +293,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 | Prop              | Type   | Default | Description                                                |
 | :---------------- | :----- | :------ | :--------------------------------------------------------- |
 | `instructionText` | String | `''`    | Set the instruction text to display above the form inputs. |
-| `showPasswordStrenghtMeter` | Boolean | `false`    | Show the password strenght meter. |
+| `showPasswordStrengthMeter` | Boolean | `false`    | Show the password strength meter. |
 
 #### Emits Events
 
