@@ -1216,14 +1216,14 @@
   resolved "https://registry.npmjs.org/@isaacs/string-locale-compare/-/string-locale-compare-1.1.0.tgz#291c227e93fd407a96ecd59879a35809120e432b"
   integrity sha512-SQ7Kzhh9+D+ZW9MA0zkYv3VXhIDNx+LzM6EJ+/65I3QY+enU6Itte7E5XX7EWrqLW2FN4n06GWzBnPoC3th2aQ==
 
-"@kongponents/kalert@^6.7.11":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/kalert/-/kalert-6.7.11.tgz#65b59e11e322ac78b8ba13ec548ef9c484192f4c"
-  integrity sha512-xNF44+mCtbasGIFwe7K8tiOxOgO+8l4Kxrn+fH4zdMTUGQQj5Ty1W5/Pkg8ag4J1hpFN4Cs5U5nk5ceifdbTCA==
+"@kongponents/kalert@^6.9.4":
+  version "6.9.4"
+  resolved "https://registry.yarnpkg.com/@kongponents/kalert/-/kalert-6.9.4.tgz#caad7836ed7444b9501ceda386ff1ee04b45f342"
+  integrity sha512-Sgr4nRCq7/Rf5O882i/WQ+Jo/NtiVQVJYgtoNme34ox5YcHguQdC0YkCUPej5pyqNBlkoNwUFu5SSXVlW2vGMQ==
   dependencies:
-    "@kongponents/kbutton" "^6.7.11"
-    "@kongponents/kicon" "^6.7.11"
-    "@kongponents/styles" "^6.7.11"
+    "@kongponents/kbutton" "^6.9.4"
+    "@kongponents/kicon" "^6.9.4"
+    "@kongponents/styles" "^6.9.4"
 
 "@kongponents/kbutton@^6.7.11", "@kongponents/kbutton@^6.9.4":
   version "6.9.4"
