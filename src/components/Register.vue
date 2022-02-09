@@ -67,11 +67,18 @@
         id="password"
         v-model.trim="password"
         type="password"
-        class="mb-4"
+        :class="[showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
         autocomplete="new-password"
         :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
         required
         data-testid="kong-auth-register-password"
+      />
+
+      <Password
+        v-if="showPasswordStrengthMeter"
+        class="password-strength-meter"
+        v-model="password"
+        :strength-meter-only="true"
       />
 
       <div v-if="!emailToken && accessCodeRequired">
@@ -141,6 +148,7 @@ import KInput from '@kongponents/kinput'
 import KLabel from '@kongponents/klabel'
 import KCheckbox from '@kongponents/kcheckbox'
 import ErrorMessage from '@/components/ErrorMessage.vue'
+import Password from 'vue-password-strength-meter'
 
 export const registerEmits = {
   'register-success': (payload: { email: string, fromInvite: boolean }): boolean => {
@@ -158,6 +166,7 @@ export default defineComponent({
     KLabel,
     KCheckbox,
     ErrorMessage,
+    Password,
   },
 
   // Define emits with validation, where necessary
@@ -167,6 +176,7 @@ export default defineComponent({
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
+    const showPasswordStrengthMeter: Ref<boolean> = inject('show-password-strength-meter', ref(false))
 
     const formData = reactive({
       email: '',
@@ -326,6 +336,7 @@ export default defineComponent({
       fieldsHaveError,
       accessCodeRequired,
       instructionText,
+      showPasswordStrengthMeter,
       ...toRefs(formData),
     }
   },
@@ -340,5 +351,9 @@ export default defineComponent({
   &:hover:not(:disabled) {
     background-color: var(--green-300) !important;
   }
+}
+
+.password-strength-meter {
+  max-width: none;
 }
 </style>

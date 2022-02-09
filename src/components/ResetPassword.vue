@@ -22,11 +22,18 @@
         id="password"
         v-model.trim="password"
         type="password"
-        class="mb-4"
+        :class="[showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
         autocomplete="new-password"
         :has-error="currentState.matches('error') && error ? true : false"
         required
         data-testid="kong-auth-reset-password-new-password"
+      />
+
+      <Password
+        v-if="showPasswordStrengthMeter"
+        class="password-strength-meter mb-4"
+        v-model="password"
+        :strength-meter-only="true"
       />
 
       <KLabel for="password">Confirm New Password *</KLabel>
@@ -84,6 +91,7 @@ import KIcon from '@kongponents/kicon'
 import KInput from '@kongponents/kinput'
 import KLabel from '@kongponents/klabel'
 import ErrorMessage from '@/components/ErrorMessage.vue'
+import Password from 'vue-password-strength-meter'
 
 export const resetPasswordEmits = {
   'reset-password-success': (payload: { email: string }): boolean => {
@@ -100,6 +108,7 @@ export default defineComponent({
     KInput,
     KLabel,
     ErrorMessage,
+    Password,
   },
 
   // Define emits with validation, where necessary
@@ -109,6 +118,7 @@ export default defineComponent({
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
+    const showPasswordStrengthMeter: Ref<boolean> = inject('show-password-strength-meter', ref(false))
 
     const formData = reactive({
       email: '',
@@ -236,6 +246,7 @@ export default defineComponent({
       btnDisabled,
       helpText,
       instructionText,
+      showPasswordStrengthMeter,
       passwordIsInvalid,
       submitForm,
       error,
@@ -248,4 +259,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 /*! KONG_AUTH_INJECT_STYLES */
+.password-strength-meter {
+  max-width: none;
+}
 </style>
