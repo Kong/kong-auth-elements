@@ -1225,7 +1225,7 @@
     "@kongponents/kicon" "^6.9.4"
     "@kongponents/styles" "^6.9.4"
 
-"@kongponents/kbutton@^6.7.11", "@kongponents/kbutton@^6.9.4":
+"@kongponents/kbutton@^6.9.4":
   version "6.9.4"
   resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.9.4.tgz#234d82e0f2a389a010126237229fb51ee7fcd836"
   integrity sha512-Z6E273BRhieVcbXDZswt0u5vopdku1oZmVNYG5g4AIHs4Y9ABnsxuazL0tLwY+ODe9yym0ckhR3LA49pIdpzdQ==
@@ -1262,21 +1262,21 @@
     "@kongponents/kooltip" "^6.7.11"
     "@kongponents/styles" "^6.7.11"
 
-"@kongponents/kooltip@^6.7.11", "@kongponents/kooltip@^6.7.7":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/kooltip/-/kooltip-6.7.11.tgz#48c1b6b93af0c643c415a07f3b3430a00397df14"
-  integrity sha512-pn90Vl8N1s+EHCyxr+jo97c7ThHvYiyQ3xXgtWkVEjhNz7aFUQxlgcCuwCkUjOSLh1wBdOB7c+lGtke8ZKK8Wg==
+"@kongponents/kooltip@^6.7.11", "@kongponents/kooltip@^6.9.4":
+  version "6.9.4"
+  resolved "https://registry.yarnpkg.com/@kongponents/kooltip/-/kooltip-6.9.4.tgz#474f0fed0a471f799f696a5c3162071007c670fc"
+  integrity sha512-PkId05pHe7v9fSFzx8VlRaGoc836NUth/5hMRdNUnB5+Rr4OkC/Y0J+vVlbLgN+wQGYtuB2ILTeASj8621lLCA==
   dependencies:
-    "@kongponents/kpop" "^6.7.11"
-    "@kongponents/styles" "^6.7.11"
+    "@kongponents/kpop" "^6.9.4"
+    "@kongponents/styles" "^6.9.4"
 
-"@kongponents/kpop@^6.7.11":
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/@kongponents/kpop/-/kpop-6.7.11.tgz#6a28c595b17dbd33f53c351bb18769e5183b9694"
-  integrity sha512-3fxa38U1CRHqZd+7zigOvyi0ZdWQl1bN/GfRpNjdUJJO3Rt6aGpS704cXsbw4gALY+I9wUfPrL7oIzNcqdzEaw==
+"@kongponents/kpop@^6.9.4":
+  version "6.9.4"
+  resolved "https://registry.yarnpkg.com/@kongponents/kpop/-/kpop-6.9.4.tgz#9ba1f7c35f1e16af26d42d9b518dc97e7474c3d9"
+  integrity sha512-iT8XSYNtqKG/daSdoOSZ7JVKB6fi0lnL97i/iJvzCQiV8HcvKaR4PPgEMkdTr4YFpEEOWKOmHl34WnwhgntRtw==
   dependencies:
-    "@kongponents/kbutton" "^6.7.11"
-    "@kongponents/styles" "^6.7.11"
+    "@kongponents/kbutton" "^6.9.4"
+    "@kongponents/styles" "^6.9.4"
     popper.js "^1.15.0"
     vue-uuid "^2.0.2"
 
