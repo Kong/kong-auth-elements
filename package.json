@@ -26,7 +26,7 @@
     "@kongponents/klabel": "^6.9.4",
     "@kongponents/kooltip": "^6.7.7",
     "@kongponents/kskeleton": "^6.9.4",
-    "@kongponents/styles": "^6.7.7",
+    "@kongponents/styles": "^6.9.5",
     "@openapitools/openapi-generator-cli": "^2.4.26",
     "@vue/compat": "^3.2.30",
     "@xstate/vue": "^0.8.1",
