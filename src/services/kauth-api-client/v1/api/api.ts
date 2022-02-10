@@ -24,6 +24,44 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 /**
  * 
  * @export
+ * @interface AddRoleToTeamsRequest
+ */
+export interface AddRoleToTeamsRequest {
+    /**
+     * 
+     * @type {Array<TeamAPIAddRoleToTeamRequestPermissionParameters>}
+     * @memberof AddRoleToTeamsRequest
+     */
+    'permissionParameters'?: Array<TeamAPIAddRoleToTeamRequestPermissionParameters>;
+    /**
+     * 
+     * @type {string}
+     * @memberof AddRoleToTeamsRequest
+     */
+    'roleId'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface AddRoleToUserRequest
+ */
+export interface AddRoleToUserRequest {
+    /**
+     * 
+     * @type {Array<UserAPIAddRoleToUserRequestPermissionParameters>}
+     * @memberof AddRoleToUserRequest
+     */
+    'permissionParameters'?: Array<UserAPIAddRoleToUserRequestPermissionParameters>;
+    /**
+     * 
+     * @type {string}
+     * @memberof AddRoleToUserRequest
+     */
+    'roleId'?: string;
+}
+/**
+ * 
+ * @export
  * @interface AddUserToTeamRequest
  */
 export interface AddUserToTeamRequest {
@@ -776,18 +814,6 @@ export interface LogoutLogoutResponse {
     'singleLogoutURL'?: string;
 }
 /**
- * - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
- * @export
- * @enum {string}
- */
-
-export enum MeAPIOptionsSortOrder {
-    Invalid = 'SORT_ORDER_INVALID',
-    Ascending = 'SORT_ORDER_ASCENDING',
-    Descending = 'SORT_ORDER_DESCENDING'
-}
-
-/**
  * 
  * @export
  * @interface MeAPIProtobufAny
@@ -801,57 +827,6 @@ export interface MeAPIProtobufAny {
      * @memberof MeAPIProtobufAny
      */
     '@type'?: string;
-}
-/**
- * 
- * @export
- * @interface MeAPIRetrieveOptionsFilter
- */
-export interface MeAPIRetrieveOptionsFilter {
-    /**
-     * 
-     * @type {string}
-     * @memberof MeAPIRetrieveOptionsFilter
-     */
-    'q'?: string;
-}
-/**
- * 
- * @export
- * @interface MeAPIRetrieveOptionsPagination
- */
-export interface MeAPIRetrieveOptionsPagination {
-    /**
-     * 
-     * @type {number}
-     * @memberof MeAPIRetrieveOptionsPagination
-     */
-    'limit'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof MeAPIRetrieveOptionsPagination
-     */
-    'offset'?: number;
-}
-/**
- * 
- * @export
- * @interface MeAPIRetrieveOptionsSort
- */
-export interface MeAPIRetrieveOptionsSort {
-    /**
-     * 
-     * @type {string}
-     * @memberof MeAPIRetrieveOptionsSort
-     */
-    'sortBy'?: string;
-    /**
-     * 
-     * @type {MeAPIOptionsSortOrder}
-     * @memberof MeAPIRetrieveOptionsSort
-     */
-    'sortOrder'?: MeAPIOptionsSortOrder;
 }
 /**
  * 
@@ -953,6 +928,12 @@ export interface MeAPIV1RetrieveTeamsResponse {
  * @interface MeAPIV1Team
  */
 export interface MeAPIV1Team {
+    /**
+     * 
+     * @type {string}
+     * @memberof MeAPIV1Team
+     */
+    'description'?: string;
     /**
      * 
      * @type {string}
@@ -1128,6 +1109,185 @@ export interface PasswordresetsResetResponse {
     'email'?: string;
 }
 /**
+ * - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+ * @export
+ * @enum {string}
+ */
+
+export enum PortalAPIOptionsSortOrder {
+    Invalid = 'SORT_ORDER_INVALID',
+    Ascending = 'SORT_ORDER_ASCENDING',
+    Descending = 'SORT_ORDER_DESCENDING'
+}
+
+/**
+ * 
+ * @export
+ * @interface PortalAPIProtobufAny
+ */
+export interface PortalAPIProtobufAny {
+    [key: string]: object | any;
+
+    /**
+     * 
+     * @type {string}
+     * @memberof PortalAPIProtobufAny
+     */
+    '@type'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface PortalAPIRetrieveOptionsPagination
+ */
+export interface PortalAPIRetrieveOptionsPagination {
+    /**
+     * 
+     * @type {number}
+     * @memberof PortalAPIRetrieveOptionsPagination
+     */
+    'limit'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PortalAPIRetrieveOptionsPagination
+     */
+    'offset'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface PortalAPIRetrieveOptionsSort
+ */
+export interface PortalAPIRetrieveOptionsSort {
+    /**
+     * 
+     * @type {string}
+     * @memberof PortalAPIRetrieveOptionsSort
+     */
+    'sortBy'?: string;
+    /**
+     * 
+     * @type {PortalAPIOptionsSortOrder}
+     * @memberof PortalAPIRetrieveOptionsSort
+     */
+    'sortOrder'?: PortalAPIOptionsSortOrder;
+}
+/**
+ * 
+ * @export
+ * @interface PortalAPIRpcStatus
+ */
+export interface PortalAPIRpcStatus {
+    /**
+     * 
+     * @type {number}
+     * @memberof PortalAPIRpcStatus
+     */
+    'code'?: number;
+    /**
+     * 
+     * @type {Array<PortalAPIProtobufAny>}
+     * @memberof PortalAPIRpcStatus
+     */
+    'details'?: Array<PortalAPIProtobufAny>;
+    /**
+     * 
+     * @type {string}
+     * @memberof PortalAPIRpcStatus
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface PortalAPIV1Developer
+ */
+export interface PortalAPIV1Developer {
+    /**
+     * 
+     * @type {string}
+     * @memberof PortalAPIV1Developer
+     */
+    'email'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PortalAPIV1Developer
+     */
+    'enabled'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof PortalAPIV1Developer
+     */
+    'id'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface PortalAPIV1Portal
+ */
+export interface PortalAPIV1Portal {
+    /**
+     * 
+     * @type {string}
+     * @memberof PortalAPIV1Portal
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PortalAPIV1Portal
+     */
+    'name'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface PortalAPIV1RegisterDeveloperResponse
+ */
+export interface PortalAPIV1RegisterDeveloperResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof PortalAPIV1RegisterDeveloperResponse
+     */
+    'developerId'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface PortalAPIV1RetrieveDevelopersResponse
+ */
+export interface PortalAPIV1RetrieveDevelopersResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof PortalAPIV1RetrieveDevelopersResponse
+     */
+    'count'?: number;
+    /**
+     * 
+     * @type {Array<PortalAPIV1Developer>}
+     * @memberof PortalAPIV1RetrieveDevelopersResponse
+     */
+    'developers'?: Array<PortalAPIV1Developer>;
+}
+/**
+ * 
+ * @export
+ * @interface RegisterDeveloperRequest
+ */
+export interface RegisterDeveloperRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof RegisterDeveloperRequest
+     */
+    'email'?: string;
+}
+/**
  * 
  * @export
  * @interface RegisterRegisterRequest
@@ -1182,6 +1342,38 @@ export interface RegisterRegisterResponse {
      * @memberof RegisterRegisterResponse
      */
     'organizationID'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface SetDeveloperEnabledRequest
+ */
+export interface SetDeveloperEnabledRequest {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SetDeveloperEnabledRequest
+     */
+    'enabled'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface TeamAPIAddRoleToTeamRequestPermissionParameters
+ */
+export interface TeamAPIAddRoleToTeamRequestPermissionParameters {
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIAddRoleToTeamRequestPermissionParameters
+     */
+    'resourceAction'?: string;
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof TeamAPIAddRoleToTeamRequestPermissionParameters
+     */
+    'resourceIds'?: { [key: string]: string; };
 }
 /**
  * - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
@@ -1285,6 +1477,19 @@ export interface TeamAPIRpcStatus {
      * @memberof TeamAPIRpcStatus
      */
     'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface TeamAPIV1AddRoleToTeamResponse
+ */
+export interface TeamAPIV1AddRoleToTeamResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamAPIV1AddRoleToTeamResponse
+     */
+    'assignedRoleId'?: string;
 }
 /**
  * 
@@ -1528,6 +1733,25 @@ export interface UpdateTeamRequest {
 /**
  * 
  * @export
+ * @interface UserAPIAddRoleToUserRequestPermissionParameters
+ */
+export interface UserAPIAddRoleToUserRequestPermissionParameters {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIAddRoleToUserRequestPermissionParameters
+     */
+    'resourceAction'?: string;
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof UserAPIAddRoleToUserRequestPermissionParameters
+     */
+    'resourceIds'?: { [key: string]: string; };
+}
+/**
+ * 
+ * @export
  * @interface UserAPIProtobufAny
  */
 export interface UserAPIProtobufAny {
@@ -1596,6 +1820,19 @@ export interface UserAPIRpcStatus {
      * @memberof UserAPIRpcStatus
      */
     'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UserAPIV1AddRoleToUserResponse
+ */
+export interface UserAPIV1AddRoleToUserResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserAPIV1AddRoleToUserResponse
+     */
+    'assignedRoleId'?: string;
 }
 /**
  * 
@@ -3485,6 +3722,302 @@ export class PasswordsApi extends BaseAPI {
 
 
 /**
+ * PortalAPIApi - axios parameter creator
+ * @export
+ */
+export const PortalAPIApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Registers a developer
+         * @param {string} portalId The ID of the portal for the newly created user
+         * @param {RegisterDeveloperRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        portalAPIRegisterDeveloper: async (portalId: string, body: RegisterDeveloperRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'portalId' is not null or undefined
+            assertParamExists('portalAPIRegisterDeveloper', 'portalId', portalId)
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('portalAPIRegisterDeveloper', 'body', body)
+            const localVarPath = `/api/v1/portals/{portalId}/developers`
+                .replace(`{${"portalId"}}`, encodeURIComponent(String(portalId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieves a list of developers
+         * @param {string} portalId The ID of the portal to retrieve users for
+         * @param {number} [optionsPaginationOffset] Pagination offset.
+         * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING'} [optionsSortSortOrder] result order.   - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+         * @param {string} [optionsSortSortBy] sort field.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        portalAPIRetrieveDevelopers: async (portalId: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsSortSortOrder?: 'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING', optionsSortSortBy?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'portalId' is not null or undefined
+            assertParamExists('portalAPIRetrieveDevelopers', 'portalId', portalId)
+            const localVarPath = `/api/v1/portals/{portalId}/developers`
+                .replace(`{${"portalId"}}`, encodeURIComponent(String(portalId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (optionsPaginationOffset !== undefined) {
+                localVarQueryParameter['options.pagination.offset'] = optionsPaginationOffset;
+            }
+
+            if (optionsPaginationLimit !== undefined) {
+                localVarQueryParameter['options.pagination.limit'] = optionsPaginationLimit;
+            }
+
+            if (optionsSortSortOrder !== undefined) {
+                localVarQueryParameter['options.sort.sortOrder'] = optionsSortSortOrder;
+            }
+
+            if (optionsSortSortBy !== undefined) {
+                localVarQueryParameter['options.sort.sortBy'] = optionsSortSortBy;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Sets a developer\'s enabled/disabled status
+         * @param {string} portalId The ID of the portal for the developer
+         * @param {string} developerId ID of developer to update
+         * @param {SetDeveloperEnabledRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        portalAPISetDeveloperEnabled: async (portalId: string, developerId: string, body: SetDeveloperEnabledRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'portalId' is not null or undefined
+            assertParamExists('portalAPISetDeveloperEnabled', 'portalId', portalId)
+            // verify required parameter 'developerId' is not null or undefined
+            assertParamExists('portalAPISetDeveloperEnabled', 'developerId', developerId)
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('portalAPISetDeveloperEnabled', 'body', body)
+            const localVarPath = `/api/v1/portals/{portalId}/developers/{developerId}`
+                .replace(`{${"portalId"}}`, encodeURIComponent(String(portalId)))
+                .replace(`{${"developerId"}}`, encodeURIComponent(String(developerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * PortalAPIApi - functional programming interface
+ * @export
+ */
+export const PortalAPIApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = PortalAPIApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Registers a developer
+         * @param {string} portalId The ID of the portal for the newly created user
+         * @param {RegisterDeveloperRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async portalAPIRegisterDeveloper(portalId: string, body: RegisterDeveloperRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PortalAPIV1RegisterDeveloperResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.portalAPIRegisterDeveloper(portalId, body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Retrieves a list of developers
+         * @param {string} portalId The ID of the portal to retrieve users for
+         * @param {number} [optionsPaginationOffset] Pagination offset.
+         * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING'} [optionsSortSortOrder] result order.   - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+         * @param {string} [optionsSortSortBy] sort field.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async portalAPIRetrieveDevelopers(portalId: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsSortSortOrder?: 'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING', optionsSortSortBy?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PortalAPIV1RetrieveDevelopersResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.portalAPIRetrieveDevelopers(portalId, optionsPaginationOffset, optionsPaginationLimit, optionsSortSortOrder, optionsSortSortBy, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Sets a developer\'s enabled/disabled status
+         * @param {string} portalId The ID of the portal for the developer
+         * @param {string} developerId ID of developer to update
+         * @param {SetDeveloperEnabledRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async portalAPISetDeveloperEnabled(portalId: string, developerId: string, body: SetDeveloperEnabledRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.portalAPISetDeveloperEnabled(portalId, developerId, body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * PortalAPIApi - factory interface
+ * @export
+ */
+export const PortalAPIApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = PortalAPIApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Registers a developer
+         * @param {string} portalId The ID of the portal for the newly created user
+         * @param {RegisterDeveloperRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        portalAPIRegisterDeveloper(portalId: string, body: RegisterDeveloperRequest, options?: any): AxiosPromise<PortalAPIV1RegisterDeveloperResponse> {
+            return localVarFp.portalAPIRegisterDeveloper(portalId, body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Retrieves a list of developers
+         * @param {string} portalId The ID of the portal to retrieve users for
+         * @param {number} [optionsPaginationOffset] Pagination offset.
+         * @param {number} [optionsPaginationLimit] Result limit.
+         * @param {'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING'} [optionsSortSortOrder] result order.   - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+         * @param {string} [optionsSortSortBy] sort field.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        portalAPIRetrieveDevelopers(portalId: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsSortSortOrder?: 'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING', optionsSortSortBy?: string, options?: any): AxiosPromise<PortalAPIV1RetrieveDevelopersResponse> {
+            return localVarFp.portalAPIRetrieveDevelopers(portalId, optionsPaginationOffset, optionsPaginationLimit, optionsSortSortOrder, optionsSortSortBy, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Sets a developer\'s enabled/disabled status
+         * @param {string} portalId The ID of the portal for the developer
+         * @param {string} developerId ID of developer to update
+         * @param {SetDeveloperEnabledRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        portalAPISetDeveloperEnabled(portalId: string, developerId: string, body: SetDeveloperEnabledRequest, options?: any): AxiosPromise<object> {
+            return localVarFp.portalAPISetDeveloperEnabled(portalId, developerId, body, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * PortalAPIApi - object-oriented interface
+ * @export
+ * @class PortalAPIApi
+ * @extends {BaseAPI}
+ */
+export class PortalAPIApi extends BaseAPI {
+    /**
+     * 
+     * @summary Registers a developer
+     * @param {string} portalId The ID of the portal for the newly created user
+     * @param {RegisterDeveloperRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PortalAPIApi
+     */
+    public portalAPIRegisterDeveloper(portalId: string, body: RegisterDeveloperRequest, options?: AxiosRequestConfig) {
+        return PortalAPIApiFp(this.configuration).portalAPIRegisterDeveloper(portalId, body, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Retrieves a list of developers
+     * @param {string} portalId The ID of the portal to retrieve users for
+     * @param {number} [optionsPaginationOffset] Pagination offset.
+     * @param {number} [optionsPaginationLimit] Result limit.
+     * @param {'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING'} [optionsSortSortOrder] result order.   - SORT_ORDER_INVALID: Invalid default  - SORT_ORDER_ASCENDING: Ascending  - SORT_ORDER_DESCENDING: Descending
+     * @param {string} [optionsSortSortBy] sort field.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PortalAPIApi
+     */
+    public portalAPIRetrieveDevelopers(portalId: string, optionsPaginationOffset?: number, optionsPaginationLimit?: number, optionsSortSortOrder?: 'SORT_ORDER_INVALID' | 'SORT_ORDER_ASCENDING' | 'SORT_ORDER_DESCENDING', optionsSortSortBy?: string, options?: AxiosRequestConfig) {
+        return PortalAPIApiFp(this.configuration).portalAPIRetrieveDevelopers(portalId, optionsPaginationOffset, optionsPaginationLimit, optionsSortSortOrder, optionsSortSortBy, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Sets a developer\'s enabled/disabled status
+     * @param {string} portalId The ID of the portal for the developer
+     * @param {string} developerId ID of developer to update
+     * @param {SetDeveloperEnabledRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PortalAPIApi
+     */
+    public portalAPISetDeveloperEnabled(portalId: string, developerId: string, body: SetDeveloperEnabledRequest, options?: AxiosRequestConfig) {
+        return PortalAPIApiFp(this.configuration).portalAPISetDeveloperEnabled(portalId, developerId, body, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
  * RegistrationApi - axios parameter creator
  * @export
  */
@@ -3599,6 +4132,46 @@ export const TeamAPIApiAxiosParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
+         * @summary Adds a role to a team
+         * @param {string} teamId team id of team that a role will be added to
+         * @param {AddRoleToTeamsRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIAddRoleToTeam: async (teamId: string, body: AddRoleToTeamsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'teamId' is not null or undefined
+            assertParamExists('teamAPIAddRoleToTeam', 'teamId', teamId)
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('teamAPIAddRoleToTeam', 'body', body)
+            const localVarPath = `/api/v1/teams/{teamId}/roles`
+                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Adds a user to a team
          * @param {string} teamId ID of the team under which the user should be added
          * @param {AddUserToTeamRequest} body 
@@ -3707,6 +4280,45 @@ export const TeamAPIApiAxiosParamCreator = function (configuration?: Configurati
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Removes an assigned role from team
+         * @param {string} teamId team id of assigned role\&#39;s team to be removed
+         * @param {string} [assingedRoleId] role id of assigned role to be removed from specified team.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIRemoveRoleFromTeam: async (teamId: string, assingedRoleId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'teamId' is not null or undefined
+            assertParamExists('teamAPIRemoveRoleFromTeam', 'teamId', teamId)
+            const localVarPath = `/api/v1/teams/{teamId}/roles`
+                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (assingedRoleId !== undefined) {
+                localVarQueryParameter['assingedRoleId'] = assingedRoleId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -4045,6 +4657,18 @@ export const TeamAPIApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Adds a role to a team
+         * @param {string} teamId team id of team that a role will be added to
+         * @param {AddRoleToTeamsRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async teamAPIAddRoleToTeam(teamId: string, body: AddRoleToTeamsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TeamAPIV1AddRoleToTeamResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPIAddRoleToTeam(teamId, body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Adds a user to a team
          * @param {string} teamId ID of the team under which the user should be added
          * @param {AddUserToTeamRequest} body 
@@ -4076,6 +4700,18 @@ export const TeamAPIApiFp = function(configuration?: Configuration) {
          */
         async teamAPIMoveTeam(teamId: string, body: MoveTeamRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TeamAPIV1MoveTeamResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPIMoveTeam(teamId, body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Removes an assigned role from team
+         * @param {string} teamId team id of assigned role\&#39;s team to be removed
+         * @param {string} [assingedRoleId] role id of assigned role to be removed from specified team.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async teamAPIRemoveRoleFromTeam(teamId: string, assingedRoleId?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.teamAPIRemoveRoleFromTeam(teamId, assingedRoleId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -4183,6 +4819,17 @@ export const TeamAPIApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
+         * @summary Adds a role to a team
+         * @param {string} teamId team id of team that a role will be added to
+         * @param {AddRoleToTeamsRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIAddRoleToTeam(teamId: string, body: AddRoleToTeamsRequest, options?: any): AxiosPromise<TeamAPIV1AddRoleToTeamResponse> {
+            return localVarFp.teamAPIAddRoleToTeam(teamId, body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Adds a user to a team
          * @param {string} teamId ID of the team under which the user should be added
          * @param {AddUserToTeamRequest} body 
@@ -4212,6 +4859,17 @@ export const TeamAPIApiFactory = function (configuration?: Configuration, basePa
          */
         teamAPIMoveTeam(teamId: string, body: MoveTeamRequest, options?: any): AxiosPromise<TeamAPIV1MoveTeamResponse> {
             return localVarFp.teamAPIMoveTeam(teamId, body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Removes an assigned role from team
+         * @param {string} teamId team id of assigned role\&#39;s team to be removed
+         * @param {string} [assingedRoleId] role id of assigned role to be removed from specified team.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        teamAPIRemoveRoleFromTeam(teamId: string, assingedRoleId?: string, options?: any): AxiosPromise<object> {
+            return localVarFp.teamAPIRemoveRoleFromTeam(teamId, assingedRoleId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -4311,6 +4969,19 @@ export const TeamAPIApiFactory = function (configuration?: Configuration, basePa
 export class TeamAPIApi extends BaseAPI {
     /**
      * 
+     * @summary Adds a role to a team
+     * @param {string} teamId team id of team that a role will be added to
+     * @param {AddRoleToTeamsRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeamAPIApi
+     */
+    public teamAPIAddRoleToTeam(teamId: string, body: AddRoleToTeamsRequest, options?: AxiosRequestConfig) {
+        return TeamAPIApiFp(this.configuration).teamAPIAddRoleToTeam(teamId, body, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Adds a user to a team
      * @param {string} teamId ID of the team under which the user should be added
      * @param {AddUserToTeamRequest} body 
@@ -4345,6 +5016,19 @@ export class TeamAPIApi extends BaseAPI {
      */
     public teamAPIMoveTeam(teamId: string, body: MoveTeamRequest, options?: AxiosRequestConfig) {
         return TeamAPIApiFp(this.configuration).teamAPIMoveTeam(teamId, body, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Removes an assigned role from team
+     * @param {string} teamId team id of assigned role\&#39;s team to be removed
+     * @param {string} [assingedRoleId] role id of assigned role to be removed from specified team.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeamAPIApi
+     */
+    public teamAPIRemoveRoleFromTeam(teamId: string, assingedRoleId?: string, options?: AxiosRequestConfig) {
+        return TeamAPIApiFp(this.configuration).teamAPIRemoveRoleFromTeam(teamId, assingedRoleId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -4455,6 +5139,85 @@ export class TeamAPIApi extends BaseAPI {
  */
 export const UserAPIApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Adds a role to a User
+         * @param {string} userId user id of user that a role will be added to
+         * @param {AddRoleToUserRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userAPIAddRoleToUser: async (userId: string, body: AddRoleToUserRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('userAPIAddRoleToUser', 'userId', userId)
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('userAPIAddRoleToUser', 'body', body)
+            const localVarPath = `/api/v1/users/{userId}/roles`
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Removes an assigned role from User
+         * @param {string} userId user id of assigned role\&#39;s User to be removed
+         * @param {string} [assingedRoleId] role id of assigned role to be removed from specified User.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userAPIRemoveRoleFromUser: async (userId: string, assingedRoleId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('userAPIRemoveRoleFromUser', 'userId', userId)
+            const localVarPath = `/api/v1/users/{userId}/roles`
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (assingedRoleId !== undefined) {
+                localVarQueryParameter['assingedRoleId'] = assingedRoleId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary Retrieves the teams a user is on
@@ -4580,6 +5343,30 @@ export const UserAPIApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Adds a role to a User
+         * @param {string} userId user id of user that a role will be added to
+         * @param {AddRoleToUserRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userAPIAddRoleToUser(userId: string, body: AddRoleToUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserAPIV1AddRoleToUserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userAPIAddRoleToUser(userId, body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Removes an assigned role from User
+         * @param {string} userId user id of assigned role\&#39;s User to be removed
+         * @param {string} [assingedRoleId] role id of assigned role to be removed from specified User.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userAPIRemoveRoleFromUser(userId: string, assingedRoleId?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userAPIRemoveRoleFromUser(userId, assingedRoleId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Retrieves the teams a user is on
          * @param {string} userId id of the user to retrieve the team of which they are a member of
          * @param {*} [options] Override http request option.
@@ -4625,6 +5412,28 @@ export const UserAPIApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
+         * @summary Adds a role to a User
+         * @param {string} userId user id of user that a role will be added to
+         * @param {AddRoleToUserRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userAPIAddRoleToUser(userId: string, body: AddRoleToUserRequest, options?: any): AxiosPromise<UserAPIV1AddRoleToUserResponse> {
+            return localVarFp.userAPIAddRoleToUser(userId, body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Removes an assigned role from User
+         * @param {string} userId user id of assigned role\&#39;s User to be removed
+         * @param {string} [assingedRoleId] role id of assigned role to be removed from specified User.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userAPIRemoveRoleFromUser(userId: string, assingedRoleId?: string, options?: any): AxiosPromise<object> {
+            return localVarFp.userAPIRemoveRoleFromUser(userId, assingedRoleId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Retrieves the teams a user is on
          * @param {string} userId id of the user to retrieve the team of which they are a member of
          * @param {*} [options] Override http request option.
@@ -4665,6 +5474,32 @@ export const UserAPIApiFactory = function (configuration?: Configuration, basePa
  * @extends {BaseAPI}
  */
 export class UserAPIApi extends BaseAPI {
+    /**
+     * 
+     * @summary Adds a role to a User
+     * @param {string} userId user id of user that a role will be added to
+     * @param {AddRoleToUserRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserAPIApi
+     */
+    public userAPIAddRoleToUser(userId: string, body: AddRoleToUserRequest, options?: AxiosRequestConfig) {
+        return UserAPIApiFp(this.configuration).userAPIAddRoleToUser(userId, body, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Removes an assigned role from User
+     * @param {string} userId user id of assigned role\&#39;s User to be removed
+     * @param {string} [assingedRoleId] role id of assigned role to be removed from specified User.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserAPIApi
+     */
+    public userAPIRemoveRoleFromUser(userId: string, assingedRoleId?: string, options?: AxiosRequestConfig) {
+        return UserAPIApiFp(this.configuration).userAPIRemoveRoleFromUser(userId, assingedRoleId, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @summary Retrieves the teams a user is on

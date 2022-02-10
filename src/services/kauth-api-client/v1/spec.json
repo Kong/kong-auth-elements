@@ -432,56 +432,6 @@
       "title": "InviteUserResponse",
       "type": "object"
     },
-    "MeAPI.RetrieveOptionsFilter": {
-      "properties": {
-        "q": {
-          "title": "The query to filter on",
-          "type": "string"
-        }
-      },
-      "title": "filter options group",
-      "type": "object"
-    },
-    "MeAPI.RetrieveOptionsPagination": {
-      "properties": {
-        "limit": {
-          "format": "int64",
-          "title": "Result limit",
-          "type": "integer"
-        },
-        "offset": {
-          "format": "int64",
-          "title": "Pagination offset",
-          "type": "integer"
-        }
-      },
-      "title": "pagination options group",
-      "type": "object"
-    },
-    "MeAPI.RetrieveOptionsSort": {
-      "properties": {
-        "sortBy": {
-          "title": "sort field",
-          "type": "string"
-        },
-        "sortOrder": {
-          "$ref": "#/definitions/MeAPI.optionsSortOrder"
-        }
-      },
-      "title": "sort options group",
-      "type": "object"
-    },
-    "MeAPI.optionsSortOrder": {
-      "default": "SORT_ORDER_INVALID",
-      "description": "- SORT_ORDER_INVALID: Invalid default\n - SORT_ORDER_ASCENDING: Ascending\n - SORT_ORDER_DESCENDING: Descending",
-      "enum": [
-        "SORT_ORDER_INVALID",
-        "SORT_ORDER_ASCENDING",
-        "SORT_ORDER_DESCENDING"
-      ],
-      "title": "Sort order defines valid sort ordering",
-      "type": "string"
-    },
     "MeAPI.protobufAny": {
       "additionalProperties": {},
       "properties": {
@@ -564,6 +514,10 @@
     },
     "MeAPI.v1Team": {
       "properties": {
+        "description": {
+          "title": "Description of team",
+          "type": "string"
+        },
         "id": {
           "title": "ID of the team",
           "type": "string"
@@ -653,6 +607,154 @@
       "title": "Update organization response",
       "type": "object"
     },
+    "PortalAPI.RetrieveOptionsPagination": {
+      "properties": {
+        "limit": {
+          "format": "int64",
+          "title": "Result limit",
+          "type": "integer"
+        },
+        "offset": {
+          "format": "int64",
+          "title": "Pagination offset",
+          "type": "integer"
+        }
+      },
+      "title": "pagination options group",
+      "type": "object"
+    },
+    "PortalAPI.RetrieveOptionsSort": {
+      "properties": {
+        "sortBy": {
+          "title": "sort field",
+          "type": "string"
+        },
+        "sortOrder": {
+          "$ref": "#/definitions/PortalAPI.optionsSortOrder"
+        }
+      },
+      "title": "sort options group",
+      "type": "object"
+    },
+    "PortalAPI.optionsSortOrder": {
+      "default": "SORT_ORDER_INVALID",
+      "description": "- SORT_ORDER_INVALID: Invalid default\n - SORT_ORDER_ASCENDING: Ascending\n - SORT_ORDER_DESCENDING: Descending",
+      "enum": [
+        "SORT_ORDER_INVALID",
+        "SORT_ORDER_ASCENDING",
+        "SORT_ORDER_DESCENDING"
+      ],
+      "title": "Sort order defines valid sort ordering",
+      "type": "string"
+    },
+    "PortalAPI.protobufAny": {
+      "additionalProperties": {},
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PortalAPI.rpcStatus": {
+      "properties": {
+        "code": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/PortalAPI.protobufAny"
+          },
+          "type": "array"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PortalAPI.v1Developer": {
+      "properties": {
+        "email": {
+          "title": "email of the developer",
+          "type": "string"
+        },
+        "enabled": {
+          "title": "enabled status of the developer",
+          "type": "boolean"
+        },
+        "id": {
+          "title": "id of the developer",
+          "type": "string"
+        }
+      },
+      "title": "A developer",
+      "type": "object"
+    },
+    "PortalAPI.v1Portal": {
+      "properties": {
+        "id": {
+          "title": "The id of the portal",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name of portal",
+          "type": "string"
+        }
+      },
+      "title": "A portal",
+      "type": "object"
+    },
+    "PortalAPI.v1RegisterDeveloperResponse": {
+      "properties": {
+        "developerId": {
+          "title": "The ID of the newly created developer",
+          "type": "string"
+        }
+      },
+      "title": "Create developer response",
+      "type": "object"
+    },
+    "PortalAPI.v1RetrieveDevelopersResponse": {
+      "properties": {
+        "count": {
+          "format": "int64",
+          "title": "Total number of developers",
+          "type": "integer"
+        },
+        "developers": {
+          "items": {
+            "$ref": "#/definitions/PortalAPI.v1Developer"
+          },
+          "title": "Retrieved developers",
+          "type": "array"
+        }
+      },
+      "title": "Retrieve developers response",
+      "type": "object"
+    },
+    "PortalAPI.v1SetDeveloperEnabledResponse": {
+      "title": "Set developer enabled response",
+      "type": "object"
+    },
+    "TeamAPI.AddRoleToTeamRequestPermissionParameters": {
+      "properties": {
+        "resourceAction": {
+          "title": "string in form of resource#action",
+          "type": "string"
+        },
+        "resourceIds": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "map of ids to value",
+          "type": "object"
+        }
+      },
+      "title": "Structure for permissions map",
+      "type": "object"
+    },
     "TeamAPI.RetrieveOptionsFilter": {
       "properties": {
         "q": {
@@ -730,6 +832,16 @@
       },
       "type": "object"
     },
+    "TeamAPI.v1AddRoleToTeamResponse": {
+      "properties": {
+        "assignedRoleId": {
+          "title": "id of assigned role",
+          "type": "string"
+        }
+      },
+      "title": "Add Roles to Team Response message",
+      "type": "object"
+    },
     "TeamAPI.v1AddUserToTeamResponse": {
       "title": "Add user to team response",
       "type": "object"
@@ -768,6 +880,10 @@
         }
       },
       "title": "Move team response",
+      "type": "object"
+    },
+    "TeamAPI.v1RemoveRoleFromTeamResponse": {
+      "title": "Remove Roles to Team response",
       "type": "object"
     },
     "TeamAPI.v1RemoveTeamResponse": {
@@ -908,6 +1024,23 @@
       "title": "A user",
       "type": "object"
     },
+    "UserAPI.AddRoleToUserRequestPermissionParameters": {
+      "properties": {
+        "resourceAction": {
+          "title": "string in form of resource#action",
+          "type": "string"
+        },
+        "resourceIds": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "map of ids to value",
+          "type": "object"
+        }
+      },
+      "title": "Structure for permissions map",
+      "type": "object"
+    },
     "UserAPI.RetrieveOptionsFilter": {
       "properties": {
         "q": {
@@ -959,6 +1092,20 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "UserAPI.v1AddRoleToUserResponse": {
+      "properties": {
+        "assignedRoleId": {
+          "title": "id of assigned role",
+          "type": "string"
+        }
+      },
+      "title": "Add Roles to User Response message",
+      "type": "object"
+    },
+    "UserAPI.v1RemoveRoleFromUserResponse": {
+      "title": "Remove Roles to User response",
       "type": "object"
     },
     "UserAPI.v1RetrieveTeamsForUserResponse": {
@@ -2001,6 +2148,169 @@
         ]
       }
     },
+    "/api/v1/portals/{portalId}/developers": {
+      "get": {
+        "operationId": "PortalAPI_RetrieveDevelopers",
+        "parameters": [
+          {
+            "description": "The ID of the portal to retrieve users for",
+            "in": "path",
+            "name": "portalId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Pagination offset.",
+            "format": "int64",
+            "in": "query",
+            "name": "options.pagination.offset",
+            "type": "integer"
+          },
+          {
+            "description": "Result limit.",
+            "format": "int64",
+            "in": "query",
+            "name": "options.pagination.limit",
+            "type": "integer"
+          },
+          {
+            "default": "SORT_ORDER_INVALID",
+            "description": "result order.\n\n - SORT_ORDER_INVALID: Invalid default\n - SORT_ORDER_ASCENDING: Ascending\n - SORT_ORDER_DESCENDING: Descending",
+            "enum": [
+              "SORT_ORDER_INVALID",
+              "SORT_ORDER_ASCENDING",
+              "SORT_ORDER_DESCENDING"
+            ],
+            "in": "query",
+            "name": "options.sort.sortOrder",
+            "type": "string"
+          },
+          {
+            "description": "sort field.",
+            "in": "query",
+            "name": "options.sort.sortBy",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PortalAPI.v1RetrieveDevelopersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/PortalAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Retrieves a list of developers",
+        "tags": [
+          "PortalAPI"
+        ]
+      },
+      "post": {
+        "operationId": "PortalAPI_RegisterDeveloper",
+        "parameters": [
+          {
+            "description": "The ID of the portal for the newly created user",
+            "in": "path",
+            "name": "portalId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "email": {
+                  "title": "The email of the developer",
+                  "type": "string"
+                }
+              },
+              "title": "Register developer request",
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PortalAPI.v1RegisterDeveloperResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/PortalAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Registers a developer",
+        "tags": [
+          "PortalAPI"
+        ]
+      }
+    },
+    "/api/v1/portals/{portalId}/developers/{developerId}": {
+      "patch": {
+        "operationId": "PortalAPI_SetDeveloperEnabled",
+        "parameters": [
+          {
+            "description": "The ID of the portal for the developer",
+            "in": "path",
+            "name": "portalId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "ID of developer to update",
+            "in": "path",
+            "name": "developerId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "enabled": {
+                  "title": "Enabled status",
+                  "type": "boolean"
+                }
+              },
+              "title": "Set developer enabled request",
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PortalAPI.v1SetDeveloperEnabledResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/PortalAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Sets a developer's enabled/disabled status",
+        "tags": [
+          "PortalAPI"
+        ]
+      }
+    },
     "/api/v1/refresh": {
       "post": {
         "consumes": [
@@ -2317,6 +2627,96 @@
           }
         },
         "summary": "Update a team",
+        "tags": [
+          "TeamAPI"
+        ]
+      }
+    },
+    "/api/v1/teams/{teamId}/roles": {
+      "delete": {
+        "operationId": "TeamAPI_RemoveRoleFromTeam",
+        "parameters": [
+          {
+            "description": "team id of assigned role's team to be removed",
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "role id of assigned role to be removed from specified team.",
+            "in": "query",
+            "name": "assingedRoleId",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.v1RemoveRoleFromTeamResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Removes an assigned role from team",
+        "tags": [
+          "TeamAPI"
+        ]
+      },
+      "post": {
+        "operationId": "TeamAPI_AddRoleToTeam",
+        "parameters": [
+          {
+            "description": "team id of team that a role will be added to",
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "permissionParameters": {
+                  "items": {
+                    "$ref": "#/definitions/TeamAPI.AddRoleToTeamRequestPermissionParameters"
+                  },
+                  "title": "permission parameters",
+                  "type": "array"
+                },
+                "roleId": {
+                  "title": "role id of role to be added to specified team",
+                  "type": "string"
+                }
+              },
+              "title": "Add Role to Teams request",
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.v1AddRoleToTeamResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/TeamAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Adds a role to a team",
         "tags": [
           "TeamAPI"
         ]
@@ -2662,6 +3062,96 @@
           }
         },
         "summary": "Retrieve user retrieves a user's details",
+        "tags": [
+          "UserAPI"
+        ]
+      }
+    },
+    "/api/v1/users/{userId}/roles": {
+      "delete": {
+        "operationId": "UserAPI_RemoveRoleFromUser",
+        "parameters": [
+          {
+            "description": "user id of assigned role's User to be removed",
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "role id of assigned role to be removed from specified User.",
+            "in": "query",
+            "name": "assingedRoleId",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserAPI.v1RemoveRoleFromUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/UserAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Removes an assigned role from User",
+        "tags": [
+          "UserAPI"
+        ]
+      },
+      "post": {
+        "operationId": "UserAPI_AddRoleToUser",
+        "parameters": [
+          {
+            "description": "user id of user that a role will be added to",
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "permissionParameters": {
+                  "items": {
+                    "$ref": "#/definitions/UserAPI.AddRoleToUserRequestPermissionParameters"
+                  },
+                  "title": "permission parameters",
+                  "type": "array"
+                },
+                "roleId": {
+                  "title": "role id of role to be added to specified user",
+                  "type": "string"
+                }
+              },
+              "title": "Add Role to User request",
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserAPI.v1AddRoleToUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/UserAPI.rpcStatus"
+            }
+          }
+        },
+        "summary": "Adds a role to a User",
         "tags": [
           "UserAPI"
         ]
