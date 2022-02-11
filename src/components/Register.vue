@@ -220,7 +220,9 @@ export default defineComponent({
         formData.organization &&
         formData.password &&
         formData.checked_agreement &&
-        (accessCodeRequired.value ? !formData.emailToken && formData.accessCode : true))
+        // If they have an invite token, or filled out the access code
+        (formData.emailToken || (accessCodeRequired.value && formData.accessCode))
+      )
     })
 
     const btnText = computed((): string => {

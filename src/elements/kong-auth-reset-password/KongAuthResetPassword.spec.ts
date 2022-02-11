@@ -44,7 +44,7 @@ describe('KongAuthResetPassword.ce.vue', () => {
       // Elements should exist
       cy.getTestId(testids.password).should('be.visible')
       cy.getTestId(testids.confirmPassword).should('be.visible')
-      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+      cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
     })
     // Elements should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
@@ -59,7 +59,7 @@ describe('KongAuthResetPassword.ce.vue', () => {
 
     cy.getTestId(testids.confirmPassword).type(user.password)
 
-    cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+    cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
 
     // Submit
     cy.getTestId(testids.form).submit()
@@ -76,7 +76,7 @@ describe('KongAuthResetPassword.ce.vue', () => {
 
     cy.getTestId(testids.password).type(user.password)
 
-    cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+    cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
 
     // Submit
     cy.getTestId(testids.form).submit()
@@ -94,7 +94,7 @@ describe('KongAuthResetPassword.ce.vue', () => {
     cy.getTestId(testids.password).type(user.password)
     cy.getTestId(testids.confirmPassword).type('a-different-password')
 
-    cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+    cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
 
     // Submit
     cy.getTestId(testids.form).submit()
@@ -139,7 +139,7 @@ describe('KongAuthResetPassword.ce.vue', () => {
       },
     })
 
-    cy.getTestId(testids.instructionText).should('be.visible').should('have.text', customText)
+    cy.getTestId(testids.instructionText).should('be.visible').and('have.text', customText)
   })
 
   /* ==============================
