@@ -157,9 +157,16 @@ describe('KongAuthRegister.ce.vue', () => {
       cy.getTestId(testids.submitBtn).should('be.disabled')
     })
 
-    it.only('pre-populates the form and accepts an invitation after entering required fields', () => {
+    it('pre-populates the form and accepts an invitation after entering required fields', () => {
       // Stub search params
       cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
+
+      cy.intercept('GET', '**/client-config', {
+        statusCode: 200,
+        body: {
+          requireRegistrationAccessCode: true,
+        },
+      }).as('client-config-request')
 
       cy.intercept('PATCH', '**/accept-invite', {
         statusCode: 200,
