@@ -157,7 +157,7 @@ describe('KongAuthRegister.ce.vue', () => {
       cy.getTestId(testids.submitBtn).should('be.disabled')
     })
 
-    it('pre-populates the form and accepts an invitation after entering required fields', () => {
+    it.only('pre-populates the form and accepts an invitation after entering required fields', () => {
       // Stub search params
       cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
 
@@ -183,7 +183,7 @@ describe('KongAuthRegister.ce.vue', () => {
       cy.getTestId(testids.submitBtn).should('not.be.disabled')
       cy.getTestId(testids.submitBtn).click()
 
-      cy.wait('@accept-invite').should('have.been.calledOnce')
+      cy.wait('@accept-invite').its('response.statusCode').should('eq', 200)
     })
   })
 
