@@ -53,7 +53,7 @@ describe('KongAuthLogin.ce.vue', () => {
       // Elements should exist
       cy.getTestId(testids.email).should('be.visible')
       cy.getTestId(testids.password).should('be.visible')
-      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+      cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
     })
     // Elements should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
@@ -76,7 +76,7 @@ describe('KongAuthLogin.ce.vue', () => {
     // Only type a password
     cy.getTestId(testids.password).type(user.password)
 
-    cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+    cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
 
     // Submit
     cy.getTestId(testids.form).submit()
@@ -94,7 +94,7 @@ describe('KongAuthLogin.ce.vue', () => {
     // Only type an email
     cy.getTestId(testids.email).type(user.email)
 
-    cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+    cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
 
     // Submit
     cy.getTestId(testids.form).submit()
@@ -152,7 +152,7 @@ describe('KongAuthLogin.ce.vue', () => {
       cy.wait('@email-verification-request').then(() => {
         // Verify UI
         cy.getTestId(testids.gruceLoader).should('not.exist')
-        cy.getTestId(testids.confirmedEmailMessage).should('be.visible').should('contain.text', helpText.login.confirmedEmailSuccess)
+        cy.getTestId(testids.confirmedEmailMessage).should('be.visible').and('contain.text', helpText.login.confirmedEmailSuccess)
         cy.getTestId(testids.email).should('have.value', user.email)
 
         // Check for emitted event
@@ -169,7 +169,7 @@ describe('KongAuthLogin.ce.vue', () => {
 
       mount(KongAuthLogin)
 
-      cy.getTestId(testids.passwordResetMessage).should('be.visible').should('contain.text', helpText.login.passwordResetSuccess)
+      cy.getTestId(testids.passwordResetMessage).should('be.visible').and('contain.text', helpText.login.passwordResetSuccess)
     })
 
     it("should show register success message if query params include 'registered'", () => {
@@ -178,7 +178,7 @@ describe('KongAuthLogin.ce.vue', () => {
 
       mount(KongAuthLogin)
 
-      cy.getTestId(testids.registerSuccessMessage).should('be.visible').should('contain.text', helpText.login.registerSuccess)
+      cy.getTestId(testids.registerSuccessMessage).should('be.visible').and('contain.text', helpText.login.registerSuccess)
     })
   })
 
@@ -200,7 +200,7 @@ describe('KongAuthLogin.ce.vue', () => {
         },
       })
 
-      cy.get('@set-location').should('have.been.calledOnce').should('have.been.calledWithMatch', redirectPath)
+      cy.get('@set-location').should('have.been.calledOnce').and('have.been.calledWithMatch', redirectPath)
       cy.getTestId(testids.gruceLoader).should('exist').find('.fullscreen-loading-container').should('be.visible')
     })
   })
@@ -216,7 +216,7 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
-    cy.getTestId(testids.instructionText).should('be.visible').should('have.text', customText)
+    cy.getTestId(testids.instructionText).should('be.visible').and('have.text', customText)
   })
 
   /* ==============================
@@ -241,7 +241,7 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
-    cy.getTestId(testids.forgotPasswordLink).should('be.visible').should('have.text', customText)
+    cy.getTestId(testids.forgotPasswordLink).should('be.visible').and('have.text', customText)
   })
 
   it('emits an event when user clicks forgot password link', () => {
@@ -281,8 +281,8 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
-    cy.getTestId(testids.registerHelpText).should('be.visible').should('have.text', customHelpText)
-    cy.getTestId(testids.registerLink).should('be.visible').should('have.text', customText)
+    cy.getTestId(testids.registerHelpText).should('be.visible').and('have.text', customHelpText)
+    cy.getTestId(testids.registerLink).should('be.visible').and('have.text', customText)
   })
 
   it('emits an event when user clicks register link', () => {

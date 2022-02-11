@@ -45,7 +45,7 @@ describe('KongAuthForgotPassword.ce.vue', () => {
     cy.getTestId(testids.form).within(() => {
       // Elements should exist
       cy.getTestId(testids.email).should('be.visible')
-      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+      cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
     })
     // Elements should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
@@ -60,7 +60,7 @@ describe('KongAuthForgotPassword.ce.vue', () => {
     // Error should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
 
-    cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+    cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
 
     // Submit
     cy.getTestId(testids.form).submit()
@@ -100,7 +100,7 @@ describe('KongAuthForgotPassword.ce.vue', () => {
       })
 
       // Success messsage should exist
-      cy.getTestId(testids.successMessage).should('be.visible').should('contain.text', helpText.forgotPassword.success)
+      cy.getTestId(testids.successMessage).should('be.visible').and('contain.text', helpText.forgotPassword.success)
     })
   })
 
@@ -115,7 +115,7 @@ describe('KongAuthForgotPassword.ce.vue', () => {
       },
     })
 
-    cy.getTestId(testids.instructionText).should('be.visible').should('have.text', customText)
+    cy.getTestId(testids.instructionText).should('be.visible').and('have.text', customText)
   })
 
   /* ==============================
@@ -140,6 +140,6 @@ describe('KongAuthForgotPassword.ce.vue', () => {
       },
     })
 
-    cy.getTestId(testids.loginLink).should('be.visible').should('have.text', customText)
+    cy.getTestId(testids.loginLink).should('be.visible').and('have.text', customText)
   })
 })

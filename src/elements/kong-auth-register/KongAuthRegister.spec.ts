@@ -57,7 +57,7 @@ describe('KongAuthRegister.ce.vue', () => {
       cy.getTestId(testids.email).should('be.visible')
       cy.getTestId(testids.password).should('be.visible')
       cy.getTestId(testids.agreeCheckbox).should('be.visible')
-      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+      cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
     })
     // Elements should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
@@ -83,13 +83,13 @@ describe('KongAuthRegister.ce.vue', () => {
         }
       })
 
-      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+      cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
 
       // Submit
       cy.getTestId(testids.form).submit()
 
       // Error should exist
-      cy.getTestId(testids.errorMessage).should('be.visible').should('contain.text', helpText.general.missingInfo)
+      cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', helpText.general.missingInfo)
     })
   })
 
@@ -116,17 +116,31 @@ describe('KongAuthRegister.ce.vue', () => {
         }
       })
 
-      cy.getTestId(testids.submitBtn).should('be.visible').should('be.disabled')
+      cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
 
       // Submit
       cy.getTestId(testids.form).submit()
 
       // Error should exist
-      cy.getTestId(testids.errorMessage).should('be.visible').should('contain.text', helpText.general.missingInfo)
+      cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', helpText.general.missingInfo)
     })
   })
 
-  describe('Respond to URL Parameters', () => {
+  it('does not require an access code if the user is accepting an invite', () => {
+    // Stub search params
+    cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
+
+    cy.intercept('GET', '**/client-config', {
+      statusCode: 200,
+      body: {
+        requireRegistrationAccessCode: true,
+      },
+    }).as('client-config-request')
+
+    mount(KongAuthRegister)
+  })
+
+  describe('Invites and Responding to URL Parameters', () => {
     it('pre-populates the form from search params', () => {
       // Stub search params
       cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
@@ -134,18 +148,62 @@ describe('KongAuthRegister.ce.vue', () => {
       mount(KongAuthRegister)
 
       // Inputs should be pre-populated and disabled
-      cy.getTestId(testids.fullName).should('have.value', user.name).should('be.disabled')
-      cy.getTestId(testids.organization).should('have.value', user.org).should('be.disabled')
-      cy.getTestId(testids.email).should('have.value', user.email).should('be.disabled')
+      cy.getTestId(testids.fullName).should('have.value', user.name).and('be.disabled')
+      cy.getTestId(testids.organization).should('have.value', user.org).and('be.disabled')
+      cy.getTestId(testids.email).should('have.value', user.email).and('be.disabled')
 
-      cy.getTestId(testids.password).should('not.be.disabled').should('be.empty')
-      cy.getTestId(testids.agreeCheckbox).should('not.be.disabled').should('not.be.checked')
+      cy.getTestId(testids.password).should('not.be.disabled').and('be.empty')
+      cy.getTestId(testids.agreeCheckbox).should('not.be.disabled').and('not.be.checked')
       cy.getTestId(testids.submitBtn).should('be.disabled')
+    })
+
+    it('pre-populates the form and accepts an invitation after entering required fields', () => {
+      // Stub search params
+      cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
+
+      cy.intercept('GET', '**/client-config', {
+        statusCode: 200,
+        body: {
+          requireRegistrationAccessCode: true,
+        },
+      }).as('client-config-request')
+
+      cy.intercept('PATCH', '**/accept-invite', {
+        statusCode: 200,
+      }).as('accept-invite')
+
+      mount(KongAuthRegister)
+
+      // Inputs should be pre-populated and disabled
+      cy.getTestId(testids.fullName).should('have.value', user.name).and('be.disabled')
+      cy.getTestId(testids.organization).should('have.value', user.org).and('be.disabled')
+      cy.getTestId(testids.email).should('have.value', user.email).and('be.disabled')
+
+      cy.getTestId(testids.password).should('not.be.disabled').and('be.empty')
+      cy.getTestId(testids.agreeCheckbox).should('not.be.disabled').and('not.be.checked')
+      cy.getTestId(testids.submitBtn).should('be.disabled')
+
+      // Fill out fields
+      cy.getTestId(testids.password).type(user.password)
+      cy.getTestId(testids.agreeCheckbox).check()
+
+      cy.getTestId(testids.submitBtn).should('not.be.disabled')
+      cy.getTestId(testids.submitBtn).click()
+
+      cy.wait('@accept-invite').its('response.statusCode').should('eq', 200)
     })
   })
 
   it("emits a 'register-success' event with a payload on successful registration", () => {
+    cy.intercept('GET', '**/client-config', {
+      statusCode: 200,
+      body: {
+        requireRegistrationAccessCode: false,
+      },
+    }).as('client-config-request')
+
     cy.intercept('POST', '**/register', {
+      statusCode: 200,
       body: {
         organizationID: '187e2b65-ec69-421c-a7ba-3e946c4e5077',
       },
@@ -183,7 +241,7 @@ describe('KongAuthRegister.ce.vue', () => {
       },
     })
 
-    cy.getTestId(testids.instructionText).should('be.visible').should('have.text', customText)
+    cy.getTestId(testids.instructionText).should('be.visible').and('have.text', customText)
   })
 
   /* ==============================
