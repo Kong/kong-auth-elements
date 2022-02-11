@@ -221,7 +221,7 @@ export default defineComponent({
         formData.password &&
         formData.checked_agreement &&
         // If they have an invite token, or filled out the access code
-        (formData.emailToken || (accessCodeRequired.value && formData.accessCode))
+        (formData.emailToken || !accessCodeRequired.value || (accessCodeRequired.value && formData.accessCode))
       )
     })
 

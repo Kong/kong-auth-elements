@@ -140,7 +140,7 @@ describe('KongAuthRegister.ce.vue', () => {
     mount(KongAuthRegister)
   })
 
-  describe('Respond to URL Parameters', () => {
+  describe('Invites and Responding to URL Parameters', () => {
     it('pre-populates the form from search params', () => {
       // Stub search params
       cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
@@ -157,11 +157,11 @@ describe('KongAuthRegister.ce.vue', () => {
       cy.getTestId(testids.submitBtn).should('be.disabled')
     })
 
-    it.only('pre-populates the form and accepts an invitation after entering required fields', () => {
+    it('pre-populates the form and accepts an invitation after entering required fields', () => {
       // Stub search params
       cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
 
-      cy.intercept('POST', '**/accept-invite', {
+      cy.intercept('PATCH', '**/accept-invite', {
         statusCode: 200,
       }).as('accept-invite')
 
@@ -183,12 +183,20 @@ describe('KongAuthRegister.ce.vue', () => {
       cy.getTestId(testids.submitBtn).should('not.be.disabled')
       cy.getTestId(testids.submitBtn).click()
 
-      cy.wait('@accept-invite').should('have.been.calledOnce').its('response.statusCode').should('eq', 200)
+      cy.wait('@accept-invite').should('have.been.calledOnce')
     })
   })
 
   it("emits a 'register-success' event with a payload on successful registration", () => {
+    cy.intercept('GET', '**/client-config', {
+      statusCode: 200,
+      body: {
+        requireRegistrationAccessCode: false,
+      },
+    }).as('client-config-request')
+
     cy.intercept('POST', '**/register', {
+      statusCode: 200,
       body: {
         organizationID: '187e2b65-ec69-421c-a7ba-3e946c4e5077',
       },
