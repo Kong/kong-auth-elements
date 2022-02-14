@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@kongponents/kalert": "^6.9.5",
-    "@kongponents/kbutton": "^6.9.5",
+    "@kongponents/kbutton": "^6.9.6",
     "@kongponents/kcheckbox": "^6.9.5",
     "@kongponents/kicon": "^6.9.5",
     "@kongponents/kinput": "^6.9.5",
