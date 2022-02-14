@@ -1280,10 +1280,10 @@
     "@kongponents/kicon" "^6.9.5"
     "@kongponents/styles" "^6.9.5"
 
-"@kongponents/styles@^6.9.5":
-  version "6.9.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.9.5.tgz#5da7e08f6b4b95e6078f796cd3109326319bd976"
-  integrity sha512-maWjrtQfgMk3lruoF5Y4sqEYeQUGoxctjyhGKm5rowsVWbtrKigTDL3VW3pMfV1XiCOSQdP5Y9itm+oipwh0/g==
+"@kongponents/styles@^6.9.5", "@kongponents/styles@^6.9.6":
+  version "6.9.6"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.9.6.tgz#b31d905f985339e28837f1f62c444209446ff189"
+  integrity sha512-WBi+pJTjOnApaEKBixxgi76ZU+h3ioSe5kslnVFIP69+e+BsDEEp0uFOYR4dCrvzKv7D3sCCzvPdww5bHwkcRQ==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
