@@ -42,7 +42,6 @@
         :has-error="currentState.matches('error') && error ? true : false"
         placeholder="Email"
         required
-        autofocus
         data-testid="kong-auth-forgot-password-email"
       />
 
