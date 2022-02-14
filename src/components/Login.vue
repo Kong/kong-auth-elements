@@ -61,7 +61,6 @@
           autocomplete="email"
           :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
           required
-          autofocus
           data-testid="kong-auth-login-email"
         />
 
