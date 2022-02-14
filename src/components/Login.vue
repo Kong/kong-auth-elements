@@ -58,7 +58,8 @@
           v-model.trim="email"
           type="email"
           class="w-100 mb-5"
-          autocomplete="email"
+          autocomplete="username"
+          autocapitalize="off"
           :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
           required
           data-testid="kong-auth-login-email"

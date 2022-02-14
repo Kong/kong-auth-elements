@@ -17,6 +17,9 @@
         data-testid="kong-auth-reset-password-instruction-text"
       >{{ instructionText }}</p>
 
+      <!-- Hidden username input to assist password managers -->
+      <input type="hidden" autocomplete="username" id="email" name="email"/>
+
       <KLabel for="password">New Password *</KLabel>
       <KInput
         id="password"

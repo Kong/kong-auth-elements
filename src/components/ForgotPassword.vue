@@ -32,13 +32,17 @@
         data-testid="kong-auth-forgot-password-instruction-text"
       >{{ instructionText }}</p>
 
+      <!-- Hidden username input to assist password managers -->
+      <input type="hidden" autocomplete="username" id="email" name="email"/>
+
       <KLabel for="email">Email *</KLabel>
       <KInput
         id="email"
         v-model.trim="email"
         type="email"
         class="w-100 mb-5"
-        autocomplete="email"
+        autocomplete="username"
+        autocapitalize="off"
         :has-error="currentState.matches('error') && error ? true : false"
         placeholder="Email"
         required
