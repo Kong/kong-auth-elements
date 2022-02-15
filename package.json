@@ -18,7 +18,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@kongponents/kalert": "^6.9.5",
+    "@kongponents/kalert": "^6.10.2",
     "@kongponents/kbutton": "^6.9.5",
     "@kongponents/kcheckbox": "^6.9.5",
     "@kongponents/kicon": "^6.9.5",
