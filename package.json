@@ -24,7 +24,7 @@
     "@kongponents/kicon": "^6.9.5",
     "@kongponents/kinput": "^6.9.5",
     "@kongponents/klabel": "^6.9.5",
-    "@kongponents/kooltip": "^6.9.5",
+    "@kongponents/kooltip": "^6.10.2",
     "@kongponents/kskeleton": "^6.9.5",
     "@kongponents/styles": "^6.9.5",
     "@openapitools/openapi-generator-cli": "^2.4.26",
