@@ -23,7 +23,7 @@
     "@kongponents/kcheckbox": "^6.9.5",
     "@kongponents/kicon": "^6.9.5",
     "@kongponents/kinput": "^6.9.5",
-    "@kongponents/klabel": "^6.9.5",
+    "@kongponents/klabel": "^6.10.3",
     "@kongponents/kooltip": "^6.9.5",
     "@kongponents/kskeleton": "^6.9.5",
     "@kongponents/styles": "^6.9.5",
