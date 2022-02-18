@@ -1217,7 +1217,7 @@
     "@kongponents/kicon" "^6.12.0"
     "@kongponents/styles" "^6.12.0"
 
-"@kongponents/kbutton@^6.10.2", "@kongponents/kbutton@^6.12.0", "@kongponents/kbutton@^6.9.5":
+"@kongponents/kbutton@^6.10.2", "@kongponents/kbutton@^6.12.0":
   version "6.12.0"
   resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.12.0.tgz#11c7231161ce9a39d4cf19d3a76ba405ffdcaf5c"
   integrity sha512-9ULXat5Ij2nymnPV9vIO0z/XI6VvHUmfd/ysp0PZlre9AlOVnd5B1P7dbj+m2Y+48g92qG7+uHCGBmu58zEZvQ==
@@ -1254,21 +1254,21 @@
     "@kongponents/kooltip" "^6.9.5"
     "@kongponents/styles" "^6.9.5"
 
-"@kongponents/kooltip@^6.9.5":
-  version "6.9.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/kooltip/-/kooltip-6.9.5.tgz#94e2d06ab1993686e58f69c605d01bc3c47bd76d"
-  integrity sha512-MJOCqwY3PKnR6aYF0/w58BNv0aZWzZsNmjbiUSkV/vh0pI8CbuI21OqDOED/DAQC8M8xuDz1YRy9G21YwM/6FQ==
+"@kongponents/kooltip@^6.12.0", "@kongponents/kooltip@^6.9.5":
+  version "6.12.0"
+  resolved "https://registry.yarnpkg.com/@kongponents/kooltip/-/kooltip-6.12.0.tgz#37fd2aaf620f6b9e11dd0582dff6608effa5ecf3"
+  integrity sha512-j5oD+7a1UzA6mGK9RlOI9lkc1LcYFL25df8FHdYU4qOAwh1aIG6GfvggMpqz5z/FMYz63tY8dLPJed2/LQ0d+w==
   dependencies:
-    "@kongponents/kpop" "^6.9.5"
-    "@kongponents/styles" "^6.9.5"
+    "@kongponents/kpop" "^6.12.0"
+    "@kongponents/styles" "^6.12.0"
 
-"@kongponents/kpop@^6.9.5":
-  version "6.9.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/kpop/-/kpop-6.9.5.tgz#e5e638f105a80767eb7ce3fd46b6c232d501e0a9"
-  integrity sha512-HMIUYSZ1kO+ttLGN/rrBNYm+8lEaEboLo1r/zNU7cxvnRTZxg+Y+6yw435ruKupv5yDXPTgW7br/pN7IZPQaBg==
+"@kongponents/kpop@^6.12.0":
+  version "6.12.0"
+  resolved "https://registry.yarnpkg.com/@kongponents/kpop/-/kpop-6.12.0.tgz#f3c06ef811b2b451f856e215940914da950ca87e"
+  integrity sha512-56INrkpM4EcvjDihhWA4848oM0rWncgulzVAeP6BUhFS3ibAlfn+yoW6jtak4Yz6MwLiW4N9Gh9VtRinUiDNtg==
   dependencies:
-    "@kongponents/kbutton" "^6.9.5"
-    "@kongponents/styles" "^6.9.5"
+    "@kongponents/kbutton" "^6.12.0"
+    "@kongponents/styles" "^6.12.0"
     popper.js "^1.15.0"
     vue-uuid "^2.0.2"
 
