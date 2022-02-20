@@ -1225,12 +1225,12 @@
     "@kongponents/kicon" "^6.12.0"
     "@kongponents/styles" "^6.12.0"
 
-"@kongponents/kcheckbox@^6.9.5":
-  version "6.9.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/kcheckbox/-/kcheckbox-6.9.5.tgz#838da8035605b4351f5e02707984d0c6eca3cdb9"
-  integrity sha512-FtaysiKXc/jP7N2F5P8rCivEezUNDxNsoRvNa6oR/TPFcrPGMpjZvd27zeEhTDFV56MR2VAyChQL2kmmYD4IMw==
+"@kongponents/kcheckbox@^6.12.0":
+  version "6.12.0"
+  resolved "https://registry.yarnpkg.com/@kongponents/kcheckbox/-/kcheckbox-6.12.0.tgz#ce29135ab9f06a411873f627cce99a2bd2e3e4ae"
+  integrity sha512-PKEhitm3IpIw7WG46HqUMZ2pYGI7Z2ZKF/PTmbpa7n4r5700ai+QFyJG4RxUJs00OpWqMnOF6nqtY1HXzkTOHA==
   dependencies:
-    "@kongponents/styles" "^6.9.5"
+    "@kongponents/styles" "^6.12.0"
 
 "@kongponents/kicon@^6.12.0", "@kongponents/kicon@^6.9.5":
   version "6.12.0"
