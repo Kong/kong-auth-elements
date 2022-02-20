@@ -34,7 +34,7 @@
     "core-js": "^3.21.0",
     "vue": "^3.2.31",
     "vue-password-strength-meter": "^1.7.2",
-    "xstate": "^4.28.1",
+    "xstate": "^4.30.1",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
