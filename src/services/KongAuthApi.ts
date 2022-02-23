@@ -13,9 +13,10 @@ import {
   RegistrationApi,
   TeamAPIApi,
   UserAPIApi,
-} from './api'
+} from '@kong/kauth-client-typescript-axios'
 
 export default class KongAuthApi {
+  baseUrl: string
   authentication: AuthenticationApi
   client: AxiosInstance
   clientConfig: ClientConfigApi
@@ -30,7 +31,10 @@ export default class KongAuthApi {
   teams: TeamAPIApi
   users: UserAPIApi
 
-  constructor (authErrorCallback?: (error: AxiosError) => void) {
+  constructor(baseUrl?: string, authErrorCallback?: (error: AxiosError) => void) {
+    // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
+    this.baseUrl = baseUrl || '/kauth'
+
     this.client = axios.create({ withCredentials: true })
 
     this.client.interceptors.response.use(
@@ -44,9 +48,7 @@ export default class KongAuthApi {
     )
 
     const baseConfig = new Configuration({
-      // This base path MUST start with a leading slash in order to properly
-      // resolve within container applications, especially when called from nested routes (e.g. /organizations/users)
-      basePath: '/kauth',
+      basePath: this.baseUrl,
     })
 
     this.authentication = new AuthenticationApi(baseConfig, baseConfig.basePath, this.client)

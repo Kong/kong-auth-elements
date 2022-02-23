@@ -133,8 +133,8 @@
 import { defineComponent, inject, reactive, ref, Ref, toRefs, computed, onMounted, watch } from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
-import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
-import { AuthenticateAuthenticateRequest, EmailverificationsVerifyResponse } from '@/services/kauth-api-client/v1/api'
+import useApi from '@/composables/useApi'
+import { AuthenticateAuthenticateRequest, EmailverificationsVerifyResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 import { helpText, win } from '@/utils'
 import useIdentityProvider from '@/composables/useIdentityProvider'
@@ -176,6 +176,9 @@ export default defineComponent({
   emits: loginEmits,
 
   setup(props, { emit }) {
+    // Get API instance and developer endpoint boolean
+    const { api, useDeveloperEndpoints } = useApi()
+
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
@@ -193,7 +196,6 @@ export default defineComponent({
     })
     const error = ref<any>(null)
     const fieldsHaveError = ref(false)
-    const $api = new KongAuthApi()
 
     // Setup and automatically trigger IDP (or ignore it, depending on the props)
     // Passing the refs on purpose so values are reactive.
@@ -309,7 +311,7 @@ export default defineComponent({
         // setTimeout for simulated feedback
         await new Promise((resolve) => setTimeout(resolve, 250))
 
-        const response: AxiosResponse<EmailverificationsVerifyResponse> = await $api.emailVerification.verifyEmail({
+        const response: AxiosResponse<EmailverificationsVerifyResponse> = await api.emailVerification.verifyEmail({
           token,
         })
 
@@ -335,7 +337,7 @@ export default defineComponent({
     }
 
     const login = async (credentials: AuthenticateAuthenticateRequest) => {
-      return await $api.authentication.authenticate(credentials)
+      return await api.authentication.authenticate(credentials)
     }
 
     const submitForm = async (): Promise<void> => {

@@ -1,4 +1,3 @@
 node_modules
 dist
 public
-src/services/kauth-api-client

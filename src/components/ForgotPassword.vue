@@ -85,7 +85,7 @@ import { defineComponent, inject, ref, Ref, reactive, toRefs, computed } from 'v
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText } from '@/utils'
-import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
+import useApi from '@/composables/useApi'
 // Components
 import KAlert from '@kongponents/kalert'
 import KButton from '@kongponents/kbutton'
@@ -117,6 +117,9 @@ export default defineComponent({
   emits: forgotPasswordEmits,
 
   setup(props, { emit }) {
+    // Get API instance and developer endpoint boolean
+    const { api, useDeveloperEndpoints } = useApi()
+
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
     const showLoginLink: Ref<boolean> = inject('show-login-link', ref(false))
@@ -128,7 +131,6 @@ export default defineComponent({
       email: '',
     })
     const error = ref<any>(null)
-    const $api = new KongAuthApi()
 
     const { state: currentState, send } = useMachine(
       createMachine({
@@ -177,7 +179,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        await $api.passwords.requestPasswordReset({
+        await api.passwords.requestPasswordReset({
           email: formData.email,
         })
 

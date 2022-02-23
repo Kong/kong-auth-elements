@@ -30,7 +30,9 @@ module.exports = {
               COMPILER_SFC_FUNCTIONAL: true,
               INSTANCE_SCOPED_SLOTS: true,
             },
-            isCustomElement: (tag) => tag.startsWith('kong-auth'),
+            // If an app is registering custom elements, their Vue app would need this setting enabled without the 'SERVE_MODE' check
+            // SERVE_MODE logic is only used here for the dev servers running out of the /dev directory
+            isCustomElement: (tag) => process.env.SERVE_MODE === 'elements' && tag.startsWith('kong-auth'),
           },
         }
       })

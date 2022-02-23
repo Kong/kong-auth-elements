@@ -28,10 +28,6 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      # Only to make sure this doesn't fail
-      - name: Generate API Client
-        run: yarn generate:api-client
-
       - name: Lint
         run: yarn lint
 

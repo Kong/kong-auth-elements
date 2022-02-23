@@ -140,7 +140,7 @@ import { defineComponent, inject, ref, Ref, reactive, toRefs, computed, onMounte
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText, win } from '@/utils'
-import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
+import useApi from '@/composables/useApi'
 // Components
 import KButton from '@kongponents/kbutton'
 import KIcon from '@kongponents/kicon'
@@ -173,6 +173,9 @@ export default defineComponent({
   emits: registerEmits,
 
   setup(props, { emit }) {
+    // Get API instance and developer endpoint boolean
+    const { api, useDeveloperEndpoints } = useApi()
+
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
     const accessCodeRequired: Ref<boolean> = inject('access-code-required', ref(false)) // False by default so the backend can guard registration
@@ -193,7 +196,6 @@ export default defineComponent({
     const error = ref<any>(null)
     const passwordError = ref<boolean>(false)
     const fieldsHaveError = ref(false)
-    const $api = new KongAuthApi()
 
     const { state: currentState, send } = useMachine(
       createMachine({
@@ -259,13 +261,13 @@ export default defineComponent({
       try {
         if (formData.emailToken) {
           // Accept the invite and set the password
-          await $api.inviteAccept.acceptInvite({
+          await api.inviteAccept.acceptInvite({
             password: formData.password,
             token: formData.emailToken,
           })
         } else {
           // Register a new user
-          await $api.registration.register({
+          await api.registration.register({
             email: formData.email,
             fullName: formData.fullName,
             organization: formData.organization,

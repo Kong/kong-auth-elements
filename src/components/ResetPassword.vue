@@ -85,8 +85,8 @@ import { defineComponent, ref, reactive, toRefs, Ref, inject, computed, onMounte
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText, win } from '@/utils'
-import KongAuthApi from '@/services/kauth-api-client/v1/KongAuthApi'
-import { PasswordresetsResetResponse } from '@/services/kauth-api-client/v1/api'
+import useApi from '@/composables/useApi'
+import { PasswordresetsResetResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 // Components
 import KButton from '@kongponents/kbutton'
@@ -118,6 +118,9 @@ export default defineComponent({
   emits: resetPasswordEmits,
 
   setup(props, { emit }) {
+    // Get API instance and developer endpoint boolean
+    const { api, useDeveloperEndpoints } = useApi()
+
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
@@ -132,7 +135,6 @@ export default defineComponent({
 
     const error = ref<any>(null)
     const passwordError = ref<boolean>(false)
-    const $api = new KongAuthApi()
 
     const { state: currentState, send } = useMachine(
       createMachine({
@@ -203,7 +205,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        const response: AxiosResponse<PasswordresetsResetResponse> = await $api.passwords.resetPassword({
+        const response: AxiosResponse<PasswordresetsResetResponse> = await api.passwords.resetPassword({
           password: formData.password,
           token: formData.passwordToken,
         })

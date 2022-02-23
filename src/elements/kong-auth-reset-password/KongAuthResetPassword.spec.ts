@@ -29,10 +29,7 @@ describe('KongAuthResetPassword.ce.vue', () => {
     elementDiv.should('not.be.empty')
 
     // Should have BaseCustomElement as a child component
-    elementDiv.find('.base-custom-element').should('not.be.empty')
-
-    // Should have injected styles
-    cy.getTestId(testids.injectedStyles).should('not.be.empty')
+    elementDiv.find('.base-custom-element').should('be.visible').and('not.be.empty')
   })
 
   it('renders a reset password form with email and button elements', () => {

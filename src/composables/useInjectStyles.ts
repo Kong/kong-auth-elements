@@ -1,13 +1,16 @@
-import { computed, ref, ComputedRef, onMounted, onUnmounted } from 'vue'
+import { computed, ref, inject, ComputedRef, onMounted, onUnmounted } from 'vue'
 
 interface InjectStylesComposable {
   injectedStyles: ComputedRef<string>
 }
 
 export default function useInjectStyles(): InjectStylesComposable {
+  // Get shadowDom setting from provided plugin options
+  const shadowDom = inject('shadow-dom', false)
+
   const inlineStyles = ref<any>([])
   const injectedStyles = computed((): string =>
-    inlineStyles.value && inlineStyles.value.length
+    shadowDom && inlineStyles.value && inlineStyles.value.length
       ? `<style type="text/css">${inlineStyles.value
         .map((styleNode: HTMLElement) => styleNode.innerHTML)
         .join('')}</style>`
@@ -19,6 +22,8 @@ export default function useInjectStyles(): InjectStylesComposable {
    * Then the styles are injected into the element's shadow DOM for consumption.
    */
   const injectStyles = (): void => {
+    if (!shadowDom) return
+
     inlineStyles.value = Array.from(document.head.getElementsByTagName('style'))
       .filter((styleNode) => {
         // Only inject styles if they contain @kongponent prefix,

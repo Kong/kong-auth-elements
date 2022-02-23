@@ -1,15 +1,38 @@
-// Elements
-import { registerKongAuthForgotPassword, registerKongAuthLogin, registerKongAuthRegister, registerKongAuthResetPassword } from '@/elements'
-// Import API - Do not use '@' alias in path here so that imports within a consuming project resolve properly.
-import KongAuthApi from './services/kauth-api-client/v1/KongAuthApi'
+import { App } from 'vue'
+// Do not use '@' alias in paths here so that imports within a consuming project resolve properly.
+import { registerCustomElement, KongAuthElementsOptions } from './utils'
+import * as elements from './elements'
 
-registerKongAuthLogin()
-registerKongAuthForgotPassword()
-registerKongAuthResetPassword()
-registerKongAuthRegister()
+// Export default install function
+export default {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  install: (app: App, options?: KongAuthElementsOptions): any => {
+    // Provide option values to components
+    app.provide('kauth-api-base-url', options?.apiBaseUrl)
+    app.provide('developers', options?.developers || false)
+    app.provide('shadow-dom', options?.shadowDom || false)
 
-// Export API Class
-export default KongAuthApi
+    if (options?.shadowDom === true) {
+      // Register all custom elements as native web components
+      registerKongAuthCustomElements(options)
+    } else {
+      // Register all components
+      for (const key in elements) {
+        app.component(key, elements[key])
+      }
+    }
+  },
+}
 
-// Export API Interfaces
-export * from './services/kauth-api-client/v1/api'
+// Exports a function that registers all custom elements as native web components
+export function registerKongAuthCustomElements(options?: KongAuthElementsOptions): void {
+  const userOptions = Object.assign({}, options)
+
+  // Since we are registering custom elements as native web components, force options.shadowDom to true
+  userOptions.shadowDom = true
+
+  registerCustomElement('kong-auth-forgot-password', elements.KongAuthForgotPassword, userOptions)
+  registerCustomElement('kong-auth-login', elements.KongAuthLogin, userOptions)
+  registerCustomElement('kong-auth-register', elements.KongAuthRegister, userOptions)
+  registerCustomElement('kong-auth-reset-password', elements.KongAuthResetPassword, userOptions)
+}
