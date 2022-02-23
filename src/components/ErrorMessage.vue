@@ -96,7 +96,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 /*! KONG_AUTH_INJECT_STYLES */
 .kong-auth-error-message.error-message {
   .k-alert-msg-text .k-alert-msg {

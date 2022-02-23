@@ -1,6 +1,10 @@
-import registerCustomElement from '@/utils/registerCustomElement'
-import kebabize from '@/utils/kebabize'
-import helpText from '@/utils/helpText'
-import win from '@/utils/window'
+export { default as registerCustomElement } from '@/utils/registerCustomElement'
+export { default as kebabize } from '@/utils/kebabize'
+export { default as helpText } from '@/utils/helpText'
+export { default as win } from '@/utils/window'
 
-export { registerCustomElement, kebabize, helpText, win }
+export interface KongAuthElementsOptions {
+  apiBaseUrl?: string
+  developers?: boolean
+  shadowDom?: boolean
+}

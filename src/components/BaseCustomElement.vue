@@ -14,8 +14,7 @@ export default defineComponent({
   name: 'BaseCustomElement',
 
   setup() {
-    // Must be present to inject child component styles for
-    // elements rendered inside of the KAuthWrapper <slot/>
+    // Must be present to inject child component styles for elements rendered inside of the KAuthWrapper <slot/>
     const { injectedStyles } = useInjectStyles()
 
     return {

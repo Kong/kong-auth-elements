@@ -1,5 +1,5 @@
-import { VueElementConstructor } from 'vue'
-import { kebabize } from '@/utils'
+import { defineCustomElement, provide, h, VueElementConstructor } from 'vue'
+import { kebabize, KongAuthElementsOptions } from '@/utils'
 
 /**
  * Register a given Vue component as a Custom Element in the DOM.
@@ -8,7 +8,9 @@ import { kebabize } from '@/utils'
  */
 export default function(
   tagName: string,
-  customElementComponent: VueElementConstructor<Record<string, unknown>>,
+  // customElementComponent: VueElementConstructor<Record<string, unknown>>,
+  customElementComponent: VueElementConstructor<any>,
+  options?: KongAuthElementsOptions,
 ): void {
   try {
     const customElementName = kebabize(tagName)
@@ -27,7 +29,20 @@ export default function(
       throw new Error('registerCustomElement: Unable to register custom element <kong-auth-login> -- the name has already been registered.')
     }
 
-    customElements.define(customElementName, customElementComponent)
+    const vueCustomElement = defineCustomElement({
+      ...customElementComponent,
+      setup(props) {
+        // Provide option values to components
+        provide('kauth-api-base-url', options?.apiBaseUrl)
+        provide('developers', options?.developers || false)
+        provide('shadow-dom', options?.shadowDom || false)
+
+        // Render component
+        return () => h(customElementComponent, props)
+      },
+    })
+
+    customElements.define(customElementName, vueCustomElement)
   } catch (err: any) {
     // eslint-disable-next-line no-console
     console.error(err?.message)

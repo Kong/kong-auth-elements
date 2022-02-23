@@ -39,13 +39,14 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "global.d.ts"
+    "global.d.ts",
+    "dev/**/*.ts",
+    "dev/**/*.vue",
   ],
   "exclude": [
     "node_modules",
     "dist",
     "tests",
-    "**/*.spec.ts",
-    "src/services/kauth-api-client/**/*"
+    "**/*.spec.ts"
   ]
 }

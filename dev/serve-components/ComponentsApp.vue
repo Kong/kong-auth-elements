@@ -7,7 +7,7 @@
         <h4>
           <code>KongAuthLogin.vue</code>
         </h4>
-        <KongAuthLogin
+        <kong-auth-login
           idp-login-enabled
           idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
           show-forgot-password-link
@@ -15,14 +15,14 @@
           @click-forgot-password-link="showAlert('User clicked forgot password')"
           @click-register-link="showAlert('User clicked register')"
           @idp-is-loading="showAlert('IDP loading state changed')"
-        ></KongAuthLogin>
+        />
       </div>
 
       <div v-if="urlPath.includes('/forgot-password') || urlPath === '/'" class="element-wrapper">
         <h4>
           <code>KongAuthForgotPassword.vue</code>
         </h4>
-        <KongAuthForgotPassword
+        <kong-auth-forgot-password
           instruction-text="Enter your verified email address and we will send you a password reset link."
           @click-login-link="showAlert('User clicked login')"
           @forgot-password-success="showAlert('Forgot password success!')"
@@ -33,7 +33,7 @@
         <h4>
           <code>KongAuthResetPassword.vue</code>
         </h4>
-        <KongAuthResetPassword
+        <kong-auth-reset-password
           instruction-text="Please enter in your new password and confirm it below."
           :show-password-strength-meter="true"
           @reset-password-success="showAlert('Reset password success!')"
@@ -44,7 +44,7 @@
         <h4>
           <code>KongAuthRegister.vue</code>
         </h4>
-        <KongAuthRegister
+        <kong-auth-register
           show-password-strength-meter
           @register-success="showAlert('Register success!')" />
       </div>
@@ -55,12 +55,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { win } from '@/utils'
-
-// Import and register Custom Elements as Components
-import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
-import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
-import KongAuthResetPassword from '@/elements/kong-auth-reset-password/KongAuthResetPassword.ce.vue'
-import KongAuthRegister from '@/elements/kong-auth-register/KongAuthRegister.ce.vue'
 
 const showAlert = (text = ''): void => {
   if (!text) {
