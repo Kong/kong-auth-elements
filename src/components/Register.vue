@@ -175,6 +175,7 @@ export default defineComponent({
   setup(props, { emit }) {
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
+    const accessCodeRequired: Ref<boolean> = inject('access-code-required', ref(false)) // False by default so the backend can guard registration
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
     const showPasswordStrengthMeter: Ref<boolean> = inject('show-password-strength-meter', ref(false))
 
@@ -189,7 +190,6 @@ export default defineComponent({
       checked_agreement: false,
     })
 
-    const accessCodeRequired = ref(false) // False by default so the backend can guard registration
     const error = ref<any>(null)
     const passwordError = ref<boolean>(false)
     const fieldsHaveError = ref(false)
@@ -301,20 +301,7 @@ export default defineComponent({
       }
     }
 
-    const checkForAccessCodeRequirement = async (): Promise<void> => {
-      try {
-        // Check if access code is required
-        const clientConfigResponse = await $api.clientConfig.clientConfig()
-        accessCodeRequired.value = clientConfigResponse?.data?.requireRegistrationAccessCode === true
-      } catch (_) {
-        // Set to false in case of error and let the backend guard Registration
-        accessCodeRequired.value = false
-      }
-    }
-
     onMounted(async () => {
-      await checkForAccessCodeRequirement()
-
       const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
 
       formData.emailToken = urlParams?.get('token') || ''

@@ -93,51 +93,57 @@ describe('KongAuthRegister.ce.vue', () => {
     })
   })
 
-  it('shows and requires an access code if set by the client config API endpoint', () => {
-    cy.intercept('GET', '**/client-config', {
-      statusCode: 200,
-      body: {
-        requireRegistrationAccessCode: true,
+  it("shows and requires an access code if set by the 'accessCodeRequired' prop", () => {
+    mount(KongAuthRegister, {
+      props: {
+        accessCodeRequired: true,
       },
-    }).as('client-config-request')
-
-    mount(KongAuthRegister)
-
-    cy.wait('@client-config-request').then(() => {
-      // Access code fields should be visible
-      cy.getTestId(testids.accessCode).should('be.visible')
-
-      // Fill out all fields other than access code
-      requiredFields.forEach(field => {
-        if (field === testids.agreeCheckbox) {
-          cy.getTestId(field).check()
-        } else {
-          cy.getTestId(field).type('This is fake field text')
-        }
-      })
-
-      cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
-
-      // Submit
-      cy.getTestId(testids.form).submit()
-
-      // Error should exist
-      cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', helpText.general.missingInfo)
     })
+
+    // Access code field should be visible
+    cy.getTestId(testids.accessCode).should('be.visible')
+
+    // Fill out all fields other than access code
+    requiredFields.forEach(field => {
+      if (field === testids.agreeCheckbox) {
+        cy.getTestId(field).check()
+      } else {
+        cy.getTestId(field).type('This is fake field text')
+      }
+    })
+
+    cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
+
+    // Submit
+    cy.getTestId(testids.form).submit()
+
+    // Error should exist
+    cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', helpText.general.missingInfo)
   })
 
-  it('does not require an access code if the user is accepting an invite', () => {
+  it.only('does not require an access code if the user is accepting an invite', () => {
     // Stub search params
     cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
 
-    cy.intercept('GET', '**/client-config', {
-      statusCode: 200,
-      body: {
-        requireRegistrationAccessCode: true,
+    mount(KongAuthRegister, {
+      props: {
+        accessCodeRequired: false,
       },
-    }).as('client-config-request')
+    })
 
-    mount(KongAuthRegister)
+    // Access code field should be not be exist
+    cy.getTestId(testids.accessCode).should('not.exist')
+
+    cy.getTestId(testids.password).type(user.password)
+    cy.getTestId(testids.agreeCheckbox).check()
+
+    cy.getTestId(testids.submitBtn).should('be.visible').and('not.be.disabled')
+
+    // Submit
+    cy.getTestId(testids.form).submit()
+
+    // Error should exist
+    cy.getTestId(testids.errorMessage).should('not.exist')
   })
 
   describe('Invites and Responding to URL Parameters', () => {
@@ -161,18 +167,15 @@ describe('KongAuthRegister.ce.vue', () => {
       // Stub search params
       cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
 
-      cy.intercept('GET', '**/client-config', {
-        statusCode: 200,
-        body: {
-          requireRegistrationAccessCode: true,
-        },
-      }).as('client-config-request')
-
       cy.intercept('PATCH', '**/accept-invite', {
         statusCode: 200,
       }).as('accept-invite')
 
-      mount(KongAuthRegister)
+      mount(KongAuthRegister, {
+        props: {
+          accessCodeRequired: true, // Should still allow submit for invitation
+        },
+      })
 
       // Inputs should be pre-populated and disabled
       cy.getTestId(testids.fullName).should('have.value', user.name).and('be.disabled')
@@ -195,13 +198,6 @@ describe('KongAuthRegister.ce.vue', () => {
   })
 
   it("emits a 'register-success' event with a payload on successful registration", () => {
-    cy.intercept('GET', '**/client-config', {
-      statusCode: 200,
-      body: {
-        requireRegistrationAccessCode: false,
-      },
-    }).as('client-config-request')
-
     cy.intercept('POST', '**/register', {
       statusCode: 200,
       body: {
