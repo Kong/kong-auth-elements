@@ -33,7 +33,7 @@ export default function(
       ...customElementComponent,
       setup(props) {
         // Provide option values to components
-        provide('user-entity', options?.userEntity || UserEntity.USERS)
+        provide('user-entity', options?.userEntity || UserEntity.USER)
         provide('kauth-api-base-url', options?.apiBaseUrl)
         provide('shadow-dom', options?.shadowDom || false)
 

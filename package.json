@@ -17,7 +17,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@kong/kauth-client-typescript-axios": "^0.0.0-alpha.6",
+    "@kong/kauth-client-typescript-axios": "^0.0.0-alpha.7",
     "@kongponents/kalert": "^6.14.0",
     "@kongponents/kbutton": "^6.14.0",
     "@kongponents/kcheckbox": "^6.14.0",

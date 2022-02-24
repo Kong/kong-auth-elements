@@ -127,6 +127,7 @@ export default defineComponent({
     const loginLinkText: Ref<string> = inject('login-link-text', ref(''))
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
     const successText: Ref<string> = inject('success-text', ref(''))
+    const resetPasswordRequestEndpoint: Ref<string> = inject('reset-password-request-endpoint', ref(''))
 
     const formData = reactive({
       email: '',
@@ -180,9 +181,18 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        await api.passwords.requestPasswordReset({
-          email: formData.email,
-        })
+        if (resetPasswordRequestEndpoint.value) {
+          await axios.post(resetPasswordRequestEndpoint.value, {
+            data: {
+              email: formData.email,
+            },
+            withCredentials: true,
+          })
+        } else {
+          await api.passwords.requestUserPasswordReset({
+            email: formData.email,
+          })
+        }
 
         send('RESOLVE')
 

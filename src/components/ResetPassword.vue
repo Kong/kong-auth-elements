@@ -84,9 +84,9 @@
 import { defineComponent, ref, reactive, toRefs, Ref, inject, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
-import { helpText, win } from '@/utils'
+import { helpText, win, UserEntity } from '@/utils'
 import useApi from '@/composables/useApi'
-import { PasswordresetsResetResponse } from '@kong/kauth-client-typescript-axios'
+import { RestpwutilResetResponse, PasswordresetsResetRequest } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 // Components
 import KButton from '@kongponents/kbutton'
@@ -172,6 +172,14 @@ export default defineComponent({
       )
     })
 
+    const resetPassword = async (credentials: PasswordresetsResetRequest) => {
+      if (userEntity === UserEntity.DEVELOPER) {
+        return await api.developers.resetDevelopersPassword(credentials)
+      }
+
+      return await api.passwords.resetUserPassword(credentials)
+    }
+
     const submitForm = async (): Promise<void> => {
       send('CLICK_RESET_PASSWORD')
 
@@ -205,7 +213,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        const response: AxiosResponse<PasswordresetsResetResponse> = await api.passwords.resetPassword({
+        const response: AxiosResponse<RestpwutilResetResponse> = await resetPassword({
           password: formData.password,
           token: formData.passwordToken,
         })

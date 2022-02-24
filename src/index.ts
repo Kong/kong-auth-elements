@@ -9,7 +9,7 @@ export default {
   install: (app: App, options?: KongAuthElementsOptions): any => {
     // Provide option values to components
     app.provide('kauth-api-base-url', options?.apiBaseUrl)
-    app.provide('user-entity', options?.userEntity || UserEntity.USERS)
+    app.provide('user-entity', options?.userEntity || UserEntity.USER)
     app.provide('shadow-dom', options?.shadowDom || false)
 
     if (options?.shadowDom === true) {

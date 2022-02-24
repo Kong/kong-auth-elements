@@ -19,6 +19,7 @@ export default defineComponent({
     accessCodeRequired: Boolean,
     instructionText: String,
     showPasswordStrengthMeter: Boolean,
+    registerRequestEndpoint: String,
   },
 
   // Import emits from child component with validation, where necessary
@@ -42,6 +43,10 @@ export default defineComponent({
     provide(
       'show-password-strength-meter',
       computed((): boolean => (props.showPasswordStrengthMeter ? props.showPasswordStrengthMeter : false)),
+    )
+    provide(
+      'register-request-endpoint',
+      computed((): string => (props.registerRequestEndpoint ? props.registerRequestEndpoint : '')),
     )
   },
 })

@@ -269,6 +269,7 @@ If the user clicks the link to login with credentials, they will be sent to `/lo
 | `loginLinkText`   | String  | `Return to log in →`                                                                                                     | Set the text for the login link.                                |
 | `instructionText` | String  | `''`                                                                                                                     | Set the instruction text to display above the inputs.           |
 | `successText`     | String  | `Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.` | Set the text to display upon successful reset password request. |
+| `resetPasswordRequestEndpoint` | String  | `''` | Set the URL (relative or absolute) endpoint for the password reset request. |
 
 #### Emits Events
 
@@ -287,10 +288,10 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 #### Props
 
-| Prop              | Type   | Default | Description                                          |
-| :---------------- | :----- | :------ | :--------------------------------------------------- |
-| `instructionText` | String | `''`    | Set the instruction text to display above the input. |
-| `showPasswordStrengthMeter` | Boolean | `false`    | Show the password strength meter. |
+| Prop                        | Type    | Default | Description                                          |
+| :-------------------------- | :------ | :------ | :--------------------------------------------------- |
+| `instructionText`           | String  | `''`    | Set the instruction text to display above the input. |
+| `showPasswordStrengthMeter` | Boolean | `false` | Show the password strength meter.                    |
 
 #### Emits Events
 
@@ -317,11 +318,12 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 #### Props
 
-| Prop              | Type   | Default | Description                                                |
-| :---------------- | :----- | :------ | :--------------------------------------------------------- |
+| Prop                        | Type    | Default | Description                                                |
+| :-------------------------- | :------ | :------ | :--------------------------------------------------------- |
 | `accessCodeRequired` | Boolean | `false`    | An access code is required for registration. |
-| `instructionText` | String | `''`    | Set the instruction text to display above the form inputs. |
-| `showPasswordStrengthMeter` | Boolean | `false`    | Show the password strength meter. |
+| `instructionText`           | String  | `''`    | Set the instruction text to display above the form inputs. |
+| `showPasswordStrengthMeter` | Boolean | `false` | Show the password strength meter.                          |
+| `registerRequestEndpoint` | String  | `''` | Set the URL (relative or absolute) endpoint for the registration request. |
 
 #### Emits Events
 
