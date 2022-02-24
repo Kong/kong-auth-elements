@@ -292,6 +292,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 | Prop              | Type   | Default | Description                                                |
 | :---------------- | :----- | :------ | :--------------------------------------------------------- |
+| `accessCodeRequired` | Boolean | `false`    | An access code is required for registration. |
 | `instructionText` | String | `''`    | Set the instruction text to display above the form inputs. |
 | `showPasswordStrengthMeter` | Boolean | `false`    | Show the password strength meter. |
 

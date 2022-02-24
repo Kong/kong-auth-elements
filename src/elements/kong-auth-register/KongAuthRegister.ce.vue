@@ -16,6 +16,7 @@ export default defineComponent({
 
   // Props are defined here for use on the custom element tag
   props: {
+    accessCodeRequired: Boolean,
     instructionText: String,
     showPasswordStrengthMeter: Boolean,
   },
@@ -30,6 +31,10 @@ export default defineComponent({
 
   setup(props) {
     // Provide custom element props to child components
+    provide(
+      'access-code-required',
+      computed((): boolean => (props.accessCodeRequired ? props.accessCodeRequired : false)),
+    )
     provide(
       'instruction-text',
       computed((): string => (props.instructionText ? props.instructionText : '')),
