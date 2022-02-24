@@ -173,8 +173,8 @@ export default defineComponent({
   emits: registerEmits,
 
   setup(props, { emit }) {
-    // Get API instance and developer endpoint boolean
-    const { api, useDeveloperEndpoints } = useApi()
+    // Get API instance and user entity type
+    const { api, userEntity } = useApi()
 
     // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
     // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()

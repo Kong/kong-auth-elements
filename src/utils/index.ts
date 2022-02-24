@@ -3,8 +3,13 @@ export { default as kebabize } from '@/utils/kebabize'
 export { default as helpText } from '@/utils/helpText'
 export { default as win } from '@/utils/window'
 
+export enum UserEntity {
+  USERS = 'users',
+  DEVELOPERS = 'developers',
+}
+
 export interface KongAuthElementsOptions {
   apiBaseUrl?: string
-  developers?: boolean
+  userEntity?: UserEntity
   shadowDom?: boolean
 }
