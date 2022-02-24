@@ -223,6 +223,48 @@ describe('KongAuthRegister.ce.vue', () => {
     })
   })
 
+  it("emits a 'register-success' event with a payload on successful registration from a custom endpoint", () => {
+    const customEndpoint = '/custom-register-request'
+
+    cy.intercept('GET', '**/client-config', {
+      statusCode: 200,
+      body: {
+        requireRegistrationAccessCode: false,
+      },
+    }).as('client-config-request')
+
+    cy.intercept('POST', `**${customEndpoint}`, {
+      statusCode: 200,
+      body: {
+        organizationID: '187e2b65-ec69-421c-a7ba-3e946c4e5077',
+      },
+    }).as('register-request')
+
+    mount(KongAuthRegister, {
+      props: {
+        registerRequestEndpoint: customEndpoint,
+      },
+    })
+
+    cy.getTestId(testids.fullName).type(user.name)
+    cy.getTestId(testids.organization).type(user.org)
+    cy.getTestId(testids.email).type(user.email)
+    cy.getTestId(testids.password).type(user.password)
+    cy.getTestId(testids.agreeCheckbox).check()
+    cy.getTestId(testids.form).submit()
+
+    const eventName = 'register-success'
+
+    cy.wait('@register-request').its('response.body').should('have.property', 'organizationID').then(() => {
+      // Check for emitted event
+      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
+        // Verify emit payload
+        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
+        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'fromInvite')
+      })
+    })
+  })
+
   /* ==============================
    * Instruction Text
    * ============================== */
