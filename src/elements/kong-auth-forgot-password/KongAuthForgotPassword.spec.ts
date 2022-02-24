@@ -101,6 +101,35 @@ describe('KongAuthForgotPassword.ce.vue', () => {
     })
   })
 
+  it("shows success message and emits a 'forgot-password-success' event with payload on successful password reset request from a custom endpoint", () => {
+    const customEndpoint = '/custom-forgot-password-request'
+
+    cy.intercept('POST', `**${customEndpoint}`, {
+      statusCode: 200,
+    }).as('password-reset-request')
+
+    mount(KongAuthForgotPassword, {
+      props: {
+        resetPasswordRequestEndpoint: customEndpoint,
+      },
+    })
+
+    cy.getTestId(testids.email).type(user.email)
+    cy.getTestId(testids.form).submit()
+
+    const eventName = 'forgot-password-success'
+
+    cy.wait('@password-reset-request').then(() => {
+      // Check for emitted event
+      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
+        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
+      })
+
+      // Success messsage should exist
+      cy.getTestId(testids.successMessage).should('be.visible').and('contain.text', helpText.forgotPassword.success)
+    })
+  })
+
   /* ==============================
    * Instruction Text
    * ============================== */
