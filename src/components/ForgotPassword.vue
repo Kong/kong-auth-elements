@@ -93,7 +93,6 @@ import KIcon from '@kongponents/kicon'
 import KInput from '@kongponents/kinput'
 import KLabel from '@kongponents/klabel'
 import ErrorMessage from '@/components/ErrorMessage.vue'
-import axios from 'axios'
 
 export const forgotPasswordEmits = {
   'forgot-password-success': (payload: { email: string }): boolean => {
@@ -161,6 +160,22 @@ export default defineComponent({
       return !formData.email || currentState.value.matches('pending')
     })
 
+    const requestPasswordReset = async () => {
+      // Custom endpoint
+      if (resetPasswordRequestEndpoint.value) {
+        return await api.client.post(resetPasswordRequestEndpoint.value, {
+          data: {
+            email: formData.email,
+          },
+        })
+      }
+
+      // Default endpoint
+      return await api.passwords.requestUserPasswordReset({
+        email: formData.email,
+      })
+    }
+
     const submitForm = async (): Promise<void> => {
       send('CLICK_FORGOT_PASSWORD')
 
@@ -181,18 +196,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        if (resetPasswordRequestEndpoint.value) {
-          await axios.post(resetPasswordRequestEndpoint.value, {
-            data: {
-              email: formData.email,
-            },
-            withCredentials: true,
-          })
-        } else {
-          await api.passwords.requestUserPasswordReset({
-            email: formData.email,
-          })
-        }
+        await requestPasswordReset()
 
         send('RESOLVE')
 
