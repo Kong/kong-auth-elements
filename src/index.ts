@@ -1,6 +1,6 @@
 import { App } from 'vue'
 // Do not use '@' alias in paths here so that imports within a consuming project resolve properly.
-import { registerCustomElement, KongAuthElementsOptions } from './utils'
+import { registerCustomElement, KongAuthElementsOptions, UserEntity } from './utils'
 import * as elements from './elements'
 
 // Export default install function
@@ -9,7 +9,7 @@ export default {
   install: (app: App, options?: KongAuthElementsOptions): any => {
     // Provide option values to components
     app.provide('kauth-api-base-url', options?.apiBaseUrl)
-    app.provide('developers', options?.developers || false)
+    app.provide('user-entity', options?.userEntity || UserEntity.USERS)
     app.provide('shadow-dom', options?.shadowDom || false)
 
     if (options?.shadowDom === true) {
