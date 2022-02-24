@@ -10,7 +10,7 @@ export interface ApiComposable {
 export default function useApi(): ApiComposable {
   // Inject option values to components
   const apiBaseUrl = inject('kauth-api-base-url', '')
-  const userEntity = inject('user-entity', UserEntity.USERS)
+  const userEntity = inject('user-entity', UserEntity.USER)
 
   // Create new API instance
   const api = new KongAuthApi(apiBaseUrl)

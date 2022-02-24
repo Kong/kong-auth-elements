@@ -27,6 +27,7 @@ export default defineComponent({
     loginLinkText: String,
     instructionText: String,
     successText: String,
+    resetPasswordRequestEndpoint: String,
   },
 
   // Import emits from child component with validation, where necessary
@@ -57,6 +58,11 @@ export default defineComponent({
     provide(
       'success-text',
       computed((): string => (props.successText ? props.successText : helpText.forgotPassword.success)),
+    )
+
+    provide(
+      'reset-password-request-endpoint',
+      computed((): string => (props.resetPasswordRequestEndpoint ? props.resetPasswordRequestEndpoint : '')),
     )
   },
 })

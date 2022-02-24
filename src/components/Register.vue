@@ -149,6 +149,7 @@ import KLabel from '@kongponents/klabel'
 import KCheckbox from '@kongponents/kcheckbox'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 import Password from 'vue-password-strength-meter'
+import axios from 'axios'
 
 export const registerEmits = {
   'register-success': (payload: { email: string, fromInvite: boolean }): boolean => {
@@ -181,6 +182,7 @@ export default defineComponent({
     const accessCodeRequired: Ref<boolean> = inject('access-code-required', ref(false)) // False by default so the backend can guard registration
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
     const showPasswordStrengthMeter: Ref<boolean> = inject('show-password-strength-meter', ref(false))
+    const registerRequestEndpoint: Ref<string> = inject('register-request-endpoint', ref(''))
 
     const formData = reactive({
       email: '',
@@ -235,6 +237,40 @@ export default defineComponent({
       return currentState.value.matches('pending') || !userCanSubmitForm.value
     })
 
+    const processRegistration = async () => {
+      if (formData.emailToken) {
+        // Accept the invite and set the password
+        return await api.inviteAccept.acceptInvite({
+          password: formData.password,
+          token: formData.emailToken,
+        })
+      } else {
+        // Register a new user
+
+        if (registerRequestEndpoint.value) {
+          // If custom endpoint
+          return await axios.post(registerRequestEndpoint.value, {
+            data: {
+              email: formData.email,
+              fullName: formData.fullName,
+              organization: formData.organization,
+              password: formData.password,
+              registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
+            },
+          })
+        } else {
+          // default endpoint
+          return await api.registration.register({
+            email: formData.email,
+            fullName: formData.fullName,
+            organization: formData.organization,
+            password: formData.password,
+            registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
+          })
+        }
+      }
+    }
+
     const submitForm = async (): Promise<void> => {
       send('CLICK_REGISTER')
 
@@ -259,22 +295,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        if (formData.emailToken) {
-          // Accept the invite and set the password
-          await api.inviteAccept.acceptInvite({
-            password: formData.password,
-            token: formData.emailToken,
-          })
-        } else {
-          // Register a new user
-          await api.registration.register({
-            email: formData.email,
-            fullName: formData.fullName,
-            organization: formData.organization,
-            password: formData.password,
-            registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
-          })
-        }
+        await processRegistration()
 
         send('RESOLVE')
 

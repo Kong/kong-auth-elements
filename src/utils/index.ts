@@ -4,8 +4,8 @@ export { default as helpText } from '@/utils/helpText'
 export { default as win } from '@/utils/window'
 
 export enum UserEntity {
-  USERS = 'users',
-  DEVELOPERS = 'developers',
+  USER = 'user',
+  DEVELOPER = 'developer',
 }
 
 export interface KongAuthElementsOptions {

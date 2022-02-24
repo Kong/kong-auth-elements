@@ -134,9 +134,9 @@ import { defineComponent, inject, reactive, ref, Ref, toRefs, computed, onMounte
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
 import useApi from '@/composables/useApi'
-import { AuthenticateAuthenticateRequest, EmailverificationsVerifyResponse } from '@kong/kauth-client-typescript-axios'
+import { RestauthutilAuthenticateRequest, EmailverificationsVerifyResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
-import { helpText, win } from '@/utils'
+import { helpText, win, UserEntity } from '@/utils'
 import useIdentityProvider from '@/composables/useIdentityProvider'
 // Components
 import KAlert from '@kongponents/kalert'
@@ -336,8 +336,12 @@ export default defineComponent({
       }
     }
 
-    const login = async (credentials: AuthenticateAuthenticateRequest) => {
-      return await api.authentication.authenticate(credentials)
+    const login = async (credentials: RestauthutilAuthenticateRequest) => {
+      if (userEntity === UserEntity.DEVELOPER) {
+        return await api.developers.authenticateDeveloper(credentials)
+      }
+
+      return await api.authentication.authenticateUser(credentials)
     }
 
     const submitForm = async (): Promise<void> => {

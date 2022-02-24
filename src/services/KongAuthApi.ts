@@ -3,6 +3,7 @@ import {
   AuthenticationApi,
   ClientConfigApi,
   Configuration,
+  DeveloperAPIApi,
   EmailVerificationApi,
   IdentityProviderAPIApi,
   InviteAPIApi,
@@ -17,9 +18,11 @@ import {
 
 export default class KongAuthApi {
   baseUrl: string
-  authentication: AuthenticationApi
   client: AxiosInstance
+  // APIs
+  authentication: AuthenticationApi
   clientConfig: ClientConfigApi
+  developers: DeveloperAPIApi
   emailVerification: EmailVerificationApi
   idp: IdentityProviderAPIApi
   invites: InviteAPIApi
@@ -53,6 +56,7 @@ export default class KongAuthApi {
 
     this.authentication = new AuthenticationApi(baseConfig, baseConfig.basePath, this.client)
     this.clientConfig = new ClientConfigApi(baseConfig, baseConfig.basePath, this.client)
+    this.developers = new DeveloperAPIApi(baseConfig, baseConfig.basePath, this.client)
     this.emailVerification = new EmailVerificationApi(baseConfig, baseConfig.basePath, this.client)
     this.idp = new IdentityProviderAPIApi(baseConfig, baseConfig.basePath, this.client)
     this.invites = new InviteAPIApi(baseConfig, baseConfig.basePath, this.client)
