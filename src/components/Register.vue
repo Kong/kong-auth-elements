@@ -149,7 +149,6 @@ import KLabel from '@kongponents/klabel'
 import KCheckbox from '@kongponents/kcheckbox'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 import Password from 'vue-password-strength-meter'
-import axios from 'axios'
 
 export const registerEmits = {
   'register-success': (payload: { email: string, fromInvite: boolean }): boolean => {
@@ -249,7 +248,7 @@ export default defineComponent({
 
         if (registerRequestEndpoint.value) {
           // If custom endpoint
-          return await axios.post(registerRequestEndpoint.value, {
+          return await api.client.post(registerRequestEndpoint.value, {
             data: {
               email: formData.email,
               fullName: formData.fullName,
