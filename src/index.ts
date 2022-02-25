@@ -36,3 +36,5 @@ export function registerKongAuthCustomElements(options?: KongAuthElementsOptions
   registerCustomElement('kong-auth-register', elements.KongAuthRegister, userOptions)
   registerCustomElement('kong-auth-reset-password', elements.KongAuthResetPassword, userOptions)
 }
+
+export { KongAuthElementsOptions, UserEntity }
