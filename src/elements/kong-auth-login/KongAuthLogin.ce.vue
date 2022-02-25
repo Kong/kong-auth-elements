@@ -53,7 +53,7 @@ export default defineComponent({
   },
 
   setup(props) {
-    // Provide custom element props to child components
+    // Provide custom element props to child components - this allows all props to remain reactive
 
     provide(
       'instruction-text',
