@@ -344,9 +344,32 @@ Install the package as a dependency in your app
 yarn add @kong/kong-auth-elements
 ```
 
----
+### Options
 
-#### Vue 2 install
+Regardless if you're using in Vue 2 or Vue 3, an idential set of options exist for configuring the `kong-auth-elements`.
+
+| Option | Type | Default | Description |
+| :----- | :----- | :----- | :----- |
+| `apiBaseUrl` | `string` | `/kauth` | The `basePath` of the internal `axios` instance. <br><br>Unless using an absolute URL, this base path **must** start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users) |
+| `userEntity` | `enum` | `user` | The user entity for authentication. Can be any value provided by the `UserEntity` enum below. |
+| `shadowDom` | `boolean` | `false` | Automatically register the elements as native web components (forced to `true` if using the `registerKongAuthCustomElements` function). |
+
+You can import the `KongAuthElementsOptions` and `UserEntity` interfaces from the package if you're using TypeScript.
+
+```ts
+export enum UserEntity {
+  USER = 'user',
+  DEVELOPER = 'developer',
+}
+
+export interface KongAuthElementsOptions {
+  apiBaseUrl?: string
+  userEntity?: UserEntity
+  shadowDom?: boolean
+}
+```
+
+### Vue 2
 
 Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`), set up the options, and call the provided `registerKongAuthCustomElements` function.
 
@@ -380,7 +403,7 @@ Wherever you want to utilze a custom element, simply include it just like you wo
 
 ---
 
-#### Vue 3 install
+### Vue 3
 
 Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`). Set the plugin options, and tell Vue to use the plugin.
 
