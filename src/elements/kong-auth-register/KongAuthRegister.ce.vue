@@ -31,7 +31,7 @@ export default defineComponent({
   },
 
   setup(props) {
-    // Provide custom element props to child components
+    // Provide custom element props to child components - this allows all props to remain reactive
     provide(
       'access-code-required',
       computed((): boolean => (props.accessCodeRequired ? props.accessCodeRequired : false)),

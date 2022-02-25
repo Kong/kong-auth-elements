@@ -11,8 +11,6 @@
 yarn install
 ```
 
-> **Note**: The `yarn generate:api-client` script requires that you have [Java Runtime installed](https://www.java.com/en/download/) on your machine, or that you run it from a Docker container.
-
 You will also need the [kauth](https://github.com/Kong/kauth) API running locally on `localhost:8080`.
 
 ### Committing Changes
@@ -44,14 +42,6 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 ### Local Dev Against Non-Local API
 
 Create a file `.env.development.local` change `VUE_APP_AUTH_URL` to the environment you wish to hit. See `.env.development.local.example` for values.
-
-Caveat: We gate internal only environments like dev and stage with Pomerium. Pomerium sets a cookie automatically, so we will need to manually set that cookie.
-
-In your browser, go the the environment you wish to use, ie. <https://kauth.konnect-dev.konghq.com>. In the dev tools find the cookie named `_pomerium` and copy it's value. In your browser go to your local dev environment, ie. http://localhost:3000 and set a `_pomerium` cookie with that value. You can do this in the console like:
-
-```js
-document.cookie = '_pomerium={your copied value here}'
-```
 
 How it works: Vue cli has a built in proxy. We use it to forward all requests that go to /api/\* to the specified URL running on port 3000. You can see the configuration in vue.config.js file.
 
@@ -143,7 +133,7 @@ yarn link "@kong/kong-auth-elements"
       },
 
       setup(props) {
-        // Provide custom element props to child components
+        // Provide custom element props to child components - this allows all props to remain reactive
         provide(
           'example-prop',
           computed((): string => (props.exampleProp ? props.exampleProp : '')),
@@ -200,7 +190,7 @@ All styles from the [Kongponents component library](https://kongponents.konghq.c
 
 ### `kong-auth-login`
 
-- Provides a login UI along with corresponding `kauth` authentication.
+- Provides a login UI along with corresponding `kauth` authentication (for `user` and `developer` entities)
 - Provides Identity Provider (IdP) login, if enabled.
 - Provides email verification, given a valid `token` in the query string.
 - Sets the `kauth` cookies, along with the `userStatus` cookie (possibly unused).
@@ -354,17 +344,29 @@ Install the package as a dependency in your app
 yarn add @kong/kong-auth-elements
 ```
 
-Next, import the package inside of your App's entry file (e.g. for Vue, `main.ts`).
+---
 
-```js
+#### Vue 2 install
+
+Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`), set up the options, and call the provided `registerKongAuthCustomElements` function.
+
+```ts
 // main.ts
 
-import '@kong/kong-auth-elements'
+import { registerKongAuthCustomElements, KongAuthElementsOptions, UserEntity } '@kong/kong-auth-elements'
+
+const options: KongAuthElementsOptions = {
+  // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
+  apiBaseUrl: '/kauth',
+  userEntity: UserEntity.USER,
+  shadowDom: true,
+}
+
+// Call the registration function to automatically register all custom elements for usage
+registerKongAuthCustomElements(options)
 ```
 
-Alternatively, you may import the package in the component where you wish to utilize one of the custom elements.
-
-Once the package is imported, it will automatically register all custom components for usage.
+Once the package is imported, it will automatically register all custom elements for usage.
 
 Wherever you want to utilze a custom element, simply include it just like you would any other HTML component, utilizing any props as needed
 
@@ -376,18 +378,56 @@ Wherever you want to utilze a custom element, simply include it just like you wo
   @click-register-link="onUserClickRegister"></kong-auth-login>
 ```
 
+---
+
+#### Vue 3 install
+
+Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`). Set the plugin options, and tell Vue to use the plugin.
+
+```js
+// main.ts
+
+import App from './App.vue'
+import KongAuthElements, { KongAuthElementsOptions, UserEntity } from '@kong/kong-auth-elements'
+
+const app = createApp(App)
+
+const pluginOptions: KongAuthElementsOptions = {
+  // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
+  apiBaseUrl: '/kauth',
+  userEntity: UserEntity.USER, // 'user' or 'developer'
+}
+
+// Use the plugin
+app.use(KongAuthElements, pluginOptions)
+
+app.mount('#app')
+```
+
+Now that the plugin is globally registered, simply include a component just like you would any other Vue component, utilizing any props as needed
+
+```html
+<KongAuthLogin
+  show-forgot-password-link
+  @login-success="onLoginSuccess"
+  @click-forgot-password-link="onUserClickForgotPassword"
+  @click-register-link="onUserClickRegister"></KongAuthLogin>
+```
+
+---
+
 #### Axios
 
 This package depends on [axios](https://github.com/axios/axios); specifically a minimum version of `0.24.0`. If your project is pinned to a version of **axios** less than `0.24.0` you will need to upgrade to prevent type interface conflicts.
 
 #### `KongAuthApi`
 
-If you would also like to utilize the `KongAuthApi` class and methods, just update your import to include the API. You can also create a global API instance and handle unauthorized/unauthenticated errors.
+If you would also like to utilize the `KongAuthApi` class and methods, you will need to utilize the [`@kong/kauth-client-typescript-axios`](https://github.com/Kong/kauth-client-sdks/tree/main/packages/typescript-axios). You can add an interface via a JavaScript class as seen in this repository at `/src/services/KongAuthApi.ts`
+
+Once you create your own wrapper, you can do something like this in your project
 
 ```js
-// main.ts
-
-import KongAuthApi from '@kong/kong-auth-elements'
+import KongAuthApi from './{path-to-your-api-class}'
 
 // Create API instance, and handle unauthorized/unauthenticated errors
 const kongAuthApi = new KongAuthApi((err) => {
@@ -395,7 +435,7 @@ const kongAuthApi = new KongAuthApi((err) => {
     return
   }
 
-  // Example from KHCP of using custom Vue Router function to redirect
+  // Example of using custom Vue Router function to redirect
   if (err && !router.isAuthRoute(router.currentRoute.name)) {
     globalStore.dispatch('auth/logout')
     router.push({ name: 'login' })
@@ -403,7 +443,8 @@ const kongAuthApi = new KongAuthApi((err) => {
 })
 
 // Vue 2
-// ==============================================================================
+// =========================================
+
 // Allow using api via `this.$kongAuthApi`, or within setup, context.$kongAuthApi
 Vue.prototype.$kongAuthApi = kongAuthApi
 
@@ -411,6 +452,7 @@ Vue.prototype.$kongAuthApi = kongAuthApi
 
 // Vue 3
 // =========================================
+
 // Allow using api via `this.$kongAuthApi`, or within setup, context.$kongAuthApi
 const app = createApp({})
 app.config.globalProperties.$kongAuthApi = kongAuthApi
@@ -419,7 +461,7 @@ app.config.globalProperties.$kongAuthApi = kongAuthApi
 You should also declare the module in an `src/api.d.ts` file (or similar) like the following (you can add this to existing shim files)
 
 ```js
-import KongAuthApi from '@kong/kong-auth-elements'
+import KongAuthApi from './{path-to-your-api-class}'
 
 declare module 'vue/types/vue' {
   interface Vue {

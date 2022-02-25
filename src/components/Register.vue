@@ -176,8 +176,11 @@ export default defineComponent({
     // Get API instance and user entity type
     const { api, userEntity } = useApi()
 
-    // Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value
-    // The default values provided to inject() here should be refs with empty/false since the defaults are typically handled in the custom element provide()
+    /*
+    Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent *.ce.vue file props as they will not remain reactive.
+
+    The default values provided to inject() here should be refs with empty string or false since the defaults are typically handled in the custom element provide()
+    */
     const accessCodeRequired: Ref<boolean> = inject('access-code-required', ref(false)) // False by default so the backend can guard registration
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
     const showPasswordStrengthMeter: Ref<boolean> = inject('show-password-strength-meter', ref(false))
