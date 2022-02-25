@@ -1,5 +1,5 @@
 import { defineCustomElement, provide, h, VueElementConstructor } from 'vue'
-import { kebabize, KongAuthElementsOptions, UserEntity } from '@/utils'
+import { kebabize, KongAuthElementsOptions } from '../utils'
 
 /**
  * Register a given Vue component as a Custom Element in the DOM.
@@ -33,7 +33,7 @@ export default function(
       ...customElementComponent,
       setup(props) {
         // Provide option values to components
-        provide('user-entity', options?.userEntity || UserEntity.USER)
+        provide('user-entity', options?.userEntity || 'user')
         provide('kauth-api-base-url', options?.apiBaseUrl)
         provide('shadow-dom', options?.shadowDom || false)
 

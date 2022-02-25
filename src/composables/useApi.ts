@@ -1,16 +1,15 @@
 import { inject } from 'vue'
 import KongAuthApi from '@/services/KongAuthApi'
-import { UserEntity } from '@/utils'
 
 export interface ApiComposable {
   api: KongAuthApi
-  userEntity: UserEntity
+  userEntity: 'user' | 'developer'
 }
 
 export default function useApi(): ApiComposable {
   // Inject option values to components
   const apiBaseUrl = inject('kauth-api-base-url', '')
-  const userEntity = inject('user-entity', UserEntity.USER)
+  const userEntity = inject('user-entity', 'user')
 
   // Create new API instance
   const api = new KongAuthApi(apiBaseUrl)

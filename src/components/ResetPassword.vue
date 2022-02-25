@@ -84,7 +84,7 @@
 import { defineComponent, ref, reactive, toRefs, Ref, inject, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
-import { helpText, win, UserEntity } from '@/utils'
+import { helpText, win } from '@/utils'
 import useApi from '@/composables/useApi'
 import { RestpwutilResetResponse, PasswordresetsResetRequest } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
@@ -176,7 +176,7 @@ export default defineComponent({
     })
 
     const resetPassword = async (credentials: PasswordresetsResetRequest) => {
-      if (userEntity === UserEntity.DEVELOPER) {
+      if (userEntity === 'developer') {
         return await api.developers.resetDevelopersPassword(credentials)
       }
 

@@ -1,31 +1,28 @@
 import { App } from 'vue'
 // Do not use '@' alias in paths here so that imports within a consuming project resolve properly.
-import { registerCustomElement, KongAuthElementsOptions, UserEntity } from './utils'
+import { registerCustomElement, KongAuthElementsOptions } from './utils'
 import * as elements from './elements'
 
-// Export default install function
-export default {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  install: (app: App, options?: KongAuthElementsOptions): any => {
-    // Provide option values to components
-    app.provide('kauth-api-base-url', options?.apiBaseUrl)
-    app.provide('user-entity', options?.userEntity || UserEntity.USER)
-    app.provide('shadow-dom', options?.shadowDom || false)
+// Export a Vue plugin install function
+const KongAuthElementsPlugin = (app: App, options?: KongAuthElementsOptions): any => {
+  // Provide option values to components
+  app.provide('kauth-api-base-url', options?.apiBaseUrl)
+  app.provide('user-entity', options?.userEntity || 'user')
+  app.provide('shadow-dom', options?.shadowDom || false)
 
-    if (options?.shadowDom === true) {
-      // Register all custom elements as native web components
-      registerKongAuthCustomElements(options)
-    } else {
-      // Register all components
-      for (const key in elements) {
-        app.component(key, elements[key])
-      }
+  if (options?.shadowDom === true) {
+    // Register all custom elements as native web components
+    registerKongAuthNativeElements(options)
+  } else {
+    // Register all components
+    for (const key in elements) {
+      app.component(key, elements[key])
     }
-  },
+  }
 }
 
 // Exports a function that registers all custom elements as native web components
-export function registerKongAuthCustomElements(options?: KongAuthElementsOptions): void {
+export default function registerKongAuthNativeElements(options?: KongAuthElementsOptions): void {
   const userOptions = Object.assign({}, options)
 
   // Since we are registering custom elements as native web components, force options.shadowDom to true
@@ -37,4 +34,4 @@ export function registerKongAuthCustomElements(options?: KongAuthElementsOptions
   registerCustomElement('kong-auth-reset-password', elements.KongAuthResetPassword, userOptions)
 }
 
-export { KongAuthElementsOptions, UserEntity }
+export { KongAuthElementsPlugin, KongAuthElementsOptions }

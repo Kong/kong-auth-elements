@@ -351,42 +351,37 @@ Regardless if you're using in Vue 2 or Vue 3, an idential set of options exist f
 | Option | Type | Default | Description |
 | :----- | :----- | :----- | :----- |
 | `apiBaseUrl` | `string` | `/kauth` | The `basePath` of the internal `axios` instance. <br><br>Unless using an absolute URL, this base path **must** start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users) |
-| `userEntity` | `string` | `user` | The user entity for authentication. Can be any value provided by the `UserEntity` enum below. |
-| `shadowDom` | `boolean` | `false` | Automatically register the elements as native web components (forced to `true` if using the `registerKongAuthCustomElements` function). |
+| `userEntity` | `string` | `user` | The user entity for authentication; one of `user` or `developer`. |
+| `shadowDom` | `boolean` | `false` | Automatically register the elements as native web components (forced to `true` if using the `registerKongAuthNativeElements` function). |
 
-You can import the `KongAuthElementsOptions` and `UserEntity` interfaces from the package if you're using TypeScript.
+You can import the `KongAuthElementsOptions` interface from the package if you're using TypeScript.
 
 ```ts
-export enum UserEntity {
-  USER = 'user',
-  DEVELOPER = 'developer',
-}
-
 export interface KongAuthElementsOptions {
   apiBaseUrl?: string
-  userEntity?: UserEntity
+  userEntity?: 'user' | 'developer'
   shadowDom?: boolean
 }
 ```
 
 ### Vue 2
 
-Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`), set up the options, and call the provided `registerKongAuthCustomElements` function.
+Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`), set up the options, and call the provided `registerKongAuthNativeElements` function.
 
 ```ts
 // main.ts
 
-import { registerKongAuthCustomElements, KongAuthElementsOptions, UserEntity } '@kong/kong-auth-elements'
+import registerKongAuthNativeElements, { KongAuthElementsOptions } from '@kong/kong-auth-elements'
 
 const options: KongAuthElementsOptions = {
   // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
   apiBaseUrl: '/kauth',
-  userEntity: UserEntity.USER,
+  userEntity: 'user',
   shadowDom: true,
 }
 
 // Call the registration function to automatically register all custom elements for usage
-registerKongAuthCustomElements(options)
+registerKongAuthNativeElements(options)
 ```
 
 Once the package is imported, it will automatically register all custom elements for usage.
@@ -411,18 +406,18 @@ Import the package (and TypeScript types, if desired) inside of your App's entry
 // main.ts
 
 import App from './App.vue'
-import KongAuthElements, { KongAuthElementsOptions, UserEntity } from '@kong/kong-auth-elements'
+import { KongAuthElementsPlugin, KongAuthElementsOptions } from '@kong/kong-auth-elements'
 
 const app = createApp(App)
 
 const pluginOptions: KongAuthElementsOptions = {
   // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
   apiBaseUrl: '/kauth',
-  userEntity: UserEntity.USER,
+  userEntity: 'user',
 }
 
 // Use the plugin
-app.use(KongAuthElements, pluginOptions)
+app.use(KongAuthElementsPlugin, pluginOptions)
 
 app.mount('#app')
 ```

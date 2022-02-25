@@ -136,7 +136,7 @@ import { createMachine } from 'xstate'
 import useApi from '@/composables/useApi'
 import { RestauthutilAuthenticateRequest, EmailverificationsVerifyResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
-import { helpText, win, UserEntity } from '@/utils'
+import { helpText, win } from '@/utils'
 import useIdentityProvider from '@/composables/useIdentityProvider'
 // Components
 import KAlert from '@kongponents/kalert'
@@ -340,7 +340,7 @@ export default defineComponent({
     }
 
     const login = async (credentials: RestauthutilAuthenticateRequest) => {
-      if (userEntity === UserEntity.DEVELOPER) {
+      if (userEntity === 'developer') {
         return await api.developers.authenticateDeveloper(credentials)
       }
 
