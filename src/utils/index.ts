@@ -1,15 +1,10 @@
-export { default as registerCustomElement } from '@/utils/registerCustomElement'
-export { default as kebabize } from '@/utils/kebabize'
-export { default as helpText } from '@/utils/helpText'
-export { default as win } from '@/utils/window'
-
-export enum UserEntity {
-  USER = 'user',
-  DEVELOPER = 'developer',
-}
+export { default as registerCustomElement } from './registerCustomElement'
+export { default as kebabize } from './kebabize'
+export { default as helpText } from './helpText'
+export { default as win } from './window'
 
 export interface KongAuthElementsOptions {
   apiBaseUrl?: string
-  userEntity?: UserEntity
+  userEntity?: 'user' | 'developer'
   shadowDom?: boolean
 }
