@@ -4,9 +4,6 @@ on:
   push:
     branches: [main]
 
-env:
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
 jobs:
   run-tests:
     name: Tests
@@ -19,20 +16,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Copy .npmrc.ci
-        run: cp .npmrc.ci .npmrc
-
-      - name: Read .nvmrc
-        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
-        id: nvm
-
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '${{ steps.nvm.outputs.NVMRC }}'
+          node-version-file: '.nvmrc'
 
       - name: Install dependencies
-        run: yarn install
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+          yarn install
 
       - name: Lint
         run: yarn lint
