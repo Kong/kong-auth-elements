@@ -134,7 +134,7 @@ import { defineComponent, inject, reactive, ref, Ref, toRefs, computed, onMounte
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
 import useApi from '@/composables/useApi'
-import { RestauthutilAuthenticateRequest, EmailverificationsVerifyResponse } from '@kong/kauth-client-typescript-axios'
+import { AuthenticateAuthenticateRequest, EmailverificationsVerifyResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 import { helpText, win } from '@/utils'
 import useIdentityProvider from '@/composables/useIdentityProvider'
@@ -339,7 +339,7 @@ export default defineComponent({
       }
     }
 
-    const login = async (credentials: RestauthutilAuthenticateRequest) => {
+    const login = async (credentials: AuthenticateAuthenticateRequest) => {
       // if (userEntity === 'developer') {
       //   return await api.developers.authenticateDeveloper(credentials)
       // }
