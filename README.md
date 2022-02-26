@@ -549,7 +549,7 @@ Simply define values for the variables in your consuming application to make the
 
 ### Webpack
 
-You may need to inform your consuming app (e.g. Vue) to recognize custom elements defined outside of the framework (e.g. using the Web Components APIs). If a component matches this condition, it won't need local or global registration and Vue won't throw a warning about an `Unknown custom element`.
+If utilizing inside of a [Vue 2](#vue-2) (which forces use of the native web components), you will need to inform your consuming app (e.g. Vue) to recognize the custom elements defined outside of the framework (e.g. using the Web Components APIs). If a component matches this condition, it won't need local or global registration and Vue won't throw a warning about an `Unknown custom element`.
 
 Regardless of whether your consuming application is a Vue app, you will also need to add an entry to `transpileDependencies`.
 
