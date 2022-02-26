@@ -176,11 +176,11 @@ export default defineComponent({
     })
 
     const resetPassword = async (credentials: PasswordresetsResetRequest) => {
-      if (userEntity === 'developer') {
-        return await api.developers.resetDevelopersPassword(credentials)
-      }
+      // if (userEntity === 'developer') {
+      //   return await api.developers.resetDevelopersPassword(credentials)
+      // }
 
-      return await api.passwords.resetUserPassword(credentials)
+      return await api.passwords.resetPassword(credentials)
     }
 
     const submitForm = async (): Promise<void> => {

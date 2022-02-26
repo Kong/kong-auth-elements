@@ -118,7 +118,7 @@ describe('KongAuthRegister.ce.vue', () => {
     cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', helpText.general.missingInfo)
   })
 
-  it.only('does not require an access code if the user is accepting an invite', () => {
+  it('does not require an access code if the user is accepting an invite', () => {
     // Stub search params
     cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
 
