@@ -8,6 +8,7 @@ jobs:
   run-tests:
     name: Tests
     uses: Kong/kong-auth-elements/.github/workflows/test.yml@main
+    # Must pass in secrets here so that the calling workflow can pass in the NPM_TOKEN needed to install private packages.
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   publish:
@@ -15,9 +16,6 @@ jobs:
     name: Build and Publish
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect env variables
-        run: env
-
       - name: Checkout
         uses: actions/checkout@v2
 

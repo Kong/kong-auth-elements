@@ -5,6 +5,7 @@ on:
     branches: [main]
   # Allow workflow to be called by another workflow
   workflow_call:
+    # Must define secrets here so that the calling workflow can pass in the NPM_TOKEN needed to install private packages.
     secrets:
       NPM_TOKEN:
         description: 'The NPM_TOKEN passed from the caller workflow as it is not available within workflow_call.'
@@ -17,9 +18,6 @@ jobs:
     name: Run Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect env variables
-        run: env
-
       - name: Checkout
         uses: actions/checkout@v2
 
