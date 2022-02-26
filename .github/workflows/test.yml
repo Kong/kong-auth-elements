@@ -5,6 +5,10 @@ on:
     branches: [main]
   # Allow workflow to be called by another workflow
   workflow_call:
+    secrets:
+      NPM_TOKEN:
+        description: 'The NPM_TOKEN passed from the caller workflow as it is not available within workflow_call.'
+        required: true
   # Allow workflow to be called manually
   workflow_dispatch:
 

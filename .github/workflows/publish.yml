@@ -8,6 +8,8 @@ jobs:
   run-tests:
     name: Tests
     uses: Kong/kong-auth-elements/.github/workflows/test.yml@main
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   publish:
     needs: run-tests
     name: Build and Publish
