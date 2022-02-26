@@ -1,190 +1,255 @@
 # @kong/kong-auth-elements
 
+> **NOTE**: Documentation is still a work in progress. Ping [@adamdehaven](https://github.com/adamdehaven) with any questions.
+
 [![Tests](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yml/badge.svg)](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yml)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-> **NOTE**: Docs are still a work in progress
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Vue 2](#vue-2)
+  - [Vue 3](#vue-3)
+  - [Options](#options)
+  - [Events](#events)
+  - [Theming with CSS Variables](#theming-with-css-variables)
+  - [Webpack](#webpack)
+  - [Testing in your app](#testing-in-your-app)
+- [Custom Elements](#custom-elements)
+  - [kong-auth-login](#kong-auth-login)
+  - [kong-auth-forgot-password](#kong-auth-forgot-password)
+  - [kong-auth-reset-password](#kong-auth-reset-password)
+  - [kong-auth-register](#kong-auth-register)
+- [KAuth API](#kauth-api)
+- [Contributing](#contributing)
+  - [Creating a New Custom Element](#creating-a-new-custom-element)
+  - [Custom Element Styles and the shadow DOM](#custom-element-styles-and-the-shadow-dom)
+  - [Committing Changes](#committing-changes)
+- [Local Development](#local-development)
+- [:warning: Current Issues :warning:](#current-issues)
 
-## Local development
+## Installation
 
-```sh
-yarn install
-```
-
-You will also need the [kauth](https://github.com/Kong/kauth) API running locally on `localhost:8080`.
-
-### Committing Changes
-
-This repo uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
-
-[Commitizen](https://github.com/commitizen/cz-cli) and [Commitlint](https://github.com/conventional-changelog/commitlint) are used to help build and enforce commit messages.
-
-It is __highly recommended__ to use the following command in order to create your commits:
-
-```sh
-yarn commit
-```
-
-This will trigger the Commitizen interactive prompt for building your commit message.
-
-#### Enforcing Commit Format
-
-[Lefthook](https://github.com/evilmartians/lefthook) is used to manage Git Hooks within the repo. A `commit-msg` hook is automatically setup that enforces commit message stands with `commitlint`, see [`lefthook.yml`](./lefthook.yml).
-
-### Recommended IDE Setup
-
-We recommend using [VSCode](https://code.visualstudio.com/) along with the [Volar extension](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
-
-### Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
-
-### Local Dev Against Non-Local API
-
-Create a file `.env.development.local` change `VUE_APP_AUTH_URL` to the environment you wish to hit. See `.env.development.local.example` for values.
-
-How it works: Vue cli has a built in proxy. We use it to forward all requests that go to /api/\* to the specified URL running on port 3000. You can see the configuration in vue.config.js file.
-
-### Compile components and hot-reload for development
-
-Import elements as Vue components and utilize Vue Dev Tools during development (may require additional imports in `/dev/serve-components/ComponentsApp.vue`).
-
-_**Note**: This will not allow testing embedded styles and other Custom Element features._
+Install the package as a dependency in your app
 
 ```sh
-yarn serve:components
+yarn add @kong/kong-auth-elements
 ```
 
-### Compile Custom Elements and hot-reload for development
+## Usage
 
-Import elements as HTML Custom Elements (may require additional imports in `/dev/serve-elements/index.ts`).
+### Vue 2
 
-_**Note**: This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported)._
+Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`), set up the options, and call the provided `registerKongAuthNativeElements` function.
 
-```sh
-yarn serve:elements
+```ts
+// main.ts
+
+import registerKongAuthNativeElements, { KongAuthElementsOptions } from '@kong/kong-auth-elements'
+
+const options: KongAuthElementsOptions = {
+  // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
+  apiBaseUrl: '/kauth',
+  userEntity: 'user',
+  shadowDom: true,
+}
+
+// Call the registration function to automatically register all custom elements for usage
+registerKongAuthNativeElements(options)
 ```
 
-### Compile and minify for production
+Once the package is imported, it will automatically register all custom elements for usage.
 
-```sh
-yarn build
-```
-
-### Link the local, `@kong/kong-auth-elements` package into another local project for testing
-
-Inside `@kong/kong-auth-elements` run
-
-```sh
-yarn link
-```
-
-Next, inside of the local consuming project, run
-
-```sh
-yarn link "@kong/kong-auth-elements"
-```
-
-## Creating a New Custom Element
-
-### Requirements
-
-1. Custom elements must follow the naming convention `{PascalCaseName}.ce.vue`
-2. The first tag within the `<template>` of a custom element `*.ce.vue` file must be `<div class="kong-auth-element">` and it must wrap all other content within the template.
-3. Custom elements must utilize the `<BaseCustomElement />` component as the first child of the `<div class="kong-auth-element">` element which will wrap any other structure/components (this enables style injection for child components).
-4. Custom elements must be added to the following path `/src/elements/{kebab-case-element-name}/{PascalCaseElementName}.ce.vue`
-5. Custom elements must have an export function added in the `/src/elements/index.ts` file that exports the registration function for the element. Note the proper names/paths in the file.
-6. The registration function (created in Step 5) must be imported and called in `/src/index.ts` (as well as in `/dev/serve-elements/index.ts` for testing).
-7. A corresponding `{PascalCaseName}.spec.ts` file must be created in the same directory as the custom element to provide Cypress Component Test Runner code coverage.
-8. Custom element templates (the contents of the `{PascalCaseElementName}.ce.vue` file) must utilize the template shown below:
-
-    <details>
-
-    <summary>Click to view the starter Custom Element template</summary>
-
-    ```html
-    <template>
-      <div class="kong-auth-element">
-        <BaseCustomElement>
-          <!-- Components from /src/components may be used in this default slot -->
-          <ExampleComponent @example-event="(emitData) => $emit('example-event', emitData)" />
-        </BaseCustomElement>
-      </div>
-    </template>
-
-    <script lang="ts">
-    import { defineComponent, computed, provide } from 'vue'
-    import BaseCustomElement from '@/components/BaseCustomElement.vue'
-    import ExampleComponent from '@/components/ExampleComponent.vue'
-
-    export default defineComponent({
-      name: 'KongAuthExampleElement',
-
-      // Props are defined here for use on the custom element tag, and all elements MUST have at least 1 prop
-      props: {
-        exampleProp: String,
-      },
-
-      emits: ['example-event'],
-
-      components: {
-        BaseCustomElement,
-        ExampleComponent,
-      },
-
-      setup(props) {
-        // Provide custom element props to child components - this allows all props to remain reactive
-        provide(
-          'example-prop',
-          computed((): string => (props.exampleProp ? props.exampleProp : '')),
-        )
-      },
-    })
-    </script>
-
-    <style lang="scss">
-    // No styles should be added to this component; add styles to child components
-    </style>
-    ```
-
-    </details>
-
-## Custom Element Styles and the shadow DOM
-
-Styles are auto-injected into the shadow DOM for any internal components and child components.
-
-In order for the styles to be injected, you need to place the exact comment (shown below) in **ALL** `<style>` blocks that are located inside a component within the `/src/` directory.
-
-```css
-/*! KONG_AUTH_INJECT_STYLES */
-```
-
-The exclamation point at the beginning of the comment flags the comment as important to PurgeCSS and prevents it from being removed during the build. Here's an example
-
-> **Note**: No styles should be placed in the `<style>` blocks within the `src/elements/**/{CustomElement}.ce.vue` files.
+Wherever you want to utilze a custom element, simply include it just like you would any other HTML component, utilizing any props as needed
 
 ```html
-<template>
-  <div class="component-name">
-    <h1>This is my component template</h1>
-  </div>
-</template>
+<kong-auth-login
+  show-forgot-password-link
+  @login-success="onLoginSuccess"
+  @click-forgot-password-link="onUserClickForgotPassword"
+  @click-register-link="onUserClickRegister"></kong-auth-login>
+```
 
-<style lang="scss" scoped>
-  /*! KONG_AUTH_INJECT_STYLES */
-  h1 {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    color: teal;
+---
+
+### Vue 3
+
+Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`). Set the plugin options, and tell Vue to use the plugin.
+
+```js
+// main.ts
+
+import App from './App.vue'
+import { KongAuthElementsPlugin, KongAuthElementsOptions } from '@kong/kong-auth-elements'
+
+const app = createApp(App)
+
+const pluginOptions: KongAuthElementsOptions = {
+  // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
+  apiBaseUrl: '/kauth',
+  userEntity: 'user',
+}
+
+// Use the plugin
+app.use(KongAuthElementsPlugin, pluginOptions)
+
+app.mount('#app')
+```
+
+Now that the plugin is globally registered, simply include a component just like you would any other Vue component, utilizing any props as needed
+
+```html
+<KongAuthLogin
+  show-forgot-password-link
+  @login-success="onLoginSuccess"
+  @click-forgot-password-link="onUserClickForgotPassword"
+  @click-register-link="onUserClickRegister"></KongAuthLogin>
+```
+
+---
+
+### Options
+
+Regardless if you're using in Vue 2 or Vue 3, an idential set of options exist for configuring the `kong-auth-elements`.
+
+| Option | Type | Default | Description |
+| :----- | :----- | :----- | :----- |
+| `apiBaseUrl` | `string` | `/kauth` | The `basePath` of the internal `axios` instance. <br><br>Unless using an absolute URL, this base path **must** start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users) |
+| `userEntity` | `string` | `user` | The user entity for authentication; one of `user` or `developer`. |
+| `shadowDom` | `boolean` | `false` | Automatically register the elements as native web components (forced to `true` if using the `registerKongAuthNativeElements` function). |
+
+You can import the `KongAuthElementsOptions` interface from the package if you're using TypeScript.
+
+```ts
+export interface KongAuthElementsOptions {
+  apiBaseUrl?: string
+  userEntity?: 'user' | 'developer'
+  shadowDom?: boolean
+}
+```
+
+### Events
+
+Any events that are emitted from custom elements follow the [CustomEvent() Web API](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent). An example of consuming the events and `CustomEvent.details` (emitted data) in your Vue app can be seen here
+
+```html
+<kong-auth-forgot-password
+  instruction-text="Enter your verified email address and we will send you a password reset link."
+  @forgot-password-success="onForgotPasswordSuccess"
+></kong-auth-forgot-password>
+
+<script lang="ts">
+  setup () {
+
+    // Respond to a successful reset password request
+    const onForgotPasswordSuccess = (successEvent: CustomEvent): void => {
+      const eventData: Record<string, any> = Array.isArray(successEvent.detail) ? successEvent.detail[0] : successEvent.detail
+
+      console.log(`User with email '${eventData.email}' successfully requested a password reset email.`)
+    }
+
+    return {
+      onForgotPasswordSuccess
+    }
   }
+</script>
+```
+
+If your app does not utilize Vue, you can respond to the custom events just like any other event listener
+
+```js
+// Add an appropriate event listener
+document.addEventListener('forgot-password-success', function (successEvent) {
+  const eventData = Array.isArray(successEvent.detail) ? successEvent.detail[0] : successEvent.detail
+  console.log(`The user's email address is: ${eventData.email}`)
+})
+```
+
+### Theming with CSS Variables
+
+Several custom CSS variables are available to impact the styling of custom elements, shown below
+
+| Variable               | Purpose                                        |
+| :--------------------- | :--------------------------------------------- |
+| `--KongAuthFontFamily` | Default font family                            |
+| `--KongAuthFontWeight` | Default font weight when not set by Kongponent |
+
+You may also utilize any CSS variables included in the [Kongponents component library](https://kongponents.konghq.com/guide/theming.html).
+
+Simply define values for the variables in your consuming application to make them available to the custom elements
+
+```css
+<style>
+:root {
+  --KongAuthFontFamily: 'Roboto';
+  --KongAuthFontWeight: 400;
+}
 </style>
 ```
 
-All styles from the [Kongponents component library](https://kongponents.konghq.com/guide/theming.html) will be automatically injected and available.
+### Webpack
 
-## Current Issues
+If utilizing inside of a [Vue 2](#vue-2) (which forces use of the native web components), you will need to inform your consuming app (e.g. Vue) to recognize the custom elements defined outside of the framework (e.g. using the Web Components APIs). If a component matches this condition, it won't need local or global registration and Vue won't throw a warning about an `Unknown custom element`.
 
-- There is currently an issue in Vue 3 custom elements (which we are using here) whereby with our setup, all `.ce.vue` files within the `/src/elements/` directory **MUST** have at least one `prop` defined. I'm still looking into why.
-  - **This in no way impacts production or using `kong-auth-elements` within your application; all elements have at least one `prop` defined.**
+Regardless of whether your consuming application is a Vue app, you will also need to add an entry to `transpileDependencies`.
+
+If your consuming application is a Vue app, add the following code in `vue.config.js`
+
+```js
+// vue.config.js
+
+module.exports = {
+  chainWebpack: (config) => {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => {
+        return {
+          ...options,
+          compilerOptions: {
+            isCustomElement: (tag) => tag.startsWith('kong-auth'), // Tags with this prefix will be recognized as custom elements
+          },
+        }
+      })
+  },
+  transpileDependencies: ['@kong/kong-auth-elements'],
+}
+```
+
+If your consuming app does not utilize `vue.config.js` file, you can transpile dependencies in your project's webpack config. As an example, if using `babel-loader`, you can include something like this in your `webpack.config.js` file
+
+```js
+// webpack.config.js
+
+module.exports = {
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        include: /(node_modules)\/(@kong/kong-auth-elements)/,
+        loader: 'babel-loader'
+      }
+    ]
+  }
+}
+```
+
+### Testing in your app
+
+The custom elements have test attributes already placed with a standard format of `data-testid="kong-auth-{identifier}"`. If these test selectors are not sufficient, you should be able to create your tests by targeting a parent element and then searching downward through its child elements as needed.
+
+If you have a specific use-case, submit a PR for a new attribute to be added and please add an example use-case as to why the existing attributes are not sufficient.
+
+#### Cypress
+
+If your app utilizes [Cypress](https://www.cypress.io) for testing, you will need to add an entry to your `cypress.json` configuration file to allow it to traverse the shadow DOM.
+
+```json
+{
+  "includeShadowDom": true
+}
+```
+
+Alternatively, [you can provide an options object](https://docs.cypress.io/api/commands/get#Arguments) to the `.get()` method with a `includeShadowDom` property set to `true`; however, you would have to replicate in every `.get()` reference, so it's easier to add to your `cypress.json` config file, if possible. Cypress also has a [`.shadow()` command](https://docs.cypress.io/api/commands/shadow), but again, the config setting is the easier way to go.
 
 ## Custom Elements
 
@@ -332,113 +397,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 | `fullName` | `true` if from invite | Pass the user's URL encoded full name in the query string if the user is originating from an invite.                                                              |
 | `org`      | `true` if from invite | Pass the user's URL encoded organization in the query string if the user is originating from an invite.                                                           |
 
-## Usage
-
-### Installation
-
-> TBD: Install via CDN
-
-Install the package as a dependency in your app
-
-```sh
-yarn add @kong/kong-auth-elements
-```
-
-### Options
-
-Regardless if you're using in Vue 2 or Vue 3, an idential set of options exist for configuring the `kong-auth-elements`.
-
-| Option | Type | Default | Description |
-| :----- | :----- | :----- | :----- |
-| `apiBaseUrl` | `string` | `/kauth` | The `basePath` of the internal `axios` instance. <br><br>Unless using an absolute URL, this base path **must** start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users) |
-| `userEntity` | `string` | `user` | The user entity for authentication; one of `user` or `developer`. |
-| `shadowDom` | `boolean` | `false` | Automatically register the elements as native web components (forced to `true` if using the `registerKongAuthNativeElements` function). |
-
-You can import the `KongAuthElementsOptions` interface from the package if you're using TypeScript.
-
-```ts
-export interface KongAuthElementsOptions {
-  apiBaseUrl?: string
-  userEntity?: 'user' | 'developer'
-  shadowDom?: boolean
-}
-```
-
-### Vue 2
-
-Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`), set up the options, and call the provided `registerKongAuthNativeElements` function.
-
-```ts
-// main.ts
-
-import registerKongAuthNativeElements, { KongAuthElementsOptions } from '@kong/kong-auth-elements'
-
-const options: KongAuthElementsOptions = {
-  // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
-  apiBaseUrl: '/kauth',
-  userEntity: 'user',
-  shadowDom: true,
-}
-
-// Call the registration function to automatically register all custom elements for usage
-registerKongAuthNativeElements(options)
-```
-
-Once the package is imported, it will automatically register all custom elements for usage.
-
-Wherever you want to utilze a custom element, simply include it just like you would any other HTML component, utilizing any props as needed
-
-```html
-<kong-auth-login
-  show-forgot-password-link
-  @login-success="onLoginSuccess"
-  @click-forgot-password-link="onUserClickForgotPassword"
-  @click-register-link="onUserClickRegister"></kong-auth-login>
-```
-
----
-
-### Vue 3
-
-Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`). Set the plugin options, and tell Vue to use the plugin.
-
-```js
-// main.ts
-
-import App from './App.vue'
-import { KongAuthElementsPlugin, KongAuthElementsOptions } from '@kong/kong-auth-elements'
-
-const app = createApp(App)
-
-const pluginOptions: KongAuthElementsOptions = {
-  // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
-  apiBaseUrl: '/kauth',
-  userEntity: 'user',
-}
-
-// Use the plugin
-app.use(KongAuthElementsPlugin, pluginOptions)
-
-app.mount('#app')
-```
-
-Now that the plugin is globally registered, simply include a component just like you would any other Vue component, utilizing any props as needed
-
-```html
-<KongAuthLogin
-  show-forgot-password-link
-  @login-success="onLoginSuccess"
-  @click-forgot-password-link="onUserClickForgotPassword"
-  @click-register-link="onUserClickRegister"></KongAuthLogin>
-```
-
----
-
-#### Axios
-
-This package depends on [axios](https://github.com/axios/axios); specifically a minimum version of `0.24.0`. If your project is pinned to a version of **axios** less than `0.24.0` you will need to upgrade to prevent type interface conflicts.
-
-#### `KongAuthApi`
+## KAuth API
 
 If you would also like to utilize the `KongAuthApi` class and methods, you will need to utilize the [`@kong/kauth-client-typescript-axios`](https://github.com/Kong/kauth-client-sdks/tree/main/packages/typescript-axios). You can add an interface via a JavaScript class as seen in this repository at `/src/services/KongAuthApi.ts`
 
@@ -476,7 +435,7 @@ const app = createApp({})
 app.config.globalProperties.$kongAuthApi = kongAuthApi
 ```
 
-You should also declare the module in an `src/api.d.ts` file (or similar) like the following (you can add this to existing shim files)
+If using TypeScript, you should also declare the module in an `src/api.d.ts` file (or similar) like the following (you can add this to existing shim files)
 
 ```js
 import KongAuthApi from './{path-to-your-api-class}'
@@ -488,126 +447,194 @@ declare module 'vue/types/vue' {
 }
 ```
 
-### Events
+## Contributing
 
-Any events that are emitted from custom elements follow the [CustomEvent() Web API](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent). An example of consuming the events and `CustomEvent.details` (emitted data) in your Vue app can be seen here
+### Creating a New Custom Element
 
-```html
-<kong-auth-forgot-password
-  instruction-text="Enter your verified email address and we will send you a password reset link."
-  @forgot-password-success="onForgotPasswordSuccess"
-></kong-auth-forgot-password>
+#### Requirements
 
-<script lang="ts">
-  setup () {
+1. Custom elements must follow the naming convention `{PascalCaseName}.ce.vue`
+2. The first tag within the `<template>` of a custom element `*.ce.vue` file must be `<div class="kong-auth-element">` and it must wrap all other content within the template.
+3. Custom elements must utilize the `<BaseCustomElement />` component as the first child of the `<div class="kong-auth-element">` element which will wrap any other structure/components (this enables style injection for child components).
+4. Custom elements must be added to the following path `/src/elements/{kebab-case-element-name}/{PascalCaseElementName}.ce.vue`
+5. Custom elements must have an export function added in the `/src/elements/index.ts` file that exports the registration function for the element. Note the proper names/paths in the file.
+6. The registration function (created in Step 5) must be imported and called in `/src/index.ts` (as well as in `/dev/serve-elements/index.ts` for testing).
+7. A corresponding `{PascalCaseName}.spec.ts` file must be created in the same directory as the custom element to provide Cypress Component Test Runner code coverage.
+8. Custom element templates (the contents of the `{PascalCaseElementName}.ce.vue` file) must utilize the template shown below:
 
-    // Respond to a successful reset password request
-    const onForgotPasswordSuccess = (successEvent: CustomEvent): void => {
-      const eventData: Record<string, any> = Array.isArray(successEvent.detail) ? successEvent.detail[0] : successEvent.detail
+    <details>
 
-      console.log(`User with email '${eventData.email}' successfully requested a password reset email.`)
-    }
+    <summary>Click to view the starter Custom Element template</summary>
 
-    return {
-      onForgotPasswordSuccess
-    }
-  }
-</script>
-```
+    ```html
+    <template>
+      <div class="kong-auth-element">
+        <BaseCustomElement>
+          <!-- Components from /src/components may be used in this default slot -->
+          <ExampleComponent @example-event="(emitData) => $emit('example-event', emitData)" />
+        </BaseCustomElement>
+      </div>
+    </template>
 
-If your app does not utilize Vue, you can respond to the custom events just like any other event listener
+    <script lang="ts">
+    import { defineComponent, computed, provide } from 'vue'
+    import BaseCustomElement from '@/components/BaseCustomElement.vue'
+    import ExampleComponent from '@/components/ExampleComponent.vue'
 
-```js
-// Add an appropriate event listener
-document.addEventListener('forgot-password-success', function (successEvent) {
-  const eventData = Array.isArray(successEvent.detail) ? successEvent.detail[0] : successEvent.detail
-  console.log(`The user's email address is: ${eventData.email}`)
-})
-```
+    export default defineComponent({
+      name: 'KongAuthExampleElement',
 
-### CSS Variables
+      // Props are defined here for use on the custom element tag, and all elements MUST have at least 1 prop
+      props: {
+        exampleProp: String,
+      },
 
-Several custom CSS variables are available to impact the styling of custom elements, shown below
+      emits: ['example-event'],
 
-| Variable               | Purpose                                        |
-| :--------------------- | :--------------------------------------------- |
-| `--KongAuthFontFamily` | Default font family                            |
-| `--KongAuthFontWeight` | Default font weight when not set by Kongponent |
+      components: {
+        BaseCustomElement,
+        ExampleComponent,
+      },
 
-You may also utilize any CSS variables included in the [Kongponents component library](https://kongponents.konghq.com/guide/theming.html).
+      setup(props) {
+        // Provide custom element props to child components - this allows all props to remain reactive
+        provide(
+          'example-prop',
+          computed((): string => (props.exampleProp ? props.exampleProp : '')),
+        )
+      },
+    })
+    </script>
 
-Simply define values for the variables in your consuming application to make them available to the custom elements
+    <style lang="scss">
+    // No styles should be added to this component; add styles to child components
+    </style>
+    ```
+
+    </details>
+
+### Custom Element Styles and the shadow DOM
+
+Styles are auto-injected into the shadow DOM for any internal components and child components.
+
+In order for the styles to be injected, you need to place the exact comment (shown below) in **ALL** `<style>` blocks that are located inside a component within the `/src/` directory.
 
 ```css
-<style>
-:root {
-  --KongAuthFontFamily: 'Roboto';
-  --KongAuthFontWeight: 400;
-}
+/*! KONG_AUTH_INJECT_STYLES */
+```
+
+The exclamation point at the beginning of the comment flags the comment as important to PurgeCSS and prevents it from being removed during the build. Here's an example
+
+> **Note**: No styles should be placed in the `<style>` blocks within the `src/elements/**/{CustomElement}.ce.vue` files.
+
+```html
+<template>
+  <div class="component-name">
+    <h1>This is my component template</h1>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+  /*! KONG_AUTH_INJECT_STYLES */
+  h1 {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    color: teal;
+  }
 </style>
 ```
 
-### Webpack
+All styles from the [Kongponents component library](https://kongponents.konghq.com/guide/theming.html) will be automatically injected and available.
 
-If utilizing inside of a [Vue 2](#vue-2) (which forces use of the native web components), you will need to inform your consuming app (e.g. Vue) to recognize the custom elements defined outside of the framework (e.g. using the Web Components APIs). If a component matches this condition, it won't need local or global registration and Vue won't throw a warning about an `Unknown custom element`.
+### Committing Changes
 
-Regardless of whether your consuming application is a Vue app, you will also need to add an entry to `transpileDependencies`.
+This repo uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
-If your consuming application is a Vue app, add the following code in `vue.config.js`
+[Commitizen](https://github.com/commitizen/cz-cli) and [Commitlint](https://github.com/conventional-changelog/commitlint) are used to help build and enforce commit messages.
 
-```js
-// vue.config.js
+It is __highly recommended__ to use the following command in order to create your commits:
 
-module.exports = {
-  chainWebpack: (config) => {
-    config.module
-      .rule('vue')
-      .use('vue-loader')
-      .tap((options) => {
-        return {
-          ...options,
-          compilerOptions: {
-            isCustomElement: (tag) => tag.startsWith('kong-auth'), // Tags with this prefix will be recognized as custom elements
-          },
-        }
-      })
-  },
-  transpileDependencies: ['@kong/kong-auth-elements'],
-}
+```sh
+yarn commit
 ```
 
-If your consuming app does not utilize `vue.config.js` file, you can transpile dependencies in your project's webpack config. As an example, if using `babel-loader`, you can include something like this in your `webpack.config.js` file
+This will trigger the Commitizen interactive prompt for building your commit message.
 
-```js
-// webpack.config.js
+#### Enforcing Commit Format
 
-module.exports = {
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        include: /(node_modules)\/(@kong/kong-auth-elements)/,
-        loader: 'babel-loader'
-      }
-    ]
-  }
-}
+[Lefthook](https://github.com/evilmartians/lefthook) is used to manage Git Hooks within the repo. A `commit-msg` hook is automatically setup that enforces commit message stands with `commitlint`, see [`lefthook.yml`](./lefthook.yml).
+
+## Local Development
+
+```sh
+yarn install
 ```
 
-### Testing in your app
+You will also need the [kauth](https://github.com/Kong/kauth) API running locally on `localhost:8080`.
 
-The custom elements have test attributes already placed with a standard format of `data-testid="kong-auth-{identifier}"`. If these test selectors are not sufficient, you should be able to create your tests by targeting a parent element and then searching downward through its child elements as needed.
+### Recommended IDE Setup
 
-If you have a specific use-case, submit a PR for a new attribute to be added and please add an example use-case as to why the existing attributes are not sufficient.
+We recommend using [VSCode](https://code.visualstudio.com/) along with the [Volar extension](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 
-#### Cypress
+#### Type Support For `.vue` Imports in TS
 
-If your app utilizes [Cypress](https://www.cypress.io) for testing, you will need to add an entry to your `cypress.json` configuration file to allow it to traverse the shadow DOM.
+Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
 
-```json
-{
-  "includeShadowDom": true
-}
+### Local Dev Against Non-Local API
+
+Create a file `.env.development.local` change `VUE_APP_AUTH_URL` to the environment you wish to hit. See `.env.development.local.example` for values.
+
+How it works: Vue cli has a built in proxy. We use it to forward all requests that go to /api/\* to the specified URL running on port 3000. You can see the configuration in vue.config.js file.
+
+### Compile components and hot-reload for development
+
+Import elements as Vue components and utilize Vue Dev Tools during development (may require additional imports in `/dev/serve-components/ComponentsApp.vue`).
+
+_**Note**: This will not allow testing embedded styles and other Custom Element features._
+
+```sh
+yarn serve:components
 ```
 
-Alternatively, [you can provide an options object](https://docs.cypress.io/api/commands/get#Arguments) to the `.get()` method with a `includeShadowDom` property set to `true`; however, you would have to replicate in every `.get()` reference, so it's easier to add to your `cypress.json` config file, if possible. Cypress also has a [`.shadow()` command](https://docs.cypress.io/api/commands/shadow), but again, the config setting is the easier way to go.
+### Compile Custom Elements and hot-reload for development
+
+Import elements as HTML Custom Elements (may require additional imports in `/dev/serve-elements/index.ts`).
+
+_**Note**: This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported)._
+
+```sh
+yarn serve:elements
+```
+
+### Compile and minify for production
+
+```sh
+yarn build
+```
+
+### Link the local, `@kong/kong-auth-elements` package into another local project for testing
+
+Inside `@kong/kong-auth-elements` run
+
+```sh
+yarn link
+```
+
+Next, inside of the local consuming project, run
+
+```sh
+yarn link "@kong/kong-auth-elements"
+```
+
+---
+
+## Current Issues
+
+### Props
+
+There is currently an issue in Vue 3 custom elements (which we are using here) whereby with our setup, all `.ce.vue` files within the `/src/elements/` directory **MUST** have at least one `prop` defined. I'm still looking into why.
+
+**This in no way impacts production or using `kong-auth-elements` within your application; all elements have at least one `prop` defined.**
+
+### Axios
+
+This package depends on [axios](https://github.com/axios/axios); specifically a minimum version of `0.24.0`. If your project is pinned to a version of **axios** less than `0.24.0` you will need to upgrade to prevent type interface conflicts.
