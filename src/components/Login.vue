@@ -340,11 +340,11 @@ export default defineComponent({
     }
 
     const login = async (credentials: RestauthutilAuthenticateRequest) => {
-      if (userEntity === 'developer') {
-        return await api.developers.authenticateDeveloper(credentials)
-      }
+      // if (userEntity === 'developer') {
+      //   return await api.developers.authenticateDeveloper(credentials)
+      // }
 
-      return await api.authentication.authenticateUser(credentials)
+      return await api.authentication.authenticate(credentials)
     }
 
     const submitForm = async (): Promise<void> => {
