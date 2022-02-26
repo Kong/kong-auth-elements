@@ -5,12 +5,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-tests:
-    name: Tests
-    uses: Kong/kong-auth-elements/.github/workflows/test.yml@main
-  output:
-    needs: run-tests
-    name: Output Text
+  setup-env:
+    name: Setup Env
     runs-on: ubuntu-latest
     steps:
       - name: Create .npmrc
@@ -23,6 +19,18 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
+      - name: Echo text
+        run: |
+          echo "The env is set up."
+  run-tests:
+    needs: setup-env
+    name: Tests
+    uses: Kong/kong-auth-elements/.github/workflows/test.yml@main
+  output:
+    needs: run-tests
+    name: Output Text
+    runs-on: ubuntu-latest
+    steps:
       - name: Echo text
         run: |
           echo "The test finished."
