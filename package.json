@@ -3,6 +3,7 @@
   "version": "0.0.0-development",
   "main": "dist/kong-auth-elements.umd.min.js",
   "scripts": {
+    "commit": "cz",
     "serve:components": "vue-cli-service serve ./dev/serve-components",
     "serve:elements": "vue-cli-service serve ./dev/serve-elements",
     "serve": "yarn serve:help",
@@ -14,8 +15,7 @@
     "cypress:open": "yarn test:open",
     "lint": "vue-cli-service lint",
     "generate:api-client": "yarn openapi-generator-cli generate --skip-validate-spec -i src/services/kauth-api-client/v1/spec.json -g typescript-axios -o src/services/kauth-api-client/v1/api -p modelPropertyNaming=original",
-    "semantic-release": "semantic-release",
-    "prepare": "husky install"
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@kongponents/kalert": "^6.12.0",
@@ -38,10 +38,12 @@
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
+    "@arkweid/lefthook": "^0.7.7",
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
     "@cypress/vue": "^3.1.1",
     "@cypress/webpack-dev-server": "^1.8.0",
+    "@digitalroute/cz-conventional-changelog-for-jira": "^7.2.0",
     "@types/node": "^16.11.24",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
@@ -56,7 +58,9 @@
     "@vue/eslint-config-standard": "^5.1.2",
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^2.0.0-rc.18",
+    "commitizen": "^4.2.4",
     "cypress": "^9.4.1",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^6.7.2",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.25.4",
@@ -65,7 +69,6 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^7.0.0",
     "html-webpack-plugin": "4",
-    "husky": "^7.0.4",
     "node-sass": "^4.11.0",
     "postcss-custom-properties": "^10.0.0",
     "sass-loader": "^8.0.2",
@@ -99,5 +102,15 @@
   "volta": {
     "node": "14.18.2",
     "yarn": "1.22.17"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/@digitalroute/cz-conventional-changelog-for-jira",
+      "skipScope": false,
+      "jiraOptional": true,
+      "jiraLocation": "post-description",
+      "jiraPrepend": "[",
+      "jiraAppend": "]"
+    }
   }
 }
