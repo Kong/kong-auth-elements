@@ -12,6 +12,8 @@ jobs:
     needs: run-tests
     name: Build and Publish
     runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -22,9 +24,7 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: Install dependencies
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-          yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Lint
         run: yarn lint
@@ -36,4 +36,3 @@ jobs:
         uses: cycjimmy/semantic-release-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

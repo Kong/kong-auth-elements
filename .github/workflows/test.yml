@@ -8,13 +8,12 @@ on:
   # Allow workflow to be called manually
   workflow_dispatch:
 
-env:
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
 jobs:
   test:
     name: Run Tests
     runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -25,9 +24,7 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: Install dependencies
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-          yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Lint
         run: yarn lint
