@@ -93,9 +93,9 @@ const options: KongAuthElementsOptions = {
 registerKongAuthNativeElements(options)
 ```
 
-Once the package is imported, it will automatically register all custom elements for usage.
+The register function will register all custom elements for usage as native web components.
 
-Wherever you want to utilze a custom element, simply include it just like you would any other HTML component, utilizing any props as needed
+Wherever you want to utilze a custom element, simply include it just like you would any other HTML element, utilizing any props as needed
 
 ```html
 <kong-auth-login
