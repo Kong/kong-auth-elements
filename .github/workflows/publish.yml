@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
 jobs:
   run-tests:
     name: Tests
@@ -12,8 +15,6 @@ jobs:
     needs: run-tests
     name: Build and Publish
     runs-on: ubuntu-latest
-    env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -27,6 +28,8 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
           yarn install --frozen-lockfile
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Lint
         run: yarn lint
