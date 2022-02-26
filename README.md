@@ -7,8 +7,8 @@
 
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Vue 2](#vue-2)
   - [Vue 3](#vue-3)
+  - [Vue 2 or native web components](#vue-2-or-native-web-components)
   - [Options](#options)
   - [Events](#events)
   - [Theming with CSS Variables](#theming-with-css-variables)
@@ -36,40 +36,6 @@ yarn add @kong/kong-auth-elements
 ```
 
 ## Usage
-
-### Vue 2
-
-Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`), set up the options, and call the provided `registerKongAuthNativeElements` function.
-
-```ts
-// main.ts
-
-import registerKongAuthNativeElements, { KongAuthElementsOptions } from '@kong/kong-auth-elements'
-
-const options: KongAuthElementsOptions = {
-  // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
-  apiBaseUrl: '/kauth',
-  userEntity: 'user',
-  shadowDom: true,
-}
-
-// Call the registration function to automatically register all custom elements for usage
-registerKongAuthNativeElements(options)
-```
-
-Once the package is imported, it will automatically register all custom elements for usage.
-
-Wherever you want to utilze a custom element, simply include it just like you would any other HTML component, utilizing any props as needed
-
-```html
-<kong-auth-login
-  show-forgot-password-link
-  @login-success="onLoginSuccess"
-  @click-forgot-password-link="onUserClickForgotPassword"
-  @click-register-link="onUserClickRegister"></kong-auth-login>
-```
-
----
 
 ### Vue 3
 
@@ -103,6 +69,40 @@ Now that the plugin is globally registered, simply include a component just like
   @login-success="onLoginSuccess"
   @click-forgot-password-link="onUserClickForgotPassword"
   @click-register-link="onUserClickRegister"></KongAuthLogin>
+```
+
+---
+
+### Vue 2 or native web components
+
+Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`), set up the options, and call the provided `registerKongAuthNativeElements` function.
+
+```ts
+// main.ts
+
+import registerKongAuthNativeElements, { KongAuthElementsOptions } from '@kong/kong-auth-elements'
+
+const options: KongAuthElementsOptions = {
+  // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
+  apiBaseUrl: '/kauth',
+  userEntity: 'user',
+  shadowDom: true,
+}
+
+// Call the registration function to automatically register all custom elements for usage
+registerKongAuthNativeElements(options)
+```
+
+Once the package is imported, it will automatically register all custom elements for usage.
+
+Wherever you want to utilze a custom element, simply include it just like you would any other HTML component, utilizing any props as needed
+
+```html
+<kong-auth-login
+  show-forgot-password-link
+  @login-success="onLoginSuccess"
+  @click-forgot-password-link="onUserClickForgotPassword"
+  @click-register-link="onUserClickRegister"></kong-auth-login>
 ```
 
 ---
@@ -188,7 +188,7 @@ Simply define values for the variables in your consuming application to make the
 
 ### Webpack
 
-If utilizing inside of a [Vue 2](#vue-2) (which forces use of the native web components), you will need to inform your consuming app (e.g. Vue) to recognize the custom elements defined outside of the framework (e.g. using the Web Components APIs). If a component matches this condition, it won't need local or global registration and Vue won't throw a warning about an `Unknown custom element`.
+If utilizing inside of a [Vue 2](#vue-2-or-native-web-components) (which forces use of the native web components), you will need to inform your consuming app (e.g. Vue) to recognize the custom elements defined outside of the framework (e.g. using the Web Components APIs). If a component matches this condition, it won't need local or global registration and Vue won't throw a warning about an `Unknown custom element`.
 
 Regardless of whether your consuming application is a Vue app, you will also need to add an entry to `transpileDependencies`.
 
