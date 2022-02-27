@@ -1,6 +1,7 @@
 import { App } from 'vue'
 // Do not use '@' alias in paths here so that imports within a consuming project resolve properly.
-import { registerCustomElement, KongAuthElementsOptions } from './utils'
+import { registerCustomElement } from './utils'
+import type { KongAuthElementsOptions } from './utils'
 import * as elements from './elements'
 
 // Export a Vue plugin install function
