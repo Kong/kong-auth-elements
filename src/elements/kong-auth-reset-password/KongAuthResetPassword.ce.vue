@@ -1,7 +1,7 @@
 <template>
   <div class="kong-auth-element">
     <BaseCustomElement>
-      <ResetPassword
+      <ResetPasswordForm
         @reset-password-success="(emitData) => $emit('reset-password-success', emitData)"
       />
     </BaseCustomElement>
@@ -11,7 +11,7 @@
 <script lang="ts">
 import { defineComponent, computed, provide } from 'vue'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
-import ResetPassword, { resetPasswordEmits } from '@/components/ResetPassword.vue'
+import ResetPasswordForm, { resetPasswordEmits } from '@/components/ResetPasswordForm.vue'
 
 export default defineComponent({
   name: 'KongAuthResetPassword',
@@ -27,7 +27,7 @@ export default defineComponent({
 
   components: {
     BaseCustomElement,
-    ResetPassword,
+    ResetPasswordForm,
   },
 
   setup(props) {

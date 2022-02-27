@@ -103,7 +103,7 @@ export const resetPasswordEmits = {
 }
 
 export default defineComponent({
-  name: 'ResetPassword',
+  name: 'ResetPasswordForm',
 
   components: {
     KButton,

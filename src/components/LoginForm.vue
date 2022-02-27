@@ -149,7 +149,7 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 
 export const loginEmits = {
   'login-success': null,
-  'confirm-email-success': (payload: { email: string }): boolean => {
+  'verify-email-success': (payload: { email: string }): boolean => {
     return !!payload?.email.trim()
   },
   'click-forgot-password-link': null,
@@ -160,7 +160,7 @@ export const loginEmits = {
 }
 
 export default defineComponent({
-  name: 'Login',
+  name: 'LoginForm',
 
   components: {
     KAlert,
@@ -325,7 +325,7 @@ export default defineComponent({
         formData.email = response.data.email
         send('CONFIRMED_EMAIL')
 
-        emit('confirm-email-success', {
+        emit('verify-email-success', {
           email: formData.email,
         })
       } catch (err: any) {

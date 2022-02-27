@@ -1,11 +1,11 @@
 <template>
   <div class="kong-auth-element">
     <BaseCustomElement>
-      <Login
+      <LoginForm
         @click-forgot-password-link="(emitData) => $emit('click-forgot-password-link', emitData)"
         @click-register-link="(emitData) => $emit('click-register-link', emitData)"
         @login-success="(emitData) => $emit('login-success', emitData)"
-        @confirm-email-success="(emitData) => $emit('confirm-email-success', emitData)"
+        @verify-email-success="(emitData) => $emit('verify-email-success', emitData)"
         @idp-is-loading="(emitData) => $emit('idp-is-loading', emitData)"
       />
     </BaseCustomElement>
@@ -16,7 +16,7 @@
 import { defineComponent, provide, computed } from 'vue'
 import { helpText } from '@/utils'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
-import Login, { loginEmits } from '@/components/Login.vue'
+import LoginForm, { loginEmits } from '@/components/LoginForm.vue'
 
 export default defineComponent({
   name: 'KongAuthLogin',
@@ -49,7 +49,7 @@ export default defineComponent({
 
   components: {
     BaseCustomElement,
-    Login,
+    LoginForm,
   },
 
   setup(props) {

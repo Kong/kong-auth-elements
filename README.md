@@ -166,7 +166,7 @@ If your app does not utilize Vue, you can respond to the custom events just like
 
 ```js
 // Add an appropriate event listener
-document.addEventListener('forgot-password-success', function (successEvent) {
+document.querySelector('kong-auth-login').addEventListener('login-success', function (successEvent) {
   const eventData = Array.isArray(successEvent.detail) ? successEvent.detail[0] : successEvent.detail
   console.log(`The user's email address is: ${eventData.email}`)
 })
@@ -290,7 +290,7 @@ The login element **must** reside at the `{window.location.origin}/login` path i
 | Event                        |         Payload          | Description                                      |
 | :--------------------------- | :----------------------: | :----------------------------------------------- |
 | `login-success`              |                          | User successfully logged in.                     |
-| `confirm-email-success`      |   `{ email: String }`    | User successfully confirmed their email address. |
+| `verify-email-success`      |   `{ email: String }`    | User successfully verified their email address. |
 | `click-forgot-password-link` |                          | User clicked the included forgot password link.  |
 | `click-register-link`        |                          | User clicked the included register link.         |
 | `idp-is-loading`             | `{ isLoading: Boolean }` | IdP authentication is processing.                |

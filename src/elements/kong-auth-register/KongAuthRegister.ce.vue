@@ -1,7 +1,7 @@
 <template>
   <div class="kong-auth-element">
     <BaseCustomElement>
-      <Register @register-success="(emitData) => $emit('register-success', emitData)" />
+      <RegisterForm @register-success="(emitData) => $emit('register-success', emitData)" />
     </BaseCustomElement>
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
-import Register, { registerEmits } from '@/components/Register.vue'
+import RegisterForm, { registerEmits } from '@/components/RegisterForm.vue'
 
 export default defineComponent({
   name: 'KongAuthRegister',
@@ -27,7 +27,7 @@ export default defineComponent({
 
   components: {
     BaseCustomElement,
-    Register,
+    RegisterForm,
   },
 
   setup(props) {

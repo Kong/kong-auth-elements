@@ -157,7 +157,7 @@ export const registerEmits = {
 }
 
 export default defineComponent({
-  name: 'Register',
+  name: 'RegisterForm',
 
   components: {
     KButton,

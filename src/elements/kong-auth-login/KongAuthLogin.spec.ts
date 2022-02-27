@@ -128,7 +128,7 @@ describe('KongAuthLogin.ce.vue', () => {
       cy.getTestId(testids.email).should('have.value', user.email)
     })
 
-    it("should verify email and emit 'confirm-email-success' event if query params include 'token'", () => {
+    it("should verify email and emit 'verify-email-success' event if query params include 'token'", () => {
       // Stub search params
       cy.stub(win, 'getLocationSearch').returns('?token=12345')
 
@@ -141,7 +141,7 @@ describe('KongAuthLogin.ce.vue', () => {
 
       mount(KongAuthLogin)
 
-      const eventName = 'confirm-email-success'
+      const eventName = 'verify-email-success'
 
       // Loader should show on load
       cy.getTestId(testids.gruceLoader).should('exist').find('.fullscreen-loading-container').should('be.visible')

@@ -102,7 +102,7 @@ export const forgotPasswordEmits = {
 }
 
 export default defineComponent({
-  name: 'ForgotPassword',
+  name: 'ForgotPasswordForm',
 
   components: {
     KAlert,
