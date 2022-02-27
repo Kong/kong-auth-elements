@@ -7,7 +7,7 @@
 
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Vue 3](#vue-3)
+  - [Vue 3 Plugin](#vue-3-plugin)
   - [Vue 2 or native web components](#vue-2-or-native-web-components)
   - [Options](#options)
   - [Events](#events)
@@ -37,7 +37,7 @@ yarn add @kong/kong-auth-elements
 
 ## Usage
 
-### Vue 3
+### Vue 3 Plugin
 
 Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`). Set the plugin options, and tell Vue to use the plugin.
 
@@ -109,7 +109,7 @@ Wherever you want to utilze a custom element, simply include it just like you wo
 
 ### Options
 
-Regardless if you're using in Vue 2 or Vue 3, an idential set of options exist for configuring the `kong-auth-elements`.
+Regardless if you're using in Vue 3, Vue 2, or the native web components, an idential set of options exist for configuring the `kong-auth-elements`.
 
 | Option | Type | Default | Description |
 | :----- | :----- | :----- | :----- |
@@ -129,7 +129,13 @@ export interface KongAuthElementsOptions {
 
 ### Events
 
-Any events that are emitted from custom elements follow the [CustomEvent() Web API](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent). An example of consuming the events and `CustomEvent.details` (emitted data) in your Vue app can be seen here
+Events are emitted for different component/element actions.
+
+If using the Vue Plugin, you can listen to these events just like you would any other emitted event. (e.g. `@login-success="successHandler"`)
+
+If your app uses the native web components, the emitted events follow the [CustomEvent() Web API](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent) spec.
+
+An example of consuming the native web component events and `CustomEvent.details` (emitted data) in your Vue app can be seen here
 
 ```html
 <kong-auth-forgot-password
@@ -188,7 +194,9 @@ Simply define values for the variables in your consuming application to make the
 
 ### Webpack
 
-If utilizing inside of a [Vue 2](#vue-2-or-native-web-components) (which forces use of the native web components), you will need to inform your consuming app (e.g. Vue) to recognize the custom elements defined outside of the framework (e.g. using the Web Components APIs). If a component matches this condition, it won't need local or global registration and Vue won't throw a warning about an `Unknown custom element`.
+If utilizing the native web components inside of a [Vue app with the register function](#vue-2-or-native-web-components) (which forces use of the native web components), you will need to inform your consuming app (e.g. Vue) to recognize the custom elements defined outside of the framework (e.g. using the Web Components APIs).
+
+If a component matches this condition, it won't need local or global registration and Vue won't throw a warning about an `Unknown custom element`.
 
 Regardless of whether your consuming application is a Vue app, you will also need to add an entry to `transpileDependencies`.
 
@@ -235,7 +243,7 @@ module.exports = {
 
 ### Testing in your app
 
-The custom elements have test attributes already placed with a standard format of `data-testid="kong-auth-{identifier}"`. If these test selectors are not sufficient, you should be able to create your tests by targeting a parent element and then searching downward through its child elements as needed.
+The custom elements have data attributes in place with a standard format of `data-testid="kong-auth-{identifier}"`. If these test selectors are not sufficient, you should be able to create your tests by targeting a parent element and then searching downward through its child elements as needed.
 
 If you have a specific use-case, submit a PR for a new attribute to be added and please add an example use-case as to why the existing attributes are not sufficient.
 
