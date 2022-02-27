@@ -45,7 +45,8 @@ Import the package (and TypeScript types, if desired) inside of your App's entry
 // main.ts
 
 import App from './App.vue'
-import { KongAuthElementsPlugin, KongAuthElementsOptions } from '@kong/kong-auth-elements'
+import { KongAuthElementsPlugin } from '@kong/kong-auth-elements'
+import type { KongAuthElementsOptions } from '@kong/kong-auth-elements'
 
 const app = createApp(App)
 
@@ -80,7 +81,8 @@ Import the package (and TypeScript types, if desired) inside of your App's entry
 ```ts
 // main.ts
 
-import registerKongAuthNativeElements, { KongAuthElementsOptions } from '@kong/kong-auth-elements'
+import registerKongAuthNativeElements from '@kong/kong-auth-elements'
+import type { KongAuthElementsOptions } from '@kong/kong-auth-elements'
 
 const options: KongAuthElementsOptions = {
   // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)

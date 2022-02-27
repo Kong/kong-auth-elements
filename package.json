@@ -79,10 +79,8 @@
   "peerDependencies": {
     "axios": "^0.26.0"
   },
-  "files": [
-    "dist/**/*.{md,js,map,d.ts}"
-  ],
-  "typings": "./dist/types",
+  "files": ["dist"],
+  "typings": "dist/types",
   "repository": {
     "type": "git",
     "url": "https://github.com/Kong/kong-auth-elements.git"
