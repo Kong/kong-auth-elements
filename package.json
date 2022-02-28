@@ -6,7 +6,7 @@
   "scripts": {
     "commit": "cz",
     "build": "yarn build:styles && vue-tsc --noEmit && vite build && vue-tsc --emitDeclarationOnly",
-    "build:styles": "yarn sass --style=compressed --load-path=./node_modules/ ./src/assets/styles/app.scss ./src/assets/styles/app-generated-styles.css",
+    "build:styles": "yarn sass --load-path=./node_modules/ ./src/assets/styles/app.scss ./src/assets/styles/app-generated-styles.css",
     "serve:components": "cross-env SERVE_MODE=components yarn build:styles && vite",
     "serve:elements": "cross-env SERVE_MODE=elements yarn build:styles && vite",
     "serve:demo": "rm -rf ./demo/dist-copy && yarn build && cp -R ./dist ./demo/dist-copy && echo \"\n    \\x1b[30m\\x1b[103m Note: The demo does NOT support hot reload \\x1b[0m\" && serve -p 3333 ./demo",
