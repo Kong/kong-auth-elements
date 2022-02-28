@@ -1,131 +1,133 @@
 <template>
-  <KSkeleton
-    v-if="currentState.matches('from_url') || currentState.matches('verify_email')"
-    class="idp-loading"
-    type="fullscreen-kong"
-    :delay-milliseconds="0"
-    data-testid="kong-auth-login-gruce-loader"
-  />
+  <div class="kong-auth-login-form">
+    <KSkeleton
+      v-if="currentState.matches('from_url') || currentState.matches('verify_email')"
+      class="idp-loading"
+      type="fullscreen-kong"
+      :delay-milliseconds="0"
+      data-testid="kong-auth-login-gruce-loader"
+    />
 
-  <div v-else class="kong-auth-login-form">
-    <div v-if="currentState.matches('error') && error" class="my-3">
-      <ErrorMessage :error="error" />
-    </div>
-
-    <div v-else-if="currentState.matches('reset_password')" class="my-3">
-      <KAlert
-        :alert-message="helpText.login.passwordResetSuccess"
-        appearance="success"
-        class="justify-content-center"
-        data-testid="kong-auth-login-password-reset-message"
-      />
-    </div>
-
-    <div v-else-if="currentState.matches('confirmed_email')" class="my-3">
-      <KAlert
-        :alert-message="helpText.login.confirmedEmailSuccess"
-        appearance="success"
-        class="justify-content-center"
-        data-testid="kong-auth-login-confirmed-email-message"
-      />
-    </div>
-
-    <div v-else-if="currentState.matches('from_register')" class="my-3">
-      <KAlert
-        :alert-message="helpText.login.registerSuccess"
-        appearance="success"
-        class="justify-content-center"
-        data-testid="kong-auth-login-register-success-message"
-      />
-    </div>
-
-    <form
-      class="login-form"
-      @submit.prevent="submitForm"
-      novalidate
-      data-testid="kong-auth-login-form"
-    >
-      <div v-if="!isIdpLogin">
-        <p
-          v-if="instructionText"
-          class="color-black-45"
-          data-testid="kong-auth-login-instruction-text"
-        >{{ instructionText }}</p>
-
-        <KLabel for="email">Email *</KLabel>
-        <KInput
-          id="email"
-          v-model.trim="email"
-          type="email"
-          class="w-100 mb-5"
-          autocomplete="username"
-          autocapitalize="off"
-          :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
-          required
-          data-testid="kong-auth-login-email"
-        />
-
-        <KLabel for="password">Password *</KLabel>
-        <KInput
-          id="password"
-          v-model="password"
-          type="password"
-          class="w-100"
-          autocomplete="current-password"
-          :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
-          required
-          data-testid="kong-auth-login-password"
-        />
-
-        <p v-if="showForgotPasswordLink" class="help mt-3">
-          <a
-            @click.prevent="$emit('click-forgot-password-link')"
-            class="color-blue-500"
-            href="#"
-            data-testid="kong-auth-login-forgot-password-link"
-          >{{ forgotPasswordLinkText }}</a>
-        </p>
+    <div v-else>
+      <div v-if="currentState.matches('error') && error" class="my-3">
+        <ErrorMessage :error="error" />
       </div>
 
-      <KButton
-        type="submit"
-        appearance="primary"
-        :is-rounded="false"
-        class="justify-content-center w-100 type-lg"
-        :class="[showForgotPasswordLink ? 'mt-3' : 'mt-6']"
-        :disabled="btnDisabled"
-        data-testid="kong-auth-login-submit"
+      <div v-else-if="currentState.matches('reset_password')" class="my-3">
+        <KAlert
+          :alert-message="helpText.login.passwordResetSuccess"
+          appearance="success"
+          class="justify-content-center"
+          data-testid="kong-auth-login-password-reset-message"
+        />
+      </div>
+
+      <div v-else-if="currentState.matches('confirmed_email')" class="my-3">
+        <KAlert
+          :alert-message="helpText.login.confirmedEmailSuccess"
+          appearance="success"
+          class="justify-content-center"
+          data-testid="kong-auth-login-confirmed-email-message"
+        />
+      </div>
+
+      <div v-else-if="currentState.matches('from_register')" class="my-3">
+        <KAlert
+          :alert-message="helpText.login.registerSuccess"
+          appearance="success"
+          class="justify-content-center"
+          data-testid="kong-auth-login-register-success-message"
+        />
+      </div>
+
+      <form
+        class="login-form"
+        @submit.prevent="submitForm"
+        novalidate
+        data-testid="kong-auth-login-form"
       >
-        <KIcon
-          v-if="currentState.matches('pending')"
-          icon="spinner"
-          view-box="0 0 16 16"
-          class="pr-0 mr-2"
-        />
-        {{ btnText }}
-      </KButton>
+        <div v-if="!isIdpLogin">
+          <p
+            v-if="instructionText"
+            class="color-black-45"
+            data-testid="kong-auth-login-instruction-text"
+          >{{ instructionText }}</p>
 
-      <p v-if="isIdpLogin" class="help mt-3 text-center">
-        <a
-          @click.prevent="loginWithCredentials"
-          class="color-blue-500"
-          href="#"
-          data-testid="kong-auth-login-credentials-link"
-        >{{ helpText.login.loginWithCredentials }}</a>
-      </p>
+          <KLabel for="email">Email *</KLabel>
+          <KInput
+            id="email"
+            v-model.trim="email"
+            type="email"
+            class="w-100 mb-5"
+            autocomplete="username"
+            autocapitalize="off"
+            :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+            required
+            data-testid="kong-auth-login-email"
+          />
 
-      <div v-if="showRegisterLink" class="text-center mt-5">
-        <p class="color-black-85 bold-500">
-          <span data-testid="kong-auth-login-register-help-text">{{ registerLinkHelpText }}</span>
+          <KLabel for="password">Password *</KLabel>
+          <KInput
+            id="password"
+            v-model="password"
+            type="password"
+            class="w-100"
+            autocomplete="current-password"
+            :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+            required
+            data-testid="kong-auth-login-password"
+          />
+
+          <p v-if="showForgotPasswordLink" class="help mt-3">
+            <a
+              @click.prevent="$emit('click-forgot-password-link')"
+              class="color-blue-500"
+              href="#"
+              data-testid="kong-auth-login-forgot-password-link"
+            >{{ forgotPasswordLinkText }}</a>
+          </p>
+        </div>
+
+        <KButton
+          type="submit"
+          appearance="primary"
+          :is-rounded="false"
+          class="justify-content-center w-100 type-lg"
+          :class="[showForgotPasswordLink ? 'mt-3' : 'mt-6']"
+          :disabled="btnDisabled"
+          data-testid="kong-auth-login-submit"
+        >
+          <KIcon
+            v-if="currentState.matches('pending')"
+            icon="spinner"
+            view-box="0 0 16 16"
+            class="pr-0 mr-2"
+          />
+          {{ btnText }}
+        </KButton>
+
+        <p v-if="isIdpLogin" class="help mt-3 text-center">
           <a
-            @click.prevent="$emit('click-register-link')"
+            @click.prevent="loginWithCredentials"
             class="color-blue-500"
             href="#"
-            data-testid="kong-auth-login-register-link"
-          >{{ registerLinkText }}</a>
+            data-testid="kong-auth-login-credentials-link"
+          >{{ helpText.login.loginWithCredentials }}</a>
         </p>
-      </div>
-    </form>
+
+        <div v-if="showRegisterLink" class="text-center mt-5">
+          <p class="color-black-85 bold-500">
+            <span data-testid="kong-auth-login-register-help-text">{{ registerLinkHelpText }}</span>
+            <a
+              @click.prevent="$emit('click-register-link')"
+              class="color-blue-500"
+              href="#"
+              data-testid="kong-auth-login-register-link"
+            >{{ registerLinkText }}</a>
+          </p>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -180,7 +182,7 @@ export default defineComponent({
     const { api, userEntity } = useApi()
 
     /*
-    Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent *.ce.vue file props as they will not remain reactive.
+    Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.vue file props as they will not remain reactive.
 
     The default values provided to inject() here should be refs with empty string or false since the defaults are typically handled in the custom element provide()
     */

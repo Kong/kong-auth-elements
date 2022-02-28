@@ -2,7 +2,7 @@
 /// <reference types="../../cypress/support" />
 
 import { mount } from '@cypress/vue'
-import KongAuthResetPassword from '@/elements/kong-auth-reset-password/KongAuthResetPassword.ce.vue'
+import KongAuthResetPassword from '@/elements/kong-auth-reset-password/KongAuthResetPassword.vue'
 
 // Component data-testid strings
 const testids = {
@@ -19,7 +19,7 @@ const user = {
   password: 'TestPassword1!',
 }
 
-describe('KongAuthResetPassword.ce.vue', () => {
+describe('KongAuthResetPassword.vue', () => {
   // Required for all Custom Elements
   it('has proper structure and required classes', () => {
     mount(KongAuthResetPassword)

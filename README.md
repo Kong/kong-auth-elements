@@ -467,14 +467,14 @@ declare module 'vue/types/vue' {
 
 #### Requirements
 
-1. Custom elements must follow the naming convention `{PascalCaseName}.ce.vue`
-2. The first tag within the `<template>` of a custom element `*.ce.vue` file must be `<div class="kong-auth-element">` and it must wrap all other content within the template.
+1. Custom elements must follow the naming convention `{PascalCaseName}.vue`
+2. The first tag within the `<template>` of a custom element `src/elements/**/{CustomElement}.vue` file must be `<div class="kong-auth-element">` and it must wrap all other content within the template.
 3. Custom elements must utilize the `<BaseCustomElement />` component as the first child of the `<div class="kong-auth-element">` element which will wrap any other structure/components (this enables style injection for child components).
-4. Custom elements must be added to the following path `/src/elements/{kebab-case-element-name}/{PascalCaseElementName}.ce.vue`
+4. Custom elements must be added to the following path `/src/elements/{kebab-case-element-name}/{PascalCaseElementName}.vue`
 5. Custom elements must have an export function added in the `/src/elements/index.ts` file that exports the registration function for the element. Note the proper names/paths in the file.
 6. The registration function (created in Step 5) must be imported and called in `/src/index.ts` (as well as in `/dev/serve-elements/index.ts` for testing).
 7. A corresponding `{PascalCaseName}.spec.ts` file must be created in the same directory as the custom element to provide Cypress Component Test Runner code coverage.
-8. Custom element templates (the contents of the `{PascalCaseElementName}.ce.vue` file) must utilize the template shown below:
+8. Custom element templates (the contents of the `{PascalCaseElementName}.vue` file) must utilize the template shown below:
 
     <details>
 
@@ -539,7 +539,7 @@ In order for the styles to be injected, you need to place the exact comment (sho
 
 The exclamation point at the beginning of the comment flags the comment as important to PurgeCSS and prevents it from being removed during the build. Here's an example
 
-> **Note**: No styles should be placed in the `<style>` blocks within the `src/elements/**/{CustomElement}.ce.vue` files.
+> **Note**: No styles should be placed in the `<style>` blocks within the `src/elements/**/{CustomElement}.vue` files.
 
 ```html
 <template>
@@ -645,7 +645,7 @@ yarn link "@kong/kong-auth-elements"
 
 ### Props
 
-There is currently an issue in Vue 3 custom elements (which we are using here) whereby with our setup, all `.ce.vue` files within the `/src/elements/` directory **MUST** have at least one `prop` defined. I'm still looking into why.
+There is currently an issue in Vue 3 custom elements (which we are using here) whereby with our setup, all `src/elements/**/{CustomElement}.vue` files within the `/src/elements/` directory **MUST** have at least one `prop` defined. I'm still looking into why.
 
 **This in no way impacts production or using `kong-auth-elements` within your application; all elements have at least one `prop` defined.**
 

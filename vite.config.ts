@@ -17,8 +17,14 @@ export default ({ mode }) => {
       },
       cssCodeSplit: false,
       rollupOptions: {
+        // make sure to externalize deps that shouldn't be bundled into your library
+        // external: ['vue'], // Only enable to utilize as a Vue 3 Plugin (removes Vue from the export and requires @vue/compat in consuming app)
         output: {
           exports: 'named',
+          // Provide global variables to use in the UMD build for externalized deps
+          // globals: {
+          //   vue: 'Vue', // Enable to utilize consuming app's vue instance
+          // },
         },
       },
     },

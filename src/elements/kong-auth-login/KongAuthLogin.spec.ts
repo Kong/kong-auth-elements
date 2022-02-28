@@ -2,7 +2,7 @@
 /// <reference types="../../cypress/support" />
 
 import { mount } from '@cypress/vue'
-import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
+import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.vue'
 import { helpText, win } from '@/utils'
 
 // Component data-testid strings
@@ -28,7 +28,7 @@ const user = {
   password: 'TestPassword1!',
 }
 
-describe('KongAuthLogin.ce.vue', () => {
+describe('KongAuthLogin.vue', () => {
   // Required for all Custom Elements
   it('has proper structure and required classes', () => {
     mount(KongAuthLogin)

@@ -2,7 +2,7 @@
 /// <reference types="../../cypress/support" />
 
 import { mount } from '@cypress/vue'
-import KongAuthRegister from '@/elements/kong-auth-register/KongAuthRegister.ce.vue'
+import KongAuthRegister from '@/elements/kong-auth-register/KongAuthRegister.vue'
 import { helpText, win } from '@/utils'
 
 // Component data-testid strings
@@ -29,7 +29,7 @@ const user = {
 
 const requiredFields = [testids.fullName, testids.organization, testids.email, testids.password, testids.agreeCheckbox]
 
-describe('KongAuthRegister.ce.vue', () => {
+describe('KongAuthRegister.vue', () => {
   // Required for all Custom Elements
   it('has proper structure and required classes', () => {
     mount(KongAuthRegister)
