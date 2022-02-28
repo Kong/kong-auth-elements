@@ -2,7 +2,7 @@
 /// <reference types="../../cypress/support" />
 
 import { mount } from '@cypress/vue'
-import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.vue'
+import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 import { helpText, win } from '@/utils'
 
 // Component data-testid strings
