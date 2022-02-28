@@ -18,6 +18,8 @@ const KongAuthElementsPlugin = (app: App, options?: KongAuthElementsOptions): an
   } else {
     // Register all components
     for (const key in elements) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       app.component(key, elements[key])
     }
   }
@@ -39,6 +41,7 @@ export default function registerKongAuthNativeElements(options?: KongAuthElement
 export { KongAuthElementsPlugin, KongAuthElementsOptions }
 
 if (typeof window !== 'undefined') {
-  // eslint-disable-next-line dot-notation
-  window['registerKongAuthNativeElements'] = registerKongAuthNativeElements
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  window.registerKongAuthNativeElements = registerKongAuthNativeElements
 }

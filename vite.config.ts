@@ -9,13 +9,13 @@ export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
   return defineConfig({
-    root: !process.env.SERVE_MODE ? process.cwd() : process.env.SERVE_MODE === 'components' ? './dev/serve-components' : './dev/serve-elements',
     build: {
       lib: {
         entry: path.resolve(__dirname, 'src/index.ts'),
         name: 'kong-auth-elements',
         fileName: (format) => `kong-auth-elements.${format}.js`,
       },
+      cssCodeSplit: false,
       rollupOptions: {
         output: {
           exports: 'named',
@@ -42,10 +42,14 @@ export default ({ mode }) => {
     ],
     resolve: {
       alias: {
-        vue: '@vue/compat',
+        // Alias to the /src directory
         '@/': fileURLToPath(new URL('./src/', import.meta.url)),
+        // Vue Migration build
+        vue: '@vue/compat',
       },
     },
+    // Change the root when using yarn serve:*
+    root: !process.env.SERVE_MODE ? process.cwd() : process.env.SERVE_MODE === 'components' ? './dev/serve-components' : './dev/serve-elements',
     server: {
       proxy: {
         '^/api': {
