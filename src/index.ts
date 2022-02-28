@@ -5,12 +5,13 @@ import type { KongAuthElementsOptions } from './utils'
 import * as elements from './elements'
 
 // Export a Vue plugin install function
-const KongAuthElementsPlugin = {
-  install: (app: App, options?: KongAuthElementsOptions): any => {
+export const KongAuthElementsPlugin = {
+  install: (app: App, options ?: KongAuthElementsOptions): any => {
     // Provide option values to components
     app.provide('kauth-api-base-url', options?.apiBaseUrl)
     app.provide('user-entity', options?.userEntity || 'user')
     app.provide('shadow-dom', options?.shadowDom || false)
+    app.provide('shadow-dom-css', options?.shadowDomCss)
 
     if (options?.shadowDom === true) {
       // Register all custom elements as native web components
@@ -18,6 +19,8 @@ const KongAuthElementsPlugin = {
     } else {
       // Register all components
       for (const key in elements) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         app.component(key, elements[key])
       }
     }
@@ -37,4 +40,10 @@ export default function registerKongAuthNativeElements(options?: KongAuthElement
   registerCustomElement('kong-auth-reset-password', elements.KongAuthResetPassword, userOptions)
 }
 
-export { KongAuthElementsPlugin, KongAuthElementsOptions }
+export type { KongAuthElementsOptions }
+
+if (typeof window !== 'undefined') {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  window.registerKongAuthNativeElements = registerKongAuthNativeElements
+}

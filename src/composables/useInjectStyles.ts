@@ -7,15 +7,37 @@ interface InjectStylesComposable {
 export default function useInjectStyles(): InjectStylesComposable {
   // Get shadowDom setting from provided plugin options
   const shadowDom = inject('shadow-dom', false)
+  // Get shadowDomCss setting from provided plugin options
+  const shadowDomCss = inject('shadow-dom-css', [])
 
   const inlineStyles = ref<any>([])
-  const injectedStyles = computed((): string =>
-    shadowDom && inlineStyles.value && inlineStyles.value.length
-      ? `<style type="text/css">${inlineStyles.value
+  const injectedStyles = computed((): string => {
+    let styles = ''
+
+    // If building
+    if (process.env.NODE_ENV === 'production') {
+      // If an array of CSS links were passed, iterate through array
+      if (typeof shadowDomCss === 'object' && shadowDomCss?.length) {
+        for (const href in shadowDomCss) {
+          // Add to the shadow DOM
+          styles += `<link href="${shadowDomCss[href]}" rel="stylesheet"/>`
+        }
+      } else if (shadowDomCss && typeof shadowDomCss === 'string') {
+        // Provide a fallback in case they passed a CSS link as a string
+        // Add to the shadow DOM
+        styles += `<link href="${shadowDomCss}" rel="stylesheet"/>`
+      }
+    }
+
+    // If shadow DOM and inlineStyles has value
+    if (shadowDom && inlineStyles.value && inlineStyles.value.length) {
+      styles += `<style type="text/css">${inlineStyles.value
         .map((styleNode: HTMLElement) => styleNode.innerHTML)
         .join('')}</style>`
-      : '',
-  )
+    }
+
+    return styles
+  })
 
   /**
    * Parses <style> tags found in the document.head and filters them based on the given parameters.

@@ -1,4 +1,4 @@
-import { defineCustomElement, provide, h, VueElementConstructor } from 'vue'
+import { defineCustomElement, VueElementConstructor } from 'vue'
 import { kebabize } from './index'
 import type { KongAuthElementsOptions } from './index'
 
@@ -32,14 +32,12 @@ export default function(
 
     const vueCustomElement = defineCustomElement({
       ...customElementComponent,
-      setup(props) {
-        // Provide option values to components
-        provide('user-entity', options?.userEntity || 'user')
-        provide('kauth-api-base-url', options?.apiBaseUrl)
-        provide('shadow-dom', options?.shadowDom || false)
-
-        // Render component
-        return () => h(customElementComponent, props)
+      // Provide user options
+      provide: {
+        'user-entity': options?.userEntity || 'user',
+        'kauth-api-base-url': options?.apiBaseUrl,
+        'shadow-dom': true, // force true since registering native web components
+        'shadow-dom-css': options?.shadowDomCss,
       },
     })
 

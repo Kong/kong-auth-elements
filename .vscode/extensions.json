@@ -5,6 +5,7 @@
     "eamodio.gitlens",
     "mrmlnc.vscode-scss",
     "johnsoncodehk.volar",
+    "johnsoncodehk.vscode-typescript-vue-plugin",
     "mikestead.dotenv"
   ],
   "unwantedRecommendations": []

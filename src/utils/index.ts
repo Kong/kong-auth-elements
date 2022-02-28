@@ -8,4 +8,5 @@ export interface KongAuthElementsOptions {
   apiBaseUrl?: string
   userEntity?: 'user' | 'developer'
   shadowDom?: boolean
+  shadowDomCss?: string[]
 }
