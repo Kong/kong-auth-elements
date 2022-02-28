@@ -467,14 +467,14 @@ declare module 'vue/types/vue' {
 
 #### Requirements
 
-1. Custom elements must follow the naming convention `{PascalCaseName}.vue`
-2. The first tag within the `<template>` of a custom element `src/elements/**/{CustomElement}.vue` file must be `<div class="kong-auth-element">` and it must wrap all other content within the template.
+1. Custom elements must follow the naming convention `{PascalCaseName}.ce.vue`
+2. The first tag within the `<template>` of a custom element `src/elements/**/{CustomElement}.ce.vue` file must be `<div class="kong-auth-element">` and it must wrap all other content within the template.
 3. Custom elements must utilize the `<BaseCustomElement />` component as the first child of the `<div class="kong-auth-element">` element which will wrap any other structure/components (this enables style injection for child components).
-4. Custom elements must be added to the following path `/src/elements/{kebab-case-element-name}/{PascalCaseElementName}.vue`
+4. Custom elements must be added to the following path `/src/elements/{kebab-case-element-name}/{PascalCaseElementName}.ce.vue`
 5. Custom elements must have an export function added in the `/src/elements/index.ts` file that exports the registration function for the element. Note the proper names/paths in the file.
 6. The registration function (created in Step 5) must be imported and called in `/src/index.ts` (as well as in `/dev/serve-elements/index.ts` for testing).
 7. A corresponding `{PascalCaseName}.spec.ts` file must be created in the same directory as the custom element to provide Cypress Component Test Runner code coverage.
-8. Custom element templates (the contents of the `{PascalCaseElementName}.vue` file) must utilize the template shown below:
+8. Custom element templates (the contents of the `{PascalCaseElementName}.ce.vue` file) must utilize the template shown below:
 
     <details>
 
@@ -521,8 +521,9 @@ declare module 'vue/types/vue' {
     </script>
 
     <style lang="scss">
-    // No styles should be added to this component; add styles to child components
+    // No styles should be added to this component.
     </style>
+
     ```
 
     </details>
@@ -541,23 +542,7 @@ The exclamation point at the beginning of the comment flags the comment as impor
 
 > **Note**: No styles should be placed in the `<style>` blocks within the `src/elements/**/{CustomElement}.vue` files.
 
-```html
-<template>
-  <div class="component-name">
-    <h1>This is my component template</h1>
-  </div>
-</template>
-
-<style lang="scss" scoped>
-  /*! KONG_AUTH_INJECT_STYLES */
-  h1 {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    color: teal;
-  }
-</style>
-```
-
-All styles from the [Kongponents component library](https://kongponents.konghq.com/guide/theming.html) will be automatically injected and available.
+**It is strongly recommended to put any element/component styles into the `/src/assets/styles/_elements.scss` file.**
 
 ### Committing Changes
 
@@ -645,7 +630,7 @@ yarn link "@kong/kong-auth-elements"
 
 ### Props
 
-There is currently an issue in Vue 3 custom elements (which we are using here) whereby with our setup, all `src/elements/**/{CustomElement}.vue` files within the `/src/elements/` directory **MUST** have at least one `prop` defined. I'm still looking into why.
+There is currently an issue in Vue 3 custom elements (which we are using here) whereby with our setup, all `src/elements/**/{CustomElement}.ce.vue` files within the `/src/elements/` directory **MUST** have at least one `prop` defined. I'm still looking into why.
 
 **This in no way impacts production or using `kong-auth-elements` within your application; all elements have at least one `prop` defined.**
 

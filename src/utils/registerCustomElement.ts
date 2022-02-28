@@ -1,6 +1,7 @@
 import { defineCustomElement, VueElementConstructor } from 'vue'
 import { kebabize } from './index'
 import type { KongAuthElementsOptions } from './index'
+import appStyles from '../assets/styles/app.css'
 
 /**
  * Register a given Vue component as a Custom Element in the DOM.
@@ -32,6 +33,8 @@ export default function(
 
     const vueCustomElement = defineCustomElement({
       ...customElementComponent,
+      // Inject app styles
+      styles: [appStyles],
       // Provide user options
       provide: {
         'user-entity': options?.userEntity || 'user',

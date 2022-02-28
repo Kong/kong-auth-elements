@@ -98,26 +98,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 /*! KONG_AUTH_INJECT_STYLES */
-.kong-auth-error-message.error-message {
-  .k-alert-msg-text .k-alert-msg {
-    line-height: 24px;
-
-    p,
-    ul {
-      line-height: 24px;
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-    }
-
-    p + ul {
-      margin-top: 10px;
-    }
-
-    li {
-      list-style-type: disc;
-    }
-  }
-}
+// No styles should be added to this component; add styles to the /assets/styles/_elements.scss partial
+@import "@/assets/styles/elements";
 </style>

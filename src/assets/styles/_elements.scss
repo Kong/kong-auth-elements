@@ -1,0 +1,45 @@
+// REGISTER
+.register-submit {
+  --KButtonPrimaryBase: var(--green-400);
+
+  &:hover:not(:disabled) {
+    background-color: var(--green-300) !important;
+  }
+}
+
+.password-strength-meter {
+  max-width: none;
+}
+
+// LOGIN
+.idp-loading {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+// ERROR MESSAGE
+.kong-auth-error-message.error-message {
+  .k-alert-msg-text .k-alert-msg {
+    line-height: 24px;
+
+    p,
+    ul {
+      line-height: 24px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    p + ul {
+      margin-top: 10px;
+    }
+
+    li {
+      list-style-type: disc;
+    }
+  }
+}

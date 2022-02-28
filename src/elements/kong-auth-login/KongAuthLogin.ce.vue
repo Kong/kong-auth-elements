@@ -102,5 +102,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-// No styles should be added to this component; add styles to child components
+// No styles should be added to this component.
 </style>

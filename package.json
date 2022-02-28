@@ -5,7 +5,8 @@
   "module": "dist/kong-auth-elements.es.js",
   "scripts": {
     "commit": "cz",
-    "build": "vue-tsc --noEmit && vite build && vue-tsc --emitDeclarationOnly",
+    "build": "yarn build:styles && vue-tsc --noEmit && vite build && vue-tsc --emitDeclarationOnly",
+    "build:styles": "yarn sass --load-path=./node_modules/ ./src/assets/styles/app.scss ./src/assets/styles/app.css",
     "test:unit": "vue-cli-service test:unit",
     "serve:components": "cross-env SERVE_MODE=components vite",
     "serve:elements": "cross-env SERVE_MODE=elements vite",

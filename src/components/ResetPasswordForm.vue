@@ -122,7 +122,7 @@ export default defineComponent({
     const { api, userEntity } = useApi()
 
     /*
-    Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.vue file props as they will not remain reactive.
+    Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
 
     The default values provided to inject() here should be refs with empty string or false since the defaults are typically handled in the custom element provide()
     */
@@ -275,7 +275,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 /*! KONG_AUTH_INJECT_STYLES */
-.password-strength-meter {
-  max-width: none;
-}
+// No styles should be added to this component; add styles to the /assets/styles/_elements.scss partial
+@import "@/assets/styles/elements";
 </style>
