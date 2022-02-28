@@ -1,7 +1,7 @@
 import { defineCustomElement, VueElementConstructor } from 'vue'
 import { kebabize } from './index'
 import type { KongAuthElementsOptions } from './index'
-import appStyles from '../assets/styles/app.css'
+import appStyles from '../assets/styles/app-generated-styles.css'
 
 /**
  * Register a given Vue component as a Custom Element in the DOM.
