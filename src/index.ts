@@ -5,21 +5,23 @@ import type { KongAuthElementsOptions } from './utils'
 import * as elements from './elements'
 
 // Export a Vue plugin install function
-const KongAuthElementsPlugin = (app: App, options?: KongAuthElementsOptions): any => {
-  // Provide option values to components
-  app.provide('kauth-api-base-url', options?.apiBaseUrl)
-  app.provide('user-entity', options?.userEntity || 'user')
-  app.provide('shadow-dom', options?.shadowDom || false)
+const KongAuthElementsPlugin = {
+  install: (app: App, options?: KongAuthElementsOptions): any => {
+    // Provide option values to components
+    app.provide('kauth-api-base-url', options?.apiBaseUrl)
+    app.provide('user-entity', options?.userEntity || 'user')
+    app.provide('shadow-dom', options?.shadowDom || false)
 
-  if (options?.shadowDom === true) {
-    // Register all custom elements as native web components
-    registerKongAuthNativeElements(options)
-  } else {
-    // Register all components
-    for (const key in elements) {
-      app.component(key, elements[key])
+    if (options?.shadowDom === true) {
+      // Register all custom elements as native web components
+      registerKongAuthNativeElements(options)
+    } else {
+      // Register all components
+      for (const key in elements) {
+        app.component(key, elements[key])
+      }
     }
-  }
+  },
 }
 
 // Exports a function that registers all custom elements as native web components
