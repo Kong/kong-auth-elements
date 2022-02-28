@@ -47,7 +47,7 @@ export default defineComponent({
     }
 
     const setGeneralErrorMessage = (): void => {
-      const { status, statusText, data } = props?.error
+      const { status, statusText, data } = props?.error || null
       const errorDetail = data && data.errors ? data.errors[0]?.detail : null
 
       if (status === 401) {
@@ -68,7 +68,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      const { data } = props?.error
+      const { data } = props?.error || null
 
       if (data?.errors?.length) {
         const errorDetail = data.errors[0]?.detail

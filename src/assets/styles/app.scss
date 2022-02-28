@@ -2,13 +2,13 @@
 @import "./typography";
 @import "./inputs";
 
-@import "~@kongponents/styles/variables";
+@import "@kongponents/styles/variables";
 
 // Loop all maps and set to root element
 :root {
   // colors
   @each $name, $color in $colors {
-    --#{$name}: #{$color};
+    --#{"" + $name}: #{$color};
   }
   // Spacings
   @each $name, $space in $spacing {
@@ -27,7 +27,7 @@
 .kong-auth-element,
 .base-custom-element {
   // Import utility classes from Kongponents, but namespace them so they don't leak into page
-  @import "~@kongponents/styles/utils";
+  @import "@kongponents/styles/utils";
 
   font-family: var(--font-family-sans);
   font-weight: var(--KongAuthFontWeight, 400);

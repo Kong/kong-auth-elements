@@ -10,6 +10,7 @@ const KongAuthElementsPlugin = (app: App, options?: KongAuthElementsOptions): an
   app.provide('kauth-api-base-url', options?.apiBaseUrl)
   app.provide('user-entity', options?.userEntity || 'user')
   app.provide('shadow-dom', options?.shadowDom || false)
+  app.provide('shadow-dom-css', options?.shadowDomCss)
 
   if (options?.shadowDom === true) {
     // Register all custom elements as native web components
@@ -36,3 +37,8 @@ export default function registerKongAuthNativeElements(options?: KongAuthElement
 }
 
 export { KongAuthElementsPlugin, KongAuthElementsOptions }
+
+if (typeof window !== 'undefined') {
+  // eslint-disable-next-line dot-notation
+  window['registerKongAuthNativeElements'] = registerKongAuthNativeElements
+}

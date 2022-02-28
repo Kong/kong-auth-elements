@@ -7,7 +7,7 @@
         <h4>
           <code>KongAuthLogin.vue</code>
         </h4>
-        <kong-auth-login
+        <KongAuthLogin
           idp-login-enabled
           idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
           show-forgot-password-link
@@ -22,7 +22,7 @@
         <h4>
           <code>KongAuthForgotPassword.vue</code>
         </h4>
-        <kong-auth-forgot-password
+        <KongAuthForgotPassword
           instruction-text="Enter your verified email address and we will send you a password reset link."
           @click-login-link="showAlert('User clicked login')"
           @forgot-password-success="showAlert('Forgot password success!')"
@@ -33,7 +33,7 @@
         <h4>
           <code>KongAuthResetPassword.vue</code>
         </h4>
-        <kong-auth-reset-password
+        <KongAuthForgotPassword
           instruction-text="Please enter in your new password and confirm it below."
           :show-password-strength-meter="true"
           @reset-password-success="showAlert('Reset password success!')"
@@ -44,7 +44,7 @@
         <h4>
           <code>KongAuthRegister.vue</code>
         </h4>
-        <kong-auth-register
+        <KongAuthRegister
           show-password-strength-meter
           @register-success="showAlert('Register success!')" />
       </div>

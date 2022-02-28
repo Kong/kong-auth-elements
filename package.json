@@ -1,19 +1,21 @@
 {
   "name": "@kong/kong-auth-elements",
   "version": "0.0.0-development",
-  "main": "dist/kong-auth-elements.umd.min.js",
+  "main": "dist/kong-auth-elements.umd.js",
+  "module": "dist/kong-auth-elements.es.js",
   "scripts": {
     "commit": "cz",
-    "serve:components": "cross-env SERVE_MODE=components vue-cli-service serve ./dev/serve-components",
-    "serve:elements": "cross-env SERVE_MODE=elements vue-cli-service serve ./dev/serve-elements",
+    "build": "vue-tsc --noEmit && vite build && vue-tsc --emitDeclarationOnly",
+    "test:unit": "vue-cli-service test:unit",
+    "serve:components": "cross-env SERVE_MODE=components vite",
+    "serve:elements": "cross-env SERVE_MODE=elements vite",
+    "serve:demo": "rm -rf ./demo/dist-copy && yarn build && cp -R ./dist ./demo/dist-copy && echo \"\n    \\x1b[30m\\x1b[103m Note: The demo does NOT support hot reload \\x1b[0m\" && serve -p 3333 ./demo",
     "serve": "yarn serve:help",
-    "serve:help": "echo \"\nRun 'yarn serve:components' to import components and use Vue Dev Tools.\n(may require additional imports in /dev/serve-components/ComponentsApp.vue)\n\\x1b[33m* This will not allow testing embedded styles and other Custom Element features. *\\x1b[0m\n\n-- OR --\n\nRun 'yarn serve:elements' to import HTML Custom Elements.\n(may require additional imports in /dev/serve-elements/index.ts)\n\\x1b[33m* This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported). *\\x1b[0m\n\n\"",
-    "build": "vue-cli-service build --target lib --name kong-auth-elements --inline-vue ./src/index.ts && rm ./dist/demo.html && yarn build:types",
-    "build:types": "vue-tsc --declaration --emitDeclarationOnly",
+    "serve:help": "echo \"\nRun 'yarn serve:components' to import components and use Vue Dev Tools.\n(may require additional imports in /dev/serve-components/ComponentsApp.vue)\n\\x1b[33m* This will not allow testing embedded styles and other Custom Element features. *\\x1b[0m\n\n-- OR --\n\nRun 'yarn serve:elements' to import native Web Components.\n(may require additional imports in /dev/serve-elements/index.ts)\n\\x1b[33m* This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported). *\\x1b[0m\n\n\"",
     "test": "cypress run-ct",
     "test:open": "cypress open-ct",
-    "cypress:open": "yarn test:open",
-    "lint": "vue-cli-service lint",
+    "test:ci": "cypress run-ct --quiet --reporter spec",
+    "lint": "eslint '**/*.{js,ts,vue}' --fix",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
@@ -30,7 +32,6 @@
     "@vue/compat": "^3.2.31",
     "@xstate/vue": "^0.8.1",
     "axios": "^0.26.0",
-    "core-js": "^3.21.0",
     "vue": "^3.2.31",
     "vue-password-strength-meter": "^1.7.2",
     "xstate": "^4.28.1",
@@ -40,46 +41,42 @@
     "@arkweid/lefthook": "^0.7.7",
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
-    "@cypress/vue": "^3.1.0",
-    "@cypress/webpack-dev-server": "^1.8.1",
+    "@cypress/vite-dev-server": "^2.2.2",
+    "@cypress/vue": "^3.1.1",
     "@digitalroute/cz-conventional-changelog-for-jira": "^7.2.0",
-    "@types/node": "^16.11.24",
+    "@rushstack/eslint-patch": "^1.1.0",
+    "@types/node": "^16.11.25",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.2.31",
-    "@vue/eslint-config-standard": "^5.1.2",
-    "@vue/eslint-config-typescript": "^7.0.0",
-    "@vue/test-utils": "^2.0.0-rc.18",
+    "@vitejs/plugin-vue": "^2.2.2",
+    "@vue/eslint-config-standard": "^6.1.0",
+    "@vue/eslint-config-typescript": "^10.0.0",
+    "@vue/tsconfig": "^0.1.3",
     "commitizen": "^4.2.4",
     "cross-env": "^7.0.3",
     "cypress": "^9.5.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "^6.7.2",
+    "eslint": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-vue": "^7.0.0",
-    "html-webpack-plugin": "4",
-    "node-sass": "^4.11.0",
+    "eslint-plugin-vue": "^8.2.0",
     "postcss-custom-properties": "^10.0.0",
-    "sass-loader": "^8.0.2",
+    "sass": "^1.49.9",
     "semantic-release": "^18.0.1",
-    "typescript": "~4.1.5",
-    "vue-tsc": "0.31.1"
+    "start-server-and-test": "^1.14.0",
+    "typescript": "~4.5.5",
+    "vite": "^2.8.4",
+    "vue-tsc": "^0.31.4"
   },
   "peerDependencies": {
     "axios": "^0.26.0"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "typings": "dist/types",
   "repository": {
     "type": "git",
@@ -94,13 +91,6 @@
       "main"
     ]
   },
-  "engines": {
-    "node": "<=14.18 <16"
-  },
-  "volta": {
-    "node": "14.18.2",
-    "yarn": "1.22.17"
-  },
   "config": {
     "commitizen": {
       "path": "./node_modules/@digitalroute/cz-conventional-changelog-for-jira",
@@ -110,5 +100,9 @@
       "jiraPrepend": "[",
       "jiraAppend": "]"
     }
+  },
+  "volta": {
+    "node": "16.14.0",
+    "yarn": "1.22.17"
   }
 }
