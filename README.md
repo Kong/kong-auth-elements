@@ -7,7 +7,7 @@
 
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Vue 3 Plugin](#vue-3-plugin)
+  <!-- - [Vue 3 Plugin](#vue-3-plugin) -->
   - [Vue 2 or native web components](#vue-2-or-native-web-components)
   - [Options](#options)
   - [Events](#events)
@@ -37,7 +37,7 @@ yarn add @kong/kong-auth-elements
 
 ## Usage
 
-### Vue 3 Plugin
+<!-- ### Vue 3 Plugin
 
 Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`). Set the plugin options, and tell Vue to use the plugin.
 
@@ -73,6 +73,7 @@ Now that the plugin is globally registered, simply include a component just like
 ```
 
 ---
+-->
 
 ### Vue 2 or native web components
 
@@ -136,7 +137,7 @@ export interface KongAuthElementsOptions {
 
 Events are emitted for different component/element actions.
 
-If using the Vue Plugin, you can listen to these events just like you would any other emitted event. (e.g. `@login-success="successHandler"`)
+<!-- If using the Vue Plugin, you can listen to these events just like you would any other emitted event. (e.g. `@login-success="successHandler"`) -->
 
 If your app uses the native web components, the emitted events follow the [CustomEvent() Web API](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent) spec.
 
