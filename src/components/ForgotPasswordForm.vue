@@ -86,6 +86,7 @@ import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText } from '@/utils'
 import useApi from '@/composables/useApi'
+import { AxiosResponse } from 'axios'
 // Components
 import KAlert from '@kongponents/kalert'
 import KButton from '@kongponents/kbutton'
@@ -163,13 +164,11 @@ export default defineComponent({
       return !formData.email || currentState.value.matches('pending')
     })
 
-    const requestPasswordReset = async () => {
+    const requestPasswordReset = async (): Promise<AxiosResponse<any>> => {
       // Custom endpoint
       if (resetPasswordRequestEndpoint.value) {
         return await api.client.post(resetPasswordRequestEndpoint.value, {
-          data: {
-            email: formData.email,
-          },
+          email: formData.email,
         })
       }
 

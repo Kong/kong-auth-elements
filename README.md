@@ -611,8 +611,6 @@ yarn serve:elements
 yarn build
 ```
 
-Note: This first generates `/src/assets/styles/app-generated-styles.css` from the corresponding `app.scss` file so the rendered CSS can be injected into the custom elements.
-
 ### Link the local, `@kong/kong-auth-elements` package into another local project for testing
 
 Inside `@kong/kong-auth-elements` run

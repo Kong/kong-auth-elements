@@ -136,7 +136,7 @@ import { defineComponent, inject, reactive, ref, Ref, toRefs, computed, onMounte
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
 import useApi from '@/composables/useApi'
-import { AuthenticateAuthenticateRequest, EmailverificationsVerifyResponse } from '@kong/kauth-client-typescript-axios'
+import { AuthenticationAPIV1AuthenticateRequest, DeveloperAPIV1VerifyRequest, DeveloperAPIV1VerifyResponse, EmailverificationsVerifyRequest, EmailverificationsVerifyResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 import { helpText, win } from '@/utils'
 import useIdentityProvider from '@/composables/useIdentityProvider'
@@ -309,25 +309,27 @@ export default defineComponent({
       document.cookie = `userStatus=active; path=/; ${getDomain()} expires=${date.toUTCString()};`
     }
 
-    const verifyEmailAddress = async (token: string): Promise<void> => {
+    const verifyEmailAddress = async (token: EmailverificationsVerifyRequest | DeveloperAPIV1VerifyRequest): Promise<void> => {
       try {
         send('VERIFY_EMAIL')
 
         // setTimeout for simulated feedback
         await new Promise((resolve) => setTimeout(resolve, 250))
 
-        const verificationResponse = userEntity === 'developer' ? await api.emailVerification.verifyEmail({ token }) : await api.emailVerification.verifyEmail({ token })
+        const verificationResponse: AxiosResponse<EmailverificationsVerifyResponse | DeveloperAPIV1VerifyResponse> = userEntity === 'developer' ? await api.emailVerification.verifyDeveloperEmail(token) : await api.emailVerification.verifyUserEmail(token)
 
         send('RESOLVE')
 
         setUserStatusCookie()
 
-        formData.email = verificationResponse.data.email
+        formData.email = verificationResponse.data.email || ''
         send('CONFIRMED_EMAIL')
 
         emit('verify-email-success', {
           email: formData.email,
-          resetToken: verificationResponse.data?.resetToken ? verificationResponse.data.resetToken : undefined,
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          resetToken: verificationResponse.data.resetToken ? verificationResponse.data.resetToken : undefined,
         })
       } catch (err: any) {
         send('REJECT')
@@ -340,12 +342,12 @@ export default defineComponent({
       }
     }
 
-    const login = async (credentials: AuthenticateAuthenticateRequest) => {
-      // if (userEntity === 'developer') {
-      //   return await api.authentication.authenticate(credentials)
-      // }
+    const login = async (credentials: AuthenticationAPIV1AuthenticateRequest) => {
+      if (userEntity === 'developer') {
+        return await api.authentication.authenticateDeveloper(credentials)
+      }
 
-      return await api.authentication.authenticate(credentials)
+      return await api.authentication.authenticateUser(credentials)
     }
 
     const submitForm = async (): Promise<void> => {
@@ -429,7 +431,7 @@ export default defineComponent({
       const token = urlParams?.get('token')
       if (token) {
         // Verify email address and set email on success
-        await verifyEmailAddress(token)
+        await verifyEmailAddress({ token })
         return
       }
 

@@ -145,6 +145,8 @@ import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText, win } from '@/utils'
 import useApi from '@/composables/useApi'
+import { RegisterRegisterResponse } from '@kong/kauth-client-typescript-axios'
+import { AxiosResponse } from 'axios'
 // Components
 import KButton from '@kongponents/kbutton'
 import KIcon from '@kongponents/kicon'
@@ -243,10 +245,10 @@ export default defineComponent({
       return currentState.value.matches('pending') || !userCanSubmitForm.value
     })
 
-    const processRegistration = async () => {
+    const processRegistration = async (): Promise<AxiosResponse<RegisterRegisterResponse | any>> => {
       if (formData.emailToken) {
         // Accept the invite and set the password
-        return await api.inviteAccept.acceptInvite({
+        return await api.inviteAccept.acceptUserInvite({
           password: formData.password,
           token: formData.emailToken,
         })
@@ -259,14 +261,13 @@ export default defineComponent({
             data: {
               email: formData.email,
               fullName: formData.fullName,
-              organization: formData.organization,
-              password: formData.password,
-              registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
+              organization: formData.organization || undefined,
+              password: formData.password || undefined,
             },
           })
         } else {
           // default endpoint
-          return await api.registration.register({
+          return await api.registration.registerUser({
             email: formData.email,
             fullName: formData.fullName,
             organization: formData.organization,
