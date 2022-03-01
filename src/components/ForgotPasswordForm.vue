@@ -174,7 +174,7 @@ export default defineComponent({
       }
 
       // Default endpoint
-      return await api.passwords.requestPasswordReset({
+      return await api.passwords.requestUserPasswordReset({
         email: formData.email,
       })
     }
