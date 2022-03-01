@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@kong/kauth-client-typescript-axios": "^0.0.0-alpha.9",
-    "@kongponents/kalert": "^6.14.1",
+    "@kongponents/kalert": "^6.15.0",
     "@kongponents/kbutton": "^6.14.1",
     "@kongponents/kcheckbox": "^6.14.1",
     "@kongponents/kicon": "^6.14.1",
