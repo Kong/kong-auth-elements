@@ -1,7 +1,7 @@
 <template>
   <div class="kong-auth-reset-password-form">
     <div v-if="currentState.matches('error') && error" class="my-3">
-      <ErrorMessage :error="error" :data-testid="passwordError ? 'kong-auth-reset-password-alert' : null" />
+      <ErrorMessage :error="error" />
     </div>
 
     <form

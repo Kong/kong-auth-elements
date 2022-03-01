@@ -4,7 +4,7 @@
 import { mount } from '@cypress/vue'
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 import { helpText, win } from '@/utils'
-import { getPluginOptions } from '@/composables/useKauthApi'
+import { getConfigOptions } from '@/composables/useKauthApi'
 
 // Component data-testid strings
 const testids = {
@@ -102,8 +102,6 @@ describe('KongAuthLogin.vue', () => {
   })
 
   it("emits a 'login-success' event on successful user login", () => {
-    cy.stub(getPluginOptions, 'userEntity').returns('user')
-
     cy.intercept('POST', '**/authenticate', {
       statusCode: 200,
     }).as('login-request')
@@ -121,7 +119,8 @@ describe('KongAuthLogin.vue', () => {
   })
 
   it("emits a 'login-success' event on successful developer login", () => {
-    cy.stub(getPluginOptions, 'userEntity').returns('developer')
+    // Stub userEntity
+    cy.stub(getConfigOptions, 'userEntity').returns('developer')
 
     cy.intercept('POST', '**/developer-authenticate', {
       statusCode: 200,
@@ -150,11 +149,46 @@ describe('KongAuthLogin.vue', () => {
       cy.getTestId(testids.email).should('have.value', user.email)
     })
 
-    it("should verify email and emit 'verify-email-success' event if query params include 'token'", () => {
+    it("should verify user email and emit 'verify-email-success' event if query params include 'token'", () => {
       // Stub search params
       cy.stub(win, 'getLocationSearch').returns('?token=12345')
 
       cy.intercept('PATCH', '**/email-verifications', {
+        statusCode: 200,
+        body: {
+          email: user.email,
+        },
+      }).as('email-verification-request')
+
+      mount(KongAuthLogin)
+
+      const eventName = 'verify-email-success'
+
+      // Loader should show on load
+      cy.getTestId(testids.gruceLoader).should('exist').find('.fullscreen-loading-container').should('be.visible')
+
+      cy.wait('@email-verification-request').then(() => {
+        // Verify UI
+        cy.getTestId(testids.gruceLoader).should('not.exist')
+        cy.getTestId(testids.confirmedEmailMessage).should('be.visible').and('contain.text', helpText.login.confirmedEmailSuccess)
+        cy.getTestId(testids.email).should('have.value', user.email)
+
+        // Check for emitted event
+        cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
+          // Verify emit payload
+          cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
+        })
+      })
+    })
+
+    it("should verify developer email and emit 'verify-email-success' event if query params include 'token'", () => {
+      // Stub userEntity
+      cy.stub(getConfigOptions, 'userEntity').returns('developer')
+
+      // Stub search params
+      cy.stub(win, 'getLocationSearch').returns('?token=12345')
+
+      cy.intercept('PATCH', '**/developer-email-verifications', {
         statusCode: 200,
         body: {
           email: user.email,
