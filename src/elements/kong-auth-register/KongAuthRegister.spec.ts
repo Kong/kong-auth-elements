@@ -4,6 +4,7 @@
 import { mount } from '@cypress/vue'
 import KongAuthRegister from '@/elements/kong-auth-register/KongAuthRegister.ce.vue'
 import { helpText, win } from '@/utils'
+import { getConfigOptions } from '@/composables/useKauthApi'
 
 // Component data-testid strings
 const testids = {
@@ -57,6 +58,29 @@ describe('KongAuthRegister.vue', () => {
       cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
     })
     // Elements should not exist
+    cy.getTestId(testids.errorMessage).should('not.exist')
+    cy.getTestId(testids.instructionText).should('not.exist')
+    cy.getTestId(testids.accessCode).should('not.exist')
+  })
+
+  it("renders a register form with hidden fields if userEntity is 'developer'", () => {
+    // Stub userEntity
+    cy.stub(getConfigOptions, 'userEntity').returns('developer')
+
+    mount(KongAuthRegister)
+
+    // Form should exist
+    cy.getTestId(testids.form).should('be.visible')
+    cy.getTestId(testids.form).within(() => {
+      // Elements should exist
+      cy.getTestId(testids.fullName).should('be.visible')
+      cy.getTestId(testids.email).should('be.visible')
+      cy.getTestId(testids.agreeCheckbox).should('be.visible')
+      cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
+    })
+    // Elements should not exist
+    cy.getTestId(testids.organization).should('not.exist')
+    cy.getTestId(testids.password).should('not.exist')
     cy.getTestId(testids.errorMessage).should('not.exist')
     cy.getTestId(testids.instructionText).should('not.exist')
     cy.getTestId(testids.accessCode).should('not.exist')
@@ -118,31 +142,6 @@ describe('KongAuthRegister.vue', () => {
     cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', helpText.general.missingInfo)
   })
 
-  it('does not require an access code if the user is accepting an invite', () => {
-    // Stub search params
-    cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
-
-    mount(KongAuthRegister, {
-      props: {
-        accessCodeRequired: false,
-      },
-    })
-
-    // Access code field should be not be exist
-    cy.getTestId(testids.accessCode).should('not.exist')
-
-    cy.getTestId(testids.password).type(user.password)
-    cy.getTestId(testids.agreeCheckbox).check()
-
-    cy.getTestId(testids.submitBtn).should('be.visible').and('not.be.disabled')
-
-    // Submit
-    cy.getTestId(testids.form).submit()
-
-    // Error should exist
-    cy.getTestId(testids.errorMessage).should('not.exist')
-  })
-
   describe('Invites and Responding to URL Parameters', () => {
     it('pre-populates the form from search params', () => {
       // Stub search params
@@ -192,6 +191,31 @@ describe('KongAuthRegister.vue', () => {
 
       cy.wait('@accept-invite').its('response.statusCode').should('eq', 200)
     })
+
+    it('does not require an access code if the user is accepting an invite', () => {
+    // Stub search params
+      cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
+
+      mount(KongAuthRegister, {
+        props: {
+          accessCodeRequired: false,
+        },
+      })
+
+      // Access code field should be not be exist
+      cy.getTestId(testids.accessCode).should('not.exist')
+
+      cy.getTestId(testids.password).type(user.password)
+      cy.getTestId(testids.agreeCheckbox).check()
+
+      cy.getTestId(testids.submitBtn).should('be.visible').and('not.be.disabled')
+
+      // Submit
+      cy.getTestId(testids.form).submit()
+
+      // Error should exist
+      cy.getTestId(testids.errorMessage).should('not.exist')
+    })
   })
 
   it("emits a 'register-success' event with a payload on successful registration", () => {
@@ -223,7 +247,10 @@ describe('KongAuthRegister.vue', () => {
     })
   })
 
-  it("emits a 'register-success' event with a payload on successful registration from a custom endpoint", () => {
+  it("emits a 'register-success' event with a payload on successful developer registration from a custom endpoint", () => {
+    // Stub userEntity
+    cy.stub(getConfigOptions, 'userEntity').returns('developer')
+
     const customEndpoint = '/custom-register-request'
 
     cy.intercept('GET', '**/client-config', {
@@ -247,9 +274,7 @@ describe('KongAuthRegister.vue', () => {
     })
 
     cy.getTestId(testids.fullName).type(user.name)
-    cy.getTestId(testids.organization).type(user.org)
     cy.getTestId(testids.email).type(user.email)
-    cy.getTestId(testids.password).type(user.password)
     cy.getTestId(testids.agreeCheckbox).check()
     cy.getTestId(testids.form).submit()
 

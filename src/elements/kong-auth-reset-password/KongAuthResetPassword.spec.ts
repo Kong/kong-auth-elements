@@ -3,6 +3,7 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthResetPassword from '@/elements/kong-auth-reset-password/KongAuthResetPassword.ce.vue'
+import { getConfigOptions } from '@/composables/useKauthApi'
 
 // Component data-testid strings
 const testids = {
@@ -100,9 +101,37 @@ describe('KongAuthResetPassword.vue', () => {
     cy.getTestId(testids.errorMessage).should('be.visible')
   })
 
-  it("emits a 'reset-password-success' event with payload on successful password reset", () => {
+  it("emits a 'reset-password-success' event with payload on successful user password reset", () => {
     // Stub 200 response
     cy.intercept('PATCH', '**/password-resets', {
+      statusCode: 200,
+      body: {
+        email: 'user1@email.com',
+      },
+    }).as('password-reset')
+
+    mount(KongAuthResetPassword)
+
+    cy.getTestId(testids.password).type(user.password)
+    cy.getTestId(testids.confirmPassword).type(user.password)
+    cy.getTestId(testids.form).submit()
+
+    const eventName = 'reset-password-success'
+
+    cy.wait('@password-reset').then(() => {
+      // Check for emitted event
+      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
+        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
+      })
+    })
+  })
+
+  it("emits a 'reset-password-success' event with payload on successful developer password reset", () => {
+    // Stub userEntity
+    cy.stub(getConfigOptions, 'userEntity').returns('developer')
+
+    // Stub 200 response
+    cy.intercept('PATCH', '**/developer-password-resets', {
       statusCode: 200,
       body: {
         email: 'user1@email.com',
