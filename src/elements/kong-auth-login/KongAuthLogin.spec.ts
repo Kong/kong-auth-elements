@@ -4,6 +4,7 @@
 import { mount } from '@cypress/vue'
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 import { helpText, win } from '@/utils'
+import { getPluginOptions } from '@/composables/useKauthApi'
 
 // Component data-testid strings
 const testids = {
@@ -100,8 +101,29 @@ describe('KongAuthLogin.vue', () => {
     cy.getTestId(testids.errorMessage).should('be.visible')
   })
 
-  it("emits a 'login-success' event on successful login", () => {
+  it("emits a 'login-success' event on successful user login", () => {
+    cy.stub(getPluginOptions, 'userEntity').returns('user')
+
     cy.intercept('POST', '**/authenticate', {
+      statusCode: 200,
+    }).as('login-request')
+
+    mount(KongAuthLogin)
+
+    cy.getTestId(testids.email).type(user.email)
+    cy.getTestId(testids.password).type(user.password)
+    cy.getTestId(testids.form).submit()
+
+    cy.wait('@login-request').then(() => {
+      // Check for emitted event
+      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'login-success')
+    })
+  })
+
+  it("emits a 'login-success' event on successful developer login", () => {
+    cy.stub(getPluginOptions, 'userEntity').returns('developer')
+
+    cy.intercept('POST', '**/developer-authenticate', {
       statusCode: 200,
     }).as('login-request')
 

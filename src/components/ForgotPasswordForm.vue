@@ -85,7 +85,7 @@ import { defineComponent, inject, ref, Ref, reactive, toRefs, computed } from 'v
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText } from '@/utils'
-import useApi from '@/composables/useApi'
+import useKauthApi from '@/composables/useKauthApi'
 import { AxiosResponse } from 'axios'
 // Components
 import KAlert from '@kongponents/kalert'
@@ -119,7 +119,7 @@ export default defineComponent({
 
   setup(props, { emit }) {
     // Get API instance and user entity type
-    const { api, userEntity } = useApi()
+    const { api, userEntity } = useKauthApi()
 
     /*
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
