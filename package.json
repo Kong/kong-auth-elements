@@ -27,7 +27,7 @@
     "@kongponents/klabel": "^6.14.1",
     "@kongponents/kooltip": "^6.14.1",
     "@kongponents/kskeleton": "^6.14.1",
-    "@kongponents/styles": "^6.14.1",
+    "@kongponents/styles": "^6.15.0",
     "@vue/compat": "^3.2.31",
     "@xstate/vue": "^0.8.1",
     "axios": "^0.26.0",
