@@ -1,7 +1,7 @@
 <template>
   <div class="kong-auth-reset-password-form">
-    <div v-if="currentState.matches('error') && !passwordError && error" class="my-3">
-      <ErrorMessage :error="error" />
+    <div v-if="currentState.matches('error') && error" class="my-3">
+      <ErrorMessage :error="error" :data-testid="passwordError ? 'kong-auth-reset-password-alert' : null" />
     </div>
 
     <form
@@ -52,14 +52,6 @@
         data-testid="kong-auth-reset-password-confirm-new-password"
       />
 
-      <div
-        v-if="currentState.matches('error') && passwordError && error"
-        data-testid="kong-auth-reset-password-alert"
-        class="my-3"
-      >
-        <ErrorMessage :error="error" />
-      </div>
-
       <KButton
         type="submit"
         appearance="primary"
@@ -86,7 +78,7 @@ import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText, win } from '@/utils'
 import useApi from '@/composables/useApi'
-import { PasswordresetsResetResponse, PasswordresetsResetRequest } from '@kong/kauth-client-typescript-axios'
+import { PasswordresetsResetRequest, PasswordAPIV1ResetResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 // Components
 import KButton from '@kongponents/kbutton'
@@ -176,11 +168,11 @@ export default defineComponent({
     })
 
     const resetPassword = async (credentials: PasswordresetsResetRequest) => {
-      // if (userEntity === 'developer') {
-      //   return await api.passwords.resetPassword(credentials)
-      // }
+      if (userEntity === 'developer') {
+        return await api.passwords.resetDeveloperPassword(credentials)
+      }
 
-      return await api.passwords.resetPassword(credentials)
+      return await api.passwords.resetUserPassword(credentials)
     }
 
     const submitForm = async (): Promise<void> => {
@@ -216,7 +208,7 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        const response: AxiosResponse<PasswordresetsResetResponse> = await resetPassword({
+        const response: AxiosResponse<PasswordAPIV1ResetResponse> = await resetPassword({
           password: formData.password,
           token: formData.passwordToken,
         })

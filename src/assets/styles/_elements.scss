@@ -1,9 +1,11 @@
 // REGISTER
-.register-submit {
-  --KButtonPrimaryBase: var(--green-400);
+.kong-auth-register-form {
+  .register-submit {
+    --KButtonPrimaryBase: var(--green-400);
 
-  &:hover:not(:disabled) {
-    background-color: var(--green-300) !important;
+    &:hover:not(:disabled) {
+      background-color: var(--green-300) !important;
+    }
   }
 }
 
@@ -12,8 +14,10 @@
 }
 
 // LOGIN
-.idp-loading {
-  justify-content: center;
+.kong-auth-login-form {
+  .idp-loading {
+    justify-content: center;
+  }
 }
 
 .text-center {

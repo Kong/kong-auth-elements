@@ -16,7 +16,7 @@
           @click-register-link="showAlert('User clicked register')"
           @verify-email-success="showAlert('User verified email')"
           @idp-is-loading="showAlert('IDP loading state changed')"
-        ></kong-auth-login>
+        />
       </div>
 
       <div v-if="urlPath.includes('/forgot-password') || urlPath === '/'" class="element-wrapper">
@@ -27,7 +27,7 @@
           instruction-text="Enter your verified email address and we will send you a password reset link."
           @click-login-link="showAlert('User clicked login')"
           @forgot-password-success="showAlert('Forgot password success!')"
-        ></kong-auth-forgot-password>
+        />
       </div>
 
       <div v-if="urlPath.includes('/reset-password') || urlPath === '/'" class="element-wrapper">
@@ -37,7 +37,7 @@
         <kong-auth-reset-password
           instruction-text="Please enter in your new password and confirm it below."
           @reset-password-success="showAlert('Reset password success!')"
-        ></kong-auth-reset-password>
+        />
       </div>
 
       <div v-if="urlPath.includes('/register') || urlPath === '/'" class="element-wrapper">
