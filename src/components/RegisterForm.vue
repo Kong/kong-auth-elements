@@ -36,18 +36,20 @@
         />
       </div>
 
-      <KLabel for="organization">Organization *</KLabel>
-      <KInput
-        id="organization"
-        v-model.trim="organization"
-        type="text"
-        class="mb-4"
-        autocomplete="organization"
-        :disabled="prepopulated"
-        :has-error="currentState.matches('error') && error && fieldsHaveError && !organization ? true : false"
-        required
-        data-testid="kong-auth-register-organization"
-      />
+      <div v-if="userEntity !== 'developer'">
+        <KLabel for="organization">Organization *</KLabel>
+        <KInput
+          id="organization"
+          v-model.trim="organization"
+          type="text"
+          class="mb-4"
+          autocomplete="organization"
+          :disabled="prepopulated"
+          :has-error="currentState.matches('error') && error && fieldsHaveError && !organization ? true : false"
+          required
+          data-testid="kong-auth-register-organization"
+        />
+      </div>
 
       <KLabel for="email">Email *</KLabel>
       <KInput
@@ -62,26 +64,28 @@
         data-testid="kong-auth-register-email"
       />
 
-      <KLabel for="password">Password *</KLabel>
-      <KInput
-        id="password"
-        v-model.trim="password"
-        type="password"
-        :class="[showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
-        autocomplete="new-password"
-        :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
-        required
-        data-testid="kong-auth-register-password"
-      />
+      <div v-if="userEntity !== 'developer'">
+        <KLabel for="password">Password *</KLabel>
+        <KInput
+          id="password"
+          v-model.trim="password"
+          type="password"
+          :class="[showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
+          autocomplete="new-password"
+          :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
+          required
+          data-testid="kong-auth-register-password"
+        />
 
-      <Password
-        v-if="showPasswordStrengthMeter"
-        class="password-strength-meter"
-        v-model="password"
-        :strength-meter-only="true"
-      />
+        <Password
+          v-if="showPasswordStrengthMeter"
+          class="password-strength-meter"
+          v-model="password"
+          :strength-meter-only="true"
+        />
+      </div>
 
-      <div v-if="!emailToken && accessCodeRequired">
+      <div v-if="!emailToken && accessCodeRequired && userEntity !== 'developer'">
         <KLabel for="access_code">Access Code *</KLabel>
         <KInput
           id="access_code"
@@ -223,11 +227,11 @@ export default defineComponent({
     const userCanSubmitForm = computed((): boolean => {
       return !!(formData.email &&
         formData.fullName &&
-        formData.organization &&
-        formData.password &&
+        // Organization and Password are not required for `developer` user entity
+        ((formData.organization && formData.password) || userEntity === 'developer') &&
         formData.checked_agreement &&
-        // If they have an invite token, or filled out the access code
-        (formData.emailToken || !accessCodeRequired.value || (accessCodeRequired.value && formData.accessCode))
+        // If they have an invite token, or filled out the access code, or are a developer
+        (formData.emailToken || !accessCodeRequired.value || userEntity === 'developer' || (accessCodeRequired.value && formData.accessCode))
       )
     })
 
@@ -250,7 +254,7 @@ export default defineComponent({
         // Register a new user
 
         if (registerRequestEndpoint.value) {
-          // If custom endpoint
+          // If custom endpoint (still passing all the values even though 'developer' only needs email and fullName)
           return await api.client.post(registerRequestEndpoint.value, {
             data: {
               email: formData.email,
@@ -351,6 +355,7 @@ export default defineComponent({
       accessCodeRequired,
       instructionText,
       showPasswordStrengthMeter,
+      userEntity,
       ...toRefs(formData),
     }
   },

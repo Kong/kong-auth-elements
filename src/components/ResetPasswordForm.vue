@@ -177,7 +177,7 @@ export default defineComponent({
 
     const resetPassword = async (credentials: PasswordresetsResetRequest) => {
       // if (userEntity === 'developer') {
-      //   return await api.developers.resetDevelopersPassword(credentials)
+      //   return await api.passwords.resetPassword(credentials)
       // }
 
       return await api.passwords.resetPassword(credentials)

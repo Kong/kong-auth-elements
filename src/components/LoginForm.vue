@@ -151,7 +151,7 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 
 export const loginEmits = {
   'login-success': null,
-  'verify-email-success': (payload: { email: string }): boolean => {
+  'verify-email-success': (payload: { email: string, resetToken?: string }): boolean => {
     return !!payload?.email.trim()
   },
   'click-forgot-password-link': null,
@@ -316,19 +316,18 @@ export default defineComponent({
         // setTimeout for simulated feedback
         await new Promise((resolve) => setTimeout(resolve, 250))
 
-        const response: AxiosResponse<EmailverificationsVerifyResponse> = await api.emailVerification.verifyEmail({
-          token,
-        })
+        const verificationResponse = userEntity === 'developer' ? await api.emailVerification.verifyEmail({ token }) : await api.emailVerification.verifyEmail({ token })
 
         send('RESOLVE')
 
         setUserStatusCookie()
 
-        formData.email = response.data.email
+        formData.email = verificationResponse.data.email
         send('CONFIRMED_EMAIL')
 
         emit('verify-email-success', {
           email: formData.email,
+          resetToken: verificationResponse.data?.resetToken ? verificationResponse.data.resetToken : undefined,
         })
       } catch (err: any) {
         send('REJECT')
@@ -343,7 +342,7 @@ export default defineComponent({
 
     const login = async (credentials: AuthenticateAuthenticateRequest) => {
       // if (userEntity === 'developer') {
-      //   return await api.developers.authenticateDeveloper(credentials)
+      //   return await api.authentication.authenticate(credentials)
       // }
 
       return await api.authentication.authenticate(credentials)
