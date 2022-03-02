@@ -1,14 +1,11 @@
-import { computed, ref, inject, ComputedRef, onMounted, onUnmounted } from 'vue'
-
+import { computed, ref, ComputedRef, onMounted, onUnmounted } from 'vue'
+import useConfigOptions from '@/composables/useConfigOptions'
 interface InjectStylesComposable {
   injectedStyles: ComputedRef<string>
 }
 
 export default function useInjectStyles(): InjectStylesComposable {
-  // Get shadowDom setting from provided plugin options
-  const shadowDom = inject('shadow-dom', false)
-  // Get shadowDomCss setting from provided plugin options
-  const shadowDomCss = inject('shadow-dom-css', [])
+  const { shadowDom, shadowDomCss } = useConfigOptions()
 
   const inlineStyles = ref<any>([])
   const injectedStyles = computed((): string => {

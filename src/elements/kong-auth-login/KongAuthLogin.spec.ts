@@ -4,7 +4,7 @@
 import { mount } from '@cypress/vue'
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 import { helpText, win } from '@/utils'
-import { getConfigOptions } from '@/composables/useKauthApi'
+import { getConfigOptions } from '@/composables/useConfigOptions'
 
 // Component data-testid strings
 const testids = {

@@ -135,10 +135,11 @@
 import { defineComponent, inject, reactive, ref, Ref, toRefs, computed, onMounted, watch } from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
-import useKauthApi from '@/composables/useKauthApi'
+import useKongAuthApi from '@/composables/useKongAuthApi'
 import { AuthenticationAPIV1AuthenticateRequest, DeveloperAPIV1VerifyRequest, DeveloperAPIV1VerifyResponse, EmailverificationsVerifyRequest, EmailverificationsVerifyResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 import { helpText, win } from '@/utils'
+import useConfigOptions from '@/composables/useConfigOptions'
 import useIdentityProvider from '@/composables/useIdentityProvider'
 // Components
 import KAlert from '@kongponents/kalert'
@@ -178,8 +179,8 @@ export default defineComponent({
   emits: loginEmits,
 
   setup(props, { emit }) {
-    // Get API instance and user entity type
-    const { api, userEntity } = useKauthApi()
+    const { userEntity } = useConfigOptions()
+    const { api } = useKongAuthApi()
 
     /*
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.

@@ -3,7 +3,7 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthResetPassword from '@/elements/kong-auth-reset-password/KongAuthResetPassword.ce.vue'
-import { getConfigOptions } from '@/composables/useKauthApi'
+import { getConfigOptions } from '@/composables/useConfigOptions'
 
 // Component data-testid strings
 const testids = {
