@@ -35,11 +35,11 @@
       <!-- Hidden username input to assist password managers -->
       <input type="hidden" autocomplete="username" id="email" name="email"/>
 
-      <KLabel for="email">Email *</KLabel>
       <KInput
         id="email"
         v-model.trim="email"
         type="email"
+        label="Email *"
         class="w-100 mb-5"
         autocomplete="username"
         autocapitalize="off"
@@ -85,7 +85,6 @@ import { defineComponent, inject, ref, Ref, reactive, toRefs, computed } from 'v
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText } from '@/utils'
-import useConfigOptions from '@/composables/useConfigOptions'
 import useKongAuthApi from '@/composables/useKongAuthApi'
 import { AxiosResponse } from 'axios'
 // Components
@@ -93,7 +92,6 @@ import KAlert from '@kongponents/kalert'
 import KButton from '@kongponents/kbutton'
 import KIcon from '@kongponents/kicon'
 import KInput from '@kongponents/kinput'
-import KLabel from '@kongponents/klabel'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 export const forgotPasswordEmits = {
@@ -111,7 +109,6 @@ export default defineComponent({
     KButton,
     KIcon,
     KInput,
-    KLabel,
     ErrorMessage,
   },
 
@@ -119,7 +116,6 @@ export default defineComponent({
   emits: forgotPasswordEmits,
 
   setup(props, { emit }) {
-    const { userEntity } = useConfigOptions()
     const { api } = useKongAuthApi()
 
     /*
