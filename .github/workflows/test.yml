@@ -10,8 +10,20 @@ on:
       NPM_TOKEN:
         description: 'The NPM_TOKEN passed from the caller workflow as it is not available within workflow_call.'
         required: true
+    inputs:
+      VITE_AUTH_URL:
+        description: 'The URL of the remote backend, e.g. https://konnect.konghq.tech (no trailing slash).'
+        type: string
+        default: https://konnect.konghq.tech
+        required: true
   # Allow workflow to be called manually
   workflow_dispatch:
+    inputs:
+      VITE_AUTH_URL:
+        description: 'The URL of the remote backend, e.g. https://konnect.konghq.tech (no trailing slash).'
+        type: string
+        default: https://konnect.konghq.tech
+        required: true
 
 jobs:
   test:
@@ -42,6 +54,8 @@ jobs:
         with:
           install: false
           command: yarn test
+        env:
+          VITE_AUTH_URL: ${{ secrets.VITE_AUTH_URL || inputs.VITE_AUTH_URL }}
 
       - name: Upload Cypress screenshots (on failure)
         uses: actions/upload-artifact@v2
