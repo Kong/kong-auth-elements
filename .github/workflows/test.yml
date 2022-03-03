@@ -10,11 +10,8 @@ on:
       NPM_TOKEN:
         description: 'The NPM_TOKEN passed from the caller workflow as it is not available within workflow_call.'
         required: true
-    inputs:
       VITE_AUTH_URL:
         description: 'The base URL of the KAuth backend, e.g. https://konnect.konghq.tech'
-        type: string
-        default: https://konnect.konghq.tech
         required: true
   # Allow workflow to be called manually
   workflow_dispatch:
@@ -23,7 +20,7 @@ on:
         description: 'The base URL of the KAuth backend, e.g. https://konnect.konghq.tech'
         type: string
         default: https://konnect.konghq.tech
-        required: true
+        required: false
 
 jobs:
   test:
