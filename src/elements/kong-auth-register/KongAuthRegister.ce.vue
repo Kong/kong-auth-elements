@@ -10,6 +10,7 @@
 import { defineComponent, provide, computed } from 'vue'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import RegisterForm, { registerEmits } from '@/components/RegisterForm.vue'
+import { helpText } from '@/utils'
 
 export default defineComponent({
   name: 'KongAuthRegister',
@@ -19,6 +20,7 @@ export default defineComponent({
     accessCodeRequired: Boolean,
     instructionText: String,
     showPasswordStrengthMeter: Boolean,
+    registerButtonText: String,
     registerRequestEndpoint: String,
   },
 
@@ -36,14 +38,22 @@ export default defineComponent({
       'access-code-required',
       computed((): boolean => (props.accessCodeRequired ? props.accessCodeRequired : false)),
     )
+
     provide(
       'instruction-text',
       computed((): string => (props.instructionText ? props.instructionText : '')),
     )
+
     provide(
       'show-password-strength-meter',
       computed((): boolean => (props.showPasswordStrengthMeter ? props.showPasswordStrengthMeter : false)),
     )
+
+    provide(
+      'register-button-text',
+      computed((): string => (props.registerButtonText ? props.registerButtonText : helpText.register.submitText)),
+    )
+
     provide(
       'register-request-endpoint',
       computed((): string => (props.registerRequestEndpoint ? props.registerRequestEndpoint : '')),

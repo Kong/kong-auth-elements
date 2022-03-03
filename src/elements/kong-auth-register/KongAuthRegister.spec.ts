@@ -75,12 +75,12 @@ describe('KongAuthRegister.vue', () => {
       // Elements should exist
       cy.getTestId(testids.fullName).should('be.visible')
       cy.getTestId(testids.email).should('be.visible')
-      cy.getTestId(testids.agreeCheckbox).should('be.visible')
       cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
     })
     // Elements should not exist
     cy.getTestId(testids.organization).should('not.exist')
     cy.getTestId(testids.password).should('not.exist')
+    cy.getTestId(testids.agreeCheckbox).should('not.exist')
     cy.getTestId(testids.errorMessage).should('not.exist')
     cy.getTestId(testids.instructionText).should('not.exist')
     cy.getTestId(testids.accessCode).should('not.exist')
@@ -275,7 +275,6 @@ describe('KongAuthRegister.vue', () => {
 
     cy.getTestId(testids.fullName).type(user.name)
     cy.getTestId(testids.email).type(user.email)
-    cy.getTestId(testids.agreeCheckbox).check()
     cy.getTestId(testids.form).submit()
 
     const eventName = 'register-success'
@@ -288,6 +287,20 @@ describe('KongAuthRegister.vue', () => {
         cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'fromInvite')
       })
     })
+  })
+
+  /* ==============================
+   * Register Button Text
+   * ============================== */
+  it('customizes the register button text if registerButtonText prop is set', () => {
+    const customText = 'This is custom button text'
+    mount(KongAuthRegister, {
+      props: {
+        registerButtonText: customText,
+      },
+    })
+
+    cy.getTestId(testids.submitBtn).should('be.visible').and('contain.text', customText)
   })
 
   /* ==============================

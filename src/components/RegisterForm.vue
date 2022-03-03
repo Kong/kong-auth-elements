@@ -98,7 +98,7 @@
         />
       </div>
 
-      <div class="color-black-45 type-sm">
+      <div v-if="userEntity !== 'developer'" class="color-black-45 type-sm">
         <KCheckbox v-model="checked_agreement" data-testid="kong-auth-register-agree-checkbox">
           I agree to the
           <a
@@ -191,6 +191,7 @@ export default defineComponent({
     const accessCodeRequired: Ref<boolean> = inject('access-code-required', ref(false)) // False by default so the backend can guard registration
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
     const showPasswordStrengthMeter: Ref<boolean> = inject('show-password-strength-meter', ref(false))
+    const registerButtonText: Ref<string> = inject('register-button-text', ref(''))
     const registerRequestEndpoint: Ref<string> = inject('register-request-endpoint', ref(''))
 
     const formData = reactive({
@@ -231,15 +232,14 @@ export default defineComponent({
       return !!(formData.email &&
         formData.fullName &&
         // Organization and Password are not required for `developer` user entity
-        ((formData.organization && formData.password) || userEntity === 'developer') &&
-        formData.checked_agreement &&
+        ((formData.organization && formData.password && formData.checked_agreement) || userEntity === 'developer') &&
         // If they have an invite token, or filled out the access code, or are a developer
         (formData.emailToken || !accessCodeRequired.value || userEntity === 'developer' || (accessCodeRequired.value && formData.accessCode))
       )
     })
 
     const btnText = computed((): string => {
-      return ['pending', 'success'].some(currentState.value.matches) ? helpText.register.submittingText : helpText.register.submitText
+      return ['pending', 'success'].some(currentState.value.matches) ? helpText.register.submittingText : registerButtonText.value
     })
 
     const btnDisabled = computed((): boolean => {

@@ -33,7 +33,7 @@
 
       <div v-else-if="currentState.matches('from_register')" class="my-3">
         <KAlert
-          :alert-message="helpText.login.registerSuccess"
+          :alert-message="registerSuccessText"
           appearance="success"
           class="justify-content-center"
           data-testid="kong-auth-login-register-success-message"
@@ -193,6 +193,7 @@ export default defineComponent({
     const showRegisterLink: Ref<boolean> = inject('show-register-link', ref(false))
     const registerLinkText: Ref<string> = inject('register-link-text', ref(''))
     const registerLinkHelpText: Ref<string> = inject('register-link-help-text', ref(''))
+    const registerSuccessText: Ref<string> = inject('register-success-text', ref(''))
     const idpLoginEnabled: Ref<boolean> = inject('idp-login-enabled', ref(false))
     const idpLoginReturnTo: Ref<string> = inject('idp-login-return-to', ref(''))
 
@@ -462,6 +463,7 @@ export default defineComponent({
       helpText,
       registerLinkHelpText,
       registerLinkText,
+      registerSuccessText,
       btnText,
       btnDisabled,
       currentState,
