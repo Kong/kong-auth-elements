@@ -22,11 +22,11 @@
       >{{ instructionText }}</p>
 
       <div>
-        <KLabel for="full_name">Full Name *</KLabel>
         <KInput
           id="full_name"
           v-model.trim="fullName"
           type="text"
+          label="Full Name *"
           class="mb-4"
           autocomplete="name"
           :disabled="prepopulated"
@@ -37,11 +37,11 @@
       </div>
 
       <div v-if="userEntity !== 'developer'">
-        <KLabel for="organization">Organization *</KLabel>
         <KInput
           id="organization"
           v-model.trim="organization"
           type="text"
+          label="Organization *"
           class="mb-4"
           autocomplete="organization"
           :disabled="prepopulated"
@@ -51,11 +51,11 @@
         />
       </div>
 
-      <KLabel for="email">Email *</KLabel>
       <KInput
         id="email"
         v-model.trim="email"
         type="email"
+        label="Email *"
         class="mb-4"
         autocomplete="email"
         :disabled="prepopulated"
@@ -65,11 +65,11 @@
       />
 
       <div v-if="userEntity !== 'developer'">
-        <KLabel for="password">Password *</KLabel>
         <KInput
           id="password"
           v-model.trim="password"
           type="password"
+          label="Password *"
           :class="[showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
           autocomplete="new-password"
           :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
@@ -86,12 +86,12 @@
       </div>
 
       <div v-if="!emailToken && accessCodeRequired && userEntity !== 'developer'">
-        <KLabel for="access_code">Access Code *</KLabel>
         <KInput
           id="access_code"
           v-model="accessCode"
           class="mb-4"
           type="password"
+          label="Access Code *"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !accessCode ? true : false"
           required
           data-testid="kong-auth-register-access-code"
@@ -152,7 +152,6 @@ import { AxiosResponse } from 'axios'
 import KButton from '@kongponents/kbutton'
 import KIcon from '@kongponents/kicon'
 import KInput from '@kongponents/kinput'
-import KLabel from '@kongponents/klabel'
 import KCheckbox from '@kongponents/kcheckbox'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 import Password from 'vue-password-strength-meter'
@@ -170,7 +169,6 @@ export default defineComponent({
     KButton,
     KIcon,
     KInput,
-    KLabel,
     KCheckbox,
     ErrorMessage,
     Password,

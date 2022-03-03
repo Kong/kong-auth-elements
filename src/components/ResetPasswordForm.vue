@@ -20,11 +20,11 @@
       <!-- Hidden username input to assist password managers -->
       <input type="hidden" autocomplete="username" id="email" name="email"/>
 
-      <KLabel for="password">New Password *</KLabel>
       <KInput
         id="password"
         v-model.trim="password"
         type="password"
+        label="New Password *"
         :class="[showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
         autocomplete="new-password"
         :has-error="currentState.matches('error') && error ? true : false"
@@ -39,11 +39,11 @@
         :strength-meter-only="true"
       />
 
-      <KLabel for="password">Confirm New Password *</KLabel>
       <KInput
         id="password-confirm"
         v-model.trim="confirmPassword"
         type="password"
+        label="Confirm New Password *"
         class="mb-4"
         autocomplete="new-password"
         :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
@@ -85,7 +85,6 @@ import { AxiosResponse } from 'axios'
 import KButton from '@kongponents/kbutton'
 import KIcon from '@kongponents/kicon'
 import KInput from '@kongponents/kinput'
-import KLabel from '@kongponents/klabel'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 import Password from 'vue-password-strength-meter'
 
@@ -102,7 +101,6 @@ export default defineComponent({
     KButton,
     KIcon,
     KInput,
-    KLabel,
     ErrorMessage,
     Password,
   },

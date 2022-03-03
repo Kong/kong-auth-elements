@@ -53,11 +53,11 @@
             data-testid="kong-auth-login-instruction-text"
           >{{ instructionText }}</p>
 
-          <KLabel for="email">Email *</KLabel>
           <KInput
             id="email"
             v-model.trim="email"
             type="email"
+            label="Email *"
             class="w-100 mb-5"
             autocomplete="username"
             autocapitalize="off"
@@ -66,11 +66,11 @@
             data-testid="kong-auth-login-email"
           />
 
-          <KLabel for="password">Password *</KLabel>
           <KInput
             id="password"
             v-model="password"
             type="password"
+            label="Password *"
             class="w-100"
             autocomplete="current-password"
             :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
@@ -146,7 +146,6 @@ import KAlert from '@kongponents/kalert'
 import KButton from '@kongponents/kbutton'
 import KIcon from '@kongponents/kicon'
 import KInput from '@kongponents/kinput'
-import KLabel from '@kongponents/klabel'
 import { KSkeleton } from '@kongponents/kskeleton'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
@@ -170,7 +169,6 @@ export default defineComponent({
     KButton,
     KIcon,
     KInput,
-    KLabel,
     KSkeleton,
     ErrorMessage,
   },
