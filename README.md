@@ -412,6 +412,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 | `accessCodeRequired` | Boolean | `false`    | An access code is required for registration. |
 | `instructionText`           | String  | `''`    | Set the instruction text to display above the form inputs. |
 | `showPasswordStrengthMeter` | Boolean | `false` | Show the password strength meter.                          |
+| `registerButtonText` | String | `Sign up for Free` | Set the text for the register button.                          |
 | `registerRequestEndpoint` | String  | `''` | Set the URL (relative or absolute) endpoint for the registration request. |
 
 #### Emits Events

@@ -217,7 +217,7 @@ describe('KongAuthLogin.vue', () => {
     })
 
     it("should show password reset message if query params include 'passwordReset'", () => {
-    // Stub search params
+      // Stub search params
       cy.stub(win, 'getLocationSearch').returns('?passwordReset=true')
 
       mount(KongAuthLogin)
@@ -226,12 +226,27 @@ describe('KongAuthLogin.vue', () => {
     })
 
     it("should show register success message if query params include 'registered'", () => {
-    // Stub search params
+      // Stub search params
       cy.stub(win, 'getLocationSearch').returns('?registered=true')
 
       mount(KongAuthLogin)
 
       cy.getTestId(testids.registerSuccessMessage).should('be.visible').and('contain.text', helpText.login.registerSuccess)
+    })
+
+    it('should customize the register success message if registerSuccessText prop is set', () => {
+      // Stub search params
+      cy.stub(win, 'getLocationSearch').returns('?registered=true')
+
+      const customSuccessText = 'Successfully registered! Check your email to confirm your account'
+
+      mount(KongAuthLogin, {
+        props: {
+          registerSuccessText: customSuccessText,
+        },
+      })
+
+      cy.getTestId(testids.registerSuccessMessage).should('be.visible').and('contain.text', customSuccessText)
     })
   })
 

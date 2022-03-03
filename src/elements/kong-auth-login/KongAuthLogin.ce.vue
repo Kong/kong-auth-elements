@@ -35,6 +35,7 @@ export default defineComponent({
     },
     registerLinkHelpText: String,
     registerLinkText: String,
+    registerSuccessText: String,
     idpLoginEnabled: {
       type: Boolean,
       default: false,
@@ -86,6 +87,10 @@ export default defineComponent({
     provide(
       'register-link-text',
       computed((): string => (props.registerLinkText ? props.registerLinkText : helpText.login.registerLinkText)),
+    )
+    provide(
+      'register-success-text',
+      computed((): string => (props.registerSuccessText ? props.registerSuccessText : helpText.login.registerSuccess)),
     )
 
     // IDP
