@@ -11,6 +11,7 @@ jobs:
     # Must pass in secrets here so that the calling workflow can pass in the NPM_TOKEN needed to install private packages.
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      VITE_AUTH_URL: ${{ secrets.VITE_AUTH_URL }}
   publish:
     needs: run-tests
     name: Build and Publish
