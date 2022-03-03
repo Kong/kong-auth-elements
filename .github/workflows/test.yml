@@ -12,7 +12,7 @@ on:
         required: true
     inputs:
       VITE_AUTH_URL:
-        description: 'The URL of the remote backend, e.g. https://konnect.konghq.tech (no trailing slash).'
+        description: 'The base URL of the KAuth backend, e.g. https://konnect.konghq.tech'
         type: string
         default: https://konnect.konghq.tech
         required: true
@@ -20,7 +20,7 @@ on:
   workflow_dispatch:
     inputs:
       VITE_AUTH_URL:
-        description: 'The URL of the remote backend, e.g. https://konnect.konghq.tech (no trailing slash).'
+        description: 'The base URL of the KAuth backend, e.g. https://konnect.konghq.tech'
         type: string
         default: https://konnect.konghq.tech
         required: true
