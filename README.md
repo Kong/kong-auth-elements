@@ -149,6 +149,17 @@ Regardless if you're using in Vue 3, Vue 2, or the native web components, an ide
 | `shadowDom`    | `boolean`  | `false`  | Automatically register the elements as native web components (forced to `true` if using the `registerKongAuthNativeElements` function).                                                                                                                                                             |
 | `shadowDomCss` | `string[]` | `[]`     | If `shadowDom` is set to `true`, you can pass an array of inlined CSS strings that will be added to the shadow root of all elements. [See the example below](#shadow-dom-css)                                                                                                                       |
 
+You can import the `KongAuthElementsOptions` interface from the package if you're using TypeScript.
+
+```ts
+export interface KongAuthElementsOptions {
+  apiBaseUrl?: string
+  userEntity?: 'user' | 'developer'
+  shadowDom?: boolean
+  shadowDomCss?: string[]
+}
+```
+
 #### Shadow DOM CSS
 
 ```ts
@@ -165,18 +176,6 @@ const pluginOptions: KongAuthElementsOptions = {
     }
     `,
   ],
-}
-```
-
-
-You can import the `KongAuthElementsOptions` interface from the package if you're using TypeScript.
-
-```ts
-export interface KongAuthElementsOptions {
-  apiBaseUrl?: string
-  userEntity?: 'user' | 'developer'
-  shadowDom?: boolean
-  shadowDomCss?: string[]
 }
 ```
 
