@@ -89,7 +89,7 @@ const options: KongAuthElementsOptions = {
   apiBaseUrl: '/kauth',
   userEntity: 'user',
   shadowDom: true,
-  shadowDomCss: ['./dist/style.css'],
+  shadowDomCss: ['.kong-auth-login-form .k-input#email { background-color: var(--red-400, #ff0000) }'],
 }
 
 // Call the registration function to automatically register all custom elements for usage
@@ -119,7 +119,27 @@ Regardless if you're using in Vue 3, Vue 2, or the native web components, an ide
 | `apiBaseUrl` | `string` | `/kauth` | The `basePath` of the internal `axios` instance. <br><br>Unless using an absolute URL, this base path **must** start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users) |
 | `userEntity` | `string` | `user` | The user entity for authentication; one of `user` or `developer`. |
 | `shadowDom` | `boolean` | `false` | Automatically register the elements as native web components (forced to `true` if using the `registerKongAuthNativeElements` function). |
-| `shadowDomCss` | `Array<string>` | `[]` | If `shadowDom` is set to `true`, you can also pass an array of CSS stylesheet URLs to load into the shadow DOM for each of the native web components. |
+| `shadowDomCss` | `string[]` | `[]` | If `shadowDom` is set to `true`, you can pass an array of inlined CSS strings that will be added to the shadow root of all elements. [See the example below](#shadow-dom-css) |
+
+#### Shadow DOM CSS
+
+```ts
+// Pass in inlined CSS strings as needed
+
+const pluginOptions: KongAuthElementsOptions = {
+  apiBaseUrl: '/kauth',
+  userEntity: 'user',
+  shadowDomCss: [
+    '.kong-auth-login-form .k-input#email { background-color: var(--red-400, #ff0000) }',
+    `
+    .kong-auth-register-form .k-input {
+      width: 50%;
+    }
+    `,
+  ],
+}
+```
+
 
 You can import the `KongAuthElementsOptions` interface from the package if you're using TypeScript.
 

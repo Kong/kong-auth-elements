@@ -11,26 +11,25 @@ export default function useInjectStyles(): InjectStylesComposable {
   const injectedStyles = computed((): string => {
     let styles = ''
 
-    // If building
-    if (import.meta.env.PROD) {
-      // If an array of CSS links were passed, iterate through array
-      if (typeof shadowDomCss === 'object' && shadowDomCss?.length) {
-        for (const href in shadowDomCss) {
-          // Add to the shadow DOM
-          styles += `<link href="${shadowDomCss[href]}" rel="stylesheet"/>`
-        }
-      } else if (shadowDomCss && typeof shadowDomCss === 'string') {
-        // Provide a fallback in case they passed a CSS link as a string
-        // Add to the shadow DOM
-        styles += `<link href="${shadowDomCss}" rel="stylesheet"/>`
-      }
-    }
+    if (!shadowDom) return styles
 
     // If shadow DOM and inlineStyles has value
     if (shadowDom && inlineStyles.value && inlineStyles.value.length) {
       styles += `<style type="text/css">${inlineStyles.value
         .map((styleNode: HTMLElement) => styleNode.innerHTML)
         .join('')}</style>`
+    }
+
+    // If an array of CSS links were passed, iterate through array
+    if (typeof shadowDomCss === 'object' && shadowDomCss?.length) {
+      for (const css in shadowDomCss) {
+        // Add to the shadow DOM
+        styles += String(shadowDomCss[css]).trim().length && `<style type="text/css" data-testid="shadow-dom-css-${css}">${String(shadowDomCss[css]).trim()}</style>`
+      }
+    } else if (shadowDomCss && typeof shadowDomCss === 'string') {
+      // Provide a fallback in case they passed a CSS link as a string
+      // Add to the shadow DOM
+      styles += String(shadowDomCss).trim().length && `<style type="text/css" data-testid="shadow-dom-css-0">${String(shadowDomCss).trim()}</style>`
     }
 
     return styles
