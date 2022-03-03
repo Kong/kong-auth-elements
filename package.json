@@ -3,6 +3,12 @@
   "version": "0.0.0-development",
   "main": "dist/kong-auth-elements.umd.js",
   "module": "dist/kong-auth-elements.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/kong-auth-elements.es.js",
+      "require": "./dist/kong-auth-elements.umd.js"
+    }
+  },
   "scripts": {
     "commit": "cz",
     "build": "vue-tsc --noEmit && vite build && vue-tsc --emitDeclarationOnly",
