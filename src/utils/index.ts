@@ -4,9 +4,15 @@ export { default as kebabize } from './kebabize'
 export { default as helpText } from './helpText'
 export { default as win } from './window'
 
+export type UserEntities = 'user' | 'developer'
+
+// List of custom elements that accept a custom error handler
+export type CustomEndpointElements = 'kong-auth-forgot-password' | 'kong-auth-register'
+
 export interface KongAuthElementsOptions {
   apiBaseUrl?: string
-  userEntity?: 'user' | 'developer'
+  userEntity?: UserEntities
+  customErrorHandler?: (element: CustomEndpointElements, error: any) => string
   shadowDom?: boolean
   shadowDomCss?: string[]
 }

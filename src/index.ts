@@ -1,7 +1,7 @@
 import { App } from 'vue'
 // Do not use '@' alias in paths here so that imports within a consuming project resolve properly.
 import { registerCustomElement } from './utils'
-import type { KongAuthElementsOptions } from './utils'
+import type { KongAuthElementsOptions, CustomEndpointElements } from './utils'
 import * as elements from './elements'
 
 // Export a Vue plugin install function
@@ -10,6 +10,7 @@ export const KongAuthElementsPlugin = {
     // Provide option values to components
     app.provide('kauth-api-base-url', options?.apiBaseUrl)
     app.provide('user-entity', options?.userEntity || 'user')
+    app.provide('custom-endpoint-error-handler', options?.customErrorHandler)
     app.provide('shadow-dom', options?.shadowDom || false)
     app.provide('shadow-dom-css', options?.shadowDomCss)
 
@@ -40,7 +41,7 @@ export default function registerKongAuthNativeElements(options?: KongAuthElement
   registerCustomElement('kong-auth-reset-password', elements.KongAuthResetPassword, userOptions)
 }
 
-export { KongAuthElementsOptions }
+export { KongAuthElementsOptions, CustomEndpointElements }
 
 if (typeof window !== 'undefined') {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

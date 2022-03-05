@@ -85,8 +85,9 @@ import { defineComponent, inject, ref, Ref, reactive, toRefs, computed } from 'v
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText } from '@/utils'
+import useConfigOptions from '@/composables/useConfigOptions'
 import useKongAuthApi from '@/composables/useKongAuthApi'
-import { AxiosResponse } from 'axios'
+import { AxiosResponse, AxiosError } from 'axios'
 // Components
 import KAlert from '@kongponents/kalert'
 import KButton from '@kongponents/kbutton'
@@ -116,6 +117,7 @@ export default defineComponent({
   emits: forgotPasswordEmits,
 
   setup(props, { emit }) {
+    const { customErrorHandler } = useConfigOptions()
     const { api } = useKongAuthApi()
 
     /*
@@ -205,6 +207,16 @@ export default defineComponent({
         })
       } catch (err: any) {
         send('REJECT')
+
+        const customEndpointErrorMessage = resetPasswordRequestEndpoint.value && typeof customErrorHandler === 'function' && customErrorHandler('kong-auth-forgot-password', err)
+
+        if (customEndpointErrorMessage) {
+          error.value = {
+            status: undefined,
+            statusText: customEndpointErrorMessage,
+          }
+          return
+        }
 
         if (err?.response) {
           error.value = err.response
