@@ -44,7 +44,7 @@
         <h4>
           <code>KongAuthRegister.vue</code>
         </h4>
-        <kong-auth-register register-request-endpoint="/custom-endpoint" @register-success="showAlert('Register success!')" />
+        <kong-auth-register @register-success="showAlert('Register success!')" />
       </div>
     </div>
   </div>

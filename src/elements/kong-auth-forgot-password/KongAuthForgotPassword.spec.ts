@@ -4,6 +4,7 @@
 import { mount } from '@cypress/vue'
 import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
 import { helpText } from '@/utils'
+import { getConfigOptions } from '@/composables/useConfigOptions'
 
 // Component data-testid strings
 const testids = {
@@ -127,6 +128,32 @@ describe('KongAuthForgotPassword.vue', () => {
 
       // Success messsage should exist
       cy.getTestId(testids.successMessage).should('be.visible').and('contain.text', helpText.forgotPassword.success)
+    })
+  })
+
+  it('utilizes a provided custom error handler for a failed password reset request from a custom endpoint', () => {
+    const customEndpoint = '/custom-forgot-password-request'
+    const customErrorMessage = 'A custom error message.'
+
+    // Stub customErrorHandler
+    cy.stub(getConfigOptions, 'customErrorHandler').returns(() => customErrorMessage)
+
+    cy.intercept('POST', `**${customEndpoint}`, {
+      statusCode: 400,
+    }).as('password-reset-request')
+
+    mount(KongAuthForgotPassword, {
+      props: {
+        resetPasswordRequestEndpoint: customEndpoint,
+      },
+    })
+
+    cy.getTestId(testids.email).type(user.email)
+    cy.getTestId(testids.form).submit()
+
+    cy.wait('@password-reset-request').then(() => {
+      // Custom error messsage should exist
+      cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', customErrorMessage)
     })
   })
 

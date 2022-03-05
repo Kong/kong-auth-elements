@@ -253,13 +253,6 @@ describe('KongAuthRegister.vue', () => {
 
     const customEndpoint = '/custom-register-request'
 
-    cy.intercept('GET', '**/client-config', {
-      statusCode: 200,
-      body: {
-        requireRegistrationAccessCode: false,
-      },
-    }).as('client-config-request')
-
     cy.intercept('POST', `**${customEndpoint}`, {
       statusCode: 200,
       body: {
@@ -286,6 +279,35 @@ describe('KongAuthRegister.vue', () => {
         cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
         cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'fromInvite')
       })
+    })
+  })
+
+  it('utilizes a provided custom error handler for a register request from a custom endpoint', () => {
+    const customEndpoint = '/custom-register-request'
+    const customErrorMessage = 'A custom error message.'
+
+    // Stub userEntity
+    cy.stub(getConfigOptions, 'userEntity').returns('developer')
+    // Stub customErrorHandler
+    cy.stub(getConfigOptions, 'customErrorHandler').returns(() => customErrorMessage)
+
+    cy.intercept('POST', `**${customEndpoint}`, {
+      statusCode: 400,
+    }).as('register-request')
+
+    mount(KongAuthRegister, {
+      props: {
+        registerRequestEndpoint: customEndpoint,
+      },
+    })
+
+    cy.getTestId(testids.fullName).type(user.name)
+    cy.getTestId(testids.email).type(user.email)
+    cy.getTestId(testids.form).submit()
+
+    cy.wait('@register-request').then(() => {
+      // Custom error messsage should exist
+      cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', customErrorMessage)
     })
   })
 

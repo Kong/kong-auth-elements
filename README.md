@@ -11,6 +11,8 @@
     <!-- - [Vue 3 Plugin](#vue-3-plugin) -->
     - [Vue 2 or native web components](#vue-2-or-native-web-components)
     - [Options](#options)
+      - [TypeScript](#typescript)
+      - [Custom Error Handler](#custom-error-handler)
       - [Shadow DOM CSS](#shadow-dom-css)
     - [Events](#events)
     - [Theming with CSS Variables](#theming-with-css-variables)
@@ -149,19 +151,62 @@ Regardless if you're using in Vue 3, Vue 2, or the native web components, an ide
 | :------------- | :--------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `apiBaseUrl`   | `string`   | `/kauth` | The `basePath` of the internal `axios` instance. <br><br>Unless using an absolute URL, this base path **must** start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users) |
 | `userEntity`   | `string`   | `user`   | The user entity for authentication; one of `user` or `developer`.                                                                                                                                                                                                                                   |
+| `customErrorHandler`    | `Function`  | `(event: CustomEndpointErrorEvent) => ''`  | Supply a custom error handler to use when utilizing an element that allows providing a custom  request endpoint. [See the example below](#custom-error-handler)                                                                                                                                                             |
 | `shadowDom`    | `boolean`  | `false`  | Automatically register the elements as native web components (forced to `true` if using the `registerKongAuthNativeElements` function).                                                                                                                                                             |
 | `shadowDomCss` | `string[]` | `[]`     | If `shadowDom` is set to `true`, you can pass an array of inlined CSS strings that will be added to the shadow root of all elements. [See the example below](#shadow-dom-css)                                                                                                                       |
 
-You can import the `KongAuthElementsOptions` interface from the package if you're using TypeScript.
+#### TypeScript
+
+You can import the TypeScript interfaces from the package if desired.
 
 ```ts
+// List of user entities
+export type UserEntities = 'user' | 'developer'
+
+// List of custom elements that accept a custom error handler
+export type CustomEndpointElement = 'kong-auth-forgot-password' | 'kong-auth-register'
+
+// List of requests that support custom endpoints
+export type CustomEndpointRequest = 'reset-password-request' | 'register-request'
+
+export type CustomEndpointErrorEvent = {
+  error: AxiosError
+  request: CustomEndpointRequest
+  element: CustomEndpointElement
+}
+
 export interface KongAuthElementsOptions {
   apiBaseUrl?: string
-  userEntity?: 'user' | 'developer'
+  userEntity?: UserEntities
+  customErrorHandler?: (event: CustomEndpointErrorEvent) => string
   shadowDom?: boolean
   shadowDomCss?: string[]
 }
 ```
+
+#### Custom Error Handler
+
+```ts
+const pluginOptions: KongAuthElementsOptions = {
+  apiBaseUrl: '/kauth',
+  userEntity: 'developer',
+  customErrorHandler: ({ error, request, element }): string => {
+    // Access the original error
+    console.log('error', error)
+
+    // ... or the element name that the event was triggered by
+    console.log('element', element)
+
+    // Or perform different logic based on the request that errored
+    if (request === 'reset-password-request') {
+      return 'Custom reset error message.'
+    } else if (request === 'register-request') {
+      return 'Custom registration error message.'
+    }
+  },
+}
+```
+
 
 #### Shadow DOM CSS
 

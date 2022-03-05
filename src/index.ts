@@ -1,7 +1,13 @@
 import { App } from 'vue'
 // Do not use '@' alias in paths here so that imports within a consuming project resolve properly.
 import { registerCustomElement } from './utils'
-import type { KongAuthElementsOptions, CustomEndpointElements } from './utils'
+import type {
+  CustomEndpointElement,
+  CustomEndpointErrorEvent,
+  CustomEndpointRequest,
+  KongAuthElementsOptions,
+  UserEntities,
+} from './utils'
 import * as elements from './elements'
 
 // Export a Vue plugin install function
@@ -41,7 +47,13 @@ export default function registerKongAuthNativeElements(options?: KongAuthElement
   registerCustomElement('kong-auth-reset-password', elements.KongAuthResetPassword, userOptions)
 }
 
-export { KongAuthElementsOptions, CustomEndpointElements }
+export {
+  CustomEndpointElement,
+  CustomEndpointErrorEvent,
+  CustomEndpointRequest,
+  KongAuthElementsOptions,
+  UserEntities,
+}
 
 if (typeof window !== 'undefined') {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
