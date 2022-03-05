@@ -39,6 +39,7 @@ export default function(
       provide: {
         'user-entity': options?.userEntity || 'user',
         'kauth-api-base-url': options?.apiBaseUrl,
+        'custom-endpoint-error-handler': options?.customErrorHandler,
         'shadow-dom': options?.shadowDom || false,
         'shadow-dom-css': options?.shadowDomCss,
       },

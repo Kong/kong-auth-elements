@@ -178,7 +178,7 @@ export default defineComponent({
   emits: registerEmits,
 
   setup(props, { emit }) {
-    const { userEntity } = useConfigOptions()
+    const { userEntity, customErrorHandler } = useConfigOptions()
     const { api } = useKongAuthApi()
 
     /*
@@ -312,6 +312,16 @@ export default defineComponent({
         })
       } catch (err: any) {
         send('REJECT')
+
+        const customEndpointErrorMessage = registerRequestEndpoint.value && typeof customErrorHandler === 'function' && customErrorHandler('kong-auth-register', err)
+
+        if (customEndpointErrorMessage) {
+          error.value = {
+            status: undefined,
+            statusText: customEndpointErrorMessage,
+          }
+          return
+        }
 
         if (err?.response) {
           const response = err.response
