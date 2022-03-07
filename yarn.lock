@@ -366,6 +366,14 @@
     "@kongponents/kicon" "^6.18.4"
     "@kongponents/styles" "^6.18.4"
 
+"@kongponents/kbutton@^6.18.5":
+  version "6.18.5"
+  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.18.5.tgz#2164906afc1abfd70d0d211fb34a9a939f858336"
+  integrity sha512-YfbvbOkBa9l4/S0Cik3ihBeRmRij/zbq5D1KGnCGFt6xh0NcrariJ2QFHAYi1a6aVpvQ3iuRBDiA8QHF79cjOA==
+  dependencies:
+    "@kongponents/kicon" "^6.18.5"
+    "@kongponents/styles" "^6.18.5"
+
 "@kongponents/kcheckbox@^6.18.4":
   version "6.18.4"
   resolved "https://registry.yarnpkg.com/@kongponents/kcheckbox/-/kcheckbox-6.18.4.tgz#f950652bf468748d343b7e6e6516c242860454c1"
@@ -378,23 +386,28 @@
   resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.18.4.tgz#549658ebe58011abcc74b7919beb87c8a2e523bb"
   integrity sha512-2U5RUDptk9sx46iv/9L/Ts+C6+l7yhjfDXzWyT8zXlFNSl3qe1UUhUuROLtA6amIHOrm4ZrCRL3f93z3Rt5hOg==
 
-"@kongponents/kinput@^6.18.4":
-  version "6.18.4"
-  resolved "https://registry.yarnpkg.com/@kongponents/kinput/-/kinput-6.18.4.tgz#2ed1280cf5673e7382c28932508859cce9ded352"
-  integrity sha512-oM/Nl/QwSb1eQ4od3JJk6fPFL0quUVmuQ7Y4o599YfX2d42VsGWQY672GfeCM3Xgs91JgvimowkVm9D7vBDpfQ==
+"@kongponents/kicon@^6.18.5":
+  version "6.18.5"
+  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.18.5.tgz#7d8abd71854d3857d73a1e6d4211c95b46b7c482"
+  integrity sha512-m3EBt0C3cF/HgIZzYzyPLDWEAPsRLS3cSdLjKs7fpDupTDGLTGWVl87GxFJpL/adcC5VTCdQzRSRo2Tg5/mKsQ==
+
+"@kongponents/kinput@^6.18.5":
+  version "6.18.5"
+  resolved "https://registry.yarnpkg.com/@kongponents/kinput/-/kinput-6.18.5.tgz#4be95af159e9366232a44205c5f612fac1b8afd9"
+  integrity sha512-mnpyIfcScTCC2d5nVbJB3YmkMW1cHjjXwqQWocYqzMK4SvljH7c2lxZmw0+lhelkZKzPAdkAlIGSZlWnxPtpJQ==
   dependencies:
-    "@kongponents/klabel" "^6.18.4"
-    "@kongponents/styles" "^6.18.4"
+    "@kongponents/klabel" "^6.18.5"
+    "@kongponents/styles" "^6.18.5"
     vue-uuid "^2.0.2"
 
-"@kongponents/klabel@^6.18.4":
-  version "6.18.4"
-  resolved "https://registry.yarnpkg.com/@kongponents/klabel/-/klabel-6.18.4.tgz#991b3658a2542e688f6ccddba5e9db9ae8d40c95"
-  integrity sha512-1iHPx2YY/HgHO8/FpwnbH0zPd3RL6XOw00nqPHoifXjs2xLKMWB2fIeXmUtZQQyRPbXXQJdRl+PIROFhkYa5Kw==
+"@kongponents/klabel@^6.18.5":
+  version "6.18.5"
+  resolved "https://registry.yarnpkg.com/@kongponents/klabel/-/klabel-6.18.5.tgz#827cfa104c7f40169fe7ca90649eb13b915287db"
+  integrity sha512-f+ysKJ9JRpuUWc+cRhSCIKue+AaOXTG6k4Iz0YoEhgyNU317dESBqRigXRDsajsCQNnSXdtXV7p7CshT80LRlg==
   dependencies:
-    "@kongponents/kicon" "^6.18.4"
-    "@kongponents/kooltip" "^6.18.4"
-    "@kongponents/styles" "^6.18.4"
+    "@kongponents/kicon" "^6.18.5"
+    "@kongponents/kooltip" "^6.18.5"
+    "@kongponents/styles" "^6.18.5"
 
 "@kongponents/kooltip@^6.18.4":
   version "6.18.4"
@@ -403,6 +416,14 @@
   dependencies:
     "@kongponents/kpop" "^6.18.4"
     "@kongponents/styles" "^6.18.4"
+
+"@kongponents/kooltip@^6.18.5":
+  version "6.18.5"
+  resolved "https://registry.yarnpkg.com/@kongponents/kooltip/-/kooltip-6.18.5.tgz#3b6afb2350bd9659c8ff0e43d4c505c4b3fc8e3e"
+  integrity sha512-QMOVOlq7UWlHAqX9plXxlyOjqbVDFZS8PmmFTw3EbVgqACwXAVYtqgPI7v0+Ar9Hcx6TBNdtXUGTsR6M2oGe2Q==
+  dependencies:
+    "@kongponents/kpop" "^6.18.5"
+    "@kongponents/styles" "^6.18.5"
 
 "@kongponents/kpop@^6.18.4":
   version "6.18.4"
@@ -414,6 +435,16 @@
     popper.js "^1.15.0"
     vue-uuid "^2.0.2"
 
+"@kongponents/kpop@^6.18.5":
+  version "6.18.5"
+  resolved "https://registry.yarnpkg.com/@kongponents/kpop/-/kpop-6.18.5.tgz#c4b46e627a44d7df44387113f4acec40cd2ce606"
+  integrity sha512-pdFTWaVWLALVD3K1Tc5Kj/QhSRDUfMXCSjX6yJV1j4fTJJ5D/gFIKeCgGcRc8GMCbby6px73DihRdav3awrbtA==
+  dependencies:
+    "@kongponents/kbutton" "^6.18.5"
+    "@kongponents/styles" "^6.18.5"
+    popper.js "^1.15.0"
+    vue-uuid "^2.0.2"
+
 "@kongponents/kskeleton@^6.18.4":
   version "6.18.4"
   resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.18.4.tgz#faac6f3949f63d202075e5397ec06817f09e7b17"
@@ -422,10 +453,10 @@
     "@kongponents/kicon" "^6.18.4"
     "@kongponents/styles" "^6.18.4"
 
-"@kongponents/styles@^6.18.4":
-  version "6.18.4"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.18.4.tgz#028390cb16b5d1c26a4b8d76fbb29d17f47bb42f"
-  integrity sha512-MpBbJZYCWYzb4jLD8wV7F0mkwQEordtkBxf8UxXCHVlWc+NUrFA4ux5kX885ZwVQGHIoyer1XFH/toXw2GngUQ==
+"@kongponents/styles@^6.18.4", "@kongponents/styles@^6.18.5":
+  version "6.18.5"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.18.5.tgz#bb557949140be7e6e20dc19623783a34904dbb13"
+  integrity sha512-MS8CJ/Nmnl2CGJ6PoBd5CFqH1jsyZVo/0kzUi65NFWKWMiKFpBZ8yCILu4cseH+7kecIw3TJ1SFY/KII3Bythg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
