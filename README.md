@@ -8,7 +8,7 @@
 - [@kong/kong-auth-elements](#kongkong-auth-elements)
   - [Installation](#installation)
   - [Usage](#usage)
-    - [Vue 3 Plugin](#vue-3-plugin)
+    <!-- - [Vue 3 Plugin](#vue-3-plugin) -->
     - [Vue 2 or native web components](#vue-2-or-native-web-components)
     - [Options](#options)
       - [Shadow DOM CSS](#shadow-dom-css)
@@ -65,6 +65,7 @@ yarn add @kong/kong-auth-elements
 
 ## Usage
 
+<!-- 
 ### Vue 3 Plugin
 
 Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`). Set the plugin options, and tell Vue to use the plugin.
@@ -101,6 +102,8 @@ Now that the plugin is globally registered, simply include a component just like
 ```
 
 ---
+
+-->
 
 ### Vue 2 or native web components
 
