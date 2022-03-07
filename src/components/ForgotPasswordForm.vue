@@ -167,7 +167,9 @@ export default defineComponent({
       // Custom endpoint
       if (resetPasswordRequestEndpoint.value) {
         return await api.client.post(resetPasswordRequestEndpoint.value, {
-          email: formData.email,
+          data: {
+            email: formData.email,
+          },
         })
       }
 
