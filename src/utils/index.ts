@@ -14,7 +14,7 @@ export type CustomEndpointElement = 'kong-auth-forgot-password' | 'kong-auth-reg
 // List of requests that support custom endpoints
 export type CustomEndpointRequest = 'reset-password-request' | 'register-request'
 
-export type CustomEndpointErrorEvent = {
+export interface CustomEndpointErrorEvent {
   error: AxiosError
   request: CustomEndpointRequest
   element: CustomEndpointElement
