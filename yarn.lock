@@ -366,12 +366,12 @@
     "@kongponents/kicon" "^6.18.4"
     "@kongponents/styles" "^6.18.4"
 
-"@kongponents/kcheckbox@^6.18.4":
-  version "6.18.4"
-  resolved "https://registry.yarnpkg.com/@kongponents/kcheckbox/-/kcheckbox-6.18.4.tgz#f950652bf468748d343b7e6e6516c242860454c1"
-  integrity sha512-Il9rTo2/hXStvzo64UrwK0qGWo3/93+6eAQLJIsssihgMv/tXQEVx7zHBiM8swoi1jixxMBfvFTxhq344yaBFA==
+"@kongponents/kcheckbox@^6.19.0":
+  version "6.19.0"
+  resolved "https://registry.yarnpkg.com/@kongponents/kcheckbox/-/kcheckbox-6.19.0.tgz#9a2e96bab6f7a7258a145862c4464e9741428d41"
+  integrity sha512-viyt3P+khw+SsnXfASRP9jqFhV7n2H/AoIhb4lC51hD8evmLWEsMC226PrmH8QAvxP5mh5drM8cWGdrjUX6CEg==
   dependencies:
-    "@kongponents/styles" "^6.18.4"
+    "@kongponents/styles" "^6.19.0"
 
 "@kongponents/kicon@^6.18.4":
   version "6.18.4"
@@ -422,10 +422,10 @@
     "@kongponents/kicon" "^6.18.4"
     "@kongponents/styles" "^6.18.4"
 
-"@kongponents/styles@^6.18.4":
-  version "6.18.4"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.18.4.tgz#028390cb16b5d1c26a4b8d76fbb29d17f47bb42f"
-  integrity sha512-MpBbJZYCWYzb4jLD8wV7F0mkwQEordtkBxf8UxXCHVlWc+NUrFA4ux5kX885ZwVQGHIoyer1XFH/toXw2GngUQ==
+"@kongponents/styles@^6.18.4", "@kongponents/styles@^6.19.0":
+  version "6.19.0"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.19.0.tgz#50c617072d50271315c8179ebc3bdcaa26f2da4a"
+  integrity sha512-FMCLrnAkcKtoIajBSP2evYnjTyVLPbUzGC+K6x/yt5s+N0vdB6XKBQl3SHdOBcO5VvTRiXaMYpRxAAKlKik/EA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
