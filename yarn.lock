@@ -422,10 +422,10 @@
     "@kongponents/kicon" "^6.18.4"
     "@kongponents/styles" "^6.18.4"
 
-"@kongponents/styles@^6.18.4":
-  version "6.18.4"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.18.4.tgz#028390cb16b5d1c26a4b8d76fbb29d17f47bb42f"
-  integrity sha512-MpBbJZYCWYzb4jLD8wV7F0mkwQEordtkBxf8UxXCHVlWc+NUrFA4ux5kX885ZwVQGHIoyer1XFH/toXw2GngUQ==
+"@kongponents/styles@^6.18.4", "@kongponents/styles@^6.19.0":
+  version "6.19.0"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.19.0.tgz#50c617072d50271315c8179ebc3bdcaa26f2da4a"
+  integrity sha512-FMCLrnAkcKtoIajBSP2evYnjTyVLPbUzGC+K6x/yt5s+N0vdB6XKBQl3SHdOBcO5VvTRiXaMYpRxAAKlKik/EA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
