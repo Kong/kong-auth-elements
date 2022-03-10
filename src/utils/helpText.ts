@@ -5,7 +5,7 @@ export default {
     registerLinkHelpText: "Don't have an account?",
     unauthenticated: 'Incorrect username or password. Please try again.',
     accountLocked: 'Your account has been locked. Reset your password to log in now',
-    passwordResetSuccess: 'Password successfuly reset!',
+    passwordResetSuccess: 'Password successfully reset!',
     confirmedEmailSuccess: 'Email successfully confirmed!',
     registerSuccess: 'Successfully registered!',
     loginWithCredentials: 'Log in with email and password',
