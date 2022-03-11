@@ -20,17 +20,13 @@ const user = {
   password: 'TestPassword1!',
 }
 
-describe('KongAuthResetPassword.vue', () => {
+describe('KongAuthResetPassword.ce.vue', () => {
   // Required for all Custom Elements
   it('has proper structure and required classes', () => {
     mount(KongAuthResetPassword)
 
     // Should have .kong-auth-element as parent class
-    const elementDiv = cy.get('.kong-auth-element')
-    elementDiv.should('not.be.empty')
-
-    // Should have BaseCustomElement as a child component
-    elementDiv.find('.base-custom-element').should('be.visible').and('not.be.empty')
+    cy.get('.kong-auth-element').should('be.visible').and('not.be.empty')
   })
 
   it('renders a reset password form with email and button elements', () => {
