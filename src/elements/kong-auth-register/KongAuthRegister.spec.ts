@@ -30,17 +30,13 @@ const user = {
 
 const requiredFields = [testids.fullName, testids.organization, testids.email, testids.password, testids.agreeCheckbox]
 
-describe('KongAuthRegister.vue', () => {
+describe('KongAuthRegister.ce.vue', () => {
   // Required for all Custom Elements
   it('has proper structure and required classes', () => {
     mount(KongAuthRegister)
 
     // Should have .kong-auth-element as parent class
-    const elementDiv = cy.get('.kong-auth-element')
-    elementDiv.should('not.be.empty')
-
-    // Should have BaseCustomElement as a child component
-    elementDiv.find('.base-custom-element').should('be.visible').and('not.be.empty')
+    cy.get('.kong-auth-element').should('be.visible').and('not.be.empty')
   })
 
   it('renders a register form with default fields and button elements', () => {

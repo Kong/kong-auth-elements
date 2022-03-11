@@ -29,17 +29,13 @@ const user = {
   password: 'TestPassword1!',
 }
 
-describe('KongAuthLogin.vue', () => {
+describe('KongAuthLogin.ce.vue', () => {
   // Required for all Custom Elements
   it('has proper structure and required classes', () => {
     mount(KongAuthLogin)
 
     // Should have .kong-auth-element as parent class
-    const elementDiv = cy.get('.kong-auth-element')
-    elementDiv.should('not.be.empty')
-
-    // Should have BaseCustomElement as a child component
-    elementDiv.find('.base-custom-element').should('be.visible').and('not.be.empty')
+    cy.get('.kong-auth-element').should('be.visible').and('not.be.empty')
   })
 
   it('renders a login form with email, password, and button elements', () => {
