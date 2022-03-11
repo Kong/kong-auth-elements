@@ -697,12 +697,22 @@ yarn serve:components
 
 ### Compile Custom Elements and hot-reload for development
 
-Import elements as HTML Custom Elements (may require additional imports in `/dev/serve-elements/index.ts`).
+Import elements as native HTML Web Components (may require additional imports in `/dev/serve-elements/index.ts`).
 
 _**Note**: This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported)._
 
 ```sh
 yarn serve:elements
+```
+
+### Compile static HTML and demo native Web Components
+
+Import elements as native HTML Web Components (may require changes in `/demo/index.html`).
+
+_**Note**: This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported)._
+
+```sh
+yarn serve:demo
 ```
 
 ### Compile and minify for production
