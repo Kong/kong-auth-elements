@@ -142,7 +142,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, Ref, reactive, toRefs, computed, onMounted } from 'vue'
+import { defineComponent, ref, reactive, toRefs, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { helpText, win } from '@/utils'
