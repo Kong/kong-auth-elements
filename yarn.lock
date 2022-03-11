@@ -6979,10 +6979,10 @@ write-file-atomic@^3.0.3:
     signal-exit "^3.0.2"
     typedarray-to-buffer "^3.1.5"
 
-xstate@^4.28.1:
-  version "4.30.2"
-  resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.30.2.tgz#bd6dccd9c2426bbcb7d3ab450e53c7ef650ccb8e"
-  integrity sha512-nstZNgz6bzog0wut7jYFmb9ZUZmcyYszkv7f//TNu2CnKCROezOduCTGgpjWrf0W8JnAXV4wEgw5dsC9kVqMFQ==
+xstate@^4.30.5:
+  version "4.30.5"
+  resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.30.5.tgz#c2c6753542578bf15e707b759ebb671f55849410"
+  integrity sha512-iZhIoZP8Alq4qI8eN/iAYiBRLfLSbSdI29LYsgk2DUvAwMV2J9xGw6CUT2HcH+5Rp5G3XzG6ByRfRmJJ+eEuDQ==
 
 xtend@~4.0.1:
   version "4.0.2"
