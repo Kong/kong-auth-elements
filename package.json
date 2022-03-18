@@ -30,7 +30,7 @@
     "@kongponents/kicon": "^6.19.2",
     "@kongponents/kinput": "^6.19.2",
     "@kongponents/kooltip": "^6.19.2",
-    "@kongponents/kskeleton": "^6.19.2",
+    "@kongponents/kskeleton": "^6.20.0",
     "@kongponents/styles": "^6.19.2",
     "@vue/compat": "^3.2.31",
     "@xstate/vue": "^0.8.1",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@arkweid/lefthook": "^0.7.7",
-    "@commitlint/cli": "^16.1.0",
+    "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.0.0",
     "@cypress/vite-dev-server": "^2.2.2",
     "@cypress/vue": "^3.1.1",
