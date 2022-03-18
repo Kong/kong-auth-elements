@@ -258,10 +258,10 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@digitalroute/cz-conventional-changelog-for-jira@^7.2.0":
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/@digitalroute/cz-conventional-changelog-for-jira/-/cz-conventional-changelog-for-jira-7.2.0.tgz#11d8d459e46f32556e955daee014bbb280d67d72"
-  integrity sha512-vq0AaHq9xMWUbSxJEM8QG3QrRI5W2tn97pNx/HL8UJT/LquHyPa28hvjFeEBWJAdRpgwDPLhwYD4W6uPMFsrcQ==
+"@digitalroute/cz-conventional-changelog-for-jira@^7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@digitalroute/cz-conventional-changelog-for-jira/-/cz-conventional-changelog-for-jira-7.2.1.tgz#e427951b268790aa9ef947762ab383237114c916"
+  integrity sha512-voTVmCm2ajYdDLhzCIYPN21YRFh86PVdYPvDXJdict6NeQ1rnpx8UkiZhu/3e1z/wvk33cJ2E724hfX0xSVcnA==
   dependencies:
     boxen "^5.0.0"
     chalk "^2.4.1"
