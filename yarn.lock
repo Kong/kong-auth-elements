@@ -344,88 +344,88 @@
   resolved "https://registry.yarnpkg.com/@isaacs/string-locale-compare/-/string-locale-compare-1.1.0.tgz#291c227e93fd407a96ecd59879a35809120e432b"
   integrity sha512-SQ7Kzhh9+D+ZW9MA0zkYv3VXhIDNx+LzM6EJ+/65I3QY+enU6Itte7E5XX7EWrqLW2FN4n06GWzBnPoC3th2aQ==
 
-"@kong/kauth-client-typescript-axios@^0.0.0-alpha.10":
-  version "0.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.0.0-alpha.10.tgz#6cd3fb3c6deb12f10aabe0c4f0ce7b30a81f0cc1"
-  integrity sha512-mJfncpd/tgJN2MUmSXvgTTCfXN9Hkg7x+o2yUopNTJQ/QB1M2jNHY61C5dCJsHOWyztW/64G8lSlt4wgMYUlvg==
+"@kong/kauth-client-typescript-axios@^0.0.0-alpha.12":
+  version "0.0.0-alpha.12"
+  resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.0.0-alpha.12.tgz#1c9171b14b0b46ff7628ce8de7336fe2a582d055"
+  integrity sha512-/FeaTxjX5oqpIVuKUm1XqE1+Yp7FoGChDmvBoZ1BrnUf1qRzmlh3XzO7CjpTxM9gZ6vZRAuosuRYaQx6LhDOOg==
 
-"@kongponents/kalert@^6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@kongponents/kalert/-/kalert-6.19.2.tgz#9f2df2408ed09711d62d9afa938477c2cb383e15"
-  integrity sha512-3KZ/RgEgQEDXaligKKdDZ7oQSQn8116FrPhM2R9GITtvWRB49r7vkriqNcQiGTMefZBcsIY33cRXghvRrdf+ZQ==
+"@kongponents/kalert@^6.20.1":
+  version "6.20.1"
+  resolved "https://registry.yarnpkg.com/@kongponents/kalert/-/kalert-6.20.1.tgz#2aa5420f04b1426bbd89b0068f43a4848b3241e6"
+  integrity sha512-0w/hCr8zlkcJQPO/hvklTkzrMkW6LiPoTVE1adt9IXERC0ycs3vjW6NN8FHivgA7BdvmLwMieAlGxY9Cio5M5w==
   dependencies:
-    "@kongponents/kbutton" "^6.19.2"
-    "@kongponents/kicon" "^6.19.2"
-    "@kongponents/styles" "^6.19.2"
+    "@kongponents/kbutton" "^6.20.1"
+    "@kongponents/kicon" "^6.20.1"
+    "@kongponents/styles" "^6.20.1"
 
-"@kongponents/kbutton@^6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.19.2.tgz#077fc3907e7f954915dee0290114d517e230ca18"
-  integrity sha512-VSeHufp0G7ZrpSXz2X9YVIewOOaRrzKDxbHx3elAv6+3cMWgtaGoQUPlR7l3LEiBk5r0jIPPJwrL9LvoouuGqg==
+"@kongponents/kbutton@^6.20.1":
+  version "6.20.1"
+  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.20.1.tgz#afad0b199876ad6413954aa6860e9649cc8851b1"
+  integrity sha512-+1WKvqiPR+Xx8L6Lwxp6gTIJbtWJD+ysDgM+5CDgsZMdIrntYwfUCYjYA5Z/6MRa/k5xxXhrIRswh6W0Otx+Yg==
   dependencies:
-    "@kongponents/kicon" "^6.19.2"
-    "@kongponents/styles" "^6.19.2"
+    "@kongponents/kicon" "^6.20.1"
+    "@kongponents/styles" "^6.20.1"
 
-"@kongponents/kcheckbox@^6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@kongponents/kcheckbox/-/kcheckbox-6.19.2.tgz#114a0bac2ee58be33ac9d85c0a4cca9a35ef986a"
-  integrity sha512-jJAXZ5S0rxXKH/N/v39844C7d++kQ7J4SfrRJuUM6wNAhVSG0e2ijN38hUGJKqyNwsCjRuC/IL4wCCnKHwximw==
+"@kongponents/kcheckbox@^6.20.1":
+  version "6.20.1"
+  resolved "https://registry.yarnpkg.com/@kongponents/kcheckbox/-/kcheckbox-6.20.1.tgz#5b7e482f6da629f737faa3671aa5b1fcb5d68c76"
+  integrity sha512-mBadYfoicQhJfbg6ZXn/4cswuL2ENIRDD1lAFpg3vyYmqnAQvMCeMhJF+gOGES6aE6h5Oet6/zcWy7u8iHgHFA==
   dependencies:
-    "@kongponents/styles" "^6.19.2"
+    "@kongponents/styles" "^6.20.1"
 
-"@kongponents/kicon@^6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.19.2.tgz#d3acb4628369c2ba41ac019e3f78dafa27b8a071"
-  integrity sha512-qfC+T9WY5B1YyRomicLHOjUDT9GIEpESoGqh3O9tVI5LEtHBIqfLyi95W8Njq/VtvhyTf7qkEyBCLzoLdD5Nog==
+"@kongponents/kicon@^6.20.1":
+  version "6.20.1"
+  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.20.1.tgz#87e1dd3a4429c8273465bb2348191588dbd4393d"
+  integrity sha512-PBk5Oc9a9I68vqSlDxkgp8g5zDLq/JiE8UO8ze6TJwzltidNT53WPuoV6W5X15MygIUwssz65tgpcb+OTO+4mA==
 
-"@kongponents/kinput@^6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@kongponents/kinput/-/kinput-6.19.2.tgz#e0e1827d3df1a80b2423b877af9b9073a332061c"
-  integrity sha512-60z4J3HehFASbORVOR6rEWHVwwCFBtUs1CTICW2pbIihhGXzPJOESdqrAdWgvEheP8T8t6CBZZrlGZIDWhDFGA==
+"@kongponents/kinput@^6.20.1":
+  version "6.20.1"
+  resolved "https://registry.yarnpkg.com/@kongponents/kinput/-/kinput-6.20.1.tgz#9353239111fdd3b2c485363390921627cec76c24"
+  integrity sha512-8+m8ydGYJBJs8mFcFYQYRt45XiIFcxsJrF5LfR/j2CaEoGotRKzskDZYyafmw2vI/mSc45l09QXC2bhk9VvbUQ==
   dependencies:
-    "@kongponents/klabel" "^6.19.2"
-    "@kongponents/styles" "^6.19.2"
+    "@kongponents/klabel" "^6.20.1"
+    "@kongponents/styles" "^6.20.1"
     vue-uuid "^2.0.2"
 
-"@kongponents/klabel@^6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@kongponents/klabel/-/klabel-6.19.2.tgz#61c3e530435da2896533948a9c54a3002eb7c810"
-  integrity sha512-cEkOs1iw6m7JvlXf44YMchqWHWtu3J84QgkSBA+O13vO/QlTG06J3sjFdh05dm+KYLrjzJ0jn6h7FbuDCcb5Rw==
+"@kongponents/klabel@^6.20.1":
+  version "6.20.1"
+  resolved "https://registry.yarnpkg.com/@kongponents/klabel/-/klabel-6.20.1.tgz#1049bf7df20af50b0f766dc367fc402e063bc66d"
+  integrity sha512-2iZUXyDL3W9kgIIPVuCTvICn59yUA4yq0FsMDd+PTbFYKv6DwNsazzTOu+oqVvtOOHUXS3Z0i+bykAw54WLWnw==
   dependencies:
-    "@kongponents/kicon" "^6.19.2"
-    "@kongponents/kooltip" "^6.19.2"
-    "@kongponents/styles" "^6.19.2"
+    "@kongponents/kicon" "^6.20.1"
+    "@kongponents/kooltip" "^6.20.1"
+    "@kongponents/styles" "^6.20.1"
 
-"@kongponents/kooltip@^6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@kongponents/kooltip/-/kooltip-6.19.2.tgz#3e4cec164ccb3c58d7401736ee5fee3895652162"
-  integrity sha512-seJ1q4k9xgNEC6AxcqQaLQegOgz4bwjffKLGYleF56gh1JX2zR6CgkpCEGxH6L33AX2Og3Vi8+8MenjhjG3iEQ==
+"@kongponents/kooltip@^6.20.1":
+  version "6.20.1"
+  resolved "https://registry.yarnpkg.com/@kongponents/kooltip/-/kooltip-6.20.1.tgz#4d64901b284db48a1c907933d367d28ade01710f"
+  integrity sha512-Kn2K19QuMwc0acysXiWSYPnALuLHT+ZFtH2dzRTpCKnyqX4qSFq86bzIrI7X4OAF3J8NjLCkQAEuiGDmIMfEtA==
   dependencies:
-    "@kongponents/kpop" "^6.19.2"
-    "@kongponents/styles" "^6.19.2"
+    "@kongponents/kpop" "^6.20.1"
+    "@kongponents/styles" "^6.20.1"
 
-"@kongponents/kpop@^6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@kongponents/kpop/-/kpop-6.19.2.tgz#71d23b98c8709eaadb0821aea40db930536a20bc"
-  integrity sha512-kCRDrvG0h+nKxaYKYnpgHdbigaQxX4fCLsb7NF55fWvKSv6SAlMfyplEIF742AG7bS3qSFZupbGvmKX9H7+1XQ==
+"@kongponents/kpop@^6.20.1":
+  version "6.20.1"
+  resolved "https://registry.yarnpkg.com/@kongponents/kpop/-/kpop-6.20.1.tgz#96ab70b56d8d1337f7451b287f2b399efe8a0f65"
+  integrity sha512-pHv3xjlTrL7mPbbjcufnfjdIO+78dAwHnYAbURhBKMezLugxXPLaH7WyfSgd8AchARE6+rgUVO9e+0OiFGI0og==
   dependencies:
-    "@kongponents/kbutton" "^6.19.2"
-    "@kongponents/styles" "^6.19.2"
+    "@kongponents/kbutton" "^6.20.1"
+    "@kongponents/styles" "^6.20.1"
     popper.js "^1.15.0"
     vue-uuid "^2.0.2"
 
-"@kongponents/kskeleton@^6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.19.2.tgz#9831e49156a9dc710a0e6b0140f9e775327de52b"
-  integrity sha512-IM+9O9tpCCSC+A5DA1HStxgwDw4p+iPYPT3RXsAR7hG7UgKmhni+u9Hm0Z0XnTEuNB0SalDlHrkZls+TtxXJqQ==
+"@kongponents/kskeleton@^6.20.1":
+  version "6.20.1"
+  resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.20.1.tgz#ff279b4043381a5bf255df50db29bd49789d0d3a"
+  integrity sha512-P3uOMn4XSwDjDUoW+Lvlr/jAhakJBpbYJMEBOnLRM28t+1/+bugExx5lpH/CbJp9i4Lbwkkrwwei45d55+GSEg==
   dependencies:
-    "@kongponents/kicon" "^6.19.2"
-    "@kongponents/styles" "^6.19.2"
+    "@kongponents/kicon" "^6.20.1"
+    "@kongponents/styles" "^6.20.1"
 
-"@kongponents/styles@^6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.19.2.tgz#ad054d90d9625b7a5f4b55403ff969b4d0484f84"
-  integrity sha512-MHRGViNM0phg990Coj2Ixt1E43M0aznfM/jOszj3OOrv3T8MxCEv5/uWmh3+q8pal04OxEos9XzGVAFq5eiASw==
+"@kongponents/styles@^6.20.1":
+  version "6.20.1"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.20.1.tgz#26fb8bd1048a79c2f6870cd30fd4083f90966c05"
+  integrity sha512-Y3gFjFekFZoIcuoOalR3cjoqAW58oTkXrGAh7M099WWhP2xK1jbFkAskfcky7Z7GoJI78VofVHBkppeiu25Qcg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
