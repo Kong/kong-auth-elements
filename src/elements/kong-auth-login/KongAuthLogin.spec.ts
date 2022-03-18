@@ -116,7 +116,11 @@ describe('KongAuthLogin.ce.vue', () => {
 
   it("emits a 'login-success' event on successful developer login", () => {
     // Stub userEntity
+    const portalId = '12345-67890'
     cy.stub(getConfigOptions, 'userEntity').returns('developer')
+    cy.stub(getConfigOptions, 'developerConfig').returns({
+      portalId: portalId,
+    })
 
     cy.intercept('POST', '**/developer-authenticate', {
       statusCode: 200,
@@ -128,7 +132,7 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.password).type(user.password)
     cy.getTestId(testids.form).submit()
 
-    cy.wait('@login-request').then(() => {
+    cy.wait('@login-request').its('request.body.portal_id').should('eq', portalId).then(() => {
       // Check for emitted event
       cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'login-success')
     })

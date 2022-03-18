@@ -138,7 +138,7 @@ import { defineComponent, reactive, ref, Ref, toRefs, computed, onMounted, watch
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
 import useKongAuthApi from '@/composables/useKongAuthApi'
-import { AuthenticationAPIV1AuthenticateRequest, DeveloperAPIV1VerifyRequest, DeveloperAPIV1VerifyResponse, EmailverificationsVerifyRequest, EmailverificationsVerifyResponse } from '@kong/kauth-client-typescript-axios'
+import { DeveloperAPIV1VerifyRequest, DeveloperAPIV1VerifyResponse, EmailverificationsVerifyRequest, EmailverificationsVerifyResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 import { helpText, win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
@@ -370,15 +370,6 @@ export default defineComponent({
       }
     }
 
-    const login = async (credentials: AuthenticationAPIV1AuthenticateRequest) => {
-      if (userEntity === 'developer') {
-        // TODO: Add developerConfig.portalId to developer logins
-        return await api.authentication.authenticateDeveloper(credentials)
-      }
-
-      return await api.authentication.authenticateUser(credentials)
-    }
-
     const submitForm = async (): Promise<void> => {
       // If IdP login form
       if (isIdpLogin.value) {
@@ -419,12 +410,22 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        const response = await login({
-          username: formData.email,
-          password: formData.password,
-        })
+        let loginResponse
 
-        if (response.status >= 200 && response.status < 300) {
+        if (userEntity === 'developer') {
+          loginResponse = await api.authentication.authenticateDeveloper({
+            username: formData.email,
+            password: formData.password,
+            portal_id: developerConfig?.portalId || '',
+          })
+        } else {
+          loginResponse = await api.authentication.authenticateUser({
+            username: formData.email,
+            password: formData.password,
+          })
+        }
+
+        if (loginResponse.status >= 200 && loginResponse.status < 300) {
           send('RESOLVE')
           emit('login-success')
           return
@@ -433,7 +434,7 @@ export default defineComponent({
         send('REJECT')
         fieldsHaveError.value = true
 
-        if (response.status === 403) {
+        if (loginResponse.status === 403) {
           return
         }
       } catch (err: any) {
