@@ -28,7 +28,7 @@ export default function(
     }
 
     if (window.customElements.get(customElementName)) {
-      throw new Error('registerCustomElement: Unable to register custom element <kong-auth-login> -- the name has already been registered.')
+      throw new Error(`registerCustomElement: Unable to register custom element <${customElementName}> -- the name has already been registered.`)
     }
 
     const vueCustomElement = defineCustomElement({
@@ -37,12 +37,12 @@ export default function(
       styles: [appStyles],
       // Provide user options
       provide: {
-        'user-entity': options?.userEntity || 'user',
         'kauth-api-base-url': options?.apiBaseUrl,
+        'user-entity': options?.userEntity || 'user',
+        'developer-config': options?.developerConfig,
         'custom-endpoint-error-handler': options?.customErrorHandler,
         'shadow-dom': options?.shadowDom || false,
         'shadow-dom-css': options?.shadowDomCss,
-        'portal-config': options?.portalConfig,
       },
     })
 

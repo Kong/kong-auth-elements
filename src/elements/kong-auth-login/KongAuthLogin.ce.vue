@@ -218,7 +218,7 @@ export default defineComponent({
   },
 
   setup(props, { emit }) {
-    const { userEntity, portalConfig } = useConfigOptions()
+    const { userEntity, developerConfig } = useConfigOptions()
     const { api } = useKongAuthApi()
 
     const idpLoginEnabled: Ref<boolean> = ref(props.idpLoginEnabled)
@@ -372,7 +372,7 @@ export default defineComponent({
 
     const login = async (credentials: AuthenticationAPIV1AuthenticateRequest) => {
       if (userEntity === 'developer') {
-        // TODO: Add portalConfig.id to developer logins
+        // TODO: Add developerConfig.portalId to developer logins
         return await api.authentication.authenticateDeveloper(credentials)
       }
 

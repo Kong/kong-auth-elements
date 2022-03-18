@@ -175,18 +175,18 @@ export interface CustomEndpointErrorEvent = {
   element: CustomEndpointElement
 }
 
-// Portal-only config options
-export interface PortalConfig {
-  id: string
+// Developer config options
+export interface DeveloperConfig {
+  portalId: string
 }
 
 export interface KongAuthElementsOptions {
   apiBaseUrl?: string
   userEntity?: UserEntities
+  developerConfig?: DeveloperConfig
   customErrorHandler?: (event: CustomEndpointErrorEvent) => string
   shadowDom?: boolean
   shadowDomCss?: string[]
-  portalConfig?: PortalConfig
 }
 ```
 
@@ -374,6 +374,7 @@ Alternatively, [you can provide an options object](https://docs.cypress.io/api/c
 - Provides Identity Provider (IdP) login, if enabled.
 - Provides email verification, given a valid `token` in the query string.
 - Sets the `kauth` cookies, along with the `userStatus` cookie (possibly unused).
+- Consumes the `options.developerConfig.portalId` for `developer` entity authentication.
 
 The login element **must** reside at the `{window.location.origin}/login` path in your application.
 
