@@ -20,16 +20,16 @@ export interface CustomEndpointErrorEvent {
   element: CustomEndpointElement
 }
 
-// Portal-only config options
-export interface PortalConfig {
-  id: string
+// Developer config options
+export interface DeveloperConfig {
+  portalId: string
 }
 
 export interface KongAuthElementsOptions {
   apiBaseUrl?: string
   userEntity?: UserEntities
+  developerConfig?: DeveloperConfig
   customErrorHandler?: (event: CustomEndpointErrorEvent) => string
   shadowDom?: boolean
   shadowDomCss?: string[]
-  portalConfig?: PortalConfig
 }

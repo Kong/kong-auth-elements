@@ -6,7 +6,7 @@ import type {
   CustomEndpointErrorEvent,
   CustomEndpointRequest,
   KongAuthElementsOptions,
-  PortalConfig,
+  DeveloperConfig,
   UserEntities,
 } from './utils'
 import * as elements from './elements'
@@ -17,10 +17,10 @@ export const KongAuthElementsPlugin = {
     // Provide option values to components
     app.provide('kauth-api-base-url', options?.apiBaseUrl)
     app.provide('user-entity', options?.userEntity || 'user')
+    app.provide('developer-config', options?.developerConfig)
     app.provide('custom-endpoint-error-handler', options?.customErrorHandler)
     app.provide('shadow-dom', options?.shadowDom || false)
     app.provide('shadow-dom-css', options?.shadowDomCss)
-    app.provide('portal-config', options?.portalConfig)
 
     if (options?.shadowDom === true) {
       // Register all custom elements as native web components
@@ -54,7 +54,7 @@ export {
   CustomEndpointErrorEvent,
   CustomEndpointRequest,
   KongAuthElementsOptions,
-  PortalConfig,
+  DeveloperConfig,
   UserEntities,
 }
 
