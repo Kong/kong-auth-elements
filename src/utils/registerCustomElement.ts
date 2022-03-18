@@ -42,7 +42,7 @@ export default function(
         'custom-endpoint-error-handler': options?.customErrorHandler,
         'shadow-dom': options?.shadowDom || false,
         'shadow-dom-css': options?.shadowDomCss,
-        'portal-options': options?.portalOptions,
+        'portal-config': options?.portalConfig,
       },
     })
 
