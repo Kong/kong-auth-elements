@@ -98,7 +98,7 @@
           data-testid="kong-auth-login-submit"
         >
           <KIcon
-            v-if="currentState.matches('pending')"
+            v-if="['pending', 'success'].some(currentState.matches)"
             icon="spinner"
             view-box="0 0 16 16"
             class="pr-0 mr-2"
@@ -281,8 +281,16 @@ export default defineComponent({
       }),
     )
 
-    const btnText = computed(() => {
-      return ['pending', 'success'].some(currentState.value.matches) ? helpText.login.submittingText : isIdpLogin.value ? helpText.login.loginTextSSO : helpText.login.loginText
+    const btnText = computed((): string => {
+      if (['pending'].some(currentState.value.matches)) {
+        return helpText.login.submittingText
+      } else if (['success'].some(currentState.value.matches)) {
+        return ''
+      } else if (isIdpLogin.value) {
+        return helpText.login.loginTextSSO
+      }
+
+      return helpText.login.loginText
     })
 
     const btnDisabled = computed(() => {

@@ -47,3 +47,19 @@
     }
   }
 }
+
+// Spinner icon
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.kong-icon.kong-icon-spinner svg g {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: spin 1.2s infinite linear;
+}
