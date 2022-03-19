@@ -14,7 +14,7 @@
     "build": "vue-tsc --noEmit && vite build && vue-tsc --emitDeclarationOnly",
     "serve:components": "cross-env SERVE_MODE=components vite",
     "serve:elements": "cross-env SERVE_MODE=elements vite",
-    "serve:demo": "rm -rf ./demo/dist-copy && yarn build && cp -R ./dist ./demo/dist-copy && echo \"\n    \\x1b[30m\\x1b[103m Note: The demo does NOT support hot reload \\x1b[0m\" && serve -p 3333 ./demo",
+    "serve:demo": "rm -rf ./demo/dist-copy && yarn build && cp -R ./dist ./demo/dist-copy && echo \"\n    \\x1b[30m\\x1b[103m Note: The demo does NOT support hot module reload \\x1b[0m\" && serve -p 3333 ./demo",
     "serve": "yarn serve:help",
     "serve:help": "echo \"\nRun 'yarn serve:components' to import components and use Vue Dev Tools.\n(may require additional imports in /dev/serve-components/ComponentsApp.vue)\n\\x1b[33m* This will not allow testing embedded styles and other Custom Element features. *\\x1b[0m\n\n-- OR --\n\nRun 'yarn serve:elements' to import native Web Components.\n(may require additional imports in /dev/serve-elements/index.ts)\n\\x1b[33m* This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported). *\\x1b[0m\n\n\"",
     "test": "cypress run-ct",
@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@arkweid/lefthook": "^0.7.7",
+    "@babel/types": "^7.17.0",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.0.0",
     "@cypress/vite-dev-server": "^2.2.2",
@@ -72,7 +73,7 @@
     "start-server-and-test": "^1.14.0",
     "typescript": "~4.5.5",
     "vite": "^2.8.6",
-    "vue-tsc": "^0.31.4"
+    "vue-tsc": "^0.33.2"
   },
   "peerDependencies": {
     "axios": "^0.26.1"
