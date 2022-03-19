@@ -572,12 +572,13 @@ declare module 'vue/types/vue' {
 #### Requirements
 
 1. Custom elements must follow the naming convention `{PascalCaseName}.ce.vue`
-2. The first and only root tag within the `<template>` of a custom element `src/elements/**/{CustomElement}.ce.vue` file must be the `<BaseCustomElement>` component (located at `/src/components/BaseCustomElement.vue`) and it must wrap all other content within the template (this enables style injection for child components).
-3. Custom elements must be added to the following path `/src/elements/{kebab-case-element-name}/{PascalCaseElementName}.ce.vue`
-4. Custom elements must have an export function added in the `/src/elements/index.ts` file that exports the registration function for the element. Note the proper names/paths in the file.
-5. The registration function (created in Step 5) must be imported and called in `/src/index.ts` (as well as in `/dev/serve-elements/index.ts` for testing).
-6. A corresponding `{PascalCaseName}.spec.ts` file must be created in the same directory as the custom element to provide Cypress Component Test Runner code coverage.
-7. Custom element templates (the contents of the `{PascalCaseElementName}.ce.vue` file) must utilize the template shown below:
+2. The only root-level tag within the `<template>` of a custom element `src/elements/**/{CustomElement}.ce.vue` file must be the `<BaseCustomElement>` component (located at `/src/components/BaseCustomElement.vue`) and it must wrap all other content within the template (this enables style injection for child components).
+3. The rest of the element's functionality should live within a child component (see existing examples) located in the `src/components/` directory and should not have any `props` of its own; the `props` from the parent `{PascalCaseName}.ce.vue` are injected with `provide/inject` (required).
+4. Custom elements must be added to the following path `/src/elements/{kebab-case-element-name}/{PascalCaseElementName}.ce.vue`
+5. Custom elements must have an export function added in the `/src/elements/index.ts` file that exports the registration function for the element. Note the proper names/paths in the file.
+6. The registration function (created in Step 5) must be imported and called in `/src/index.ts` (as well as in `/dev/serve-elements/index.ts` for testing).
+7. A corresponding `{PascalCaseName}.spec.ts` file must be created in the same directory as the custom element to provide Cypress Component Test Runner code coverage.
+8. Custom element templates (the contents of the `{PascalCaseElementName}.ce.vue` file) must utilize the template shown below:
 
     <details>
 
@@ -586,17 +587,15 @@ declare module 'vue/types/vue' {
     ```html
     <template>
       <BaseCustomElement>
-        <div class="kong-auth-{element-name}">
-          <!-- All other content, including components from /src/components may be used here -->
-        </div>
+          <!-- Components from /src/components may be used in this default slot -->
+          <ExampleComponent @example-event="(emitData) => $emit('example-event', emitData)" />
       </BaseCustomElement>
     </template>
 
     <script lang="ts">
-    import { defineComponent } from 'vue'
-    import useConfigOptions from '@/composables/useConfigOptions'
-    import useKongAuthApi from '@/composables/useKongAuthApi'
+    import { defineComponent, computed, provide } from 'vue'
     import BaseCustomElement from '@/components/BaseCustomElement.vue'
+    import ExampleComponent, { exampleComponentEmits } from '@/components/ExampleComponent.vue'
 
     export default defineComponent({
       name: 'KongAuthExampleElement',
@@ -606,30 +605,25 @@ declare module 'vue/types/vue' {
         exampleProp: String,
       },
 
-      // Define emits with validation, where necessary
-      emits: {
-        'example-event': (payload: { email: string }): boolean => {
-          return !!payload?.email.trim()
-        },
-      },
+      // Import emits from child component with validation, where necessary. See existing components for examples.
+      emits: exampleComponentEmits,
 
       components: {
         BaseCustomElement,
       },
 
       setup(props, { emit }) {
-        const { userEntity } = useConfigOptions()
-        const { api } = useKongAuthApi()
-
-        // Setup function code...
+        // Provide custom element props to child components - this allows all props to remain reactive
+        provide(
+          'example-prop',
+          computed((): string => (props.exampleProp ? props.exampleProp : '')),
+        )
       },
     })
     </script>
 
     <style lang="scss" scoped>
-    /*! KONG_AUTH_INJECT_STYLES */
-    // No styles should be added to this component; add styles to the /assets/styles/_elements.scss partial
-    @import "@/assets/styles/elements";
+    // No styles should be added to this component.
     </style>
 
     ```
