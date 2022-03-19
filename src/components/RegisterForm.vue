@@ -165,9 +165,6 @@ export const registerEmits = {
 export default defineComponent({
   name: 'RegisterForm',
 
-  // Define emits with validation, where necessary
-  emits: registerEmits,
-
   components: {
     ErrorMessage,
     KButton,
@@ -176,6 +173,9 @@ export default defineComponent({
     KCheckbox,
     Password,
   },
+
+  // Define emits with validation, where necessary
+  emits: registerEmits,
 
   setup(props, { emit }) {
     const { userEntity, customErrorHandler } = useConfigOptions()
