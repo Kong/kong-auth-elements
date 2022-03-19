@@ -13,6 +13,7 @@ module.exports = {
     'vue/setup-compiler-macros': true,
   },
   rules: {
+    indent: 'off',
     'space-before-function-paren': 'off',
     quotes: ['error', 'single', { avoidEscape: true }],
     'no-multi-spaces': 'error',
