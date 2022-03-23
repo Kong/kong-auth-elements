@@ -312,7 +312,7 @@ export default defineComponent({
       } catch (err: any) {
         send('REJECT')
 
-        const customEndpointErrorMessage = registerRequestEndpoint.value && typeof customErrorHandler === 'function' && customErrorHandler({ error: err, request: 'register-request', element: 'kong-auth-register' })
+        const customEndpointErrorMessage = typeof customErrorHandler === 'function' && customErrorHandler({ error: err, request: 'register-request', element: 'kong-auth-register' })
 
         if (customEndpointErrorMessage) {
           error.value = {

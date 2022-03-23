@@ -177,7 +177,7 @@ export default defineComponent({
   emits: loginEmits,
 
   setup(props, { emit }) {
-    const { userEntity, developerConfig } = useConfigOptions()
+    const { userEntity, developerConfig, customErrorHandler } = useConfigOptions()
     const { api } = useKongAuthApi()
 
     /*
@@ -343,6 +343,16 @@ export default defineComponent({
 
         fieldsHaveError.value = false
 
+        const customEndpointErrorMessage = typeof customErrorHandler === 'function' && customErrorHandler({ error: err, request: 'verify-email-request', element: 'kong-auth-login' })
+
+        if (customEndpointErrorMessage) {
+          error.value = {
+            status: undefined,
+            statusText: customEndpointErrorMessage,
+          }
+          return
+        }
+
         if (err?.response) {
           error.value = err.response
         }
@@ -420,6 +430,16 @@ export default defineComponent({
         send('REJECT')
 
         fieldsHaveError.value = true
+
+        const customEndpointErrorMessage = typeof customErrorHandler === 'function' && customErrorHandler({ error: err, request: 'authenticate-request', element: 'kong-auth-login' })
+
+        if (customEndpointErrorMessage) {
+          error.value = {
+            status: undefined,
+            statusText: customEndpointErrorMessage,
+          }
+          return
+        }
 
         if (err?.response) {
           error.value = err.response

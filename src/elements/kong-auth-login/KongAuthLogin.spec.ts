@@ -138,6 +138,28 @@ describe('KongAuthLogin.ce.vue', () => {
     })
   })
 
+  it('utilizes a provided custom error handler for a failed authentication request', () => {
+    const customErrorMessage = 'A custom error message.'
+
+    // Stub customErrorHandler
+    cy.stub(getConfigOptions, 'customErrorHandler').returns(() => customErrorMessage)
+
+    cy.intercept('POST', '**/authenticate', {
+      statusCode: 401,
+    }).as('login-request')
+
+    mount(KongAuthLogin)
+
+    cy.getTestId(testids.email).type(user.email)
+    cy.getTestId(testids.password).type(user.password)
+    cy.getTestId(testids.form).submit()
+
+    cy.wait('@login-request').then(() => {
+      // Custom error messsage should exist
+      cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', customErrorMessage)
+    })
+  })
+
   describe('Respond to URL Parameters', () => {
     it('pre-populates the email input from search params', () => {
       // Stub search params
@@ -178,6 +200,30 @@ describe('KongAuthLogin.ce.vue', () => {
           // Verify emit payload
           cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
         })
+      })
+    })
+
+    it('utilizes a provided custom error handler for a failed email verification request', () => {
+      const customErrorMessage = 'A custom error message.'
+
+      // Stub customErrorHandler
+      cy.stub(getConfigOptions, 'customErrorHandler').returns(() => customErrorMessage)
+
+      // Stub search params
+      cy.stub(win, 'getLocationSearch').returns('?token=12345')
+
+      cy.intercept('PATCH', '**/email-verifications', {
+        statusCode: 400,
+        body: {
+          email: user.email,
+        },
+      }).as('email-verification-request')
+
+      mount(KongAuthLogin)
+
+      cy.wait('@email-verification-request').then(() => {
+      // Custom error messsage should exist
+        cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', customErrorMessage)
       })
     })
 

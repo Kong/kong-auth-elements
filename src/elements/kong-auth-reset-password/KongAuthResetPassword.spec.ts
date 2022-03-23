@@ -150,6 +150,32 @@ describe('KongAuthResetPassword.ce.vue', () => {
     })
   })
 
+  it('utilizes a provided custom error handler for a failed set new password request', () => {
+    const customErrorMessage = 'A custom error message.'
+
+    // Stub customErrorHandler
+    cy.stub(getConfigOptions, 'customErrorHandler').returns(() => customErrorMessage)
+
+    // Stub 200 response
+    cy.intercept('PATCH', '**/password-resets', {
+      statusCode: 400,
+      body: {
+        email: 'user1@email.com',
+      },
+    }).as('password-reset')
+
+    mount(KongAuthResetPassword)
+
+    cy.getTestId(testids.password).type(user.password)
+    cy.getTestId(testids.confirmPassword).type(user.password)
+    cy.getTestId(testids.form).submit()
+
+    cy.wait('@password-reset').then(() => {
+      // Custom error messsage should exist
+      cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', customErrorMessage)
+    })
+  })
+
   /* ==============================
    * Instruction Text
    * ============================== */

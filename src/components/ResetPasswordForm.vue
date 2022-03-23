@@ -109,7 +109,7 @@ export default defineComponent({
   emits: resetPasswordEmits,
 
   setup(props, { emit }) {
-    const { userEntity } = useConfigOptions()
+    const { userEntity, customErrorHandler } = useConfigOptions()
     const { api } = useKongAuthApi()
 
     /*
@@ -221,6 +221,16 @@ export default defineComponent({
         })
       } catch (err: any) {
         send('REJECT')
+
+        const customEndpointErrorMessage = typeof customErrorHandler === 'function' && customErrorHandler({ error: err, request: 'set-new-password-request', element: 'kong-auth-reset-password' })
+
+        if (customEndpointErrorMessage) {
+          error.value = {
+            status: undefined,
+            statusText: customEndpointErrorMessage,
+          }
+          return
+        }
 
         if (err?.response) {
           const response = err.response
