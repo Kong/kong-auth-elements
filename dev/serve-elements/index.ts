@@ -19,6 +19,9 @@ const options: KongAuthElementsOptions = {
       return 'Custom reset error message.'
     } else if (request === 'register-request') {
       return 'Custom registration error message.'
+    } else if (element === 'kong-auth-login') {
+      // This should never display
+      return null
     }
   },
 }
