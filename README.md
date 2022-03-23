@@ -192,6 +192,10 @@ export interface KongAuthElementsOptions {
 
 #### Custom Error Handler
 
+You can customize the logic in your error handler to only respond to the requests or elements you wish to target.
+
+If an error message `string` is not returned from the `customErrorHandler` based on the `error/request/element` logic then the default error handler and messaging will be used.
+
 ```ts
 const pluginOptions: KongAuthElementsOptions = {
   apiBaseUrl: '/kauth',
