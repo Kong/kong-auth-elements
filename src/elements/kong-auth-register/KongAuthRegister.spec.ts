@@ -278,7 +278,7 @@ describe('KongAuthRegister.ce.vue', () => {
     })
   })
 
-  it('utilizes a provided custom error handler for a register request from a custom endpoint', () => {
+  it('utilizes a provided custom error handler for a register request', () => {
     const customEndpoint = '/custom-register-request'
     const customErrorMessage = 'A custom error message.'
 

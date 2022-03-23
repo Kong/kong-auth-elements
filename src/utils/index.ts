@@ -8,11 +8,11 @@ export { default as win } from './window'
 // List of user entities
 export type UserEntities = 'user' | 'developer'
 
-// List of requests that support custom endpoints
-export type CustomEndpointRequest = 'reset-password-request' | 'register-request'
-
 // List of custom elements that accept a custom error handler
-export type CustomEndpointElement = 'kong-auth-forgot-password' | 'kong-auth-register'
+export type CustomEndpointElement = 'kong-auth-login' | 'kong-auth-forgot-password' | 'kong-auth-register' | 'kong-auth-reset-password'
+
+// List of requests that support custom endpoints
+export type CustomEndpointRequest = 'authenticate-request' | 'verify-email-request' | 'reset-password-request' | 'register-request' | 'set-new-password-request'
 
 export interface CustomEndpointErrorEvent {
   error: AxiosError

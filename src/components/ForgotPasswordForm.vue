@@ -209,7 +209,7 @@ export default defineComponent({
       } catch (err: any) {
         send('REJECT')
 
-        const customEndpointErrorMessage = resetPasswordRequestEndpoint.value && typeof customErrorHandler === 'function' && customErrorHandler({ error: err, request: 'reset-password-request', element: 'kong-auth-forgot-password' })
+        const customEndpointErrorMessage = typeof customErrorHandler === 'function' && customErrorHandler({ error: err, request: 'reset-password-request', element: 'kong-auth-forgot-password' })
 
         if (customEndpointErrorMessage) {
           error.value = {
