@@ -20,7 +20,7 @@ const options: KongAuthElementsOptions = {
     } else if (request === 'register-request') {
       return 'Custom registration error message.'
     } else if (element === 'kong-auth-login') {
-      // This should never display
+      // Returning null or false (or an empty string) will cause the default messaging to be used
       return null
     }
   },
