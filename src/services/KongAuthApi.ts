@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosError } from 'axios'
+import { win } from '../utils'
 import {
   AuthenticationApi,
   Configuration,
@@ -35,6 +36,9 @@ export default class KongAuthApi {
     this.baseUrl = baseUrl || '/kauth'
 
     this.client = axios.create({ withCredentials: true })
+
+    // Add X-Forwarded-Host to identify the original host requested by the client
+    this.client.defaults.headers.common['X-Forwarded-Host'] = win.getLocationHost()
 
     this.client.interceptors.response.use(
       (res) => res,

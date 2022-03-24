@@ -5,6 +5,11 @@ const win = {
     return window.location.search
   },
 
+  getLocationHost: (): string => {
+    if (typeof window === 'undefined') return ''
+    return window.location.host
+  },
+
   getLocationHostname: (): string => {
     if (typeof window === 'undefined') return ''
     return window.location.hostname
