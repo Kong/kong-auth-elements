@@ -130,7 +130,6 @@
           icon="spinner"
           size="16"
           color="white"
-          view-box="0 0 16 16"
           class="pr-0 mr-2"
         />
         {{ btnText }}
