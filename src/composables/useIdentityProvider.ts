@@ -78,21 +78,23 @@ export default function useIdentityProvider(
       return
     }
 
-    // If returnTo URL does not contain valid domain
-    if (!['konghq.com', 'localhost'].some((path) => returnTo.includes(path))) {
-      idpIsLoading.value = false
-      // Console warning references the element prop name instead of local variable
-      // eslint-disable-next-line no-console
-      console.error("'idpLoginReturnTo' is required and must include 'konghq.com' or 'localhost'.")
-      return
-    }
-
     // Create a URL from returnTo and encode for query string. Fail if not a valid URL.
     let returnToParam
 
     try {
       // Create new URL from returnTo
       const returnToUrl = new URL(returnTo)
+
+      const allowedDomains = ['konghq.com', 'konghq.tech', 'localhost']
+
+      // If returnTo URL does not contain valid domain
+      if (!allowedDomains.some((path) => returnToUrl.hostname.includes(path))) {
+        idpIsLoading.value = false
+        // Console warning references the element prop name instead of local variable
+        // eslint-disable-next-line no-console
+        console.error(`'idpLoginReturnTo' is required and must include one of the following domains: ${allowedDomains.join(', ')}`)
+        return
+      }
 
       // Enable to append a query string to let container app know the user went through IdP auth
       // returnToUrl.searchParams.append('fromIdp', 'true')
