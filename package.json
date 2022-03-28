@@ -23,7 +23,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@kong/kauth-client-typescript-axios": "0.573.0",
+    "@kong/kauth-client-typescript-axios": "^0.586.0",
     "@kongponents/kalert": "^6.20.2",
     "@kongponents/kbutton": "^6.20.2",
     "@kongponents/kcheckbox": "^6.20.2",
