@@ -339,13 +339,13 @@
     "@kongponents/kicon" "^6.20.2"
     "@kongponents/styles" "^6.20.2"
 
-"@kongponents/kbutton@^6.20.2":
-  version "6.20.2"
-  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.20.2.tgz#ffb101aba949728d11974600784c7d0d2b3fcbef"
-  integrity sha512-rQypoRSuspfMCL2Iop+hyr9WbO9SHWilANRjwotD4etLEgzgUcbwkscg82PJnLgr5qK/75mImu563LZzy3SK7A==
+"@kongponents/kbutton@^6.20.2", "@kongponents/kbutton@^6.21.2":
+  version "6.21.2"
+  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.21.2.tgz#2a7819a20b76dcaed7b224dc5ebe3af333c9eb65"
+  integrity sha512-J7/WMip3QXJhC74yOJ+0Itgz8dEqeUq0F2yxqV+yq1MtLo/RjIPggeLK/58GZnULHBtyVuWRv9VaXDmXDc6llQ==
   dependencies:
-    "@kongponents/kicon" "^6.20.2"
-    "@kongponents/styles" "^6.20.2"
+    "@kongponents/kicon" "^6.21.2"
+    "@kongponents/styles" "^6.21.2"
 
 "@kongponents/kcheckbox@^6.20.2":
   version "6.20.2"
@@ -354,10 +354,10 @@
   dependencies:
     "@kongponents/styles" "^6.20.2"
 
-"@kongponents/kicon@^6.20.2":
-  version "6.20.2"
-  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.20.2.tgz#b3cabdca60b9bb9db0f2bd99a99ee4f669a08757"
-  integrity sha512-ttSG+cgsOzBMuRGxiQdZ+Mtq12jKgfSPNc4tlctwiMG7lbA2REfUNa5lsu5cmD+iLblXIzXpt14PFzISfHapzg==
+"@kongponents/kicon@^6.20.2", "@kongponents/kicon@^6.21.2":
+  version "6.21.2"
+  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.21.2.tgz#61ac111de40704f6cf951c19cdac414e3410e4cf"
+  integrity sha512-Mz7oJg4jwR2sHbNFLgGWRVcSLubfIo7nKof3J7CqTsZc7DJYQ+y/S4CYHFUZDXwQclD6p+2tvyYZ0czzcG8nAg==
 
 "@kongponents/kinput@^6.20.2":
   version "6.20.2"
@@ -403,10 +403,10 @@
     "@kongponents/kicon" "^6.20.2"
     "@kongponents/styles" "^6.20.2"
 
-"@kongponents/styles@^6.20.2":
-  version "6.20.2"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.20.2.tgz#2f4d1174ec082fd3cd4a02f3b92b30f4d094b186"
-  integrity sha512-Th3Il8XXFJjPiJ+dk7F8o800avS7yZoApZUzZ9Q84Hoqfir+F6xTgD7klyRUNBLYCYzr/S6DbHsPashwQduwYQ==
+"@kongponents/styles@^6.20.2", "@kongponents/styles@^6.21.2":
+  version "6.21.2"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.21.2.tgz#316c5d0a2ae2fa4ccc6262f229d547373b2502b2"
+  integrity sha512-TLJXkzHizupbzHTMVs9zxpNshzd+eIQICd/OuS9UPUTx+L4YGAlnvUkj1gyZ5l59Ut2bR+RUtoy3fejkA4Zpug==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
