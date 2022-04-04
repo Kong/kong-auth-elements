@@ -26,7 +26,7 @@
     "@kong/kauth-client-typescript-axios": "^0.586.0",
     "@kongponents/kalert": "^6.21.4",
     "@kongponents/kbutton": "^6.21.4",
-    "@kongponents/kcheckbox": "^6.21.4",
+    "@kongponents/kcheckbox": "^6.24.1",
     "@kongponents/kicon": "^6.21.4",
     "@kongponents/kinput": "^6.21.4",
     "@kongponents/kooltip": "^6.21.4",
