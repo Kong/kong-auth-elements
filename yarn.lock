@@ -354,10 +354,10 @@
   dependencies:
     "@kongponents/styles" "^6.21.4"
 
-"@kongponents/kicon@^6.21.4":
-  version "6.21.4"
-  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.21.4.tgz#555555ff3ef604068214d043bdec1483c3c21628"
-  integrity sha512-n/HGJY0rfxIEX5sPzyrykbglVqGFrqErK4XqYK6DVDdFvxXed9XR5eROkyoIo5PsH80DBhvusEKcsSa0Xi6O4A==
+"@kongponents/kicon@^6.21.4", "@kongponents/kicon@^6.24.2":
+  version "6.24.2"
+  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.24.2.tgz#52a127ef04a4d3c2e4f05bf1f9ba147ef60346e4"
+  integrity sha512-B8HAIpcmmyGwIPrOwAq7DPSmTImNfJPoVsG2Nasbev6bLjXq855tTMh37CPNI7PFG+k8MahydwE0L6hyLGkeWg==
 
 "@kongponents/kinput@^6.21.4":
   version "6.21.4"
