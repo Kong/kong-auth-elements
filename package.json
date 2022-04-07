@@ -37,7 +37,7 @@
     "axios": "^0.26.1",
     "vue": "^3.2.31",
     "vue-password-strength-meter": "^1.7.2",
-    "xstate": "^4.28.1",
+    "xstate": "^4.30.6",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
