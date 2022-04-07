@@ -30,7 +30,7 @@
     "@kongponents/kicon": "^6.21.4",
     "@kongponents/kinput": "^6.21.4",
     "@kongponents/kooltip": "^6.21.4",
-    "@kongponents/kskeleton": "^6.21.4",
+    "@kongponents/kskeleton": "^6.24.4",
     "@kongponents/styles": "^6.21.4",
     "@vue/compat": "^3.2.31",
     "@xstate/vue": "^0.8.1",
