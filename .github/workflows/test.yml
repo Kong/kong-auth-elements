@@ -55,14 +55,14 @@ jobs:
           VITE_AUTH_URL: ${{ secrets.VITE_AUTH_URL || inputs.VITE_AUTH_URL }}
 
       - name: Upload Cypress screenshots (on failure)
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: cypress_screenshots
           path: cypress/screenshots/
 
       - name: Upload Cypress videos (always)
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: always()
         with:
           name: cypress_videos
