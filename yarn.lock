@@ -354,10 +354,10 @@
   dependencies:
     "@kongponents/styles" "^6.21.4"
 
-"@kongponents/kicon@^6.21.4":
-  version "6.21.4"
-  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.21.4.tgz#555555ff3ef604068214d043bdec1483c3c21628"
-  integrity sha512-n/HGJY0rfxIEX5sPzyrykbglVqGFrqErK4XqYK6DVDdFvxXed9XR5eROkyoIo5PsH80DBhvusEKcsSa0Xi6O4A==
+"@kongponents/kicon@^6.21.4", "@kongponents/kicon@^6.24.5":
+  version "6.24.5"
+  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.24.5.tgz#6606ae11779c9b8180ee83d53f24825a96e94a1d"
+  integrity sha512-f7kMzkjpG9ZUZrI660+rYrwTbKFy95bj7RQAYktiZQQvPzqHiqklAKixQdpr+8jnjutFYicN4SA/JAwqxVLAeg==
 
 "@kongponents/kinput@^6.21.4":
   version "6.21.4"
@@ -395,18 +395,18 @@
     popper.js "^1.15.0"
     vue-uuid "^2.0.2"
 
-"@kongponents/kskeleton@^6.21.4":
-  version "6.21.4"
-  resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.21.4.tgz#243b700cdd7c5ef2daead60605b6fd1db7c89248"
-  integrity sha512-8S2F9mr4aLL7iQyIrrVPY2HGcLvC8U3/UIm0mAPoU/ofjxmoFCyrJ5N906SL9XOjyPgr9ke/IfpStLnCgucu3Q==
+"@kongponents/kskeleton@^6.24.5":
+  version "6.24.5"
+  resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.24.5.tgz#1ce442537fdb2686dee3a0437ccdcc9333ff91ea"
+  integrity sha512-Bjd4NJ1YRKRyFxZPmawtnPWHmL5NaO9HvGuWZG/qjkqQQRIbNXohllKDTp6TrWB0E/Oh/Eynu8VjuFezDYZq9A==
   dependencies:
-    "@kongponents/kicon" "^6.21.4"
-    "@kongponents/styles" "^6.21.4"
+    "@kongponents/kicon" "^6.24.5"
+    "@kongponents/styles" "^6.24.5"
 
-"@kongponents/styles@^6.21.4":
-  version "6.21.4"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.21.4.tgz#d0be6d88cafb876f16aae167aa75571aff061cbd"
-  integrity sha512-a0x1vX+GyUrtuogSyjukfvANZi5apzfKlQrHxH71orGh7a4BRaeDAxiOqF0EwrIYeenBXd73icGdDh2JptoY/w==
+"@kongponents/styles@^6.21.4", "@kongponents/styles@^6.24.5":
+  version "6.24.5"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.5.tgz#465822fb9fdc35914dfd18f92a33b44de1f3876b"
+  integrity sha512-GwkSbn0X7mabPpm8KPfBZdmMQEyB1hUG0EEFXcM+ory0SnXkXWVS8KSmeC6SzaEBxWs1wtFrrz4iHeR1geGeqQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
