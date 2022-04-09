@@ -330,16 +330,16 @@
   resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.586.0.tgz#0181cc4894e4217189ae74563d4bc8fd33c129c8"
   integrity sha512-ilF3h50mk4ph9a/O9aGfukf3GflaeBJElACpVEeBuUFwaT7vZCqxhNarM/lVg3beOqQcLvk0YVLxUImIdFvY7g==
 
-"@kongponents/kalert@^6.21.4":
-  version "6.21.4"
-  resolved "https://registry.yarnpkg.com/@kongponents/kalert/-/kalert-6.21.4.tgz#8a3728cc975a3c868a05a16a6323257316a840db"
-  integrity sha512-MNWbh7qBE7QOs+E65u1PWB8Yrbu/YKvJQm9hhil5dMGkTJDCAmj3I8IzsJ5qzlqMgt4t553TRdZB7DoYPHcNUw==
+"@kongponents/kalert@^6.24.5":
+  version "6.24.5"
+  resolved "https://registry.yarnpkg.com/@kongponents/kalert/-/kalert-6.24.5.tgz#fc1a7eadc08a5e384973804b95cf78e76f8dd80d"
+  integrity sha512-NU6xRy6unrN4K/73TAPbYS5BQbJizLxFQc0zj3dgwEpqTVZ7SGTdChRJIZzM9K9BZHKxRpMJnY6MBmU2A9QgXQ==
   dependencies:
-    "@kongponents/kbutton" "^6.21.4"
-    "@kongponents/kicon" "^6.21.4"
-    "@kongponents/styles" "^6.21.4"
+    "@kongponents/kbutton" "^6.24.5"
+    "@kongponents/kicon" "^6.24.5"
+    "@kongponents/styles" "^6.24.5"
 
-"@kongponents/kbutton@^6.21.4", "@kongponents/kbutton@^6.24.5":
+"@kongponents/kbutton@^6.24.5":
   version "6.24.5"
   resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.24.5.tgz#ac99157b3cf042c337c6f0112b7be1ef835eafda"
   integrity sha512-y2L1gr1W4EegGtx9yXHXz592J3fYI6UceA99Nkikw/dx9Yh4Bmz87IRs9ZTj4zcV05qbhDhP/pEvkNwdcxdZPA==
