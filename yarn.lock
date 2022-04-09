@@ -377,14 +377,6 @@
     "@kongponents/kooltip" "^6.24.5"
     "@kongponents/styles" "^6.24.5"
 
-"@kongponents/kooltip@^6.21.4":
-  version "6.21.4"
-  resolved "https://registry.yarnpkg.com/@kongponents/kooltip/-/kooltip-6.21.4.tgz#379b3008230cb83fb909f16f2be5973c4fa52b7a"
-  integrity sha512-mI25aIOJQSMO0C7gfLMGcSibJSpQ9CbxbwgtQ4uO/YWUnXcCrRMlzz0POQ2PYkaoVCUiCW4a4DbgmR2E1zfrLg==
-  dependencies:
-    "@kongponents/kpop" "^6.21.4"
-    "@kongponents/styles" "^6.21.4"
-
 "@kongponents/kooltip@^6.24.5":
   version "6.24.5"
   resolved "https://registry.yarnpkg.com/@kongponents/kooltip/-/kooltip-6.24.5.tgz#c98818e2d61e9abd9f4094b03f80ff24e92cc7ae"
@@ -392,16 +384,6 @@
   dependencies:
     "@kongponents/kpop" "^6.24.5"
     "@kongponents/styles" "^6.24.5"
-
-"@kongponents/kpop@^6.21.4":
-  version "6.21.4"
-  resolved "https://registry.yarnpkg.com/@kongponents/kpop/-/kpop-6.21.4.tgz#0650968a1b135ea2b114702d7a892b0f84bf0898"
-  integrity sha512-/OoKwRvIGKKdZrFBxJkWwm1NDIGb4pa8Wz1zVNG+IQ3CvcgU25/q5NkF9gxymUp9tDlqFXYcL4KHzDN7e0uW8Q==
-  dependencies:
-    "@kongponents/kbutton" "^6.21.4"
-    "@kongponents/styles" "^6.21.4"
-    popper.js "^1.15.0"
-    vue-uuid "^2.0.2"
 
 "@kongponents/kpop@^6.24.5":
   version "6.24.5"
