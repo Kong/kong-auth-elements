@@ -354,10 +354,10 @@
   dependencies:
     "@kongponents/styles" "^6.24.5"
 
-"@kongponents/kicon@^6.21.4", "@kongponents/kicon@^6.24.5":
-  version "6.24.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.24.5.tgz#6606ae11779c9b8180ee83d53f24825a96e94a1d"
-  integrity sha512-f7kMzkjpG9ZUZrI660+rYrwTbKFy95bj7RQAYktiZQQvPzqHiqklAKixQdpr+8jnjutFYicN4SA/JAwqxVLAeg==
+"@kongponents/kicon@^6.21.4", "@kongponents/kicon@^6.24.5", "@kongponents/kicon@^6.24.9":
+  version "6.24.9"
+  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.24.9.tgz#5f71576592fba9100bcb54f6525e16aef78a4ff0"
+  integrity sha512-bWtEuCVwi3NiIKwPKqIxeYzvfwVUJSGxFqTXsznSL48Ng4aaR91YYwpg1QjSwG2nSmpsBmZ6svg2VMZeuC03Hw==
 
 "@kongponents/kinput@^6.24.5":
   version "6.24.5"
@@ -395,18 +395,18 @@
     popper.js "^1.15.0"
     vue-uuid "^2.0.2"
 
-"@kongponents/kskeleton@^6.24.5":
-  version "6.24.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.24.5.tgz#1ce442537fdb2686dee3a0437ccdcc9333ff91ea"
-  integrity sha512-Bjd4NJ1YRKRyFxZPmawtnPWHmL5NaO9HvGuWZG/qjkqQQRIbNXohllKDTp6TrWB0E/Oh/Eynu8VjuFezDYZq9A==
+"@kongponents/kskeleton@^6.24.9":
+  version "6.24.9"
+  resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.24.9.tgz#0a1cd3c4b1a818409de9979c3562bb416de1c6c3"
+  integrity sha512-3S0od/RuTduxD5b88cMBbXfBBpb+JWWuGAQsXZFdXpRuDQUR0wVk8cSUSejd7lNhNLthysxSwQbs/88kA8i0iQ==
   dependencies:
-    "@kongponents/kicon" "^6.24.5"
-    "@kongponents/styles" "^6.24.5"
+    "@kongponents/kicon" "^6.24.9"
+    "@kongponents/styles" "^6.24.9"
 
-"@kongponents/styles@^6.21.4", "@kongponents/styles@^6.24.5":
-  version "6.24.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.5.tgz#465822fb9fdc35914dfd18f92a33b44de1f3876b"
-  integrity sha512-GwkSbn0X7mabPpm8KPfBZdmMQEyB1hUG0EEFXcM+ory0SnXkXWVS8KSmeC6SzaEBxWs1wtFrrz4iHeR1geGeqQ==
+"@kongponents/styles@^6.21.4", "@kongponents/styles@^6.24.5", "@kongponents/styles@^6.24.9":
+  version "6.24.9"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.9.tgz#2d0738555e584b9fcc0664d3f4017de507224ac5"
+  integrity sha512-LeQ+gri1d0gy2FqXdznLDNBKaPrT2GAOw+bNyBrMpms7+zpQZP58YohVOCJyI/1VBPlzL0YCQlp+gIUlTgG5SA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
