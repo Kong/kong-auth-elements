@@ -28,7 +28,7 @@
     "@kongponents/kbutton": "^6.24.5",
     "@kongponents/kcheckbox": "^6.24.5",
     "@kongponents/kicon": "^6.21.4",
-    "@kongponents/kinput": "^6.24.5",
+    "@kongponents/kinput": "^6.24.10",
     "@kongponents/kooltip": "^6.24.5",
     "@kongponents/kskeleton": "^6.24.5",
     "@kongponents/styles": "^6.21.4",
