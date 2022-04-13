@@ -354,10 +354,10 @@
   dependencies:
     "@kongponents/styles" "^6.24.5"
 
-"@kongponents/kicon@^6.21.4", "@kongponents/kicon@^6.24.5":
-  version "6.24.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.24.5.tgz#6606ae11779c9b8180ee83d53f24825a96e94a1d"
-  integrity sha512-f7kMzkjpG9ZUZrI660+rYrwTbKFy95bj7RQAYktiZQQvPzqHiqklAKixQdpr+8jnjutFYicN4SA/JAwqxVLAeg==
+"@kongponents/kicon@^6.21.4", "@kongponents/kicon@^6.24.10", "@kongponents/kicon@^6.24.5":
+  version "6.24.10"
+  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.24.10.tgz#fa1a167f96087c9032ea178f025e846069520caf"
+  integrity sha512-9RjMjuahlfFqcOJHK0yG7NJa8X2SPZKvFBDodddSQ+9R8zyNeo/SpHtDfzuc8qRSvlwvP2u4UbaCq/01IjPpgw==
 
 "@kongponents/kinput@^6.24.5":
   version "6.24.5"
@@ -395,18 +395,18 @@
     popper.js "^1.15.0"
     vue-uuid "^2.0.2"
 
-"@kongponents/kskeleton@^6.24.5":
-  version "6.24.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.24.5.tgz#1ce442537fdb2686dee3a0437ccdcc9333ff91ea"
-  integrity sha512-Bjd4NJ1YRKRyFxZPmawtnPWHmL5NaO9HvGuWZG/qjkqQQRIbNXohllKDTp6TrWB0E/Oh/Eynu8VjuFezDYZq9A==
+"@kongponents/kskeleton@^6.24.10":
+  version "6.24.10"
+  resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.24.10.tgz#73e8b680d0780dda77bd59214f08bdbe0395cf5b"
+  integrity sha512-q30HOBD/I5H7DfR0di8eqWGIc95kkPsojPJ6zrvuPJHKJOVgF7KssrnOKushPpBZDongvqD+kMV59m4LEucZ1w==
   dependencies:
-    "@kongponents/kicon" "^6.24.5"
-    "@kongponents/styles" "^6.24.5"
+    "@kongponents/kicon" "^6.24.10"
+    "@kongponents/styles" "^6.24.10"
 
-"@kongponents/styles@^6.21.4", "@kongponents/styles@^6.24.5":
-  version "6.24.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.5.tgz#465822fb9fdc35914dfd18f92a33b44de1f3876b"
-  integrity sha512-GwkSbn0X7mabPpm8KPfBZdmMQEyB1hUG0EEFXcM+ory0SnXkXWVS8KSmeC6SzaEBxWs1wtFrrz4iHeR1geGeqQ==
+"@kongponents/styles@^6.21.4", "@kongponents/styles@^6.24.10", "@kongponents/styles@^6.24.5":
+  version "6.24.10"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.10.tgz#735753716f71d868eb973ce63ce824e507805633"
+  integrity sha512-EBkNOZe4+njKaz8mIOUqUmtdQwAnUHUKN2WdjLQmpS9naOiaduzNGK7bEqmthqQrEiBlk4eEyjTRuvv0tgiZ1Q==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
