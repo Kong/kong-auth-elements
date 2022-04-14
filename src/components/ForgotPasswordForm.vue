@@ -89,10 +89,7 @@ import useConfigOptions from '@/composables/useConfigOptions'
 import useKongAuthApi from '@/composables/useKongAuthApi'
 import { AxiosResponse } from 'axios'
 // Components
-import KAlert from '@kongponents/kalert'
-import KButton from '@kongponents/kbutton'
-import KIcon from '@kongponents/kicon'
-import KInput from '@kongponents/kinput'
+import { KAlert, KButton, KIcon, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 export const forgotPasswordEmits = {

@@ -17,7 +17,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
 import { helpText } from '@/utils'
-import KAlert from '@kongponents/kalert'
+import { KAlert } from '@kong/kongponents'
 
 export default defineComponent({
   name: 'ErrorMessage',

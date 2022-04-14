@@ -3,32 +3,30 @@
 @import "./inputs";
 @import "./elements";
 
-@import "@kongponents/styles/variables";
+// @import "@kongponents/styles/variables";
+@import "../../../node_modules/@kong/kongponents/dist/style.css";
 
 // Loop all maps and set to root element
-:root {
-  // colors
-  @each $name, $color in $colors {
-    --#{"" + $name}: #{$color};
-  }
-  // Spacings
-  @each $name, $space in $spacing {
-    --spacing-#{$name}: #{$space};
-  }
-  // Type
-  @each $name, $size in $type-sizes {
-    --type-#{$name}: #{$size};
-  }
-  // Font families
-  @each $name, $font in $fonts {
-    --font-family-#{$name}: #{$font};
-  }
-}
+// :root {
+//   // colors
+//   @each $name, $color in $colors {
+//     --#{"" + $name}: #{$color};
+//   }
+//   // Spacings
+//   @each $name, $space in $spacing {
+//     --spacing-#{$name}: #{$space};
+//   }
+//   // Type
+//   @each $name, $size in $type-sizes {
+//     --type-#{$name}: #{$size};
+//   }
+//   // Font families
+//   @each $name, $font in $fonts {
+//     --font-family-#{$name}: #{$font};
+//   }
+// }
 
 .kong-auth-element {
-  // Import utility classes from Kongponents, but namespace them so they don't leak into page
-  @import "@kongponents/styles/utils";
-
   font-family: var(--font-family-sans);
   font-weight: var(--KongAuthFontWeight, 400);
   position: relative;
