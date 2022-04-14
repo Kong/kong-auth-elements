@@ -408,15 +408,10 @@
     "@kongponents/kicon" "^6.24.10"
     "@kongponents/styles" "^6.24.10"
 
-"@kongponents/styles@^6.21.4":
-  version "6.24.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.5.tgz#465822fb9fdc35914dfd18f92a33b44de1f3876b"
-  integrity sha512-GwkSbn0X7mabPpm8KPfBZdmMQEyB1hUG0EEFXcM+ory0SnXkXWVS8KSmeC6SzaEBxWs1wtFrrz4iHeR1geGeqQ==
-
-"@kongponents/styles@^6.24.10":
-  version "6.24.10"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.10.tgz#735753716f71d868eb973ce63ce824e507805633"
-  integrity sha512-EBkNOZe4+njKaz8mIOUqUmtdQwAnUHUKN2WdjLQmpS9naOiaduzNGK7bEqmthqQrEiBlk4eEyjTRuvv0tgiZ1Q==
+"@kongponents/styles@^6.24.10", "@kongponents/styles@^6.24.11":
+  version "6.24.11"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.11.tgz#0f504756e08efa5a8d2fbabcf5f930bd672a5fd0"
+  integrity sha512-3JbT/8MP0ejs2FFGRhF+9/uSqHCV2v2M5fgP6uC6sz/EjPlfouhhIbzXu24wo/PSwZUCa/XpS1FCzJknZEANQg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
