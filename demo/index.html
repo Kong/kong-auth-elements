@@ -50,12 +50,14 @@
       <hr>
 
       <h4><code>kong-auth-reset-password</code></h4>
-      <kong-auth-reset-password instruction-text="Please enter in your new password and confirm it below."
-        .reset-password-success="showAlert('Reset password success!')"></kong-auth-reset-password>
+      <kong-auth-reset-password show-password-strength-meter
+        instruction-text="Please enter in your new password and confirm it below."
+        .reset-password-success="showAlert('Reset password success!')">
+      </kong-auth-reset-password>
       <hr>
 
       <h4><code>kong-auth-register</code></h4>
-      <kong-auth-register .register-success="showAlert('Register success!')" />
+      <kong-auth-register show-password-strength-meter .register-success="showAlert('Register success!')" />
     </div>
 
     <script>
@@ -74,7 +76,6 @@
 
         window.registerKongAuthNativeElements({
           // userEntity: 'developer',
-          shadowDomCss: [ './dist-copy/style.css' ]
         })
 
         document.querySelector('kong-auth-login').addEventListener('click-forgot-password-link', function() {

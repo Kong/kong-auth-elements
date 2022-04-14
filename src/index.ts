@@ -9,7 +9,10 @@ import type {
   DeveloperConfig,
   UserEntities,
 } from './utils'
+// Import all elements
 import * as elements from './elements'
+// Import Kongponents styles
+import '../node_modules/@kong/kongponents/dist/style.css'
 
 // Export a Vue plugin install function
 export const KongAuthElementsPlugin = {

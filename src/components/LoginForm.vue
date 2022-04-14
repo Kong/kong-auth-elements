@@ -142,11 +142,7 @@ import { helpText, win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useIdentityProvider from '@/composables/useIdentityProvider'
 // Components
-import KAlert from '@kongponents/kalert'
-import KButton from '@kongponents/kbutton'
-import KIcon from '@kongponents/kicon'
-import KInput from '@kongponents/kinput'
-import { KSkeleton } from '@kongponents/kskeleton'
+import { KAlert, KButton, KIcon, KInput, KSkeleton } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 export const loginEmits = {

@@ -32,10 +32,10 @@
         data-testid="kong-auth-reset-password-new-password"
       />
 
-      <Password
+      <PasswordStrengthMeter
         v-if="showPasswordStrengthMeter"
         class="password-strength-meter mb-4"
-        v-model="password"
+        :model-value="password"
         :strength-meter-only="true"
       />
 
@@ -47,7 +47,7 @@
         class="mb-4"
         autocomplete="new-password"
         :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
-        :error-message="passwordIsInvalid ? helpText.resetPassword.passwordMismatch : null"
+        :error-message="passwordIsInvalid ? helpText.resetPassword.passwordMismatch : undefined"
         required
         data-testid="kong-auth-reset-password-confirm-new-password"
       />
@@ -82,11 +82,9 @@ import useKongAuthApi from '@/composables/useKongAuthApi'
 import { PasswordresetsResetRequest, PasswordAPIV1ResetResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 // Components
-import KButton from '@kongponents/kbutton'
-import KIcon from '@kongponents/kicon'
-import KInput from '@kongponents/kinput'
+import { KButton, KIcon, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
-import Password from 'vue-password-strength-meter'
+import PasswordStrengthMeter from '@/components/PasswordStrengthMeter.vue'
 
 export const resetPasswordEmits = {
   'reset-password-success': (payload: { email: string }): boolean => {
@@ -102,7 +100,7 @@ export default defineComponent({
     KButton,
     KIcon,
     KInput,
-    Password,
+    PasswordStrengthMeter,
   },
 
   // Define emits with validation, where necessary
