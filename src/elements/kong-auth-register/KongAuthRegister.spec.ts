@@ -345,6 +345,6 @@ describe('KongAuthRegister.ce.vue', () => {
       },
     })
     /* password strength component does not handle data-testid attributes nicely */
-    cy.get('.password-strength-meter').should('be.visible')
+    cy.get('.component-password-strength-meter').should('be.visible')
   })
 })
