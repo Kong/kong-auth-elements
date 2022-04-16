@@ -339,13 +339,13 @@
     "@kongponents/kicon" "^6.24.10"
     "@kongponents/styles" "^6.24.10"
 
-"@kongponents/kbutton@^6.24.10":
-  version "6.24.10"
-  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.24.10.tgz#32d5530066c6eca56134ef00c6954ce07db7096e"
-  integrity sha512-uURlufcVFsG4dOGFZCjybRTUj8vhWjx0ODjMwIuKPbTwC3qs1ujvoC6EJdzkxdikndLbqS+oGkvETMDYp/InFQ==
+"@kongponents/kbutton@^6.24.10", "@kongponents/kbutton@^6.24.12":
+  version "6.24.12"
+  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.24.12.tgz#70f7ecc7105c44a29bd63ad77742c7e5d057d889"
+  integrity sha512-6VmXufAi6345i+Vz0HRHeGmyNeqdPM9yXgZa/p4keLndm/c2BvtIZhNZACI2SeD0DptfGKHFI0GNk5G/i9WP5g==
   dependencies:
-    "@kongponents/kicon" "^6.24.10"
-    "@kongponents/styles" "^6.24.10"
+    "@kongponents/kicon" "^6.24.12"
+    "@kongponents/styles" "^6.24.12"
 
 "@kongponents/kcheckbox@^6.24.10":
   version "6.24.10"
@@ -354,15 +354,10 @@
   dependencies:
     "@kongponents/styles" "^6.24.10"
 
-"@kongponents/kicon@^6.21.4":
-  version "6.24.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.24.5.tgz#6606ae11779c9b8180ee83d53f24825a96e94a1d"
-  integrity sha512-f7kMzkjpG9ZUZrI660+rYrwTbKFy95bj7RQAYktiZQQvPzqHiqklAKixQdpr+8jnjutFYicN4SA/JAwqxVLAeg==
-
-"@kongponents/kicon@^6.24.10":
-  version "6.24.10"
-  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.24.10.tgz#fa1a167f96087c9032ea178f025e846069520caf"
-  integrity sha512-9RjMjuahlfFqcOJHK0yG7NJa8X2SPZKvFBDodddSQ+9R8zyNeo/SpHtDfzuc8qRSvlwvP2u4UbaCq/01IjPpgw==
+"@kongponents/kicon@^6.21.4", "@kongponents/kicon@^6.24.10", "@kongponents/kicon@^6.24.12":
+  version "6.24.12"
+  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.24.12.tgz#5c90861f8b322611de025c78d40d0084afc069b7"
+  integrity sha512-6osKRdnBQd4m2mtTdJ7v1ntZw5NDtDzOpwntwcMB9zfsFLL3K48K6o6BXrqBEvpGGvFsGX2LUqiFzazQZN8Qjg==
 
 "@kongponents/kinput@^6.24.10":
   version "6.24.10"
@@ -408,15 +403,10 @@
     "@kongponents/kicon" "^6.24.10"
     "@kongponents/styles" "^6.24.10"
 
-"@kongponents/styles@^6.21.4":
-  version "6.24.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.5.tgz#465822fb9fdc35914dfd18f92a33b44de1f3876b"
-  integrity sha512-GwkSbn0X7mabPpm8KPfBZdmMQEyB1hUG0EEFXcM+ory0SnXkXWVS8KSmeC6SzaEBxWs1wtFrrz4iHeR1geGeqQ==
-
-"@kongponents/styles@^6.24.10":
-  version "6.24.10"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.10.tgz#735753716f71d868eb973ce63ce824e507805633"
-  integrity sha512-EBkNOZe4+njKaz8mIOUqUmtdQwAnUHUKN2WdjLQmpS9naOiaduzNGK7bEqmthqQrEiBlk4eEyjTRuvv0tgiZ1Q==
+"@kongponents/styles@^6.21.4", "@kongponents/styles@^6.24.10", "@kongponents/styles@^6.24.12":
+  version "6.24.12"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.12.tgz#828d8c59f5a2f2cb133cce09bb71ea24ec20c588"
+  integrity sha512-ygEQcTxdvp667Uc7cAAYpQhW3Kdza4zqtSY6O5gjpXgrsXjHq4tf0dL/Z7vkX0rSFKdN2UBJFUh8qfv+78of6Q==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -2780,10 +2770,10 @@ eslint-visitor-keys@^3.0.0, eslint-visitor-keys@^3.1.0, eslint-visitor-keys@^3.3
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.3.0.tgz#f6480fa6b1f30efe2d1968aa8ac745b862469826"
   integrity sha512-mQ+suqKJVyeuwGYHAdjMFqjCyfl8+Ldnxuyp3ldiMBFKkvytrXUZWaiPCEav8qDHKty44bD+qV1IP4T+w+xXRA==
 
-eslint@^8.12.0:
-  version "8.12.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.12.0.tgz#c7a5bd1cfa09079aae64c9076c07eada66a46e8e"
-  integrity sha512-it1oBL9alZg1S8UycLm5YDMAkIhtH6FtAzuZs6YvoGVldWjbS08BkAdb/ymP9LlAyq8koANu32U7Ib/w+UNh8Q==
+eslint@^8.13.0:
+  version "8.13.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.13.0.tgz#6fcea43b6811e655410f5626cfcf328016badcd7"
+  integrity sha512-D+Xei61eInqauAyTJ6C0q6x9mx7kTUC1KZ0m0LSEexR0V+e94K12LmWX076ZIsldwfQ2RONdaJe0re0TRGQbRQ==
   dependencies:
     "@eslint/eslintrc" "^1.2.1"
     "@humanwhocodes/config-array" "^0.9.2"
