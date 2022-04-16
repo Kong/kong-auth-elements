@@ -347,6 +347,14 @@
     "@kongponents/kicon" "^6.24.10"
     "@kongponents/styles" "^6.24.10"
 
+"@kongponents/kbutton@^6.24.12":
+  version "6.24.12"
+  resolved "https://registry.yarnpkg.com/@kongponents/kbutton/-/kbutton-6.24.12.tgz#70f7ecc7105c44a29bd63ad77742c7e5d057d889"
+  integrity sha512-6VmXufAi6345i+Vz0HRHeGmyNeqdPM9yXgZa/p4keLndm/c2BvtIZhNZACI2SeD0DptfGKHFI0GNk5G/i9WP5g==
+  dependencies:
+    "@kongponents/kicon" "^6.24.12"
+    "@kongponents/styles" "^6.24.12"
+
 "@kongponents/kcheckbox@^6.24.10":
   version "6.24.10"
   resolved "https://registry.yarnpkg.com/@kongponents/kcheckbox/-/kcheckbox-6.24.10.tgz#56ca667dc65aac5b2d1db9d63e147a30a6098db9"
@@ -364,23 +372,28 @@
   resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.24.10.tgz#fa1a167f96087c9032ea178f025e846069520caf"
   integrity sha512-9RjMjuahlfFqcOJHK0yG7NJa8X2SPZKvFBDodddSQ+9R8zyNeo/SpHtDfzuc8qRSvlwvP2u4UbaCq/01IjPpgw==
 
-"@kongponents/kinput@^6.24.10":
-  version "6.24.10"
-  resolved "https://registry.yarnpkg.com/@kongponents/kinput/-/kinput-6.24.10.tgz#e8527d0153d9a6ecd9c6fc6af94f9472100ea546"
-  integrity sha512-VoPYD0E7T7WNFwLSH06q4TnsMeEE1+a+ohejgGDOZ+/hZsH1dyVvmtvJA1Ab38fTw8CtnTOojjMgu0lr6OIXpA==
+"@kongponents/kicon@^6.24.12":
+  version "6.24.12"
+  resolved "https://registry.yarnpkg.com/@kongponents/kicon/-/kicon-6.24.12.tgz#5c90861f8b322611de025c78d40d0084afc069b7"
+  integrity sha512-6osKRdnBQd4m2mtTdJ7v1ntZw5NDtDzOpwntwcMB9zfsFLL3K48K6o6BXrqBEvpGGvFsGX2LUqiFzazQZN8Qjg==
+
+"@kongponents/kinput@^6.24.12":
+  version "6.24.12"
+  resolved "https://registry.yarnpkg.com/@kongponents/kinput/-/kinput-6.24.12.tgz#814b3270e4c3be72e50e6939774c201e1bbf0ba5"
+  integrity sha512-/LlCH5WBMq6xJSTD06KNBIOVkGg8gtrQEvM3PwxrLtJagdXq0pt8XN9iXRiln6cchNrS18xwvNw1rKRjCLuidw==
   dependencies:
-    "@kongponents/klabel" "^6.24.10"
-    "@kongponents/styles" "^6.24.10"
+    "@kongponents/klabel" "^6.24.12"
+    "@kongponents/styles" "^6.24.12"
     vue-uuid "^2.0.2"
 
-"@kongponents/klabel@^6.24.10":
-  version "6.24.10"
-  resolved "https://registry.yarnpkg.com/@kongponents/klabel/-/klabel-6.24.10.tgz#97d3ca84280e9e159bb97072b719fa7fc8545fe6"
-  integrity sha512-ZAHpDOYoQla4tOqBYdj6+gKKl5gh3df8nmOmb+NGx5wActQrsSQ2mjfD9+zNe/69zNFw6q/A9R6CJl6UCXDFlQ==
+"@kongponents/klabel@^6.24.12":
+  version "6.24.12"
+  resolved "https://registry.yarnpkg.com/@kongponents/klabel/-/klabel-6.24.12.tgz#6fed3b1f88bd712dbeddae2b8ad9dff529c772fc"
+  integrity sha512-vX58D4s7zg0oJ8c624ApItQF/qi8FHadpK4j+q0XndG9UChiAd48Gb7OOC4a8WyMqEXeSW3Q4cvhWQpNvr04hA==
   dependencies:
-    "@kongponents/kicon" "^6.24.10"
-    "@kongponents/kooltip" "^6.24.10"
-    "@kongponents/styles" "^6.24.10"
+    "@kongponents/kicon" "^6.24.12"
+    "@kongponents/kooltip" "^6.24.12"
+    "@kongponents/styles" "^6.24.12"
 
 "@kongponents/kooltip@^6.24.10":
   version "6.24.10"
@@ -389,6 +402,14 @@
   dependencies:
     "@kongponents/kpop" "^6.24.10"
     "@kongponents/styles" "^6.24.10"
+
+"@kongponents/kooltip@^6.24.12":
+  version "6.24.12"
+  resolved "https://registry.yarnpkg.com/@kongponents/kooltip/-/kooltip-6.24.12.tgz#b2abb2a50835e8903b379aeb011894b6f6dc65b8"
+  integrity sha512-Be9zExYH/ixXpaswUIB0kT4ynqYnOFnD0OBYhFHNmFdpfN47g4+YuK/on9e1cIuTMudDittuN1hLbzhs5jkseg==
+  dependencies:
+    "@kongponents/kpop" "^6.24.12"
+    "@kongponents/styles" "^6.24.12"
 
 "@kongponents/kpop@^6.24.10":
   version "6.24.10"
@@ -400,6 +421,16 @@
     popper.js "^1.15.0"
     vue-uuid "^2.0.2"
 
+"@kongponents/kpop@^6.24.12":
+  version "6.24.12"
+  resolved "https://registry.yarnpkg.com/@kongponents/kpop/-/kpop-6.24.12.tgz#0acfce163be4d1867e34610689800c6639cbd19f"
+  integrity sha512-PtovAxvb23VtmSkSTeqP8MuVS+svawq7l92cpqFU43ThQWXkGUe3JjA3TK8jBYBjMqxeygSh+19qzrXMw3vBRw==
+  dependencies:
+    "@kongponents/kbutton" "^6.24.12"
+    "@kongponents/styles" "^6.24.12"
+    popper.js "^1.15.0"
+    vue-uuid "^2.0.2"
+
 "@kongponents/kskeleton@^6.24.10":
   version "6.24.10"
   resolved "https://registry.yarnpkg.com/@kongponents/kskeleton/-/kskeleton-6.24.10.tgz#73e8b680d0780dda77bd59214f08bdbe0395cf5b"
@@ -408,15 +439,10 @@
     "@kongponents/kicon" "^6.24.10"
     "@kongponents/styles" "^6.24.10"
 
-"@kongponents/styles@^6.21.4":
-  version "6.24.5"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.5.tgz#465822fb9fdc35914dfd18f92a33b44de1f3876b"
-  integrity sha512-GwkSbn0X7mabPpm8KPfBZdmMQEyB1hUG0EEFXcM+ory0SnXkXWVS8KSmeC6SzaEBxWs1wtFrrz4iHeR1geGeqQ==
-
-"@kongponents/styles@^6.24.10":
-  version "6.24.10"
-  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.10.tgz#735753716f71d868eb973ce63ce824e507805633"
-  integrity sha512-EBkNOZe4+njKaz8mIOUqUmtdQwAnUHUKN2WdjLQmpS9naOiaduzNGK7bEqmthqQrEiBlk4eEyjTRuvv0tgiZ1Q==
+"@kongponents/styles@^6.21.4", "@kongponents/styles@^6.24.10", "@kongponents/styles@^6.24.12":
+  version "6.24.12"
+  resolved "https://registry.yarnpkg.com/@kongponents/styles/-/styles-6.24.12.tgz#828d8c59f5a2f2cb133cce09bb71ea24ec20c588"
+  integrity sha512-ygEQcTxdvp667Uc7cAAYpQhW3Kdza4zqtSY6O5gjpXgrsXjHq4tf0dL/Z7vkX0rSFKdN2UBJFUh8qfv+78of6Q==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -2780,10 +2806,10 @@ eslint-visitor-keys@^3.0.0, eslint-visitor-keys@^3.1.0, eslint-visitor-keys@^3.3
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.3.0.tgz#f6480fa6b1f30efe2d1968aa8ac745b862469826"
   integrity sha512-mQ+suqKJVyeuwGYHAdjMFqjCyfl8+Ldnxuyp3ldiMBFKkvytrXUZWaiPCEav8qDHKty44bD+qV1IP4T+w+xXRA==
 
-eslint@^8.12.0:
-  version "8.12.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.12.0.tgz#c7a5bd1cfa09079aae64c9076c07eada66a46e8e"
-  integrity sha512-it1oBL9alZg1S8UycLm5YDMAkIhtH6FtAzuZs6YvoGVldWjbS08BkAdb/ymP9LlAyq8koANu32U7Ib/w+UNh8Q==
+eslint@^8.13.0:
+  version "8.13.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.13.0.tgz#6fcea43b6811e655410f5626cfcf328016badcd7"
+  integrity sha512-D+Xei61eInqauAyTJ6C0q6x9mx7kTUC1KZ0m0LSEexR0V+e94K12LmWX076ZIsldwfQ2RONdaJe0re0TRGQbRQ==
   dependencies:
     "@eslint/eslintrc" "^1.2.1"
     "@humanwhocodes/config-array" "^0.9.2"
