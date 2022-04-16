@@ -16,53 +16,53 @@ export default defineComponent({
   emits: ['input', 'focus', 'blur', 'score', 'feedback', 'hide', 'show'],
   props: {
     /**
-       * Binded value
-       * @type {Object}
-       */
+     * Bound value
+     * @type {Object}
+     */
     modelValue: {
       type: String,
     },
     /**
-       * Password min length.
-       * Right now only visual for the badge
-       * @type {Number}
-       */
+     * Password min length.
+     * Right now only visual for the badge
+     * @type {Number}
+     */
     secureLength: {
       type: Number,
       default: 7,
     },
     /**
-       * Prop to toggle the
-       * strength Meter if
-       * User wants to implement
-       * their own
-       */
+     * Prop to toggle the
+     * strength Meter if
+     * User wants to implement
+     * their own
+     */
     showStrengthMeter: {
       type: Boolean,
       default: true,
     },
     /**
-       * CSS class for styling the
-       * strength meter bars.
-       * @type {String}
-       */
+     * CSS class for styling the
+     * strength meter bars.
+     * @type {String}
+     */
     strengthMeterClass: {
       type: String,
       default: 'Password__strength-meter',
     },
     /**
-       * strengthMeterFillClass sets the
-       * individual strength width and fill
-       * color of the strength meter bars.
-       * @type {String}
-       */
+     * strengthMeterFillClass sets the
+     * individual strength width and fill
+     * color of the strength meter bars.
+     * @type {String}
+     */
     strengthMeterFillClass: {
       type: String,
       default: 'Password__strength-meter--fill',
     },
     /**
-       * @type String
-       */
+     * @type String
+     */
     userInputs: {
       type: Array,
       default: () => [],
