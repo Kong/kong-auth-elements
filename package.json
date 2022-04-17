@@ -29,7 +29,7 @@
     "@kongponents/kcheckbox": "^6.24.10",
     "@kongponents/kicon": "^6.21.4",
     "@kongponents/kinput": "^6.24.10",
-    "@kongponents/kooltip": "^6.24.10",
+    "@kongponents/kooltip": "^6.24.13",
     "@kongponents/kskeleton": "^6.24.10",
     "@kongponents/styles": "^6.21.4",
     "@vue/compat": "^3.2.31",
