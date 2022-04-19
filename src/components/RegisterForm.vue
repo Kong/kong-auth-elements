@@ -77,7 +77,7 @@
           data-testid="kong-auth-register-password"
         />
 
-        <Password
+        <PasswordStrengthMeter
           v-if="showPasswordStrengthMeter"
           class="password-strength-meter"
           v-model="password"
@@ -148,12 +148,9 @@ import useKongAuthApi from '@/composables/useKongAuthApi'
 import { RegisterRegisterResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 // Components
-import KButton from '@kongponents/kbutton'
-import KIcon from '@kongponents/kicon'
-import KInput from '@kongponents/kinput'
-import KCheckbox from '@kongponents/kcheckbox'
+import { KButton, KIcon, KInput, KCheckbox } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
-import Password from 'vue-password-strength-meter'
+import PasswordStrengthMeter from '@/components/PasswordStrengthMeter.vue'
 
 export const registerEmits = {
   'register-success': (payload: { email: string, fromInvite: boolean }): boolean => {
@@ -170,7 +167,7 @@ export default defineComponent({
     KIcon,
     KInput,
     KCheckbox,
-    Password,
+    PasswordStrengthMeter,
   },
 
   // Define emits with validation, where necessary

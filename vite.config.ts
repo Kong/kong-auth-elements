@@ -18,7 +18,7 @@ export default ({ mode }) => {
       cssCodeSplit: false,
       rollupOptions: {
         // make sure to externalize deps that shouldn't be bundled into your library
-        // external: ['vue'], // Only enable to utilize as a Vue 3 Plugin (removes Vue from the export and requires @vue/compat in consuming app)
+        // external: ['vue'], // Only enable to utilize as a Vue 3 Plugin
         output: {
           exports: 'named',
           // Provide global variables to use in the UMD build for externalized deps
@@ -39,9 +39,6 @@ export default ({ mode }) => {
         template: {
           compilerOptions: {
             isCustomElement: (tag) => tag.startsWith('kong-auth'),
-            compatConfig: {
-              MODE: 3,
-            },
           },
         },
       }),
@@ -50,8 +47,6 @@ export default ({ mode }) => {
       alias: {
         // Alias to the /src directory
         '@/': fileURLToPath(new URL('./src/', import.meta.url)),
-        // Vue Migration build
-        vue: '@vue/compat',
       },
     },
     // Change the root when using yarn serve:*
