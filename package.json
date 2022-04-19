@@ -28,7 +28,7 @@
     "@xstate/vue": "^0.8.1",
     "axios": "^0.26.1",
     "vue": "^3.2.31",
-    "xstate": "^4.28.1",
+    "xstate": "^4.31.0",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
@@ -39,7 +39,7 @@
     "@cypress/vite-dev-server": "^2.2.2",
     "@cypress/vue": "^3.1.1",
     "@digitalroute/cz-conventional-changelog-for-jira": "^7.3.0",
-    "@rushstack/eslint-patch": "^1.1.1",
+    "@rushstack/eslint-patch": "^1.1.3",
     "@types/node": "^16.11.26",
     "@types/zxcvbn": "^4.4.1",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
@@ -50,7 +50,7 @@
     "@vue/tsconfig": "^0.1.3",
     "commitizen": "^4.2.4",
     "cross-env": "^7.0.3",
-    "cypress": "^9.5.3",
+    "cypress": "^9.5.4",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.13.0",
     "eslint-plugin-cypress": "^2.12.1",
