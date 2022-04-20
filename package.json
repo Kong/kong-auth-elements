@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@kong/kauth-client-typescript-axios": "^0.651.0",
-    "@kong/kongponents": "^7.0.0-beta.15",
+    "@kong/kongponents": "^7.0.0-beta.20",
     "@xstate/vue": "^0.8.1",
     "axios": "^0.26.1",
     "vue": "^3.2.33",
