@@ -40,7 +40,7 @@
     "@cypress/vue": "^3.1.1",
     "@digitalroute/cz-conventional-changelog-for-jira": "^7.3.0",
     "@rushstack/eslint-patch": "^1.1.3",
-    "@types/node": "^16.11.27",
+    "@types/node": "^16.11.31",
     "@types/zxcvbn": "^4.4.1",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
