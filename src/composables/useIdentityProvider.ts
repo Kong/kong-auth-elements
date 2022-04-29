@@ -15,7 +15,7 @@ export interface IdentityProviderComposable {
  * Composable function to utilize the IDP-related kauth flow.
  * @export IdentityProviderComposable
  * @param {ref<boolean>} idpIsEnabled - If true, automatically handle IDP in the onMounted lifecycle hook.
- * @param {ref<string>} idpLoginRedirectTo - Pass the returnTo URL. Must include 'konghq.com' or 'localhost' (localhost does not work currently).
+ * @param {ref<string>} idpLoginRedirectTo - Pass the returnTo URL.
  * @return {*}  {IdentityProviderComposable}
  */
 export default function useIdentityProvider(
@@ -39,7 +39,7 @@ export default function useIdentityProvider(
     // If called before window exists, exit
     if (typeof window === 'undefined') {
       // eslint-disable-next-line no-console
-      console.error("'shouldTriggerIdpLogin' should only be called in the 'onMounted' lifecycle hook, or afterwards.")
+      console.error("'shouldTriggerIdpLogin' should only be called in the 'onMounted' lifecycle hook, or afterwards")
       return false
     }
 
@@ -47,6 +47,14 @@ export default function useIdentityProvider(
     const urlPathArray: string[] = urlPath.split('/')
     // Check for IDP organization login path (only on login page, just in case)
     isIdpLogin.value = urlPathArray[1].toLowerCase() === 'login' && !!urlPathArray[2]
+
+    const { userEntity } = useConfigOptions()
+
+    // TODO: if userEntity === 'user' check for the organizationSlug in the URL
+    // TODO: if userEntity === 'developer' do not init automatically and instead show SSO button
+    if (userEntity === 'developer') {
+      //
+    }
 
     // Get URL params
     const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
@@ -84,22 +92,8 @@ export default function useIdentityProvider(
     let returnToParam
 
     try {
-      // Create new URL from returnTo
+      // Create new URL from returnTo, wrapped in try/catch to construct the URL object
       const returnToUrl = new URL(returnTo)
-
-      const allowedDomains = ['konghq.com', 'konghq.tech', 'localhost']
-
-      // If returnTo URL does not contain valid domain
-      if (!allowedDomains.some((path) => returnToUrl.hostname.includes(path))) {
-        idpIsLoading.value = false
-        // Console warning references the element prop name instead of local variable
-        // eslint-disable-next-line no-console
-        console.error(`'idpLoginReturnTo' is required and must include one of the following domains: ${allowedDomains.join(', ')}`)
-        return
-      }
-
-      // Enable to append a query string to let container app know the user went through IdP auth
-      // returnToUrl.searchParams.append('fromIdp', 'true')
 
       // Encode for query string param
       returnToParam = `returnTo=${encodeURIComponent(returnToUrl.href)}`
@@ -107,7 +101,7 @@ export default function useIdentityProvider(
       idpIsLoading.value = false
       // Console warning references the element prop name instead of local variable
       // eslint-disable-next-line no-console
-      console.error("'idpLoginReturnTo' must be a valid URL.")
+      console.error("'idpLoginReturnTo' must be a valid URL")
       return
     }
 
@@ -117,7 +111,18 @@ export default function useIdentityProvider(
     // Combine URL params, skipping any that are empty
     const redirectParams = '?' + [returnToParam].filter(Boolean).join('&')
 
-    // Redirect user to kauth endpoint
+    // TODO: redirect to proper endpoint based on the userEntity value
+
+    const { userEntity, developerConfig } = useConfigOptions()
+
+    // TODO: If userEntity is developer, redirect user to the IdP developer auth endpoint
+    if (userEntity === 'developer') {
+      win.setLocationHref(`${apiBaseUrl}/api/${apiVersion.value}/developer-authenticate/${developerConfig?.portalId}${redirectParams}`)
+
+      return
+    }
+
+    // Redirect user to the IdP user auth endpoint
     win.setLocationHref(`${apiBaseUrl}/api/${apiVersion.value}/authenticate/${organizationLoginPath.value}${redirectParams}`)
   }
 
@@ -130,7 +135,7 @@ export default function useIdentityProvider(
     if (typeof window === 'undefined') {
       // eslint-disable-next-line no-console
       console.error(
-        "'shouldTriggerIdpAuthentication' should only be called in the 'onMounted' lifecycle hook, or afterwards.",
+        "'shouldTriggerIdpAuthentication' should only be called in the 'onMounted' lifecycle hook, or afterwards",
       )
       return false
     }
