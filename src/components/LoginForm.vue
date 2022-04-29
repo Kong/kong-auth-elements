@@ -289,7 +289,7 @@ export default defineComponent({
       return helpText.login.loginText
     })
 
-    const btnDisabled = computed(() => {
+    const btnDisabled = computed((): boolean => {
       return (
         ((!formData.email || !formData.password) && !isIdpLogin.value) ||
         ['pending', 'success'].some(currentState.value.matches)
