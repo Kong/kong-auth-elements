@@ -1,4 +1,4 @@
-import { defineCustomElement, VueElementConstructor, mergeProps, DefineComponent } from 'vue'
+import { defineCustomElement, mergeProps, DefineComponent } from 'vue'
 import { kebabize } from './index'
 import type { KongAuthElementsOptions } from './index'
 import appStyles from '../assets/styles/app.scss'
@@ -10,9 +10,7 @@ import appStyles from '../assets/styles/app.scss'
  */
 export default function(
   tagName: string,
-  // customElementComponent: VueElementConstructor<any>,
   customElementComponent: DefineComponent<any>,
-  // customElementComponent: VueElementConstructor<unknown>,
   options?: KongAuthElementsOptions,
 ): void {
   try {
