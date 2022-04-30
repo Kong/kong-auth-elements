@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="wrapperSelector" :disabled="disableTeleport">
+  <Teleport :to="wrapperId" :disabled="disableTeleport">
     <BaseCustomElement>
       <RegisterForm @register-success="(emitData) => $emit('register-success', emitData)" />
     </BaseCustomElement>
@@ -17,10 +17,12 @@ export default defineComponent({
 
   // Props are defined here for use on the custom element tag
   props: {
-    wrapperSelector: {
+    wrapperId: {
       type: String,
       required: true,
       default: '#kong-auth-register-wrapper',
+      // require the value to be an id starting with a hash
+      validator: (val: string): boolean => val.startsWith('#'),
     },
     accessCodeRequired: {
       type: Boolean,

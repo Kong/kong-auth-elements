@@ -1,4 +1,4 @@
-import { defineCustomElement, VueElementConstructor } from 'vue'
+import { defineCustomElement, VueElementConstructor, mergeProps, DefineComponent } from 'vue'
 import { kebabize } from './index'
 import type { KongAuthElementsOptions } from './index'
 import appStyles from '../assets/styles/app.scss'
@@ -10,8 +10,9 @@ import appStyles from '../assets/styles/app.scss'
  */
 export default function(
   tagName: string,
-  // customElementComponent: VueElementConstructor<Record<string, unknown>>,
-  customElementComponent: VueElementConstructor<any>,
+  // customElementComponent: VueElementConstructor<any>,
+  customElementComponent: DefineComponent<any>,
+  // customElementComponent: VueElementConstructor<unknown>,
   options?: KongAuthElementsOptions,
 ): void {
   try {
@@ -31,20 +32,19 @@ export default function(
       throw new Error(`registerCustomElement: Unable to register custom element <${customElementName}> -- the name has already been registered.`)
     }
 
+    // Add a custom prop to teleport the custom element out of the shadow DOM and merge it with the existing props
+    const customElementProps = mergeProps({ ...customElementComponent.props }, {
+      shouldTeleport: {
+        type: Boolean,
+        default: true,
+      },
+    })
+
     const vueCustomElement = defineCustomElement({
       ...customElementComponent,
-      // Add a custom prop to teleport the custom element out of the shadow DOM
-      props: {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        ...customElementComponent.props,
-        ...{
-          shouldTeleport: {
-            type: Boolean,
-            default: true,
-          },
-        },
-      },
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      props: customElementProps,
       // Inject app styles
       styles: [appStyles],
       // Provide user options
