@@ -1,5 +1,9 @@
 import { ref, computed, onMounted } from 'vue'
 
+/**
+ * @description Utlize Vue Teleport to move custom elements out of the shadow DOM
+ * @param {props} elementProps Custom Element component props
+ */
 export default function useTeleport(elementProps: Record<string, any>) {
   /**
    * Transform a given string into an element selector
@@ -31,6 +35,8 @@ export default function useTeleport(elementProps: Record<string, any>) {
 
       console.error(`Could not teleport kong-auth-element out of shadow DOM. Element with id="${teleportSelector.value.replace(/#/g, '')}" was not found`)
     }
+
+    // Always set to true so the element renders, regardless of whether we are disabling the teleport functionality
     shouldRender.value = true
   })
 
