@@ -10,6 +10,7 @@
   - [Usage](#usage)
     <!-- - [Vue 3 Plugin](#vue-3-plugin) -->
     - [Vue 2 or native web components](#vue-2-or-native-web-components)
+      - [Teleport Wrapper](#teleport-wrapper)
     - [Options](#options)
       - [TypeScript](#typescript)
       - [Custom Error Handler](#custom-error-handler)
@@ -131,15 +132,23 @@ registerKongAuthNativeElements(options)
 
 The function will register all custom elements for usage as native web components.
 
-Wherever you want to utilze a custom element, simply include it just like you would any other HTML element, utilizing any props as needed
+Wherever you want to utilze a custom element, ensure to wrap it with a wrapper div (with a unique `id` attribute) and simply include it just like you would any other HTML element, utilizing any props as needed
 
 ```html
-<kong-auth-login
-  show-forgot-password-link
-  @login-success="onLoginSuccess"
-  @click-forgot-password-link="onUserClickForgotPassword"
-  @click-register-link="onUserClickRegister"></kong-auth-login>
+<div id="kong-auth-login-wrapper">
+  <kong-auth-login
+    show-forgot-password-link
+    @login-success="onLoginSuccess"
+    @click-forgot-password-link="onUserClickForgotPassword"
+    @click-register-link="onUserClickRegister"></kong-auth-login>
+</div>
 ```
+
+#### Teleport Wrapper
+
+For the current implementation, you **MUST** wrap the element with a tag with a unique `id` attribute so the element can teleport itself out of the shadow DOM to enable password manager support.
+
+This `id` attribute should then be passed to each [Custom Element](#custom-elements) in the `wrapperSelector` prop so the element can be properly teleported out of the shadow DOM. For more information [refer to the Vue Teleport docs](https://vuejs.org/guide/built-ins/teleport.html).
 
 ---
 
@@ -152,8 +161,7 @@ Regardless if you're using in Vue 3, Vue 2, or the native web components, an ide
 | `apiBaseUrl`   | `string`   | `/kauth` | The `basePath` of the internal `axios` instance. <br><br>Unless using an absolute URL, this base path **must** start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users) |
 | `userEntity`   | `string`   | `user`   | The user entity for authentication; one of `user` or `developer`.                                                                                                                                                                                                                                   |
 | `customErrorHandler`    | `Function`  | `(event: CustomEndpointErrorEvent) => ''`  | Supply a custom error handler to use when utilizing an element that allows providing a custom  request endpoint. [See the example below](#custom-error-handler)                                                                                                                                                             |
-| `shadowDom`    | `boolean`  | `false`  | Automatically register the elements as native web components (forced to `true` if using the `registerKongAuthNativeElements` function).                                                                                                                                                             |
-| `shadowDomCss` | `string[]` | `[]`     | If `shadowDom` is set to `true`, you can pass an array of inlined CSS strings that will be added to the shadow root of all elements. [See the example below](#shadow-dom-css)                                                                                                                       |
+| `shadowDomCss` | `string[]` | `[]`     | If registering as custom elements, you can pass an array of inlined CSS strings that will be added to the shadow root of all elements. [See the example below](#shadow-dom-css)                                                                                                                       |
 
 #### TypeScript
 
@@ -386,6 +394,7 @@ The login element **must** reside at the `{window.location.origin}/login` path i
 
 | Prop                     | Type    | Default                    | Description                                                                                                       |
 | :----------------------- | :------ | :------------------------- | :---------------------------------------------------------------------------------------------------------------- |
+| `wrapperSelector`        | String  | `#kong-auth-login-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element.                                                            |
 | `instructionText`        | String  | `''`                       | Set the instruction text to display above the inputs.                                                             |
 | `showForgotPasswordLink` | Boolean | `false`                    | Show a forgot password link under the password field.                                                             |
 | `forgotPasswordLinkText` | String  | `Forgot your password?`    | Set the text for the forgot password link.                                                                        |
@@ -441,6 +450,7 @@ If the user clicks the link to login with credentials, they will be sent to `/lo
 
 | Prop                           | Type    | Default                                                                                                                  | Description                                                                 |
 | :----------------------------- | :------ | :----------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| `wrapperSelector`        | String  | `#kong-auth-forgot-password-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element.                                                            |
 | `showLoginLink`                | Boolean | `false`                                                                                                                  | Show a login link under the password fields.                                |
 | `loginLinkText`                | String  | `Return to log in →`                                                                                                     | Set the text for the login link.                                            |
 | `instructionText`              | String  | `''`                                                                                                                     | Set the instruction text to display above the inputs.                       |
@@ -451,6 +461,7 @@ If the user clicks the link to login with credentials, they will be sent to `/lo
 
 | Event                     |       Payload       | Description                                         |
 | :------------------------ | :-----------------: | :-------------------------------------------------- |
+| `wrapperSelector`        | String  | `#kong-auth-reset-password-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element.                                                            |
 | `forgot-password-success` | `{ email: String }` | User successfully requested a reset password email. |
 | `click-login-link`        |                     | User clicked the included login link.               |
 
@@ -496,6 +507,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 | Prop                        | Type    | Default            | Description                                                               |
 | :-------------------------- | :------ | :----------------- | :------------------------------------------------------------------------ |
+| `wrapperSelector`        | String  | `#kong-auth-register-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element.                                                            |
 | `accessCodeRequired`        | Boolean | `false`            | An access code is required for registration.                              |
 | `instructionText`           | String  | `''`               | Set the instruction text to display above the form inputs.                |
 | `showPasswordStrengthMeter` | Boolean | `false`            | Show the password strength meter.                                         |

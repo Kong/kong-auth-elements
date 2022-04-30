@@ -1,4 +1,5 @@
 <template>
+  <Teleport :to="wrapperSelector" :disabled="disableTeleport">
     <BaseCustomElement>
       <LoginForm
         @click-forgot-password-link="(emitData) => $emit('click-forgot-password-link', emitData)"
@@ -8,10 +9,11 @@
         @idp-is-loading="(emitData) => $emit('idp-is-loading', emitData)"
         />
     </BaseCustomElement>
+  </Teleport>
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, computed } from 'vue'
+import { defineComponent, provide, computed, ref } from 'vue'
 import { helpText } from '@/utils'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import LoginForm, { loginEmits } from '@/components/LoginForm.vue'
@@ -21,6 +23,11 @@ export default defineComponent({
 
   // Props are defined here for use on the custom element tag
   props: {
+    wrapperSelector: {
+      type: String,
+      required: true,
+      default: '#kong-auth-login-wrapper',
+    },
     instructionText: {
       type: String,
       default: '',
@@ -116,6 +123,15 @@ export default defineComponent({
       'idp-login-return-to',
       computed((): string => (props.idpLoginReturnTo ? props.idpLoginReturnTo : '')),
     )
+
+    // Disable Teleport if utilized as a Custom Element
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const disableTeleport = ref(!props.shouldTeleport)
+
+    return {
+      disableTeleport,
+    }
   },
 })
 </script>

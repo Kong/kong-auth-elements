@@ -25,16 +25,11 @@ export const KongAuthElementsPlugin = {
     app.provide('shadow-dom', options?.shadowDom || false)
     app.provide('shadow-dom-css', options?.shadowDomCss)
 
-    if (options?.shadowDom === true) {
-      // Register all custom elements as native web components
-      registerKongAuthNativeElements(options)
-    } else {
-      // Register all components
-      for (const key in elements) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        app.component(key, elements[key])
-      }
+    // Register all components
+    for (const key in elements) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      app.component(key, elements[key])
     }
   },
 }
