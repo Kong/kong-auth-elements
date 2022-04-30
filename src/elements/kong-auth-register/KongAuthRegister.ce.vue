@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="wrapperId" :disabled="disableTeleport">
+  <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
     <BaseCustomElement>
       <RegisterForm @register-success="(emitData) => $emit('register-success', emitData)" />
     </BaseCustomElement>
@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import { defineComponent, provide, computed, ref } from 'vue'
+import useTeleport from '@/composables/useTeleport'
 import { helpText } from '@/utils'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import RegisterForm, { registerEmits } from '@/components/RegisterForm.vue'
@@ -20,9 +21,7 @@ export default defineComponent({
     wrapperId: {
       type: String,
       required: true,
-      default: '#kong-auth-register-wrapper',
-      // require the value to be an id starting with a hash
-      validator: (val: string): boolean => val.startsWith('#'),
+      default: 'kong-auth-register-wrapper',
     },
     accessCodeRequired: {
       type: Boolean,
@@ -81,13 +80,12 @@ export default defineComponent({
       computed((): string => (props.registerRequestEndpoint ? props.registerRequestEndpoint : '')),
     )
 
-    // Disable Teleport if utilized as a Custom Element
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const disableTeleport = ref(!props.shouldTeleport)
+    const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
 
     return {
+      teleportSelector,
       disableTeleport,
+      shouldRender,
     }
   },
 })

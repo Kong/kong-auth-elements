@@ -9,7 +9,7 @@
         </h4>
         <div id="kong-auth-login-wrapper">
           <KongAuthLogin
-            wrapper-selector="#kong-auth-login-wrapper"
+            wrapper-id="kong-auth-login-wrapper"
             idp-login-enabled
             idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
             show-forgot-password-link
@@ -27,7 +27,7 @@
         </h4>
         <div id="kong-auth-forgot-password-wrapper">
           <KongAuthForgotPassword
-            wrapper-selector="#kong-auth-forgot-password-wrapper"
+            wrapper-id="kong-auth-forgot-password-wrapper"
             instruction-text="Enter your verified email address and we will send you a password reset link."
             @click-login-link="showAlert('User clicked login')"
             @forgot-password-success="showAlert('Forgot password success!')"
@@ -41,7 +41,7 @@
         </h4>
         <div id="kong-auth-forgot-password-wrapper">
           <KongAuthResetPassword
-            wrapper-selector="#kong-auth-forgot-password-wrapper"
+            wrapper-id="kong-auth-forgot-password-wrapper"
             instruction-text="Please enter in your new password and confirm it below."
             :show-password-strength-meter="true"
             @reset-password-success="showAlert('Reset password success!')"
@@ -55,7 +55,7 @@
         </h4>
         <div id="kong-auth-register-wrapper">
           <KongAuthRegister
-            wrapper-selector="#kong-auth-register-wrapper"
+            wrapper-id="kong-auth-register-wrapper"
             show-password-strength-meter
             @register-success="showAlert('Register success!')" />
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="wrapperId" :disabled="disableTeleport">
+  <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
     <BaseCustomElement>
       <ResetPasswordForm
         @reset-password-success="(emitData) => $emit('reset-password-success', emitData)"
@@ -9,7 +9,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, provide, ref } from 'vue'
+import { defineComponent, computed, provide } from 'vue'
+import useTeleport from '@/composables/useTeleport'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import ResetPasswordForm, { resetPasswordEmits } from '@/components/ResetPasswordForm.vue'
 
@@ -21,9 +22,7 @@ export default defineComponent({
     wrapperId: {
       type: String,
       required: true,
-      default: '#kong-auth-reset-password-wrapper',
-      // require the value to be an id starting with a hash
-      validator: (val: string): boolean => val.startsWith('#'),
+      default: 'kong-auth-reset-password-wrapper',
     },
     instructionText: {
       type: String,
@@ -55,13 +54,12 @@ export default defineComponent({
       computed((): boolean => (props.showPasswordStrengthMeter ? props.showPasswordStrengthMeter : false)),
     )
 
-    // Disable Teleport if utilized as a Custom Element
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const disableTeleport = ref(!props.shouldTeleport)
+    const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
 
     return {
+      teleportSelector,
       disableTeleport,
+      shouldRender,
     }
   },
 })

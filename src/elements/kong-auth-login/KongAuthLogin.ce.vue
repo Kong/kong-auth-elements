@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="wrapperId" :disabled="disableTeleport">
+  <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
     <BaseCustomElement>
       <LoginForm
         @click-forgot-password-link="(emitData) => $emit('click-forgot-password-link', emitData)"
@@ -13,7 +13,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, computed, ref } from 'vue'
+import { defineComponent, provide, computed } from 'vue'
+import useTeleport from '@/composables/useTeleport'
 import { helpText } from '@/utils'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import LoginForm, { loginEmits } from '@/components/LoginForm.vue'
@@ -26,9 +27,7 @@ export default defineComponent({
     wrapperId: {
       type: String,
       required: true,
-      default: '#kong-auth-login-wrapper',
-      // require the value to be an id starting with a hash
-      validator: (val: string): boolean => val.startsWith('#'),
+      default: 'kong-auth-login-wrapper',
     },
     instructionText: {
       type: String,
@@ -126,13 +125,12 @@ export default defineComponent({
       computed((): string => (props.idpLoginReturnTo ? props.idpLoginReturnTo : '')),
     )
 
-    // Disable Teleport if utilized as a Custom Element
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const disableTeleport = ref(!props.shouldTeleport)
+    const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
 
     return {
+      teleportSelector,
       disableTeleport,
+      shouldRender,
     }
   },
 })
