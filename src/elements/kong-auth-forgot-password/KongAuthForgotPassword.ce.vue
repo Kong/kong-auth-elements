@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="wrapperSelector" :disabled="disableTeleport">
+  <Teleport :to="wrapperId" :disabled="disableTeleport">
     <BaseCustomElement>
       <ForgotPasswordForm
         @forgot-password-success="(emitData) => $emit('forgot-password-success', emitData)"
@@ -20,10 +20,12 @@ export default defineComponent({
 
   // Props are defined here for use on the custom element tag
   props: {
-    wrapperSelector: {
+    wrapperId: {
       type: String,
       required: true,
       default: '#kong-auth-forgot-password-wrapper',
+      // require the value to be an id starting with a hash
+      validator: (val: string): boolean => val.startsWith('#'),
     },
     showLoginLink: {
       type: Boolean,

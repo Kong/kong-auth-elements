@@ -26,7 +26,7 @@
           <code>KongAuthForgotPassword.vue</code>
         </h4>
         <div id="kong-auth-forgot-password-wrapper">
-          <kong-auth-forgot-password
+          <KongAuthForgotPassword
             wrapper-selector="#kong-auth-forgot-password-wrapper"
             instruction-text="Enter your verified email address and we will send you a password reset link."
             @click-login-link="showAlert('User clicked login')"
@@ -40,7 +40,7 @@
           <code>KongAuthResetPassword.vue</code>
         </h4>
         <div id="kong-auth-forgot-password-wrapper">
-          <kong-auth-reset-password
+          <KongAuthResetPassword
             wrapper-selector="#kong-auth-forgot-password-wrapper"
             instruction-text="Please enter in your new password and confirm it below."
             :show-password-strength-meter="true"
@@ -54,7 +54,7 @@
           <code>KongAuthRegister.vue</code>
         </h4>
         <div id="kong-auth-register-wrapper">
-          <kong-auth-register
+          <KongAuthRegister
             wrapper-selector="#kong-auth-register-wrapper"
             show-password-strength-meter
             @register-success="showAlert('Register success!')" />
