@@ -146,7 +146,7 @@ Wherever you want to utilze a custom element, ensure to wrap it with a wrapper d
 
 #### Teleport Wrapper
 
-For the current implementation, you **MUST** wrap the element with a tag with a unique `id` attribute so the element can teleport itself out of the shadow DOM to enable password manager support.
+For the current implementation, it is **REQUIRED** to wrap the element with a tag with a unique `id` attribute so the element can teleport itself out of the shadow DOM to enable password manager support.
 
 This `id` attribute should then be passed to each [Custom Element](#custom-elements) in the `wrapperSelector` prop so the element can be properly teleported out of the shadow DOM. For more information [refer to the Vue Teleport docs](https://vuejs.org/guide/built-ins/teleport.html).
 
@@ -602,10 +602,12 @@ declare module 'vue/types/vue' {
 
     ```html
     <template>
-      <BaseCustomElement>
-          <!-- Components from /src/components may be used in this default slot -->
-          <ExampleComponent @example-event="(emitData) => $emit('example-event', emitData)" />
-      </BaseCustomElement>
+      <Teleport :to="wrapperSelector" :disabled="disableTeleport">
+        <BaseCustomElement>
+            <!-- Components from /src/components may be used in this default slot -->
+            <ExampleComponent @example-event="(emitData) => $emit('example-event', emitData)" />
+        </BaseCustomElement>
+      </Teleport>
     </template>
 
     <script lang="ts">
@@ -618,7 +620,12 @@ declare module 'vue/types/vue' {
 
       // Props are defined here for use on the custom element tag, and all elements MUST have at least 1 prop
       props: {
-        exampleProp: String,
+        /* Required */
+        wrapperSelector: {
+          type: String,
+          required: true,
+          default: '#kong-auth-example-element',
+        }
       },
 
       // Import emits from child component with validation, where necessary. See existing components for examples.
@@ -634,6 +641,15 @@ declare module 'vue/types/vue' {
           'example-prop',
           computed((): string => (props.exampleProp ? props.exampleProp : '')),
         )
+
+        // Disable Teleport if utilized as a Custom Element (required)
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const disableTeleport = ref(!props.shouldTeleport)
+
+        return {
+          disableTeleport, // required
+        }
       },
     })
     </script>
