@@ -1,16 +1,17 @@
 <template>
-  <BaseCustomElement>
-    <ForgotPasswordForm
-      @forgot-password-success="(emitData) => $emit('forgot-password-success', emitData)"
-      @click-login-link="(emitData) => $emit('click-login-link', emitData)"
-    />
-  </BaseCustomElement>
+  <Teleport :to="wrapperSelector" :disabled="disableTeleport">
+    <BaseCustomElement>
+      <ForgotPasswordForm
+        @forgot-password-success="(emitData) => $emit('forgot-password-success', emitData)"
+        @click-login-link="(emitData) => $emit('click-login-link', emitData)"
+      />
+    </BaseCustomElement>
+  </Teleport>
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, computed } from 'vue'
+import { defineComponent, provide, computed, ref } from 'vue'
 import { helpText } from '@/utils'
-// Components
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import ForgotPasswordForm, { forgotPasswordEmits } from '@/components/ForgotPasswordForm.vue'
 
@@ -19,6 +20,11 @@ export default defineComponent({
 
   // Props are defined here for use on the custom element tag
   props: {
+    wrapperSelector: {
+      type: String,
+      required: true,
+      default: '#kong-auth-forgot-password-wrapper',
+    },
     showLoginLink: {
       type: Boolean,
       default: false,
@@ -75,6 +81,15 @@ export default defineComponent({
       'reset-password-request-endpoint',
       computed((): string => (props.resetPasswordRequestEndpoint ? props.resetPasswordRequestEndpoint : '')),
     )
+
+    // Disable Teleport if utilized as a Custom Element
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const disableTeleport = ref(!props.shouldTeleport)
+
+    return {
+      disableTeleport,
+    }
   },
 })
 </script>

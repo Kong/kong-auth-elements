@@ -7,46 +7,58 @@
         <h4>
           <code>KongAuthLogin.vue</code>
         </h4>
-        <KongAuthLogin
-          idp-login-enabled
-          idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
-          show-forgot-password-link
-          @login-success="showAlert('Login success!')"
-          @click-forgot-password-link="showAlert('User clicked forgot password')"
-          @click-register-link="showAlert('User clicked register')"
-          @idp-is-loading="showAlert('IDP loading state changed')"
-        />
+        <div id="kong-auth-login-wrapper">
+          <KongAuthLogin
+            wrapper-selector="#kong-auth-login-wrapper"
+            idp-login-enabled
+            idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
+            show-forgot-password-link
+            @login-success="showAlert('Login success!')"
+            @click-forgot-password-link="showAlert('User clicked forgot password')"
+            @click-register-link="showAlert('User clicked register')"
+            @idp-is-loading="showAlert('IDP loading state changed')"
+          />
+        </div>
       </div>
 
       <div v-if="urlPath.includes('/forgot-password') || urlPath === '/'" class="element-wrapper">
         <h4>
           <code>KongAuthForgotPassword.vue</code>
         </h4>
-        <KongAuthForgotPassword
-          instruction-text="Enter your verified email address and we will send you a password reset link."
-          @click-login-link="showAlert('User clicked login')"
-          @forgot-password-success="showAlert('Forgot password success!')"
-        />
+        <div id="kong-auth-forgot-password-wrapper">
+          <kong-auth-forgot-password
+            wrapper-selector="#kong-auth-forgot-password-wrapper"
+            instruction-text="Enter your verified email address and we will send you a password reset link."
+            @click-login-link="showAlert('User clicked login')"
+            @forgot-password-success="showAlert('Forgot password success!')"
+          />
+        </div>
       </div>
 
       <div v-if="urlPath.includes('/reset-password') || urlPath === '/'" class="element-wrapper">
         <h4>
           <code>KongAuthResetPassword.vue</code>
         </h4>
-        <KongAuthResetPassword
-          instruction-text="Please enter in your new password and confirm it below."
-          :show-password-strength-meter="true"
-          @reset-password-success="showAlert('Reset password success!')"
-        />
+        <div id="kong-auth-forgot-password-wrapper">
+          <kong-auth-reset-password
+            wrapper-selector="#kong-auth-forgot-password-wrapper"
+            instruction-text="Please enter in your new password and confirm it below."
+            :show-password-strength-meter="true"
+            @reset-password-success="showAlert('Reset password success!')"
+          />
+        </div>
       </div>
 
       <div v-if="urlPath.includes('/register') || urlPath === '/'" class="element-wrapper">
         <h4>
           <code>KongAuthRegister.vue</code>
         </h4>
-        <KongAuthRegister
-          show-password-strength-meter
-          @register-success="showAlert('Register success!')" />
+        <div id="kong-auth-register-wrapper">
+          <kong-auth-register
+            wrapper-selector="#kong-auth-register-wrapper"
+            show-password-strength-meter
+            @register-success="showAlert('Register success!')" />
+        </div>
       </div>
     </div>
   </div>

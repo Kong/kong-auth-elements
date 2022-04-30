@@ -33,6 +33,18 @@ export default function(
 
     const vueCustomElement = defineCustomElement({
       ...customElementComponent,
+      // Add a custom prop to teleport the custom element out of the shadow DOM
+      props: {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        ...customElementComponent.props,
+        ...{
+          shouldTeleport: {
+            type: Boolean,
+            default: true,
+          },
+        },
+      },
       // Inject app styles
       styles: [appStyles],
       // Provide user options
