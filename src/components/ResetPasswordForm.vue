@@ -25,7 +25,7 @@
         v-model.trim="password"
         type="password"
         label="New Password *"
-        :class="[showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
+        :class="['w-100', showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
         autocomplete="new-password"
         :has-error="currentState.matches('error') && error ? true : false"
         required
@@ -44,7 +44,7 @@
         v-model.trim="confirmPassword"
         type="password"
         label="Confirm New Password *"
-        class="mb-4"
+        class="w-100 mb-4"
         autocomplete="new-password"
         :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
         :error-message="passwordIsInvalid ? helpText.resetPassword.passwordMismatch : undefined"
