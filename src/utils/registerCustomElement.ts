@@ -1,4 +1,4 @@
-import { defineCustomElement, mergeProps, DefineComponent } from 'vue'
+import { defineCustomElement, mergeProps } from 'vue'
 import { kebabize } from './index'
 import type { KongAuthElementsOptions } from './index'
 import appStyles from '../assets/styles/app.scss'
@@ -10,7 +10,7 @@ import appStyles from '../assets/styles/app.scss'
  */
 export default function(
   tagName: string,
-  customElementComponent: DefineComponent<any>,
+  customElementComponent: any,
   options?: KongAuthElementsOptions,
 ): void {
   try {
@@ -40,8 +40,6 @@ export default function(
 
     const vueCustomElement = defineCustomElement({
       ...customElementComponent,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       props: customElementProps,
       // Inject app styles
       styles: [appStyles],
