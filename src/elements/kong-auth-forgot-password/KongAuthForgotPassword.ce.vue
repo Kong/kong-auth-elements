@@ -1,16 +1,18 @@
 <template>
-  <BaseCustomElement>
-    <ForgotPasswordForm
-      @forgot-password-success="(emitData) => $emit('forgot-password-success', emitData)"
-      @click-login-link="(emitData) => $emit('click-login-link', emitData)"
-    />
-  </BaseCustomElement>
+  <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
+    <BaseCustomElement>
+      <ForgotPasswordForm
+        @forgot-password-success="(emitData) => $emit('forgot-password-success', emitData)"
+        @click-login-link="(emitData) => $emit('click-login-link', emitData)"
+      />
+    </BaseCustomElement>
+  </Teleport>
 </template>
 
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
+import useTeleport from '@/composables/useTeleport'
 import { helpText } from '@/utils'
-// Components
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import ForgotPasswordForm, { forgotPasswordEmits } from '@/components/ForgotPasswordForm.vue'
 
@@ -19,6 +21,11 @@ export default defineComponent({
 
   // Props are defined here for use on the custom element tag
   props: {
+    wrapperId: {
+      type: String,
+      required: true,
+      default: 'kong-auth-forgot-password-wrapper',
+    },
     showLoginLink: {
       type: Boolean,
       default: false,
@@ -75,6 +82,14 @@ export default defineComponent({
       'reset-password-request-endpoint',
       computed((): string => (props.resetPasswordRequestEndpoint ? props.resetPasswordRequestEndpoint : '')),
     )
+
+    const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
+
+    return {
+      teleportSelector,
+      disableTeleport,
+      shouldRender,
+    }
   },
 })
 </script>

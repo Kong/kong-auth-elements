@@ -1,4 +1,5 @@
 <template>
+  <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
     <BaseCustomElement>
       <LoginForm
         @click-forgot-password-link="(emitData) => $emit('click-forgot-password-link', emitData)"
@@ -8,10 +9,12 @@
         @idp-is-loading="(emitData) => $emit('idp-is-loading', emitData)"
         />
     </BaseCustomElement>
+  </Teleport>
 </template>
 
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
+import useTeleport from '@/composables/useTeleport'
 import { helpText } from '@/utils'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import LoginForm, { loginEmits } from '@/components/LoginForm.vue'
@@ -21,6 +24,11 @@ export default defineComponent({
 
   // Props are defined here for use on the custom element tag
   props: {
+    wrapperId: {
+      type: String,
+      required: true,
+      default: 'kong-auth-login-wrapper',
+    },
     instructionText: {
       type: String,
       default: '',
@@ -116,6 +124,14 @@ export default defineComponent({
       'idp-login-return-to',
       computed((): string => (props.idpLoginReturnTo ? props.idpLoginReturnTo : '')),
     )
+
+    const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
+
+    return {
+      teleportSelector,
+      disableTeleport,
+      shouldRender,
+    }
   },
 })
 </script>

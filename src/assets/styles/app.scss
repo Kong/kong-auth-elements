@@ -1,32 +1,11 @@
 /*! KONG_AUTH_INJECT_STYLES */
-@import "./typography";
-@import "./inputs";
-@import "./elements";
 
-// @import "@kongponents/styles/variables";
+// Import Kongponents styles
 @import "../../../node_modules/@kong/kongponents/dist/style.css";
 
-// Loop all maps and set to root element
-// :root {
-//   // colors
-//   @each $name, $color in $colors {
-//     --#{"" + $name}: #{$color};
-//   }
-//   // Spacings
-//   @each $name, $space in $spacing {
-//     --spacing-#{$name}: #{$space};
-//   }
-//   // Type
-//   @each $name, $size in $type-sizes {
-//     --type-#{$name}: #{$size};
-//   }
-//   // Font families
-//   @each $name, $font in $fonts {
-//     --font-family-#{$name}: #{$font};
-//   }
-// }
-
 .kong-auth-element {
+  @import "./elements";
+
   font-family: var(--font-family-sans);
   font-weight: var(--KongAuthFontWeight, 400);
   position: relative;

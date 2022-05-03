@@ -1,20 +1,28 @@
 <template>
-  <BaseCustomElement>
-    <RegisterForm @register-success="(emitData) => $emit('register-success', emitData)" />
-  </BaseCustomElement>
+  <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
+    <BaseCustomElement>
+      <RegisterForm @register-success="(emitData) => $emit('register-success', emitData)" />
+    </BaseCustomElement>
+  </Teleport>
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, computed } from 'vue'
+import { defineComponent, provide, computed, ref } from 'vue'
+import useTeleport from '@/composables/useTeleport'
+import { helpText } from '@/utils'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import RegisterForm, { registerEmits } from '@/components/RegisterForm.vue'
-import { helpText } from '@/utils'
 
 export default defineComponent({
   name: 'KongAuthRegister',
 
   // Props are defined here for use on the custom element tag
   props: {
+    wrapperId: {
+      type: String,
+      required: true,
+      default: 'kong-auth-register-wrapper',
+    },
     accessCodeRequired: {
       type: Boolean,
       default: false,
@@ -71,6 +79,14 @@ export default defineComponent({
       'register-request-endpoint',
       computed((): string => (props.registerRequestEndpoint ? props.registerRequestEndpoint : '')),
     )
+
+    const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
+
+    return {
+      teleportSelector,
+      disableTeleport,
+      shouldRender,
+    }
   },
 })
 </script>
