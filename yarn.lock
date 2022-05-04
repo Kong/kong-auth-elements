@@ -242,10 +242,10 @@
     debug "^4.3.2"
     get-port "^5.1.1"
 
-"@cypress/vue@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@cypress/vue/-/vue-3.1.1.tgz#0e6b4a1cb972d2f271ba05209c55e9101a96d0a4"
-  integrity sha512-wD1vunuPFPLC8FZtgwdq+mcSEOs27qquuJJdGcY8aAN0y38rqYuuaj+N4UxKoAjhkSwthaOeZehjBtvDvv9C6w==
+"@cypress/vue@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@cypress/vue/-/vue-3.1.2.tgz#0950d20249daf5e4140a880d5230305a23cb2fea"
+  integrity sha512-CqIBupPW6EhXJ7lXE64MBKh3VfdShHnuC3HBV/euHBt9tsgSo7RZHBTZUsKc8aM745VzVnuNiax+JV4CplrtLQ==
   dependencies:
     "@cypress/mount-utils" "1.0.2"
     "@vue/test-utils" "^2.0.0-rc.10"
@@ -325,10 +325,10 @@
   resolved "https://registry.yarnpkg.com/@isaacs/string-locale-compare/-/string-locale-compare-1.1.0.tgz#291c227e93fd407a96ecd59879a35809120e432b"
   integrity sha512-SQ7Kzhh9+D+ZW9MA0zkYv3VXhIDNx+LzM6EJ+/65I3QY+enU6Itte7E5XX7EWrqLW2FN4n06GWzBnPoC3th2aQ==
 
-"@kong/kauth-client-typescript-axios@^0.657.0":
-  version "0.657.0"
-  resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.657.0.tgz#b11e852c53718fcf885f88f6eef81ec8de40ba27"
-  integrity sha512-4lLHtlBZahOMsIzjpEFrwlvuJaayradXMXEC3qYWkirFczxsy98cOBg7e8ytz97Hoik1priqzW83m2djg167xg==
+"@kong/kauth-client-typescript-axios@^0.683.0":
+  version "0.683.0"
+  resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.683.0.tgz#9f2e4d34a4b4f7c1d95dddd82edf6e62e076ef7d"
+  integrity sha512-pQnIctKQ5xdH9G9vv1ByHQsuA8ZblsZy3ffAtq7a4PVAlgBjyCOcMOd3MEoSQhS5bmExs+fYImPjSIDMl/VCpw==
 
 "@kong/kongponents@^7.0.0-beta.23":
   version "7.0.0-beta.23"
