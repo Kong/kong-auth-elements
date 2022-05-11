@@ -4,7 +4,7 @@ import type { KongAuthElementsOptions, UserEntities, DeveloperConfig, CustomEndp
 // Wrap the inject functions in an object w/ functions so they can be
 // stubbed in the component tests.
 export const getConfigOptions = {
-  apiBaseUrl: (): string => inject('kauth-api-base-url', ''),
+  apiBaseUrl: (): string => inject('kauth-api-base-url', '/kauth'),
   userEntity: (): UserEntities => inject('user-entity', 'user'),
   developerConfig: (): DeveloperConfig => inject('developer-config', { portalId: '' }),
   customErrorHandler: (): (event: CustomEndpointErrorEvent) => string => inject('custom-endpoint-error-handler', () => ''),
