@@ -57,6 +57,10 @@ export default defineComponent({
       type: String,
       default: helpText.login.registerSuccess,
     },
+    basicAuthLoginEnabled: {
+      type: Boolean,
+      default: true,
+    },
     idpLoginEnabled: {
       type: Boolean,
       default: false,
@@ -113,6 +117,12 @@ export default defineComponent({
     provide(
       'register-success-text',
       computed((): string => (props.registerSuccessText ? props.registerSuccessText : helpText.login.registerSuccess)),
+    )
+
+    // Basic Auth
+    provide(
+      'basic-auth-login-enabled',
+      computed((): boolean => props.basicAuthLoginEnabled),
     )
 
     // IDP

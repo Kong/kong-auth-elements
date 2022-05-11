@@ -40,6 +40,25 @@
         />
       </div>
 
+      <!-- Standalone IdP Login button -->
+      <!-- <div v-if="isIdpLogin"> -->
+        <KButton
+          appearance="primary"
+          :is-rounded="false"
+          class="justify-content-center w-100 mb-3 type-lg"
+          data-testid="kong-auth-login-submit"
+          @click.prevent="redirectToIdp(idpLoginReturnTo)"
+        >
+          <KIcon
+            v-if="['pending', 'success'].some(currentState.matches)"
+            icon="spinner"
+            size="16"
+            class="pr-0 mr-2"
+          />
+          {{ helpText.login.loginTextSSO }} (STANDALONE)
+        </KButton>
+      <!-- </div> -->
+
       <form
         class="login-form"
         @submit.prevent="submitForm"
@@ -54,17 +73,17 @@
           >{{ instructionText }}</p>
 
             <KInput
-                id="email"
-                v-model.trim="email"
-                type="email"
-                label="Email *"
-                class="w-100 mb-5"
-                autocomplete="username"
-                autocapitalize="off"
-                :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
-                required
-                data-testid="kong-auth-login-email"
-              />
+              id="email"
+              v-model.trim="email"
+              type="email"
+              label="Email *"
+              class="w-100 mb-5"
+              autocomplete="username"
+              autocapitalize="off"
+              :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+              required
+              data-testid="kong-auth-login-email"
+            />
 
             <KInput
               id="password"
@@ -187,6 +206,7 @@ export default defineComponent({
     const registerLinkText: Ref<string> = inject('register-link-text', ref(''))
     const registerLinkHelpText: Ref<string> = inject('register-link-help-text', ref(''))
     const registerSuccessText: Ref<string> = inject('register-success-text', ref(''))
+    const basicAuthLoginEnabled: Ref<boolean> = inject('basic-auth-login-enabled', ref(true))
     const idpLoginEnabled: Ref<boolean> = inject('idp-login-enabled', ref(false))
     const idpLoginReturnTo: Ref<string> = inject('idp-login-return-to', ref(''))
 
@@ -199,7 +219,7 @@ export default defineComponent({
 
     // Setup and automatically trigger IDP (or ignore it, depending on the props)
     // Passing the refs on purpose so values are reactive.
-    const { isIdpLogin, idpIsLoading } = useIdentityProvider(idpLoginEnabled, idpLoginReturnTo)
+    const { isIdpLogin, idpIsLoading, redirectToIdp } = useIdentityProvider(basicAuthLoginEnabled, idpLoginEnabled, idpLoginReturnTo)
 
     // Automatically trigger state change based on IDP
     watch(idpIsLoading, (val) => {
@@ -494,7 +514,11 @@ export default defineComponent({
       loginWithCredentials,
       error,
       fieldsHaveError,
+      basicAuthLoginEnabled,
       isIdpLogin,
+      userEntity,
+      idpLoginReturnTo,
+      redirectToIdp,
       ...toRefs(formData),
     }
   },
