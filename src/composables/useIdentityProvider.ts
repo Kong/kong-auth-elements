@@ -14,11 +14,13 @@ export interface IdentityProviderComposable {
 /**
  * Composable function to utilize the IDP-related kauth flow.
  * @export IdentityProviderComposable
+ * @param {ref<boolean>} basicAuthIsEnabled - If true, user can log in with basic auth credentials.
  * @param {ref<boolean>} idpIsEnabled - If true, automatically handle IDP in the onMounted lifecycle hook.
  * @param {ref<string>} idpLoginRedirectTo - Pass the returnTo URL.
- * @return {*}  {IdentityProviderComposable}
+ * @return {*} {IdentityProviderComposable}
  */
 export default function useIdentityProvider(
+  basicAuthIsEnabled: Ref<boolean>,
   idpIsEnabled: Ref<boolean>,
   idpLoginRedirectTo: Ref<string>,
 ): IdentityProviderComposable {
@@ -27,8 +29,10 @@ export default function useIdentityProvider(
   const idpIsLoading = ref(false)
   const isRedirecting = ref(false)
   const organizationLoginPath = ref<string>('')
+  // TODO:
   const code = ref<string>('')
   const state = ref<string>('')
+
   const apiVersion = ref('v1')
 
   /**
@@ -45,15 +49,15 @@ export default function useIdentityProvider(
 
     const urlPath: string = win.getLocationPathname()
     const urlPathArray: string[] = urlPath.split('/')
-    // Check for IDP organization login path (only on login page, just in case)
-    isIdpLogin.value = urlPathArray[1].toLowerCase() === 'login' && !!urlPathArray[2]
 
-    const { userEntity } = useConfigOptions()
-
-    // TODO: if userEntity === 'user' check for the organizationSlug in the URL
-    // TODO: if userEntity === 'developer' do not init automatically and instead show SSO button
-    if (userEntity === 'developer') {
-      //
+    if (userEntity === 'user') {
+      // Check for IDP organization login path (only on login page, just in case)
+      isIdpLogin.value = urlPathArray[1].toLowerCase() === 'login' && !!urlPathArray[2]
+      // Set login path
+      organizationLoginPath.value = urlPathArray[2]
+    } else if (userEntity === 'developer') {
+      // If only IdP login is enabled, go ahead and auto-trigger
+      isIdpLogin.value = idpIsEnabled.value === true && basicAuthIsEnabled.value === false
     }
 
     // Get URL params
@@ -72,9 +76,6 @@ export default function useIdentityProvider(
     // Trigger loading
     idpIsLoading.value = true
 
-    // Set login path
-    organizationLoginPath.value = urlPathArray[2]
-
     return true
   }
 
@@ -83,7 +84,9 @@ export default function useIdentityProvider(
    * @param {string} [returnTo] - The full URL (including https://) where to return the user to with the code and state.
    */
   const redirectToIdp = (returnTo: string): void => {
-    if (!organizationLoginPath.value) {
+    idpIsLoading.value = true
+
+    if (userEntity !== 'developer' && !organizationLoginPath.value) {
       idpIsLoading.value = false
       return
     }
@@ -111,12 +114,17 @@ export default function useIdentityProvider(
     // Combine URL params, skipping any that are empty
     const redirectParams = '?' + [returnToParam].filter(Boolean).join('&')
 
-    // TODO: redirect to proper endpoint based on the userEntity value
-
-    const { userEntity, developerConfig } = useConfigOptions()
-
     // TODO: If userEntity is developer, redirect user to the IdP developer auth endpoint
     if (userEntity === 'developer') {
+      if (!developerConfig?.portalId) {
+        // Reset loading state
+        idpIsLoading.value = false
+
+        // Exit early
+        console.error("'portalId' is required")
+        return
+      }
+
       win.setLocationHref(`${apiBaseUrl}/api/${apiVersion.value}/developer-authenticate/${developerConfig?.portalId}${redirectParams}`)
 
       return
@@ -139,6 +147,8 @@ export default function useIdentityProvider(
       )
       return false
     }
+
+    // TODO: pass along all URL query parameters
 
     const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
     code.value = urlParams?.get('code') || ''
@@ -165,6 +175,12 @@ export default function useIdentityProvider(
 
     // Prevent additional redirects while processing
     isRedirecting.value = true
+
+    if (userEntity === 'developer') {
+      // Redirect developer to kauth endpoint
+      win.setLocationHref(`${apiBaseUrl}/api/${apiVersion.value}/developer-authenticate/oidc-callback?code=${code.value}&state=${state.value}`)
+      return
+    }
 
     // Redirect user to kauth endpoint
     win.setLocationHref(`${apiBaseUrl}/api/${apiVersion.value}/authenticate/oidc-callback?code=${code.value}&state=${state.value}`)

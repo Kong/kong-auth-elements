@@ -10,8 +10,9 @@
         <div id="kong-auth-login-wrapper">
           <KongAuthLogin
             wrapper-id="kong-auth-login-wrapper"
+            basic-auth-login-enabled
             idp-login-enabled
-            idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
+            idp-login-return-to="https://kompany795bb6b9.us.portal.konghq.tech"
             show-forgot-password-link
             @login-success="showAlert('Login success!')"
             @click-forgot-password-link="showAlert('User clicked forgot password')"
