@@ -15,6 +15,10 @@
 
 // LOGIN
 .kong-auth-login-form {
+  .basic-auth-link {
+    font-size: 14px;
+  }
+
   .idp-loading {
     justify-content: center;
   }
@@ -62,6 +66,31 @@
   transform-box: fill-box;
   transform-origin: 50% 50%;
   animation: spin 1.2s infinite linear;
+}
+
+.kong-auth-element-form-divider {
+  display: flex;
+  color: var(--black-300, rgba(0, 0, 0, 0.7));
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 24px auto;
+
+  &:before,
+  &:after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--black-300, rgba(0, 0, 0, 0.7));
+  }
+
+  &:before {
+    margin: 0 12px 0 0;
+  }
+
+  &:after {
+    margin: 0 0 0 12px;
+  }
 }
 
 @import "./password-strength-meter";

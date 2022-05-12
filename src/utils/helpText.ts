@@ -11,6 +11,7 @@ export default {
     loginWithCredentials: 'Log in with email and password',
     loginText: 'Login',
     loginTextSSO: 'Login with SSO',
+    loginTextSSOAriaLabel: 'Login with your single sign-on provider',
     submittingText: 'Submitting',
   },
   forgotPassword: {
@@ -34,5 +35,6 @@ export default {
     missingInfo: 'Please complete all required fields.',
     invalidAccessCode: 'Invalid access code',
     serviceUnavailable: 'Service unavailable. Please try again later.',
+    dividerTextOr: 'or',
   },
 }
