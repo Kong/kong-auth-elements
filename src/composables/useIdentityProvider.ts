@@ -59,6 +59,11 @@ export default function useIdentityProvider(
     } else if (userEntity === 'developer') {
       // Check for /login/sso path (only on login page, and 'sso' is second part of URL split)
       isIdpLogin.value = urlPathArray[1].toLowerCase() === 'login' && !!urlPathArray[2] && urlPathArray[2] === 'sso'
+
+      // If developer is on /login/{string} that is not equal to 'sso' redirect back to the normal login page
+      if (!isIdpLogin.value && urlPathArray[1].toLowerCase() === 'login' && !!urlPathArray[2] && urlPathArray[2] !== 'sso') {
+        win.setLocationHref(win.getLocationOrigin() + '/login')
+      }
     }
 
     // Get URL params
