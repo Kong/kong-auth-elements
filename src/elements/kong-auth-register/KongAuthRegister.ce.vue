@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, computed, ref } from 'vue'
+import { defineComponent, provide, computed } from 'vue'
 import useTeleport from '@/composables/useTeleport'
 import { helpText } from '@/utils'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
