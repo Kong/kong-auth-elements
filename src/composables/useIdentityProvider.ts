@@ -1,7 +1,8 @@
 import { onMounted, ref, Ref, watch } from 'vue'
+import useConfigOptions from '@/composables/useConfigOptions'
 import { win } from '@/utils'
 
-interface IdentityProviderComposable {
+export interface IdentityProviderComposable {
   isIdpLogin: Ref<boolean>
   idpIsLoading: Ref<boolean>
   shouldTriggerIdpLogin(): boolean
@@ -21,6 +22,7 @@ export default function useIdentityProvider(
   idpIsEnabled: Ref<boolean>,
   idpLoginRedirectTo: Ref<string>,
 ): IdentityProviderComposable {
+  const { apiBaseUrl, userEntity, developerConfig } = useConfigOptions()
   const isIdpLogin = ref(false)
   const idpIsLoading = ref(false)
   const isRedirecting = ref(false)
@@ -116,7 +118,7 @@ export default function useIdentityProvider(
     const redirectParams = '?' + [returnToParam].filter(Boolean).join('&')
 
     // Redirect user to kauth endpoint
-    win.setLocationHref(`/kauth/api/${apiVersion.value}/authenticate/${organizationLoginPath.value}${redirectParams}`)
+    win.setLocationHref(`${apiBaseUrl}/api/${apiVersion.value}/authenticate/${organizationLoginPath.value}${redirectParams}`)
   }
 
   /**
@@ -160,7 +162,7 @@ export default function useIdentityProvider(
     isRedirecting.value = true
 
     // Redirect user to kauth endpoint
-    win.setLocationHref(`/kauth/api/${apiVersion.value}/authenticate/oidc-callback?code=${code.value}&state=${state.value}`)
+    win.setLocationHref(`${apiBaseUrl}/api/${apiVersion.value}/authenticate/oidc-callback?code=${code.value}&state=${state.value}`)
   }
 
   // Add watcher to allow `kong-auth-login` element time to load and retrigger redirect.

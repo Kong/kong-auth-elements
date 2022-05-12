@@ -85,7 +85,7 @@ const app = createApp(App)
 
 const pluginOptions: KongAuthElementsOptions = {
   // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
-  apiBaseUrl: '/kauth',
+  apiBaseUrl: 'https://us.api.konghq.com/kauth',
   userEntity: 'user',
 }
 
@@ -122,7 +122,7 @@ import '@kong/kong-auth-elements/dist/style.css'
 
 const options: KongAuthElementsOptions = {
   // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
-  apiBaseUrl: '/kauth',
+  apiBaseUrl: 'https://us.api.konghq.com/kauth',
   userEntity: 'user',
   shadowDom: true,
   shadowDomCss: ['.kong-auth-login-form .k-input#email { background-color: var(--red-400, #ff0000) }'],
@@ -208,7 +208,7 @@ If an error message `string` is not returned from the `customErrorHandler` based
 
 ```ts
 const pluginOptions: KongAuthElementsOptions = {
-  apiBaseUrl: '/kauth',
+  apiBaseUrl: 'https://us.api.konghq.com/kauth',
   userEntity: 'developer',
   customErrorHandler: ({ error, request, element }): string => {
     // Access the original error
@@ -234,7 +234,7 @@ const pluginOptions: KongAuthElementsOptions = {
 // Pass in inlined CSS strings as needed
 
 const pluginOptions: KongAuthElementsOptions = {
-  apiBaseUrl: '/kauth',
+  apiBaseUrl: 'https://us.api.konghq.com/kauth',
   userEntity: 'user',
   shadowDomCss: [
     '.kong-auth-login-form .k-input#email { background-color: var(--red-400, #ff0000) }',
