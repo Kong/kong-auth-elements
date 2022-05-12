@@ -57,6 +57,7 @@ export default function useIdentityProvider(
       organizationLoginPath.value = urlPathArray[2]
     } else if (userEntity === 'developer') {
       // If only IdP login is enabled, go ahead and auto-trigger
+      // TODO: Do not auto-trigger; require the user to click a button since Portal doesn't use login path
       isIdpLogin.value = idpIsEnabled.value === true && basicAuthIsEnabled.value === false
     }
 
