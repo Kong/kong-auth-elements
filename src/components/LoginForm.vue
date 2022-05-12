@@ -9,6 +9,39 @@
     />
 
     <div v-else>
+
+      <!-- Standalone IdP Login button -->
+      <div v-if="idpLoginEnabled && (userEntity === 'developer' || (userEntity === 'user' && isIdpLogin))">
+        <KButton
+          appearance="outline"
+          :is-rounded="false"
+          class="justify-content-center w-100 type-lg"
+          data-testid="kong-auth-login-sso"
+          :aria-label="['pending', 'success'].some(currentState.matches) ? undefined : helpText.login.loginTextSSOAriaLabel"
+          :disabled="loginBtnSSODisabled"
+          @click.prevent="redirectToIdp(idpLoginReturnTo)"
+        >
+          <KIcon
+            :icon="idpIsLoading ? 'spinner' : 'organization'"
+            size="16"
+            class="pr-0 mr-2"
+            :color="loginBtnSSODisabled ? 'var(--grey-400, #b6b6bd)' : 'var(--blue-500, #1155cb)'"
+          />
+          {{ helpText.login.loginTextSSO }}
+        </KButton>
+
+        <p v-if="userEntity !== 'developer' && !basicAuthLoginEnabled && !forceBasicAuth" class="basic-auth-link mt-5 text-center">
+          <a
+            @click.prevent="loginWithCredentials"
+            class="color-blue-500"
+            href="#"
+            data-testid="kong-auth-login-basic-auth-link"
+          >{{ helpText.login.loginWithCredentials }}</a>
+        </p>
+      </div>
+
+      <div v-if="(basicAuthLoginEnabled && idpLoginEnabled && (userEntity === 'developer' || (userEntity === 'user' && isIdpLogin))) || forceBasicAuth" class="kong-auth-element-form-divider">{{ helpText.general.dividerTextOr }}</div>
+
       <div v-if="currentState.matches('error') && error" class="my-3">
         <ErrorMessage :error="error" />
       </div>
@@ -39,38 +72,6 @@
           data-testid="kong-auth-login-register-success-message"
         />
       </div>
-
-      <!-- Standalone IdP Login button -->
-      <div v-if="idpLoginEnabled">
-        <KButton
-          appearance="outline"
-          :is-rounded="false"
-          class="justify-content-center w-100 type-lg"
-          data-testid="kong-auth-login-sso"
-          :aria-label="['pending', 'success'].some(currentState.matches) ? undefined : helpText.login.loginTextSSOAriaLabel"
-          :disabled="loginBtnSSODisabled"
-          @click.prevent="redirectToIdp(idpLoginReturnTo)"
-        >
-          <KIcon
-            :icon="idpIsLoading ? 'spinner' : 'organization'"
-            size="16"
-            class="pr-0 mr-2"
-            :color="loginBtnSSODisabled ? 'var(--grey-400, #b6b6bd)' : 'var(--blue-500, #1155cb)'"
-          />
-          {{ helpText.login.loginTextSSO }}
-        </KButton>
-
-        <p v-if="userEntity !== 'developer' && !basicAuthLoginEnabled && !forceBasicAuth" class="basic-auth-link mt-5 text-center">
-          <a
-            @click.prevent="loginWithCredentials"
-            class="color-blue-500"
-            href="#"
-            data-testid="kong-auth-login-basic-auth-link"
-          >{{ helpText.login.loginWithCredentials }}</a>
-        </p>
-      </div>
-
-      <p v-if="(basicAuthLoginEnabled && idpLoginEnabled) || forceBasicAuth" class="kong-auth-element-form-divider">{{ helpText.general.dividerTextOr }}</p>
 
       <form
         v-if="basicAuthLoginEnabled || forceBasicAuth || (!basicAuthLoginEnabled && !idpLoginEnabled)"
