@@ -36,28 +36,38 @@
       <br>
 
       <h4><code>kong-auth-login</code></h4>
-      <kong-auth-login show-forgot-password-link .login-success="showAlert('Login success!')"
-        .click-forgot-password-link="showAlert('User clicked forgot password')"
-        .click-register-link="showAlert('User clicked register')"></kong-auth-login>
+      <div id="kong-auth-login-wrapper">
+        <kong-auth-login wrapper-id="kong-auth-login-wrapper" show-forgot-password-link
+          .login-success="showAlert('Login success!')"
+          .click-forgot-password-link="showAlert('User clicked forgot password')"
+          .click-register-link="showAlert('User clicked register')"></kong-auth-login>
+      </div>
       <hr>
 
       <h4><code>kong-auth-forgot-password</code></h4>
-      <kong-auth-forgot-password
-        instruction-text="Enter your verified email address and we will send you a password reset link."
-        .click-login-link="showAlert('User clicked login')"
-        .forgot-password-success="showAlert('Forgot password success!')">
-      </kong-auth-forgot-password>
+      <div id="kong-auth-forgot-password-wrapper">
+        <kong-auth-forgot-password wrapper-id="kong-auth-forgot-password-wrapper"
+          instruction-text="Enter your verified email address and we will send you a password reset link."
+          .click-login-link="showAlert('User clicked login')"
+          .forgot-password-success="showAlert('Forgot password success!')">
+        </kong-auth-forgot-password>
+      </div>
       <hr>
 
       <h4><code>kong-auth-reset-password</code></h4>
-      <kong-auth-reset-password show-password-strength-meter
-        instruction-text="Please enter in your new password and confirm it below."
-        .reset-password-success="showAlert('Reset password success!')">
-      </kong-auth-reset-password>
+      <div id="kong-auth-reset-password-wrapper">
+        <kong-auth-reset-password wrapper-id="kong-auth-reset-password-wrapper" show-password-strength-meter
+          instruction-text="Please enter in your new password and confirm it below."
+          .reset-password-success="showAlert('Reset password success!')">
+        </kong-auth-reset-password>
+      </div>
       <hr>
 
       <h4><code>kong-auth-register</code></h4>
-      <kong-auth-register show-password-strength-meter .register-success="showAlert('Register success!')" />
+      <div id="kong-auth-register-wrapper">
+        <kong-auth-register wrapper-id="kong-auth-register-wrapper" show-password-strength-meter
+          .register-success="showAlert('Register success!')" />
+      </div>
     </div>
 
     <script>

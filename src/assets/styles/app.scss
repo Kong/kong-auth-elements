@@ -1,11 +1,17 @@
 /*! KONG_AUTH_INJECT_STYLES */
 
-// Import Kongponents styles
-@import "../../../node_modules/@kong/kongponents/dist/style.css";
+@use "sass:meta";
+// Import Kongponents Sass variables
+@import "../../../node_modules/@kong/kongponents/dist/_variables.scss";
 
 .kong-auth-element {
-  @import "./elements";
-
+  // Include and Scope Kongponents CSS Variables
+  @include kongponents-css-variables;
+  // Import Kongponents styles
+  @include meta.load-css("../../../node_modules/@kong/kongponents/dist/style.css");
+  // Import kong-auth-element styles
+  @include meta.load-css("./elements");
+  // Additional CSS rules
   font-family: var(--font-family-sans);
   font-weight: var(--KongAuthFontWeight, 400);
   position: relative;
