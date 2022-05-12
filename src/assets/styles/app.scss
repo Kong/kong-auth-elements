@@ -6,7 +6,7 @@
 
 .kong-auth-element {
   // Include and Scope Kongponents CSS Variables
-  @include css-variables;
+  @include kongponents-css-variables;
   // Import Kongponents styles
   @include meta.load-css("../../../node_modules/@kong/kongponents/dist/style.css");
   // Import kong-auth-element styles
