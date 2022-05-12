@@ -325,10 +325,10 @@
   resolved "https://registry.yarnpkg.com/@isaacs/string-locale-compare/-/string-locale-compare-1.1.0.tgz#291c227e93fd407a96ecd59879a35809120e432b"
   integrity sha512-SQ7Kzhh9+D+ZW9MA0zkYv3VXhIDNx+LzM6EJ+/65I3QY+enU6Itte7E5XX7EWrqLW2FN4n06GWzBnPoC3th2aQ==
 
-"@kong/kauth-client-typescript-axios@^0.683.0":
-  version "0.683.0"
-  resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.683.0.tgz#9f2e4d34a4b4f7c1d95dddd82edf6e62e076ef7d"
-  integrity sha512-pQnIctKQ5xdH9G9vv1ByHQsuA8ZblsZy3ffAtq7a4PVAlgBjyCOcMOd3MEoSQhS5bmExs+fYImPjSIDMl/VCpw==
+"@kong/kauth-client-typescript-axios@^0.741.0":
+  version "0.741.0"
+  resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.741.0.tgz#aa004586bef78aee4da75d61efd096b2503920e0"
+  integrity sha512-aaw9fVYJjvhub7b/fJsZIPIfkCqYjByGifME3odI+WC8RkAFApMn9lsKASjzs9/H9usF8TM0hcwO91fe+ZO1kg==
 
 "@kong/kongponents@^7.0.0-beta.25":
   version "7.0.0-beta.25"
@@ -771,10 +771,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.12.tgz#0d4557fd3b94497d793efd4e7d92df2f83b4ef24"
   integrity sha512-q4jlIR71hUpWTnGhXWcakgkZeHa3CCjcQcnuzU8M891BAWA2jHiziiWEPEkdS5pFsz7H9HJiy8BrK7tBRNrY7A==
 
-"@types/node@^16.11.33":
-  version "16.11.33"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.33.tgz#566713b1b626f781c5c58fe3531307283e00720c"
-  integrity sha512-0PJ0vg+JyU0MIan58IOIFRtSvsb7Ri+7Wltx2qAg94eMOrpg4+uuP3aUHCpxXc1i0jCXiC+zIamSZh3l9AbcQA==
+"@types/node@^16.11.34":
+  version "16.11.34"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.34.tgz#520224e4be4448c279ecad09639ab460cc441a50"
+  integrity sha512-UrWGDyLAlQ2Z8bNOGWTsqbP9ZcBeTYBVuTRNxXTztBy5KhWUFI3BaeDWoCP/CzV/EVGgO1NTYzv9ZytBI9GAEw==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
