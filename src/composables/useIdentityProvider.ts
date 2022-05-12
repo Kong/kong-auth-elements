@@ -29,14 +29,15 @@ export default function useIdentityProvider(
   const idpIsLoading = ref(false)
   const isRedirecting = ref(false)
   const organizationLoginPath = ref<string>('')
-  // TODO:
+  const apiVersion = ref('v1')
+  // 'code' and 'state' are the only currently required oidc-callback query parameters
   const code = ref<string>('')
   const state = ref<string>('')
-
-  const apiVersion = ref('v1')
+  // When we redirect to the oidc-callback endpoint, we want to send along all provided query parameters
+  const oidcQueryParams = ref<URLSearchParams|null>(null)
 
   /**
-   * Returns true if user is on /login/{org-id} route in container application with valid org-id in path, and no logout=true in query string.
+   * Returns true if user is on /login/{org-id} (user) or /login/sso (developer) route in container application, and no logout=true in query string.
    * @return {*}  {boolean}
    */
   const shouldTriggerIdpLogin = (): boolean => {
@@ -56,9 +57,8 @@ export default function useIdentityProvider(
       // Set login path
       organizationLoginPath.value = urlPathArray[2]
     } else if (userEntity === 'developer') {
-      // If only IdP login is enabled, go ahead and auto-trigger
-      // TODO: Do not auto-trigger; require the user to click a button since Portal doesn't use login path
-      isIdpLogin.value = idpIsEnabled.value === true && basicAuthIsEnabled.value === false
+      // Check for /login/sso path (only on login page, and 'sso' is second part of URL split)
+      isIdpLogin.value = urlPathArray[1].toLowerCase() === 'login' && !!urlPathArray[2] && urlPathArray[2] === 'sso'
     }
 
     // Get URL params
@@ -115,7 +115,6 @@ export default function useIdentityProvider(
     // Combine URL params, skipping any that are empty
     const redirectParams = '?' + [returnToParam].filter(Boolean).join('&')
 
-    // TODO: If userEntity is developer, redirect user to the IdP developer auth endpoint
     if (userEntity === 'developer') {
       if (!developerConfig?.portalId) {
         // Reset loading state
@@ -149,13 +148,23 @@ export default function useIdentityProvider(
       return false
     }
 
-    // TODO: pass along all URL query parameters
+    try {
+      // Create new URL from returnTo, wrapped in try/catch to construct the URL object
+      const currentUrl = new URL(win.getLocationHref())
+      oidcQueryParams.value = new URLSearchParams(currentUrl.search)
+    } catch (_) {
+      oidcQueryParams.value = null
+      console.error(
+        "'shouldTriggerIdpAuthentication' could not extract the required OIDC query parameters",
+      )
+      return false
+    }
 
-    const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
-    code.value = urlParams?.get('code') || ''
-    state.value = urlParams?.get('state') || ''
+    // We need to ensure code and state are set (required)
+    code.value = oidcQueryParams.value?.get('code') || ''
+    state.value = oidcQueryParams.value?.get('state') || ''
 
-    // Check for url params
+    // Check for required url params
     if (!code.value || !state.value) {
       code.value = ''
       state.value = ''
@@ -169,6 +178,7 @@ export default function useIdentityProvider(
   }
 
   const authenticateWithIdp = () => {
+    // Ensure required parameters are set
     if (!code.value || !state.value) {
       idpIsLoading.value = false
       return
@@ -179,12 +189,12 @@ export default function useIdentityProvider(
 
     if (userEntity === 'developer') {
       // Redirect developer to kauth endpoint
-      win.setLocationHref(`${apiBaseUrl}/api/${apiVersion.value}/developer-authenticate/oidc-callback?code=${code.value}&state=${state.value}`)
+      win.setLocationHref(`${apiBaseUrl}/api/${apiVersion.value}/developer-authenticate/oidc-callback?${oidcQueryParams.value?.toString()}`)
       return
     }
 
     // Redirect user to kauth endpoint
-    win.setLocationHref(`${apiBaseUrl}/api/${apiVersion.value}/authenticate/oidc-callback?code=${code.value}&state=${state.value}`)
+    win.setLocationHref(`${apiBaseUrl}/api/${apiVersion.value}/authenticate/oidc-callback?${oidcQueryParams.value?.toString()}`)
   }
 
   // Add watcher to allow `kong-auth-login` element time to load and retrigger redirect.

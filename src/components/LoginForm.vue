@@ -41,79 +41,90 @@
       </div>
 
       <!-- Standalone IdP Login button -->
-      <!-- <div v-if="isIdpLogin"> -->
+      <div v-if="idpLoginEnabled">
         <KButton
-          appearance="primary"
+          appearance="outline"
           :is-rounded="false"
-          class="justify-content-center w-100 mb-3 type-lg"
-          data-testid="kong-auth-login-submit"
+          class="justify-content-center w-100 type-lg"
+          data-testid="kong-auth-login-sso"
+          :aria-label="['pending', 'success'].some(currentState.matches) ? undefined : helpText.login.loginTextSSOAriaLabel"
+          :disabled="loginBtnSSODisabled"
           @click.prevent="redirectToIdp(idpLoginReturnTo)"
         >
           <KIcon
-            v-if="['pending', 'success'].some(currentState.matches)"
-            icon="spinner"
+            :icon="idpIsLoading ? 'spinner' : 'organization'"
             size="16"
             class="pr-0 mr-2"
+            :color="loginBtnSSODisabled ? 'var(--grey-400, #b6b6bd)' : 'var(--blue-500, #1155cb)'"
           />
-          {{ helpText.login.loginTextSSO }} (STANDALONE)
+          {{ helpText.login.loginTextSSO }}
         </KButton>
-      <!-- </div> -->
+
+        <p v-if="userEntity !== 'developer' && !basicAuthLoginEnabled && !forceBasicAuth" class="basic-auth-link mt-5 text-center">
+          <a
+            @click.prevent="loginWithCredentials"
+            class="color-blue-500"
+            href="#"
+            data-testid="kong-auth-login-basic-auth-link"
+          >{{ helpText.login.loginWithCredentials }}</a>
+        </p>
+      </div>
+
+      <p v-if="(basicAuthLoginEnabled && idpLoginEnabled) || forceBasicAuth" class="kong-auth-element-form-divider">{{ helpText.general.dividerTextOr }}</p>
 
       <form
+        v-if="basicAuthLoginEnabled || forceBasicAuth || (!basicAuthLoginEnabled && !idpLoginEnabled)"
         class="login-form"
         @submit.prevent="submitForm"
         novalidate
         data-testid="kong-auth-login-form"
       >
-        <div v-if="!isIdpLogin">
-          <p
-            v-if="instructionText"
-            class="color-black-45"
-            data-testid="kong-auth-login-instruction-text"
-          >{{ instructionText }}</p>
+        <p
+          v-if="instructionText"
+          class="color-black-45"
+          data-testid="kong-auth-login-instruction-text"
+        >{{ instructionText }}</p>
 
-            <KInput
-              id="email"
-              v-model.trim="email"
-              type="email"
-              label="Email *"
-              class="w-100 mb-5"
-              autocomplete="username"
-              autocapitalize="off"
-              :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
-              required
-              data-testid="kong-auth-login-email"
-            />
+          <KInput
+            id="email"
+            v-model.trim="email"
+            type="email"
+            label="Email *"
+            class="w-100 mb-5"
+            autocomplete="username"
+            autocapitalize="off"
+            :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+            required
+            data-testid="kong-auth-login-email"
+          />
 
-            <KInput
-              id="password"
-              v-model="password"
-              type="password"
-              label="Password *"
-              class="w-100"
-              autocomplete="current-password"
-              :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
-              required
-              data-testid="kong-auth-login-password"
-            />
+          <KInput
+            id="password"
+            v-model="password"
+            type="password"
+            label="Password *"
+            class="w-100"
+            autocomplete="current-password"
+            :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+            required
+            data-testid="kong-auth-login-password"
+          />
 
-          <p v-if="showForgotPasswordLink" class="help mt-3">
-            <a
-              @click.prevent="$emit('click-forgot-password-link')"
-              class="color-blue-500"
-              href="#"
-              data-testid="kong-auth-login-forgot-password-link"
-            >{{ forgotPasswordLinkText }}</a>
-          </p>
-        </div>
+        <p v-if="showForgotPasswordLink" class="help mt-3">
+          <a
+            @click.prevent="$emit('click-forgot-password-link')"
+            class="color-blue-500"
+            href="#"
+            data-testid="kong-auth-login-forgot-password-link"
+          >{{ forgotPasswordLinkText }}</a>
+        </p>
 
         <KButton
           type="submit"
           appearance="primary"
           :is-rounded="false"
-          class="justify-content-center w-100 type-lg"
-          :class="[showForgotPasswordLink ? 'mt-3' : 'mt-6']"
-          :disabled="btnDisabled"
+          class="justify-content-center w-100 mt-6 type-lg"
+          :disabled="loginBtnDisabled"
           data-testid="kong-auth-login-submit"
         >
           <KIcon
@@ -122,17 +133,8 @@
             size="16"
             class="pr-0 mr-2"
           />
-          {{ btnText }}
+          {{ loginBtnText }}
         </KButton>
-
-        <p v-if="isIdpLogin" class="help mt-3 text-center">
-          <a
-            @click.prevent="loginWithCredentials"
-            class="color-blue-500"
-            href="#"
-            data-testid="kong-auth-login-credentials-link"
-          >{{ helpText.login.loginWithCredentials }}</a>
-        </p>
 
         <div v-if="showRegisterLink" class="text-center mt-5">
           <p class="color-black-85 bold-500">
@@ -216,6 +218,7 @@ export default defineComponent({
     })
     const error = ref<any>(null)
     const fieldsHaveError = ref(false)
+    const forceBasicAuth = ref(false)
 
     // Setup and automatically trigger IDP (or ignore it, depending on the props)
     // Passing the refs on purpose so values are reactive.
@@ -297,23 +300,24 @@ export default defineComponent({
       }),
     )
 
-    const btnText = computed((): string => {
+    const loginBtnText = computed((): string => {
       if (['pending'].some(currentState.value.matches)) {
         return helpText.login.submittingText
       } else if (['success'].some(currentState.value.matches)) {
         return ''
-      } else if (isIdpLogin.value) {
-        return helpText.login.loginTextSSO
       }
 
       return helpText.login.loginText
     })
 
-    const btnDisabled = computed((): boolean => {
+    const loginBtnDisabled = computed((): boolean => {
       return (
-        ((!formData.email || !formData.password) && !isIdpLogin.value) ||
-        ['pending', 'success'].some(currentState.value.matches)
+        (!formData.email || !formData.password) || ['pending', 'success'].some(currentState.value.matches)
       )
+    })
+
+    const loginBtnSSODisabled = computed((): boolean => {
+      return idpIsLoading.value || ['pending', 'success'].some(currentState.value.matches)
     })
 
     const setUserStatusCookie = async () => {
@@ -465,12 +469,15 @@ export default defineComponent({
 
     const loginWithCredentials = (): void => {
       // Redirect the user to the same login page without anything else in the path
-      win.setLocationHref(win.getLocationOrigin() + '/login')
+      win.setLocationHref(win.getLocationOrigin() + '/login?basicAuth=true')
     }
 
     onMounted(async () => {
       // Get URL params
       const urlParams = new URLSearchParams(win.getLocationSearch())
+
+      // If basicAuth query parameter is present, force-show the basic auth form (for org admins)
+      forceBasicAuth.value = !!urlParams?.get('basicAuth') && urlParams?.get('basicAuth') === 'true'
 
       // If token in URL params
       const token = urlParams?.get('token')
@@ -507,15 +514,19 @@ export default defineComponent({
       registerLinkText,
       registerSuccessText,
       helpText,
-      btnText,
-      btnDisabled,
+      loginBtnText,
+      loginBtnDisabled,
+      loginBtnSSODisabled,
       currentState,
       submitForm,
       loginWithCredentials,
       error,
       fieldsHaveError,
+      idpLoginEnabled,
       basicAuthLoginEnabled,
+      forceBasicAuth,
       isIdpLogin,
+      idpIsLoading,
       userEntity,
       idpLoginReturnTo,
       redirectToIdp,
