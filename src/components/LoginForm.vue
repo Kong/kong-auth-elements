@@ -9,8 +9,6 @@
     />
 
     <div v-else>
-
-      <!-- Standalone IdP Login button -->
       <div v-if="idpLoginEnabled && (userEntity === 'developer' || (userEntity === 'user' && isIdpLogin))">
         <KButton
           appearance="outline"
