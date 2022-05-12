@@ -28,7 +28,7 @@
           {{ helpText.login.loginTextSSO }}
         </KButton>
 
-        <p v-if="userEntity !== 'developer' && !basicAuthLoginEnabled && !forceBasicAuth" class="basic-auth-link mt-5 text-center">
+        <p v-if="loginWithCredentialsLinkIsVisible" class="basic-auth-link mt-5 text-center">
           <a
             @click.prevent="loginWithCredentials"
             class="color-blue-500"
@@ -38,7 +38,7 @@
         </p>
       </div>
 
-      <div v-if="(basicAuthLoginEnabled && idpLoginEnabled && (userEntity === 'developer' || (userEntity === 'user' && isIdpLogin))) || forceBasicAuth" class="kong-auth-element-form-divider">{{ helpText.general.dividerTextOr }}</div>
+      <div v-if="loginDividerIsVisible" class="kong-auth-element-form-divider">{{ helpText.general.dividerTextOr }}</div>
 
       <div v-if="currentState.matches('error') && error" class="my-3">
         <ErrorMessage :error="error" />
@@ -218,6 +218,8 @@ export default defineComponent({
     const error = ref<any>(null)
     const fieldsHaveError = ref(false)
     const forceBasicAuth = ref(false)
+    const loginWithCredentialsLinkIsVisible = computed((): boolean => userEntity !== 'developer' && !basicAuthLoginEnabled.value && !forceBasicAuth.value)
+    const loginDividerIsVisible = computed((): boolean => (basicAuthLoginEnabled.value && idpLoginEnabled.value && (userEntity === 'developer' || (userEntity === 'user' && isIdpLogin.value))) || forceBasicAuth.value)
 
     // Setup and automatically trigger IDP (or ignore it, depending on the props)
     // Passing the refs on purpose so values are reactive.
@@ -521,6 +523,8 @@ export default defineComponent({
       loginWithCredentials,
       error,
       fieldsHaveError,
+      loginWithCredentialsLinkIsVisible,
+      loginDividerIsVisible,
       idpLoginEnabled,
       basicAuthLoginEnabled,
       forceBasicAuth,
