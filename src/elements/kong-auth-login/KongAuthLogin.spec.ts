@@ -70,7 +70,39 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.gruceLoader).should('not.exist')
   })
 
-  it('renders a login form with email, password, and button elements and a SSO button if basic auth and IdP login is enabled', () => {
+  it('renders a login form with email, password, and button elements and no SSO button if basic auth and IdP login is enabled and userEntity is \'user\'', () => {
+    cy.stub(getConfigOptions, 'userEntity').returns('user')
+    mount(KongAuthLogin, {
+      props: {
+        basicAuthLoginEnabled: true,
+        idpLoginEnabled: true,
+      },
+    })
+
+    // Form should exist
+    cy.getTestId(testids.form).should('be.visible')
+    cy.getTestId(testids.form).within(() => {
+      // Elements should exist
+      cy.getTestId(testids.email).should('be.visible')
+      cy.getTestId(testids.password).should('be.visible')
+      cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
+    })
+    // Elements should not exist
+    cy.getTestId(testids.ssoBtn).should('not.exist')
+    cy.getTestId(testids.basicAuthLink).should('not.exist')
+    cy.getTestId(testids.errorMessage).should('not.exist')
+    cy.getTestId(testids.instructionText).should('not.exist')
+    cy.getTestId(testids.forgotPasswordLink).should('not.exist')
+    cy.getTestId(testids.registerHelpText).should('not.exist')
+    cy.getTestId(testids.registerLink).should('not.exist')
+    cy.getTestId(testids.passwordResetMessage).should('not.exist')
+    cy.getTestId(testids.confirmedEmailMessage).should('not.exist')
+    cy.getTestId(testids.registerSuccessMessage).should('not.exist')
+    cy.getTestId(testids.gruceLoader).should('not.exist')
+  })
+
+  it('renders a login form with email, password, and button elements and a SSO button if basic auth and IdP login is enabled and userEntity is \'developer\'', () => {
+    cy.stub(getConfigOptions, 'userEntity').returns('developer')
     mount(KongAuthLogin, {
       props: {
         basicAuthLoginEnabled: true,
@@ -100,7 +132,37 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.gruceLoader).should('not.exist')
   })
 
-  it('renders a SSO button and no basic auth form if only SSO login is enabled', () => {
+  it('renders a SSO button and no basic auth form if only SSO login is enabled and userEntity = \'user\' and they are at a login path', () => {
+    cy.stub(getConfigOptions, 'userEntity').returns('user')
+    const loginPath = 'test-login-path'
+    // Stub URL path
+    cy.stub(win, 'getLocationPathname').returns(`/login/${loginPath}`)
+    cy.stub(win, 'setLocationHref').as('set-location')
+    mount(KongAuthLogin, {
+      props: {
+        basicAuthLoginEnabled: false,
+        idpLoginEnabled: true,
+      },
+    })
+
+    // SSO button should exist
+    cy.getTestId(testids.ssoBtn).should('be.visible')
+    // Elements should not exist
+    cy.getTestId(testids.form).should('not.exist')
+    cy.getTestId(testids.submitBtn).should('not.exist')
+    cy.getTestId(testids.errorMessage).should('not.exist')
+    cy.getTestId(testids.instructionText).should('not.exist')
+    cy.getTestId(testids.forgotPasswordLink).should('not.exist')
+    cy.getTestId(testids.registerHelpText).should('not.exist')
+    cy.getTestId(testids.registerLink).should('not.exist')
+    cy.getTestId(testids.passwordResetMessage).should('not.exist')
+    cy.getTestId(testids.confirmedEmailMessage).should('not.exist')
+    cy.getTestId(testids.registerSuccessMessage).should('not.exist')
+    cy.getTestId(testids.gruceLoader).should('not.exist')
+  })
+
+  it('renders a SSO button and no basic auth form if only SSO login is enabled and userEntity = \'developer\'', () => {
+    cy.stub(getConfigOptions, 'userEntity').returns('developer')
     mount(KongAuthLogin, {
       props: {
         basicAuthLoginEnabled: false,
