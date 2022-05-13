@@ -70,26 +70,28 @@
 
 .kong-auth-element-form-divider {
   display: flex;
-  color: var(--black-300, rgba(0, 0, 0, 0.7));
+  color: var(--KInputLabelColor, var(--black-85, rgba(0, 0, 0, 0.85)));
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin: 24px auto;
+  font-size: var(--type-md, 16px);
 
   &:before,
   &:after {
     content: "";
     flex: 1;
     height: 1px;
-    background: var(--black-300, rgba(0, 0, 0, 0.7));
+    margin: 0;
+    background: var(--KInputLabelColor, var(--black-85, rgba(0, 0, 0, 0.85)));
   }
 
   &:before {
-    margin: 0 12px 0 0;
+    margin-right: 12px;
   }
 
   &:after {
-    margin: 0 0 0 12px;
+    margin-left: 12px;
   }
 }
 

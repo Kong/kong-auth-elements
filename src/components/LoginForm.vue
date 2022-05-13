@@ -381,23 +381,6 @@ export default defineComponent({
     }
 
     const submitForm = async (): Promise<void> => {
-      // If IdP login form
-      if (isIdpLogin.value) {
-        try {
-          // Get current href
-          const loginUrl = new URL(win.getLocationHref())
-          // Remove the logout query param
-          loginUrl.searchParams.delete('logout')
-          // Redirect the user back to the page without the logout which should initialize IdP login
-          win.setLocationHref(loginUrl.href)
-          return
-        } catch (_) {
-          // If the above fails, just redirect them to the same page without any params
-          win.setLocationHref(win.getLocationOrigin() + win.getLocationPathname())
-          return
-        }
-      }
-
       send('SUBMIT_LOGIN')
 
       // Reset form errors
