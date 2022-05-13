@@ -330,10 +330,10 @@
   resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.741.0.tgz#aa004586bef78aee4da75d61efd096b2503920e0"
   integrity sha512-aaw9fVYJjvhub7b/fJsZIPIfkCqYjByGifME3odI+WC8RkAFApMn9lsKASjzs9/H9usF8TM0hcwO91fe+ZO1kg==
 
-"@kong/kongponents@^7.0.0-beta.29":
-  version "7.0.0-beta.29"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-7.0.0-beta.29.tgz#4974709a92c203bef089a79e0bf4bf14b7ecf225"
-  integrity sha512-Pq4eAAe8Eufd8/dMuAGAtEQWjtM8k3QxkMtt8rUVLBFCzTwFqIcdicVrZJypL9AWuivOUmzNdrUZEBh8jkf6NA==
+"@kong/kongponents@^7.0.0-beta.30":
+  version "7.0.0-beta.30"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-7.0.0-beta.30.tgz#70edb47e5b30868e3a1d1693b081bbdeab051e91"
+  integrity sha512-fwx1qNFQP6AlpZDEDaPGgVvoblgdR17g8pdSvLOiVQnflPcGQUetctMGqrCTpoTRpSXmOd+kbxXPpnAouDcogw==
   dependencies:
     axios "^0.26.1"
     popper.js "^1.15.0"
@@ -1969,9 +1969,9 @@ cssesc@^3.0.0:
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
 csstype@^2.6.8:
-  version "2.6.19"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.19.tgz#feeb5aae89020bb389e1f63669a5ed490e391caa"
-  integrity sha512-ZVxXaNy28/k3kJg0Fou5MiYpp88j7H9hLZp8PDC3jV0WFjfH5E9xHb56L0W59cPbKbcHXeP4qyT8PrHp8t6LcQ==
+  version "2.6.20"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.20.tgz#9229c65ea0b260cf4d3d997cb06288e36a8d6dda"
+  integrity sha512-/WwNkdXfckNgw6S5R125rrW8ez139lBHWouiBvX8dfMFtcn6V81REDqnH7+CRpRipfYlyU1CmOnOxrmGcFOjeA==
 
 cypress@^9.6.1:
   version "9.6.1"
