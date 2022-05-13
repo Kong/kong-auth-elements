@@ -27,7 +27,7 @@
     "@xstate/vue": "^0.8.1",
     "axios": "^0.26.1",
     "vue": "^3.2.33",
-    "xstate": "^4.32.0"
+    "xstate": "^4.32.1"
   },
   "devDependencies": {
     "@arkweid/lefthook": "^0.7.7",
