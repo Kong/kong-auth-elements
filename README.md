@@ -404,6 +404,7 @@ The login element **must** reside at the `{window.location.origin}/login` path i
 | `registerLinkHelpText` | String  | `Don't have an account?`   | Set the register link help text. |
 | `registerLinkText` | String  | `Sign Up →` | Set the text for the register link. |
 | `registerSuccessText` | String  | `Successfully registered!` | Set the text for the register success message. |
+| `basicAuthLoginEnabled` | Boolean | `true` | Enable basic auth login. |
 | `idpLoginEnabled` | Boolean | `false` | Enable IdP login detection. |
 | `idpLoginReturnTo` | URL | `''` | Set the URL to return to upon successful IdP login. In most cases, this should be set to `window.location.origin` |
 
@@ -427,12 +428,19 @@ To respond to any of the emitted events in your app, simply provide a callback f
 | `passwordReset` | `true` if password reset | To show the Reset Password Confirmation, the consuming app URL must include `passwordReset=true` in the query string. You can choose to include the `email` parameter as well. |
 | `registered`    | `true` if register success (from register or invite) | To show the Register Confirmation, the consuming app URL must include `registered=true` in the query string. You can choose to include the `email` parameter as well. |
 | `email` | `false` | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input. |
+| `basicAuth` | `false` | To force displaying basic authentication (e.g. for organization owners) the URL should include `basicAuth=true` in the query string. |
 
 #### IdP Login
 
 ##### Auto-initialization
 
-When a user lands on your app on the route `/login/{login-path}`, the `<kong-auth-login>` element will automatically initialize IdP login if the `idpLoginEnabled` prop is set to `true`, and the `idpLoginReturnTo` prop contains a valid URL to redirect the user to after successful authentication.
+###### `userEntity = 'user'`
+
+When a user lands on your app on the route `/login/{login-path}` the `<kong-auth-login>` element will automatically initialize IdP login if the `idpLoginEnabled` prop is set to `true`, and the `idpLoginReturnTo` prop contains a valid URL to redirect the user to after successful authentication.
+
+###### `userEntity = 'developer'`
+
+When a developer lands on your app on the route `/login/sso` the `<kong-auth-login>` element will automatically initialize IdP login if the `idpLoginEnabled` prop is set to `true`, and the `idpLoginReturnTo` prop contains a valid URL to redirect the user to after successful authentication.
 
 ##### Logging back in
 
