@@ -22,6 +22,13 @@
     "lint": "eslint '**/*.{js,ts,vue}'",
     "semantic-release": "semantic-release"
   },
+  "dependencies": {
+    "@kong/kauth-client-typescript-axios": "^0.741.0",
+    "@xstate/vue": "^0.8.1",
+    "axios": "^0.26.1",
+    "vue": "^3.2.33",
+    "xstate": "^4.32.0"
+  },
   "devDependencies": {
     "@arkweid/lefthook": "^0.7.7",
     "@babel/types": "^7.17.10",
@@ -60,7 +67,6 @@
     "start-server-and-test": "^1.14.0",
     "typescript": "~4.5.5",
     "vite": "^2.9.9",
-    "vue": "^3.2.33",
     "vue-tsc": "^0.34.11",
     "xstate": "^4.32.0",
     "zxcvbn": "^4.4.2"
