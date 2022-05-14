@@ -8,7 +8,7 @@ import appStyles from '../assets/styles/app.scss'
  * @param {string} tagName - The name of the custom element to be used as the HTML tag.
  * @param {VueComponent} customElementComponent - The Vue component.
  * @param {KongAuthElementsOptions} options - Consuming app config options
- * @param {boolean} useShadowDom - Should elements be rendered in a shadow DOM (Pass false to teleport elements out of the shadow DOM for password manager support)
+ * @param {boolean} teleportFromShadowDom - Should elements be teleported out of the shadow DOM (defaults to true to teleport elements out of the shadow DOM for password manager support)
  */
 export default function(
   tagName: string,
