@@ -1,7 +1,6 @@
 import { defineCustomElement, mergeProps } from 'vue'
 import { kebabize } from './index'
 import type { KongAuthElementsOptions } from './index'
-import appStyles from '../assets/styles/app.scss'
 
 /**
  * Register a given Vue component as a Custom Element in the DOM.
@@ -41,8 +40,6 @@ export default function(
     const vueCustomElement = defineCustomElement({
       ...customElementComponent,
       props: customElementProps,
-      // Inject app styles
-      styles: [appStyles],
       // Provide user options
       provide: {
         'kauth-api-base-url': options?.apiBaseUrl,

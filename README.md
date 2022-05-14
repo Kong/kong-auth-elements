@@ -300,8 +300,6 @@ Several custom CSS variables are available to impact the styling of custom eleme
 | `--KongAuthFontFamily` | Default font family                            |
 | `--KongAuthFontWeight` | Default font weight when not set by Kongponent |
 
-You may also utilize any CSS variables included in the [Kongponents component library](https://kongponents.konghq.com/guide/theming.html).
-
 Simply define values for the variables in your consuming application to make them available to the custom elements
 
 ```css
@@ -311,6 +309,16 @@ Simply define values for the variables in your consuming application to make the
   --KongAuthFontWeight: 400;
 }
 </style>
+```
+
+You may also utilize any CSS variables included in the [Kongponents component library](https://beta.kongponents.konghq.com/guide/theming.html).
+
+In order to override the built-in CSS variables, you will need to scope your custom values to the `.kong-auth-element` selector as shown here
+
+```css
+.kong-auth-element {
+  --KButtonPrimaryBase: #007ac1; // set .k-button.primary to a custom color
+}
 ```
 
 ### Webpack
