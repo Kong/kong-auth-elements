@@ -317,7 +317,7 @@ In order to override the built-in CSS variables, you will need to scope your cus
 
 ```css
 .kong-auth-element {
-  --KButtonPrimaryBase: #007ac1; // set .k-button.primary to a custom color
+  --KButtonPrimaryBase: #007ac1; /* set .k-button.primary to a custom color */
 }
 ```
 
