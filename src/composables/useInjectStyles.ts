@@ -44,13 +44,9 @@ export default function useInjectStyles(): InjectStylesComposable {
 
     inlineStyles.value = Array.from(document.head.getElementsByTagName('style'))
       .filter((styleNode) => {
-        // Only inject styles if they contain @kongponent prefix,
-        // or this exact string: "/*! KONG_AUTH_INJECT_STYLES */"
+        // Only inject styles if they contain this exact string: "/*! KONG_AUTH_INJECT_STYLES */"
         return (
-          styleNode.innerHTML.includes('KONG_AUTH_INJECT_STYLES') ||
-          styleNode.innerHTML.includes('.k-') ||
-          styleNode.innerHTML.includes('.kool') ||
-          styleNode.innerHTML.includes('.Password__')
+          styleNode.innerHTML.includes('KONG_AUTH_INJECT_STYLES')
         )
       })
       .filter((styleNode, idx, arr) => {
