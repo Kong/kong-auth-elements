@@ -1,16 +1,20 @@
 import { defineCustomElement, mergeProps } from 'vue'
 import { kebabize } from './index'
 import type { KongAuthElementsOptions } from './index'
+import appStyles from '../assets/styles/app.scss'
 
 /**
  * Register a given Vue component as a Custom Element in the DOM.
  * @param {string} tagName - The name of the custom element to be used as the HTML tag.
  * @param {VueComponent} customElementComponent - The Vue component.
+ * @param {KongAuthElementsOptions} options - Consuming app config options
+ * @param {boolean} useShadowDom - Should elements be rendered in a shadow DOM (Pass false to teleport elements out of the shadow DOM for password manager support)
  */
 export default function(
   tagName: string,
   customElementComponent: any,
   options?: KongAuthElementsOptions,
+  teleportFromShadowDom = true,
 ): void {
   try {
     const customElementName = kebabize(tagName)
@@ -33,13 +37,15 @@ export default function(
     const customElementProps = mergeProps({ ...customElementComponent.props }, {
       shouldTeleport: {
         type: Boolean,
-        default: true,
+        default: teleportFromShadowDom === true, // should eval to true to teleport elements out of shadow DOM
       },
     })
 
     const vueCustomElement = defineCustomElement({
       ...customElementComponent,
       props: customElementProps,
+      // Inject app styles
+      styles: teleportFromShadowDom === true ? [] : [appStyles],
       // Provide user options
       provide: {
         'kauth-api-base-url': options?.apiBaseUrl,
