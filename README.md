@@ -412,7 +412,7 @@ The login element **must** reside at the `{window.location.origin}/login` path i
 | `forgotPasswordLinkText` | String  | `Forgot your password?` | Set the text for the forgot password link. |
 | `showRegisterLink` | Boolean | `false` | Show a register link under the login button. |
 | `registerLinkHelpText` | String  | `Don't have an account?`   | Set the register link help text. |
-| `registerLinkText` | String  | `Sign Up →` | Set the text for the register link. |
+| `registerLinkText` | String  | `Sign Up` | Set the text for the register link. |
 | `registerSuccessText` | String  | `Successfully registered!` | Set the text for the register success message. |
 | `basicAuthLoginEnabled` | Boolean | `true` | Enable basic auth login. |
 | `idpLoginEnabled` | Boolean | `false` | Enable IdP login detection. |
@@ -472,7 +472,7 @@ If the user clicks the link to login with credentials, they will be sent to `/lo
 | :----------------------------- | :------ | :----------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
 | `wrapperId` | String  | `kong-auth-forgot-password-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element. |
 | `showLoginLink` | Boolean | `false` | Show a login link under the password fields. |
-| `loginLinkText` | String  | `Return to log in →` | Set the text for the login link. |
+| `loginLinkText` | String  | `Return to log in` | Set the text for the login link. |
 | `instructionText` | String  | `''` | Set the instruction text to display above the inputs. |
 | `successText` | String  | `Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.` | Set the text to display upon successful reset password request. |
 | `resetPasswordRequestEndpoint` | String  | `''` | Set the URL (relative or absolute) endpoint for the password reset request. |

@@ -1,7 +1,7 @@
 export default {
   login: {
     forgotPasswordLinkText: 'Forgot your password?',
-    registerLinkText: 'Sign Up →',
+    registerLinkText: 'Sign Up',
     registerLinkHelpText: "Don't have an account?",
     unauthenticated: 'Incorrect username or password. Please try again.',
     accountLocked: 'Your account has been locked. Reset your password to log in now',
@@ -15,7 +15,7 @@ export default {
     submittingText: 'Submitting',
   },
   forgotPassword: {
-    loginLinkText: 'Return to log in →',
+    loginLinkText: 'Return to log in',
     missingEmail: 'Please enter your email address.',
     success: "If an account exists for the email provided, you will receive a link to reset your password. If the email doesn't appear within a few minutes, be sure to check your spam folder.",
     submitText: 'Recover Password',
