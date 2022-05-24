@@ -17,8 +17,7 @@ export default {
   forgotPassword: {
     loginLinkText: 'Return to log in →',
     missingEmail: 'Please enter your email address.',
-    success:
-      "Check your email for a link to reset your password. If it doesn't appear within a few minutes, check your spam folder.",
+    success: "If an account exists for the email provided, you will receive a link to reset your password. If the email doesn't appear within a few minutes, be sure to check your spam folder.",
     submitText: 'Recover Password',
     submittingText: 'Submitting',
   },
