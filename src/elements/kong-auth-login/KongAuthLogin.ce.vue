@@ -59,7 +59,7 @@ export default defineComponent({
     },
     basicAuthLoginEnabled: {
       type: Boolean,
-      default: true,
+      default: false, // must be false by default
     },
     idpLoginEnabled: {
       type: Boolean,
