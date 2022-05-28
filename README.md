@@ -141,6 +141,7 @@ Wherever you want to utilze a custom element, [you **must** wrap it with an elem
 ```html
 <div id="kong-auth-login-wrapper">
   <kong-auth-login
+    basic-auth-login-enabled
     show-forgot-password-link
     @login-success="onLoginSuccess"
     @click-forgot-password-link="onUserClickForgotPassword"
@@ -414,7 +415,7 @@ The login element **must** reside at the `{window.location.origin}/login` path i
 | `registerLinkHelpText` | String  | `Don't have an account?`   | Set the register link help text. |
 | `registerLinkText` | String  | `Sign Up` | Set the text for the register link. |
 | `registerSuccessText` | String  | `Successfully registered!` | Set the text for the register success message. |
-| `basicAuthLoginEnabled` | Boolean | `true` | Enable basic auth login. |
+| `basicAuthLoginEnabled` | Boolean | `false` | Enable basic auth login. |
 | `idpLoginEnabled` | Boolean | `false` | Enable IdP login detection. |
 | `idpLoginReturnTo` | URL | `''` | Set the URL to return to upon successful IdP login. In most cases, this should be set to `window.location.origin` |
 
