@@ -10,7 +10,7 @@
         <div id="kong-auth-login-wrapper">
           <KongAuthLogin
             wrapper-id="kong-auth-login-wrapper"
-            :basic-auth-login-enabled="true"
+            basic-auth-login-enabled
             :idp-login-enabled="true"
             idp-login-return-to="https://kompany795bb6b9.us.portal.konghq.tech"
             show-forgot-password-link
