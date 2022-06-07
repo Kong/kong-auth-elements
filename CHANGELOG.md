@@ -1,3 +1,10 @@
+## [1.18.15](https://github.com/Kong/kong-auth-elements/compare/v1.18.14...v1.18.15) (2022-06-07)
+
+
+### Bug Fixes
+
+* **semantic-release:** fix branch versions ([5c932e1](https://github.com/Kong/kong-auth-elements/commit/5c932e1b3aacd1e2564cde58b518ce84f85f2c7c))
+
 ## [1.18.14](https://github.com/Kong/kong-auth-elements/compare/v1.18.13...v1.18.14) (2022-06-06)
 
 
