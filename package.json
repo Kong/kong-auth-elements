@@ -23,10 +23,10 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@kong/kauth-client-typescript-axios": "^0.828.0",
+    "@kong/kauth-client-typescript-axios": "^0.891.0",
     "@xstate/vue": "^0.8.1",
     "axios": "^0.26.1",
-    "vue": "^3.2.36",
+    "vue": "^3.2.37",
     "xstate": "^4.32.1"
   },
   "devDependencies": {
@@ -53,7 +53,7 @@
     "cross-env": "^7.0.3",
     "cypress": "^9.7.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "^8.16.0",
+    "eslint": "^8.17.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
@@ -61,11 +61,11 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^8.7.1",
     "postcss-custom-properties": "^10.0.0",
-    "sass": "^1.52.1",
+    "sass": "^1.52.2",
     "semantic-release": "^18.0.1",
     "start-server-and-test": "^1.14.0",
     "typescript": "~4.7.2",
-    "vite": "^2.9.9",
+    "vite": "^2.9.10",
     "vue-tsc": "^0.35.2",
     "zxcvbn": "^4.4.2"
   },
