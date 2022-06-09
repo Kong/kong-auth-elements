@@ -1,3 +1,11 @@
+## [1.18.16](https://github.com/Kong/kong-auth-elements/compare/v1.18.15...v1.18.16) (2022-06-09)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/kauth-client-typescript-axios ([5cd9e16](https://github.com/Kong/kong-auth-elements/commit/5cd9e164f650f39f6df92c045ed3705ff737ea24))
+* **deps:** bump vue from 3.2.36 to 3.2.37 ([6fa6f16](https://github.com/Kong/kong-auth-elements/commit/6fa6f1617086c0933995acb6614461be00e8a2d0))
+
 ## [1.18.15](https://github.com/Kong/kong-auth-elements/compare/v1.18.14...v1.18.15) (2022-06-07)
 
 
