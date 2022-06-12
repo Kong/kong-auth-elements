@@ -335,10 +335,10 @@
   resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.891.0.tgz#f6e8e6546e5991998b47f796648c82993b506ab7"
   integrity sha512-ssLjavVLV6/OO8wI2TiFZZ/nvh6X3vV6fCc4y59FqzKX+uha17Lq2FKUkNbU20yZ69FGP9kLu+jvWseL2ySZJA==
 
-"@kong/kongponents@^7.0.0-beta.44":
-  version "7.0.0-beta.44"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-7.0.0-beta.44.tgz#22192ebfb144ab012b9c6055729b0e24a54c13c5"
-  integrity sha512-2FFAk7GHz36TBElQKNSnNwOjTTKPk5s8j/BKl/XE/afK2LkMXHG8v+nbwRbhZNt0caRpUjO8wIzHTcuDOmZnoA==
+"@kong/kongponents@^7.0.0-beta.47":
+  version "7.0.0-beta.47"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-7.0.0-beta.47.tgz#ebd307900c59478ec2d89bcaf24a8f0370dfee4e"
+  integrity sha512-PFfVpOoQ5BtG2HQVPwY+LLrA7G8338RF45/k2aJCj0jZwX5QYDwdTnmiLyzUC6zikcL5h+mBCbWdDAPHb61oiQ==
   dependencies:
     axios "^0.26.1"
     popper.js "^1.15.0"
@@ -6418,10 +6418,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vite@^2.9.10:
-  version "2.9.10"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-2.9.10.tgz#f574d96655622c2e0fbc662edd0ed199c60fe91a"
-  integrity sha512-TwZRuSMYjpTurLqXspct+HZE7ONiW9d+wSWgvADGxhDPPyoIcNywY+RX4ng+QpK30DCa1l/oZgi2PLZDibhzbQ==
+vite@^2.9.12:
+  version "2.9.12"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.9.12.tgz#b1d636b0a8ac636afe9d83e3792d4895509a941b"
+  integrity sha512-suxC36dQo9Rq1qMB2qiRorNJtJAdxguu5TMvBHOc/F370KvqAe9t48vYp+/TbPKRNrMh/J55tOUmkuIqstZaew==
   dependencies:
     esbuild "^0.14.27"
     postcss "^8.4.13"
