@@ -15,9 +15,11 @@
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
 import useTeleport from '@/composables/useTeleport'
-import { helpText } from '@/utils'
+import useI18n from '@/composables/useI18n'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import LoginForm, { loginEmits } from '@/components/LoginForm.vue'
+
+const { messages } = useI18n()
 
 export default defineComponent({
   name: 'KongAuthLogin',
@@ -39,7 +41,7 @@ export default defineComponent({
     },
     forgotPasswordLinkText: {
       type: String,
-      default: helpText.login.forgotPasswordLinkText,
+      default: messages.login.forgotPasswordLinkText,
     },
     showRegisterLink: {
       type: Boolean,
@@ -47,15 +49,15 @@ export default defineComponent({
     },
     registerLinkHelpText: {
       type: String,
-      default: helpText.login.registerLinkHelpText,
+      default: messages.login.registerLinkHelpText,
     },
     registerLinkText: {
       type: String,
-      default: helpText.login.registerLinkText,
+      default: messages.login.registerLinkText,
     },
     registerSuccessText: {
       type: String,
-      default: helpText.login.registerSuccess,
+      default: messages.login.registerSuccess,
     },
     basicAuthLoginEnabled: {
       type: Boolean,
@@ -95,7 +97,7 @@ export default defineComponent({
     provide(
       'forgot-password-link-text',
       computed((): string =>
-        props.forgotPasswordLinkText ? props.forgotPasswordLinkText : helpText.login.forgotPasswordLinkText,
+        props.forgotPasswordLinkText ? props.forgotPasswordLinkText : messages.login.forgotPasswordLinkText,
       ),
     )
 
@@ -107,16 +109,16 @@ export default defineComponent({
     provide(
       'register-link-help-text',
       computed((): string =>
-        props.registerLinkHelpText ? props.registerLinkHelpText : helpText.login.registerLinkHelpText,
+        props.registerLinkHelpText ? props.registerLinkHelpText : messages.login.registerLinkHelpText,
       ),
     )
     provide(
       'register-link-text',
-      computed((): string => (props.registerLinkText ? props.registerLinkText : helpText.login.registerLinkText)),
+      computed((): string => (props.registerLinkText ? props.registerLinkText : messages.login.registerLinkText)),
     )
     provide(
       'register-success-text',
-      computed((): string => (props.registerSuccessText ? props.registerSuccessText : helpText.login.registerSuccess)),
+      computed((): string => (props.registerSuccessText ? props.registerSuccessText : messages.login.registerSuccess)),
     )
 
     // Basic Auth

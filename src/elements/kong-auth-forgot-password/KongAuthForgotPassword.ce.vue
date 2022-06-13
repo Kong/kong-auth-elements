@@ -12,9 +12,11 @@
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
 import useTeleport from '@/composables/useTeleport'
-import { helpText } from '@/utils'
+import useI18n from '@/composables/useI18n'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import ForgotPasswordForm, { forgotPasswordEmits } from '@/components/ForgotPasswordForm.vue'
+
+const { messages } = useI18n()
 
 export default defineComponent({
   name: 'KongAuthForgotPassword',
@@ -32,7 +34,7 @@ export default defineComponent({
     },
     loginLinkText: {
       type: String,
-      default: helpText.forgotPassword.loginLinkText,
+      default: messages.forgotPassword.loginLinkText,
     },
     instructionText: {
       type: String,
@@ -40,7 +42,7 @@ export default defineComponent({
     },
     successText: {
       type: String,
-      default: helpText.forgotPassword.success,
+      default: messages.forgotPassword.success,
     },
     resetPasswordRequestEndpoint: {
       type: String,
@@ -65,7 +67,7 @@ export default defineComponent({
 
     provide(
       'login-link-text',
-      computed((): string => (props.loginLinkText ? props.loginLinkText : helpText.forgotPassword.loginLinkText)),
+      computed((): string => (props.loginLinkText ? props.loginLinkText : messages.forgotPassword.loginLinkText)),
     )
 
     provide(
@@ -75,7 +77,7 @@ export default defineComponent({
 
     provide(
       'success-text',
-      computed((): string => (props.successText ? props.successText : helpText.forgotPassword.success)),
+      computed((): string => (props.successText ? props.successText : messages.forgotPassword.success)),
     )
 
     provide(

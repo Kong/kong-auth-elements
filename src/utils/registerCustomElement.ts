@@ -54,6 +54,7 @@ export default function(
         'custom-endpoint-error-handler': options?.customErrorHandler,
         'shadow-dom': options?.shadowDom || false,
         'shadow-dom-css': options?.shadowDomCss,
+        lang: options?.lang,
       },
     })
 

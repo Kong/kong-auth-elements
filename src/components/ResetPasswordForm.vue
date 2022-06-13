@@ -47,7 +47,7 @@
         class="w-100 mb-4"
         autocomplete="new-password"
         :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
-        :error-message="passwordIsInvalid ? helpText.resetPassword.passwordMismatch : undefined"
+        :error-message="passwordIsInvalid ? messages.resetPassword.passwordMismatch : undefined"
         required
         data-testid="kong-auth-reset-password-confirm-new-password"
       />
@@ -76,9 +76,10 @@
 import { defineComponent, inject, ref, Ref, reactive, toRefs, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
-import { helpText, win } from '@/utils'
+import { win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useKongAuthApi from '@/composables/useKongAuthApi'
+import useI18n from '@/composables/useI18n'
 import { PasswordresetsResetRequest, PasswordAPIV1ResetResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 // Components
@@ -109,6 +110,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const { userEntity, customErrorHandler } = useConfigOptions()
     const { api } = useKongAuthApi()
+    const { messages } = useI18n()
 
     /*
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
@@ -151,7 +153,7 @@ export default defineComponent({
     )
 
     const btnText = computed((): string => {
-      return ['pending', 'success'].some(currentState.value.matches) ? helpText.resetPassword.submittingText : helpText.resetPassword.submitText
+      return ['pending', 'success'].some(currentState.value.matches) ? messages.resetPassword.submittingText : messages.resetPassword.submitText
     })
 
     const btnDisabled = computed((): boolean => {
@@ -184,7 +186,7 @@ export default defineComponent({
 
         error.value = {
           status: null,
-          statusText: helpText.general.missingInfo,
+          statusText: messages.general.missingInfo,
         }
         return
       }
@@ -195,7 +197,7 @@ export default defineComponent({
 
         error.value = {
           status: null,
-          statusText: helpText.resetPassword.passwordMismatch,
+          statusText: messages.resetPassword.passwordMismatch,
         }
         return
       }
@@ -258,7 +260,7 @@ export default defineComponent({
       currentState,
       btnText,
       btnDisabled,
-      helpText,
+      messages,
       instructionText,
       showPasswordStrengthMeter,
       passwordIsInvalid,

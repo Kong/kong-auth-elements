@@ -3,8 +3,10 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
-import { helpText } from '@/utils'
+import useI18n from '@/composables/useI18n'
 import { getConfigOptions } from '@/composables/useConfigOptions'
+
+const { messages } = useI18n()
 
 // Component data-testid strings
 const testids = {
@@ -94,7 +96,7 @@ describe('KongAuthForgotPassword.ce.vue', () => {
       })
 
       // Success messsage should exist
-      cy.getTestId(testids.successMessage).should('be.visible').and('contain.text', helpText.forgotPassword.success)
+      cy.getTestId(testids.successMessage).should('be.visible').and('contain.text', messages.forgotPassword.success)
     })
   })
 
@@ -123,7 +125,7 @@ describe('KongAuthForgotPassword.ce.vue', () => {
       })
 
       // Success messsage should exist
-      cy.getTestId(testids.successMessage).should('be.visible').and('contain.text', helpText.forgotPassword.success)
+      cy.getTestId(testids.successMessage).should('be.visible').and('contain.text', messages.forgotPassword.success)
     })
   })
 
