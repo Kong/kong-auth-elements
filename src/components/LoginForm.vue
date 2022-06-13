@@ -213,10 +213,6 @@ export default defineComponent({
     const idpLoginEnabled: Ref<boolean> = inject('idp-login-enabled', ref(false))
     const idpLoginReturnTo: Ref<string> = inject('idp-login-return-to', ref(''))
 
-    // basicAuthLoginEnabled.value = true
-
-    console.log('basicAuthLoginEnabled', basicAuthLoginEnabled.value, typeof basicAuthLoginEnabled.value)
-
     const formData = reactive({
       email: '',
       password: '',
