@@ -25,7 +25,7 @@ export interface DeveloperConfig {
 }
 
 // List of supported languages, add more like || 'es'
-export type SupportedLanguages = undefined | 'en' | 'es'
+export type SupportedLanguages = 'en'
 
 export interface KongAuthElementsOptions {
   apiBaseUrl?: string
