@@ -12,7 +12,6 @@
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
 import useTeleport from '@/composables/useTeleport'
-import useI18n from '@/composables/useI18n'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import ForgotPasswordForm, { forgotPasswordEmits } from '@/components/ForgotPasswordForm.vue'
 
