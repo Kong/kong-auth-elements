@@ -2,9 +2,9 @@
 /// <reference types="../../cypress/support" />
 
 import { mount } from '@cypress/vue'
-import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAuthForgotPassword.ce.vue'
-import useI18n from '@/composables/useI18n'
-import { getConfigOptions } from '@/composables/useConfigOptions'
+import KongAuthForgotPassword from './KongAuthForgotPassword.ce.vue'
+import useI18n from '../../composables/useI18n'
+import { getConfigOptions } from '../../composables/useConfigOptions'
 
 const { messages } = useI18n('en')
 
