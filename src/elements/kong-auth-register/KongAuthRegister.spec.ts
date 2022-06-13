@@ -3,8 +3,11 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthRegister from '@/elements/kong-auth-register/KongAuthRegister.ce.vue'
-import { helpText, win } from '@/utils'
+import { win } from '@/utils'
 import { getConfigOptions } from '@/composables/useConfigOptions'
+import useI18n from '@/composables/useI18n'
+
+const { messages } = useI18n()
 
 // Component data-testid strings
 const testids = {
@@ -106,7 +109,7 @@ describe('KongAuthRegister.ce.vue', () => {
       cy.getTestId(testids.form).submit()
 
       // Error should exist
-      cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', helpText.general.missingInfo)
+      cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', messages.general.missingInfo)
     })
   })
 
@@ -135,7 +138,7 @@ describe('KongAuthRegister.ce.vue', () => {
     cy.getTestId(testids.form).submit()
 
     // Error should exist
-    cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', helpText.general.missingInfo)
+    cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', messages.general.missingInfo)
   })
 
   describe('Invites and Responding to URL Parameters', () => {

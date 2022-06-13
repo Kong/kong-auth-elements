@@ -1,8 +1,8 @@
 // Do not use '@' alias in paths here so that imports within a consuming project resolve properly.
 import { AxiosError } from 'axios'
+import { type SupportedLanguages } from '../composables/usei18n'
 export { default as registerCustomElement } from './registerCustomElement'
 export { default as kebabize } from './kebabize'
-export { default as helpText } from './helpText'
 export { default as win } from './window'
 
 // List of user entities
@@ -32,4 +32,5 @@ export interface KongAuthElementsOptions {
   customErrorHandler?: (event: CustomEndpointErrorEvent) => string
   shadowDom?: boolean
   shadowDomCss?: string[]
+  lang?: SupportedLanguages
 }

@@ -142,9 +142,10 @@
 import { defineComponent, inject, ref, reactive, Ref, toRefs, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
-import { helpText, win } from '@/utils'
+import { win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useKongAuthApi from '@/composables/useKongAuthApi'
+import useI18n from '@/composables/useI18n'
 import { RegisterRegisterResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 // Components
@@ -176,6 +177,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const { userEntity, customErrorHandler } = useConfigOptions()
     const { api } = useKongAuthApi()
+    const { messages } = useI18n()
 
     /*
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
@@ -232,7 +234,7 @@ export default defineComponent({
     })
 
     const btnText = computed((): string => {
-      return ['pending', 'success'].some(currentState.value.matches) ? helpText.register.submittingText : registerButtonText.value
+      return ['pending', 'success'].some(currentState.value.matches) ? messages.register.submittingText : registerButtonText.value
     })
 
     const btnDisabled = computed((): boolean => {
@@ -287,7 +289,7 @@ export default defineComponent({
 
         error.value = {
           status: null,
-          statusText: helpText.general.missingInfo,
+          statusText: messages.general.missingInfo,
         }
         return
       }
@@ -352,7 +354,7 @@ export default defineComponent({
       currentState,
       btnText,
       btnDisabled,
-      helpText,
+      messages,
       submitForm,
       error,
       passwordError,

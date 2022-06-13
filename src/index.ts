@@ -22,6 +22,7 @@ export const KongAuthElementsPlugin = {
     app.provide('custom-endpoint-error-handler', options?.customErrorHandler)
     app.provide('shadow-dom', options?.shadowDom || false)
     app.provide('shadow-dom-css', options?.shadowDomCss)
+    app.provide('lang', options?.lang)
 
     // Register all components
     for (const key in elements) {

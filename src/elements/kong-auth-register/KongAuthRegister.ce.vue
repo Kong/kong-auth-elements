@@ -9,9 +9,11 @@
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
 import useTeleport from '@/composables/useTeleport'
-import { helpText } from '@/utils'
+import useI18n from '@/composables/useI18n'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import RegisterForm, { registerEmits } from '@/components/RegisterForm.vue'
+
+const { messages } = useI18n()
 
 export default defineComponent({
   name: 'KongAuthRegister',
@@ -37,7 +39,7 @@ export default defineComponent({
     },
     registerButtonText: {
       type: String,
-      default: helpText.register.submitText,
+      default: messages.register.submitText,
     },
     registerRequestEndpoint: {
       type: String,
@@ -72,7 +74,7 @@ export default defineComponent({
 
     provide(
       'register-button-text',
-      computed((): string => (props.registerButtonText ? props.registerButtonText : helpText.register.submitText)),
+      computed((): string => (props.registerButtonText ? props.registerButtonText : messages.register.submitText)),
     )
 
     provide(

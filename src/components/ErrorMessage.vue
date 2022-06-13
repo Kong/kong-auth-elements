@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
-import { helpText } from '@/utils'
+import useI18n from '@/composables/useI18n'
 import { KAlert } from '@kong/kongponents'
 
 export default defineComponent({
@@ -34,6 +34,7 @@ export default defineComponent({
   },
 
   setup(props) {
+    const { messages } = useI18n()
     const errorMessage = ref('')
     const passwordRequirements = ref([])
 
@@ -51,12 +52,12 @@ export default defineComponent({
       const errorDetail = data && data.errors ? data.errors[0]?.detail : null
 
       if (status === 401) {
-        errorMessage.value = helpText.login.unauthenticated
+        errorMessage.value = messages.login.unauthenticated
       } else if (status === 403) {
         // see https://konghq.atlassian.net/browse/KHCP-591 for more information as to why this response was mutated
-        errorMessage.value = helpText.general.invalidAccessCode
+        errorMessage.value = messages.general.invalidAccessCode
       } else if (status === 503) {
-        errorMessage.value = helpText.general.serviceUnavailable
+        errorMessage.value = messages.general.serviceUnavailable
       } else if (!status && statusText) {
         // Allow passing no status with statusText for display
         errorMessage.value = statusText

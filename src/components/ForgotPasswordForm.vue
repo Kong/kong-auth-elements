@@ -84,9 +84,9 @@
 import { defineComponent, inject, ref, Ref, reactive, toRefs, computed } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
-import { helpText } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useKongAuthApi from '@/composables/useKongAuthApi'
+import useI18n from '@/composables/useI18n'
 import { AxiosResponse } from 'axios'
 // Components
 import { KAlert, KButton, KIcon, KInput } from '@kong/kongponents'
@@ -116,6 +116,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const { customErrorHandler } = useConfigOptions()
     const { api } = useKongAuthApi()
+    const { messages } = useI18n()
 
     /*
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
@@ -152,7 +153,7 @@ export default defineComponent({
     )
 
     const btnText = computed(() => {
-      return ['pending', 'success'].some(currentState.value.matches) ? helpText.forgotPassword.submittingText : helpText.forgotPassword.submitText
+      return ['pending', 'success'].some(currentState.value.matches) ? messages.forgotPassword.submittingText : messages.forgotPassword.submitText
     })
 
     const btnDisabled = computed(() => {
@@ -186,7 +187,7 @@ export default defineComponent({
 
         error.value = {
           status: null,
-          statusText: helpText.forgotPassword.missingEmail,
+          statusText: messages.forgotPassword.missingEmail,
         }
         return
       }
@@ -230,7 +231,7 @@ export default defineComponent({
       successText,
       btnText,
       btnDisabled,
-      helpText,
+      messages,
       submitForm,
       error,
       ...toRefs(formData),

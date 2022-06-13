@@ -128,6 +128,7 @@ const options: KongAuthElementsOptions = {
   userEntity: 'user',
   shadowDom: true,
   shadowDomCss: ['.kong-auth-login-form .k-input#email { background-color: var(--red-400, #ff0000) }'],
+  lang: 'en', // Exclude to default to English
 }
 
 // Call the registration function to automatically register all custom elements for usage
@@ -167,6 +168,7 @@ Regardless if you're using in Vue 3, Vue 2, or the native web components, an ide
 | `userEntity`   | `string`   | `user`   | The user entity for authentication; one of `user` or `developer`. |
 | `customErrorHandler`    | `Function`  | `(event: CustomEndpointErrorEvent) => ''`  | Supply a custom error handler to use when utilizing an element that allows providing a custom  request endpoint. [See the example below](#custom-error-handler) |
 | `shadowDomCss` | `string[]` | `[]`     | If registering as custom elements, you can pass an array of inlined CSS strings that will be added to the shadow root of all elements. [See the example below](#shadow-dom-css) |
+`lang` | `string` | `en` | Set the language to use for the component message strings. See `/src/locales/`
 
 #### TypeScript
 
@@ -193,6 +195,9 @@ export interface DeveloperConfig {
   portalId: string
 }
 
+// Supported languages
+export type SupportedLanguages = 'en'
+
 export interface KongAuthElementsOptions {
   apiBaseUrl?: string
   userEntity?: UserEntities
@@ -200,6 +205,7 @@ export interface KongAuthElementsOptions {
   customErrorHandler?: (event: CustomEndpointErrorEvent) => string
   shadowDom?: boolean
   shadowDomCss?: string[]
+  lang?: SupportedLanguages
 }
 ```
 
@@ -415,9 +421,20 @@ The login element **must** reside at the `{window.location.origin}/login` path i
 | `registerLinkHelpText` | String  | `Don't have an account?`   | Set the register link help text. |
 | `registerLinkText` | String  | `Sign Up` | Set the text for the register link. |
 | `registerSuccessText` | String  | `Successfully registered!` | Set the text for the register success message. |
-| `basicAuthLoginEnabled` | Boolean | `false` | Enable basic auth login. |
+| `basicAuthLoginEnabled` | Boolean | `false` | Enable basic auth login. **To set to false, simply do not add the prop** |
 | `idpLoginEnabled` | Boolean | `false` | Enable IdP login detection. |
 | `idpLoginReturnTo` | URL | `''` | Set the URL to return to upon successful IdP login. In most cases, this should be set to `window.location.origin` |
+
+> **Note**: When utilizing the props as a native web component, you may need to use dot syntax, as shown here
+>
+> ```html
+> <!-- Use this (notice the `.` before the attribute name) -->
+> <kong-auth-login .basic-auth-login-enabled="false">
+>
+> <!-- Instead of this -->
+> <kong-auth-login :basic-auth-login-enabled="false">
+> ```
+
 
 #### Emits Events
 

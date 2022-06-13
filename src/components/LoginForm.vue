@@ -15,7 +15,7 @@
           :is-rounded="false"
           class="justify-content-center w-100 type-lg"
           data-testid="kong-auth-login-sso"
-          :aria-label="['pending', 'success'].some(currentState.matches) ? undefined : helpText.login.loginTextSSOAriaLabel"
+          :aria-label="['pending', 'success'].some(currentState.matches) ? undefined : messages.login.loginTextSSOAriaLabel"
           :disabled="loginBtnSSODisabled"
           @click.prevent="redirectToIdp(idpLoginReturnTo)"
         >
@@ -25,7 +25,7 @@
             class="pr-0 mr-2"
             :color="loginBtnSSODisabled ? 'var(--grey-400, #b6b6bd)' : 'var(--blue-500, #1155cb)'"
           />
-          {{ helpText.login.loginTextSSO }}
+          {{ messages.login.loginTextSSO }}
         </KButton>
 
         <p v-if="loginWithCredentialsLinkIsVisible" class="basic-auth-link mt-5 text-center">
@@ -34,11 +34,11 @@
             class="color-blue-500"
             href="#"
             data-testid="kong-auth-login-basic-auth-link"
-          >{{ helpText.login.loginWithCredentials }}</a>
+          >{{ messages.login.loginWithCredentials }}</a>
         </p>
       </div>
 
-      <div v-if="loginDividerIsVisible" class="kong-auth-element-form-divider">{{ helpText.general.dividerTextOr }}</div>
+      <div v-if="loginDividerIsVisible" class="kong-auth-element-form-divider">{{ messages.general.dividerTextOr }}</div>
 
       <div v-if="currentState.matches('error') && error" class="my-3">
         <ErrorMessage :error="error" />
@@ -46,7 +46,7 @@
 
       <div v-else-if="currentState.matches('reset_password')" class="my-3">
         <KAlert
-          :alert-message="helpText.login.passwordResetSuccess"
+          :alert-message="messages.login.passwordResetSuccess"
           appearance="success"
           class="justify-content-center"
           data-testid="kong-auth-login-password-reset-message"
@@ -55,7 +55,7 @@
 
       <div v-else-if="currentState.matches('confirmed_email')" class="my-3">
         <KAlert
-          :alert-message="helpText.login.confirmedEmailSuccess"
+          :alert-message="messages.login.confirmedEmailSuccess"
           appearance="success"
           class="justify-content-center"
           data-testid="kong-auth-login-confirmed-email-message"
@@ -158,9 +158,10 @@ import { createMachine } from 'xstate'
 import useKongAuthApi from '@/composables/useKongAuthApi'
 import { DeveloperAPIV1VerifyRequest, DeveloperAPIV1VerifyResponse, EmailverificationsVerifyRequest, EmailverificationsVerifyResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
-import { helpText, win } from '@/utils'
+import { win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useIdentityProvider from '@/composables/useIdentityProvider'
+import useI18n from '@/composables/useI18n'
 // Components
 import { KAlert, KButton, KIcon, KInput, KSkeleton } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
@@ -195,6 +196,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const { userEntity, developerConfig, customErrorHandler } = useConfigOptions()
     const { api } = useKongAuthApi()
+    const { messages } = useI18n()
 
     /*
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
@@ -210,6 +212,10 @@ export default defineComponent({
     const basicAuthLoginEnabled: Ref<boolean> = inject('basic-auth-login-enabled', ref(true))
     const idpLoginEnabled: Ref<boolean> = inject('idp-login-enabled', ref(false))
     const idpLoginReturnTo: Ref<string> = inject('idp-login-return-to', ref(''))
+
+    // basicAuthLoginEnabled.value = true
+
+    console.log('basicAuthLoginEnabled', basicAuthLoginEnabled.value, typeof basicAuthLoginEnabled.value)
 
     const formData = reactive({
       email: '',
@@ -303,12 +309,12 @@ export default defineComponent({
 
     const loginBtnText = computed((): string => {
       if (['pending'].some(currentState.value.matches)) {
-        return helpText.login.submittingText
+        return messages.login.submittingText
       } else if (['success'].some(currentState.value.matches)) {
         return ''
       }
 
-      return helpText.login.loginText
+      return messages.login.loginText
     })
 
     const loginBtnDisabled = computed((): boolean => {
@@ -497,7 +503,7 @@ export default defineComponent({
       registerLinkHelpText,
       registerLinkText,
       registerSuccessText,
-      helpText,
+      messages,
       loginBtnText,
       loginBtnDisabled,
       loginBtnSSODisabled,

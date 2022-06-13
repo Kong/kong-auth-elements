@@ -3,8 +3,11 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
-import { helpText, win } from '@/utils'
+import { win } from '@/utils'
 import { getConfigOptions } from '@/composables/useConfigOptions'
+import useI18n from '@/composables/useI18n'
+
+const { messages } = useI18n()
 
 // Component data-testid strings
 const testids = {
@@ -334,7 +337,7 @@ describe('KongAuthLogin.ce.vue', () => {
       cy.wait('@email-verification-request').then(() => {
         // Verify UI
         cy.getTestId(testids.gruceLoader).should('not.exist')
-        cy.getTestId(testids.confirmedEmailMessage).should('be.visible').and('contain.text', helpText.login.confirmedEmailSuccess)
+        cy.getTestId(testids.confirmedEmailMessage).should('be.visible').and('contain.text', messages.login.confirmedEmailSuccess)
         cy.getTestId(testids.email).should('have.value', user.email)
 
         // Check for emitted event
@@ -393,7 +396,7 @@ describe('KongAuthLogin.ce.vue', () => {
       cy.wait('@email-verification-request').then(() => {
         // Verify UI
         cy.getTestId(testids.gruceLoader).should('not.exist')
-        cy.getTestId(testids.confirmedEmailMessage).should('be.visible').and('contain.text', helpText.login.confirmedEmailSuccess)
+        cy.getTestId(testids.confirmedEmailMessage).should('be.visible').and('contain.text', messages.login.confirmedEmailSuccess)
         cy.getTestId(testids.email).should('have.value', user.email)
 
         // Check for emitted event
@@ -410,7 +413,7 @@ describe('KongAuthLogin.ce.vue', () => {
 
       mount(KongAuthLogin)
 
-      cy.getTestId(testids.passwordResetMessage).should('be.visible').and('contain.text', helpText.login.passwordResetSuccess)
+      cy.getTestId(testids.passwordResetMessage).should('be.visible').and('contain.text', messages.login.passwordResetSuccess)
     })
 
     it("should show register success message if query params include 'registered'", () => {
@@ -419,7 +422,7 @@ describe('KongAuthLogin.ce.vue', () => {
 
       mount(KongAuthLogin)
 
-      cy.getTestId(testids.registerSuccessMessage).should('be.visible').and('contain.text', helpText.login.registerSuccess)
+      cy.getTestId(testids.registerSuccessMessage).should('be.visible').and('contain.text', messages.login.registerSuccess)
     })
 
     it('should customize the register success message if registerSuccessText prop is set', () => {
