@@ -2,10 +2,10 @@
 /// <reference types="../../cypress/support" />
 
 import { mount } from '@cypress/vue'
-import KongAuthLogin from './KongAuthLogin.ce.vue'
-import { win } from '../../utils'
-import { getConfigOptions } from '../../composables/useConfigOptions'
-import useI18n from '../../composables/useI18n'
+import KongAuthLogin from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
+import { win } from '@/utils'
+import { getConfigOptions } from '@/composables/useConfigOptions'
+import useI18n from '@/composables/useI18n'
 
 const { messages } = useI18n('en')
 
