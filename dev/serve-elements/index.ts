@@ -10,6 +10,7 @@ const options: KongAuthElementsOptions = {
   apiBaseUrl: '/kauth',
   userEntity: 'developer',
   shadowDom: false,
+  lang: 'en',
   developerConfig: {
     portalId: 'dfc77af7-ba97-4c52-889e-b2ca75b51ed3',
   },

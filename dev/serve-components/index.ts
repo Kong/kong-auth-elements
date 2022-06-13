@@ -12,6 +12,7 @@ const pluginOptions: KongAuthElementsOptions = {
   developerConfig: {
     portalId: '83f1733c-862c-43e5-a005-acfb0addfcfb',
   },
+  lang: 'es',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   customErrorHandler: ({ error, request, element }): string => {
     console.log('error', error)

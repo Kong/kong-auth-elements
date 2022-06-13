@@ -108,9 +108,9 @@ export default defineComponent({
   emits: resetPasswordEmits,
 
   setup(props, { emit }) {
-    const { userEntity, customErrorHandler } = useConfigOptions()
+    const { userEntity, customErrorHandler, lang } = useConfigOptions()
     const { api } = useKongAuthApi()
-    const { messages } = useI18n()
+    const { messages } = useI18n(lang)
 
     /*
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.

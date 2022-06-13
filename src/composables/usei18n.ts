@@ -1,21 +1,19 @@
 // Important: do not utilize Vue reactive variables in this composable so that it may be used outside the setup() function
-import useConfigOptions from '@/composables/useConfigOptions'
-import english from '../locales/en.json'
-
-// List of supported languages, add more like || 'es'
-export type SupportedLanguages = 'en'
+import { type SupportedLanguages } from '../utils'
+import { en, es } from '../locales'
 
 // Also add supported languages here
 interface MessageLanguages {
-  en: typeof english
+  en: typeof en
+  es: typeof es
 }
 
-export default function useI18n() {
-  const { lang } = useConfigOptions()
+export default function useI18n(lang: SupportedLanguages = 'en') {
   let messages
 
   const languages: MessageLanguages = {
-    en: english,
+    en: en,
+    es: es,
   }
 
   // If lang exists, set to use provided language

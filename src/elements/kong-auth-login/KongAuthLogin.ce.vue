@@ -15,11 +15,8 @@
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
 import useTeleport from '@/composables/useTeleport'
-import useI18n from '@/composables/useI18n'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import LoginForm, { loginEmits } from '@/components/LoginForm.vue'
-
-const { messages } = useI18n()
 
 export default defineComponent({
   name: 'KongAuthLogin',
@@ -41,7 +38,7 @@ export default defineComponent({
     },
     forgotPasswordLinkText: {
       type: String,
-      default: messages.login.forgotPasswordLinkText,
+      default: null,
     },
     showRegisterLink: {
       type: Boolean,
@@ -49,15 +46,15 @@ export default defineComponent({
     },
     registerLinkHelpText: {
       type: String,
-      default: messages.login.registerLinkHelpText,
+      default: null,
     },
     registerLinkText: {
       type: String,
-      default: messages.login.registerLinkText,
+      default: null,
     },
     registerSuccessText: {
       type: String,
-      default: messages.login.registerSuccess,
+      default: null,
     },
     basicAuthLoginEnabled: {
       type: Boolean,
@@ -94,31 +91,11 @@ export default defineComponent({
       'show-forgot-password-link',
       computed((): boolean => props.showForgotPasswordLink),
     )
-    provide(
-      'forgot-password-link-text',
-      computed((): string =>
-        props.forgotPasswordLinkText ? props.forgotPasswordLinkText : messages.login.forgotPasswordLinkText,
-      ),
-    )
 
     // Register
     provide(
       'show-register-link',
       computed((): boolean => props.showRegisterLink),
-    )
-    provide(
-      'register-link-help-text',
-      computed((): string =>
-        props.registerLinkHelpText ? props.registerLinkHelpText : messages.login.registerLinkHelpText,
-      ),
-    )
-    provide(
-      'register-link-text',
-      computed((): string => (props.registerLinkText ? props.registerLinkText : messages.login.registerLinkText)),
-    )
-    provide(
-      'register-success-text',
-      computed((): string => (props.registerSuccessText ? props.registerSuccessText : messages.login.registerSuccess)),
     )
 
     // Basic Auth
@@ -136,6 +113,13 @@ export default defineComponent({
       'idp-login-return-to',
       computed((): string => (props.idpLoginReturnTo ? props.idpLoginReturnTo : '')),
     )
+
+    // Message props: These provided values default to useI18n() message text so
+    // they must be provided in this format so the default value can be set in the child component.
+    props.forgotPasswordLinkText && provide('forgot-password-link-text', computed((): string => props.forgotPasswordLinkText))
+    props.registerLinkHelpText && provide('register-link-help-text', computed((): string => props.registerLinkHelpText))
+    props.registerLinkText && provide('register-link-text', computed((): string => props.registerLinkText))
+    props.registerSuccessText && provide('register-success-text', computed((): string => props.registerSuccessText))
 
     const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
 
