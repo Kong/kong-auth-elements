@@ -5,7 +5,7 @@ on:
 
 jobs:
   commitlint:
-    if: ${{ github.actor != 'dependabot[bot]' }}
+    if: ${{ github.actor != 'dependabot[bot]' && github.actor != 'flycode-app[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
