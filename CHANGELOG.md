@@ -1,3 +1,17 @@
+# [1.19.0](https://github.com/Kong/kong-auth-elements/compare/v1.18.16...v1.19.0) (2022-06-13)
+
+
+### Bug Fixes
+
+* **i18n:** make language setting reactive ([e80f4fa](https://github.com/Kong/kong-auth-elements/commit/e80f4fafc73b23c3973181ca5ad27433a4876ea0))
+* **tests:** fix test import paths ([bea010d](https://github.com/Kong/kong-auth-elements/commit/bea010d377d20584623d6e255d1801080261735f))
+
+
+### Features
+
+* **i18n:** move strings into json, flycode and i18n prep [KHCP-3690] ([c5ee645](https://github.com/Kong/kong-auth-elements/commit/c5ee645689c138569eb82872f808c987a784cd7a))
+* **options:** add language option ([9a51d2a](https://github.com/Kong/kong-auth-elements/commit/9a51d2aec8c0364942739da3d1b1ce48cd8b58ac))
+
 ## [1.18.16](https://github.com/Kong/kong-auth-elements/compare/v1.18.15...v1.18.16) (2022-06-09)
 
 
