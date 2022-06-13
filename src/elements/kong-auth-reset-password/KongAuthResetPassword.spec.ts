@@ -2,8 +2,8 @@
 /// <reference types="../../cypress/support" />
 
 import { mount } from '@cypress/vue'
-import KongAuthResetPassword from './KongAuthResetPassword.ce.vue'
-import { getConfigOptions } from '../../composables/useConfigOptions'
+import KongAuthResetPassword from '@/elements/kong-auth-reset-password/KongAuthResetPassword.ce.vue'
+import { getConfigOptions } from '@/composables/useConfigOptions'
 
 // Component data-testid strings
 const testids = {
