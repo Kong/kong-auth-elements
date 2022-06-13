@@ -1,0 +1,11 @@
+version: "0.1"
+environments:
+  - name: main
+    branch: main
+    mode: pull-request
+apps:
+  - name: kong-auth-elements
+    path: ""
+    text-resources:
+      - path: src/locales/*.json
+        format: nested-key-value
