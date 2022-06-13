@@ -7,7 +7,7 @@ import { win } from '@/utils'
 import { getConfigOptions } from '@/composables/useConfigOptions'
 import useI18n from '@/composables/useI18n'
 
-const { messages } = useI18n()
+const { messages } = useI18n('en')
 
 // Component data-testid strings
 const testids = {

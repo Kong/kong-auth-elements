@@ -10,10 +10,11 @@
         <div id="kong-auth-login-wrapper">
           <kong-auth-login
             wrapper-id="kong-auth-login-wrapper"
-            .basic-auth-login-enabled="false"
+            .basic-auth-login-enabled="true"
             idp-login-enabled
             idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
             show-forgot-password-link
+            instruction-text="This is the instruction text"
             @login-success="showAlert('Login success!')"
             @click-forgot-password-link="showAlert('User clicked forgot password')"
             @click-register-link="showAlert('User clicked register')"
@@ -29,6 +30,7 @@
         </h4>
         <div id="kong-auth-forgot-password-wrapper">
           <kong-auth-forgot-password
+            show-login-link
             wrapper-id="kong-auth-forgot-password-wrapper"
             instruction-text="Enter your verified email address and we will send you a password reset link."
             @click-login-link="showAlert('User clicked login')"

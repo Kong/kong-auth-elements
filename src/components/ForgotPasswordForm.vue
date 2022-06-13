@@ -114,18 +114,18 @@ export default defineComponent({
   emits: forgotPasswordEmits,
 
   setup(props, { emit }) {
-    const { customErrorHandler } = useConfigOptions()
+    const { customErrorHandler, lang } = useConfigOptions()
     const { api } = useKongAuthApi()
-    const { messages } = useI18n()
+    const { messages } = useI18n(lang)
 
     /*
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
     The default values provided to inject() here should be refs with empty string or false since the defaults are typically handled in the custom element provide()
     */
     const showLoginLink: Ref<boolean> = inject('show-login-link', ref(false))
-    const loginLinkText: Ref<string> = inject('login-link-text', ref(''))
+    const loginLinkText: Ref<string> = inject('login-link-text', ref(messages.forgotPassword.loginLinkText))
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
-    const successText: Ref<string> = inject('success-text', ref(''))
+    const successText: Ref<string> = inject('success-text', ref(messages.forgotPassword.success))
     const resetPasswordRequestEndpoint: Ref<string> = inject('reset-password-request-endpoint', ref(''))
 
     const formData = reactive({

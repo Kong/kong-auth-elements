@@ -16,6 +16,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
+import useConfigOptions from '@/composables/useConfigOptions'
 import useI18n from '@/composables/useI18n'
 import { KAlert } from '@kong/kongponents'
 
@@ -34,7 +35,8 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { messages } = useI18n()
+    const { lang } = useConfigOptions()
+    const { messages } = useI18n(lang)
     const errorMessage = ref('')
     const passwordRequirements = ref([])
 

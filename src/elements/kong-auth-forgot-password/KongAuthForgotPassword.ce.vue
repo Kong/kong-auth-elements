@@ -16,8 +16,6 @@ import useI18n from '@/composables/useI18n'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import ForgotPasswordForm, { forgotPasswordEmits } from '@/components/ForgotPasswordForm.vue'
 
-const { messages } = useI18n()
-
 export default defineComponent({
   name: 'KongAuthForgotPassword',
 
@@ -34,7 +32,7 @@ export default defineComponent({
     },
     loginLinkText: {
       type: String,
-      default: messages.forgotPassword.loginLinkText,
+      default: null,
     },
     instructionText: {
       type: String,
@@ -42,7 +40,7 @@ export default defineComponent({
     },
     successText: {
       type: String,
-      default: messages.forgotPassword.success,
+      default: null,
     },
     resetPasswordRequestEndpoint: {
       type: String,
@@ -66,24 +64,19 @@ export default defineComponent({
     )
 
     provide(
-      'login-link-text',
-      computed((): string => (props.loginLinkText ? props.loginLinkText : messages.forgotPassword.loginLinkText)),
-    )
-
-    provide(
       'instruction-text',
       computed((): string => (props.instructionText ? props.instructionText : '')),
-    )
-
-    provide(
-      'success-text',
-      computed((): string => (props.successText ? props.successText : messages.forgotPassword.success)),
     )
 
     provide(
       'reset-password-request-endpoint',
       computed((): string => (props.resetPasswordRequestEndpoint ? props.resetPasswordRequestEndpoint : '')),
     )
+
+    // Message props: These provided values default to useI18n() message text so
+    // they must be provided in this format so the default value can be set in the child component.
+    props.loginLinkText && provide('login-link-text', computed((): string => props.loginLinkText))
+    props.successText && provide('success-text', computed((): string => props.successText))
 
     const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
 

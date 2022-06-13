@@ -1,6 +1,5 @@
 // Do not use '@' alias in paths here so that imports within a consuming project resolve properly.
 import { AxiosError } from 'axios'
-import { type SupportedLanguages } from '../composables/usei18n'
 export { default as registerCustomElement } from './registerCustomElement'
 export { default as kebabize } from './kebabize'
 export { default as win } from './window'
@@ -24,6 +23,9 @@ export interface CustomEndpointErrorEvent {
 export interface DeveloperConfig {
   portalId: string
 }
+
+// List of supported languages, add more like || 'es'
+export type SupportedLanguages = undefined | 'en' | 'es'
 
 export interface KongAuthElementsOptions {
   apiBaseUrl?: string

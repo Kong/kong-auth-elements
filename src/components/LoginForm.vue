@@ -194,9 +194,9 @@ export default defineComponent({
   emits: loginEmits,
 
   setup(props, { emit }) {
-    const { userEntity, developerConfig, customErrorHandler } = useConfigOptions()
+    const { userEntity, developerConfig, customErrorHandler, lang } = useConfigOptions()
     const { api } = useKongAuthApi()
-    const { messages } = useI18n()
+    const { messages } = useI18n(lang)
 
     /*
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
@@ -204,11 +204,11 @@ export default defineComponent({
     */
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
     const showForgotPasswordLink: Ref<boolean> = inject('show-forgot-password-link', ref(false))
-    const forgotPasswordLinkText: Ref<string> = inject('forgot-password-link-text', ref(''))
+    const forgotPasswordLinkText: Ref<string> = inject('forgot-password-link-text', ref(messages.login.forgotPasswordLinkText))
     const showRegisterLink: Ref<boolean> = inject('show-register-link', ref(false))
-    const registerLinkText: Ref<string> = inject('register-link-text', ref(''))
-    const registerLinkHelpText: Ref<string> = inject('register-link-help-text', ref(''))
-    const registerSuccessText: Ref<string> = inject('register-success-text', ref(''))
+    const registerLinkText: Ref<string> = inject('register-link-text', ref(messages.login.registerLinkText))
+    const registerLinkHelpText: Ref<string> = inject('register-link-help-text', ref(messages.login.registerLinkHelpText))
+    const registerSuccessText: Ref<string> = inject('register-success-text', ref(messages.login.registerSuccess))
     const basicAuthLoginEnabled: Ref<boolean> = inject('basic-auth-login-enabled', ref(true))
     const idpLoginEnabled: Ref<boolean> = inject('idp-login-enabled', ref(false))
     const idpLoginReturnTo: Ref<string> = inject('idp-login-return-to', ref(''))

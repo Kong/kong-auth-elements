@@ -6,7 +6,7 @@ import KongAuthForgotPassword from '@/elements/kong-auth-forgot-password/KongAut
 import useI18n from '@/composables/useI18n'
 import { getConfigOptions } from '@/composables/useConfigOptions'
 
-const { messages } = useI18n()
+const { messages } = useI18n('en')
 
 // Component data-testid strings
 const testids = {

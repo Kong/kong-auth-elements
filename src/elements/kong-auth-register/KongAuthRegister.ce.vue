@@ -13,8 +13,6 @@ import useI18n from '@/composables/useI18n'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import RegisterForm, { registerEmits } from '@/components/RegisterForm.vue'
 
-const { messages } = useI18n()
-
 export default defineComponent({
   name: 'KongAuthRegister',
 
@@ -39,7 +37,7 @@ export default defineComponent({
     },
     registerButtonText: {
       type: String,
-      default: messages.register.submitText,
+      default: null,
     },
     registerRequestEndpoint: {
       type: String,
@@ -73,14 +71,13 @@ export default defineComponent({
     )
 
     provide(
-      'register-button-text',
-      computed((): string => (props.registerButtonText ? props.registerButtonText : messages.register.submitText)),
-    )
-
-    provide(
       'register-request-endpoint',
       computed((): string => (props.registerRequestEndpoint ? props.registerRequestEndpoint : '')),
     )
+
+    // Message props: These provided values default to useI18n() message text so
+    // they must be provided in this format so the default value can be set in the child component.
+    props.registerButtonText && provide('register-button-text', computed((): string => props.registerButtonText))
 
     const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
 

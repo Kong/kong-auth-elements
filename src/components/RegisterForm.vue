@@ -175,9 +175,9 @@ export default defineComponent({
   emits: registerEmits,
 
   setup(props, { emit }) {
-    const { userEntity, customErrorHandler } = useConfigOptions()
+    const { userEntity, customErrorHandler, lang } = useConfigOptions()
     const { api } = useKongAuthApi()
-    const { messages } = useI18n()
+    const { messages } = useI18n(lang)
 
     /*
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
@@ -186,7 +186,7 @@ export default defineComponent({
     const accessCodeRequired: Ref<boolean> = inject('access-code-required', ref(false)) // False by default so the backend can guard registration
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
     const showPasswordStrengthMeter: Ref<boolean> = inject('show-password-strength-meter', ref(false))
-    const registerButtonText: Ref<string> = inject('register-button-text', ref(''))
+    const registerButtonText: Ref<string> = inject('register-button-text', ref(messages.register.submitText))
     const registerRequestEndpoint: Ref<string> = inject('register-request-endpoint', ref(''))
 
     const formData = reactive({
