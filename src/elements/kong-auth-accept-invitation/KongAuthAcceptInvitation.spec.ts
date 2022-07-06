@@ -87,9 +87,9 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
 
       mount(KongAuthAcceptInvitation)
 
-      // Inputs should be pre-populated and disabled
-      cy.getTestId(testids.fullName).should('have.value', user.name).and('be.disabled')
-      cy.getTestId(testids.email).should('have.value', user.email).and('be.disabled')
+      // Inputs should be pre-populated and readonly
+      cy.getTestId(testids.fullName).should('have.value', user.name).invoke('attr', 'readonly').should('eq', 'readonly')
+      cy.getTestId(testids.email).should('have.value', user.email).invoke('attr', 'readonly').should('eq', 'readonly')
 
       // Organization text should be visible
       cy.getTestId(testids.organization).should('contain.text', user.org)
@@ -108,9 +108,9 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
 
       mount(KongAuthAcceptInvitation)
 
-      // Inputs should be pre-populated and disabled
-      cy.getTestId(testids.fullName).should('have.value', user.name).and('be.disabled')
-      cy.getTestId(testids.email).should('have.value', user.email).and('be.disabled')
+      // Inputs should be pre-populated and readonly
+      cy.getTestId(testids.fullName).should('have.value', user.name).invoke('attr', 'readonly').should('eq', 'readonly')
+      cy.getTestId(testids.email).should('have.value', user.email).invoke('attr', 'readonly').should('eq', 'readonly')
 
       // Organization text should be visible
       cy.getTestId(testids.organization).should('contain.text', user.org)
