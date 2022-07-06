@@ -1,3 +1,11 @@
+# [1.20.0](https://github.com/Kong/kong-auth-elements/compare/v1.19.5...v1.20.0) (2022-07-06)
+
+
+### Features
+
+* implement new invite element ([6610679](https://github.com/Kong/kong-auth-elements/commit/66106793f1e424a681c3d51af0840dcfc0f96fd5))
+* **invite:** add new accept invitation element [KHCP-4061] ([203cc4a](https://github.com/Kong/kong-auth-elements/commit/203cc4a427ecaaa7eb318c55600ad6cf26d5ee29))
+
 ## [1.19.5](https://github.com/Kong/kong-auth-elements/compare/v1.19.4...v1.19.5) (2022-07-06)
 
 
