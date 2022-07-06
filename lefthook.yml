@@ -9,4 +9,6 @@ pre-commit:
 commit-msg:
   commands:
     commitlint:
+      skip:
+        - rebase
       run: yarn commitlint --edit "$1"
