@@ -7,57 +7,39 @@ Native HTML Web Components used for KAuth implementation in Kong apps
 [![Tests](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yml/badge.svg)](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yml)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
+## Table of contents
+
 - [@kong/kong-auth-elements](#kongkong-auth-elements)
+  - [Table of contents](#table-of-contents)
   - [Installation](#installation)
   - [Usage](#usage)
-    <!-- - [Vue 3 Plugin](#vue-3-plugin) -->
     - [Vue 2 or native web components](#vue-2-or-native-web-components)
-      - [Teleport Wrapper](#teleport-wrapper)
     - [Options](#options)
-      - [TypeScript](#typescript)
-      - [Custom Error Handler](#custom-error-handler)
-      - [Shadow DOM CSS](#shadow-dom-css)
     - [Events](#events)
     - [Theming with CSS Variables](#theming-with-css-variables)
     - [Webpack](#webpack)
     - [Testing in your app](#testing-in-your-app)
-      - [Cypress](#cypress)
   - [Custom Elements](#custom-elements)
     - [`kong-auth-login`](#kong-auth-login)
-      - [Props](#props)
-      - [Emits Events](#emits-events)
-      - [Query String Parameters](#query-string-parameters)
-      - [IdP Login](#idp-login)
-        - [Auto-initialization](#auto-initialization)
-        - [Logging back in](#logging-back-in)
     - [`kong-auth-forgot-password`](#kong-auth-forgot-password)
-      - [Props](#props-1)
-      - [Emits Events](#emits-events-1)
     - [`kong-auth-reset-password`](#kong-auth-reset-password)
-      - [Props](#props-2)
-      - [Emits Events](#emits-events-2)
-      - [Query String Parameters](#query-string-parameters-1)
     - [`kong-auth-register`](#kong-auth-register)
-      - [Props](#props-3)
-      - [Emits Events](#emits-events-3)
-      - [Query String Parameters](#query-string-parameters-2)
+    - [`kong-auth-accept-invitation`](#kong-auth-accept-invitation)
   - [KAuth API](#kauth-api)
   - [Contributing](#contributing)
     - [Creating a New Custom Element](#creating-a-new-custom-element)
-      - [Requirements](#requirements)
     - [Custom Element Styles and the shadow DOM](#custom-element-styles-and-the-shadow-dom)
     - [Committing Changes](#committing-changes)
-      - [Enforcing Commit Format](#enforcing-commit-format)
   - [Local Development](#local-development)
     - [Recommended IDE Setup](#recommended-ide-setup)
-      - [Type Support For `.vue` Imports in TS](#type-support-for-vue-imports-in-ts)
     - [Local Dev Against Non-Local API](#local-dev-against-non-local-api)
     - [Compile components and hot-reload for development](#compile-components-and-hot-reload-for-development)
     - [Compile Custom Elements and hot-reload for development](#compile-custom-elements-and-hot-reload-for-development)
+    - [Compile static HTML and demo native Web Components](#compile-static-html-and-demo-native-web-components)
     - [Compile and minify for production](#compile-and-minify-for-production)
     - [Link the local, `@kong/kong-auth-elements` package into another local project for testing](#link-the-local-kongkong-auth-elements-package-into-another-local-project-for-testing)
   - [Current Issues](#current-issues)
-    - [Props](#props-4)
+    - [Props](#props)
     - [Axios](#axios)
 
 ## Installation
@@ -539,7 +521,6 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 - Provides a registration UI along with corresponding `kauth` functionality to allow the user to register and sending the confirmation email.
 - Checks the client config to determine if registration access codes are required.
-- If the user arrives via an invite link, the registration form will be pre-populated and the user will just provide a new password and click the agreement checkbox.
 
 #### Props
 
@@ -560,14 +541,33 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
 
+### `kong-auth-accept-invitation`
+
+- Provides an invitation acceptance UI. If the user arrives via an invite link, the form will be pre-populated and the user will just provide a new password.
+
+#### Props
+
+| Prop | Type    | Default | Description |
+| :-------------------------- | :------ | :----------------- | :----------------------------------- |
+| `wrapperId` | String  | `kong-auth-accept-invitation-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element. |
+| `subheaderText` | String  | `You've been invited to join ` | Set the subheader text that appears before the organization name above the form. |
+
+#### Emits Events
+
+| Event              |                 Payload                  | Description                   |
+| :----------------- | :--------------------------------------: | :---------------------------- |
+| `accept-invitation-success` | `{ email: String }` | User successfully accepted the invitation. |
+
+To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
+
 #### Query String Parameters
 
 | Param | Required | Description |
 | :--------- | :-------------------- | :-------------------------------------------------- |
-| `token` | `true` if from invite | Pass an invite token in the query string if the user is originating from an invite. |
-| `email` | `true` if from invite | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string if the user is originating from an invite. |
-| `fullName` | `true` if from invite | Pass the user's URL encoded full name in the query string if the user is originating from an invite. |
-| `org` | `true` if from invite | Pass the user's URL encoded organization in the query string if the user is originating from an invite. |
+| `token` | `true` | Pass an invite token in the query string. |
+| `email` | `true` | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string. |
+| `fullName` | `true` | Pass the user's URL encoded full name in the query string. |
+| `org` | `true` | Pass the user's URL encoded organization in the query string. |
 
 ## KAuth API
 
