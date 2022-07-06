@@ -1,3 +1,10 @@
+## [1.20.1](https://github.com/Kong/kong-auth-elements/compare/v1.20.0...v1.20.1) (2022-07-06)
+
+
+### Bug Fixes
+
+* bump kongponents version ([42c4f59](https://github.com/Kong/kong-auth-elements/commit/42c4f5959696ee8793e58faf83ea2c7cc4805cc0))
+
 # [1.20.0](https://github.com/Kong/kong-auth-elements/compare/v1.19.5...v1.20.0) (2022-07-06)
 
 
