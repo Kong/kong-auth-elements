@@ -61,6 +61,18 @@
             @register-success="showAlert('Register success!')" />
         </div>
       </div>
+
+      <div v-if="urlPath.includes('/accept-invitation') || urlPath === '/'" class="element-wrapper">
+        <h4>
+          <code>KongAuthAcceptInvitation.vue</code>
+        </h4>
+        <div id="kong-auth-accept-invitation-wrapper">
+          <KongAuthAcceptInvitation
+            wrapper-id="kong-auth-accept-invitation-wrapper"
+            subheader-text="This is custom text"
+            @accept-invitation-success="showAlert('Accept invitation success!')" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -105,16 +117,15 @@ body {
     background: #fff;
     border: 1px dotted #1155cb;
     margin: 20px;
-    padding: 20px;
+    padding: 40px;
 
     @media screen and (min-width: 578px) {
-      max-width: 600px;
+      max-width: 400px;
       margin: 40px auto 0;
     }
 
     .element-wrapper {
       border-bottom: 1px solid lightgray;
-      padding: 40px 0;
 
       &:last-of-type {
         border-bottom: none;

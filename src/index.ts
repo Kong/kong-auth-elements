@@ -40,6 +40,7 @@ export default function registerKongAuthNativeElements(options?: KongAuthElement
   // Since we are registering custom elements as native web components, force options.shadowDom to true
   userOptions.shadowDom = true
 
+  registerCustomElement('kong-auth-accept-invitation', elements.KongAuthAcceptInvitation, userOptions)
   registerCustomElement('kong-auth-forgot-password', elements.KongAuthForgotPassword, userOptions)
   registerCustomElement('kong-auth-login', elements.KongAuthLogin, userOptions)
   registerCustomElement('kong-auth-register', elements.KongAuthRegister, userOptions)

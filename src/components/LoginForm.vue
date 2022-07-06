@@ -40,7 +40,7 @@
 
       <div v-if="loginDividerIsVisible" class="kong-auth-element-form-divider">{{ messages.general.dividerTextOr }}</div>
 
-      <div v-if="currentState.matches('error') && error" class="my-3">
+      <div v-if="currentState.matches('error') && error" class="my-4">
         <ErrorMessage :error="error" />
       </div>
 
@@ -131,6 +131,7 @@
             icon="spinner"
             size="16"
             class="pr-0 mr-2"
+            color="var(--grey-400)"
           />
           {{ loginBtnText }}
         </KButton>

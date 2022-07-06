@@ -556,7 +556,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 | Event              |                 Payload                  | Description                   |
 | :----------------- | :--------------------------------------: | :---------------------------- |
-| `register-success` | `{ email: String, fromInvite: Boolean }` | User successfully registered. |
+| `register-success` | `{ email: String }` | User successfully registered. |
 
 To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
 
