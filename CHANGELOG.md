@@ -1,3 +1,10 @@
+## [1.20.2](https://github.com/Kong/kong-auth-elements/compare/v1.20.1...v1.20.2) (2022-07-06)
+
+
+### Bug Fixes
+
+* **accept-invitation:** switch disabled inputs to readonly ([3bcbbc9](https://github.com/Kong/kong-auth-elements/commit/3bcbbc9ed9497fcc1874b4c70cdc26a85e9d5b42))
+
 ## [1.20.1](https://github.com/Kong/kong-auth-elements/compare/v1.20.0...v1.20.1) (2022-07-06)
 
 
