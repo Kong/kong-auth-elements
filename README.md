@@ -541,7 +541,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 ### `kong-auth-accept-invitation`
 
-- Provides an invitation acceptance UI. If the user arrives via an invite link, the form will be pre-populated and the user will just provide a new password.
+- Provides a UI to allow accepting an invitation. The user should arrive via an invite link with the required query string parameters (outlined below) in the URL. The form will be pre-populated with data and the user will just provide a new password.
 
 #### Props
 
