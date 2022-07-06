@@ -52,7 +52,7 @@ export default ({ mode }) => {
     // Change the root when using yarn serve:*
     root: !process.env.SERVE_MODE ? process.cwd() : process.env.SERVE_MODE === 'components' ? './dev/serve-components' : './dev/serve-elements',
     server: {
-      port: 4000,
+      port: 4080,
       proxy: {
         '^/api': {
           target: process.env.VITE_AUTH_URL,

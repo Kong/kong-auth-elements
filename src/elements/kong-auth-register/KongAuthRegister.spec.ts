@@ -241,7 +241,6 @@ describe('KongAuthRegister.ce.vue', () => {
       cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
         // Verify emit payload
         cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
-        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'fromInvite')
       })
     })
   })
@@ -276,7 +275,6 @@ describe('KongAuthRegister.ce.vue', () => {
       cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
         // Verify emit payload
         cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
-        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'fromInvite')
       })
     })
   })

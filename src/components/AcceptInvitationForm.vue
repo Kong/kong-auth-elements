@@ -1,25 +1,25 @@
 <template>
-  <div class="kong-auth-register-form">
+  <div class="kong-auth-accept-invitation-form">
+    <h2 v-if="!currentState.matches('success') && organization"
+      class="accept-invitation-subheader color-black-70 mb-6"
+      data-testid="kong-auth-accept-invitation-subheader"
+    ><span data-testid="kong-auth-accept-invitation-subheader-text">{{ subheaderText }}</span> <span data-testid="kong-auth-accept-invitation-org-name">{{ organization }}</span>!</h2>
+
     <div
       v-if="currentState.matches('error') && !passwordError && error"
       class="my-4"
-      data-testid="kong-auth-register-alert"
+      data-testid="kong-auth-accept-invitation-alert"
     >
       <ErrorMessage :error="error" />
     </div>
 
     <form
       v-if="!currentState.matches('success')"
-      class="register-form"
+      class="accept-invitation-form"
       @submit.prevent="submitForm"
       novalidate
-      data-testid="kong-auth-register-form"
+      data-testid="kong-auth-accept-invitation-form"
     >
-      <p
-        v-if="instructionText"
-        class="color-black-45"
-        data-testid="kong-auth-register-instruction-text"
-      >{{ instructionText }}</p>
 
       <div>
         <KInput
@@ -32,22 +32,7 @@
           :disabled="prepopulated"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !fullName ? true : false"
           required
-          data-testid="kong-auth-register-full-name"
-        />
-      </div>
-
-      <div v-if="userEntity !== 'developer'">
-        <KInput
-          id="organization"
-          v-model.trim="organization"
-          type="text"
-          :label="`${messages.inputLabels.organization} *`"
-          class="w-100 mb-4"
-          autocomplete="organization"
-          :disabled="prepopulated"
-          :has-error="currentState.matches('error') && error && fieldsHaveError && !organization ? true : false"
-          required
-          data-testid="kong-auth-register-organization"
+          data-testid="kong-auth-accept-invitation-full-name"
         />
       </div>
 
@@ -61,58 +46,24 @@
         :disabled="prepopulated"
         :has-error="currentState.matches('error') && error && fieldsHaveError && !email ? true : false"
         required
-        data-testid="kong-auth-register-email"
+        data-testid="kong-auth-accept-invitation-email"
       />
 
-      <div v-if="userEntity !== 'developer'">
         <KInput
           id="password"
           v-model.trim="password"
           type="password"
           :label="`${messages.inputLabels.password} *`"
-          :class="['w-100', showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
+          class="w-100 mb-4"
           autocomplete="new-password"
           :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
           required
-          data-testid="kong-auth-register-password"
+          data-testid="kong-auth-accept-invitation-password"
         />
-
-        <PasswordStrengthMeter
-          v-if="showPasswordStrengthMeter"
-          class="password-strength-meter"
-          v-model="password"
-          :strength-meter-only="true"
-        />
-      </div>
-
-      <div v-if="!emailToken && accessCodeRequired && userEntity !== 'developer'">
-        <KInput
-          id="access_code"
-          v-model="accessCode"
-          class="w-100 mb-4"
-          type="password"
-         :label="`${messages.inputLabels.accessCode} *`"
-          :has-error="currentState.matches('error') && error && fieldsHaveError && !accessCode ? true : false"
-          required
-          data-testid="kong-auth-register-access-code"
-        />
-      </div>
-
-      <div v-if="userEntity !== 'developer'" class="color-black-45 type-sm">
-        <KCheckbox v-model="checked_agreement" data-testid="kong-auth-register-agree-checkbox">
-          I agree to the
-          <a
-            href="https://konghq.com/konnectcustomeragreement"
-            target="_blank"
-          >Konnect customer agreement</a>
-          and
-          <a href="https://konghq.com/privacy" target="_blank">privacy policy</a>.
-        </KCheckbox>
-      </div>
 
       <div
         v-if="currentState.matches('error') && passwordError && error"
-        data-testid="kong-auth-register-alert"
+        data-testid="kong-auth-accept-invitation-alert"
       >
         <ErrorMessage :error="error" />
       </div>
@@ -121,16 +72,16 @@
         type="submit"
         appearance="primary"
         :is-rounded="false"
-        class="register-submit justify-content-center w-100 type-lg mt-6"
+        class="accept-invitation-submit justify-content-center w-100 type-lg mt-6"
         :disabled="btnDisabled"
-        data-testid="kong-auth-register-submit"
+        data-testid="kong-auth-accept-invitation-submit"
       >
         <KIcon
           v-if="currentState.matches('pending')"
           icon="spinner"
           size="16"
-          class="pr-0 mr-2"
           color="var(--grey-400)"
+          class="pr-0 mr-2"
         />
         {{ btnText }}
       </KButton>
@@ -139,40 +90,36 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, reactive, Ref, toRefs, computed, onMounted } from 'vue'
+import { defineComponent, inject, ref, Ref, reactive, toRefs, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useKongAuthApi from '@/composables/useKongAuthApi'
 import useI18n from '@/composables/useI18n'
-import { RegisterRegisterResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 // Components
-import { KButton, KIcon, KInput, KCheckbox } from '@kong/kongponents'
+import { KButton, KIcon, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
-import PasswordStrengthMeter from '@/components/PasswordStrengthMeter.vue'
 
-export const registerEmits = {
-  'register-success': (payload: { email: string }): boolean => {
+export const acceptInvitationEmits = {
+  'accept-invitation-success': (payload: { email: string }): boolean => {
     return !!payload?.email.trim()
   },
 }
 
 export default defineComponent({
-  name: 'RegisterForm',
+  name: 'AcceptInvitationForm',
 
   components: {
     ErrorMessage,
     KButton,
     KIcon,
     KInput,
-    KCheckbox,
-    PasswordStrengthMeter,
   },
 
   // Define emits with validation, where necessary
-  emits: registerEmits,
+  emits: acceptInvitationEmits,
 
   setup(props, { emit }) {
     const { userEntity, customErrorHandler, lang } = useConfigOptions()
@@ -183,21 +130,15 @@ export default defineComponent({
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
     The default values provided to inject() here should be refs with empty string or false since the defaults are typically handled in the custom element provide()
     */
-    const accessCodeRequired: Ref<boolean> = inject('access-code-required', ref(false)) // False by default so the backend can guard registration
-    const instructionText: Ref<string> = inject('instruction-text', ref(''))
-    const showPasswordStrengthMeter: Ref<boolean> = inject('show-password-strength-meter', ref(false))
-    const registerButtonText: Ref<string> = inject('register-button-text', ref(messages.register.submitText))
-    const registerRequestEndpoint: Ref<string> = inject('register-request-endpoint', ref(''))
+    const subheaderText: Ref<string> = inject('invite-subheader-text', ref(messages.acceptInvitation.subheader))
 
     const formData = reactive({
       email: '',
       fullName: '',
-      emailToken: '',
+      inviteToken: '',
       organization: '',
-      prepopulated: false,
-      accessCode: '',
       password: '',
-      checked_agreement: false,
+      prepopulated: false,
     })
 
     const error = ref<any>(null)
@@ -206,17 +147,17 @@ export default defineComponent({
 
     const { state: currentState, send } = useMachine(
       createMachine({
-        id: 'AUTH_REGISTER',
+        id: 'ACCEPT_INVITATION',
         initial: 'idle',
         states: {
           idle: {
-            on: { CLICK_REGISTER: 'pending' },
+            on: { CLICK_CREATE_ACCOUNT: 'pending' },
           },
           pending: {
             on: { RESOLVE: 'success', REJECT: 'error' },
           },
           error: {
-            on: { CLICK_REGISTER: 'pending' },
+            on: { CLICK_CREATE_ACCOUNT: 'pending' },
           },
           success: {},
         },
@@ -224,58 +165,30 @@ export default defineComponent({
     )
 
     const userCanSubmitForm = computed((): boolean => {
+      // Don't check here for the token; let the user submit to let the backend tell them their token is invalid/missing
       return !!(formData.email &&
         formData.fullName &&
-        // Organization and Password are not required for `developer` user entity
-        ((formData.organization && formData.password && formData.checked_agreement) || userEntity === 'developer') &&
-        // If they have an invite token, or filled out the access code, or are a developer
-        (formData.emailToken || !accessCodeRequired.value || userEntity === 'developer' || (accessCodeRequired.value && formData.accessCode))
+        formData.password
       )
     })
 
     const btnText = computed((): string => {
-      return ['pending', 'success'].some(currentState.value.matches) ? messages.register.submittingText : registerButtonText.value
+      return ['pending', 'success'].some(currentState.value.matches) ? messages.acceptInvitation.submittingText : messages.acceptInvitation.submitText
     })
 
     const btnDisabled = computed((): boolean => {
       return currentState.value.matches('pending') || !userCanSubmitForm.value
     })
 
-    const processRegistration = async (): Promise<AxiosResponse<RegisterRegisterResponse | any>> => {
-      if (formData.emailToken) {
-        // Accept the invite and set the password
-        return await api.inviteAccept.acceptUserInvite({
-          password: formData.password,
-          token: formData.emailToken,
-        })
-      } else {
-        // Register a new user
-
-        if (registerRequestEndpoint.value) {
-          // If custom endpoint (still passing all the values even though 'developer' only needs email and fullName)
-          return await api.client.post(registerRequestEndpoint.value, {
-            data: {
-              email: formData.email,
-              fullName: formData.fullName,
-              organization: formData.organization || undefined,
-              password: formData.password || undefined,
-            },
-          })
-        } else {
-          // default endpoint
-          return await api.registration.registerUser({
-            email: formData.email,
-            fullName: formData.fullName,
-            organization: formData.organization,
-            password: formData.password,
-            registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
-          })
-        }
-      }
+    const acceptInvitation = async (): Promise<AxiosResponse<any>> => {
+      return await api.inviteAccept.acceptUserInvite({
+        password: formData.password,
+        token: formData.inviteToken,
+      })
     }
 
     const submitForm = async (): Promise<void> => {
-      send('CLICK_REGISTER')
+      send('CLICK_CREATE_ACCOUNT')
 
       // Reset form errors
       error.value = null
@@ -298,18 +211,18 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        await processRegistration()
+        await acceptInvitation()
 
         send('RESOLVE')
 
         // Emit success
-        emit('register-success', {
+        emit('accept-invitation-success', {
           email: formData.email,
         })
       } catch (err: any) {
         send('REJECT')
 
-        const customEndpointErrorMessage = typeof customErrorHandler === 'function' && customErrorHandler({ error: err, request: 'register-request', element: 'kong-auth-register' })
+        const customEndpointErrorMessage = typeof customErrorHandler === 'function' && customErrorHandler({ error: err, request: 'accept-invitation-request', element: 'kong-auth-accept-invitation' })
 
         if (customEndpointErrorMessage) {
           error.value = {
@@ -339,7 +252,7 @@ export default defineComponent({
     onMounted(async () => {
       const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
 
-      formData.emailToken = urlParams?.get('token') || ''
+      formData.inviteToken = urlParams?.get('token') || ''
       formData.fullName = urlParams?.get('fullName') || ''
       formData.organization = urlParams?.get('org') || ''
       formData.email = urlParams?.get('email') || ''
@@ -354,13 +267,11 @@ export default defineComponent({
       btnText,
       btnDisabled,
       messages,
+      subheaderText,
       submitForm,
       error,
       passwordError,
       fieldsHaveError,
-      accessCodeRequired,
-      instructionText,
-      showPasswordStrengthMeter,
       userEntity,
       ...toRefs(formData),
     }

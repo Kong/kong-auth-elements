@@ -1,7 +1,8 @@
 {
   "acceptInvitation": {
     "submitText": "Create account",
-    "submittingText": "Submitting"
+    "submittingText": "Submitting",
+    "subheader": "You've been invited to join "
   },
   "login": {
     "forgotPasswordLinkText": "Forgot your password?",
