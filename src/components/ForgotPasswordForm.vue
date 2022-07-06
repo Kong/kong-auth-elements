@@ -39,7 +39,7 @@
         id="email"
         v-model.trim="email"
         type="email"
-        label="Email *"
+        :label="`${messages.inputLabels.email} *`"
         class="w-100 mb-5"
         autocomplete="username"
         autocapitalize="off"

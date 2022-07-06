@@ -26,7 +26,7 @@
           id="full_name"
           v-model.trim="fullName"
           type="text"
-          label="Full Name *"
+          :label="`${messages.inputLabels.fullName} *`"
           class="w-100 mb-4"
           autocomplete="name"
           :disabled="prepopulated"
@@ -41,7 +41,7 @@
           id="organization"
           v-model.trim="organization"
           type="text"
-          label="Organization *"
+          :label="`${messages.inputLabels.organization} *`"
           class="w-100 mb-4"
           autocomplete="organization"
           :disabled="prepopulated"
@@ -55,7 +55,7 @@
         id="email"
         v-model.trim="email"
         type="email"
-        label="Email *"
+        :label="`${messages.inputLabels.email} *`"
         class="w-100 mb-4"
         autocomplete="email"
         :disabled="prepopulated"
@@ -69,7 +69,7 @@
           id="password"
           v-model.trim="password"
           type="password"
-          label="Password *"
+          :label="`${messages.inputLabels.password} *`"
           :class="['w-100', showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
           autocomplete="new-password"
           :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
@@ -91,7 +91,7 @@
           v-model="accessCode"
           class="w-100 mb-4"
           type="password"
-          label="Access Code *"
+         :label="`${messages.inputLabels.accessCode} *`"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !accessCode ? true : false"
           required
           data-testid="kong-auth-register-access-code"
@@ -154,8 +154,8 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 import PasswordStrengthMeter from '@/components/PasswordStrengthMeter.vue'
 
 export const registerEmits = {
-  'register-success': (payload: { email: string, fromInvite: boolean }): boolean => {
-    return !!payload?.email.trim() && typeof payload?.fromInvite === 'boolean'
+  'register-success': (payload: { email: string }): boolean => {
+    return !!payload?.email.trim()
   },
 }
 
@@ -305,7 +305,6 @@ export default defineComponent({
         // Emit success
         emit('register-success', {
           email: formData.email,
-          fromInvite: formData.prepopulated,
         })
       } catch (err: any) {
         send('REJECT')

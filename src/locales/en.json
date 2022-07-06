@@ -1,4 +1,8 @@
 {
+  "acceptInvitation": {
+    "submitText": "Create account",
+    "submittingText": "Submitting"
+  },
   "login": {
     "forgotPasswordLinkText": "Forgot your password?",
     "registerLinkText": "Sign up",
@@ -35,5 +39,14 @@
     "invalidAccessCode": "Invalid access code",
     "serviceUnavailable": "Service unavailable. Please try again later.",
     "dividerTextOr": "or"
+  },
+  "inputLabels": {
+    "fullName": "Full name",
+    "organization": "Organization",
+    "email": "Email",
+    "password": "Password",
+    "accessCode": "Access code",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password"
   }
 }
