@@ -29,7 +29,6 @@
           :label="`${messages.inputLabels.fullName} *`"
           class="w-100 mb-4"
           autocomplete="name"
-          :disabled="prepopulated"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !fullName ? true : false"
           required
           data-testid="kong-auth-register-full-name"
@@ -44,7 +43,6 @@
           :label="`${messages.inputLabels.organization} *`"
           class="w-100 mb-4"
           autocomplete="organization"
-          :disabled="prepopulated"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !organization ? true : false"
           required
           data-testid="kong-auth-register-organization"
@@ -58,7 +56,6 @@
         :label="`${messages.inputLabels.email} *`"
         class="w-100 mb-4"
         autocomplete="email"
-        :disabled="prepopulated"
         :has-error="currentState.matches('error') && error && fieldsHaveError && !email ? true : false"
         required
         data-testid="kong-auth-register-email"
@@ -85,7 +82,7 @@
         />
       </div>
 
-      <div v-if="!emailToken && accessCodeRequired && userEntity !== 'developer'">
+      <div v-if="accessCodeRequired && userEntity !== 'developer'">
         <KInput
           id="access_code"
           v-model="accessCode"
@@ -139,10 +136,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, reactive, Ref, toRefs, computed, onMounted } from 'vue'
+import { defineComponent, inject, ref, reactive, Ref, toRefs, computed } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
-import { win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useKongAuthApi from '@/composables/useKongAuthApi'
 import useI18n from '@/composables/useI18n'
@@ -192,9 +188,7 @@ export default defineComponent({
     const formData = reactive({
       email: '',
       fullName: '',
-      emailToken: '',
       organization: '',
-      prepopulated: false,
       accessCode: '',
       password: '',
       checked_agreement: false,
@@ -228,8 +222,8 @@ export default defineComponent({
         formData.fullName &&
         // Organization and Password are not required for `developer` user entity
         ((formData.organization && formData.password && formData.checked_agreement) || userEntity === 'developer') &&
-        // If they have an invite token, or filled out the access code, or are a developer
-        (formData.emailToken || !accessCodeRequired.value || userEntity === 'developer' || (accessCodeRequired.value && formData.accessCode))
+        // If they filled out the access code, or are a developer
+        (!accessCodeRequired.value || userEntity === 'developer' || (accessCodeRequired.value && formData.accessCode))
       )
     })
 
@@ -241,36 +235,27 @@ export default defineComponent({
       return currentState.value.matches('pending') || !userCanSubmitForm.value
     })
 
-    const processRegistration = async (): Promise<AxiosResponse<RegisterRegisterResponse | any>> => {
-      if (formData.emailToken) {
-        // Accept the invite and set the password
-        return await api.inviteAccept.acceptUserInvite({
-          password: formData.password,
-          token: formData.emailToken,
-        })
-      } else {
-        // Register a new user
-
-        if (registerRequestEndpoint.value) {
-          // If custom endpoint (still passing all the values even though 'developer' only needs email and fullName)
-          return await api.client.post(registerRequestEndpoint.value, {
-            data: {
-              email: formData.email,
-              fullName: formData.fullName,
-              organization: formData.organization || undefined,
-              password: formData.password || undefined,
-            },
-          })
-        } else {
-          // default endpoint
-          return await api.registration.registerUser({
+    const processRegistration = async (): Promise<AxiosResponse<RegisterRegisterResponse>> => {
+      // Register a new user
+      if (registerRequestEndpoint.value) {
+        // If custom endpoint (still passing all the values even though 'developer' only needs email and fullName)
+        return await api.client.post(registerRequestEndpoint.value, {
+          data: {
             email: formData.email,
             fullName: formData.fullName,
-            organization: formData.organization,
-            password: formData.password,
-            registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
-          })
-        }
+            organization: formData.organization || undefined,
+            password: formData.password || undefined,
+          },
+        })
+      } else {
+        // default endpoint
+        return await api.registration.registerUser({
+          email: formData.email,
+          fullName: formData.fullName,
+          organization: formData.organization,
+          password: formData.password,
+          registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
+        })
       }
     }
 
@@ -335,19 +320,6 @@ export default defineComponent({
         }
       }
     }
-
-    onMounted(async () => {
-      const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
-
-      formData.emailToken = urlParams?.get('token') || ''
-      formData.fullName = urlParams?.get('fullName') || ''
-      formData.organization = urlParams?.get('org') || ''
-      formData.email = urlParams?.get('email') || ''
-
-      // If all values were passed in, set formData.prepopulated to true
-      formData.prepopulated =
-        !!(urlParams?.get('token') && urlParams?.get('fullName') && urlParams?.get('org') && urlParams?.get('email'))
-    })
 
     return {
       currentState,
