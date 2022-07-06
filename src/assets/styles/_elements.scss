@@ -109,4 +109,18 @@
   }
 }
 
+a {
+  color: var(--blue-500);
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: var(--blue-500);
+  }
+}
+
 @import "./password-strength-meter";
