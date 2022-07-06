@@ -29,7 +29,7 @@
           :label="`${messages.inputLabels.fullName} *`"
           class="w-100 mb-4"
           autocomplete="name"
-          :disabled="prepopulated"
+          :readonly="prepopulated"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !fullName ? true : false"
           required
           data-testid="kong-auth-accept-invitation-full-name"
@@ -43,7 +43,7 @@
         :label="`${messages.inputLabels.email} *`"
         class="w-100 mb-4"
         autocomplete="email"
-        :disabled="prepopulated"
+        :readonly="prepopulated"
         :has-error="currentState.matches('error') && error && fieldsHaveError && !email ? true : false"
         required
         data-testid="kong-auth-accept-invitation-email"
