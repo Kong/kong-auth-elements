@@ -1,7 +1,7 @@
 {
   "login": {
     "forgotPasswordLinkText": "Forgot your password?",
-    "registerLinkText": "Sign Up",
+    "registerLinkText": "Sign up",
     "registerLinkHelpText": "Don't have an account?",
     "unauthenticated": "Incorrect username or password. Please try again.",
     "accountLocked": "Your account has been locked. Reset your password to log in now",
@@ -9,25 +9,25 @@
     "confirmedEmailSuccess": "Email successfully confirmed!",
     "registerSuccess": "Successfully registered!",
     "loginWithCredentials": "Log in with email and password",
-    "loginText": "Login",
-    "loginTextSSO": "Login with SSO",
-    "loginTextSSOAriaLabel": "Login with your single sign-on provider",
+    "loginText": "Log in",
+    "loginTextSSO": "Log in with SSO",
+    "loginTextSSOAriaLabel": "Log in with your single sign-on provider",
     "submittingText": "Submitting"
   },
   "forgotPassword": {
-    "loginLinkText": "Return to log in",
+    "loginLinkText": "Return to login",
     "missingEmail": "Please enter your email address.",
     "success": "If an account exists for the email provided, you will receive a link to reset your password. If the email doesn't appear within a few minutes, be sure to check your spam folder.",
-    "submitText": "Recover Password",
+    "submitText": "Recover password",
     "submittingText": "Submitting"
   },
   "register": {
-    "submitText": "Sign up for Free",
+    "submitText": "Sign up for free",
     "submittingText": "Submitting"
   },
   "resetPassword": {
     "passwordMismatch": "Passwords do not match",
-    "submitText": "Reset Password",
+    "submitText": "Reset password",
     "submittingText": "Submitting"
   },
   "general": {
