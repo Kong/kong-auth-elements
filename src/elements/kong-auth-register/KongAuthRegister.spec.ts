@@ -3,7 +3,6 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthRegister from './KongAuthRegister.ce.vue'
-import { win } from '../../utils'
 import { getConfigOptions } from '../../composables/useConfigOptions'
 import useI18n from '../../composables/useI18n'
 
