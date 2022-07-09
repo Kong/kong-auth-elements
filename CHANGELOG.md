@@ -1,3 +1,11 @@
+## [1.20.4](https://github.com/Kong/kong-auth-elements/compare/v1.20.3...v1.20.4) (2022-07-09)
+
+
+### Bug Fixes
+
+* **deps:** bump ansi-regex from 3.0.0 to 3.0.1 ([169b2d7](https://github.com/Kong/kong-auth-elements/commit/169b2d78a9dc19a622d188c64a34be6690616559))
+* **deps:** bump axios from 0.26.1 to 0.27.2 ([7e4ffa1](https://github.com/Kong/kong-auth-elements/commit/7e4ffa195ed96faee119eda6ce419d50bdd8fd22))
+
 ## [1.20.3](https://github.com/Kong/kong-auth-elements/compare/v1.20.2...v1.20.3) (2022-07-09)
 
 
