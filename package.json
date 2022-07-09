@@ -67,7 +67,7 @@
     "start-server-and-test": "^1.14.0",
     "typescript": "~4.7.4",
     "vite": "^2.9.14",
-    "vue-tsc": "^0.38.2",
+    "vue-tsc": "^0.38.3",
     "zxcvbn": "^4.4.2"
   },
   "peerDependencies": {
