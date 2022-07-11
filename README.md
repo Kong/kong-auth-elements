@@ -29,6 +29,8 @@ Native HTML Web Components used for KAuth UI implementation in Kong apps
     - [Custom Element Styles and the shadow DOM](#custom-element-styles-and-the-shadow-dom)
     - [Committing Changes](#committing-changes)
   - [Local Development](#local-development)
+    - [Configure Environment Variables](#configure-environment-variables)
+    - [Install dependencies](#install-dependencies)
     - [Recommended IDE Setup](#recommended-ide-setup)
     - [Local Dev Against Non-Local API](#local-dev-against-non-local-api)
     - [Compile components and hot-reload for development](#compile-components-and-hot-reload-for-development)
@@ -735,11 +737,24 @@ This will trigger the Commitizen interactive prompt for building your commit mes
 
 ## Local Development
 
+### Configure Environment Variables
+
+By default, the UI runs against a local backend ([Kong/kauth](https://github.com/Kong/kauth)) running on `localhost:8080`; however, **most development can be done by utlizing a remote backend** (e.g. the DEV environment) and is _**strongly**_ recommended.
+
+To utilize a remote backend, first duplicate the `/client/.env.development.local.example` file and rename it to `/client/.env.development.local`
+
 ```sh
-yarn install
+# Execute from the project root
+cp ./client/.env.development.local.example ./client/.env.development.local
 ```
 
-You will also need the [kauth](https://github.com/Kong/kauth) API running locally on `localhost:8080`.
+After adding this new `env` file, your local frontend will utilize the **DEV** environment APIs.
+
+### Install dependencies
+
+```sh
+yarn install --frozen-lockfile
+```
 
 ### Recommended IDE Setup
 
