@@ -741,11 +741,11 @@ This will trigger the Commitizen interactive prompt for building your commit mes
 
 By default, the UI runs against a local backend ([Kong/kauth](https://github.com/Kong/kauth)) running on `localhost:8080`; however, **most development can be done by utlizing a remote backend** (e.g. the DEV environment) and is _**strongly**_ recommended.
 
-To utilize a remote backend, first duplicate the `/client/.env.development.local.example` file and rename it to `/client/.env.development.local`
+To utilize a remote backend, first duplicate the `.env.development.local.example` file and rename it to `.env.development.local`
 
 ```sh
 # Execute from the project root
-cp ./client/.env.development.local.example ./client/.env.development.local
+cp .env.development.local.example .env.development.local
 ```
 
 After adding this new `env` file, your local frontend will utilize the **DEV** environment APIs.
