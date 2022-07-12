@@ -8,7 +8,7 @@
     }
   }
 
-  form.register-form .k-select {
+  form.register-form :deep(.k-select) {
     width: 100% !important
   }
 }
