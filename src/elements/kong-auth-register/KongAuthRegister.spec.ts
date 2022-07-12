@@ -3,6 +3,7 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthRegister from './KongAuthRegister.ce.vue'
+import { win } from '../../utils'
 import { getConfigOptions } from '../../composables/useConfigOptions'
 import useI18n from '../../composables/useI18n'
 
@@ -50,7 +51,6 @@ describe('KongAuthRegister.ce.vue', () => {
     cy.getTestId(testids.form).within(() => {
       // Elements should exist
       cy.getTestId(testids.fullName).should('be.visible')
-      cy.getTestId(testids.geolocation).should('be.exist')
       cy.getTestId(testids.organization).should('be.visible')
       cy.getTestId(testids.email).should('be.visible')
       cy.getTestId(testids.password).should('be.visible')
@@ -58,6 +58,7 @@ describe('KongAuthRegister.ce.vue', () => {
       cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
     })
     // Elements should not exist
+    cy.getTestId(testids.geolocation).should('not.exist')
     cy.getTestId(testids.errorMessage).should('not.exist')
     cy.getTestId(testids.instructionText).should('not.exist')
     cy.getTestId(testids.accessCode).should('not.exist')
@@ -273,5 +274,31 @@ describe('KongAuthRegister.ce.vue', () => {
     })
     /* password strength component does not handle data-testid attributes nicely */
     cy.get('.component-password-strength-meter').should('be.visible')
+  })
+
+  describe('Responding to URL Parameters', () => {
+    it('shows the geolocation if the URL parameter has selectGeo = true', () => {
+      // Stub search params
+      cy.stub(win, 'getLocationSearch').returns('?selectGeo=true')
+
+      mount(KongAuthRegister)
+
+      // Form should exist
+      cy.getTestId(testids.form).should('be.visible')
+      cy.getTestId(testids.form).within(() => {
+      // Elements should exist
+        cy.getTestId(testids.fullName).should('be.visible')
+        cy.getTestId(testids.geolocation).should('be.visible')
+        cy.getTestId(testids.organization).should('be.visible')
+        cy.getTestId(testids.email).should('be.visible')
+        cy.getTestId(testids.password).should('be.visible')
+        cy.getTestId(testids.agreeCheckbox).should('be.visible')
+        cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
+      })
+      // Elements should not exist
+      cy.getTestId(testids.errorMessage).should('not.exist')
+      cy.getTestId(testids.instructionText).should('not.exist')
+      cy.getTestId(testids.accessCode).should('not.exist')
+    })
   })
 })

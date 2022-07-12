@@ -36,12 +36,14 @@
       </div>
 
       <div
-        v-if="userEntity !== 'developer' || urlQueryStr === 'selectGeo=true'">
+        v-if="userEntity !== 'developer' && !!selectGeo"
+        class="mb-4">
         <KSelect
-          id="geolocation"
+          v-model="selectedGeoOption"
           appearance="select"
           :items="geoLocation"
           data-testid="kong-auth-register-geolocation"
+          @selected="(item) => handleItemSelect(selectedGeoOption, item)"
         >
           <template v-slot:item-template="{ item }">
             <div class="select-item-label">{{item.label}}</div>
@@ -202,8 +204,8 @@ export default defineComponent({
 
     const formData = reactive({
       email: '',
+      selectedGeoOption: '',
       fullName: '',
-      selectedGeo: 'North America (USA)',
       organization: '',
       accessCode: '',
       password: '',
@@ -224,7 +226,7 @@ export default defineComponent({
         value: 'eu',
       },
     ]
-    const urlQueryStr = ref('')
+    const selectGeo = ref('')
 
     const { state: currentState, send } = useMachine(
       createMachine({
@@ -244,6 +246,10 @@ export default defineComponent({
         },
       }),
     )
+
+    const handleItemSelect = (field: any, item: { value: any }): void => {
+      field = item.value
+    }
 
     const userCanSubmitForm = computed((): boolean => {
       return !!(formData.email &&
@@ -283,6 +289,7 @@ export default defineComponent({
           organization: formData.organization,
           password: formData.password,
           registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
+          defaultGeo: formData.selectedGeoOption,
         })
       }
     }
@@ -350,7 +357,9 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      urlQueryStr.value = win.getLocationSearch().replace('?', '')
+      const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
+      // TODO: I renamed this variable in a few places
+      selectGeo.value = urlParams?.get('selectGeo') || ''
     })
 
     return {
@@ -368,7 +377,8 @@ export default defineComponent({
       userEntity,
       ...toRefs(formData),
       geoLocation,
-      urlQueryStr,
+      selectGeo,
+      handleItemSelect,
     }
   },
 })
