@@ -1,4 +1,8 @@
 {
+  "geos": {
+    "us":  "North America (USA)",
+    "eu": "Europe (Germany, Ireland)"
+  },
   "acceptInvitation": {
     "submitText": "Create account",
     "submittingText": "Submitting",
