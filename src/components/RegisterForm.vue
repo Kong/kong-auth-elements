@@ -35,6 +35,20 @@
         />
       </div>
 
+      <div
+        v-if="userEntity !== 'developer' || urlQueryStr === 'selectGeo=true'">
+        <KSelect
+          id="geolocation"
+          appearance="select"
+          :items="geoLocation"
+          data-testid="kong-auth-register-geolocation"
+        >
+          <template v-slot:item-template="{ item }">
+            <div class="select-item-label">{{item.label}}</div>
+          </template>
+        </KSelect>
+      </div>
+
       <div v-if="userEntity !== 'developer'">
         <KInput
           id="organization"
@@ -136,7 +150,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, reactive, Ref, toRefs, computed } from 'vue'
+import { defineComponent, inject, ref, reactive, Ref, toRefs, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import useConfigOptions from '@/composables/useConfigOptions'
@@ -144,8 +158,9 @@ import useKongAuthApi from '@/composables/useKongAuthApi'
 import useI18n from '@/composables/useI18n'
 import { RegisterRegisterResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
+import { win } from '@/utils'
 // Components
-import { KButton, KIcon, KInput, KCheckbox } from '@kong/kongponents'
+import { KButton, KIcon, KInput, KCheckbox, KSelect } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 import PasswordStrengthMeter from '@/components/PasswordStrengthMeter.vue'
 
@@ -164,6 +179,7 @@ export default defineComponent({
     KIcon,
     KInput,
     KCheckbox,
+    KSelect,
     PasswordStrengthMeter,
   },
 
@@ -174,7 +190,6 @@ export default defineComponent({
     const { userEntity, customErrorHandler, lang } = useConfigOptions()
     const { api } = useKongAuthApi()
     const { messages } = useI18n(lang)
-
     /*
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
     The default values provided to inject() here should be refs with empty string or false since the defaults are typically handled in the custom element provide()
@@ -188,6 +203,7 @@ export default defineComponent({
     const formData = reactive({
       email: '',
       fullName: '',
+      selectedGeo: 'North America (USA)',
       organization: '',
       accessCode: '',
       password: '',
@@ -197,6 +213,18 @@ export default defineComponent({
     const error = ref<any>(null)
     const passwordError = ref<boolean>(false)
     const fieldsHaveError = ref(false)
+    const geoLocation = [
+      {
+        label: messages.geos.us,
+        value: 'us',
+        selected: true,
+      },
+      {
+        label: messages.geos.eu,
+        value: 'eu',
+      },
+    ]
+    const urlQueryStr = ref('')
 
     const { state: currentState, send } = useMachine(
       createMachine({
@@ -321,6 +349,10 @@ export default defineComponent({
       }
     }
 
+    onMounted(() => {
+      urlQueryStr.value = win.getLocationSearch().replace('?', '')
+    })
+
     return {
       currentState,
       btnText,
@@ -335,6 +367,8 @@ export default defineComponent({
       showPasswordStrengthMeter,
       userEntity,
       ...toRefs(formData),
+      geoLocation,
+      urlQueryStr,
     }
   },
 })

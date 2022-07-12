@@ -12,6 +12,7 @@ const { messages } = useI18n('en')
 const testids = {
   form: 'kong-auth-register-form',
   fullName: 'kong-auth-register-full-name',
+  geolocation: 'kong-auth-register-geolocation',
   organization: 'kong-auth-register-organization',
   email: 'kong-auth-register-email',
   password: 'kong-auth-register-password',
@@ -49,6 +50,7 @@ describe('KongAuthRegister.ce.vue', () => {
     cy.getTestId(testids.form).within(() => {
       // Elements should exist
       cy.getTestId(testids.fullName).should('be.visible')
+      cy.getTestId(testids.geolocation).should('be.exist')
       cy.getTestId(testids.organization).should('be.visible')
       cy.getTestId(testids.email).should('be.visible')
       cy.getTestId(testids.password).should('be.visible')
@@ -77,6 +79,7 @@ describe('KongAuthRegister.ce.vue', () => {
     })
     // Elements should not exist
     cy.getTestId(testids.organization).should('not.exist')
+    cy.getTestId(testids.geolocation).should('not.exist')
     cy.getTestId(testids.password).should('not.exist')
     cy.getTestId(testids.agreeCheckbox).should('not.exist')
     cy.getTestId(testids.errorMessage).should('not.exist')
