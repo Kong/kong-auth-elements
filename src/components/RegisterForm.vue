@@ -21,6 +21,31 @@
         data-testid="kong-auth-register-instruction-text"
       >{{ instructionText }}</p>
 
+      <div v-if="userEntity !== 'developer' && !!selectGeo">
+        <p class="geo-title">
+          {{ `${messages.geoInformation.title} *` }}
+        </p>
+        <p class="geo-description">
+          {{messages.geoInformation.description }}
+        </p>
+      </div>
+
+      <div
+        v-if="userEntity !== 'developer' && !!selectGeo"
+        class="mb-4 kong-auth-register-geolocation">
+        <KSelect
+          v-model="selectedGeoOption"
+          appearance="select"
+          :items="geoLocation"
+          data-testid="kong-auth-register-geolocation"
+          @selected="(item) => handleItemSelect(selectedGeoOption, item)"
+        >
+          <template v-slot:item-template="{ item }">
+            <div class="select-item-label">{{item.label}}</div>
+          </template>
+        </KSelect>
+      </div>
+
       <div>
         <KInput
           id="full_name"
@@ -33,22 +58,6 @@
           required
           data-testid="kong-auth-register-full-name"
         />
-      </div>
-
-      <div
-        v-if="userEntity !== 'developer' && !!selectGeo"
-        class="mb-4">
-        <KSelect
-          v-model="selectedGeoOption"
-          appearance="select"
-          :items="geoLocation"
-          data-testid="kong-auth-register-geolocation"
-          @selected="(item) => handleItemSelect(selectedGeoOption, item)"
-        >
-          <template v-slot:item-template="{ item }">
-            <div class="select-item-label">{{item.label}}</div>
-          </template>
-        </KSelect>
       </div>
 
       <div v-if="userEntity !== 'developer'">
@@ -289,7 +298,8 @@ export default defineComponent({
           organization: formData.organization,
           password: formData.password,
           registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
-          defaultGeo: formData.selectedGeoOption,
+          // TODO: commented out for now until the API client supports it
+          // defaultGeo: formData.selectedGeoOption,
         })
       }
     }

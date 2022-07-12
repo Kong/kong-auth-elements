@@ -8,9 +8,30 @@
     }
   }
 
-  form.register-form :deep(.k-select) {
-    width: 100% !important
-  }
+    .register-form {
+      .geo-title {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      .geo-description {
+        margin-top: -14px;
+        color: var(--grey-500);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+      }
+
+      .kong-auth-register-geolocation .k-select {
+        width: 100% !important;
+  
+        .k-select-input {
+          width: 100% !important;
+          height: 44px !important;
+        }
+      }
+    }
 }
 
 .password-strength-meter {
