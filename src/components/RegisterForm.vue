@@ -231,14 +231,14 @@ export default defineComponent({
       {
         label: `${messages.geos.us.label} (${messages.geos.us.desc}) `,
         description: messages.geos.us.desc,
-        geoLabel: messages.geos.us.label,
+        regionLabel: messages.geos.us.label,
         value: 'us',
         selected: true,
       },
       {
         label: `${messages.geos.eu.label} (${messages.geos.eu.desc}) `,
         description: messages.geos.eu.desc,
-        geoLabel: messages.geos.eu.label,
+        regionLabel: messages.geos.eu.label,
         value: 'eu',
       },
     ]
