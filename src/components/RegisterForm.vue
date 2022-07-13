@@ -227,7 +227,7 @@ export default defineComponent({
     const error = ref<any>(null)
     const passwordError = ref<boolean>(false)
     const fieldsHaveError = ref(false)
-    const geoLocation = [
+    const regions = [
       {
         label: `${messages.geos.us.label} (${messages.geos.us.desc}) `,
         description: messages.geos.us.desc,
