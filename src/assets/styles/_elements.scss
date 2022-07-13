@@ -9,11 +9,11 @@
   }
 
     .register-form {
-      .geo-title {
+      .region-title {
         font-weight: 700;
       }
 
-      .geo-description {
+      .region-description {
         margin-top: -6px;
         color: var(--grey-500);
         font-weight: 400;
@@ -21,7 +21,7 @@
         line-height: 17px;
       }
 
-      .kong-auth-register-geolocation .k-select {
+      .kong-auth-register-region .k-select {
         width: 100% !important;
   
         .k-select-input {
