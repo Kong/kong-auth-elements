@@ -10,7 +10,7 @@
     }
   },
   "geoInformation": {
-    "title": "Default geolocation",
+    "title": "Default region",
     "description": "Only one geolocation is available in free trial. Services and runtime entities are specific to a geolocation. Upgrade to enterprise to gain access to multiple geolocations"
   },
   "acceptInvitation": {
