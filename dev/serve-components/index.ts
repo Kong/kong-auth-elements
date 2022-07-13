@@ -14,17 +14,17 @@ const pluginOptions: KongAuthElementsOptions = {
   },
   lang: 'en',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  customErrorHandler: ({ error, request, element }): string => {
-    console.log('error', error)
+  // customErrorHandler: ({ error, request, element }): string => {
+  //   console.log('error', error)
 
-    if (request === 'reset-password-request') {
-      return 'Custom reset error message.'
-    } else if (request === 'register-request') {
-      return 'Custom registration error message.'
-    }
+  //   if (request === 'reset-password-request') {
+  //     return 'Custom reset error message.'
+  //   } else if (request === 'register-request') {
+  //     return 'Custom registration error message.'
+  //   }
 
-    return ''
-  },
+  //   return ''
+  // },
 }
 
 app.use(KongAuthElementsPlugin, pluginOptions)
