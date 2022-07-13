@@ -392,7 +392,7 @@ export default defineComponent({
       showPasswordStrengthMeter,
       userEntity,
       ...toRefs(formData),
-      geoLocation,
+      regions,
       selectGeo,
       handleItemSelect,
     }
