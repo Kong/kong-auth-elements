@@ -242,7 +242,7 @@ export default defineComponent({
         value: 'eu',
       },
     ]
-    const selectGeo = ref('')
+    const selectRegion = ref('')
 
     const { state: currentState, send } = useMachine(
       createMachine({
