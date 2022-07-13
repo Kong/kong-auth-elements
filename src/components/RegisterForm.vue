@@ -28,24 +28,22 @@
         <p class="region-description">
           {{ messages.regionInformation.description }}
         </p>
-      </div>
 
-      <div
-        v-if="userEntity !== 'developer' && !!selectRegion"
-        class="mb-4 kong-auth-register-region">
-        <KSelect
-          v-model="selectedRegion"
-          id="regionInformationTitle"
-          appearance="select"
-          :items="regions"
-          data-testid="kong-auth-register-region"
-          @selected="(item) => handleItemSelect(selectedRegion, item)"
-        >
-          <template v-slot:item-template="{ item }">
-            <div class="select-item-label">{{ item.regionLabel }}</div>
-            <div class="select-item-desc">{{ item.description }}</div>
-          </template>
-        </KSelect>
+        <div class="mb-4 kong-auth-register-region">
+          <KSelect
+            v-model="selectedRegion"
+            id="regionInformationTitle"
+            appearance="select"
+            :items="regions"
+            data-testid="kong-auth-register-region"
+            @selected="(item) => handleItemSelect(selectedRegion, item)"
+          >
+            <template v-slot:item-template="{ item }">
+              <div class="select-item-label">{{ item.regionLabel }}</div>
+              <div class="select-item-desc">{{ item.description }}</div>
+            </template>
+          </KSelect>
+        </div>
       </div>
 
       <div>
