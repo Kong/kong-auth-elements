@@ -59,6 +59,7 @@
         </h4>
         <div id="kong-auth-register-wrapper">
           <kong-auth-register
+            access-code-required
             wrapper-id="kong-auth-register-wrapper"
             show-password-strength-meter
             @register-success="showAlert('Register success!')" />

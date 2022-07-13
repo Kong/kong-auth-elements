@@ -36,6 +36,7 @@
             appearance="select"
             :items="regions"
             data-testid="kong-auth-register-region"
+            autocomplete="off"
             @selected="(item) => handleItemSelect(selectedRegion, item)"
           >
             <template v-slot:item-template="{ item }">
@@ -133,6 +134,7 @@
       </div>
 
       <div
+        class="mt-4"
         v-if="currentState.matches('error') && passwordError && error"
         data-testid="kong-auth-register-alert"
       >
@@ -212,19 +214,6 @@ export default defineComponent({
     const registerButtonText: Ref<string> = inject('register-button-text', ref(messages.register.submitText))
     const registerRequestEndpoint: Ref<string> = inject('register-request-endpoint', ref(''))
 
-    const formData = reactive({
-      email: '',
-      selectedRegion: '',
-      fullName: '',
-      organization: '',
-      accessCode: '',
-      password: '',
-      checked_agreement: false,
-    })
-
-    const error = ref<any>(null)
-    const passwordError = ref<boolean>(false)
-    const fieldsHaveError = ref(false)
     const regions = [
       {
         label: `${messages.geos.us.label} (${messages.geos.us.desc}) `,
@@ -240,6 +229,20 @@ export default defineComponent({
         value: 'eu',
       },
     ]
+
+    const formData = reactive({
+      email: '',
+      selectedRegion: regions[0].value,
+      fullName: '',
+      organization: '',
+      accessCode: '',
+      password: '',
+      checked_agreement: false,
+    })
+
+    const error = ref<any>(null)
+    const passwordError = ref<boolean>(false)
+    const fieldsHaveError = ref(false)
     const selectRegion = ref('')
 
     const { state: currentState, send } = useMachine(
@@ -303,8 +306,7 @@ export default defineComponent({
           organization: formData.organization,
           password: formData.password,
           registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
-          // TODO: commented out for now until the API client supports it
-          // defaultGeo: formData.selectedRegion,
+          defaultRegion: formData.selectedRegion,
         })
       }
     }
