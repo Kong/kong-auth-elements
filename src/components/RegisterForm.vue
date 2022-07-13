@@ -31,7 +31,7 @@
       </div>
 
       <div
-        v-if="userEntity !== 'developer' && !!selectGeo"
+        v-if="userEntity !== 'developer' && !!selectRegion"
         class="mb-4 kong-auth-register-geolocation">
         <KSelect
           v-model="selectedGeoOption"
