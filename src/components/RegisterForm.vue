@@ -375,7 +375,7 @@ export default defineComponent({
 
     onMounted(() => {
       const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
-      selectGeo.value = urlParams?.get('selectGeo') || ''
+      selectRegion.value = urlParams?.get('selectRegion') || ''
     })
 
     return {
