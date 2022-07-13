@@ -22,24 +22,24 @@
       >{{ instructionText }}</p>
 
       <div v-if="userEntity !== 'developer' && !!selectRegion">
-        <KLabel for="geoInformationTitle" class="geo-title">
+        <KLabel for="regionInformationTitle" class="region-title">
           {{ `${messages.geoInformation.title} *` }}
         </KLabel>
-        <p class="geo-description">
-          {{ messages.geoInformation.description }}
+        <p class="region-description">
+          {{ messages.regionInformation.description }}
         </p>
       </div>
 
       <div
         v-if="userEntity !== 'developer' && !!selectRegion"
-        class="mb-4 kong-auth-register-geolocation">
+        class="mb-4 kong-auth-register-region">
         <KSelect
-          v-model="selectedGeoOption"
-          id="geoInformationTitle"
+          v-model="selectedRegion"
+          id="regionInformationTitle"
           appearance="select"
-          :items="geoLocation"
-          data-testid="kong-auth-register-geolocation"
-          @selected="(item) => handleItemSelect(selectedGeoOption, item)"
+          :items="regions"
+          data-testid="kong-auth-register-region"
+          @selected="(item) => handleItemSelect(selectedRegion, item)"
         >
           <template v-slot:item-template="{ item }">
             <div class="select-item-label">{{ item.regionLabel }}</div>
@@ -306,7 +306,7 @@ export default defineComponent({
           password: formData.password,
           registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
           // TODO: commented out for now until the API client supports it
-          // defaultGeo: formData.selectedGeoOption,
+          // defaultGeo: formData.selectedRegion,
         })
       }
     }
@@ -393,7 +393,7 @@ export default defineComponent({
       userEntity,
       ...toRefs(formData),
       regions,
-      selectGeo,
+      selectRegion,
       handleItemSelect,
     }
   },
