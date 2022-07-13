@@ -21,7 +21,7 @@
         data-testid="kong-auth-register-instruction-text"
       >{{ instructionText }}</p>
 
-      <div v-if="userEntity !== 'developer' && !!selectGeo">
+      <div v-if="userEntity !== 'developer' && !!selectRegion">
         <KLabel for="geoInformationTitle" class="geo-title">
           {{ `${messages.geoInformation.title} *` }}
         </KLabel>
