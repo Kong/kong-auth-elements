@@ -31,13 +31,13 @@
 
         <div class="mb-4 kong-auth-register-region">
           <KSelect
-            v-model="selectedRegion"
+            v-model="selectedRegionOption"
             id="regionInformationTitle"
             appearance="select"
             :items="regions"
             data-testid="kong-auth-register-region"
             autocomplete="off"
-            @selected="(item) => handleItemSelect(selectedRegion, item)"
+            @selected="(item) => handleItemSelect(selectedRegionOption, item)"
           >
             <template v-slot:item-template="{ item }">
               <div class="select-item-label">{{ item.regionLabel }}</div>
@@ -232,7 +232,7 @@ export default defineComponent({
 
     const formData = reactive({
       email: '',
-      selectedRegion: regions[0].value,
+      selectedRegionOption: regions[0].value,
       fullName: '',
       organization: '',
       accessCode: '',
@@ -306,7 +306,7 @@ export default defineComponent({
           organization: formData.organization,
           password: formData.password,
           registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
-          defaultRegion: formData.selectedRegion,
+          defaultRegion: formData.selectedRegionOption,
         })
       }
     }
