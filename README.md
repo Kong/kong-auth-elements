@@ -33,7 +33,7 @@ Native HTML Web Components used for KAuth UI implementation in Kong apps
     - [Install dependencies](#install-dependencies)
     - [Recommended IDE Setup](#recommended-ide-setup)
     - [Local Dev Against Non-Local API](#local-dev-against-non-local-api)
-    - [Compile components and hot-reload for development](#compile-components-and-hot-reload-for-development)
+    - [Compile Components and hot-reload for development](#compile-components-and-hot-reload-for-development)
     - [Compile Custom Elements and hot-reload for development](#compile-custom-elements-and-hot-reload-for-development)
     - [Compile static HTML and demo native Web Components](#compile-static-html-and-demo-native-web-components)
     - [Compile and minify for production](#compile-and-minify-for-production)
@@ -770,7 +770,7 @@ Create a file `.env.development.local` change `VUE_APP_AUTH_URL` to the environm
 
 How it works: Vue cli has a built in proxy. We use it to forward all requests that go to /api/\* to the specified URL running on port 3000. You can see the configuration in vue.config.js file.
 
-### Compile components and hot-reload for development
+### Compile Components and hot-reload for development
 
 Import elements as Vue components and utilize Vue Dev Tools during development (may require additional imports in `/dev/serve-components/ComponentsApp.vue`).
 
@@ -802,7 +802,6 @@ yarn serve:demo
 
 ### Compile and minify for production
 
-
 ```sh
 yarn build
 ```
@@ -815,7 +814,7 @@ Inside `@kong/kong-auth-elements` run
 yarn link
 ```
 
-Next, inside of the local consuming project, run
+Next, inside of the local consuming project (i.e. `khcp-ui`), run this from the project root
 
 ```sh
 yarn link "@kong/kong-auth-elements"
