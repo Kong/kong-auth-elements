@@ -42,8 +42,8 @@
           @selected="(item) => handleItemSelect(selectedGeoOption, item)"
         >
           <template v-slot:item-template="{ item }">
-            <div class="select-item-label">{{item.geoLabel}}</div>
-            <div class="select-item-desc">{{item.description}}</div>
+            <div class="select-item-label">{{ item.regionLabel }}</div>
+            <div class="select-item-desc">{{ item.description }}</div>
           </template>
         </KSelect>
       </div>
