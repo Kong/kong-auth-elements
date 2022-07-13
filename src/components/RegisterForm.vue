@@ -23,7 +23,7 @@
 
       <div v-if="userEntity !== 'developer' && !!selectRegion">
         <KLabel for="regionInformationTitle" class="region-title">
-          {{ `${messages.geoInformation.title} *` }}
+          {{ `${messages.regionInformation.title} *` }}
         </KLabel>
         <p class="region-description">
           {{ messages.regionInformation.description }}
