@@ -216,7 +216,7 @@ export default defineComponent({
 
     const formData = reactive({
       email: '',
-      selectedGeoOption: '',
+      selectedRegion: '',
       fullName: '',
       organization: '',
       accessCode: '',
