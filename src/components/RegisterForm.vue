@@ -22,11 +22,11 @@
       >{{ instructionText }}</p>
 
       <div v-if="userEntity !== 'developer' && !!selectGeo">
-        <p class="geo-title">
+        <KLabel for="geoInformationTitle" class="geo-title">
           {{ `${messages.geoInformation.title} *` }}
-        </p>
+        </KLabel>
         <p class="geo-description">
-          {{messages.geoInformation.description }}
+          {{ messages.geoInformation.description }}
         </p>
       </div>
 
@@ -35,6 +35,7 @@
         class="mb-4 kong-auth-register-geolocation">
         <KSelect
           v-model="selectedGeoOption"
+          id="geoInformationTitle"
           appearance="select"
           :items="geoLocation"
           data-testid="kong-auth-register-geolocation"
@@ -172,7 +173,7 @@ import { RegisterRegisterResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 import { win } from '@/utils'
 // Components
-import { KButton, KIcon, KInput, KCheckbox, KSelect } from '@kong/kongponents'
+import { KButton, KIcon, KInput, KCheckbox, KSelect, KLabel } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 import PasswordStrengthMeter from '@/components/PasswordStrengthMeter.vue'
 
@@ -190,6 +191,7 @@ export default defineComponent({
     KButton,
     KIcon,
     KInput,
+    KLabel,
     KCheckbox,
     KSelect,
     PasswordStrengthMeter,
@@ -227,14 +229,14 @@ export default defineComponent({
     const fieldsHaveError = ref(false)
     const geoLocation = [
       {
-        label: `${messages.geos.us.label} ( ${messages.geos.us.desc}) `,
+        label: `${messages.geos.us.label} (${messages.geos.us.desc}) `,
         description: messages.geos.us.desc,
         geoLabel: messages.geos.us.label,
         value: 'us',
         selected: true,
       },
       {
-        label: `${messages.geos.eu.label} ( ${messages.geos.eu.desc}) `,
+        label: `${messages.geos.eu.label} (${messages.geos.eu.desc}) `,
         description: messages.geos.eu.desc,
         geoLabel: messages.geos.eu.label,
         value: 'eu',
