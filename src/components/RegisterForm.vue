@@ -144,8 +144,7 @@
       <KButton
         type="submit"
         appearance="primary"
-        :is-rounded="false"
-        class="register-submit justify-content-center w-100 type-lg mt-6"
+        class="justify-content-center w-100 type-lg mt-6"
         :disabled="btnDisabled"
         data-testid="kong-auth-register-submit"
       >

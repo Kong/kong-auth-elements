@@ -55,7 +55,6 @@
       <KButton
         type="submit"
         appearance="primary"
-        :is-rounded="false"
         class="justify-content-center w-100 type-lg"
         :disabled="btnDisabled"
         data-testid="kong-auth-reset-password-submit"

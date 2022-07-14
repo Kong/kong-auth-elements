@@ -12,7 +12,6 @@
       <div v-if="idpLoginEnabled && (userEntity === 'developer' || (userEntity === 'user' && isIdpLogin))">
         <KButton
           appearance="outline"
-          :is-rounded="false"
           class="justify-content-center w-100 type-lg"
           data-testid="kong-auth-login-sso"
           :aria-label="['pending', 'success'].some(currentState.matches) ? undefined : messages.login.loginTextSSOAriaLabel"
@@ -121,7 +120,6 @@
         <KButton
           type="submit"
           appearance="primary"
-          :is-rounded="false"
           class="justify-content-center w-100 mt-6 type-lg"
           :disabled="loginBtnDisabled"
           data-testid="kong-auth-login-submit"

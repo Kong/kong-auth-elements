@@ -14,7 +14,6 @@
         @click.prevent="$emit('click-login-link')"
         class="justify-content-center w-100 type-lg"
         appearance="primary"
-        :is-rounded="false"
         data-testid="kong-auth-forgot-password-return-to-login-btn"
       >{{ loginLinkText }}</KButton>
     </div>
@@ -52,7 +51,6 @@
       <KButton
         type="submit"
         appearance="primary"
-        :is-rounded="false"
         class="justify-content-center w-100 type-lg"
         :disabled="btnDisabled"
         data-testid="kong-auth-forgot-password-submit"
