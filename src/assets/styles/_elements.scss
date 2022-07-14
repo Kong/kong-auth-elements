@@ -1,35 +1,27 @@
 // REGISTER
 .kong-auth-register-form {
-  .register-submit {
-    --KButtonPrimaryBase: var(--green-400);
+  .register-form {
+    .region-title {
+      font-weight: 700;
+    }
 
-    &:hover:not(:disabled) {
-      background-color: var(--green-300) !important;
+    .region-description {
+      margin-top: -6px;
+      color: var(--grey-500);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    .kong-auth-register-region .k-select {
+      width: 100% !important;
+
+      .k-select-input {
+        width: 100% !important;
+        height: 44px !important;
+      }
     }
   }
-
-    .register-form {
-      .region-title {
-        font-weight: 700;
-      }
-
-      .region-description {
-        margin-top: -6px;
-        color: var(--grey-500);
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 17px;
-      }
-
-      .kong-auth-register-region .k-select {
-        width: 100% !important;
-  
-        .k-select-input {
-          width: 100% !important;
-          height: 44px !important;
-        }
-      }
-    }
 }
 
 .password-strength-meter {
