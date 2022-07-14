@@ -93,18 +93,11 @@
           v-model.trim="password"
           type="password"
           :label="`${messages.inputLabels.password} *`"
-          :class="['w-100', showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
+          class="w-100 mb-4"
           autocomplete="new-password"
           :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
           required
           data-testid="kong-auth-register-password"
-        />
-
-        <PasswordStrengthMeter
-          v-if="showPasswordStrengthMeter"
-          class="password-strength-meter"
-          v-model="password"
-          :strength-meter-only="true"
         />
       </div>
 
@@ -174,7 +167,6 @@ import { win } from '@/utils'
 // Components
 import { KButton, KIcon, KInput, KCheckbox, KSelect, KLabel } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
-import PasswordStrengthMeter from '@/components/PasswordStrengthMeter.vue'
 
 export const registerEmits = {
   'register-success': (payload: { email: string }): boolean => {
@@ -193,7 +185,6 @@ export default defineComponent({
     KLabel,
     KCheckbox,
     KSelect,
-    PasswordStrengthMeter,
   },
 
   // Define emits with validation, where necessary
@@ -209,7 +200,6 @@ export default defineComponent({
     */
     const accessCodeRequired: Ref<boolean> = inject('access-code-required', ref(false)) // False by default so the backend can guard registration
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
-    const showPasswordStrengthMeter: Ref<boolean> = inject('show-password-strength-meter', ref(false))
     const registerButtonText: Ref<string> = inject('register-button-text', ref(messages.register.submitText))
     const registerRequestEndpoint: Ref<string> = inject('register-request-endpoint', ref(''))
 
@@ -388,7 +378,6 @@ export default defineComponent({
       fieldsHaveError,
       accessCodeRequired,
       instructionText,
-      showPasswordStrengthMeter,
       userEntity,
       ...toRefs(formData),
       regions,

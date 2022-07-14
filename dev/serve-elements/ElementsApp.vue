@@ -48,7 +48,6 @@
             wrapper-id="kong-auth-reset-password-wrapper"
             instruction-text="Please enter in your new password and confirm it below."
             @reset-password-success="showAlert('Reset password success!')"
-            show-password-strength-meter
           />
         </div>
       </div>
@@ -61,7 +60,6 @@
           <kong-auth-register
             access-code-required
             wrapper-id="kong-auth-register-wrapper"
-            show-password-strength-meter
             @register-success="showAlert('Register success!')" />
         </div>
       </div>
