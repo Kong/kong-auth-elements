@@ -24,10 +24,6 @@
   }
 }
 
-.password-strength-meter {
-  max-width: none;
-}
-
 // LOGIN
 .kong-auth-login-form {
   .basic-auth-link {
@@ -137,5 +133,3 @@ a {
     color: var(--blue-500);
   }
 }
-
-@import "./password-strength-meter";

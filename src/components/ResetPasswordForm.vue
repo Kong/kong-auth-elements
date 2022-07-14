@@ -25,18 +25,11 @@
         v-model.trim="password"
         type="password"
         :label="`${messages.inputLabels.newPassword} *`"
-        :class="['w-100', showPasswordStrengthMeter ? 'mb-0' : 'mb-4']"
+        class="w-100 mb-4"
         autocomplete="new-password"
         :has-error="currentState.matches('error') && error ? true : false"
         required
         data-testid="kong-auth-reset-password-new-password"
-      />
-
-      <PasswordStrengthMeter
-        v-if="showPasswordStrengthMeter"
-        class="password-strength-meter mb-4"
-        :model-value="password"
-        :strength-meter-only="true"
       />
 
       <KInput
@@ -85,7 +78,6 @@ import { AxiosResponse } from 'axios'
 // Components
 import { KButton, KIcon, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
-import PasswordStrengthMeter from '@/components/PasswordStrengthMeter.vue'
 
 export const resetPasswordEmits = {
   'reset-password-success': (payload: { email: string }): boolean => {
@@ -101,7 +93,6 @@ export default defineComponent({
     KButton,
     KIcon,
     KInput,
-    PasswordStrengthMeter,
   },
 
   // Define emits with validation, where necessary
@@ -117,7 +108,6 @@ export default defineComponent({
     The default values provided to inject() here should be refs with empty string or false since the defaults are typically handled in the custom element provide()
     */
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
-    const showPasswordStrengthMeter: Ref<boolean> = inject('show-password-strength-meter', ref(false))
 
     const formData = reactive({
       email: '',
@@ -262,7 +252,6 @@ export default defineComponent({
       btnDisabled,
       messages,
       instructionText,
-      showPasswordStrengthMeter,
       passwordIsInvalid,
       submitForm,
       error,

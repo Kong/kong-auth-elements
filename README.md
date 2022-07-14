@@ -498,7 +498,6 @@ To respond to any of the emitted events in your app, simply provide a callback f
 | Prop                        | Type    | Default | Description                                          |
 | :-------------------------- | :------ | :------ | :--------------------------------------------------- |
 | `instructionText`           | String  | `''`    | Set the instruction text to display above the input. |
-| `showPasswordStrengthMeter` | Boolean | `false` | Show the password strength meter.                    |
 
 #### Emits Events
 
@@ -529,7 +528,6 @@ To respond to any of the emitted events in your app, simply provide a callback f
 | `wrapperId` | String  | `kong-auth-register-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element. |
 | `accessCodeRequired` | Boolean | `false` | An access code is required for registration. |
 | `instructionText` | String  | `''` | Set the instruction text to display above the form inputs. |
-| `showPasswordStrengthMeter` | Boolean | `false` | Show the password strength meter. |
 | `registerButtonText` | String  | `Sign up for Free` | Set the text for the register button. |
 | `registerRequestEndpoint` | String  | `''` | Set the URL (relative or absolute) endpoint for the registration request. |
 

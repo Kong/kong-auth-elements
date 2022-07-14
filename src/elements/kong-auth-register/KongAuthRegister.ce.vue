@@ -30,10 +30,6 @@ export default defineComponent({
       type: String,
       default: '',
     },
-    showPasswordStrengthMeter: {
-      type: Boolean,
-      default: false,
-    },
     registerButtonText: {
       type: String,
       default: null,
@@ -62,11 +58,6 @@ export default defineComponent({
     provide(
       'instruction-text',
       computed((): string => (props.instructionText ? props.instructionText : '')),
-    )
-
-    provide(
-      'show-password-strength-meter',
-      computed((): boolean => (props.showPasswordStrengthMeter ? props.showPasswordStrengthMeter : false)),
     )
 
     provide(

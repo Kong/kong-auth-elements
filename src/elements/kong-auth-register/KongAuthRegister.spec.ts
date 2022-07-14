@@ -263,19 +263,6 @@ describe('KongAuthRegister.ce.vue', () => {
     cy.getTestId(testids.instructionText).should('be.visible').and('have.text', customText)
   })
 
-  /* ==============================
-   * Password Strength Meter
-   * ============================== */
-  it('shows password strength meter if showPasswordStrengthMeter prop is set', () => {
-    mount(KongAuthRegister, {
-      props: {
-        showPasswordStrengthMeter: true,
-      },
-    })
-    /* password strength component does not handle data-testid attributes nicely */
-    cy.get('.component-password-strength-meter').should('be.visible')
-  })
-
   describe('Responding to URL Parameters', () => {
     it('shows the region if the URL parameter has selectRegion = true', () => {
       // Stub search params
