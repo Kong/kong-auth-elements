@@ -124,6 +124,7 @@ body {
     }
 
     .element-wrapper {
+      padding-bottom: 20px;
       border-bottom: 1px solid lightgray;
 
       &:last-of-type {
