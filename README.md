@@ -531,6 +531,12 @@ To respond to any of the emitted events in your app, simply provide a callback f
 | `registerButtonText` | String  | `Sign up for Free` | Set the text for the register button. |
 | `registerRequestEndpoint` | String  | `''` | Set the URL (relative or absolute) endpoint for the registration request. |
 
+#### Query String Parameters
+
+| Param | Required | Description |
+| :--------- | :-------------------- | :-------------------------------------------------- |
+| `selectRegion` | `false` | Pass `"selectRegion=true"` in the URL to show the Konnect region selection during registration for `userEntity === 'user'`. |
+
 #### Emits Events
 
 | Event              |                 Payload                  | Description                   |
