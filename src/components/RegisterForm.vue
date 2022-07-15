@@ -36,7 +36,7 @@
             appearance="select"
             :items="regions"
             data-testid="kong-auth-register-region"
-            autocomplete="off"
+            autocomplete="selectedRegionOption"
             @selected="(item) => handleItemSelect(selectedRegionOption, item)"
           >
             <template v-slot:item-template="{ item }">
