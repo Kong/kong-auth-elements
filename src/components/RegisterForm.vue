@@ -21,7 +21,7 @@
         data-testid="kong-auth-register-instruction-text"
       >{{ instructionText }}</p>
 
-      <div v-if="userEntity !== 'developer' && !!selectRegion">
+      <div v-if="userEntity !== 'developer' && selectRegion">
         <KLabel for="regionInformationTitle" class="region-title">
           {{ `${messages.regionInformation.title} *` }}
         </KLabel>
@@ -232,7 +232,7 @@ export default defineComponent({
     const error = ref<any>(null)
     const passwordError = ref<boolean>(false)
     const fieldsHaveError = ref(false)
-    const selectRegion = ref('')
+    const selectRegion = ref(false)
 
     const { state: currentState, send } = useMachine(
       createMachine({
@@ -364,7 +364,7 @@ export default defineComponent({
 
     onMounted(() => {
       const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
-      selectRegion.value = urlParams?.get('selectRegion') || ''
+      selectRegion.value = !!urlParams?.get('selectRegion') && urlParams?.get('selectRegion') === 'true'
     })
 
     return {
