@@ -1,3 +1,10 @@
+## [1.21.3](https://github.com/Kong/kong-auth-elements/compare/v1.21.2...v1.21.3) (2022-07-18)
+
+
+### Bug Fixes
+
+* **register:** check for explicit region param value ([e78265e](https://github.com/Kong/kong-auth-elements/commit/e78265e7c8ec814001c7cdf9a7bbb58b888486ad))
+
 ## [1.21.2](https://github.com/Kong/kong-auth-elements/compare/v1.21.1...v1.21.2) (2022-07-18)
 
 
