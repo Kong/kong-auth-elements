@@ -1,3 +1,10 @@
+## [1.21.2](https://github.com/Kong/kong-auth-elements/compare/v1.21.1...v1.21.2) (2022-07-18)
+
+
+### Bug Fixes
+
+* **deps:** upgrade kongponents ([fcf354f](https://github.com/Kong/kong-auth-elements/commit/fcf354f7beb5a88bee7e88430543fd9d1599a8cc))
+
 ## [1.21.1](https://github.com/Kong/kong-auth-elements/compare/v1.21.0...v1.21.1) (2022-07-18)
 
 
