@@ -1,3 +1,38 @@
+# [1.21.0](https://github.com/Kong/kong-auth-elements/compare/v1.20.4...v1.21.0) (2022-07-18)
+
+
+### Bug Fixes
+
+* add geo information elements ([4a61445](https://github.com/Kong/kong-auth-elements/commit/4a6144546ad418216faa705cabc95a5f73a85c53))
+* add label, description ([1a1eba1](https://github.com/Kong/kong-auth-elements/commit/1a1eba1e89fd71252d0fb3f62512fa426019f314))
+* combine if-logic ([97a2ba4](https://github.com/Kong/kong-auth-elements/commit/97a2ba4452477ec9a37ea0f9db537e4f1c6affb7))
+* geos to regions ([0d144f3](https://github.com/Kong/kong-auth-elements/commit/0d144f3c7e760e13c25ff5001e8a683284b2d9c5))
+* geos to regions ([52ab6b8](https://github.com/Kong/kong-auth-elements/commit/52ab6b89b92d1d398f0bfbd54a0ab15390fde2be))
+* geos to regions ([f3772e1](https://github.com/Kong/kong-auth-elements/commit/f3772e1b7e84635618443e51cadee7e12abfc89f))
+* geos to regions ([7c889eb](https://github.com/Kong/kong-auth-elements/commit/7c889ebad470f4c59cfca4a246647e1a0fa542f0))
+* geos to regions ([4e5e88d](https://github.com/Kong/kong-auth-elements/commit/4e5e88d0c9b60d76d6baee0c40076e52ce74cd69))
+* geos to regions ([5453119](https://github.com/Kong/kong-auth-elements/commit/5453119f0918e7dd9389f1842cf0fbb4ba829437))
+* geos to regions ([e27e91a](https://github.com/Kong/kong-auth-elements/commit/e27e91a341d151f138cc97fa4cb6ac9b16d88025))
+* geos to regions ([9c678cc](https://github.com/Kong/kong-auth-elements/commit/9c678cc9cbe3e4a6e4230e73e54d06bd36d7366c))
+* geos to regions ([e6d9efc](https://github.com/Kong/kong-auth-elements/commit/e6d9efc0599df067a642cecfa66ebf7cfc06ea69))
+* geos to regions ([9595ad2](https://github.com/Kong/kong-auth-elements/commit/9595ad22c52a5a023849dd59b68740b0c4d37a7f))
+* geos to regions ([e73b69c](https://github.com/Kong/kong-auth-elements/commit/e73b69c939d0701e9f0b3eba9a893db06c024286))
+* geos to regions ([810c0f2](https://github.com/Kong/kong-auth-elements/commit/810c0f275e89b95749fa89e8d95bed0fdc1938f0))
+* geos to regions ([1737964](https://github.com/Kong/kong-auth-elements/commit/1737964725d41ecf82abf0f335438799cddd7eb8))
+* message key ([7c9c2f2](https://github.com/Kong/kong-auth-elements/commit/7c9c2f2a00835b34e2551b7b35b95fc70835b6be))
+* pr feedback ([f6cbc44](https://github.com/Kong/kong-auth-elements/commit/f6cbc44706c66b6558f6944dd7e4815d9cb5e975))
+* update api related code ([dc37c6f](https://github.com/Kong/kong-auth-elements/commit/dc37c6f7f261d09b88910d3375f0ad334144387d))
+* update autocomplete and add padding ([5275f23](https://github.com/Kong/kong-auth-elements/commit/5275f231f5ed9761225dd4f4659e1538662a5ba2))
+* update autocomplete for register form ([c6333e8](https://github.com/Kong/kong-auth-elements/commit/c6333e83fad7193e3d9a3cd88b843ecf0ff8c242))
+* update kongponents version and yarn.lock ([b3e9756](https://github.com/Kong/kong-auth-elements/commit/b3e9756efc31665e3b76140c9440cf170ce77dfc))
+* update variable name selectedRegionOption ([80cab5f](https://github.com/Kong/kong-auth-elements/commit/80cab5f577aaa8a5adcee24a620fce106b9a4130))
+
+
+### Features
+
+* **signup-geo:** pr feedback ([5255e11](https://github.com/Kong/kong-auth-elements/commit/5255e11526146a747f0754944ff25f97e5b68497))
+* **signup-geo:** select default geo signup ([2bc5d12](https://github.com/Kong/kong-auth-elements/commit/2bc5d1205550b71adcd61696c1625fc0550cecd8))
+
 ## [1.20.4](https://github.com/Kong/kong-auth-elements/compare/v1.20.3...v1.20.4) (2022-07-09)
 
 
