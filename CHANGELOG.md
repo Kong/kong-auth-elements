@@ -1,3 +1,11 @@
+## [1.21.1](https://github.com/Kong/kong-auth-elements/compare/v1.21.0...v1.21.1) (2022-07-18)
+
+
+### Bug Fixes
+
+* **deps:** upgrade kongponents ([e0cbfb4](https://github.com/Kong/kong-auth-elements/commit/e0cbfb4c6f95ecb094306f2f35b4b55e36df1c3b))
+* **register:** remove font-weight rule ([549b932](https://github.com/Kong/kong-auth-elements/commit/549b932d33873f266a9cbe40ea0db2bd38eb1605))
+
 # [1.21.0](https://github.com/Kong/kong-auth-elements/compare/v1.20.4...v1.21.0) (2022-07-18)
 
 
