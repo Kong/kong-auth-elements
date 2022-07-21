@@ -38,12 +38,7 @@
             data-testid="kong-auth-register-region"
             autocomplete="konnect-region"
             @selected="(item) => handleItemSelect(selectedRegionOption, item)"
-          >
-            <template v-slot:item-template="{ item }">
-              <div class="select-item-label">{{ item.regionLabel }}</div>
-              <div class="select-item-desc">{{ item.description }}</div>
-            </template>
-          </KSelect>
+            />
         </div>
       </div>
 
