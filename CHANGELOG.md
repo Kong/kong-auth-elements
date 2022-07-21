@@ -1,3 +1,11 @@
+## [1.21.5](https://github.com/Kong/kong-auth-elements/compare/v1.21.4...v1.21.5) (2022-07-21)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/kauth-client-typescript-axios ([#492](https://github.com/Kong/kong-auth-elements/issues/492)) ([1f44d12](https://github.com/Kong/kong-auth-elements/commit/1f44d12a3c8d0c08206c0573c08a47a25b267896))
+* **register:** move region options into single line ([672b771](https://github.com/Kong/kong-auth-elements/commit/672b7713fe35121f10099e77a07b826a55697753))
+
 ## [1.21.4](https://github.com/Kong/kong-auth-elements/compare/v1.21.3...v1.21.4) (2022-07-19)
 
 
