@@ -1,7 +1,12 @@
 import { fileURLToPath, URL } from 'url'
 import { defineConfig, loadEnv } from 'vite'
+import dns from 'dns'
 import path from 'path'
 import vue from '@vitejs/plugin-vue'
+
+// You can set dns.setDefaultResultOrder('verbatim') to disable the reordering behavior. Vite will then print the address as localhost
+// https://vitejs.dev/config/server-options.html#server-host
+dns.setDefaultResultOrder('verbatim')
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -52,6 +57,7 @@ export default ({ mode }) => {
     // Change the root when using yarn serve:*
     root: !process.env.SERVE_MODE ? process.cwd() : process.env.SERVE_MODE === 'components' ? './dev/serve-components' : './dev/serve-elements',
     server: {
+      host: '127.0.0.1', // This can be removed once Cypress component testing updates for Vite v3
       port: 4080,
       proxy: {
         '^/api': {
