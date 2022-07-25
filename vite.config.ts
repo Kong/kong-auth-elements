@@ -57,7 +57,6 @@ export default ({ mode }) => {
     // Change the root when using yarn serve:*
     root: !process.env.SERVE_MODE ? process.cwd() : process.env.SERVE_MODE === 'components' ? './dev/serve-components' : './dev/serve-elements',
     server: {
-      host: '127.0.0.1', // This can be removed once Cypress component testing updates for Vite v3
       port: 4080,
       proxy: {
         '^/api': {
