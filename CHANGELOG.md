@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/Kong/kong-auth-elements/compare/v1.21.7...v1.22.0) (2022-07-25)
+
+
+### Features
+
+* **vite:** upgrade to vite v3 ([#496](https://github.com/Kong/kong-auth-elements/issues/496)) ([a19b2e8](https://github.com/Kong/kong-auth-elements/commit/a19b2e80c38ad739f80facb160baa2ec8438f082))
+
 ## [1.21.7](https://github.com/Kong/kong-auth-elements/compare/v1.21.6...v1.21.7) (2022-07-25)
 
 
