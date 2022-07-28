@@ -10,7 +10,7 @@
     }
   },
   "regionInformation": {
-    "title": "Default region",
+    "title": "Region",
     "description": "Only one region is available in free trial. Services and runtime entities are specific to a region. Upgrade to enterprise to gain access to multiple regions."
   },
   "acceptInvitation": {
