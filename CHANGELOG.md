@@ -1,3 +1,11 @@
+## [1.22.3](https://github.com/Kong/kong-auth-elements/compare/v1.22.2...v1.22.3) (2022-07-29)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/kauth-client-typescript-axios ([#507](https://github.com/Kong/kong-auth-elements/issues/507)) ([69916cf](https://github.com/Kong/kong-auth-elements/commit/69916cf783b1274fb141691f3dedbe2f47d19b5e))
+* **elements:** do not error on multiple registation ([#508](https://github.com/Kong/kong-auth-elements/issues/508)) ([4275b79](https://github.com/Kong/kong-auth-elements/commit/4275b790836b377dc45d36eca1fad00772e0d0d2))
+
 ## [1.22.2](https://github.com/Kong/kong-auth-elements/compare/v1.22.1...v1.22.2) (2022-07-28)
 
 
