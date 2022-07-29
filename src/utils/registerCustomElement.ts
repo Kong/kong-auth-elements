@@ -25,12 +25,13 @@ export default function(
       throw new Error("registerCustomElement: You must provide a kebab-case string for the custom element tag name. Example: 'my-element'")
     }
 
-    if (!customElementComponent) {
-      throw new Error('registerCustomElement: You must provide a valid Vue Element.')
+    // If a component with the same name is already registered, exit early (and do not throw an error)
+    if (window.customElements.get(customElementName)) {
+      return
     }
 
-    if (window.customElements.get(customElementName)) {
-      throw new Error(`registerCustomElement: Unable to register custom element <${customElementName}> -- the name has already been registered.`)
+    if (!customElementComponent) {
+      throw new Error('registerCustomElement: You must provide a valid Vue Element.')
     }
 
     // Add a custom prop to teleport the custom element out of the shadow DOM and merge it with the existing props
