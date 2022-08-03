@@ -46,3 +46,7 @@ jobs:
         env:
           # Since branch protections are on (pushing commits) you need to use a bot PAT
           GITHUB_TOKEN: ${{ secrets.KONGPONENTS_BOT_PAT }}
+
+      - name: Trigger a build for packages.konghq.tech
+        if: ${{ success() }}
+        run: curl -X POST https://api.netlify.com/build_hooks/62e831854acf631f9ebc7242
