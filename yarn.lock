@@ -342,10 +342,10 @@
   resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1109.0.tgz#46e8d27613ec8c597cce51dd6069338dca47a107"
   integrity sha512-4sdirRZOvJwRQ90iWurVVMBCqhsEalRvTzU2c5iLWkiY1cgx8mrR/xPEf8zINv4R9lmKG3WWJwt6zQ+pVjuJUg==
 
-"@kong/kongponents@^7.0.0-beta.75":
-  version "7.0.0-beta.75"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-7.0.0-beta.75.tgz#d91ef118699fcc0e00a80ed9c0f1463219d012c2"
-  integrity sha512-0iopSqGlFWOoSCFpFMUC5/D0NiXTHrEZ0xTPp4Jyr1IvbkMWU9ahTO2QtCegaBW6C9jAvxEoVBtdlApRtI9Zng==
+"@kong/kongponents@^7.0.0-beta.79":
+  version "7.0.0-beta.79"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-7.0.0-beta.79.tgz#7ce955c0f590afa07ccd59b55f748a0d916cae8e"
+  integrity sha512-D3Vb7ahxfWa2PAL87uCL4U6SJJmmssTiWWpK2wES1ioin2XuuSdzPQospUmgVcz3gUS9iAjkbpYZoZBkRfQctQ==
   dependencies:
     axios "^0.27.2"
     popper.js "^1.15.0"
