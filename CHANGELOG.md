@@ -1,3 +1,21 @@
+## [1.22.5](https://github.com/Kong/kong-auth-elements/compare/v1.22.4...v1.22.5) (2022-08-16)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/kauth-client-typescript-axios ([#521](https://github.com/Kong/kong-auth-elements/issues/521)) ([c47f324](https://github.com/Kong/kong-auth-elements/commit/c47f3240551371e55e43a1c7df08385133c6fff2))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#525](https://github.com/Kong/kong-auth-elements/issues/525)) ([ab88ef4](https://github.com/Kong/kong-auth-elements/commit/ab88ef4bccbb43ba8acfe2228dfefd6f7e06f1a5))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#529](https://github.com/Kong/kong-auth-elements/issues/529)) ([6777afc](https://github.com/Kong/kong-auth-elements/commit/6777afc8b1b987860ec79cc9e4aa8d985d9c5292))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#530](https://github.com/Kong/kong-auth-elements/issues/530)) ([37b71f4](https://github.com/Kong/kong-auth-elements/commit/37b71f4f26511972d3d8e24f51b9ddeddd555923))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#534](https://github.com/Kong/kong-auth-elements/issues/534)) ([b2f82ef](https://github.com/Kong/kong-auth-elements/commit/b2f82efff8350ad264ae2d3d2d4342711b0fa70f))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#543](https://github.com/Kong/kong-auth-elements/issues/543)) ([f837139](https://github.com/Kong/kong-auth-elements/commit/f837139c6be8abd1ea2061be054a42ab8ad8a425))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#544](https://github.com/Kong/kong-auth-elements/issues/544)) ([2e75d76](https://github.com/Kong/kong-auth-elements/commit/2e75d7644d29cd62ae736274d45c8371de3a9022))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#549](https://github.com/Kong/kong-auth-elements/issues/549)) ([4c66764](https://github.com/Kong/kong-auth-elements/commit/4c667647b0968c2f531208d0ec2b0dd02ad03aa9))
+* **deps:** bump xstate from 4.32.1 to 4.33.0 ([#527](https://github.com/Kong/kong-auth-elements/issues/527)) ([f4e5bf3](https://github.com/Kong/kong-auth-elements/commit/f4e5bf3164a9eb6ee842f1ef3f312e4c36bd5c83))
+* **deps:** bump xstate from 4.33.0 to 4.33.1 ([#539](https://github.com/Kong/kong-auth-elements/issues/539)) ([de70cee](https://github.com/Kong/kong-auth-elements/commit/de70ceeac9e5e6da9e25b46b02bfbb09a4564c54))
+* **deps:** bump xstate from 4.33.1 to 4.33.2 ([#551](https://github.com/Kong/kong-auth-elements/issues/551)) ([f568145](https://github.com/Kong/kong-auth-elements/commit/f568145b4de0a4f2890629eb38e01357e8dd55ce))
+* **types:** fix type interfaces ([a257b87](https://github.com/Kong/kong-auth-elements/commit/a257b87e589179d021cf36ac91fe94d17f6f1297))
+
 ## [1.22.4](https://github.com/Kong/kong-auth-elements/compare/v1.22.3...v1.22.4) (2022-08-03)
 
 
