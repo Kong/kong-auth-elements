@@ -25,7 +25,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@kong/kauth-client-typescript-axios": "^0.1147.0",
+    "@kong/kauth-client-typescript-axios": "^0.1156.0",
     "@xstate/vue": "^0.8.1",
     "axios": "^0.27.2",
     "vue": "^3.2.37",
