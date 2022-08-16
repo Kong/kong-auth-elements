@@ -2,8 +2,8 @@
   <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
     <BaseCustomElement>
       <ForgotPasswordForm
-        @forgot-password-success="(emitData) => $emit('forgot-password-success', emitData)"
-        @click-login-link="(emitData) => $emit('click-login-link', emitData)"
+        @forgot-password-success="(emitData: any) => $emit('forgot-password-success', emitData)"
+        @click-login-link="(emitData: any) => $emit('click-login-link', emitData)"
       />
     </BaseCustomElement>
   </Teleport>

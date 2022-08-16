@@ -1,7 +1,7 @@
 <template>
   <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
     <BaseCustomElement>
-      <AcceptInvitationForm @accept-invitation-success="(emitData) => $emit('accept-invitation-success', emitData)" />
+      <AcceptInvitationForm @accept-invitation-success="(emitData: any) => $emit('accept-invitation-success', emitData)" />
     </BaseCustomElement>
   </Teleport>
 </template>

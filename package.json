@@ -11,7 +11,7 @@
   },
   "scripts": {
     "commit": "cz",
-    "build": "vue-tsc --noEmit && vite build && vue-tsc --emitDeclarationOnly",
+    "build": "yarn typecheck && vite build && vue-tsc --emitDeclarationOnly",
     "serve:components": "cross-env SERVE_MODE=components vite",
     "serve:elements": "cross-env SERVE_MODE=elements vite",
     "serve:demo": "rimraf ./demo/dist-copy && yarn build && cp -R ./dist ./demo/dist-copy && echo \"\n    \\x1b[30m\\x1b[103m Note: The demo does NOT support hot module reload \\x1b[0m\" && serve -p 3333 ./demo",
@@ -21,6 +21,7 @@
     "test:open": "cypress open --component -b chrome",
     "test:spec": "cypress run --component -b chrome --spec",
     "lint": "eslint '**/*.{js,ts,vue}'",
+    "typecheck": "vue-tsc --noEmit",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
@@ -38,7 +39,7 @@
     "@cypress/vite-dev-server": "^3.1.0",
     "@cypress/vue": "^4.1.0",
     "@digitalroute/cz-conventional-changelog-for-jira": "^7.3.0",
-    "@kong/kongponents": "^7.0.0-beta.87",
+    "@kong/kongponents": "^7.0.0-beta.88",
     "@rushstack/eslint-patch": "^1.1.4",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",

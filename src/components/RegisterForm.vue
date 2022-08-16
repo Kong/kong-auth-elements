@@ -37,7 +37,7 @@
             :items="regions"
             data-testid="kong-auth-register-region"
             autocomplete="konnect-region"
-            @selected="(item) => handleItemSelect(selectedRegionOption, item)"
+            @selected="(item: any) => handleItemSelect(selectedRegionOption, item)"
             />
         </div>
       </div>

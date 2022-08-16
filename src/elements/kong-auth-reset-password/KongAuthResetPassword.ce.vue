@@ -2,7 +2,7 @@
   <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
     <BaseCustomElement>
       <ResetPasswordForm
-        @reset-password-success="(emitData) => $emit('reset-password-success', emitData)"
+        @reset-password-success="(emitData: any) => $emit('reset-password-success', emitData)"
       />
     </BaseCustomElement>
   </Teleport>

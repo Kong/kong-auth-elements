@@ -2,11 +2,11 @@
   <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
     <BaseCustomElement>
       <LoginForm
-        @click-forgot-password-link="(emitData) => $emit('click-forgot-password-link', emitData)"
-        @click-register-link="(emitData) => $emit('click-register-link', emitData)"
-        @login-success="(emitData) => $emit('login-success', emitData)"
-        @verify-email-success="(emitData) => $emit('verify-email-success', emitData)"
-        @idp-is-loading="(emitData) => $emit('idp-is-loading', emitData)"
+        @click-forgot-password-link="(emitData: any) => $emit('click-forgot-password-link', emitData)"
+        @click-register-link="(emitData: any) => $emit('click-register-link', emitData)"
+        @login-success="(emitData: any) => $emit('login-success', emitData)"
+        @verify-email-success="(emitData: any) => $emit('verify-email-success', emitData)"
+        @idp-is-loading="(emitData: any) => $emit('idp-is-loading', emitData)"
         />
     </BaseCustomElement>
   </Teleport>

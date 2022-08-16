@@ -1,7 +1,7 @@
 <template>
   <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
     <BaseCustomElement>
-      <RegisterForm @register-success="(emitData) => $emit('register-success', emitData)" />
+      <RegisterForm @register-success="(emitData: any) => $emit('register-success', emitData)" />
     </BaseCustomElement>
   </Teleport>
 </template>

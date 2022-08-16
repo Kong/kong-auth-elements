@@ -647,7 +647,7 @@ declare module 'vue/types/vue' {
       <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
         <BaseCustomElement>
             <!-- Components from /src/components may be used in this default slot -->
-            <ExampleComponent @example-event="(emitData) => $emit('example-event', emitData)" />
+            <ExampleComponent @example-event="(emitData: any) => $emit('example-event', emitData)" />
         </BaseCustomElement>
       </Teleport>
     </template>
