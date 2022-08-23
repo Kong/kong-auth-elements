@@ -164,8 +164,8 @@ import { KButton, KIcon, KInput, KCheckbox, KSelect, KLabel } from '@kong/kongpo
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 export const registerEmits = {
-  'register-success': (payload: { email: string }): boolean => {
-    return !!payload?.email.trim()
+  'register-success': (payload: { email: string, organizationId: string }): boolean => {
+    return !!payload?.email.trim() && !!payload?.organizationId.trim()
   },
 }
 
@@ -319,13 +319,14 @@ export default defineComponent({
       await new Promise((resolve) => setTimeout(resolve, 250))
 
       try {
-        await processRegistration()
+        const { data: { organizationID } } = await processRegistration()
 
         send('RESOLVE')
 
         // Emit success
         emit('register-success', {
           email: formData.email,
+          organizationId: organizationID || '',
         })
       } catch (err: any) {
         send('REJECT')
