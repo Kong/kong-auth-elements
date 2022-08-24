@@ -61,7 +61,7 @@ jobs:
 
 
       - name: Add release comment
-        if: ${{ steps.semantic-release.outputs.new_release_version !== '' }}
+        if: ${{ steps.semantic-release.outputs.new_release_version }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           header: release
