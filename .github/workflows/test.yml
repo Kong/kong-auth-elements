@@ -49,20 +49,11 @@ jobs:
       - name: Typecheck
         run: yarn typecheck
 
-      - name: Semantic Release
-        id: semantic-release
-        uses: cycjimmy/semantic-release-action@v2
-        env:
-          # Since branch protections are on (pushing commits) you need to use a bot PAT
-          GITHUB_TOKEN: ${{ secrets.KONGPONENTS_BOT_PAT }}
-        with:
-          # Only run as dry-run here so we can output the version if released
-          dry_run: true
-
       - name: Dry run
         id: dry-run
         env:
-          GITHUB_TOKEN: ${{ SECRET }}
+          # Since branch protections are on (pushing commits) you need to use a bot PAT
+          GITHUB_TOKEN: ${{ secrets.KONGPONENTS_BOT_PAT }}
         run: |
           npx semantic-release --dry-run --no-ci --branches "${SOURCE_BRANCH#refs/heads/}"
 
