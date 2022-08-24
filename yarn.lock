@@ -337,10 +337,10 @@
   resolved "https://registry.yarnpkg.com/@isaacs/string-locale-compare/-/string-locale-compare-1.1.0.tgz#291c227e93fd407a96ecd59879a35809120e432b"
   integrity sha512-SQ7Kzhh9+D+ZW9MA0zkYv3VXhIDNx+LzM6EJ+/65I3QY+enU6Itte7E5XX7EWrqLW2FN4n06GWzBnPoC3th2aQ==
 
-"@kong/kauth-client-typescript-axios@^0.1173.0":
-  version "0.1173.0"
-  resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1173.0.tgz#f5dd7d1601ecf61f636355b7c6c4e5526f19203a"
-  integrity sha512-JGgfy0JX3tJ2UPq67NqD/2ZmZEA9GN5p6Ppn82RzTdpqgvkiME0eHouL8sMpZdd/aIcs3/hwl3o6YRWbFsQ7Rg==
+"@kong/kauth-client-typescript-axios@^0.1189.0":
+  version "0.1189.0"
+  resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1189.0.tgz#4da3272f916e3b420c06b741f6be70a6b1204d4a"
+  integrity sha512-mHDd0B6fdLoKOxyziF76khVRFM9nepCsr2v1E+uc/patQxFEsCREBg1XQjBhYY8BIpNMtuiRrwqwabgyfoBskg==
 
 "@kong/kongponents@^7.0.0-beta.91":
   version "7.0.0-beta.91"
