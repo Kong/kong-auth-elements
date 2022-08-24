@@ -61,11 +61,14 @@ jobs:
 
 
       - name: Add release comment
+        if: ${{ steps.semantic-release.outputs.new_release_published == 'true' }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           header: release
           message: |
-            **Semantic Release**: This PR will release v${{ steps.semantic-release.outputs.new_release_version }}
+            :rocket: If merged, this PR will release version `${{ steps.semantic-release.outputs.new_release_version }}`
+
+            _(If there are no other releases beforehand)_
 
       - name: Run Cypress component tests
         uses: cypress-io/github-action@v4
