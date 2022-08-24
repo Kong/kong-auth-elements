@@ -49,6 +49,24 @@ jobs:
       - name: Typecheck
         run: yarn typecheck
 
+      - name: Semantic Release
+        id: semantic-release
+        uses: cycjimmy/semantic-release-action@v2
+        env:
+          # Since branch protections are on (pushing commits) you need to use a bot PAT
+          GITHUB_TOKEN: ${{ secrets.KONGPONENTS_BOT_PAT }}
+        with:
+          # Only run as dry-run here so we can output the version if released
+          dry_run: true
+
+
+      - name: Add release comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: release
+          message: |
+            **Semantic Release**: This PR will release v${{ steps.semantic-release.outputs.new_release_version }}
+
       - name: Run Cypress component tests
         uses: cypress-io/github-action@v4
         with:

@@ -42,6 +42,7 @@ jobs:
         run: yarn build
 
       - name: Semantic Release
+        id: semantic-relese
         uses: cycjimmy/semantic-release-action@v2
         env:
           # Since branch protections are on (pushing commits) you need to use a bot PAT
