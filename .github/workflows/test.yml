@@ -59,22 +59,22 @@ jobs:
           # Only run as dry-run here so we can output the version if released
           dry_run: true
 
-      - name: Do something when a new release published
+      - name: Dry run
+        id: dry-run
+        env:
+          GITHUB_TOKEN: ${{ SECRET }}
         run: |
-          echo ${{ steps.semantic.outputs.new_release_version }}
-          echo ${{ steps.semantic.outputs.new_release_major_version }}
-          echo ${{ steps.semantic.outputs.new_release_minor_version }}
-          echo ${{ steps.semantic.outputs.new_release_patch_version }}
+          npx semantic-release --dry-run --no-ci --branches "${SOURCE_BRANCH#refs/heads/}"
 
-      - name: Add release comment
-        if: ${{ steps.semantic-release.outputs.new_release_version }}
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          header: release
-          message: |
-            :rocket: If merged, this PR will release version `${{ steps.semantic-release.outputs.new_release_version }}`
+      # - name: Add release comment
+      #   if: ${{ steps.semantic-release.outputs.new_release_version }}
+      #   uses: marocchino/sticky-pull-request-comment@v2
+      #   with:
+      #     header: release
+      #     message: |
+      #       :rocket: If merged, this PR will release version `${{ steps.semantic-release.outputs.new_release_version }}`
 
-            _(If there are no other releases beforehand)_
+      #       _(If there are no other releases beforehand)_
 
       - name: Run Cypress component tests
         uses: cypress-io/github-action@v4
