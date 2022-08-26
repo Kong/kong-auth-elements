@@ -16,7 +16,8 @@
   "acceptInvitation": {
     "submitText": "Create account",
     "submittingText": "Submitting",
-    "subheader": "You've been invited to join "
+    "subheader": "You've been invited to join ",
+    "passwordHelpText": "Please set a password to finish creating your account."
   },
   "login": {
     "forgotPasswordLinkText": "Forgot your password?",
