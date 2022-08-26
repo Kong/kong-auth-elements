@@ -1,3 +1,13 @@
+## [1.23.1](https://github.com/Kong/kong-auth-elements/compare/v1.23.0...v1.23.1) (2022-08-26)
+
+
+### Bug Fixes
+
+* **accept-invitation:** add password instruction text ([#578](https://github.com/Kong/kong-auth-elements/issues/578)) ([d5a1e9f](https://github.com/Kong/kong-auth-elements/commit/d5a1e9f1622e4f42cd4b5c1fe84c09087d726f20))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#574](https://github.com/Kong/kong-auth-elements/issues/574)) ([9f59511](https://github.com/Kong/kong-auth-elements/commit/9f595116565a89d0fd6bcfa21778436b826fe68f))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#577](https://github.com/Kong/kong-auth-elements/issues/577)) ([0ebe6e4](https://github.com/Kong/kong-auth-elements/commit/0ebe6e47f31f45e00e22a42665bd9640ebb15bb3))
+* **deps:** bump xstate from 4.33.2 to 4.33.3 ([#572](https://github.com/Kong/kong-auth-elements/issues/572)) ([4f402f3](https://github.com/Kong/kong-auth-elements/commit/4f402f3bf16a08a621b4dc3bba12de01c449f7f0))
+
 # [1.23.0](https://github.com/Kong/kong-auth-elements/compare/v1.22.5...v1.23.0) (2022-08-23)
 
 
