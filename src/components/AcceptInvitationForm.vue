@@ -54,12 +54,13 @@
           v-model.trim="password"
           type="password"
           :label="`${messages.inputLabels.password} *`"
-          class="w-100 mb-4"
+          class="w-100"
           autocomplete="new-password"
           :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
           required
           data-testid="kong-auth-accept-invitation-password"
         />
+        <p class="help mb-4">{{ messages.acceptInvitation.passwordHelpText }}</p>
 
       <div
         v-if="currentState.matches('error') && passwordError && error"
