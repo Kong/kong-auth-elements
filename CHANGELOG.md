@@ -1,3 +1,10 @@
+## [1.23.4](https://github.com/Kong/kong-auth-elements/compare/v1.23.3...v1.23.4) (2022-09-02)
+
+
+### Bug Fixes
+
+* add style to package exports ([ba9d6f5](https://github.com/Kong/kong-auth-elements/commit/ba9d6f5266872bebf9198959204ae3c5b060b621))
+
 ## [1.23.3](https://github.com/Kong/kong-auth-elements/compare/v1.23.2...v1.23.3) (2022-09-02)
 
 
