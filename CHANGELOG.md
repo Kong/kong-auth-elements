@@ -1,3 +1,15 @@
+## [1.23.3](https://github.com/Kong/kong-auth-elements/compare/v1.23.2...v1.23.3) (2022-09-02)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/kauth-client-typescript-axios ([#586](https://github.com/Kong/kong-auth-elements/issues/586)) ([dced486](https://github.com/Kong/kong-auth-elements/commit/dced4860742c6e1ab7f2f0f27a9db55d2be2b9e2))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#593](https://github.com/Kong/kong-auth-elements/issues/593)) ([752ed02](https://github.com/Kong/kong-auth-elements/commit/752ed02a75708f8916125463a734fb8e63a29bed))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#594](https://github.com/Kong/kong-auth-elements/issues/594)) ([a3c7eca](https://github.com/Kong/kong-auth-elements/commit/a3c7ecadabbb14c76f7914df0fa6e59ecbd6697b))
+* **deps:** bump vue from 3.2.37 to 3.2.38 ([#588](https://github.com/Kong/kong-auth-elements/issues/588)) ([40162fe](https://github.com/Kong/kong-auth-elements/commit/40162fe72cc85fb936c73ebdec38cd9661d941c5))
+* **deps:** bump xstate from 4.33.4 to 4.33.5 ([#595](https://github.com/Kong/kong-auth-elements/issues/595)) ([ae469fd](https://github.com/Kong/kong-auth-elements/commit/ae469fd2f501997b03f1c80cfc57cbd20d10ebaa))
+* **kongponents:** update beta package and imports ([#597](https://github.com/Kong/kong-auth-elements/issues/597)) ([aa2d0d9](https://github.com/Kong/kong-auth-elements/commit/aa2d0d92ef8329a8cf37041f7c174617801be924))
+
 ## [1.23.2](https://github.com/Kong/kong-auth-elements/compare/v1.23.1...v1.23.2) (2022-08-30)
 
 
