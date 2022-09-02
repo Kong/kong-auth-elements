@@ -2,13 +2,13 @@
 
 @use "sass:meta";
 // Import Kongponents Sass variables
-@import "../../../node_modules/@kong/kongponents/dist/_variables.scss";
+@import "@kong/kongponents/dist/_variables.scss";
 
 .kong-auth-element {
   // Include and Scope Kongponents CSS Variables
   @include kongponents-css-variables;
   // Import Kongponents styles
-  @include meta.load-css("../../../node_modules/@kong/kongponents/dist/style.css");
+  @include meta.load-css("@kong/kongponents/dist/style.css");
   // Import kong-auth-element styles
   @include meta.load-css("./elements");
   // Additional CSS rules
