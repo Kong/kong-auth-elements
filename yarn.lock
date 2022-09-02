@@ -264,10 +264,10 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@digitalroute/cz-conventional-changelog-for-jira@^7.3.1":
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/@digitalroute/cz-conventional-changelog-for-jira/-/cz-conventional-changelog-for-jira-7.3.1.tgz#c7acc5baa49f43836bbddcb94a8ddb93d2e94763"
-  integrity sha512-YPInyuTkKFva6iH7hpuOh62IypfrXmFiwjE8HmYor7kAI1AekD3dQ4XBP7TCVE/UNEHf3IrNYUcvGmF9qcooIA==
+"@digitalroute/cz-conventional-changelog-for-jira@^7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@digitalroute/cz-conventional-changelog-for-jira/-/cz-conventional-changelog-for-jira-7.4.0.tgz#44175a74f7570f92f5cdb74674c19de7041518c0"
+  integrity sha512-U6YWqLH2ki/opq3h50ASriBLwZUj6s6E5cuijIWtuEZHJFSRTHVebfGwy+l/pGM4EJLDLoWo2C7JxQjxuJZJHw==
   dependencies:
     "@ryansonshine/commitizen" "^4.2.8"
     "@ryansonshine/cz-conventional-changelog" "^3.3.4"
