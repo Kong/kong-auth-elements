@@ -44,7 +44,7 @@
     "@rushstack/eslint-patch": "^1.1.4",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^16.11.56",
+    "@types/node": "^16.11.57",
     "@types/zxcvbn": "^4.4.1",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
