@@ -1,3 +1,18 @@
+# [1.24.0](https://github.com/Kong/kong-auth-elements/compare/v1.23.4...v1.24.0) (2022-09-08)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/kauth-client-typescript-axios ([#599](https://github.com/Kong/kong-auth-elements/issues/599)) ([c850192](https://github.com/Kong/kong-auth-elements/commit/c850192e3149763d84e9af8652d29643e21f953c))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#604](https://github.com/Kong/kong-auth-elements/issues/604)) ([a419894](https://github.com/Kong/kong-auth-elements/commit/a419894b316564ae5c5684c58f72bce59be1be91))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#607](https://github.com/Kong/kong-auth-elements/issues/607)) ([433a166](https://github.com/Kong/kong-auth-elements/commit/433a166647603d61ca4ab5e1ac365c59da5e40a0))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#609](https://github.com/Kong/kong-auth-elements/issues/609)) ([538de23](https://github.com/Kong/kong-auth-elements/commit/538de23e3d0aa38e215567d3971c7faeeea669e8))
+
+
+### Features
+
+* **register:** emit organization name ([#612](https://github.com/Kong/kong-auth-elements/issues/612)) ([d2cef3e](https://github.com/Kong/kong-auth-elements/commit/d2cef3e2b931fb4a1298d62ea06d351c539a76da))
+
 ## [1.23.4](https://github.com/Kong/kong-auth-elements/compare/v1.23.3...v1.23.4) (2022-09-02)
 
 
