@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 // Import types for custom commands
 /// <reference types="../../cypress/support" />
 
@@ -167,8 +169,14 @@ describe('KongAuthRegister.ce.vue', () => {
       // Check for emitted event
       cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
         // Verify emit payload
+        // @ts-ignore
         cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
-        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'organizationId')
+        // @ts-ignore
+        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'organization')
+        // @ts-ignore
+        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).its('organization').should('have.property', 'id')
+        // @ts-ignore
+        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).its('organization').should('have.property', 'name')
       })
     })
   })
