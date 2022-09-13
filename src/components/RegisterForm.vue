@@ -134,6 +134,7 @@
         ref="recaptcha"
         size="invisible"
         :sitekey="recaptchaSiteKey"
+        recaptcha-script-id="kong-auth-elements-recaptcha"
         @verify="onRecaptchaVerify"
         @expired="onRecaptchaExpired"
         @error="onRecaptchaError" />
