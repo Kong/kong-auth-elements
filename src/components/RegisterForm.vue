@@ -318,6 +318,7 @@ export default defineComponent({
 
     const processRecaptchaAndSubmit = () => {
       try {
+        // If reCAPTCHA is enabled and not verified, try verifying, otherwise submit
         if (recaptchaEnabled.value && !recaptchaVerified.value) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
@@ -331,15 +332,16 @@ export default defineComponent({
       }
     }
 
+    // Set the variable to allow submission
     const onRecaptchaVerify = () => {
-      console.log('verified')
-
       recaptchaVerified.value = true
 
       submitForm()
     }
 
     const onRecaptchaError = () => {
+      recaptchaVerified.value = false
+
       error.value = {
         status: null,
         statusText: messages.general.recaptchaError,
