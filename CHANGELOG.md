@@ -1,3 +1,19 @@
+# [1.25.0](https://github.com/Kong/kong-auth-elements/compare/v1.24.0...v1.25.0) (2022-09-13)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/kauth-client-typescript-axios ([#615](https://github.com/Kong/kong-auth-elements/issues/615)) ([f0ac07a](https://github.com/Kong/kong-auth-elements/commit/f0ac07a2080cdf24aba95179722c2d49b3ae073e))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#617](https://github.com/Kong/kong-auth-elements/issues/617)) ([2f547bd](https://github.com/Kong/kong-auth-elements/commit/2f547bdbc00c40aae7fa7b396b882ce5668aca33))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#622](https://github.com/Kong/kong-auth-elements/issues/622)) ([82eb0f9](https://github.com/Kong/kong-auth-elements/commit/82eb0f931bd6f8bea4acb009e6786d513b7ca7ea))
+* **deps:** bump vue from 3.2.38 to 3.2.39 ([#616](https://github.com/Kong/kong-auth-elements/issues/616)) ([96e7856](https://github.com/Kong/kong-auth-elements/commit/96e785614cdc6128953cca9f440132e30c40ef51))
+* **deps:** bump xstate from 4.33.5 to 4.33.6 ([#618](https://github.com/Kong/kong-auth-elements/issues/618)) ([afbf8e6](https://github.com/Kong/kong-auth-elements/commit/afbf8e6eede05070c43bcdf1c2be31ccf5ce94a1))
+
+
+### Features
+
+* **recaptcha:** add reCAPTCHA to register form [KHCP-4759] ([#625](https://github.com/Kong/kong-auth-elements/issues/625)) ([de3989c](https://github.com/Kong/kong-auth-elements/commit/de3989c90528b40dd9cc8a2201e74a3ad31e2c61))
+
 # [1.24.0](https://github.com/Kong/kong-auth-elements/compare/v1.23.4...v1.24.0) (2022-09-08)
 
 
