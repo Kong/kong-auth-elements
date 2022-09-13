@@ -25,6 +25,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "vue-recaptcha": [
+        "src/vue-recaptcha.d.ts"
       ]
     },
   },
