@@ -530,6 +530,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 | `instructionText` | String  | `''` | Set the instruction text to display above the form inputs. |
 | `registerButtonText` | String  | `Sign up for Free` | Set the text for the register button. |
 | `registerRequestEndpoint` | String  | `''` | Set the URL (relative or absolute) endpoint for the registration request. |
+| `recaptcha` | Boolean | `false` | Should reCAPTCHA be enabled for the register form. This feature is currently only available if the `userEntity` is set to `user`.|
 
 #### Query String Parameters
 

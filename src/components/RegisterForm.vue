@@ -11,7 +11,7 @@
     <form
       v-if="!currentState.matches('success')"
       class="register-form"
-      @submit.prevent="submitForm"
+      @submit.prevent="processRecaptchaAndSubmit"
       novalidate
       data-testid="kong-auth-register-form"
     >
@@ -129,6 +129,16 @@
         <ErrorMessage :error="error" />
       </div>
 
+      <vue-recaptcha
+        v-if="recaptchaEnabled"
+        ref="recaptcha"
+        size="invisible"
+        :sitekey="recaptchaSiteKey"
+        recaptcha-script-id="kong-auth-elements-recaptcha"
+        @verify="onRecaptchaVerify"
+        @expired="onRecaptchaExpired"
+        @error="onRecaptchaError" />
+
       <KButton
         type="submit"
         appearance="primary"
@@ -159,9 +169,12 @@ import useI18n from '@/composables/useI18n'
 import { RegisterRegisterResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 import { win } from '@/utils'
+import { VueRecaptcha } from 'vue-recaptcha'
 // Components
 import { KButton, KIcon, KInput, KCheckbox, KSelect, KLabel } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
+
+const recaptchaSiteKey = '6LfG1fMhAAAAAIwjZEB4K2KW5IUGr1nNAIqMDkG_'
 
 export const registerEmits = {
   'register-success': (payload: { email: string, organization: { id: string, name: string }}): boolean => {
@@ -180,6 +193,7 @@ export default defineComponent({
     KLabel,
     KCheckbox,
     KSelect,
+    VueRecaptcha,
   },
 
   // Define emits with validation, where necessary
@@ -189,14 +203,21 @@ export default defineComponent({
     const { userEntity, customErrorHandler, lang } = useConfigOptions()
     const { api } = useKongAuthApi()
     const { messages } = useI18n(lang)
+    // ReCAPTCHA element ref
+    const recaptcha = ref(null)
+    const recaptchaVerified = ref(false)
     /*
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
     The default values provided to inject() here should be refs with empty string or false since the defaults are typically handled in the custom element provide()
     */
     const accessCodeRequired: Ref<boolean> = inject('access-code-required', ref(false)) // False by default so the backend can guard registration
+    const recaptchaPropEnabled: Ref<boolean> = inject('recaptcha-enabled', ref(false)) // False by default so it can be enabled via prop
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
     const registerButtonText: Ref<string> = inject('register-button-text', ref(messages.register.submitText))
     const registerRequestEndpoint: Ref<string> = inject('register-request-endpoint', ref(''))
+
+    // Disable reCAPTCHA for Portal ('developer') implementations
+    const recaptchaEnabled = computed((): boolean => userEntity !== 'developer' && recaptchaPropEnabled.value)
 
     const regions = [
       {
@@ -295,7 +316,43 @@ export default defineComponent({
       }
     }
 
-    const submitForm = async (): Promise<void> => {
+    const processRecaptchaAndSubmit = () => {
+      try {
+        // If reCAPTCHA is enabled and not verified, try verifying, otherwise submit
+        if (recaptchaEnabled.value && !recaptchaVerified.value) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          recaptcha.value?.execute()
+        } else {
+          submitForm()
+        }
+      } catch (err) {
+        // Fallback to just submitting the form
+        submitForm(true)
+      }
+    }
+
+    // Set the variable to allow submission
+    const onRecaptchaVerify = () => {
+      recaptchaVerified.value = true
+
+      submitForm()
+    }
+
+    const onRecaptchaError = () => {
+      recaptchaVerified.value = false
+
+      error.value = {
+        status: null,
+        statusText: messages.general.recaptchaError,
+      }
+    }
+
+    const onRecaptchaExpired = () => {
+      recaptchaVerified.value = false
+    }
+
+    const submitForm = async (forceSkipRecaptcha = false): Promise<void> => {
       send('CLICK_REGISTER')
 
       // Reset form errors
@@ -312,6 +369,19 @@ export default defineComponent({
           status: null,
           statusText: messages.general.missingInfo,
         }
+
+        return
+      }
+
+      // If reCAPTCHA is enabled, and we aren't forcing to skip it because of error, and the user isn't verified, reject the submission
+      if (recaptchaEnabled.value && !forceSkipRecaptcha && !recaptchaVerified.value) {
+        send('REJECT')
+
+        error.value = {
+          status: null,
+          statusText: messages.general.recaptchaError,
+        }
+
         return
       }
 
@@ -333,6 +403,13 @@ export default defineComponent({
         })
       } catch (err: any) {
         send('REJECT')
+
+        if (recaptchaEnabled.value) {
+          // Must reset recaptcha for the next form submit
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          // recaptcha.value?.reset()
+        }
 
         const customEndpointErrorMessage = typeof customErrorHandler === 'function' && customErrorHandler({ error: err, request: 'register-request', element: 'kong-auth-register' })
 
@@ -382,6 +459,14 @@ export default defineComponent({
       regions,
       selectRegion,
       handleItemSelect,
+      // ReCAPTCHA
+      recaptcha,
+      recaptchaEnabled,
+      recaptchaSiteKey,
+      processRecaptchaAndSubmit,
+      onRecaptchaVerify,
+      onRecaptchaError,
+      onRecaptchaExpired,
     }
   },
 })

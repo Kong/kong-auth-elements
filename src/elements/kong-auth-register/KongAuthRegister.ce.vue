@@ -26,6 +26,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    recaptcha: {
+      type: Boolean,
+      default: false,
+    },
     instructionText: {
       type: String,
       default: '',
@@ -53,6 +57,11 @@ export default defineComponent({
     provide(
       'access-code-required',
       computed((): boolean => (props.accessCodeRequired ? props.accessCodeRequired : false)),
+    )
+
+    provide(
+      'recaptcha-enabled',
+      computed((): boolean => (props.recaptcha ? props.recaptcha : false)),
     )
 
     provide(
