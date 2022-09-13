@@ -318,6 +318,8 @@ export default defineComponent({
     const processRecaptchaAndSubmit = () => {
       try {
         if (recaptchaEnabled.value && !recaptchaVerified.value) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           recaptcha.value?.execute()
         } else {
           submitForm()
