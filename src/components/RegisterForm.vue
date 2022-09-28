@@ -130,7 +130,7 @@
       </div>
 
       <vue-recaptcha
-        v-if="recaptchaEnabled"
+        v-if="recaptchaEnabled && [true, 'true'].includes(recaptchaEnabled)"
         ref="recaptcha"
         size="invisible"
         :sitekey="recaptchaSiteKey"
