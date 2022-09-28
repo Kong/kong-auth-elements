@@ -130,7 +130,7 @@
       </div>
 
       <vue-recaptcha
-        v-if="recaptchaEnabled && [true, 'true'].includes(recaptchaEnabled)"
+        v-if="recaptchaEnabled"
         ref="recaptcha"
         size="invisible"
         :sitekey="recaptchaSiteKey"
@@ -217,7 +217,7 @@ export default defineComponent({
     const registerRequestEndpoint: Ref<string> = inject('register-request-endpoint', ref(''))
 
     // Disable reCAPTCHA for Portal ('developer') implementations
-    const recaptchaEnabled = computed((): boolean => userEntity !== 'developer' && recaptchaPropEnabled.value)
+    const recaptchaEnabled = computed((): boolean => userEntity !== 'developer' && recaptchaPropEnabled.value && [true, 'true'].includes(recaptchaPropEnabled.value))
 
     const regions = [
       {
