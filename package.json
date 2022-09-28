@@ -29,7 +29,7 @@
     "@kong/kauth-client-typescript-axios": "^0.1346.0",
     "@xstate/vue": "^0.8.1",
     "axios": "^0.27.2",
-    "vue": "^3.2.39",
+    "vue": "^3.2.40",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.33.6"
   },
