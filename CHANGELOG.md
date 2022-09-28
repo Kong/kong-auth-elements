@@ -1,3 +1,20 @@
+## [1.25.1](https://github.com/Kong/kong-auth-elements/compare/v1.25.0...v1.25.1) (2022-09-28)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/kauth-client-typescript-axios ([#627](https://github.com/Kong/kong-auth-elements/issues/627)) ([a91d910](https://github.com/Kong/kong-auth-elements/commit/a91d910574e5adfc29f6f9cfcf6f8ff2f64d4588))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#629](https://github.com/Kong/kong-auth-elements/issues/629)) ([0550c1b](https://github.com/Kong/kong-auth-elements/commit/0550c1bc3ee6375122f29c1fc7eafc3e4fba6add))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#632](https://github.com/Kong/kong-auth-elements/issues/632)) ([f5c6018](https://github.com/Kong/kong-auth-elements/commit/f5c60189d94b10305c00dac5455b6341113464d0))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#636](https://github.com/Kong/kong-auth-elements/issues/636)) ([91d3fd7](https://github.com/Kong/kong-auth-elements/commit/91d3fd70328f8f38d72d95b95cad71282b7ba20b))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#638](https://github.com/Kong/kong-auth-elements/issues/638)) ([cc14059](https://github.com/Kong/kong-auth-elements/commit/cc14059b5ba902bc3e1c28db8b298e6ebffc6c61))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#639](https://github.com/Kong/kong-auth-elements/issues/639)) ([7ee1d10](https://github.com/Kong/kong-auth-elements/commit/7ee1d10c320f770de0b6525e4100bfc7ae17d819))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#643](https://github.com/Kong/kong-auth-elements/issues/643)) ([00720e4](https://github.com/Kong/kong-auth-elements/commit/00720e4203b45a3059de385746a13b1e5e0fca94))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#647](https://github.com/Kong/kong-auth-elements/issues/647)) ([f9be923](https://github.com/Kong/kong-auth-elements/commit/f9be9233d773d91eab02fe48617aa6a5b71c3481))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#650](https://github.com/Kong/kong-auth-elements/issues/650)) ([0947391](https://github.com/Kong/kong-auth-elements/commit/094739158c00c6ea00c39f861cee45de44e20593))
+* **deps:** bump vue-recaptcha from 2.0.2 to 2.0.3 ([#635](https://github.com/Kong/kong-auth-elements/issues/635)) ([d8db296](https://github.com/Kong/kong-auth-elements/commit/d8db2968621ce4c613ef7e5c4471f0fa7eedd49b))
+* **recaptcha:** ensure only shown when variable is true ([402db8e](https://github.com/Kong/kong-auth-elements/commit/402db8e4cdc5a2bdcdde8ea86e4cd7e6f58f3f33))
+
 # [1.25.0](https://github.com/Kong/kong-auth-elements/compare/v1.24.0...v1.25.0) (2022-09-13)
 
 
