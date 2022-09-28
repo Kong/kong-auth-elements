@@ -1,3 +1,10 @@
+## [1.25.2](https://github.com/Kong/kong-auth-elements/compare/v1.25.1...v1.25.2) (2022-09-28)
+
+
+### Bug Fixes
+
+* **recaptcha:** use computed recaptcha variable ([828549a](https://github.com/Kong/kong-auth-elements/commit/828549a928620bbcd03faa41530c0b7a63a87786))
+
 ## [1.25.1](https://github.com/Kong/kong-auth-elements/compare/v1.25.0...v1.25.1) (2022-09-28)
 
 
