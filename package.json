@@ -12,7 +12,9 @@
   },
   "scripts": {
     "commit": "cz",
-    "build": "yarn typecheck && vite build && vue-tsc --emitDeclarationOnly",
+    "build": "yarn typecheck && yarn build:package && yarn build:package:omitVue && vue-tsc --emitDeclarationOnly",
+    "build:package": "cross-env INCLUDE_VUE=yes vite build",
+    "build:package:omitVue": "cross-env INCLUDE_VUE=no vite build",
     "serve:components": "cross-env SERVE_MODE=components vite",
     "serve:elements": "cross-env SERVE_MODE=elements vite",
     "serve:demo": "rimraf ./demo/dist-copy && yarn build && cp -R ./dist ./demo/dist-copy && echo \"\n    \\x1b[30m\\x1b[103m Note: The demo does NOT support hot module reload \\x1b[0m\" && serve -p 3333 ./demo",
