@@ -7,48 +7,57 @@ Native HTML Web Components used for KAuth UI implementation in Kong apps
 
 ## Table of contents
 
-- [@kong/kong-auth-elements](#kongkong-auth-elements)
-  - [Table of contents](#table-of-contents)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Vue 2 or native web components](#vue-2-or-native-web-components)
-    - [Options](#options)
-    - [Events](#events)
-    - [Theming with CSS Variables](#theming-with-css-variables)
-    - [Webpack](#webpack)
-    - [Testing in your app](#testing-in-your-app)
-  - [Custom Elements](#custom-elements)
-    - [`kong-auth-login`](#kong-auth-login)
-    - [`kong-auth-forgot-password`](#kong-auth-forgot-password)
-    - [`kong-auth-reset-password`](#kong-auth-reset-password)
-    - [`kong-auth-register`](#kong-auth-register)
-    - [`kong-auth-accept-invitation`](#kong-auth-accept-invitation)
-  - [KAuth API](#kauth-api)
-  - [Contributing](#contributing)
-    - [Creating a New Custom Element](#creating-a-new-custom-element)
-    - [Custom Element Styles and the shadow DOM](#custom-element-styles-and-the-shadow-dom)
-    - [Committing Changes](#committing-changes)
-  - [Local Development](#local-development)
-    - [Configure Environment Variables](#configure-environment-variables)
-    - [Install dependencies](#install-dependencies)
-    - [Recommended IDE Setup](#recommended-ide-setup)
-    - [Local Dev Against Non-Local API](#local-dev-against-non-local-api)
-    - [Compile Components and hot-reload for development](#compile-components-and-hot-reload-for-development)
-    - [Compile Custom Elements and hot-reload for development](#compile-custom-elements-and-hot-reload-for-development)
-    - [Compile static HTML and demo native Web Components](#compile-static-html-and-demo-native-web-components)
-    - [Compile and minify for production](#compile-and-minify-for-production)
-    - [Link the local, `@kong/kong-auth-elements` package into another local project for testing](#link-the-local-kongkong-auth-elements-package-into-another-local-project-for-testing)
-  - [Current Issues](#current-issues)
-    - [Props](#props)
-    - [Axios](#axios)
+- [Table of contents](#table-of-contents)
+- [Installation](#installation)
+  - [npm](#npm)
+  - [CDN](#cdn)
+- [Usage](#usage)
+  - [Vue 2 or native web components](#vue-2-or-native-web-components)
+  - [Options](#options)
+  - [Events](#events)
+  - [Theming with CSS Variables](#theming-with-css-variables)
+  - [Webpack](#webpack)
+  - [Testing in your app](#testing-in-your-app)
+- [Custom Elements](#custom-elements)
+  - [`kong-auth-login`](#kong-auth-login)
+  - [`kong-auth-forgot-password`](#kong-auth-forgot-password)
+  - [`kong-auth-reset-password`](#kong-auth-reset-password)
+  - [`kong-auth-register`](#kong-auth-register)
+  - [`kong-auth-accept-invitation`](#kong-auth-accept-invitation)
+- [KAuth API](#kauth-api)
+- [Contributing](#contributing)
+  - [Creating a New Custom Element](#creating-a-new-custom-element)
+  - [Custom Element Styles and the shadow DOM](#custom-element-styles-and-the-shadow-dom)
+  - [Committing Changes](#committing-changes)
+- [Local Development](#local-development)
+  - [Configure Environment Variables](#configure-environment-variables)
+  - [Install dependencies](#install-dependencies)
+  - [Recommended IDE Setup](#recommended-ide-setup)
+  - [Local Dev Against Non-Local API](#local-dev-against-non-local-api)
+  - [Compile Components and hot-reload for development](#compile-components-and-hot-reload-for-development)
+  - [Compile Custom Elements and hot-reload for development](#compile-custom-elements-and-hot-reload-for-development)
+  - [Compile static HTML and demo native Web Components](#compile-static-html-and-demo-native-web-components)
+  - [Compile and minify for production](#compile-and-minify-for-production)
+  - [Link the local, `@kong/kong-auth-elements` package into another local project for testing](#link-the-local-kongkong-auth-elements-package-into-another-local-project-for-testing)
+- [Current Issues](#current-issues)
+  - [Props](#props)
+  - [Axios](#axios)
 
 ## Installation
+
+### npm
 
 Install the package as a dependency in your app
 
 ```sh
 yarn add @kong/kong-auth-elements
 ```
+
+### CDN
+
+We also provide a `kong-auth-elements.global-vue.umd.js` UMD bundle that does **NOT** internalize (bundle) the Vue core along with it that can be imported via `<script>` tag to import in projects where Vue is available in the global namespace.
+
+To utilize, include the script tag on your page after including Vue, and then call `window.registerKongAuthNativeElements()` with the [options](#options) outlined below.
 
 ## Usage
 

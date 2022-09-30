@@ -22,8 +22,8 @@ export default ({ mode }) => {
         // If INCLUDE_VUE=no, only output UMD
         formats: process.env.INCLUDE_VUE === 'no' ? ['umd'] : ['es', 'umd'],
         entry: path.resolve(__dirname, 'src/index.ts'),
-        // If INCLUDE_VUE=no, add `no-vue.` in the filename
-        fileName: (format) => `kong-auth-elements.${process.env.INCLUDE_VUE === 'no' ? 'no-vue.' : ''}${format}.js`,
+        // If INCLUDE_VUE=no, add `global-vue.` in the filename
+        fileName: (format) => `kong-auth-elements.${process.env.INCLUDE_VUE === 'no' ? 'global-vue.' : ''}${format}.js`,
       },
       cssCodeSplit: false,
       rollupOptions: {
