@@ -1,12 +1,12 @@
 {
   "name": "@kong/kong-auth-elements",
   "version": "0.0.0-development",
-  "main": "dist/kong-auth-elements.umd.js",
-  "module": "dist/kong-auth-elements.es.js",
+  "main": "dist/kong-auth-elements.vue.umd.js",
+  "module": "dist/kong-auth-elements.vue.es.js",
   "exports": {
     ".": {
-      "import": "./dist/kong-auth-elements.es.js",
-      "require": "./dist/kong-auth-elements.umd.js"
+      "import": "./dist/kong-auth-elements.vue.es.js",
+      "require": "./dist/kong-auth-elements.vue.umd.js"
     },
     "./dist/style.css": "./dist/style.css"
   },

@@ -55,7 +55,9 @@ yarn add @kong/kong-auth-elements
 
 ### CDN
 
-We also provide a `kong-auth-elements.global-vue.umd.js` UMD bundle that does **NOT** internalize (bundle) the Vue core along with it. This UMD bundle can can be imported via `<script>` tag to import the lib into projects where Vue is already available in the global namespace.
+The default exports have a bundle filename of `*.vue.{umd|es}.js` where we internalize Vue for consumption by the plugin (i.e. the bundle includes the Vue core).
+
+We also provide `kong-auth-elements.{umd|es}.js` bundles that do **NOT** internalize (bundle) the Vue core along with it. These bundles can can be imported via `<script>` (`umd` bundle) or `<script type="module">` (`es` bundle) tags into projects where Vue is already available in the global namespace.
 
 To utilize, include the script tag on your page after including Vue, and then call `window.registerKongAuthNativeElements()` with the [options](#options) outlined below.
 

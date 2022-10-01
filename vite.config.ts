@@ -15,28 +15,26 @@ export default ({ mode }) => {
 
   return defineConfig({
     build: {
-      // If INCLUDE_VUE=no, do not empty the dist folder on build
-      emptyOutDir: process.env.INCLUDE_VUE !== 'no',
+      // If INCLUDE_VUE=yes, do not empty the dist folder on build
+      emptyOutDir: process.env.INCLUDE_VUE === 'yes',
       lib: {
         name: 'kong-auth-elements',
-        // If INCLUDE_VUE=no, only output UMD
-        formats: process.env.INCLUDE_VUE === 'no' ? ['umd'] : ['es', 'umd'],
         entry: path.resolve(__dirname, 'src/index.ts'),
-        // If INCLUDE_VUE=no, add `global-vue.` in the filename
-        fileName: (format) => `kong-auth-elements.${process.env.INCLUDE_VUE === 'no' ? 'global-vue.' : ''}${format}.js`,
+        // If INCLUDE_VUE=yes, add `vue.` in the filename
+        fileName: (format) => `kong-auth-elements.${process.env.INCLUDE_VUE === 'yes' ? 'vue.' : ''}${format}.js`,
       },
       cssCodeSplit: false,
       rollupOptions: {
         // make sure to externalize deps that shouldn't be bundled into your library
         // Only enable to utilize as a Vue 3 Plugin
-        // If INCLUDE_VUE=no, externalize Vue (for Kong/ui-shared-components)
-        external: process.env.INCLUDE_VUE === 'no' ? ['vue'] : undefined,
+        // If INCLUDE_VUE=yes, externalize Vue (for Kong/ui-shared-components)
+        external: process.env.INCLUDE_VUE === 'yes' ? undefined : ['vue'],
         output: {
           exports: 'named',
           // Provide global variables to use in the UMD build for externalized deps
           // Enable to utilize consuming app's vue instance
-          // If INCLUDE_VUE=no, provide global Vue
-          globals: process.env.INCLUDE_VUE === 'no' ? { vue: 'Vue' } : undefined,
+          // If INCLUDE_VUE=yes, provide global Vue
+          globals: process.env.INCLUDE_VUE === 'yes' ? undefined : { vue: 'Vue' },
         },
       },
     },
