@@ -241,6 +241,7 @@ export default defineComponent({
       send,
     } = useMachine(
       createMachine({
+        predictableActionArguments: true,
         id: 'AUTH_LOGIN',
         initial: 'idle',
         states: {

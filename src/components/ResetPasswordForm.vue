@@ -121,6 +121,7 @@ export default defineComponent({
 
     const { state: currentState, send } = useMachine(
       createMachine({
+        predictableActionArguments: true,
         id: 'AUTH_RESET_PASSWORD',
         initial: 'idle',
         states: {

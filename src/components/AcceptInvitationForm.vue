@@ -147,6 +147,7 @@ export default defineComponent({
 
     const { state: currentState, send } = useMachine(
       createMachine({
+        predictableActionArguments: true,
         id: 'ACCEPT_INVITATION',
         initial: 'idle',
         states: {
