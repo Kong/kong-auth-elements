@@ -1,3 +1,10 @@
+## [1.26.2](https://github.com/Kong/kong-auth-elements/compare/v1.26.1...v1.26.2) (2022-10-04)
+
+
+### Bug Fixes
+
+* **ci:** hit new package webhook ([5a5f423](https://github.com/Kong/kong-auth-elements/commit/5a5f423fa0861b264c92349ba5697a60c5c828b4))
+
 ## [1.26.1](https://github.com/Kong/kong-auth-elements/compare/v1.26.0...v1.26.1) (2022-10-04)
 
 
