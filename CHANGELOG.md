@@ -1,3 +1,11 @@
+## [1.26.3](https://github.com/Kong/kong-auth-elements/compare/v1.26.2...v1.26.3) (2022-10-04)
+
+
+### Bug Fixes
+
+* **exports:** update exports config ([231d400](https://github.com/Kong/kong-auth-elements/commit/231d400937085e53bbb411a278caa7c9c8ff41f8))
+* **register:** add autocomplete attr ([af3fb7d](https://github.com/Kong/kong-auth-elements/commit/af3fb7d9c7905e2f312a6ed5fb920ad1ef6d1d45))
+
 ## [1.26.2](https://github.com/Kong/kong-auth-elements/compare/v1.26.1...v1.26.2) (2022-10-04)
 
 
