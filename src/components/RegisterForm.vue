@@ -100,9 +100,10 @@
         <KInput
           id="access_code"
           v-model="accessCode"
+          autocomplete="off"
           class="w-100 mb-4"
           type="password"
-         :label="`${messages.inputLabels.accessCode} *`"
+          :label="`${messages.inputLabels.accessCode} *`"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !accessCode ? true : false"
           required
           data-testid="kong-auth-register-access-code"
