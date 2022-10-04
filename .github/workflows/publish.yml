@@ -49,4 +49,9 @@ jobs:
 
       - name: Trigger a build for packages.konghq.tech
         if: ${{ success() }}
-        run: curl -X POST https://api.netlify.com/build_hooks/62e831854acf631f9ebc7242
+        run: |
+          curl -X POST \
+              -H 'Accept: application/vnd.github.everest-preview+json' \
+              -H  'Content-Type: application/json' \
+              -H 'Authorization: token ${{ secrets.KONGPONENTS_BOT_PAT }}' \
+              --data '{"event_type": "webhook"}' https://api.github.com/repos/Kong/package-publisher/dispatches
