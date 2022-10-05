@@ -15,6 +15,7 @@ export default ({ mode }) => {
 
   return defineConfig({
     build: {
+      sourcemap: true,
       // If INCLUDE_VUE=yes, do not empty the dist folder on build
       emptyOutDir: process.env.INCLUDE_VUE === 'yes',
       lib: {
@@ -30,6 +31,7 @@ export default ({ mode }) => {
         // If INCLUDE_VUE=yes, externalize Vue (for Kong/ui-shared-components)
         external: process.env.INCLUDE_VUE === 'yes' ? undefined : ['vue'],
         output: {
+          sourcemap: true,
           exports: 'named',
           // Provide global variables to use in the UMD build for externalized deps
           // Enable to utilize consuming app's vue instance
