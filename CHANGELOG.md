@@ -1,3 +1,11 @@
+## [1.26.4](https://github.com/Kong/kong-auth-elements/compare/v1.26.3...v1.26.4) (2022-10-05)
+
+
+### Bug Fixes
+
+* add sourcemaps ([91467e9](https://github.com/Kong/kong-auth-elements/commit/91467e98e5aa7ddd73c54cf103b9ef1dbe62a5e3))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#666](https://github.com/Kong/kong-auth-elements/issues/666)) ([aece55b](https://github.com/Kong/kong-auth-elements/commit/aece55b7de03b277080a562cc8f8bb87710babdf))
+
 ## [1.26.3](https://github.com/Kong/kong-auth-elements/compare/v1.26.2...v1.26.3) (2022-10-04)
 
 
