@@ -352,15 +352,15 @@
   resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1406.0.tgz#403e2587cded519f42d2d7621982b470e70b5752"
   integrity sha512-8b34qCbATyviGIwdiaoPljVovOS6ZuOYCV1FNr4CWHZgFo+JMbdImdeFmnkj+rOEIUADGdp5lq7AKHAyoNBtbA==
 
-"@kong/kongponents@^8.0.0-beta.35":
-  version "8.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.0.0-beta.35.tgz#13bd172333f72c9d4aba4047572b0b03efadcafa"
-  integrity sha512-jK2W5Ta6KcyiGZ23sm/RB1Y2b+c1XXYSZN/wcOmW0Fp9pxLw7s8L5cjJu2+JYHy3KyDGy6DFRiEf87KQyK7VPg==
+"@kong/kongponents@^8.0.0-beta.37":
+  version "8.0.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.0.0-beta.37.tgz#f379167238959b49de4607533163d1033b0aa097"
+  integrity sha512-tep16YdAEccBJxj/VV4UyUHx0USCL/m7lh2pVr4dnOegfV2JbmDn1f+dJJDm9Ulpm82tzlJnR9agSsYuzSdk+A==
   dependencies:
     axios "^0.27.2"
     date-fns "^2.29.3"
     popper.js "^1.15.0"
-    swrv "^1.0.0-beta.8"
+    swrv "^1.0.0"
     uuid "^8.3.2"
     v-calendar "^3.0.0-alpha.8"
 
@@ -6179,10 +6179,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-swrv@^1.0.0-beta.8:
-  version "1.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/swrv/-/swrv-1.0.0-beta.8.tgz#745723f5ca8a7a7e290e911cf7da34cecaf356d3"
-  integrity sha512-MsjaMOvZODfM0cess/HhbSrNbAotYinv4vzipLckKYBo/QmrvjNUPGZSRSqByXy/9AjrMRFWo0YanaVPbqADPQ==
+swrv@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/swrv/-/swrv-1.0.0.tgz#aea6926557286308674fdc934c206c01af0c6c38"
+  integrity sha512-RHNIZ2NWIw84ul0CdIkfPQxsw4KF9Q5DMtNYXPJatx11TKLGgdAG/kv74RHOTC0TdbC+Y1BbPCtwmSqgQ7wJWQ==
 
 tapable@^0.1.8:
   version "0.1.10"
