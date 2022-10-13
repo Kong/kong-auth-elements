@@ -33,7 +33,7 @@ export default function useTeleport(elementProps: Record<string, any>) {
       // Disable the Teleport component and just render in the shadow DOM
       disableTeleport.value = true
 
-      console.error(`Could not teleport kong-auth-element out of shadow DOM. Element with id="${teleportSelector.value.replace(/#/g, '')}" was not found`)
+      console.warn(`Could not teleport kong-auth-element out of shadow DOM. Element with id="${teleportSelector.value.replace(/#/g, '')}" was not found`)
     }
 
     // Always set to true so the element renders, regardless of whether we are disabling the teleport functionality
