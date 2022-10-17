@@ -1,3 +1,13 @@
+## [1.26.6](https://github.com/Kong/kong-auth-elements/compare/v1.26.5...v1.26.6) (2022-10-17)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/kauth-client-typescript-axios ([#691](https://github.com/Kong/kong-auth-elements/issues/691)) ([cbb2f48](https://github.com/Kong/kong-auth-elements/commit/cbb2f48b6b8d633012aaf08f405ca2b3d92cd694))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#692](https://github.com/Kong/kong-auth-elements/issues/692)) ([4df5e44](https://github.com/Kong/kong-auth-elements/commit/4df5e446f3b561e441f4796c5c06c6bcc782f739))
+* **deps:** bump vue from 3.2.40 to 3.2.41 ([#693](https://github.com/Kong/kong-auth-elements/issues/693)) ([e7b4e87](https://github.com/Kong/kong-auth-elements/commit/e7b4e878a8814848ff1593f85ce4ff2352f325c2))
+* ensure access code not required in prod ([f3ed5fd](https://github.com/Kong/kong-auth-elements/commit/f3ed5fd43cb48b0e3347586822e1ee5bef803ed5))
+
 ## [1.26.5](https://github.com/Kong/kong-auth-elements/compare/v1.26.4...v1.26.5) (2022-10-13)
 
 
