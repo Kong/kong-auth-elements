@@ -211,11 +211,14 @@ export default defineComponent({
     Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
     The default values provided to inject() here should be refs with empty string or false since the defaults are typically handled in the custom element provide()
     */
-    const accessCodeRequired: Ref<boolean> = inject('access-code-required', ref(false)) // False by default so the backend can guard registration
+    const accessCodeRequiredProp: Ref<boolean> = inject('access-code-required', ref(false)) // False by default so the backend can guard registration
     const recaptchaPropEnabled: Ref<boolean> = inject('recaptcha-enabled', ref(false)) // False by default so it can be enabled via prop
     const instructionText: Ref<string> = inject('instruction-text', ref(''))
     const registerButtonText: Ref<string> = inject('register-button-text', ref(messages.register.submitText))
     const registerRequestEndpoint: Ref<string> = inject('register-request-endpoint', ref(''))
+
+    // Ensure is not set to true on production
+    const accessCodeRequired = computed((): boolean => accessCodeRequiredProp.value && [true, 'true'].includes(accessCodeRequiredProp.value))
 
     // Disable reCAPTCHA for Portal ('developer') implementations
     const recaptchaEnabled = computed((): boolean => userEntity !== 'developer' && recaptchaPropEnabled.value && [true, 'true'].includes(recaptchaPropEnabled.value))
