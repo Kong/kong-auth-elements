@@ -1,6 +1,6 @@
 # @kong/kong-auth-elements
 
-Native HTML Web Components used for KAuth UI implementation in Kong apps
+Vue 3 Plugin and Native HTML Web Components used for KAuth UI implementation in Kong apps
 
 [![Tests](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yml/badge.svg)](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yml)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
@@ -9,7 +9,8 @@ Native HTML Web Components used for KAuth UI implementation in Kong apps
   - [npm](#npm)
   - [CDN](#cdn)
 - [Usage](#usage)
-  - [Vue 2 or native web components](#vue-2-or-native-web-components)
+  - [Vue 3 Plugin](#vue-3-plugin)
+  - [Vue 2 or no framework via native web components](#vue-2-or-no-framework-via-native-web-components)
   - [Options](#options)
   - [Events](#events)
   - [Theming with CSS Variables](#theming-with-css-variables)
@@ -66,7 +67,7 @@ You will also need to import the styles in the `document.head`
 
 ## Usage
 
-<!--
+
 ### Vue 3 Plugin
 
 Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`). Set the plugin options, and tell Vue to use the plugin.
@@ -75,19 +76,20 @@ Import the package (and TypeScript types, if desired) inside of your App's entry
 // main.ts
 
 import App from './App.vue'
-import { KongAuthElementsPlugin } from '@kong/kong-auth-elements'
-import type { KongAuthElementsOptions } from '@kong/kong-auth-elements'
+import { KongAuthElementsPlugin } from '@kong/kong-auth-elements/dist/kong-auth-elements.es'
+import type { KongAuthElementsOptions } from '@kong/kong-auth-elements/dist/types'
 import '@kong/kong-auth-elements/dist/style.css'
 
 const app = createApp(App)
 
 const pluginOptions: KongAuthElementsOptions = {
   // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
-  apiBaseUrl: 'https://us.api.konghq.com/kauth',
+  apiBaseUrl: 'https://global.api.konghq.com/kauth',
   userEntity: 'user',
+  shadowDom: false, // We are using the Vue plugin, so the shadow DOM isn't needed
 }
 
-// Use the plugin
+// Register the plugin
 app.use(KongAuthElementsPlugin, pluginOptions)
 
 app.mount('#app')
@@ -105,9 +107,7 @@ Now that the plugin is globally registered, simply include a component just like
 
 ---
 
--->
-
-### Vue 2 or native web components
+### Vue 2 or no framework via native web components
 
 Import the package (and TypeScript types, if desired) inside of your App's entry file (e.g. for Vue, `main.ts`), set up the options, and call the provided `registerKongAuthNativeElements` function.
 
