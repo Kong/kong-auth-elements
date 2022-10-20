@@ -1,5 +1,5 @@
 <template>
-  <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
+  <TeleportWrapper :parent-props="$props">
     <BaseCustomElement>
       <LoginForm
         @click-forgot-password-link="(emitData: any) => $emit('click-forgot-password-link', emitData)"
@@ -9,14 +9,14 @@
         @idp-is-loading="(emitData: any) => $emit('idp-is-loading', emitData)"
         />
     </BaseCustomElement>
-  </Teleport>
+  </TeleportWrapper>
 </template>
 
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
-import useTeleport from '@/composables/useTeleport'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import LoginForm, { loginEmits } from '@/components/LoginForm.vue'
+import TeleportWrapper from '@/components/TeleportWrapper.vue'
 
 export default defineComponent({
   name: 'KongAuthLogin',
@@ -25,7 +25,7 @@ export default defineComponent({
   props: {
     wrapperId: {
       type: String,
-      required: true,
+      required: false,
       default: 'kong-auth-login-wrapper',
     },
     instructionText: {
@@ -74,6 +74,7 @@ export default defineComponent({
   emits: loginEmits,
 
   components: {
+    TeleportWrapper,
     BaseCustomElement,
     LoginForm,
   },
@@ -120,14 +121,6 @@ export default defineComponent({
     props.registerLinkHelpText && provide('register-link-help-text', computed((): string => props.registerLinkHelpText))
     props.registerLinkText && provide('register-link-text', computed((): string => props.registerLinkText))
     props.registerSuccessText && provide('register-success-text', computed((): string => props.registerSuccessText))
-
-    const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
-
-    return {
-      teleportSelector,
-      disableTeleport,
-      shouldRender,
-    }
   },
 })
 </script>

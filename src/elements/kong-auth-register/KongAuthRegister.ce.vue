@@ -1,16 +1,16 @@
 <template>
-  <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
+  <TeleportWrapper :parent-props="$props">
     <BaseCustomElement>
       <RegisterForm @register-success="(emitData: any) => $emit('register-success', emitData)" />
     </BaseCustomElement>
-  </Teleport>
+  </TeleportWrapper>
 </template>
 
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
-import useTeleport from '@/composables/useTeleport'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import RegisterForm, { registerEmits } from '@/components/RegisterForm.vue'
+import TeleportWrapper from '@/components/TeleportWrapper.vue'
 
 export default defineComponent({
   name: 'KongAuthRegister',
@@ -19,7 +19,7 @@ export default defineComponent({
   props: {
     wrapperId: {
       type: String,
-      required: true,
+      required: false,
       default: 'kong-auth-register-wrapper',
     },
     accessCodeRequired: {
@@ -48,6 +48,7 @@ export default defineComponent({
   emits: registerEmits,
 
   components: {
+    TeleportWrapper,
     BaseCustomElement,
     RegisterForm,
   },
@@ -77,14 +78,6 @@ export default defineComponent({
     // Message props: These provided values default to useI18n() message text so
     // they must be provided in this format so the default value can be set in the child component.
     props.registerButtonText && provide('register-button-text', computed((): string => props.registerButtonText))
-
-    const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
-
-    return {
-      teleportSelector,
-      disableTeleport,
-      shouldRender,
-    }
   },
 })
 </script>

@@ -59,7 +59,6 @@
         <div id="kong-auth-register-wrapper">
           <kong-auth-register
             access-code-required
-            recaptcha
             wrapper-id="kong-auth-register-wrapper"
             @register-success="showAlert('Register success!')" />
         </div>

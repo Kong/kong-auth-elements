@@ -33,6 +33,6 @@ export interface KongAuthElementsOptions {
   developerConfig?: DeveloperConfig
   customErrorHandler?: (event: CustomEndpointErrorEvent) => string
   shadowDom?: boolean
-  shadowDomCss?: string[]
+  injectCss?: string[]
   lang?: SupportedLanguages
 }

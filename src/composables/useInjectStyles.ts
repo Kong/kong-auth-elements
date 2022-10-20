@@ -5,13 +5,11 @@ interface InjectStylesComposable {
 }
 
 export default function useInjectStyles(): InjectStylesComposable {
-  const { shadowDom, shadowDomCss } = useConfigOptions()
+  const { shadowDom, injectCss } = useConfigOptions()
 
   const inlineStyles = ref<any>([])
   const injectedStyles = computed((): string => {
     let styles = ''
-
-    if (!shadowDom) return styles
 
     // If shadow DOM and inlineStyles has value
     if (shadowDom && inlineStyles.value && inlineStyles.value.length) {
@@ -21,15 +19,15 @@ export default function useInjectStyles(): InjectStylesComposable {
     }
 
     // If an array of CSS links were passed, iterate through array
-    if (typeof shadowDomCss === 'object' && shadowDomCss?.length) {
-      for (const css in shadowDomCss) {
+    if (typeof injectCss === 'object' && injectCss?.length) {
+      for (const css in injectCss) {
         // Add to the shadow DOM
-        styles += String(shadowDomCss[css]).trim().length && `<style type="text/css" data-testid="shadow-dom-css-${css}">${String(shadowDomCss[css]).trim()}</style>`
+        styles += String(injectCss[css]).trim().length && `<style type="text/css" data-testid="inject-css-${css}">${String(injectCss[css]).trim()}</style>`
       }
-    } else if (shadowDomCss && typeof shadowDomCss === 'string') {
+    } else if (injectCss && typeof injectCss === 'string') {
       // Provide a fallback in case they passed a CSS link as a string
       // Add to the shadow DOM
-      styles += String(shadowDomCss).trim().length && `<style type="text/css" data-testid="shadow-dom-css-0">${String(shadowDomCss).trim()}</style>`
+      styles += String(injectCss).trim().length && `<style type="text/css" data-testid="inject-css-0">${String(injectCss).trim()}</style>`
     }
 
     return styles
@@ -40,8 +38,6 @@ export default function useInjectStyles(): InjectStylesComposable {
    * Then the styles are injected into the element's shadow DOM for consumption.
    */
   const injectStyles = (): void => {
-    if (!shadowDom) return
-
     inlineStyles.value = Array.from(document.head.getElementsByTagName('style'))
       .filter((styleNode) => {
         // Only inject styles if they contain this exact string: "/*! KONG_AUTH_INJECT_STYLES */"

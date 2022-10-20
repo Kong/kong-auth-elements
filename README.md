@@ -126,7 +126,7 @@ const options: KongAuthElementsOptions = {
   apiBaseUrl: 'https://us.api.konghq.com/kauth',
   userEntity: 'user',
   shadowDom: true,
-  shadowDomCss: ['.kong-auth-login-form .k-input#email { background-color: var(--red-400, #ff0000) }'],
+  injectCss: ['.kong-auth-login-form .k-input#email { background-color: var(--red-400, #ff0000) }'],
   lang: 'en', // Exclude to default to English
 }
 
@@ -167,8 +167,7 @@ Regardless if you're using in Vue 3, Vue 2, or the native web components, an ide
 | `userEntity`   | `string`   | `user`   | The user entity for authentication; one of `user` or `developer`. |
 | `developerConfig`   | `DeveloperConfig`   | `{ portalId: string }`   | The developer config object. |
 | `customErrorHandler`    | `Function`  | `(event: CustomEndpointErrorEvent) => ''`  | Supply a custom error handler to use when utilizing an element that allows providing a custom  request endpoint. [See the example below](#custom-error-handler) |
-| `shadowDom` | `boolean` | `false`     | If registering as custom elements, should they be rendered inside of a shadow DOM. Forced to `true` if utilizing native web components |
-| `shadowDomCss` | `string[]` | `[]`     | If registering as custom elements, you can pass an array of inlined CSS strings that will be added to the shadow root of all elements. [See the example below](#shadow-dom-css) |
+| `injectCss` | `string[]` | `[]`     | Pass an array of inlined CSS strings that will be injected into the DOM. [See the example below](#inject-css) |
 `lang` | `string` | `en` | Set the language to use for the component message strings. See `/src/locales/`
 
 #### TypeScript
@@ -205,7 +204,7 @@ export interface KongAuthElementsOptions {
   developerConfig?: DeveloperConfig
   customErrorHandler?: (event: CustomEndpointErrorEvent) => string
   shadowDom?: boolean
-  shadowDomCss?: string[]
+  injectCss?: string[]
   lang?: SupportedLanguages
 }
 ```
@@ -238,7 +237,7 @@ const pluginOptions: KongAuthElementsOptions = {
 ```
 
 
-#### Shadow DOM CSS
+#### Inject CSS
 
 ```ts
 // Pass in inlined CSS strings as needed
@@ -246,7 +245,7 @@ const pluginOptions: KongAuthElementsOptions = {
 const pluginOptions: KongAuthElementsOptions = {
   apiBaseUrl: 'https://us.api.konghq.com/kauth',
   userEntity: 'user',
-  shadowDomCss: [
+  injectCss: [
     '.kong-auth-login-form .k-input#email { background-color: var(--red-400, #ff0000) }',
     `
     .kong-auth-register-form .k-input {
@@ -650,7 +649,7 @@ declare module 'vue/types/vue' {
 #### Requirements
 
 1. Custom elements must follow the naming convention `{PascalCaseName}.ce.vue`
-2. The only root-level tag within the `<template>` of a custom element `src/elements/**/{CustomElement}.ce.vue` file must be the `<BaseCustomElement>` component (located at `/src/components/BaseCustomElement.vue`) and it must wrap all other content within the template (this enables style injection for child components).
+2. The only root-level tag within the `<template>` of a custom element `src/elements/**/{CustomElement}.ce.vue` file must be the `<TeleportWrapper>` component (located at `/src/components/BaseCustomElement.vue`) and it must wrap a `<BaseCustomElement>` component, which then wraps all other content within the template (this enables style injection for child components).
 3. The rest of the element's functionality should live within a child component (see existing examples) located in the `src/components/` directory and should not have any `props` of its own; the `props` from the parent `{PascalCaseName}.ce.vue` are injected with `provide/inject` (required).
 4. Custom elements must be added to the following path `/src/elements/{kebab-case-element-name}/{PascalCaseElementName}.ce.vue`
 5. Custom elements must have an export function added in the `/src/elements/index.ts` file that exports the registration function for the element. Note the proper names/paths in the file.
@@ -664,19 +663,19 @@ declare module 'vue/types/vue' {
 
     ```html
     <template>
-      <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
-        <BaseCustomElement>
+      <TeleportWrapper :parent-props="$props"> <!-- required -->
+        <BaseCustomElement> <!-- required -->
             <!-- Components from /src/components may be used in this default slot -->
             <ExampleComponent @example-event="(emitData: any) => $emit('example-event', emitData)" />
         </BaseCustomElement>
-      </Teleport>
+      </TeleportWrapper>
     </template>
 
     <script lang="ts">
     import { defineComponent, computed, provide } from 'vue'
-    import useTeleport from '@/composables/useTeleport' /* required */
     import BaseCustomElement from '@/components/BaseCustomElement.vue'
     import ExampleComponent, { exampleComponentEmits } from '@/components/ExampleComponent.vue'
+    import TeleportWrapper from '@/components/TeleportWrapper.vue'
 
     export default defineComponent({
       name: 'KongAuthExampleElement',
@@ -685,8 +684,8 @@ declare module 'vue/types/vue' {
       props: {
         /* Required */
         wrapperId: {
-          type: String,
-          required: true,
+          type: false,
+          required: false,
           default: 'kong-auth-example-element',
         }
       },
@@ -695,6 +694,7 @@ declare module 'vue/types/vue' {
       emits: exampleComponentEmits,
 
       components: {
+        TeleportWrapper,
         BaseCustomElement,
       },
 
@@ -704,15 +704,6 @@ declare module 'vue/types/vue' {
           'example-prop',
           computed((): string => (props.exampleProp ? props.exampleProp : '')),
         )
-
-        // Import the composable (required)
-        const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
-
-        return {
-          teleportSelector, // required
-          disableTeleport, // required
-          shouldRender, // required
-        }
       },
     })
     </script>
