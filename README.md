@@ -257,7 +257,13 @@ const pluginOptions: KongAuthElementsOptions = {
 
 Events are emitted for different component/element actions.
 
-If using the Vue Plugin, you can listen to these events just like you would any other emitted event. (e.g. `@login-success="successHandler"`)
+If using the Vue Plugin, you can listen to these events just like you would any other emitted event. (e.g. `@login-success="successHandler"`) The payload of events follows the `Record<string, any>` type in most cases.
+
+```ts
+const successHandler = (eventData: Record<string, any>) => {
+  console.log(eventData.email) // => 'marty.mcfly@thepinheads.com'
+}
+```
 
 If your app uses the native web components, the emitted events follow the [CustomEvent() Web API](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent) spec.
 
