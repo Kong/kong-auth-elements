@@ -1,16 +1,16 @@
 <template>
-  <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
+  <TeleportWrapper :parent-props="$props">
     <BaseCustomElement>
       <AcceptInvitationForm @accept-invitation-success="(emitData: any) => $emit('accept-invitation-success', emitData)" />
     </BaseCustomElement>
-  </Teleport>
+  </TeleportWrapper>
 </template>
 
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
-import useTeleport from '@/composables/useTeleport'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import AcceptInvitationForm, { acceptInvitationEmits } from '@/components/AcceptInvitationForm.vue'
+import TeleportWrapper from '@/components/TeleportWrapper.vue'
 
 export default defineComponent({
   name: 'KongAuthAcceptInvitation',
@@ -19,7 +19,7 @@ export default defineComponent({
   props: {
     wrapperId: {
       type: String,
-      required: true,
+      required: false,
       default: 'kong-auth-accept-invitation-wrapper',
     },
     subheaderText: {
@@ -32,6 +32,7 @@ export default defineComponent({
   emits: acceptInvitationEmits,
 
   components: {
+    TeleportWrapper,
     BaseCustomElement,
     AcceptInvitationForm,
   },
@@ -40,14 +41,6 @@ export default defineComponent({
     // Message props: These provided values default to useI18n() message text so
     // they must be provided in this format so the default value can be set in the child component.
     props.subheaderText && provide('invite-subheader-text', computed((): string => props.subheaderText))
-
-    const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
-
-    return {
-      teleportSelector,
-      disableTeleport,
-      shouldRender,
-    }
   },
 })
 </script>

@@ -9,7 +9,7 @@ export const getConfigOptions = {
   developerConfig: (): DeveloperConfig => inject('developer-config', { portalId: '' }),
   customErrorHandler: (): (event: CustomEndpointErrorEvent) => string => inject('custom-endpoint-error-handler', () => ''),
   shadowDom: (): boolean => inject('shadow-dom', false),
-  shadowDomCss: (): string[] => inject('shadow-dom-css', []),
+  injectCss: (): string[] => inject('inject-css', []),
   lang: (): SupportedLanguages => inject('lang', 'en'),
 }
 
@@ -19,7 +19,7 @@ export default function useConfigOptions(): KongAuthElementsOptions {
   const developerConfig = getConfigOptions.developerConfig()
   const customErrorHandler = getConfigOptions.customErrorHandler()
   const shadowDom = getConfigOptions.shadowDom()
-  const shadowDomCss = getConfigOptions.shadowDomCss()
+  const injectCss = getConfigOptions.injectCss()
   const lang = getConfigOptions.lang()
 
   return {
@@ -27,7 +27,7 @@ export default function useConfigOptions(): KongAuthElementsOptions {
     userEntity,
     customErrorHandler,
     shadowDom,
-    shadowDomCss,
+    injectCss,
     developerConfig,
     lang,
   }

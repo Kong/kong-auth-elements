@@ -54,7 +54,7 @@ export default function(
         'developer-config': options?.developerConfig,
         'custom-endpoint-error-handler': options?.customErrorHandler,
         'shadow-dom': options?.shadowDom || false,
-        'shadow-dom-css': options?.shadowDomCss,
+        'inject-css': options?.injectCss,
         lang: options?.lang,
       },
     })

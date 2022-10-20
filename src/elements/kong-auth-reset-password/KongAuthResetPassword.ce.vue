@@ -1,18 +1,18 @@
 <template>
-  <Teleport v-if="shouldRender" :to="teleportSelector" :disabled="disableTeleport">
+  <TeleportWrapper :parent-props="$props">
     <BaseCustomElement>
       <ResetPasswordForm
         @reset-password-success="(emitData: any) => $emit('reset-password-success', emitData)"
       />
     </BaseCustomElement>
-  </Teleport>
+  </TeleportWrapper>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed, provide } from 'vue'
-import useTeleport from '@/composables/useTeleport'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
 import ResetPasswordForm, { resetPasswordEmits } from '@/components/ResetPasswordForm.vue'
+import TeleportWrapper from '@/components/TeleportWrapper.vue'
 
 export default defineComponent({
   name: 'KongAuthResetPassword',
@@ -21,7 +21,7 @@ export default defineComponent({
   props: {
     wrapperId: {
       type: String,
-      required: true,
+      required: false,
       default: 'kong-auth-reset-password-wrapper',
     },
     instructionText: {
@@ -34,6 +34,7 @@ export default defineComponent({
   emits: resetPasswordEmits,
 
   components: {
+    TeleportWrapper,
     BaseCustomElement,
     ResetPasswordForm,
   },
@@ -44,14 +45,6 @@ export default defineComponent({
       'instruction-text',
       computed((): string => (props.instructionText ? props.instructionText : '')),
     )
-
-    const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props)
-
-    return {
-      teleportSelector,
-      disableTeleport,
-      shouldRender,
-    }
   },
 })
 </script>

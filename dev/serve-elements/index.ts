@@ -9,8 +9,8 @@ const options: KongAuthElementsOptions = {
   // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
   apiBaseUrl: '/kauth',
   userEntity: 'user',
-  shadowDom: false,
   lang: 'en',
+  // injectCss: ['input { color: red !important }'],
   developerConfig: {
     portalId: 'dfc77af7-ba97-4c52-889e-b2ca75b51ed3',
   },
@@ -25,6 +25,8 @@ const options: KongAuthElementsOptions = {
       // Returning null or false (or an empty string) will cause the default messaging to be used
       return ''
     }
+
+    return ''
   },
 }
 
