@@ -684,7 +684,7 @@ declare module 'vue/types/vue' {
       props: {
         /* Required */
         wrapperId: {
-          type: false,
+          type: String,
           required: false,
           default: 'kong-auth-example-element',
         }
