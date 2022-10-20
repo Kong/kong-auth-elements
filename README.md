@@ -5,9 +5,6 @@ Native HTML Web Components used for KAuth UI implementation in Kong apps
 [![Tests](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yml/badge.svg)](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yml)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-## Table of contents
-
-- [Table of contents](#table-of-contents)
 - [Installation](#installation)
   - [npm](#npm)
   - [CDN](#cdn)
