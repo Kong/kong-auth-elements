@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/Kong/kong-auth-elements/compare/v1.26.7...v1.27.0) (2022-10-20)
+
+
+### Features
+
+* trigger release ([5744d5a](https://github.com/Kong/kong-auth-elements/commit/5744d5ac408fd2f4bfd13808fa9b9c32217c1826))
+
 ## [1.26.7](https://github.com/Kong/kong-auth-elements/compare/v1.26.6...v1.26.7) (2022-10-20)
 
 
