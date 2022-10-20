@@ -165,7 +165,9 @@ Regardless if you're using in Vue 3, Vue 2, or the native web components, an ide
 | :------------- | :--------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `apiBaseUrl`   | `string`   | `/kauth` | The `basePath` of the internal `axios` instance. <br><br>Unless using an absolute URL, this base path **must** start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users) |
 | `userEntity`   | `string`   | `user`   | The user entity for authentication; one of `user` or `developer`. |
+| `developerConfig`   | `DeveloperConfig`   | `{ portalId: string }`   | The developer config object. |
 | `customErrorHandler`    | `Function`  | `(event: CustomEndpointErrorEvent) => ''`  | Supply a custom error handler to use when utilizing an element that allows providing a custom  request endpoint. [See the example below](#custom-error-handler) |
+| `shadowDom` | `boolean` | `false`     | If registering as custom elements, should they be rendered inside of a shadow DOM. Forced to `true` if utilizing native web components |
 | `shadowDomCss` | `string[]` | `[]`     | If registering as custom elements, you can pass an array of inlined CSS strings that will be added to the shadow root of all elements. [See the example below](#shadow-dom-css) |
 `lang` | `string` | `en` | Set the language to use for the component message strings. See `/src/locales/`
 
