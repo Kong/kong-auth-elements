@@ -1,3 +1,10 @@
+## [1.27.2](https://github.com/Kong/kong-auth-elements/compare/v1.27.1...v1.27.2) (2022-10-21)
+
+
+### Bug Fixes
+
+* **release:** trigger release ([ce4c0af](https://github.com/Kong/kong-auth-elements/commit/ce4c0afb5bab8a0a783341b1a341fbdfbca6975b))
+
 ## [1.27.1](https://github.com/Kong/kong-auth-elements/compare/v1.27.0...v1.27.1) (2022-10-20)
 
 
