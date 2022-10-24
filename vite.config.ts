@@ -14,6 +14,11 @@ export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
   return defineConfig({
+    define: {
+      'process.env': {},
+      'process.env.development': JSON.stringify('development'),
+      'process.env.production': JSON.stringify('production'),
+    },
     build: {
       sourcemap: true,
       // If INCLUDE_VUE=yes, do not empty the dist folder on build
