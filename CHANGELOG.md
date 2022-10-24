@@ -1,3 +1,10 @@
+## [1.27.4](https://github.com/Kong/kong-auth-elements/compare/v1.27.3...v1.27.4) (2022-10-24)
+
+
+### Bug Fixes
+
+* **demo:** update demo code ([2adb86f](https://github.com/Kong/kong-auth-elements/commit/2adb86f21e2282f8f2e392cb034417c7aa1080c9))
+
 ## [1.27.3](https://github.com/Kong/kong-auth-elements/compare/v1.27.2...v1.27.3) (2022-10-24)
 
 
