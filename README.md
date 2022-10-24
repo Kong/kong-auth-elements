@@ -65,8 +65,44 @@ You will also need to import the styles in the `document.head`
 <link rel="stylesheet" href="/{path}/dist/style.css"
 ```
 
-## Usage
+#### CDN Example
 
+See a working example here: <https://codepen.io/adamdehaven/pen/ExRxYja>
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://packages.konghq.tech/@kong/kong-auth-elements@1/dist/style.css" />
+  <script src="https://packages.konghq.tech/@kong/kong-auth-elements@1/dist/kong-auth-elements.vue.umd.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <div id="kong-auth-register-wrapper">
+      <kong-auth-register wrapper-id="kong-auth-register-wrapper" .register-success="showAlert('Register success!')" />
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var showAlert = function(text = '') {
+        if (!text) {
+          return
+        }
+        alert(text)
+      }
+      window.registerKongAuthNativeElements({
+        apiBaseUrl: 'https://global.api.konghq.com/kauth',
+        userEntity: 'user',
+      })
+    })()
+  </script>
+</body>
+</html>
+```
+
+## Usage
 
 ### Vue 3 Plugin
 

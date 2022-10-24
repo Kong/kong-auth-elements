@@ -16,8 +16,6 @@ export default ({ mode }) => {
   return defineConfig({
     define: {
       'process.env': {},
-      'process.env.development': JSON.stringify('development'),
-      'process.env.production': JSON.stringify('production'),
     },
     build: {
       sourcemap: true,
