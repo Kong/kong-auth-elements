@@ -29,7 +29,6 @@
           :label="`${messages.inputLabels.fullName} *`"
           class="w-100 mb-4"
           autocomplete="name"
-          :readonly="prepopulated"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !fullName ? true : false"
           required
           data-testid="kong-auth-accept-invitation-full-name"
@@ -182,8 +181,9 @@ export default defineComponent({
     })
 
     const acceptInvitation = async (): Promise<AxiosResponse<any>> => {
-      return await api.inviteAccept.acceptUserInvite({
+      return await api.client.patch('/v2/accept-invite', {
         password: formData.password,
+        full_name: formData.fullName,
         token: formData.inviteToken,
       })
     }
@@ -258,9 +258,9 @@ export default defineComponent({
       formData.organization = urlParams?.get('org') || ''
       formData.email = urlParams?.get('email') || ''
 
-      // If all values were passed in, set formData.prepopulated to true
+      // If `token` and `email` values were passed in, set formData.prepopulated to true
       formData.prepopulated =
-        !!(urlParams?.get('token') && urlParams?.get('fullName') && urlParams?.get('org') && urlParams?.get('email'))
+        !!(urlParams?.get('token') && urlParams?.get('email'))
     })
 
     return {
