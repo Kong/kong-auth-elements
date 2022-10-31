@@ -79,6 +79,11 @@ export default ({ mode }) => {
           changeOrigin: true,
           cookieDomainRewrite: 'localhost',
         },
+        '^/v2': {
+          target: process.env.VITE_AUTH_URL,
+          changeOrigin: true,
+          cookieDomainRewrite: 'localhost',
+        },
       },
     },
   })
