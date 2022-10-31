@@ -34,7 +34,7 @@
     "axios": "^0.27.2",
     "vue": "^3.2.41",
     "vue-recaptcha": "^2.0.3",
-    "xstate": "^4.33.6"
+    "xstate": "^4.34.0"
   },
   "devDependencies": {
     "@arkweid/lefthook": "^0.7.7",
