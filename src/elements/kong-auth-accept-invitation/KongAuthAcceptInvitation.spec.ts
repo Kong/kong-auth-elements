@@ -101,7 +101,7 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
       // Stub search params
       cy.stub(win, 'getLocationSearch').returns(`?token=12345&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
 
-      cy.intercept('PATCH', '**/accept-invite', {
+      cy.intercept('PATCH', '**/v2/accept-invite', {
         statusCode: 200,
       }).as('accept-invite')
 
@@ -142,7 +142,7 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
   })
 
   it("emits a 'accept-invitation-success' event with a payload on successful invitation acceptance", () => {
-    cy.intercept('PATCH', '**/accept-invite', {
+    cy.intercept('PATCH', '**/v2/accept-invite', {
       statusCode: 200,
       body: {
         email: user.email,
@@ -175,7 +175,7 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
     // Stub customErrorHandler
     cy.stub(getConfigOptions, 'customErrorHandler').returns(() => customErrorMessage)
 
-    cy.intercept('PATCH', '**/accept-invite', {
+    cy.intercept('PATCH', '**/v2/accept-invite', {
       statusCode: 400,
     }).as('accept-invitation-request')
 
