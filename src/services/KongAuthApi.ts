@@ -32,7 +32,7 @@ export default class KongAuthApi {
 
   constructor(baseUrl?: string, authErrorCallback?: (error: AxiosError) => void) {
     // Unless using an absolute URL, this base path MUST start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users)
-    this.baseUrl = baseUrl?.includes('/kauth') ? baseUrl.replace('/kauth', '') : (baseUrl || '')
+    this.baseUrl = baseUrl || ''
 
     this.client = axios.create({ withCredentials: true })
 
@@ -50,18 +50,16 @@ export default class KongAuthApi {
       basePath: this.baseUrl,
     })
 
-    // v1 endpoints require basePath + '/kauth' (and ensure it does not get included twice)
-    const v1Path = '/kauth'
-    this.authentication = new AuthenticationApi(baseConfig, baseConfig.basePath + v1Path, this.client)
-    this.emailVerification = new EmailVerificationApi(baseConfig, baseConfig.basePath + v1Path, this.client)
-    this.idp = new IdentityProviderAPIApi(baseConfig, baseConfig.basePath + v1Path, this.client)
-    this.invites = new InviteAPIApi(baseConfig, baseConfig.basePath + v1Path, this.client)
-    this.inviteAccept = new InvitesApi(baseConfig, baseConfig.basePath + v1Path, this.client)
-    this.me = new MeAPIApi(baseConfig, baseConfig.basePath + v1Path, this.client)
-    this.organization = new OrganizationAPIApi(baseConfig, baseConfig.basePath + v1Path, this.client)
-    this.passwords = new PasswordsApi(baseConfig, baseConfig.basePath + v1Path, this.client)
-    this.registration = new RegistrationApi(baseConfig, baseConfig.basePath + v1Path, this.client)
-    this.teams = new TeamAPIApi(baseConfig, baseConfig.basePath + v1Path, this.client)
-    this.users = new UserAPIApi(baseConfig, baseConfig.basePath + v1Path, this.client)
+    this.authentication = new AuthenticationApi(baseConfig, baseConfig.basePath, this.client)
+    this.emailVerification = new EmailVerificationApi(baseConfig, baseConfig.basePath, this.client)
+    this.idp = new IdentityProviderAPIApi(baseConfig, baseConfig.basePath, this.client)
+    this.invites = new InviteAPIApi(baseConfig, baseConfig.basePath, this.client)
+    this.inviteAccept = new InvitesApi(baseConfig, baseConfig.basePath, this.client)
+    this.me = new MeAPIApi(baseConfig, baseConfig.basePath, this.client)
+    this.organization = new OrganizationAPIApi(baseConfig, baseConfig.basePath, this.client)
+    this.passwords = new PasswordsApi(baseConfig, baseConfig.basePath, this.client)
+    this.registration = new RegistrationApi(baseConfig, baseConfig.basePath, this.client)
+    this.teams = new TeamAPIApi(baseConfig, baseConfig.basePath, this.client)
+    this.users = new UserAPIApi(baseConfig, baseConfig.basePath, this.client)
   }
 }
