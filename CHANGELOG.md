@@ -1,3 +1,18 @@
+# [1.28.0](https://github.com/Kong/kong-auth-elements/compare/v1.27.4...v1.28.0) (2022-10-31)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/kauth-client-typescript-axios ([#709](https://github.com/Kong/kong-auth-elements/issues/709)) ([9f9504f](https://github.com/Kong/kong-auth-elements/commit/9f9504f587e60af714b492daa523b5e7bc497799))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#713](https://github.com/Kong/kong-auth-elements/issues/713)) ([f31cd86](https://github.com/Kong/kong-auth-elements/commit/f31cd869cbee1a8999b49493c44b82260bad416f))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#717](https://github.com/Kong/kong-auth-elements/issues/717)) ([0c4d039](https://github.com/Kong/kong-auth-elements/commit/0c4d039484ebcc8c632aeca0ec8a6aa2504316fc))
+* **deps:** bump @kong/kauth-client-typescript-axios ([#718](https://github.com/Kong/kong-auth-elements/issues/718)) ([4434b90](https://github.com/Kong/kong-auth-elements/commit/4434b906d9be37339fc5cc3194a860f85a28a7e4))
+
+
+### Features
+
+* **invite:** use v2 endpoint [KHCP-5200] ([#721](https://github.com/Kong/kong-auth-elements/issues/721)) ([e0815d4](https://github.com/Kong/kong-auth-elements/commit/e0815d49e6e732a06c61eea03646a77e3af85ada))
+
 ## [1.27.4](https://github.com/Kong/kong-auth-elements/compare/v1.27.3...v1.27.4) (2022-10-24)
 
 
