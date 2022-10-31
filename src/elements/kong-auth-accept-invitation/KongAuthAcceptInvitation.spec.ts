@@ -83,12 +83,11 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
   describe('Invites and Responding to URL Parameters', () => {
     it('pre-populates the form from search params', () => {
       // Stub search params
-      cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
+      cy.stub(win, 'getLocationSearch').returns(`?token=12345&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
 
       mount(KongAuthAcceptInvitation)
 
       // Inputs should be pre-populated and readonly
-      cy.getTestId(testids.fullName).should('have.value', user.name).invoke('attr', 'readonly').should('eq', 'readonly')
       cy.getTestId(testids.email).should('have.value', user.email).invoke('attr', 'readonly').should('eq', 'readonly')
 
       // Organization text should be visible
@@ -100,7 +99,7 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
 
     it('pre-populates the form and accepts an invitation after entering required fields', () => {
       // Stub search params
-      cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
+      cy.stub(win, 'getLocationSearch').returns(`?token=12345&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
 
       cy.intercept('PATCH', '**/accept-invite', {
         statusCode: 200,
@@ -109,7 +108,6 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
       mount(KongAuthAcceptInvitation)
 
       // Inputs should be pre-populated and readonly
-      cy.getTestId(testids.fullName).should('have.value', user.name).invoke('attr', 'readonly').should('eq', 'readonly')
       cy.getTestId(testids.email).should('have.value', user.email).invoke('attr', 'readonly').should('eq', 'readonly')
 
       // Organization text should be visible
