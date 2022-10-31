@@ -31,9 +31,6 @@
         data-testid="kong-auth-forgot-password-instruction-text"
       >{{ instructionText }}</p>
 
-      <!-- Hidden username input to assist password managers -->
-      <input type="hidden" autocomplete="username" id="email" name="email"/>
-
       <KInput
         id="email"
         v-model.trim="email"
