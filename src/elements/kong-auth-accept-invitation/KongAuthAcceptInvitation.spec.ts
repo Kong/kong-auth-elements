@@ -83,12 +83,11 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
   describe('Invites and Responding to URL Parameters', () => {
     it('pre-populates the form from search params', () => {
       // Stub search params
-      cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
+      cy.stub(win, 'getLocationSearch').returns(`?token=12345&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
 
       mount(KongAuthAcceptInvitation)
 
       // Inputs should be pre-populated and readonly
-      cy.getTestId(testids.fullName).should('have.value', user.name).invoke('attr', 'readonly').should('eq', 'readonly')
       cy.getTestId(testids.email).should('have.value', user.email).invoke('attr', 'readonly').should('eq', 'readonly')
 
       // Organization text should be visible
@@ -100,16 +99,15 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
 
     it('pre-populates the form and accepts an invitation after entering required fields', () => {
       // Stub search params
-      cy.stub(win, 'getLocationSearch').returns(`?token=12345&fullName=${encodeURIComponent(user.name)}&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
+      cy.stub(win, 'getLocationSearch').returns(`?token=12345&org=${encodeURIComponent(user.org)}&email=${encodeURIComponent(user.email)}`)
 
-      cy.intercept('PATCH', '**/accept-invite', {
+      cy.intercept('POST', '**/v2/accept-invite', {
         statusCode: 200,
       }).as('accept-invite')
 
       mount(KongAuthAcceptInvitation)
 
       // Inputs should be pre-populated and readonly
-      cy.getTestId(testids.fullName).should('have.value', user.name).invoke('attr', 'readonly').should('eq', 'readonly')
       cy.getTestId(testids.email).should('have.value', user.email).invoke('attr', 'readonly').should('eq', 'readonly')
 
       // Organization text should be visible
@@ -119,6 +117,7 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
       cy.getTestId(testids.submitBtn).should('be.disabled')
 
       // Fill out fields
+      cy.getTestId(testids.fullName).type(user.name)
       cy.getTestId(testids.password).type(user.password)
 
       cy.getTestId(testids.submitBtn).should('not.be.disabled')
@@ -143,7 +142,7 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
   })
 
   it("emits a 'accept-invitation-success' event with a payload on successful invitation acceptance", () => {
-    cy.intercept('PATCH', '**/accept-invite', {
+    cy.intercept('POST', '**/v2/accept-invite', {
       statusCode: 200,
       body: {
         email: user.email,
@@ -161,9 +160,9 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
 
     cy.wait('@accept-invite-request').then(() => {
       // Check for emitted event
-      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
+      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then((emittedEvent) => {
         // Verify emit payload
-        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
+        cy.wrap(emittedEvent[0][0]).should('have.property', 'email')
       })
     })
   })
@@ -176,7 +175,7 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
     // Stub customErrorHandler
     cy.stub(getConfigOptions, 'customErrorHandler').returns(() => customErrorMessage)
 
-    cy.intercept('PATCH', '**/accept-invite', {
+    cy.intercept('POST', '**/v2/accept-invite', {
       statusCode: 400,
     }).as('accept-invitation-request')
 
