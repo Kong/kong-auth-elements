@@ -181,7 +181,7 @@ export default defineComponent({
     })
 
     const acceptInvitation = async (): Promise<AxiosResponse<any>> => {
-      return await api.client.patch('/v2/accept-invite', {
+      return await api.client.post('/v2/accept-invite', {
         password: formData.password,
         full_name: formData.fullName,
         token: formData.inviteToken,
