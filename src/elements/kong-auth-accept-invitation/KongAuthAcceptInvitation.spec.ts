@@ -117,6 +117,7 @@ describe('KongAuthAcceptInvitation.ce.vue', () => {
       cy.getTestId(testids.submitBtn).should('be.disabled')
 
       // Fill out fields
+      cy.getTestId(testids.fullName).type(user.name)
       cy.getTestId(testids.password).type(user.password)
 
       cy.getTestId(testids.submitBtn).should('not.be.disabled')
