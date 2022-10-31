@@ -73,7 +73,7 @@
     "semantic-release": "^19.0.5",
     "start-server-and-test": "^1.14.0",
     "typescript": "~4.8.4",
-    "vite": "^3.2.1",
+    "vite": "^3.2.2",
     "vue-tsc": "^0.40.13",
     "zxcvbn": "^4.4.2"
   },
