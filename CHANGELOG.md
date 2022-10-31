@@ -1,3 +1,10 @@
+## [1.28.2](https://github.com/Kong/kong-auth-elements/compare/v1.28.1...v1.28.2) (2022-10-31)
+
+
+### Bug Fixes
+
+* **forgot-password:** remove hidden input ([5eeb605](https://github.com/Kong/kong-auth-elements/commit/5eeb6050794a1726c9a021859ce89ebf94929352))
+
 ## [1.28.1](https://github.com/Kong/kong-auth-elements/compare/v1.28.0...v1.28.1) (2022-10-31)
 
 
