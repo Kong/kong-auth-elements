@@ -121,7 +121,7 @@ export default defineComponent({
   emits: acceptInvitationEmits,
 
   setup(props, { emit }) {
-    const { userEntity, customErrorHandler, lang } = useConfigOptions()
+    const { userEntity, customErrorHandler, lang, apiBaseUrl } = useConfigOptions()
     const { api } = useKongAuthApi()
     const { messages } = useI18n(lang)
 
@@ -181,7 +181,18 @@ export default defineComponent({
     })
 
     const acceptInvitation = async (): Promise<AxiosResponse<any>> => {
-      return await api.client.post('/v2/accept-invite', {
+      // Determine v2 API base URL from config options
+      let endpointBase = ''
+
+      try {
+        const endpointUrl = new URL(apiBaseUrl || '')
+        endpointBase = endpointUrl.origin
+      } catch (err) {
+        // If a relative path is passed to `apiBaseUrl`, this catch will set the fallback value
+        endpointBase = ''
+      }
+
+      return await api.client.post(`${endpointBase}/v2/accept-invite`, {
         password: formData.password,
         full_name: formData.fullName,
         token: formData.inviteToken,
