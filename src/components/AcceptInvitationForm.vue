@@ -237,8 +237,6 @@ export default defineComponent({
           const response = err.response
           const errors = response.data?.errors
 
-          debugger
-
           error.value = response
 
           if (errors?.length) {
