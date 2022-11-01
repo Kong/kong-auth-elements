@@ -1,3 +1,10 @@
+## [1.28.4](https://github.com/Kong/kong-auth-elements/compare/v1.28.3...v1.28.4) (2022-11-01)
+
+
+### Bug Fixes
+
+* **accept-invitation:** error messsage handling ([#727](https://github.com/Kong/kong-auth-elements/issues/727)) ([9b25995](https://github.com/Kong/kong-auth-elements/commit/9b25995773dc7ea4252ec55afa9a62cb3aa631c3))
+
 ## [1.28.3](https://github.com/Kong/kong-auth-elements/compare/v1.28.2...v1.28.3) (2022-11-01)
 
 
