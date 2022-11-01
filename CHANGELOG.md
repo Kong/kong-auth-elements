@@ -1,3 +1,15 @@
+## [1.28.3](https://github.com/Kong/kong-auth-elements/compare/v1.28.2...v1.28.3) (2022-11-01)
+
+
+### Bug Fixes
+
+* trigger release ([0e8a06b](https://github.com/Kong/kong-auth-elements/commit/0e8a06b27b6f244ca6ce4781e3c32ea7a2cdbf1b))
+
+
+### Reverts
+
+* revert baseurl changes they do not impact client ([8dc1727](https://github.com/Kong/kong-auth-elements/commit/8dc1727ab5b1238078b026534b75825d470923cd))
+
 ## [1.28.2](https://github.com/Kong/kong-auth-elements/compare/v1.28.1...v1.28.2) (2022-10-31)
 
 
