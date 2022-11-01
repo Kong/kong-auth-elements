@@ -50,7 +50,10 @@ export default defineComponent({
     }
 
     const setGeneralErrorMessage = (): void => {
-      const { status, statusText, data } = props?.error || null
+      // v2 responses
+      const { data: { invalid_parameters } } = props.error
+      // v1 responses
+      const { status, statusText, data } = props.error || null
       const errorDetail = data && data.errors ? data.errors[0]?.detail : null
 
       if (status === 401) {
@@ -60,6 +63,14 @@ export default defineComponent({
         errorMessage.value = messages.general.invalidAccessCode
       } else if (status === 503) {
         errorMessage.value = messages.general.serviceUnavailable
+      } else if (invalid_parameters && invalid_parameters.length) {
+        // v2 API error response
+        let v2Message = capitalizeFirstChar(invalid_parameters[0].field) + ' ' + invalid_parameters[0].reason
+        // For now, replace the first word if repeated
+        if (v2Message.includes(capitalizeFirstChar(invalid_parameters[0].field) + ' ' + capitalizeFirstChar(invalid_parameters[0].field))) {
+          v2Message = v2Message.replace(`${capitalizeFirstChar(invalid_parameters[0].field)} `, '')
+        }
+        errorMessage.value = v2Message
       } else if (!status && statusText) {
         // Allow passing no status with statusText for display
         errorMessage.value = statusText
@@ -71,7 +82,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      const { data } = props?.error || null
+      const { data } = props.error || null
 
       if (data?.errors?.length) {
         const errorDetail = data.errors[0]?.detail
