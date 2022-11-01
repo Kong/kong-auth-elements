@@ -1,3 +1,10 @@
+## [1.28.5](https://github.com/Kong/kong-auth-elements/compare/v1.28.4...v1.28.5) (2022-11-01)
+
+
+### Bug Fixes
+
+* **accept-invitation:** endpoint baseUrl ([#728](https://github.com/Kong/kong-auth-elements/issues/728)) ([e100a5c](https://github.com/Kong/kong-auth-elements/commit/e100a5ceb87121fb013df9f3436895013f3ff893))
+
 ## [1.28.4](https://github.com/Kong/kong-auth-elements/compare/v1.28.3...v1.28.4) (2022-11-01)
 
 
