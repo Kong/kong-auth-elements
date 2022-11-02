@@ -42,7 +42,7 @@
     "@commitlint/cli": "^16.3.0",
     "@commitlint/config-conventional": "^16.2.4",
     "@cypress/vite-dev-server": "^3.4.0",
-    "@cypress/vue": "^4.2.1",
+    "@cypress/vue": "^4.2.2",
     "@digitalroute/cz-conventional-changelog-for-jira": "^7.4.2",
     "@kong/kongponents": "^8.1.5",
     "@rushstack/eslint-patch": "^1.2.0",
