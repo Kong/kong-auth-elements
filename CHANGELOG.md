@@ -1,3 +1,10 @@
+## [1.28.11](https://github.com/Kong/kong-auth-elements/compare/v1.28.10...v1.28.11) (2022-11-10)
+
+
+### Bug Fixes
+
+* **deps:** bump vue from 3.2.43 to 3.2.44 ([#746](https://github.com/Kong/kong-auth-elements/issues/746)) ([cacfa8f](https://github.com/Kong/kong-auth-elements/commit/cacfa8ff675d39a3e1538d3630c23bb8aca32449))
+
 ## [1.28.10](https://github.com/Kong/kong-auth-elements/compare/v1.28.9...v1.28.10) (2022-11-09)
 
 
