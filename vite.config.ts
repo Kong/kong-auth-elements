@@ -14,8 +14,10 @@ export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
   return defineConfig({
+    // Define global constant replacements
     define: {
-      'process.env': {},
+      'process.env.development': JSON.stringify('development'),
+      'process.env.production': JSON.stringify('production'),
     },
     build: {
       sourcemap: true,
