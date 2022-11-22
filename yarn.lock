@@ -352,13 +352,14 @@
   resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1562.0.tgz#1fbc9117b0e796584b6edb2e1af01f1ce83e81d3"
   integrity sha512-8BlooeuczEX76Ryp1XPdILYTo7BWMYDJWaL7bRfyxQlot9FfFbfl5Jex3fzSzcXeOOk3azjOsMT7eZ2ev3a4Iw==
 
-"@kong/kongponents@^8.5.1":
-  version "8.5.1"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.5.1.tgz#a2d06c363ae5ac5efa27567e938e719c94abe537"
-  integrity sha512-QO+19D4V4zdfZ2OGbs93B9pZ5OuuxpjTayjSgFrSv6YifSKBirxjTO+kJHCWIxvwIOkIbHKgs+Zz/oDa+qupLA==
+"@kong/kongponents@^8.5.8":
+  version "8.5.8"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.5.8.tgz#bd81e48c864d6124b549eb297ccbda27f4c955af"
+  integrity sha512-ApxLNnxQxImUuTnF+XMjMY5NFgKtvQlh+Z7a/PtcVlHw2rvJa3SC38sHJ91zgbsZ0J59RWe/Uc+cdD54d3tCKQ==
   dependencies:
     axios "^0.27.2"
     date-fns "^2.29.3"
+    date-fns-tz "^1.3.7"
     popper.js "^1.15.0"
     swrv "^1.0.0"
     uuid "^8.3.2"
@@ -867,9 +868,9 @@
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
 "@types/lodash@^4.14.165":
-  version "4.14.186"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.186.tgz#862e5514dd7bd66ada6c70ee5fce844b06c8ee97"
-  integrity sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw==
+  version "4.14.189"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.189.tgz#975ff8c38da5ae58b751127b19ad5e44b5b7f6d2"
+  integrity sha512-kb9/98N6X8gyME9Cf7YaqIMvYGnBSWqEci6tiettE6iJWH1XdJz/PO8LB0GtLCG7x8dU3KWhZT+lA1a35127tA==
 
 "@types/minimist@^1.2.0":
   version "1.2.2"
@@ -2196,7 +2197,7 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-date-fns-tz@^1.0.12:
+date-fns-tz@^1.0.12, date-fns-tz@^1.3.7:
   version "1.3.7"
   resolved "https://registry.yarnpkg.com/date-fns-tz/-/date-fns-tz-1.3.7.tgz#e8e9d2aaceba5f1cc0e677631563081fdcb0e69a"
   integrity sha512-1t1b8zyJo+UI8aR+g3iqr5fkUHWpd58VBx8J/ZSQ+w7YrGlw80Ag4sA86qkfCXRBLmMc4I2US+aPMd4uKvwj5g==
@@ -6183,9 +6184,9 @@ supports-preserve-symlinks-flag@^1.0.0:
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
 swrv@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/swrv/-/swrv-1.0.0.tgz#aea6926557286308674fdc934c206c01af0c6c38"
-  integrity sha512-RHNIZ2NWIw84ul0CdIkfPQxsw4KF9Q5DMtNYXPJatx11TKLGgdAG/kv74RHOTC0TdbC+Y1BbPCtwmSqgQ7wJWQ==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/swrv/-/swrv-1.0.1.tgz#06f4db51e7adc0c90acc23dcb8603a52be011e94"
+  integrity sha512-FZMXK/mOp7LYBHrQ/zWnZXfoZ8ONrVV9eOJ4+p0OdEcsafLLrODPaeJFGDcI6CV/3o3J/t5GY9ozVGg10NC8ng==
 
 tapable@^0.1.8:
   version "0.1.10"
