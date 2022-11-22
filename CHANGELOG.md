@@ -1,3 +1,11 @@
+## [1.28.18](https://github.com/Kong/kong-auth-elements/compare/v1.28.17...v1.28.18) (2022-11-22)
+
+
+### Bug Fixes
+
+* **deps:** update kongponents ([bb8f13d](https://github.com/Kong/kong-auth-elements/commit/bb8f13da78e04bd01a7046d9e643b5db9b128a51))
+* **vite:** update vite config for global define ([41769ce](https://github.com/Kong/kong-auth-elements/commit/41769cef7e72dafbf91c7f8efa3848d5cef1e1e3))
+
 ## [1.28.17](https://github.com/Kong/kong-auth-elements/compare/v1.28.16...v1.28.17) (2022-11-18)
 
 
