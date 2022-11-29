@@ -352,10 +352,10 @@
   resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1579.0.tgz#77f1919f03488cf0b90ee43a91ec365b7465311a"
   integrity sha512-ilFt/OJYJ8xxK/MqoFX7b9qHXX4cOBctFK53maQ3dTQOVFQNmyE4TrS/RCZascfp5O53qqYn7iwwnmSfoprctw==
 
-"@kong/kongponents@^8.5.8":
-  version "8.5.8"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.5.8.tgz#bd81e48c864d6124b549eb297ccbda27f4c955af"
-  integrity sha512-ApxLNnxQxImUuTnF+XMjMY5NFgKtvQlh+Z7a/PtcVlHw2rvJa3SC38sHJ91zgbsZ0J59RWe/Uc+cdD54d3tCKQ==
+"@kong/kongponents@^8.6.4":
+  version "8.6.4"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.6.4.tgz#bdaeae41e832c0230ba67095d10855dd15d056ec"
+  integrity sha512-hnaO0x7o+UZflsKRS3Ts8UkVh8/TKGdQu6cmh26zfvogAxZNILOb2qZEAUiESouXqo+Jt3zXi5dkLp/bxPl8qQ==
   dependencies:
     axios "^0.27.2"
     date-fns "^2.29.3"
