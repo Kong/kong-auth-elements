@@ -352,14 +352,16 @@
   resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1590.0.tgz#17cf79415f5cae63c04d79f15d1eeca2a117a1da"
   integrity sha512-c+dfWAdRQUgGFd4PnFggZ4m+wSuwOq5o9kUXU5SKGe+vgDKDvLiZ5vgqtm8PJEwZFRVKuZmpf914gFQgMuLp0g==
 
-"@kong/kongponents@^8.7.2":
-  version "8.7.2"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.7.2.tgz#aa3121f3692789de50884e5769fa4e02e9cad4f8"
-  integrity sha512-K9PTaarWjTZ65uhn7hzeVVI1lFJdp4ku7H/w3TQlRafF3auE9UpVUcOgvDIWioKydj2WGXff0X3lj55fkQs11w==
+"@kong/kongponents@^8.8.1":
+  version "8.8.1"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.8.1.tgz#0f4cdaaa876567d4deddcf6f9115eec7fc28e9a9"
+  integrity sha512-7Jk5aZXUDAsHEQTPVEIpBBvx/Ni4jqEFFaOnmMgiVDLguxUbO0iRzr7a4gEJAFg0xe/sYqj6Yx9t/t/u1V3LfQ==
   dependencies:
     axios "^0.27.2"
     date-fns "^2.29.3"
     date-fns-tz "^1.3.7"
+    focus-trap "^7.1.0"
+    focus-trap-vue "^3.3.1"
     popper.js "^1.15.0"
     swrv "^1.0.0"
     uuid "^8.3.2"
@@ -3163,6 +3165,18 @@ flatted@^3.1.0:
   version "3.2.5"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.5.tgz#76c8584f4fc843db64702a6bd04ab7a8bd666da3"
   integrity sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==
+
+focus-trap-vue@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/focus-trap-vue/-/focus-trap-vue-3.3.1.tgz#d7934f6569e7e09d7230f62f614cf3499e121b06"
+  integrity sha512-bsZXt0//ZpdvVbcR4KYq/n73XF57a31mHmiKT6FBdv9osqSAYmjbwmdxlytWO786nv8wbCxKZw+t87nYVstB4g==
+
+focus-trap@^7.1.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-7.2.0.tgz#25af61b5635d3c18cd2fd176087db7b60be72c6b"
+  integrity sha512-v4wY6HDDYvzkBy4735kW5BUEuw6Yz9ABqMYLuTNbzAFPcBOGiGHwwcNVMvUz4G0kgSYh13wa/7TG3XwTeT4O/A==
+  dependencies:
+    tabbable "^6.0.1"
 
 follow-redirects@^1.14.0, follow-redirects@^1.14.9:
   version "1.15.1"
@@ -6184,6 +6198,11 @@ swrv@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/swrv/-/swrv-1.0.1.tgz#06f4db51e7adc0c90acc23dcb8603a52be011e94"
   integrity sha512-FZMXK/mOp7LYBHrQ/zWnZXfoZ8ONrVV9eOJ4+p0OdEcsafLLrODPaeJFGDcI6CV/3o3J/t5GY9ozVGg10NC8ng==
+
+tabbable@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-6.0.1.tgz#427a09b13c83ae41eed3e88abb76a4af28bde1a6"
+  integrity sha512-SYJSIgeyXW7EuX1ytdneO5e8jip42oHWg9xl/o3oTYhmXusZVgiA+VlPvjIN+kHii9v90AmzTZEBcsEvuAY+TA==
 
 tapable@^0.1.8:
   version "0.1.10"
