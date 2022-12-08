@@ -352,10 +352,10 @@
   resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1597.0.tgz#3034d09c4bcfcddc9f493db3da2ffb025faf5816"
   integrity sha512-2J5Ss3Q3KEicLyqHVhHfa0GWSIhzDCZjJyB4V0XagpY8hIWbzHeqE5+MEuptbvMuo3pW9kA/yTfaBdMxAhDG7w==
 
-"@kong/kongponents@^8.9.2":
-  version "8.9.2"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.9.2.tgz#62162f5fca872c351a446417957024178a7e5beb"
-  integrity sha512-PPICiXXT4Zx2zXLNk/HqDfF2KCGu1DIKHY5yQedY6syyMZkPRFf9joxnoegjIuSJtZTj/1RKpO1KQP/dagp99Q==
+"@kong/kongponents@^8.11.1":
+  version "8.11.1"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.11.1.tgz#58517fbfb25a4ffeac617d6f57ae135de3bd5df9"
+  integrity sha512-UUV2LgzZR5rAqIdbWDkOb48fftPVGF83tAlniJhlEzOW2fofikOe8eUBxvJB/uuKMumMV2QRBzePy1Ul9pBGZA==
   dependencies:
     axios "^0.27.2"
     date-fns "^2.29.3"
@@ -363,9 +363,11 @@
     focus-trap "^7.1.0"
     focus-trap-vue "^3.3.1"
     popper.js "^1.15.0"
+    sortablejs "^1.15.0"
     swrv "^1.0.0"
     uuid "^8.3.2"
     v-calendar "^3.0.0-alpha.8"
+    vue-draggable-next "^2.1.1"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -5956,6 +5958,11 @@ socks@^2.6.1, socks@^2.6.2:
     ip "^1.1.5"
     smart-buffer "^4.2.0"
 
+sortablejs@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.15.0.tgz#53230b8aa3502bb77a29e2005808ffdb4a5f7e2a"
+  integrity sha512-bv9qgVMjUMf89wAvM6AxVvS/4MX3sPeN0+agqShejLU5z5GX4C75ow1O2e5k4L6XItUyAK3gH6AxSbXrOM5e8w==
+
 "source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
@@ -6571,6 +6578,11 @@ vue-demi@^0.13.11:
   version "0.13.11"
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.13.11.tgz#7d90369bdae8974d87b1973564ad390182410d99"
   integrity sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==
+
+vue-draggable-next@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/vue-draggable-next/-/vue-draggable-next-2.1.1.tgz#49886da82f116d11b3e4df7674320fdacf5d7e04"
+  integrity sha512-f5lmA7t6LMaL4viR7dU30zzvqJzaKQs0ymL0Jy9UDT9uiZ2tXF3MzPzEvpTH2UODXZJkT+SnjeV1fXHMsgXLYA==
 
 vue-eslint-parser@^8.0.0, vue-eslint-parser@^8.0.1:
   version "8.3.0"
