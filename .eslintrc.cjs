@@ -38,6 +38,9 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/func-call-spacing': ['error', 'never'],
+    'vue/attributes-order': ['error', {
+      alphabetical: true,
+    }],
   },
   overrides: [
     {

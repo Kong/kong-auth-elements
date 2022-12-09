@@ -3,36 +3,36 @@
     <KSkeleton
       v-if="currentState.matches('from_url') || currentState.matches('verify_email')"
       class="idp-loading"
-      type="fullscreen-kong"
-      :delay-milliseconds="0"
       data-testid="kong-auth-login-gruce-loader"
+      :delay-milliseconds="0"
+      type="fullscreen-kong"
     />
 
     <div v-else>
       <div v-if="idpLoginEnabled && (userEntity === 'developer' || (userEntity === 'user' && isIdpLogin))">
         <KButton
           appearance="outline"
+          :aria-label="['pending', 'success'].some(currentState.matches) ? undefined : messages.login.loginTextSSOAriaLabel"
           class="justify-content-center w-100 type-lg"
           data-testid="kong-auth-login-sso"
-          :aria-label="['pending', 'success'].some(currentState.matches) ? undefined : messages.login.loginTextSSOAriaLabel"
           :disabled="loginBtnSSODisabled"
           @click.prevent="redirectToIdp(idpLoginReturnTo)"
         >
           <KIcon
-            :icon="idpIsLoading ? 'spinner' : 'organization'"
-            size="16"
             class="pr-0 mr-2"
             :color="loginBtnSSODisabled ? 'var(--grey-400, #b6b6bd)' : 'var(--blue-500, #1155cb)'"
+            :icon="idpIsLoading ? 'spinner' : 'organization'"
+            size="16"
           />
           {{ messages.login.loginTextSSO }}
         </KButton>
 
         <p v-if="loginWithCredentialsLinkIsVisible" class="basic-auth-link mt-5 text-center">
           <a
-            @click.prevent="loginWithCredentials"
             class="color-blue-500"
-            href="#"
             data-testid="kong-auth-login-basic-auth-link"
+            href="#"
+            @click.prevent="loginWithCredentials"
           >{{ messages.login.loginWithCredentials }}</a>
         </p>
       </div>
@@ -73,9 +73,9 @@
       <form
         v-if="basicAuthLoginEnabled || forceBasicAuth || (!basicAuthLoginEnabled && !idpLoginEnabled)"
         class="login-form"
-        @submit.prevent="submitForm"
-        novalidate
         data-testid="kong-auth-login-form"
+        novalidate
+        @submit.prevent="submitForm"
       >
         <p
           v-if="instructionText"
@@ -86,50 +86,50 @@
           <KInput
             id="email"
             v-model.trim="email"
-            type="email"
-           :label="`${messages.inputLabels.email} *`"
-            class="w-100 mb-5"
-            autocomplete="username"
             autocapitalize="off"
-            :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
-            required
+           autocomplete="username"
+            class="w-100 mb-5"
             data-testid="kong-auth-login-email"
+            :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+            :label="`${messages.inputLabels.email} *`"
+            required
+            type="email"
           />
 
           <KInput
             id="password"
             v-model="password"
-            type="password"
-            :label="`${messages.inputLabels.password} *`"
-            class="w-100"
             autocomplete="current-password"
-            :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
-            required
+            class="w-100"
             data-testid="kong-auth-login-password"
+            :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+            :label="`${messages.inputLabels.password} *`"
+            required
+            type="password"
           />
 
         <p v-if="showForgotPasswordLink" class="help mt-3">
           <a
-            @click.prevent="$emit('click-forgot-password-link')"
             class="color-blue-500"
-            href="#"
             data-testid="kong-auth-login-forgot-password-link"
+            href="#"
+            @click.prevent="$emit('click-forgot-password-link')"
           >{{ forgotPasswordLinkText }}</a>
         </p>
 
         <KButton
-          type="submit"
           appearance="primary"
           class="justify-content-center w-100 mt-6 type-lg"
-          :disabled="loginBtnDisabled"
           data-testid="kong-auth-login-submit"
+          :disabled="loginBtnDisabled"
+          type="submit"
         >
           <KIcon
             v-if="['pending', 'success'].some(currentState.matches)"
-            icon="spinner"
-            size="16"
             class="pr-0 mr-2"
             color="var(--grey-400)"
+            icon="spinner"
+            size="16"
           />
           {{ loginBtnText }}
         </KButton>
@@ -138,10 +138,10 @@
           <p class="color-black-85 bold-500">
             <span data-testid="kong-auth-login-register-help-text">{{ registerLinkHelpText }}</span>
             <a
-              @click.prevent="$emit('click-register-link')"
               class="color-blue-500"
-              href="#"
               data-testid="kong-auth-login-register-link"
+              href="#"
+              @click.prevent="$emit('click-register-link')"
             >{{ registerLinkText }}</a>
           </p>
         </div>

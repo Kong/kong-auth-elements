@@ -9,17 +9,17 @@
         </h4>
         <div id="kong-auth-login-wrapper">
           <kong-auth-login
-            wrapper-id="kong-auth-login-wrapper"
             .basic-auth-login-enabled="true"
             idp-login-enabled
             idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
-            show-forgot-password-link
             instruction-text="This is the instruction text"
-            @login-success="showAlert('Login success!')"
+            show-forgot-password-link
+            wrapper-id="kong-auth-login-wrapper"
             @click-forgot-password-link="showAlert('User clicked forgot password')"
             @click-register-link="showAlert('User clicked register')"
-            @verify-email-success="showAlert('User verified email')"
             @idp-is-loading="showAlert('IDP loading state changed')"
+            @login-success="showAlert('Login success!')"
+            @verify-email-success="showAlert('User verified email')"
           />
         </div>
       </div>
@@ -30,9 +30,9 @@
         </h4>
         <div id="kong-auth-forgot-password-wrapper">
           <kong-auth-forgot-password
+            instruction-text="Enter your verified email address and we will send you a password reset link."
             show-login-link
             wrapper-id="kong-auth-forgot-password-wrapper"
-            instruction-text="Enter your verified email address and we will send you a password reset link."
             @click-login-link="showAlert('User clicked login')"
             @forgot-password-success="showAlert('Forgot password success!')"
           />
@@ -45,8 +45,8 @@
         </h4>
         <div id="kong-auth-reset-password-wrapper">
           <kong-auth-reset-password
-            wrapper-id="kong-auth-reset-password-wrapper"
             instruction-text="Please enter in your new password and confirm it below."
+            wrapper-id="kong-auth-reset-password-wrapper"
             @reset-password-success="showAlert('Reset password success!')"
           />
         </div>

@@ -4,9 +4,9 @@
       <LoginForm
         @click-forgot-password-link="(emitData: any) => $emit('click-forgot-password-link', emitData)"
         @click-register-link="(emitData: any) => $emit('click-register-link', emitData)"
+        @idp-is-loading="(emitData: any) => $emit('idp-is-loading', emitData)"
         @login-success="(emitData: any) => $emit('login-success', emitData)"
         @verify-email-success="(emitData: any) => $emit('verify-email-success', emitData)"
-        @idp-is-loading="(emitData: any) => $emit('idp-is-loading', emitData)"
         />
     </BaseCustomElement>
   </TeleportWrapper>

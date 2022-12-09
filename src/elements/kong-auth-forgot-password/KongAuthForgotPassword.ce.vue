@@ -2,8 +2,8 @@
   <TeleportWrapper :parent-props="$props">
     <BaseCustomElement>
       <ForgotPasswordForm
-        @forgot-password-success="(emitData: any) => $emit('forgot-password-success', emitData)"
         @click-login-link="(emitData: any) => $emit('click-login-link', emitData)"
+        @forgot-password-success="(emitData: any) => $emit('forgot-password-success', emitData)"
       />
     </BaseCustomElement>
   </TeleportWrapper>

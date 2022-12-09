@@ -11,19 +11,19 @@
         data-testid="kong-auth-forgot-password-success-message"
       />
       <KButton
-        @click.prevent="$emit('click-login-link')"
-        class="justify-content-center w-100 type-lg"
         appearance="primary"
+        class="justify-content-center w-100 type-lg"
         data-testid="kong-auth-forgot-password-return-to-login-btn"
+        @click.prevent="$emit('click-login-link')"
       >{{ loginLinkText }}</KButton>
     </div>
 
     <form
       v-if="!currentState.matches('success')"
       class="forgot-password-form"
-      @submit.prevent="submitForm"
-      novalidate
       data-testid="kong-auth-forgot-password-form"
+      novalidate
+      @submit.prevent="submitForm"
     >
       <p
         v-if="instructionText"
@@ -34,30 +34,30 @@
       <KInput
         id="email"
         v-model.trim="email"
-        type="email"
-        :label="`${messages.inputLabels.email} *`"
-        class="w-100 mb-5"
-        autocomplete="username"
         autocapitalize="off"
+        autocomplete="username"
+        class="w-100 mb-5"
+        data-testid="kong-auth-forgot-password-email"
         :has-error="currentState.matches('error') && error ? true : false"
+        :label="`${messages.inputLabels.email} *`"
         placeholder="Email"
         required
-        data-testid="kong-auth-forgot-password-email"
+        type="email"
       />
 
       <KButton
-        type="submit"
         appearance="primary"
         class="justify-content-center w-100 type-lg"
-        :disabled="btnDisabled"
         data-testid="kong-auth-forgot-password-submit"
+        :disabled="btnDisabled"
+        type="submit"
       >
         <KIcon
           v-if="currentState.matches('pending')"
-          icon="spinner"
-          size="16"
           class="pr-0 mr-2"
           color="var(--grey-400)"
+          icon="spinner"
+          size="16"
         />
         {{ btnText }}
       </KButton>
@@ -66,10 +66,10 @@
     <div v-if="!currentState.matches('success') && showLoginLink" class="text-center mt-5">
       <p class="color-black-85 bold-500">
         <a
-          @click.prevent="$emit('click-login-link')"
           class="color-blue-500"
-          href="#"
           data-testid="kong-auth-forgot-password-return-to-login-link"
+          href="#"
+          @click.prevent="$emit('click-login-link')"
         >{{ loginLinkText }}</a>
       </p>
     </div>

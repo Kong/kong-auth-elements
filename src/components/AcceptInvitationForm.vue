@@ -16,48 +16,48 @@
     <form
       v-if="!currentState.matches('success')"
       class="accept-invitation-form"
-      @submit.prevent="submitForm"
-      novalidate
       data-testid="kong-auth-accept-invitation-form"
+      novalidate
+      @submit.prevent="submitForm"
     >
 
       <div>
         <KInput
           id="full_name"
           v-model.trim="fullName"
-          type="text"
-          :label="`${messages.inputLabels.fullName} *`"
-          class="w-100 mb-4"
           autocomplete="name"
-          :has-error="currentState.matches('error') && error && fieldsHaveError && !fullName ? true : false"
-          required
+          class="w-100 mb-4"
           data-testid="kong-auth-accept-invitation-full-name"
+          :has-error="currentState.matches('error') && error && fieldsHaveError && !fullName ? true : false"
+          :label="`${messages.inputLabels.fullName} *`"
+          required
+          type="text"
         />
       </div>
 
       <KInput
         id="email"
         v-model.trim="email"
-        type="email"
-        :label="`${messages.inputLabels.email} *`"
-        class="w-100 mb-4"
         autocomplete="email"
-        :readonly="prepopulated"
-        :has-error="currentState.matches('error') && error && fieldsHaveError && !email ? true : false"
-        required
+        class="w-100 mb-4"
         data-testid="kong-auth-accept-invitation-email"
+        :has-error="currentState.matches('error') && error && fieldsHaveError && !email ? true : false"
+        :label="`${messages.inputLabels.email} *`"
+        :readonly="prepopulated"
+        required
+        type="email"
       />
 
         <KInput
           id="password"
           v-model.trim="password"
-          type="password"
-          :label="`${messages.inputLabels.password} *`"
-          class="w-100"
           autocomplete="new-password"
-          :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
-          required
+          class="w-100"
           data-testid="kong-auth-accept-invitation-password"
+          :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
+          :label="`${messages.inputLabels.password} *`"
+          required
+          type="password"
         />
         <p class="help mb-4">{{ messages.acceptInvitation.passwordHelpText }}</p>
 
@@ -69,18 +69,18 @@
       </div>
 
       <KButton
-        type="submit"
         appearance="primary"
         class="accept-invitation-submit justify-content-center w-100 type-lg mt-6"
-        :disabled="btnDisabled"
         data-testid="kong-auth-accept-invitation-submit"
+        :disabled="btnDisabled"
+        type="submit"
       >
         <KIcon
           v-if="currentState.matches('pending')"
+          class="pr-0 mr-2"
+          color="var(--grey-400)"
           icon="spinner"
           size="16"
-          color="var(--grey-400)"
-          class="pr-0 mr-2"
         />
         {{ btnText }}
       </KButton>

@@ -11,9 +11,9 @@
     <form
       v-if="!currentState.matches('success')"
       class="register-form"
-      @submit.prevent="processRecaptchaAndSubmit"
-      novalidate
       data-testid="kong-auth-register-form"
+      novalidate
+      @submit.prevent="processRecaptchaAndSubmit"
     >
       <p
         v-if="instructionText"
@@ -22,7 +22,7 @@
       >{{ instructionText }}</p>
 
       <div v-if="userEntity !== 'developer' && selectRegion">
-        <KLabel for="regionInformationTitle" class="region-title">
+        <KLabel class="region-title" for="regionInformationTitle">
           {{ `${messages.regionInformation.title} *` }}
         </KLabel>
         <p class="region-description">
@@ -31,12 +31,12 @@
 
         <div class="mb-4 kong-auth-register-region">
           <KSelect
-            v-model="selectedRegionOption"
             id="regionInformationTitle"
+            v-model="selectedRegionOption"
             appearance="select"
-            :items="regions"
-            data-testid="kong-auth-register-region"
             autocomplete="konnect-region"
+            data-testid="kong-auth-register-region"
+            :items="regions"
             @selected="(item: any) => handleItemSelect(selectedRegionOption, item)"
             />
         </div>
@@ -46,13 +46,13 @@
         <KInput
           id="full_name"
           v-model.trim="fullName"
-          type="text"
-          :label="`${messages.inputLabels.fullName} *`"
-          class="w-100 mb-4"
           autocomplete="name"
-          :has-error="currentState.matches('error') && error && fieldsHaveError && !fullName ? true : false"
-          required
+          class="w-100 mb-4"
           data-testid="kong-auth-register-full-name"
+          :has-error="currentState.matches('error') && error && fieldsHaveError && !fullName ? true : false"
+          :label="`${messages.inputLabels.fullName} *`"
+          required
+          type="text"
         />
       </div>
 
@@ -60,39 +60,39 @@
         <KInput
           id="organization"
           v-model.trim="organization"
-          type="text"
-          :label="`${messages.inputLabels.organization} *`"
-          class="w-100 mb-4"
           autocomplete="organization"
-          :has-error="currentState.matches('error') && error && fieldsHaveError && !organization ? true : false"
-          required
+          class="w-100 mb-4"
           data-testid="kong-auth-register-organization"
+          :has-error="currentState.matches('error') && error && fieldsHaveError && !organization ? true : false"
+          :label="`${messages.inputLabels.organization} *`"
+          required
+          type="text"
         />
       </div>
 
       <KInput
         id="email"
         v-model.trim="email"
-        type="email"
-        :label="`${messages.inputLabels.email} *`"
-        class="w-100 mb-4"
         autocomplete="email"
-        :has-error="currentState.matches('error') && error && fieldsHaveError && !email ? true : false"
-        required
+        class="w-100 mb-4"
         data-testid="kong-auth-register-email"
+        :has-error="currentState.matches('error') && error && fieldsHaveError && !email ? true : false"
+        :label="`${messages.inputLabels.email} *`"
+        required
+        type="email"
       />
 
       <div v-if="userEntity !== 'developer'">
         <KInput
           id="password"
           v-model.trim="password"
-          type="password"
-          :label="`${messages.inputLabels.password} *`"
-          class="w-100 mb-4"
           autocomplete="new-password"
-          :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
-          required
+          class="w-100 mb-4"
           data-testid="kong-auth-register-password"
+          :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
+          :label="`${messages.inputLabels.password} *`"
+          required
+          type="password"
         />
       </div>
 
@@ -102,11 +102,11 @@
           v-model="accessCode"
           autocomplete="off"
           class="w-100 mb-4"
-          type="password"
-          :label="`${messages.inputLabels.accessCode} *`"
-          :has-error="currentState.matches('error') && error && fieldsHaveError && !accessCode ? true : false"
-          required
           data-testid="kong-auth-register-access-code"
+          :has-error="currentState.matches('error') && error && fieldsHaveError && !accessCode ? true : false"
+          :label="`${messages.inputLabels.accessCode} *`"
+          required
+          type="password"
         />
       </div>
 
@@ -123,8 +123,8 @@
       </div>
 
       <div
-        class="mt-4"
         v-if="currentState.matches('error') && passwordError && error"
+        class="mt-4"
         data-testid="kong-auth-register-alert"
       >
         <ErrorMessage :error="error" />
@@ -133,26 +133,26 @@
       <vue-recaptcha
         v-if="recaptchaEnabled"
         ref="recaptcha"
-        size="invisible"
-        :sitekey="recaptchaSiteKey"
         recaptcha-script-id="kong-auth-elements-recaptcha"
-        @verify="onRecaptchaVerify"
+        :sitekey="recaptchaSiteKey"
+        size="invisible"
+        @error="onRecaptchaError"
         @expired="onRecaptchaExpired"
-        @error="onRecaptchaError" />
+        @verify="onRecaptchaVerify" />
 
       <KButton
-        type="submit"
         appearance="primary"
         class="justify-content-center w-100 type-lg mt-6"
-        :disabled="btnDisabled"
         data-testid="kong-auth-register-submit"
+        :disabled="btnDisabled"
+        type="submit"
       >
         <KIcon
           v-if="currentState.matches('pending')"
-          icon="spinner"
-          size="16"
           class="pr-0 mr-2"
           color="var(--grey-400)"
+          icon="spinner"
+          size="16"
         />
         {{ btnText }}
       </KButton>

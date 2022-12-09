@@ -1,7 +1,7 @@
 <template>
   <div v-if="shouldRender">
     <slot v-if="!shadowDom" name="default" />
-    <Teleport v-else-if="shadowDom && shouldRender" :to="teleportSelector" :disabled="disableTeleport">
+    <Teleport v-else-if="shadowDom && shouldRender" :disabled="disableTeleport" :to="teleportSelector">
       <slot name="default" />
     </Teleport>
   </div>

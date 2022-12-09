@@ -7,9 +7,9 @@
     <form
       v-if="!currentState.matches('success')"
       class="reset-password-form"
-      @submit.prevent="submitForm"
-      novalidate
       data-testid="kong-auth-reset-password-form"
+      novalidate
+      @submit.prevent="submitForm"
     >
       <p
         v-if="instructionText"
@@ -18,46 +18,46 @@
       >{{ instructionText }}</p>
 
       <!-- Hidden username input to assist password managers -->
-      <input type="hidden" autocomplete="username" id="email" name="email" />
+      <input id="email" autocomplete="username" name="email" type="hidden" />
 
       <KInput
         id="password"
         v-model.trim="password"
-        type="password"
-        :label="`${messages.inputLabels.newPassword} *`"
-        class="w-100 mb-4"
         autocomplete="new-password"
-        :has-error="currentState.matches('error') && error ? true : false"
-        required
+        class="w-100 mb-4"
         data-testid="kong-auth-reset-password-new-password"
+        :has-error="currentState.matches('error') && error ? true : false"
+        :label="`${messages.inputLabels.newPassword} *`"
+        required
+        type="password"
       />
 
       <KInput
         id="password-confirm"
         v-model.trim="confirmPassword"
-        type="password"
-        :label="`${messages.inputLabels.confirmPassword} *`"
-        class="w-100 mb-4"
         autocomplete="new-password"
-        :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
-        :error-message="passwordIsInvalid ? messages.resetPassword.passwordMismatch : undefined"
-        required
+        class="w-100 mb-4"
         data-testid="kong-auth-reset-password-confirm-new-password"
+        :error-message="passwordIsInvalid ? messages.resetPassword.passwordMismatch : undefined"
+        :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
+        :label="`${messages.inputLabels.confirmPassword} *`"
+        required
+        type="password"
       />
 
       <KButton
-        type="submit"
         appearance="primary"
         class="justify-content-center w-100 type-lg"
-        :disabled="btnDisabled"
         data-testid="kong-auth-reset-password-submit"
+        :disabled="btnDisabled"
+        type="submit"
       >
         <KIcon
           v-if="currentState.matches('pending')"
-          icon="spinner"
-          size="16"
           class="pr-0 mr-2"
           color="var(--grey-400)"
+          icon="spinner"
+          size="16"
         />
         {{ btnText }}
       </KButton>
