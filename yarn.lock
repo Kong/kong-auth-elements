@@ -352,16 +352,16 @@
   resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1646.0.tgz#572b947701499ed15a89850e5a1f1ffd9c00bab9"
   integrity sha512-eW66lK/mcOpL28yerwLi5rqkT4teKbFBL+i5aYuZs98hHQR0BN++f16Ok5Ay+28aURkkRaCDIuHVxVGWoH3Yww==
 
-"@kong/kongponents@^8.12.1":
-  version "8.12.1"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.12.1.tgz#1575c45b3e355d0ec57674513fd1f55de72a72af"
-  integrity sha512-aNYgdBOgO0Cw9GhLfo853ewsa5IzGDma4lfH0WrFQuXsOFq+quDkyzg1bSc7HU/czqvuiLHNBl40s7hvKSYzig==
+"@kong/kongponents@^8.13.1":
+  version "8.13.1"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.13.1.tgz#b010380b2716cc43c03e686310063430849c7adf"
+  integrity sha512-BfqYZkK62rrAvmEQyTArazxQu4P4HEKtSDTBnArFk/JptvtL8My5n26uR3M35jZeCL1pOOeiwTNKDTALIWHk5A==
   dependencies:
     axios "^0.27.2"
     date-fns "^2.29.3"
     date-fns-tz "^1.3.7"
     focus-trap "^7.1.0"
-    focus-trap-vue "^3.3.1"
+    focus-trap-vue "^3.4.0"
     popper.js "^1.15.0"
     sortablejs "^1.15.0"
     swrv "^1.0.0"
@@ -3166,10 +3166,10 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.5.tgz#76c8584f4fc843db64702a6bd04ab7a8bd666da3"
   integrity sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==
 
-focus-trap-vue@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/focus-trap-vue/-/focus-trap-vue-3.3.1.tgz#d7934f6569e7e09d7230f62f614cf3499e121b06"
-  integrity sha512-bsZXt0//ZpdvVbcR4KYq/n73XF57a31mHmiKT6FBdv9osqSAYmjbwmdxlytWO786nv8wbCxKZw+t87nYVstB4g==
+focus-trap-vue@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/focus-trap-vue/-/focus-trap-vue-3.4.0.tgz#ea63ef2dce04e929bc09e2b3df0e36a058574b82"
+  integrity sha512-VAI4gJgsjC8KcjDH+h4j2SxFY2XrXmm47a1EXti8gx311abybzqVhkS32Um7i+00J8RQD7hqL1Kfc26WpsMx0w==
 
 focus-trap@^7.1.0:
   version "7.2.0"
