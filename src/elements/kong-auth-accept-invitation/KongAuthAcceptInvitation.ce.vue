@@ -6,43 +6,32 @@
   </TeleportWrapper>
 </template>
 
-<script lang="ts">
-import { defineComponent, provide, computed } from 'vue'
+<script setup lang="ts">
+import { provide, computed } from 'vue'
 import BaseCustomElement from '@/components/BaseCustomElement.vue'
-import AcceptInvitationForm, { acceptInvitationEmits } from '@/components/AcceptInvitationForm.vue'
+import AcceptInvitationForm from '@/components/AcceptInvitationForm.vue'
 import TeleportWrapper from '@/components/TeleportWrapper.vue'
+import { acceptInvitationEmits } from '@/components/emits'
 
-export default defineComponent({
-  name: 'KongAuthAcceptInvitation',
-
-  // Props are defined here for use on the custom element tag
-  props: {
-    wrapperId: {
-      type: String,
-      required: false,
-      default: 'kong-auth-accept-invitation-wrapper',
-    },
-    subheaderText: {
-      type: String,
-      default: null,
-    },
+// Props are defined here for use on the custom element tag
+const props = defineProps({
+  wrapperId: {
+    type: String,
+    required: false,
+    default: 'kong-auth-accept-invitation-wrapper',
   },
-
-  // Import emits from child component with validation, where necessary
-  emits: acceptInvitationEmits,
-
-  components: {
-    TeleportWrapper,
-    BaseCustomElement,
-    AcceptInvitationForm,
-  },
-
-  setup(props) {
-    // Message props: These provided values default to useI18n() message text so
-    // they must be provided in this format so the default value can be set in the child component.
-    props.subheaderText && provide('invite-subheader-text', computed((): string => props.subheaderText))
+  subheaderText: {
+    type: String,
+    default: null,
   },
 })
+
+// Import emits from child component with validation, where necessary
+defineEmits(acceptInvitationEmits)
+
+// Message props: These provided values default to useI18n() message text so
+// they must be provided in this format so the default value can be set in the child component.
+props.subheaderText && provide('invite-subheader-text', computed((): string => props.subheaderText))
 </script>
 
 <style lang="scss">

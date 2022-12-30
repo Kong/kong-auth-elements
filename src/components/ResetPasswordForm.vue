@@ -74,8 +74,8 @@ import useConfigOptions from '@/composables/useConfigOptions'
 import useKongAuthApi from '@/composables/useKongAuthApi'
 import useI18n from '@/composables/useI18n'
 import { PasswordresetsResetRequest, PasswordAPIV1ResetResponse } from '@kong/kauth-client-typescript-axios'
+import { resetPasswordEmits } from '@/components/emits'
 import { AxiosResponse } from 'axios'
-import { resetPasswordEmits } from './emits'
 // Components
 import { KButton, KIcon, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
@@ -125,13 +125,9 @@ const { state: currentState, send } = useMachine(
   }),
 )
 
-const passwordIsInvalid = computed(
-  () => formData.password !== formData.confirmPassword && formData.confirmPassword !== '',
-)
+const passwordIsInvalid = computed((): boolean => formData.password !== formData.confirmPassword && formData.confirmPassword !== '')
 
-const btnText = computed((): string => {
-  return ['pending', 'success'].some(currentState.value.matches) ? messages.resetPassword.submittingText : messages.resetPassword.submitText
-})
+const btnText = computed((): string => ['pending', 'success'].some(currentState.value.matches) ? messages.resetPassword.submittingText : messages.resetPassword.submitText)
 
 const btnDisabled = computed((): boolean => {
   return (

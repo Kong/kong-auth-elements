@@ -168,9 +168,9 @@ import useConfigOptions from '@/composables/useConfigOptions'
 import useKongAuthApi from '@/composables/useKongAuthApi'
 import useI18n from '@/composables/useI18n'
 import { RegisterRegisterResponse } from '@kong/kauth-client-typescript-axios'
+import { registerEmits } from '@/components/emits'
 import { AxiosResponse } from 'axios'
 import { win } from '@/utils'
-import { registerEmits } from './emits'
 import { VueRecaptcha } from 'vue-recaptcha'
 // Components
 import { KButton, KIcon, KInput, KCheckbox, KSelect, KLabel } from '@kong/kongponents'
@@ -270,13 +270,9 @@ const userCanSubmitForm = computed((): boolean => {
   )
 })
 
-const btnText = computed((): string => {
-  return ['pending', 'success'].some(currentState.value.matches) ? messages.register.submittingText : registerButtonText.value
-})
+const btnText = computed((): string => ['pending', 'success'].some(currentState.value.matches) ? messages.register.submittingText : registerButtonText.value)
 
-const btnDisabled = computed((): boolean => {
-  return currentState.value.matches('pending') || !userCanSubmitForm.value
-})
+const btnDisabled = computed((): boolean => currentState.value.matches('pending') || !userCanSubmitForm.value)
 
 const processRegistration = async (): Promise<AxiosResponse<RegisterRegisterResponse>> => {
   // Register a new user

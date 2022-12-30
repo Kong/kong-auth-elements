@@ -161,7 +161,7 @@ import { win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useIdentityProvider from '@/composables/useIdentityProvider'
 import useI18n from '@/composables/useI18n'
-import { loginEmits } from './emits'
+import { loginEmits } from '@/components/emits'
 
 // Components
 import { KAlert, KButton, KIcon, KInput, KSkeleton } from '@kong/kongponents'
@@ -292,15 +292,8 @@ const loginBtnText = computed((): string => {
   return messages.login.loginText
 })
 
-const loginBtnDisabled = computed((): boolean => {
-  return (
-    (!formData.email || !formData.password) || ['pending', 'success'].some(currentState.value.matches)
-  )
-})
-
-const loginBtnSSODisabled = computed((): boolean => {
-  return idpIsLoading.value || ['pending', 'success'].some(currentState.value.matches)
-})
+const loginBtnDisabled = computed((): boolean => (!formData.email || !formData.password) || ['pending', 'success'].some(currentState.value.matches))
+const loginBtnSSODisabled = computed((): boolean => idpIsLoading.value || ['pending', 'success'].some(currentState.value.matches))
 
 const setUserStatusCookie = async () => {
   // return domain if valid, empty string if not a valid domain (like localhost)
