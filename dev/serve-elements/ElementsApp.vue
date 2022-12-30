@@ -8,9 +8,22 @@
           <code>kong-auth-login</code>
         </h4>
         <div id="kong-auth-login-wrapper">
-          <kong-auth-login
+          <!-- <kong-auth-login
             .basic-auth-login-enabled="true"
             idp-login-enabled
+            idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
+            instruction-text="This is the instruction text"
+            show-forgot-password-link
+            wrapper-id="kong-auth-login-wrapper"
+            @click-forgot-password-link="showAlert('User clicked forgot password')"
+            @click-register-link="showAlert('User clicked register')"
+            @idp-is-loading="showAlert('IDP loading state changed')"
+            @login-success="showAlert('Login success!')"
+            @verify-email-success="showAlert('User verified email')"
+          /> -->
+          <kong-auth-login
+            .basic-auth-login-enabled="true"
+            .idp-login-enabled="true"
             idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
             instruction-text="This is the instruction text"
             show-forgot-password-link
