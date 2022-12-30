@@ -33,7 +33,7 @@
 
       <KInput
         id="email"
-        v-model.trim="email"
+        v-model.trim="formData.email"
         autocapitalize="off"
         autocomplete="username"
         class="w-100 mb-5"
@@ -76,165 +76,128 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, inject, ref, Ref, reactive, toRefs, computed } from 'vue'
+<script setup lang="ts">
+import { inject, ref, Ref, reactive, computed } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useKongAuthApi from '@/composables/useKongAuthApi'
 import useI18n from '@/composables/useI18n'
 import { AxiosResponse } from 'axios'
+import { forgotPasswordEmits } from './emits'
 // Components
 import { KAlert, KButton, KIcon, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
-export const forgotPasswordEmits = {
-  'forgot-password-success': (payload: { email: string }): boolean => {
-    return !!payload?.email.trim()
-  },
-  'click-login-link': null,
+const emit = defineEmits(forgotPasswordEmits)
+
+const { customErrorHandler, lang } = useConfigOptions()
+const { api } = useKongAuthApi()
+const { messages } = useI18n(lang)
+
+/**
+ * Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value.
+ * Do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
+ *
+ * The default values provided to inject() here should be refs with empty string or false since the defaults are typically handled in the
+ * custom element provide().
+ */
+const showLoginLink: Ref<boolean> = inject('show-login-link', ref(false))
+const loginLinkText: Ref<string> = inject('login-link-text', ref(messages.forgotPassword.loginLinkText))
+const instructionText: Ref<string> = inject('instruction-text', ref(''))
+const successText: Ref<string> = inject('success-text', ref(messages.forgotPassword.success))
+const resetPasswordRequestEndpoint: Ref<string> = inject('reset-password-request-endpoint', ref(''))
+
+const formData = reactive({
+  email: '',
+})
+const error = ref<any>(null)
+
+const { state: currentState, send } = useMachine(
+  createMachine({
+    predictableActionArguments: true,
+    id: 'AUTH_FORGOT_PASSWORD',
+    initial: 'idle',
+    states: {
+      idle: {
+        on: { CLICK_FORGOT_PASSWORD: 'pending' },
+      },
+      pending: {
+        on: { RESOLVE: 'success', REJECT: 'error' },
+      },
+      error: {
+        on: { CLICK_FORGOT_PASSWORD: 'pending' },
+      },
+      success: {},
+    },
+  }),
+)
+
+const btnText = computed(() => ['pending', 'success'].some(currentState.value.matches) ? messages.forgotPassword.submittingText : messages.forgotPassword.submitText)
+const btnDisabled = computed(() => !formData.email || currentState.value.matches('pending'))
+
+const requestPasswordReset = async (): Promise<AxiosResponse<any>> => {
+  // Custom endpoint
+  if (resetPasswordRequestEndpoint.value) {
+    return await api.client.post(resetPasswordRequestEndpoint.value, {
+      data: {
+        email: formData.email,
+      },
+    })
+  }
+
+  // Default endpoint
+  return await api.passwords.requestUserPasswordReset({
+    email: formData.email,
+  })
 }
 
-export default defineComponent({
-  name: 'ForgotPasswordForm',
+const submitForm = async (): Promise<void> => {
+  send('CLICK_FORGOT_PASSWORD')
 
-  components: {
-    ErrorMessage,
-    KAlert,
-    KButton,
-    KIcon,
-    KInput,
-  },
+  // Reset form error
+  error.value = null
 
-  // Define emits with validation, where necessary
-  emits: forgotPasswordEmits,
+  if (!formData.email) {
+    send('REJECT')
 
-  setup(props, { emit }) {
-    const { customErrorHandler, lang } = useConfigOptions()
-    const { api } = useKongAuthApi()
-    const { messages } = useI18n(lang)
+    error.value = {
+      status: null,
+      statusText: messages.forgotPassword.missingEmail,
+    }
+    return
+  }
 
-    /*
-    Get custom element props. If set up properly, these should be refs, meaning you can access them in the setup() with {variable-name}.value - do not pass parent src/elements/{dir}/{CustomElement}.ce.vue file props as they will not remain reactive.
-    The default values provided to inject() here should be refs with empty string or false since the defaults are typically handled in the custom element provide()
-    */
-    const showLoginLink: Ref<boolean> = inject('show-login-link', ref(false))
-    const loginLinkText: Ref<string> = inject('login-link-text', ref(messages.forgotPassword.loginLinkText))
-    const instructionText: Ref<string> = inject('instruction-text', ref(''))
-    const successText: Ref<string> = inject('success-text', ref(messages.forgotPassword.success))
-    const resetPasswordRequestEndpoint: Ref<string> = inject('reset-password-request-endpoint', ref(''))
+  // setTimeout for simulated feedback
+  await new Promise((resolve) => setTimeout(resolve, 250))
 
-    const formData = reactive({
-      email: '',
+  try {
+    await requestPasswordReset()
+
+    send('RESOLVE')
+
+    // Emit success
+    emit('forgot-password-success', {
+      email: formData.email,
     })
-    const error = ref<any>(null)
+  } catch (err: any) {
+    send('REJECT')
 
-    const { state: currentState, send } = useMachine(
-      createMachine({
-        predictableActionArguments: true,
-        id: 'AUTH_FORGOT_PASSWORD',
-        initial: 'idle',
-        states: {
-          idle: {
-            on: { CLICK_FORGOT_PASSWORD: 'pending' },
-          },
-          pending: {
-            on: { RESOLVE: 'success', REJECT: 'error' },
-          },
-          error: {
-            on: { CLICK_FORGOT_PASSWORD: 'pending' },
-          },
-          success: {},
-        },
-      }),
-    )
+    const customEndpointErrorMessage = typeof customErrorHandler === 'function' && customErrorHandler({ error: err, request: 'reset-password-request', element: 'kong-auth-forgot-password' })
 
-    const btnText = computed(() => {
-      return ['pending', 'success'].some(currentState.value.matches) ? messages.forgotPassword.submittingText : messages.forgotPassword.submitText
-    })
-
-    const btnDisabled = computed(() => {
-      return !formData.email || currentState.value.matches('pending')
-    })
-
-    const requestPasswordReset = async (): Promise<AxiosResponse<any>> => {
-      // Custom endpoint
-      if (resetPasswordRequestEndpoint.value) {
-        return await api.client.post(resetPasswordRequestEndpoint.value, {
-          data: {
-            email: formData.email,
-          },
-        })
+    if (customEndpointErrorMessage) {
+      error.value = {
+        status: undefined,
+        statusText: customEndpointErrorMessage,
       }
-
-      // Default endpoint
-      return await api.passwords.requestUserPasswordReset({
-        email: formData.email,
-      })
+      return
     }
 
-    const submitForm = async (): Promise<void> => {
-      send('CLICK_FORGOT_PASSWORD')
-
-      // Reset form error
-      error.value = null
-
-      if (!formData.email) {
-        send('REJECT')
-
-        error.value = {
-          status: null,
-          statusText: messages.forgotPassword.missingEmail,
-        }
-        return
-      }
-
-      // setTimeout for simulated feedback
-      await new Promise((resolve) => setTimeout(resolve, 250))
-
-      try {
-        await requestPasswordReset()
-
-        send('RESOLVE')
-
-        // Emit success
-        emit('forgot-password-success', {
-          email: formData.email,
-        })
-      } catch (err: any) {
-        send('REJECT')
-
-        const customEndpointErrorMessage = typeof customErrorHandler === 'function' && customErrorHandler({ error: err, request: 'reset-password-request', element: 'kong-auth-forgot-password' })
-
-        if (customEndpointErrorMessage) {
-          error.value = {
-            status: undefined,
-            statusText: customEndpointErrorMessage,
-          }
-          return
-        }
-
-        if (err?.response) {
-          error.value = err.response
-        }
-      }
+    if (err?.response) {
+      error.value = err.response
     }
-
-    return {
-      currentState,
-      showLoginLink,
-      loginLinkText,
-      instructionText,
-      successText,
-      btnText,
-      btnDisabled,
-      messages,
-      submitForm,
-      error,
-      ...toRefs(formData),
-    }
-  },
-})
+  }
+}
 </script>
 
 <style lang="scss" scoped>
