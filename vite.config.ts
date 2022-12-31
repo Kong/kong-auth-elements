@@ -16,15 +16,16 @@ export default ({ mode }) => {
   return defineConfig({
     // Define global constant replacements
     define: {
-      'process.env.development': JSON.stringify('development'),
+      'process.env.NODE_ENV': JSON.stringify('production'),
       'process.env.production': JSON.stringify('production'),
+      'process.env.development': JSON.stringify('development'),
     },
     build: {
       sourcemap: true,
       // If INCLUDE_VUE=yes, do not empty the dist folder on build
       emptyOutDir: process.env.INCLUDE_VUE === 'yes',
       lib: {
-        name: 'kong-auth-elements',
+        name: 'KongAuthElements',
         entry: path.resolve(__dirname, 'src/index.ts'),
         // If INCLUDE_VUE=yes, add `vue.` in the filename
         fileName: (format) => `kong-auth-elements.${process.env.INCLUDE_VUE === 'yes' ? 'vue.' : ''}${format}.js`,

@@ -7,29 +7,17 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import useConfigOptions from '@/composables/useConfigOptions'
 import useTeleport from '@/composables/useTeleport'
 
-export default defineComponent({
-  name: 'TeleportWrapper',
-  props: {
-    parentProps: {
-      type: Object,
-      required: true,
-    },
-  },
-  setup(props) {
-    const { shadowDom } = useConfigOptions()
-    const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props.parentProps, shadowDom)
-
-    return {
-      shadowDom,
-      teleportSelector,
-      shouldRender,
-      disableTeleport,
-    }
+const props = defineProps({
+  parentProps: {
+    type: Object,
+    required: true,
   },
 })
+
+const { shadowDom } = useConfigOptions()
+const { teleportSelector, disableTeleport, shouldRender } = useTeleport(props.parentProps, shadowDom)
 </script>

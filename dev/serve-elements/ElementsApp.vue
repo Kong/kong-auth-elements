@@ -10,7 +10,7 @@
         <div id="kong-auth-login-wrapper">
           <kong-auth-login
             .basic-auth-login-enabled="true"
-            idp-login-enabled
+            .idp-login-enabled="true"
             idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
             instruction-text="This is the instruction text"
             show-forgot-password-link

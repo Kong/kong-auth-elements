@@ -9,23 +9,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import useInjectStyles from '@/composables/useInjectStyles'
 
-export default defineComponent({
-  name: 'BaseCustomElement',
-
-  setup() {
-    // Must be present to inject child component styles for elements rendered inside of the <slot/>
-    const { injectedStyles } = useInjectStyles()
-
-    return {
-      injectedStyles,
-    }
-  },
-})
-
+// Must be present to inject child component styles for elements rendered inside of the <slot/>
+const { injectedStyles } = useInjectStyles()
 </script>
 
 <style lang="scss">
