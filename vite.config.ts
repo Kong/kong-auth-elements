@@ -16,8 +16,9 @@ export default ({ mode }) => {
   return defineConfig({
     // Define global constant replacements
     define: {
-      'process.env.development': JSON.stringify('development'),
+      'process.env.NODE_ENV': JSON.stringify('production'),
       'process.env.production': JSON.stringify('production'),
+      'process.env.development': JSON.stringify('development'),
     },
     build: {
       sourcemap: true,
