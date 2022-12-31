@@ -24,7 +24,7 @@ export default ({ mode }) => {
       // If INCLUDE_VUE=yes, do not empty the dist folder on build
       emptyOutDir: process.env.INCLUDE_VUE === 'yes',
       lib: {
-        name: 'kong-auth-elements',
+        name: 'KongAuthElements',
         entry: path.resolve(__dirname, 'src/index.ts'),
         // If INCLUDE_VUE=yes, add `vue.` in the filename
         fileName: (format) => `kong-auth-elements.${process.env.INCLUDE_VUE === 'yes' ? 'vue.' : ''}${format}.js`,
