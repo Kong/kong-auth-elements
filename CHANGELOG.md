@@ -1,3 +1,10 @@
+## [1.28.39](https://github.com/Kong/kong-auth-elements/compare/v1.28.38...v1.28.39) (2023-01-03)
+
+
+### Bug Fixes
+
+* **deps:** bump json5 from 1.0.1 to 1.0.2 ([#837](https://github.com/Kong/kong-auth-elements/issues/837)) ([c9676c8](https://github.com/Kong/kong-auth-elements/commit/c9676c860a81dfe017d21f0c9ab282af599cf91f))
+
 ## [1.28.38](https://github.com/Kong/kong-auth-elements/compare/v1.28.37...v1.28.38) (2023-01-03)
 
 
