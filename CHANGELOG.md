@@ -1,3 +1,10 @@
+## [1.28.48](https://github.com/Kong/kong-auth-elements/compare/v1.28.47...v1.28.48) (2023-01-19)
+
+
+### Bug Fixes
+
+* **errors:** parse v2 errors ([#859](https://github.com/Kong/kong-auth-elements/issues/859)) ([d8b0609](https://github.com/Kong/kong-auth-elements/commit/d8b0609f12e036003db1da6a470b4d1f7e70abd4))
+
 ## [1.28.47](https://github.com/Kong/kong-auth-elements/compare/v1.28.46...v1.28.47) (2023-01-16)
 
 
