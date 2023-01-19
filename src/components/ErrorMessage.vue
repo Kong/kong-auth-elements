@@ -62,6 +62,9 @@ const setGeneralErrorMessage = (): void => {
       v2Message = v2Message.replace(`${capitalizeFirstChar(field)} `, '')
     }
     errorMessage.value = v2Message
+  } else if (data && data.detail) {
+    // v2 API error response
+    errorMessage.value = data.detail
   } else if (!status && statusText) {
     // Allow passing no status with statusText for display
     errorMessage.value = statusText
