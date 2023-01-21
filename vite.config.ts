@@ -35,7 +35,7 @@ export default ({ mode }) => {
         // make sure to externalize deps that shouldn't be bundled into your library
         // Only enable to utilize as a Vue 3 Plugin
         // If INCLUDE_VUE=yes, externalize Vue (for Kong/ui-shared-components)
-        external: process.env.INCLUDE_VUE === 'yes' ? undefined : ['vue'],
+        external: process.env.INCLUDE_VUE === 'yes' ? undefined : ['vue', '@kong/kongponents'],
         output: {
           sourcemap: true,
           exports: 'named',
