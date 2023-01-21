@@ -1,6 +1,7 @@
 {
   "name": "@kong/kong-auth-elements",
   "version": "0.0.0-development",
+  "type": "module",
   "main": "dist/kong-auth-elements.vue.umd.js",
   "module": "dist/kong-auth-elements.vue.es.js",
   "exports": {
@@ -45,7 +46,7 @@
     "@cypress/vite-dev-server": "^5.0.2",
     "@cypress/vue": "^4.2.2",
     "@digitalroute/cz-conventional-changelog-for-jira": "^7.5.1",
-    "@kong/kongponents": "^8.18.4",
+    "@kong/kongponents": "^8.18.6",
     "@rushstack/eslint-patch": "^1.2.0",
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/git": "^10.0.1",
@@ -80,7 +81,9 @@
     "zxcvbn": "^4.4.2"
   },
   "peerDependencies": {
-    "axios": "^0.27.2"
+    "@kong/kongponents": "^8.18.6",
+    "axios": "^0.27.2",
+    "vue": "^3.2.45"
   },
   "files": [
     "dist"
