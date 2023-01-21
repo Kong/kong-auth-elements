@@ -80,7 +80,9 @@
     "zxcvbn": "^4.4.2"
   },
   "peerDependencies": {
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "@kong/kongponents": "^8.18.4",
+    "vue": "^3.2.45"
   },
   "files": [
     "dist"
