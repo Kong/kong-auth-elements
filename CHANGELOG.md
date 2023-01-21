@@ -1,3 +1,10 @@
+## [1.28.51](https://github.com/Kong/kong-auth-elements/compare/v1.28.50...v1.28.51) (2023-01-21)
+
+
+### Bug Fixes
+
+* externalize kongponents and package as module ([#864](https://github.com/Kong/kong-auth-elements/issues/864)) ([6bb63ec](https://github.com/Kong/kong-auth-elements/commit/6bb63ec57912068c397ca37bff28abc6bcd39adc))
+
 ## [1.28.50](https://github.com/Kong/kong-auth-elements/compare/v1.28.49...v1.28.50) (2023-01-20)
 
 
