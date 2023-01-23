@@ -1,3 +1,10 @@
+## [1.28.52](https://github.com/Kong/kong-auth-elements/compare/v1.28.51...v1.28.52) (2023-01-23)
+
+
+### Bug Fixes
+
+* trigger ci ([ab11dcd](https://github.com/Kong/kong-auth-elements/commit/ab11dcdbf2bae055c9787e45f3c79294087bcd0c))
+
 ## [1.28.51](https://github.com/Kong/kong-auth-elements/compare/v1.28.50...v1.28.51) (2023-01-21)
 
 
