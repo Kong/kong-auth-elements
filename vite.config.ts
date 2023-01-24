@@ -1,12 +1,23 @@
 import { fileURLToPath, URL } from 'url'
 import { defineConfig, loadEnv } from 'vite'
+import vue from '@vitejs/plugin-vue'
 import dns from 'dns'
 import path from 'path'
-import vue from '@vitejs/plugin-vue'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 // You can set dns.setDefaultResultOrder('verbatim') to disable the reordering behavior. Vite will then print the address as localhost
 // https://vitejs.dev/config/server-options.html#server-host
 dns.setDefaultResultOrder('verbatim')
+
+// Include the rollup-plugin-visualizer if the BUILD_VISUALIZER env var is set to "true"
+const buildVisualizerPlugin = process.env.BUILD_VISUALIZER
+  ? visualizer({
+    filename: path.resolve(__dirname, 'bundle-analyzer/stats-treemap.html'),
+    template: 'treemap', // sunburst|treemap|network
+    sourcemap: true,
+    gzipSize: true,
+  })
+  : undefined
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -44,6 +55,10 @@ export default ({ mode }) => {
           // If INCLUDE_VUE=yes, provide global Vue
           globals: process.env.INCLUDE_VUE === 'yes' ? undefined : { vue: 'Vue' },
         },
+        plugins: [
+          // visualizer must remain last in the list of plugins
+          buildVisualizerPlugin,
+        ],
       },
     },
     optimizeDeps: {
