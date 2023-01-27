@@ -1,8 +1,6 @@
 /*! KONG_AUTH_INJECT_STYLES */
 
 @use "sass:meta";
-// Import Kongponents Sass variables
-@import "@kong/kongponents/dist/_variables.scss";
 
 .kong-auth-element {
   // Include and Scope Kongponents CSS Variables
@@ -13,8 +11,8 @@
   @include meta.load-css("./elements");
   // Additional CSS rules
   font-family: var(--font-family-sans);
-  font-weight: var(--KongAuthFontWeight, 400);
-  position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: var(--KongAuthFontWeight, 400);
+  position: relative;
 }
