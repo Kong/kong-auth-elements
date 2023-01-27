@@ -1,6 +1,8 @@
 /*! KONG_AUTH_INJECT_STYLES */
 
 @use "sass:meta";
+// Import Kongponents Sass variables
+@import "@kong/kongponents/dist/_variables";
 
 .kong-auth-element {
   // Include and Scope Kongponents CSS Variables

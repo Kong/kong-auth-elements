@@ -17,6 +17,7 @@ module.exports = {
         // Disable the following rules
         'custom-property-no-missing-var-function': null,
         'no-descending-specificity': null,
+        'scss/at-import-no-partial-leading-underscore': null
       }
     }
   ],
