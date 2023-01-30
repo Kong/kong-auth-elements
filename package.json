@@ -14,7 +14,7 @@
   },
   "scripts": {
     "commit": "cz",
-    "build": "yarn stylelint && yarn typecheck && yarn build:package && yarn build:package:omitVue && vue-tsc --emitDeclarationOnly",
+    "build": "yarn stylelint && yarn lint && yarn typecheck && yarn build:package && yarn build:package:omitVue && vue-tsc --emitDeclarationOnly",
     "build:package": "cross-env INCLUDE_VUE=yes vite build",
     "build:package:omitVue": "cross-env INCLUDE_VUE=no vite build",
     "build:visualize": "cross-env BUILD_VISUALIZER=true INCLUDE_VUE=no vite build -m production",
