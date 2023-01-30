@@ -2,19 +2,19 @@
 .kong-auth-register-form {
   .register-form {
     .region-description {
-      margin-top: -6px;
       color: var(--grey-500);
-      font-weight: 400;
       font-size: 14px;
+      font-weight: 400;
       line-height: 17px;
+      margin-top: -6px;
     }
 
     .kong-auth-register-region .k-select {
       width: 100% !important;
 
       .k-select-input {
-        width: 100% !important;
         height: 44px !important;
+        width: 100% !important;
       }
     }
   }
@@ -84,27 +84,27 @@
 }
 
 .kong-icon.kong-icon-spinner svg g {
+  animation: spin 1.2s infinite linear;
   transform-box: fill-box;
   transform-origin: 50% 50%;
-  animation: spin 1.2s infinite linear;
 }
 
 .kong-auth-element-form-divider {
-  display: flex;
-  color: var(--KInputLabelColor, var(--black-85, rgba(0, 0, 0, 0.85)));
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  margin: 24px auto;
+  color: var(--KInputLabelColor, var(--black-85, rgba(0, 0, 0, 0.85)));
+  display: flex;
+  flex-direction: row;
   font-size: var(--type-md, 16px);
+  justify-content: center;
+  margin: 24px auto;
 
   &:before,
   &:after {
+    background: var(--KInputLabelColor, var(--black-85, rgba(0, 0, 0, 0.85)));
     content: "";
     flex: 1;
     height: 1px;
     margin: 0;
-    background: var(--KInputLabelColor, var(--black-85, rgba(0, 0, 0, 0.85)));
   }
 
   &:before {
