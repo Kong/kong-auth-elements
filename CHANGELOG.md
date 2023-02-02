@@ -1,3 +1,10 @@
+## [1.28.62](https://github.com/Kong/kong-auth-elements/compare/v1.28.61...v1.28.62) (2023-02-02)
+
+
+### Bug Fixes
+
+* **deps:** bump http-cache-semantics from 4.1.0 to 4.1.1 ([#891](https://github.com/Kong/kong-auth-elements/issues/891)) ([d984646](https://github.com/Kong/kong-auth-elements/commit/d984646ff1bbfda3508f9782a5e8f4ca3d6abade))
+
 ## [1.28.61](https://github.com/Kong/kong-auth-elements/compare/v1.28.60...v1.28.61) (2023-02-02)
 
 
