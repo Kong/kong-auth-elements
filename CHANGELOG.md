@@ -1,3 +1,10 @@
+## [1.28.66](https://github.com/Kong/kong-auth-elements/compare/v1.28.65...v1.28.66) (2023-02-07)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/kauth-client-typescript-axios ([#897](https://github.com/Kong/kong-auth-elements/issues/897)) ([094b512](https://github.com/Kong/kong-auth-elements/commit/094b512e8e9886c6afaae9260b36ebb9d4d3b072))
+
 ## [1.28.65](https://github.com/Kong/kong-auth-elements/compare/v1.28.64...v1.28.65) (2023-02-06)
 
 
