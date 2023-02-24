@@ -1,3 +1,10 @@
+## [1.28.79](https://github.com/Kong/kong-auth-elements/compare/v1.28.78...v1.28.79) (2023-02-24)
+
+
+### Bug Fixes
+
+* **deps:** bump xstate from 4.36.0 to 4.37.0 ([#935](https://github.com/Kong/kong-auth-elements/issues/935)) ([973544b](https://github.com/Kong/kong-auth-elements/commit/973544b552d65dea27a4605aab469a22179f82c7))
+
 ## [1.28.78](https://github.com/Kong/kong-auth-elements/compare/v1.28.77...v1.28.78) (2023-02-23)
 
 
