@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/Kong/kong-auth-elements/compare/v1.28.90...v1.29.0) (2023-03-11)
+
+
+### Features
+
+* **login-form:** utilize the generic spinner loader if entity is developer (TDX-2940) ([#963](https://github.com/Kong/kong-auth-elements/issues/963)) ([ba186be](https://github.com/Kong/kong-auth-elements/commit/ba186bec5ec49f1fb828daa1051f8588ad2a03f4))
+
 ## [1.28.90](https://github.com/Kong/kong-auth-elements/compare/v1.28.89...v1.28.90) (2023-03-10)
 
 
