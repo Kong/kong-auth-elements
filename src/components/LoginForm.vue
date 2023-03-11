@@ -5,7 +5,7 @@
       class="idp-loading"
       data-testid="kong-auth-login-gruce-loader"
       :delay-milliseconds="0"
-      type="fullscreen-kong"
+      :type="userEntity === 'developer' ? 'fullscreen-generic' : 'fullscreen-kong'"
     />
 
     <div v-else>
