@@ -1,4 +1,6 @@
 import { defineConfig } from 'cypress'
+import vue from '@vitejs/plugin-vue'
+import { fileURLToPath, URL } from 'url'
 
 export default defineConfig({
   component: {
@@ -6,8 +8,19 @@ export default defineConfig({
       framework: 'vue',
       bundler: 'vite',
       viteConfig: {
-        server: {
-          host: '127.0.0.1', // This can be removed once Cypress component testing updates for Vite v3
+        define: {
+          'process.env.NODE_ENV': JSON.stringify('production'),
+          'process.env.production': JSON.stringify('production'),
+          'process.env.development': JSON.stringify('development'),
+        },
+        plugins: [
+          vue(),
+        ],
+        resolve: {
+          alias: {
+            // Alias to the /src directory
+            '@/': fileURLToPath(new URL('./src/', import.meta.url)),
+          },
         },
       },
     },
