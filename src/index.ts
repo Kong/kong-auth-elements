@@ -57,6 +57,7 @@ export {
   UserEntities,
 }
 
+// Auto-register the function to the window object
 if (typeof window !== 'undefined') {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

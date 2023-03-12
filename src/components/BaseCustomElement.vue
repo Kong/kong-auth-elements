@@ -1,6 +1,6 @@
 <template>
   <div class="kong-auth-element">
-    <div data-testid="kong-auth-injected-styles" v-if="injectedStyles">
+    <div v-if="injectedStyles" data-testid="kong-auth-injected-styles">
       <!-- This injected styles tag, the parent tag, and its corresponding logic in the setup function must be present to import styles from child components. -->
       <div v-html="injectedStyles"></div>
     </div>
@@ -9,23 +9,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import useInjectStyles from '@/composables/useInjectStyles'
 
-export default defineComponent({
-  name: 'BaseCustomElement',
-
-  setup() {
-    // Must be present to inject child component styles for elements rendered inside of the <slot/>
-    const { injectedStyles } = useInjectStyles()
-
-    return {
-      injectedStyles,
-    }
-  },
-})
-
+// Must be present to inject child component styles for elements rendered inside of the <slot/>
+const { injectedStyles } = useInjectStyles()
 </script>
 
 <style lang="scss">
@@ -34,7 +22,7 @@ export default defineComponent({
 
 // Import custom app styles from a single entrypoint
 // (since this is wrapping all custom elements)
-@import "@/assets/styles/app.scss";
+@import "@/assets/styles/app";
 
 :root {
   --font-family-sans: var(

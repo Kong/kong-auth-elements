@@ -12,10 +12,10 @@
           :idp-login-enabled="true"
           idp-login-return-to="https://kompany795bb6b9.us.portal.konghq.tech"
           show-forgot-password-link
-          @login-success="showAlert('Login success!')"
           @click-forgot-password-link="showAlert('User clicked forgot password')"
           @click-register-link="showAlert('User clicked register')"
           @idp-is-loading="showAlert('IDP loading state changed')"
+          @login-success="showAlert('Login success!')"
         />
       </div>
 
@@ -24,8 +24,8 @@
           <code>KongAuthForgotPassword.vue</code>
         </h4>
         <KongAuthForgotPassword
-          wrapper-id="kong-auth-forgot-password-wrapper"
           instruction-text="Enter your verified email address and we will send you a password reset link."
+          wrapper-id="kong-auth-forgot-password-wrapper"
           @click-login-link="showAlert('User clicked login')"
           @forgot-password-success="showAlert('Forgot password success!')"
         />
@@ -36,8 +36,8 @@
           <code>KongAuthResetPassword.vue</code>
         </h4>
         <KongAuthResetPassword
-          wrapper-id="kong-auth-forgot-password-wrapper"
           instruction-text="Please enter in your new password and confirm it below."
+          wrapper-id="kong-auth-forgot-password-wrapper"
           @reset-password-success="showAlert('Reset password success!')"
         />
       </div>
@@ -58,8 +58,8 @@
           <code>KongAuthAcceptInvitation.vue</code>
         </h4>
         <KongAuthAcceptInvitation
-          wrapper-id="kong-auth-accept-invitation-wrapper"
           subheader-text="This is custom text"
+          wrapper-id="kong-auth-accept-invitation-wrapper"
           @accept-invitation-success="showAlert('Accept invitation success!')" />
       </div>
     </div>

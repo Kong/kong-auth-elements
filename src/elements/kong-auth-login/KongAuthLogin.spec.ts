@@ -26,7 +26,9 @@ const testids = {
   passwordResetMessage: 'kong-auth-login-password-reset-message',
   confirmedEmailMessage: 'kong-auth-login-confirmed-email-message',
   registerSuccessMessage: 'kong-auth-login-register-success-message',
-  gruceLoader: 'kong-auth-login-gruce-loader',
+  loaderContainer: 'kong-auth-login-gruce-loader',
+  gruceLoader: 'full-screen-loader',
+  genericSpinnerLoader: 'full-screen-spinner-loader',
 }
 
 const user = {
@@ -70,7 +72,7 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.passwordResetMessage).should('not.exist')
     cy.getTestId(testids.confirmedEmailMessage).should('not.exist')
     cy.getTestId(testids.registerSuccessMessage).should('not.exist')
-    cy.getTestId(testids.gruceLoader).should('not.exist')
+    cy.getTestId(testids.loaderContainer).should('not.exist')
   })
 
   it('renders a login form with email, password, and button elements and no SSO button if basic auth and IdP login is enabled and userEntity is \'user\'', () => {
@@ -101,7 +103,7 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.passwordResetMessage).should('not.exist')
     cy.getTestId(testids.confirmedEmailMessage).should('not.exist')
     cy.getTestId(testids.registerSuccessMessage).should('not.exist')
-    cy.getTestId(testids.gruceLoader).should('not.exist')
+    cy.getTestId(testids.loaderContainer).should('not.exist')
   })
 
   it('renders a login form with email, password, and button elements and a SSO button if basic auth and IdP login is enabled and userEntity is \'developer\'', () => {
@@ -132,7 +134,7 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.passwordResetMessage).should('not.exist')
     cy.getTestId(testids.confirmedEmailMessage).should('not.exist')
     cy.getTestId(testids.registerSuccessMessage).should('not.exist')
-    cy.getTestId(testids.gruceLoader).should('not.exist')
+    cy.getTestId(testids.loaderContainer).should('not.exist')
   })
 
   it('renders a SSO button and no basic auth form if only SSO login is enabled and userEntity = \'user\' and they are at a login path', () => {
@@ -161,7 +163,7 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.passwordResetMessage).should('not.exist')
     cy.getTestId(testids.confirmedEmailMessage).should('not.exist')
     cy.getTestId(testids.registerSuccessMessage).should('not.exist')
-    cy.getTestId(testids.gruceLoader).should('not.exist')
+    cy.getTestId(testids.loaderContainer).should('not.exist')
   })
 
   it('renders a SSO button and no basic auth form if only SSO login is enabled and userEntity = \'developer\'', () => {
@@ -186,7 +188,7 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.passwordResetMessage).should('not.exist')
     cy.getTestId(testids.confirmedEmailMessage).should('not.exist')
     cy.getTestId(testids.registerSuccessMessage).should('not.exist')
-    cy.getTestId(testids.gruceLoader).should('not.exist')
+    cy.getTestId(testids.loaderContainer).should('not.exist')
   })
 
   it('renders a SSO button and does not display form or basic auth link if only SSO login is enabled and userEntity is developer', () => {
@@ -332,11 +334,11 @@ describe('KongAuthLogin.ce.vue', () => {
       const eventName = 'verify-email-success'
 
       // Loader should show on load
-      cy.getTestId(testids.gruceLoader).should('exist').find('.fullscreen-loading-container').should('be.visible')
+      cy.getTestId(testids.loaderContainer).should('exist').getTestId(testids.gruceLoader).should('be.visible')
 
       cy.wait('@email-verification-request').then(() => {
         // Verify UI
-        cy.getTestId(testids.gruceLoader).should('not.exist')
+        cy.getTestId(testids.loaderContainer).should('not.exist')
         cy.getTestId(testids.confirmedEmailMessage).should('be.visible').and('contain.text', messages.login.confirmedEmailSuccess)
         cy.getTestId(testids.email).should('have.value', user.email)
 
@@ -391,11 +393,11 @@ describe('KongAuthLogin.ce.vue', () => {
       const eventName = 'verify-email-success'
 
       // Loader should show on load
-      cy.getTestId(testids.gruceLoader).should('exist').find('.fullscreen-loading-container').should('be.visible')
+      cy.getTestId(testids.loaderContainer).should('exist').getTestId(testids.genericSpinnerLoader).should('be.visible')
 
       cy.wait('@email-verification-request').then(() => {
         // Verify UI
-        cy.getTestId(testids.gruceLoader).should('not.exist')
+        cy.getTestId(testids.loaderContainer).should('not.exist')
         cy.getTestId(testids.confirmedEmailMessage).should('be.visible').and('contain.text', messages.login.confirmedEmailSuccess)
         cy.getTestId(testids.email).should('have.value', user.email)
 
@@ -483,7 +485,7 @@ describe('KongAuthLogin.ce.vue', () => {
       })
 
       cy.get('@set-location').should('have.been.calledOnce').and('have.been.calledWithMatch', redirectPath)
-      cy.getTestId(testids.gruceLoader).should('exist').find('.fullscreen-loading-container').should('be.visible')
+      cy.getTestId(testids.loaderContainer).should('exist').getTestId(testids.gruceLoader).should('be.visible')
     })
 
     it("should initiate developer IdP login if props are set and URL is '/login/sso'", () => {
@@ -506,7 +508,7 @@ describe('KongAuthLogin.ce.vue', () => {
       })
 
       cy.get('@set-location').should('have.been.calledOnce').and('have.been.calledWithMatch', redirectPath)
-      cy.getTestId(testids.gruceLoader).should('exist').find('.fullscreen-loading-container').should('be.visible')
+      cy.getTestId(testids.loaderContainer).should('exist').getTestId(testids.genericSpinnerLoader).should('be.visible')
     })
   })
 

@@ -789,6 +789,8 @@ This will trigger the Commitizen interactive prompt for building your commit mes
 
 [Lefthook](https://github.com/evilmartians/lefthook) is used to manage Git Hooks within the repo. A `commit-msg` hook is automatically setup that enforces commit message stands with `commitlint`, see [`lefthook.yml`](./lefthook.yml).
 
+A `pre-push` hook is configured to run Stylelint and ESLint before pushing your changes to the remote repository.
+
 ## Local Development
 
 ### Configure Environment Variables
