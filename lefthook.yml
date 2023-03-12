@@ -2,13 +2,24 @@
 # https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md
 
 pre-commit:
+  parallel: true
   commands:
     eslint:
+      skip:
+        - merge
+        - rebase
       run: yarn lint
+    typecheck:
+      skip:
+        - merge
+        - rebase
+      run: yarn typecheck
 
 commit-msg:
+  parallel: true
   commands:
     commitlint:
       skip:
+        - merge
         - rebase
       run: yarn commitlint --edit "$1"
