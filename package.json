@@ -34,7 +34,7 @@
     "stylelint:fix": "stylelint './src/**/*.{css,scss,sass,less,styl,vue}' --fix"
   },
   "dependencies": {
-    "@kong/kauth-client-typescript-axios": "^0.1811.0",
+    "@kong/kauth-client-typescript-axios": "^0.1812.0",
     "@xstate/vue": "^0.8.1",
     "axios": "^0.27.2",
     "vue": "^3.2.47",
@@ -53,7 +53,7 @@
     "@rushstack/eslint-patch": "^1.2.0",
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^16.18.14",
+    "@types/node": "^16.18.15",
     "@types/zxcvbn": "^4.4.1",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
@@ -65,7 +65,7 @@
     "cross-env": "^7.0.3",
     "cypress": "^12.7.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "^8.35.0",
+    "eslint": "^8.36.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-node": "^11.1.0",
@@ -76,7 +76,7 @@
     "postcss-html": "^1.5.0",
     "rimraf": "^3.0.2",
     "rollup-plugin-visualizer": "^5.9.0",
-    "sass": "^1.58.3",
+    "sass": "^1.59.2",
     "semantic-release": "^19.0.5",
     "serve": "^14.2.0",
     "start-server-and-test": "^1.15.4",
@@ -91,7 +91,7 @@
     "zxcvbn": "^4.4.2"
   },
   "peerDependencies": {
-    "@kong/kongponents": "^8.36.0",
+    "@kong/kongponents": "^8.37.0",
     "axios": "^0.27.2",
     "vue": "^3.2.47"
   },

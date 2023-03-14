@@ -1,3 +1,17 @@
+## [1.29.2](https://github.com/Kong/kong-auth-elements/compare/v1.29.1...v1.29.2) (2023-03-13)
+
+
+### Bug Fixes
+
+* **deps:** bump @sideway/formula from 3.0.0 to 3.0.1 ([#970](https://github.com/Kong/kong-auth-elements/issues/970)) ([b59b60f](https://github.com/Kong/kong-auth-elements/commit/b59b60f5a906f637b2d0c558ab6853fc2ee789e4))
+
+## [1.29.1](https://github.com/Kong/kong-auth-elements/compare/v1.29.0...v1.29.1) (2023-03-13)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/kauth-client-typescript-axios ([#967](https://github.com/Kong/kong-auth-elements/issues/967)) ([0a8364e](https://github.com/Kong/kong-auth-elements/commit/0a8364e966e422d1fe44d8b02bb6bc587666b269))
+
 # [1.29.0](https://github.com/Kong/kong-auth-elements/compare/v1.28.90...v1.29.0) (2023-03-11)
 
 
