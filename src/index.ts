@@ -46,6 +46,7 @@ export default function registerKongAuthNativeElements(options?: KongAuthElement
   registerCustomElement('kong-auth-login', elements.KongAuthLogin, userOptions)
   registerCustomElement('kong-auth-register', elements.KongAuthRegister, userOptions)
   registerCustomElement('kong-auth-reset-password', elements.KongAuthResetPassword, userOptions)
+  registerCustomElement('kong-auth-change-password', elements.KongAuthChangePassword, userOptions)
 }
 
 export {

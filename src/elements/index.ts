@@ -4,3 +4,4 @@ export { default as KongAuthForgotPassword } from '@/elements/kong-auth-forgot-p
 export { default as KongAuthLogin } from '@/elements/kong-auth-login/KongAuthLogin.ce.vue'
 export { default as KongAuthRegister } from '@/elements/kong-auth-register/KongAuthRegister.ce.vue'
 export { default as KongAuthResetPassword } from '@/elements/kong-auth-reset-password/KongAuthResetPassword.ce.vue'
+export { default as KongAuthChangePassword } from '@/elements/kong-auth-change-password/KongAuthChangePassword.ce.vue'

@@ -1,10 +1,10 @@
 {
   "geos": {
-    "us":  {
+    "us": {
       "label": "US",
       "desc": "North America"
     },
-    "eu":  {
+    "eu": {
       "label": "EU",
       "desc": "Europe"
     }
@@ -50,6 +50,11 @@
     "submitText": "Reset password",
     "submittingText": "Submitting"
   },
+  "changePassword": {
+    "passwordMismatch": "Passwords do not match",
+    "submitText": "Reset password",
+    "submittingText": "Submitting"
+  },
   "general": {
     "missingInfo": "Please complete all required fields.",
     "invalidAccessCode": "Invalid access code",
@@ -63,7 +68,8 @@
     "email": "Email",
     "password": "Password",
     "accessCode": "Access code",
+    "currentPassword": "Current password",
     "newPassword": "New password",
-    "confirmPassword": "Confirm password"
+    "confirmPassword": "Confirm new password"
   }
 }
