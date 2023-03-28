@@ -1,3 +1,10 @@
+## [1.29.6](https://github.com/Kong/kong-auth-elements/compare/v1.29.5...v1.29.6) (2023-03-28)
+
+
+### Bug Fixes
+
+* lockfile ([e445de9](https://github.com/Kong/kong-auth-elements/commit/e445de96ef72c512393a558d5337349a3c7f783c))
+
 ## [1.29.5](https://github.com/Kong/kong-auth-elements/compare/v1.29.4...v1.29.5) (2023-03-28)
 
 
