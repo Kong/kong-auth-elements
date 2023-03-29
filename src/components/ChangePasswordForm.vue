@@ -132,7 +132,7 @@ const { state: currentState, send } = useMachine(
   }),
 )
 
-const passwordIsInvalid = computed((): boolean => formData.newPassword !== formData.confirmPassword && formData.confirmPassword !== '')
+const passwordIsInvalid = computed((): boolean => formData.newPassword === formData.currentPassword && formData.newPassword !== formData.confirmPassword && formData.confirmPassword !== '')
 
 const btnText = computed((): string => ['pending', 'success'].some(currentState.value.matches) ? messages.resetPassword.submittingText : messages.resetPassword.submitText)
 
@@ -183,6 +183,21 @@ const submitForm = async (): Promise<void> => {
   await new Promise((resolve) => setTimeout(resolve, 250))
 
   try {
+    const response: AxiosResponse = await changePassword({
+      patchUsersMePasswordRequest: {
+        old_password: formData.currentPassword,
+        new_password: formData.newPassword,
+      },
+    })
+    if (response.status !== 200) {
+      send('REJECT')
+
+      error.value = {
+        status: response.status,
+        statusText: error,
+      }
+      return
+    }
     send('RESOLVE')
 
     // Emit success
