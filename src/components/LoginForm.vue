@@ -98,7 +98,7 @@
 
           <KInput
             id="password"
-            v-model="formData.password"
+            v-model.trim="formData.password"
             autocomplete="current-password"
             class="w-100"
             data-testid="kong-auth-login-password"

@@ -43,3 +43,8 @@ export const resetPasswordEmits = {
     return !!payload?.email.trim()
   },
 }
+
+// ChangePasswordForm.vue
+export const changePasswordEmits = {
+  'change-password-success': null,
+}

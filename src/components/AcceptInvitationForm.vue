@@ -35,6 +35,20 @@
         />
       </div>
 
+      <div>
+        <KInput
+          id="preferred_name"
+          v-model.trim="formData.preferredName"
+          autocomplete="name"
+          class="w-100 mb-4"
+          data-testid="kong-auth-accept-invitation-preferred-name"
+          :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+          :label="`${messages.inputLabels.preferredName}`"
+          required
+          type="text"
+        />
+      </div>
+
       <KInput
         id="email"
         v-model.trim="formData.email"
@@ -104,7 +118,7 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 
 const emit = defineEmits(acceptInvitationEmits)
 
-const { customErrorHandler, lang, apiBaseUrl } = useConfigOptions()
+const { customErrorHandler, lang } = useConfigOptions()
 const { api } = useKongAuthApi()
 const { messages } = useI18n(lang)
 
@@ -120,6 +134,7 @@ const subheaderText: Ref<string> = inject('invite-subheader-text', ref(messages.
 const formData = reactive({
   email: '',
   fullName: '',
+  preferredName: '',
   inviteToken: '',
   organization: '',
   password: '',
@@ -157,21 +172,13 @@ const btnText = computed((): string => ['pending', 'success'].some(currentState.
 const btnDisabled = computed((): boolean => currentState.value.matches('pending') || !userCanSubmitForm.value)
 
 const acceptInvitation = async (): Promise<AxiosResponse<any>> => {
-  // Determine v2 API base URL from config options
-  let endpointBase = ''
-
-  try {
-    const endpointUrl = new URL(apiBaseUrl || '')
-    endpointBase = endpointUrl.origin
-  } catch (err) {
-    // If a relative path is passed to `apiBaseUrl`, this catch will set the fallback value
-    endpointBase = ''
-  }
-
-  return await api.client.post(`${endpointBase}/v2/accept-invite`, {
-    password: formData.password,
-    full_name: formData.fullName,
-    token: formData.inviteToken,
+  return await api.v2.invites.acceptInvite({
+    acceptInviteRequest: {
+      password: formData.password,
+      full_name: formData.fullName,
+      preferred_name: formData.preferredName || '',
+      token: formData.inviteToken,
+    },
   })
 }
 

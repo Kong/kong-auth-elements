@@ -538,6 +538,11 @@
   resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1859.0.tgz#688d84643e27784c50ed1a30f1a5184d375f0c0e"
   integrity sha512-QkkQRl3M/Or/N5v6o+so/xtyLmzIIFPEyrV/9wV3/WigFpddbCSgRGW/qHnDCuTwRFlDT33ZVPSyU915j2XRDg==
 
+"@kong/kauth-client-v2-axios@^0.0.26":
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/@kong/kauth-client-v2-axios/-/kauth-client-v2-axios-0.0.26.tgz#b06516d3f29a1c7f14bf3c3dc7cb858d0ca2510e"
+  integrity sha512-6EJiqEtsLXG0Fq7aDvssmAteXYDrd2b1hlgaOxINThMZFaDsn+3xBG8NFoB9z5ovqWw0UOuEc+7Cl40bAv2ZIw==
+
 "@kong/kongponents@^8.37.0":
   version "8.41.5"
   resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.41.5.tgz#63697f4a6cc6a7e2c940518d552bee3a7fa897c9"

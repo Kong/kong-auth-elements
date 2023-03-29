@@ -21,6 +21,8 @@ const pluginOptions: KongAuthElementsOptions = {
 
   //   if (request === 'reset-password-request') {
   //     return 'Custom reset error message.'
+  //   }  else if (request === 'change-password-request') {
+  //     return 'Custom change error message.'
   //   } else if (request === 'register-request') {
   //     return 'Custom registration error message.'
   //   }

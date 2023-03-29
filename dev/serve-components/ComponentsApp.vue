@@ -42,6 +42,17 @@
         />
       </div>
 
+      <div v-if="urlPath.includes('/change-password') || urlPath === '/'" class="element-wrapper">
+        <h4>
+          <code>KongAuthChangePassword.vue</code>
+        </h4>
+        <KongAuthChangePassword
+          instruction-text="Please enter in your current password, new password and confirm it below."
+          wrapper-id="kong-auth-change-password-wrapper"
+          @change-password-success="showAlert('Change password success!')"
+        />
+      </div>
+
       <div v-if="urlPath.includes('/register') || urlPath === '/'" class="element-wrapper">
         <h4>
           <code>KongAuthRegister.vue</code>

@@ -1,10 +1,10 @@
 {
   "geos": {
-    "us":  {
+    "us": {
       "label": "US",
       "desc": "North America"
     },
-    "eu":  {
+    "eu": {
       "label": "EU",
       "desc": "Europe"
     }
@@ -50,6 +50,9 @@
     "submitText": "Reset password",
     "submittingText": "Submitting"
   },
+  "changePassword": {
+    "submitText": "Change password"
+  },
   "general": {
     "missingInfo": "Please complete all required fields.",
     "invalidAccessCode": "Invalid access code",
@@ -59,11 +62,14 @@
   },
   "inputLabels": {
     "fullName": "Full name",
+    "preferredName": "Preferred name",
     "organization": "Organization",
     "email": "Email",
     "password": "Password",
     "accessCode": "Access code",
+    "currentPassword": "Current password",
     "newPassword": "New password",
-    "confirmPassword": "Confirm password"
+    "confirmPassword": "Confirm new password"
   }
 }
+

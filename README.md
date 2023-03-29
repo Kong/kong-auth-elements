@@ -20,6 +20,7 @@ Vue 3 Plugin and Native HTML Web Components used for KAuth UI implementation in 
   - [`kong-auth-login`](#kong-auth-login)
   - [`kong-auth-forgot-password`](#kong-auth-forgot-password)
   - [`kong-auth-reset-password`](#kong-auth-reset-password)
+  - [`kong-auth-change-password`](#kong-auth-change-password)
   - [`kong-auth-register`](#kong-auth-register)
   - [`kong-auth-accept-invitation`](#kong-auth-accept-invitation)
 - [KAuth API](#kauth-api)
@@ -212,10 +213,10 @@ You can import the TypeScript interfaces from the package if desired.
 export type UserEntities = 'user' | 'developer'
 
 // List of custom elements that accept a custom error handler
-export type CustomEndpointElement = 'kong-auth-login' | 'kong-auth-forgot-password' | 'kong-auth-register' | 'kong-auth-reset-password'
+export type CustomEndpointElement = 'kong-auth-login' | 'kong-auth-forgot-password' | 'kong-auth-register' | 'kong-auth-reset-password' | 'kong-auth-change-password'
 
 // List of requests that support custom endpoints
-export type CustomEndpointRequest = 'authenticate-request' | 'verify-email-request' | 'reset-password-request' | 'register-request' | 'set-new-password-request'
+export type CustomEndpointRequest = 'authenticate-request' | 'verify-email-request' | 'reset-password-request' | 'change-password-request' | 'register-request' | 'set-new-password-request'
 
 export interface CustomEndpointErrorEvent = {
   error: AxiosError
@@ -570,6 +571,27 @@ To respond to any of the emitted events in your app, simply provide a callback f
 | :------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `token` | `true`   | Pass a valid `token` entry in the URL query string to send to the reset password request. |
 | `email` | `false`  | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input on redirect. |
+
+---
+
+### `kong-auth-change-password`
+
+- Provides a change password UI along with corresponding `kauth` functionality to allow the user to change their password when coming from the MyAccount UI.
+  Note: This component is only functional when `userEntity === 'user'`.
+
+#### Props
+
+| Prop                        | Type    | Default | Description                                          |
+| :-------------------------- | :------ | :------ | :--------------------------------------------------- |
+| `instructionText`           | String  | `''`    | Set the instruction text to display above the input. |
+
+#### Emits Events
+
+| Event                    |       Payload       | Description                             |
+| :----------------------- | :-----------------: | :-------------------------------------- |
+| `change-password-success`|       `null`        |User successfully changed their password.|
+
+To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
 
 ---
 
