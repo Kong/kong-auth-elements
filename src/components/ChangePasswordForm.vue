@@ -24,7 +24,7 @@
         class="w-100 mb-4"
         data-testid="kong-auth-change-password-current-password"
         :has-error="currentState.matches('error') && error ? true : false"
-        :label="`${messages.inputLabels.currentPassword} *`"
+        :label="`${convertToTitleCase(messages.inputLabels.currentPassword)} *`"
         required
         type="password"
       />
@@ -36,7 +36,7 @@
         class="w-100 mb-4"
         data-testid="kong-auth-change-password-new-password"
         :has-error="currentState.matches('error') && error ? true : false"
-        :label="`${messages.inputLabels.newPassword} *`"
+        :label="`${convertToTitleCase(messages.inputLabels.newPassword)} *`"
         required
         type="password"
       />
@@ -49,7 +49,7 @@
         data-testid="kong-auth-change-password-confirm-new-password"
         :error-message="passwordIsInvalid ? messages.resetPassword.passwordMismatch : undefined"
         :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
-        :label="`${messages.inputLabels.confirmPassword} *`"
+        :label="`${convertToTitleCase(messages.inputLabels.confirmPassword)} *`"
         required
         type="password"
       />
@@ -83,6 +83,7 @@ import useKongAuthApi from '@/composables/useKongAuthApi'
 import useI18n from '@/composables/useI18n'
 import { MeApiPatchUsersMePasswordRequest } from '@kong/kauth-client-v2-axios'
 import { changePasswordEmits } from '@/components/emits'
+import { convertToTitleCase } from '../utils/index'
 import { AxiosResponse } from 'axios'
 // Components
 import { KButton, KIcon, KInput } from '@kong/kongponents'
@@ -132,9 +133,9 @@ const { state: currentState, send } = useMachine(
   }),
 )
 
-const passwordIsInvalid = computed((): boolean => formData.newPassword === formData.currentPassword && formData.newPassword !== formData.confirmPassword && formData.confirmPassword !== '')
+const passwordIsInvalid = computed((): boolean => formData.newPassword !== formData.confirmPassword && formData.confirmPassword !== '')
 
-const btnText = computed((): string => ['pending', 'success'].some(currentState.value.matches) ? messages.resetPassword.submittingText : messages.resetPassword.submitText)
+const btnText = computed((): string => ['pending', 'success'].some(currentState.value.matches) ? messages.resetPassword.submittingText : messages.changePassword.submitText)
 
 const btnDisabled = computed((): boolean => {
   return (

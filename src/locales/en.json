@@ -50,6 +50,9 @@
     "submitText": "Reset password",
     "submittingText": "Submitting"
   },
+  "changePassword": {
+    "submitText": "Change password"
+  },
   "general": {
     "missingInfo": "Please complete all required fields.",
     "invalidAccessCode": "Invalid access code",
