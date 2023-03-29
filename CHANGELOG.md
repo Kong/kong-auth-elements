@@ -1,3 +1,10 @@
+# [1.30.0](https://github.com/Kong/kong-auth-elements/compare/v1.29.6...v1.30.0) (2023-03-29)
+
+
+### Features
+
+* **changePassword:** change password form and element for MyAccount UI [KHCP-6618] ([#980](https://github.com/Kong/kong-auth-elements/issues/980)) ([281ba6a](https://github.com/Kong/kong-auth-elements/commit/281ba6abc62de9b4b68e31ab644114adc53a8bc1))
+
 ## [1.29.6](https://github.com/Kong/kong-auth-elements/compare/v1.29.5...v1.29.6) (2023-03-28)
 
 
