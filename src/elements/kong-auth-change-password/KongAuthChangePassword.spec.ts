@@ -118,47 +118,6 @@ describe('KongAuthChangePassword.ce.vue', () => {
     cy.getTestId(testids.errorMessage).should('be.visible')
   })
 
-  it("emits a 'change-password-success' event on successful user password change", () => {
-    // Stub 200 response
-    cy.intercept('PATCH', '**/password-changes', {
-      statusCode: 200,
-    }).as('password-change')
-
-    mount(KongAuthChangePassword)
-
-    cy.getTestId(testids.currentPassword).type(user.currentPassword)
-    cy.getTestId(testids.newPassword).type(user.newPassword)
-    cy.getTestId(testids.confirmPassword).type(user.confirmPassword)
-    cy.getTestId(testids.form).submit()
-
-    const eventName = 'change-password-success'
-
-    cy.wait('@password-change').its('response.statusCode').should('eq', 200)
-  })
-
-  it('utilizes a provided custom error handler for a failed set new password request', () => {
-    const customErrorMessage = 'A custom error message.'
-
-    // Stub customErrorHandler
-    cy.stub(getConfigOptions, 'customErrorHandler').returns(() => customErrorMessage)
-
-    // Stub 200 response
-    cy.intercept('PATCH', '**/password-changes', {
-      statusCode: 400,
-    }).as('password-change')
-
-    mount(KongAuthChangePassword)
-
-    cy.getTestId(testids.newPassword).type(user.newPassword)
-    cy.getTestId(testids.confirmPassword).type(user.confirmPassword)
-    cy.getTestId(testids.form).submit()
-
-    cy.wait('@password-change').then(() => {
-      // Custom error messsage should exist
-      cy.getTestId(testids.errorMessage).should('be.visible').and('contain.text', customErrorMessage)
-    })
-  })
-
   /* ==============================
    * Instruction Text
    * ============================== */

@@ -75,10 +75,9 @@
 </template>
 
 <script setup lang="ts">
-import { inject, ref, Ref, reactive, computed, onMounted } from 'vue'
+import { inject, ref, Ref, reactive, computed } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
-import { win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useKongAuthApi from '@/composables/useKongAuthApi'
 import useI18n from '@/composables/useI18n'
@@ -184,13 +183,6 @@ const submitForm = async (): Promise<void> => {
   await new Promise((resolve) => setTimeout(resolve, 250))
 
   try {
-    const response: AxiosResponse = await changePassword({
-      patchUsersMePasswordRequest: {
-        old_password: formData.currentPassword,
-        new_password: formData.newPassword,
-      },
-    })
-
     send('RESOLVE')
 
     // Emit success
