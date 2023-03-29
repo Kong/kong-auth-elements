@@ -176,7 +176,7 @@ const acceptInvitation = async (): Promise<AxiosResponse<any>> => {
     acceptInviteRequest: {
       password: formData.password,
       full_name: formData.fullName,
-      preferred_name: formData.preferredName || '',
+      preferred_name: formData.preferredName,
       token: formData.inviteToken,
     },
   })
