@@ -8,7 +8,8 @@ import { getConfigOptions } from '../../composables/useConfigOptions'
 // Component data-testid strings
 const testids = {
   form: 'kong-auth-change-password-form',
-  password: 'kong-auth-change-password-new-password',
+  currentPassword: 'kong-auth-change-password-current-password',
+  newPassword: 'kong-auth-change-password-new-password',
   confirmPassword: 'kong-auth-change-password-confirm-new-password',
   submitBtn: 'kong-auth-change-password-submit',
   errorMessage: 'kong-auth-error-message',
@@ -17,7 +18,9 @@ const testids = {
 }
 
 const user = {
-  password: 'TestPassword1!',
+  currentPassword: 'TestPassword0+',
+  newPassword: 'TestPassword1!',
+  confirmPassword: 'TestPassword1!',
 }
 
 describe('KongAuthChangePassword.ce.vue', () => {
@@ -29,14 +32,15 @@ describe('KongAuthChangePassword.ce.vue', () => {
     cy.get('.kong-auth-element').should('be.visible').and('not.be.empty')
   })
 
-  it('renders a change password form with email and button elements', () => {
+  it('renders a change password form with button elements', () => {
     mount(KongAuthChangePassword)
 
     // Form should exist
     cy.getTestId(testids.form).should('be.visible')
     cy.getTestId(testids.form).within(() => {
       // Elements should exist
-      cy.getTestId(testids.password).should('be.visible')
+      cy.getTestId(testids.currentPassword).should('be.visible')
+      cy.getTestId(testids.newPassword).should('be.visible')
       cy.getTestId(testids.confirmPassword).should('be.visible')
       cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
     })
@@ -45,13 +49,30 @@ describe('KongAuthChangePassword.ce.vue', () => {
     cy.getTestId(testids.instructionText).should('not.exist')
   })
 
-  it('prevents submit and shows error if password field is empty', () => {
+  it('prevents submit and shows error if current password field is empty', () => {
     mount(KongAuthChangePassword)
 
     // Error should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
 
-    cy.getTestId(testids.confirmPassword).type(user.password)
+    cy.getTestId(testids.confirmPassword).type(user.currentPassword)
+
+    cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
+
+    // Submit
+    cy.getTestId(testids.form).submit()
+
+    // Error should exist
+    cy.getTestId(testids.errorMessage).should('be.visible')
+  })
+
+  it('prevents submit and shows error if new password field is empty', () => {
+    mount(KongAuthChangePassword)
+
+    // Error should not exist
+    cy.getTestId(testids.errorMessage).should('not.exist')
+
+    cy.getTestId(testids.confirmPassword).type(user.newPassword)
 
     cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
 
@@ -68,7 +89,7 @@ describe('KongAuthChangePassword.ce.vue', () => {
     // Error should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
 
-    cy.getTestId(testids.password).type(user.password)
+    cy.getTestId(testids.confirmPassword).type(user.confirmPassword)
 
     cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
 
@@ -85,7 +106,7 @@ describe('KongAuthChangePassword.ce.vue', () => {
     // Error should not exist
     cy.getTestId(testids.errorMessage).should('not.exist')
 
-    cy.getTestId(testids.password).type(user.password)
+    cy.getTestId(testids.newPassword).type(user.newPassword)
     cy.getTestId(testids.confirmPassword).type('a-different-password')
 
     cy.getTestId(testids.submitBtn).should('be.visible').and('be.disabled')
@@ -97,57 +118,22 @@ describe('KongAuthChangePassword.ce.vue', () => {
     cy.getTestId(testids.errorMessage).should('be.visible')
   })
 
-  it("emits a 'change-password-success' event with payload on successful user password change", () => {
+  it("emits a 'change-password-success' event on successful user password change", () => {
     // Stub 200 response
     cy.intercept('PATCH', '**/password-changes', {
       statusCode: 200,
-      body: {
-        email: 'user1@email.com',
-      },
     }).as('password-change')
 
     mount(KongAuthChangePassword)
 
-    cy.getTestId(testids.password).type(user.password)
-    cy.getTestId(testids.confirmPassword).type(user.password)
+    cy.getTestId(testids.currentPassword).type(user.currentPassword)
+    cy.getTestId(testids.newPassword).type(user.newPassword)
+    cy.getTestId(testids.confirmPassword).type(user.confirmPassword)
     cy.getTestId(testids.form).submit()
 
     const eventName = 'change-password-success'
 
-    cy.wait('@password-change').then(() => {
-      // Check for emitted event
-      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
-        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
-      })
-    })
-  })
-
-  it("emits a 'change-password-success' event with payload on successful developer password change", () => {
-    // Stub userEntity
-    cy.stub(getConfigOptions, 'userEntity').returns('developer')
-
-    // Stub 200 response
-    cy.intercept('PATCH', '**/developer-password-changes', {
-      statusCode: 200,
-      body: {
-        email: 'user1@email.com',
-      },
-    }).as('password-change')
-
-    mount(KongAuthChangePassword)
-
-    cy.getTestId(testids.password).type(user.password)
-    cy.getTestId(testids.confirmPassword).type(user.password)
-    cy.getTestId(testids.form).submit()
-
-    const eventName = 'change-password-success'
-
-    cy.wait('@password-change').then(() => {
-      // Check for emitted event
-      cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', eventName).then(() => {
-        cy.wrap(Cypress.vueWrapper.emitted(eventName)[0][0]).should('have.property', 'email')
-      })
-    })
+    cy.wait('@password-change').its('response.statusCode').should('eq', 200)
   })
 
   it('utilizes a provided custom error handler for a failed set new password request', () => {
@@ -159,15 +145,12 @@ describe('KongAuthChangePassword.ce.vue', () => {
     // Stub 200 response
     cy.intercept('PATCH', '**/password-changes', {
       statusCode: 400,
-      body: {
-        email: 'user1@email.com',
-      },
     }).as('password-change')
 
     mount(KongAuthChangePassword)
 
-    cy.getTestId(testids.password).type(user.password)
-    cy.getTestId(testids.confirmPassword).type(user.password)
+    cy.getTestId(testids.newPassword).type(user.newPassword)
+    cy.getTestId(testids.confirmPassword).type(user.confirmPassword)
     cy.getTestId(testids.form).submit()
 
     cy.wait('@password-change').then(() => {

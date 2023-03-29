@@ -17,9 +17,6 @@
         data-testid="kong-auth-change-password-instruction-text"
       >{{ instructionText }}</p>
 
-      <!-- Hidden username input to assist password managers -->
-      <input id="email" autocomplete="username" name="email" type="hidden" />
-
       <KInput
         id="password"
         v-model.trim="formData.currentPassword"
@@ -50,7 +47,7 @@
         autocomplete="new-password"
         class="w-100 mb-4"
         data-testid="kong-auth-change-password-confirm-new-password"
-        :error-message="passwordIsInvalid ? messages.changePassword.passwordMismatch : undefined"
+        :error-message="passwordIsInvalid ? messages.resetPassword.passwordMismatch : undefined"
         :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
         :label="`${messages.inputLabels.confirmPassword} *`"
         required
@@ -108,8 +105,6 @@ const { messages } = useI18n(lang)
 const instructionText: Ref<string> = inject('instruction-text', ref(''))
 
 const formData = reactive({
-  email: '',
-  passwordToken: '',
   currentPassword: '',
   newPassword: '',
   confirmPassword: '',
@@ -140,7 +135,7 @@ const { state: currentState, send } = useMachine(
 
 const passwordIsInvalid = computed((): boolean => formData.newPassword !== formData.confirmPassword && formData.confirmPassword !== '')
 
-const btnText = computed((): string => ['pending', 'success'].some(currentState.value.matches) ? messages.changePassword.submittingText : messages.changePassword.submitText)
+const btnText = computed((): string => ['pending', 'success'].some(currentState.value.matches) ? messages.resetPassword.submittingText : messages.resetPassword.submitText)
 
 const btnDisabled = computed((): boolean => {
   return (
@@ -180,7 +175,7 @@ const submitForm = async (): Promise<void> => {
 
     error.value = {
       status: null,
-      statusText: messages.changePassword.passwordMismatch,
+      statusText: messages.resetPassword.passwordMismatch,
     }
     return
   }
@@ -196,14 +191,10 @@ const submitForm = async (): Promise<void> => {
       },
     })
 
-    formData.email = response.data?.email || formData.email || ''
-
     send('RESOLVE')
 
     // Emit success
-    emit('change-password-success', {
-      email: formData.email,
-    })
+    emit('change-password-success')
   } catch (err: any) {
     send('REJECT')
 
@@ -233,13 +224,6 @@ const submitForm = async (): Promise<void> => {
     }
   }
 }
-
-onMounted(() => {
-  const urlParams: URLSearchParams = new URLSearchParams(win.getLocationSearch())
-
-  formData.email = urlParams?.get('email') || ''
-  formData.passwordToken = urlParams?.get('token') || ''
-})
 </script>
 
 <style lang="scss" scoped>
