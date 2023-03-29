@@ -3,7 +3,6 @@
 
 import { mount } from '@cypress/vue'
 import KongAuthChangePassword from './KongAuthChangePassword.ce.vue'
-import { getConfigOptions } from '../../composables/useConfigOptions'
 
 // Component data-testid strings
 const testids = {

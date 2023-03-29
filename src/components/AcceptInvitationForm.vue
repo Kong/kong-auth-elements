@@ -118,7 +118,7 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 
 const emit = defineEmits(acceptInvitationEmits)
 
-const { customErrorHandler, lang, apiBaseUrl } = useConfigOptions()
+const { customErrorHandler, lang } = useConfigOptions()
 const { api } = useKongAuthApi()
 const { messages } = useI18n(lang)
 
@@ -172,17 +172,6 @@ const btnText = computed((): string => ['pending', 'success'].some(currentState.
 const btnDisabled = computed((): boolean => currentState.value.matches('pending') || !userCanSubmitForm.value)
 
 const acceptInvitation = async (): Promise<AxiosResponse<any>> => {
-  // Determine v2 API base URL from config options
-  let endpointBase = ''
-
-  try {
-    const endpointUrl = new URL(apiBaseUrl || '')
-    endpointBase = endpointUrl.origin
-  } catch (err) {
-    // If a relative path is passed to `apiBaseUrl`, this catch will set the fallback value
-    endpointBase = ''
-  }
-
   return await api.v2.invites.acceptInvite({
     acceptInviteRequest: {
       password: formData.password,
