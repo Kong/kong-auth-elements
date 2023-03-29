@@ -17,6 +17,7 @@ import {
 // KAuth v2 APIs: All KAuth v2 APIs should be aliased as `V2{ApiName}`
 import {
   Configuration as V2Configuration,
+  InvitesApi as V2InvitesApi,
   MeApi as V2MeApi,
 } from '@kong/kauth-client-v2-axios'
 
@@ -39,6 +40,7 @@ export default class KongAuthApi {
   // KAuth v2 APIs
   // All V2 APIs should be exposed within the `v2: {}` object
   v2: {
+    invites: V2InvitesApi
     me: V2MeApi
   }
 
@@ -83,6 +85,7 @@ export default class KongAuthApi {
 
     // KAuth v2 APIs
     this.v2 = {
+      invites: new V2InvitesApi(baseConfigV2, baseConfigV2.basePath, this.client),
       me: new V2MeApi(baseConfigV2, baseConfigV2.basePath, this.client),
     }
   }

@@ -35,6 +35,20 @@
         />
       </div>
 
+      <div>
+        <KInput
+          id="preferred_name"
+          v-model.trim="formData.preferredName"
+          autocomplete="name"
+          class="w-100 mb-4"
+          data-testid="kong-auth-accept-invitation-preferred-name"
+          :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+          :label="`${messages.inputLabels.preferredName}`"
+          required
+          type="text"
+        />
+      </div>
+
       <KInput
         id="email"
         v-model.trim="formData.email"
@@ -120,6 +134,7 @@ const subheaderText: Ref<string> = inject('invite-subheader-text', ref(messages.
 const formData = reactive({
   email: '',
   fullName: '',
+  preferredName: '',
   inviteToken: '',
   organization: '',
   password: '',
@@ -168,10 +183,13 @@ const acceptInvitation = async (): Promise<AxiosResponse<any>> => {
     endpointBase = ''
   }
 
-  return await api.client.post(`${endpointBase}/v2/accept-invite`, {
-    password: formData.password,
-    full_name: formData.fullName,
-    token: formData.inviteToken,
+  return await api.v2.invites.acceptInvite({
+    acceptInviteRequest: {
+      password: formData.password,
+      full_name: formData.fullName,
+      preferred_name: formData.preferredName || '',
+      token: formData.inviteToken,
+    },
   })
 }
 
@@ -242,6 +260,7 @@ onMounted(async () => {
 
   formData.inviteToken = urlParams?.get('token') || ''
   formData.fullName = urlParams?.get('fullName') || ''
+  formData.preferredName = urlParams?.get('preferredName') || ''
   formData.organization = urlParams?.get('org') || ''
   formData.email = urlParams?.get('email') || ''
 

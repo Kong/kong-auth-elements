@@ -59,6 +59,7 @@
   },
   "inputLabels": {
     "fullName": "Full name",
+    "preferredName": "Preferred name",
     "organization": "Organization",
     "email": "Email",
     "password": "Password",
