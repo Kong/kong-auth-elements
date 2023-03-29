@@ -18,7 +18,7 @@
       >{{ instructionText }}</p>
 
       <KInput
-        id="password"
+        id="current-password"
         v-model.trim="formData.currentPassword"
         autocomplete="current-password"
         class="w-100 mb-4"
@@ -30,7 +30,7 @@
       />
 
       <KInput
-        id="password"
+        id="new-password"
         v-model.trim="formData.newPassword"
         autocomplete="new-password"
         class="w-100 mb-4"
