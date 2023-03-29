@@ -190,7 +190,7 @@ const submitForm = async (): Promise<void> => {
         new_password: formData.newPassword,
       },
     })
-    if (response.status !== 200) {
+    if (response.status !== 202) {
       send('REJECT')
 
       error.value = {

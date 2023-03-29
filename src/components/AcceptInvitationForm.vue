@@ -249,7 +249,6 @@ onMounted(async () => {
 
   formData.inviteToken = urlParams?.get('token') || ''
   formData.fullName = urlParams?.get('fullName') || ''
-  formData.preferredName = urlParams?.get('preferredName') || ''
   formData.organization = urlParams?.get('org') || ''
   formData.email = urlParams?.get('email') || ''
 
