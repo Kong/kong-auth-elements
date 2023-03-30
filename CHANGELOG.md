@@ -1,3 +1,10 @@
+## [1.30.2](https://github.com/Kong/kong-auth-elements/compare/v1.30.1...v1.30.2) (2023-03-30)
+
+
+### Bug Fixes
+
+* **KongAuthChangePassword:** add placeholder to all change password inputs [KHCP-6681] ([#986](https://github.com/Kong/kong-auth-elements/issues/986)) ([0e7bdf5](https://github.com/Kong/kong-auth-elements/commit/0e7bdf5f38bbc7da9d3f51ad68171267c19c228d))
+
 ## [1.30.1](https://github.com/Kong/kong-auth-elements/compare/v1.30.0...v1.30.1) (2023-03-29)
 
 
