@@ -68,8 +68,11 @@
     "password": "Password",
     "accessCode": "Access code",
     "currentPassword": "Current password",
+    "currentPasswordPlaceholder": "Enter your current password",
     "newPassword": "New password",
-    "confirmPassword": "Confirm new password"
+    "newPasswordPlaceholder": "Enter a new password",
+    "confirmPassword": "Confirm new password",
+    "confirmPasswordPlaceholder": "Enter the new password again"
   }
 }
 
