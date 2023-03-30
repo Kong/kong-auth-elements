@@ -58,6 +58,7 @@
       />
 
       <KButton
+        id="change-password-submit"
         appearance="primary"
         class="justify-content-center w-100 type-lg"
         data-testid="kong-auth-change-password-submit"
