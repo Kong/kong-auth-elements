@@ -1,3 +1,10 @@
+## [1.30.4](https://github.com/Kong/kong-auth-elements/compare/v1.30.3...v1.30.4) (2023-03-31)
+
+
+### Bug Fixes
+
+* **changePasswordForm:** add id to change password button to surface externally [KHCP-6681] ([#989](https://github.com/Kong/kong-auth-elements/issues/989)) ([e86c1d4](https://github.com/Kong/kong-auth-elements/commit/e86c1d40c5edd86f5e2eb443e99470c024078bc3))
+
 ## [1.30.3](https://github.com/Kong/kong-auth-elements/compare/v1.30.2...v1.30.3) (2023-03-30)
 
 
