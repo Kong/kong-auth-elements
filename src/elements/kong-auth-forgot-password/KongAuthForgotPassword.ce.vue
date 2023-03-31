@@ -27,6 +27,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  wrapRequest: {
+    type: Function,
+    default: null,
+  },
   loginLinkText: {
     type: String,
     default: null,
@@ -63,6 +67,11 @@ provide(
 provide(
   'reset-password-request-endpoint',
   computed((): string => (props.resetPasswordRequestEndpoint ? props.resetPasswordRequestEndpoint : '')),
+)
+
+provide(
+  'wrap-request',
+  computed((): any => (props.wrapRequest ? props.wrapRequest : null)),
 )
 
 // Message props: These provided values default to useI18n() message text so

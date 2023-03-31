@@ -195,6 +195,7 @@ const recaptchaSiteKey = '6LfG1fMhAAAAAIwjZEB4K2KW5IUGr1nNAIqMDkG_'
  */
 const accessCodeRequiredProp: Ref<boolean> = inject('access-code-required', ref(false)) // False by default so the backend can guard registration
 const recaptchaPropEnabled: Ref<boolean> = inject('recaptcha-enabled', ref(false)) // False by default so it can be enabled via prop
+const wrapRequest: Ref<null | ((formData: any) => Record<string, any>)> = inject('wrap-request', ref(null))
 const instructionText: Ref<string> = inject('instruction-text', ref(''))
 const registerButtonText: Ref<string> = inject('register-button-text', ref(messages.register.submitText))
 const registerRequestEndpoint: Ref<string> = inject('register-request-endpoint', ref(''))
@@ -275,27 +276,28 @@ const btnText = computed((): string => ['pending', 'success'].some(currentState.
 const btnDisabled = computed((): boolean => currentState.value.matches('pending') || !userCanSubmitForm.value)
 
 const processRegistration = async (): Promise<AxiosResponse<RegisterRegisterResponse>> => {
+  let body: any = {
+    email: formData.email,
+    fullName: formData.fullName,
+    organization: formData.organization,
+    password: formData.password,
+    registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
+    defaultRegion: formData.selectedRegionOption,
+  }
   // Register a new user
   if (registerRequestEndpoint.value) {
+    if (wrapRequest.value) {
+      body = wrapRequest.value(body)
+    } else {
+      body = {
+        data: body,
+      }
+    }
     // If custom endpoint (still passing all the values even though 'developer' only needs email and fullName)
-    return await api.client.post(registerRequestEndpoint.value, {
-      data: {
-        email: formData.email,
-        fullName: formData.fullName,
-        organization: formData.organization || undefined,
-        password: formData.password || undefined,
-      },
-    })
+    return await api.client.post(registerRequestEndpoint.value, body)
   } else {
     // default endpoint
-    return await api.registration.registerUser({
-      email: formData.email,
-      fullName: formData.fullName,
-      organization: formData.organization,
-      password: formData.password,
-      registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
-      defaultRegion: formData.selectedRegionOption,
-    })
+    return await api.registration.registerUser(body)
   }
 }
 

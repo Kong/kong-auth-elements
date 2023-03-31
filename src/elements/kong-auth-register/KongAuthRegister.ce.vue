@@ -24,6 +24,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  wrapRequest: {
+    type: Function,
+    default: null,
+  },
   recaptcha: {
     type: Boolean,
     default: false,
@@ -65,6 +69,11 @@ provide(
 provide(
   'register-request-endpoint',
   computed((): string => (props.registerRequestEndpoint ? props.registerRequestEndpoint : '')),
+)
+
+provide(
+  'wrap-request',
+  computed((): any => (props.wrapRequest ? props.wrapRequest : null)),
 )
 
 // Message props: These provided values default to useI18n() message text so
