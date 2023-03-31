@@ -19,6 +19,7 @@
 
       <KInput
         id="current-password"
+        ref="currentPassword"
         v-model.trim="formData.currentPassword"
         autocomplete="current-password"
         class="w-100 mb-4"
@@ -32,6 +33,7 @@
 
       <KInput
         id="new-password"
+        ref="newPassword"
         v-model.trim="formData.newPassword"
         autocomplete="new-password"
         class="w-100 mb-4"
@@ -45,6 +47,7 @@
 
       <KInput
         id="password-confirm"
+        ref="passwordConfirm"
         v-model.trim="formData.confirmPassword"
         autocomplete="new-password"
         class="w-100 mb-4"
@@ -59,6 +62,7 @@
 
       <KButton
         id="change-password-submit"
+        ref="changePasswordSubmit"
         appearance="primary"
         class="justify-content-center w-100 type-lg"
         data-testid="kong-auth-change-password-submit"
