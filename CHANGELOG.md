@@ -1,3 +1,10 @@
+## [1.30.6](https://github.com/Kong/kong-auth-elements/compare/v1.30.5...v1.30.6) (2023-04-01)
+
+
+### Bug Fixes
+
+* **changePasswordForm:** add refs to ChangePasswordForm for consumer to manipulate [KHCP-6618] ([#992](https://github.com/Kong/kong-auth-elements/issues/992)) ([358726b](https://github.com/Kong/kong-auth-elements/commit/358726b96481e8b008b7f081288baa7e42279846))
+
 ## [1.30.5](https://github.com/Kong/kong-auth-elements/compare/v1.30.4...v1.30.5) (2023-03-31)
 
 
