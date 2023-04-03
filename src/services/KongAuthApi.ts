@@ -65,9 +65,18 @@ export default class KongAuthApi {
       basePath: this.baseUrl,
     })
 
+    // invite flow uses https://cloud.konghq.com/v2/ baseUrl and does not have 'kauth' in it.
+    let endpointBase = ''
+    try {
+      const endpointUrl = new URL(this.baseUrl || '')
+      endpointBase = endpointUrl.origin
+    } catch (err) {
+      // If a relative path is passed to `apiBaseUrl`, this catch will set the fallback value
+      endpointBase = ''
+    }
     // KAuth v2 API baseConfig
     const baseConfigV2 = new V2Configuration({
-      basePath: this.baseUrl + '/v2',
+      basePath: endpointBase + '/v2',
     })
 
     // KAuth v1 APIs
