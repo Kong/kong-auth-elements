@@ -1,3 +1,10 @@
+## [1.31.1](https://github.com/Kong/kong-auth-elements/compare/v1.31.0...v1.31.1) (2023-04-03)
+
+
+### Bug Fixes
+
+* add baseUrl to the path ([#994](https://github.com/Kong/kong-auth-elements/issues/994)) ([7f1e2a9](https://github.com/Kong/kong-auth-elements/commit/7f1e2a9bdec86169581670710072e6df31a97797))
+
 # [1.31.0](https://github.com/Kong/kong-auth-elements/compare/v1.30.6...v1.31.0) (2023-04-03)
 
 
