@@ -67,7 +67,7 @@ export default class KongAuthApi {
 
     // KAuth v2 API baseConfig
     const baseConfigV2 = new V2Configuration({
-      basePath: '/v2',
+      basePath: this.baseUrl + '/v2',
     })
 
     // KAuth v1 APIs
