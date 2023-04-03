@@ -1,3 +1,10 @@
+# [1.31.0](https://github.com/Kong/kong-auth-elements/compare/v1.30.6...v1.31.0) (2023-04-03)
+
+
+### Features
+
+* **support:** support portal v2 api requests ([#993](https://github.com/Kong/kong-auth-elements/issues/993)) ([5ebd28d](https://github.com/Kong/kong-auth-elements/commit/5ebd28d9b0a49ffe04bf1eedfe1c50b89e12a061))
+
 ## [1.30.6](https://github.com/Kong/kong-auth-elements/compare/v1.30.5...v1.30.6) (2023-04-01)
 
 

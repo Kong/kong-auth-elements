@@ -103,6 +103,7 @@ const { messages } = useI18n(lang)
  * custom element provide().
  */
 const showLoginLink: Ref<boolean> = inject('show-login-link', ref(false))
+const wrapRequest: Ref<null | ((formData: any) => Record<string, any>)> = inject('wrap-request', ref(null))
 const loginLinkText: Ref<string> = inject('login-link-text', ref(messages.forgotPassword.loginLinkText))
 const instructionText: Ref<string> = inject('instruction-text', ref(''))
 const successText: Ref<string> = inject('success-text', ref(messages.forgotPassword.success))
@@ -137,19 +138,30 @@ const btnText = computed(() => ['pending', 'success'].some(currentState.value.ma
 const btnDisabled = computed(() => !formData.email || currentState.value.matches('pending'))
 
 const requestPasswordReset = async (): Promise<AxiosResponse<any>> => {
+  let body: any = formData
+
+  if (wrapRequest.value) {
+    body = wrapRequest.value(formData)
+  } else {
+    body = {
+      email: formData.email,
+    }
+  }
+
   // Custom endpoint
   if (resetPasswordRequestEndpoint.value) {
-    return await api.client.post(resetPasswordRequestEndpoint.value, {
-      data: {
-        email: formData.email,
-      },
-    })
+    if (!wrapRequest.value) {
+      // If there is no custom wrap function, it should be wrapped in a data
+      // property by default.
+      body = {
+        data: body,
+      }
+    }
+    return await api.client.post(resetPasswordRequestEndpoint.value, body)
   }
 
   // Default endpoint
-  return await api.passwords.requestUserPasswordReset({
-    email: formData.email,
-  })
+  return await api.passwords.requestUserPasswordReset(body)
 }
 
 const submitForm = async (): Promise<void> => {
