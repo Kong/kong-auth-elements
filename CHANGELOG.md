@@ -1,3 +1,10 @@
+## [1.31.2](https://github.com/Kong/kong-auth-elements/compare/v1.31.1...v1.31.2) (2023-04-03)
+
+
+### Bug Fixes
+
+* remove /kauth from baseUrl ([#995](https://github.com/Kong/kong-auth-elements/issues/995)) ([9e91435](https://github.com/Kong/kong-auth-elements/commit/9e914358c0ed25c730a704ed5052299a33dd6209))
+
 ## [1.31.1](https://github.com/Kong/kong-auth-elements/compare/v1.31.0...v1.31.1) (2023-04-03)
 
 
