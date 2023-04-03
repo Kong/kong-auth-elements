@@ -284,11 +284,14 @@ const processRegistration = async (): Promise<AxiosResponse<RegisterRegisterResp
     registrationCode: accessCodeRequired.value && formData.accessCode ? formData.accessCode : undefined,
     defaultRegion: formData.selectedRegionOption,
   }
+
+  if (wrapRequest.value) {
+    body = wrapRequest.value(body)
+  }
+
   // Register a new user
   if (registerRequestEndpoint.value) {
-    if (wrapRequest.value) {
-      body = wrapRequest.value(body)
-    } else {
+    if (!wrapRequest.value) {
       body = {
         data: body,
       }
