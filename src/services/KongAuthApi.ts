@@ -70,8 +70,7 @@ export default class KongAuthApi {
     try {
       const endpointUrl = new URL(this.baseUrl || '')
       endpointBase = endpointUrl.origin
-    }
-    catch(err) {
+    } catch (err) {
       // If a relative path is passed to `apiBaseUrl`, this catch will set the fallback value
       endpointBase = ''
     }
