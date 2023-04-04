@@ -1,3 +1,10 @@
+## [1.31.3](https://github.com/Kong/kong-auth-elements/compare/v1.31.2...v1.31.3) (2023-04-04)
+
+
+### Bug Fixes
+
+* **changePassword:** support custom changePasswordButtonText as prop ([#996](https://github.com/Kong/kong-auth-elements/issues/996)) ([3372228](https://github.com/Kong/kong-auth-elements/commit/337222844db741cb6f61b83ba1031ee80b6969c6))
+
 ## [1.31.2](https://github.com/Kong/kong-auth-elements/compare/v1.31.1...v1.31.2) (2023-04-03)
 
 
