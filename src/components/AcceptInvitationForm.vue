@@ -176,7 +176,7 @@ const acceptInvitation = async (): Promise<AxiosResponse<any>> => {
     acceptInviteRequest: {
       password: formData.password,
       full_name: formData.fullName,
-      preferred_name: formData.preferredName || '',
+      preferred_name: formData.preferredName || null, // send null to kauth if preferred_name is empty string or undefined
       token: formData.inviteToken,
     },
   })
