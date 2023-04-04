@@ -584,6 +584,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 | Prop                        | Type    | Default | Description                                          |
 | :-------------------------- | :------ | :------ | :--------------------------------------------------- |
 | `instructionText`           | String  | `''`    | Set the instruction text to display above the input. |
+| `changePasswordButtonText`  | String  | `Change Password` | Set the text for the change password button. |
 
 #### Emits Events
 

@@ -118,6 +118,20 @@ describe('KongAuthChangePassword.ce.vue', () => {
   })
 
   /* ==============================
+   * Change Password Button Text
+   * ============================== */
+  it('customizes the change password button text if changePasswordButtonText prop is set', () => {
+    const customText = 'This is custom button text'
+    mount(KongAuthChangePassword, {
+      props: {
+        changePasswordButtonText: customText,
+      },
+    })
+
+    cy.getTestId(testids.submitBtn).should('be.visible').and('contain.text', customText)
+  })
+
+  /* ==============================
    * Instruction Text
    * ============================== */
   it('shows instruction text if instructionText prop is set', () => {

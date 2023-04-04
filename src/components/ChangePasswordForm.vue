@@ -111,6 +111,7 @@ const { messages } = useI18n(lang)
  * custom element provide().
  */
 const instructionText: Ref<string> = inject('instruction-text', ref(''))
+const changePasswordButtonText: Ref<string> = inject('change-password-button-text', ref(messages.changePassword.submitText))
 
 const formData = reactive({
   currentPassword: '',
@@ -143,7 +144,7 @@ const { state: currentState, send } = useMachine(
 
 const passwordIsInvalid = computed((): boolean => formData.newPassword !== formData.confirmPassword && formData.confirmPassword !== '')
 
-const btnText = computed((): string => ['pending', 'success'].some(currentState.value.matches) ? messages.resetPassword.submittingText : messages.changePassword.submitText)
+const btnText = computed((): string => ['pending', 'success'].some(currentState.value.matches) ? messages.resetPassword.submittingText : changePasswordButtonText.value)
 
 const btnDisabled = computed((): boolean => {
   return (

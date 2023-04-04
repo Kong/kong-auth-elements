@@ -26,6 +26,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  changePasswordButtonText: {
+    type: String,
+    default: '',
+  },
 })
 
 // Import emits from child component with validation, where necessary
@@ -37,6 +41,9 @@ provide(
   'instruction-text',
   computed((): string => (props.instructionText ? props.instructionText : '')),
 )
+// Message props: These provided values default to useI18n() message text so
+// they must be provided in this format so the default value can be set in the child component.
+props.changePasswordButtonText && provide('change-password-button-text', computed((): string => props.changePasswordButtonText))
 </script>
 
 <style lang="scss" scoped>
