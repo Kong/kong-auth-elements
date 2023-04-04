@@ -28,7 +28,7 @@ const props = defineProps({
   },
   changePasswordButtonText: {
     type: String,
-    default: null,
+    default: '',
   },
 })
 
