@@ -1,3 +1,10 @@
+## [1.31.4](https://github.com/Kong/kong-auth-elements/compare/v1.31.3...v1.31.4) (2023-04-04)
+
+
+### Bug Fixes
+
+* **acceptInvitationForm:** send null to kauth if preferred_name is empty string or undefined ([#997](https://github.com/Kong/kong-auth-elements/issues/997)) ([1045006](https://github.com/Kong/kong-auth-elements/commit/10450063e143c5f982393c805d1af6a299bffe6d))
+
 ## [1.31.3](https://github.com/Kong/kong-auth-elements/compare/v1.31.2...v1.31.3) (2023-04-04)
 
 
