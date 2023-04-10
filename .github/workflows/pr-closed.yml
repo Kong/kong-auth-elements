@@ -24,6 +24,9 @@ jobs:
           delete: true
           GITHUB_TOKEN: ${{ secrets.KONGPONENTS_BOT_PAT }}
 
+      - name: Create .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+
       - name: Unpublish
         run: |
           toUnpublish=()
