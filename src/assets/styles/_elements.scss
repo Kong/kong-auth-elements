@@ -129,3 +129,7 @@ a {
     color: var(--blue-500);
   }
 }
+
+input.hidden-input {
+  display: none !important;
+}

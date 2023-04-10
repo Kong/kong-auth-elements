@@ -17,6 +17,9 @@
         data-testid="kong-auth-change-password-instruction-text"
       >{{ instructionText }}</p>
 
+      <!-- Hidden username input to assist password managers -->
+      <input id="email" autocomplete="username" class="hidden-input" name="email" type="email" />
+
       <KInput
         id="current-password"
         ref="currentPassword"
