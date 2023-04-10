@@ -70,7 +70,7 @@
         class="justify-content-center type-lg mr-2"
         data-testid="kong-auth-change-password-cancel"
         :disabled="btnDisabled"
-        @click.prevent="handleClick"
+        @click.prevent="handleCancel"
       >
         {{ messages.changePassword.cancelText }}
       </KButton>
@@ -139,12 +139,12 @@ const atLeast1LowerCaseRegex = /(?=.*[a-z])/
 const atLeast1NumberRegex = /(?=.*\d)/
 const atLeast1SpecialCharRegex = /(?=.*\W)/
 
-const passwordRequirementsMet = reactive({
+const passwordRequirementsMet = {
   uppercase: computed((): boolean => atLeast1UpperCaseRegex.test(formData.newPassword)),
   lowercase: computed((): boolean => atLeast1LowerCaseRegex.test(formData.newPassword)),
   number: computed((): boolean => atLeast1NumberRegex.test(formData.newPassword)),
   special: computed((): boolean => atLeast1SpecialCharRegex.test(formData.newPassword)),
-})
+}
 
 const error = ref<any>(null)
 const passwordError = ref<boolean>(false)
@@ -183,7 +183,7 @@ const btnDisabled = computed((): boolean => {
   )
 })
 
-const handleClick = (): void => {
+const handleCancel = (): void => {
   formData.currentPassword = ''
   formData.newPassword = ''
   formData.confirmPassword = ''
@@ -193,11 +193,13 @@ const changePassword = async (credentials: MeApiPatchUsersMePasswordRequest) => 
   return await api.v2.me.patchUsersMePassword(credentials)
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-watch(() => formData.newPassword, (password: string) => {
-  emit('password-requirements', passwordRequirementsMet)
+watch(() => formData.newPassword, () => {
+  const passwordRequirementsEventData = Object.entries(passwordRequirementsMet).reduce((accumulator: any, currentValue) => {
+    accumulator[currentValue[0]] = currentValue[1].value
+    return accumulator
+  }, {})
+  emit('password-requirements', passwordRequirementsEventData)
 })
-
 const submitForm = async (): Promise<void> => {
   send('CLICK_CHANGE_PASSWORD')
 
