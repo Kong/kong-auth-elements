@@ -1,3 +1,10 @@
+## [1.31.8](https://github.com/Kong/kong-auth-elements/compare/v1.31.7...v1.31.8) (2023-04-10)
+
+
+### Bug Fixes
+
+* **semantic-release:** update npm plugin order [KHCP-6911] ([#1005](https://github.com/Kong/kong-auth-elements/issues/1005)) ([805bbef](https://github.com/Kong/kong-auth-elements/commit/805bbefa67b3ab9cdb72a202224fc7349ff43bd8))
+
 ## [1.31.7](https://github.com/Kong/kong-auth-elements/compare/v1.31.6...v1.31.7) (2023-04-10)
 
 
