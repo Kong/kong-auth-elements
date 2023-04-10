@@ -18,7 +18,7 @@
       >{{ instructionText }}</p>
 
       <!-- Hidden username input to assist password managers -->
-      <input id="email" autocomplete="username" name="email" type="hidden" />
+      <input id="email" autocomplete="username" class="hidden-input" name="email" type="email" />
 
       <KInput
         id="password"
