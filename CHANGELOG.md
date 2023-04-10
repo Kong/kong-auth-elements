@@ -1,3 +1,10 @@
+## [1.31.7](https://github.com/Kong/kong-auth-elements/compare/v1.31.6...v1.31.7) (2023-04-10)
+
+
+### Bug Fixes
+
+* **semantic-release:** update version on publish [KHCP-6911] ([#1004](https://github.com/Kong/kong-auth-elements/issues/1004)) ([94afe7a](https://github.com/Kong/kong-auth-elements/commit/94afe7a86b444dcc60a1bbf27cad8c2ef89efc2b))
+
 ## [1.31.6](https://github.com/Kong/kong-auth-elements/compare/v1.31.5...v1.31.6) (2023-04-07)
 
 
