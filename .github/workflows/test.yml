@@ -2,7 +2,7 @@ name: Tests
 
 on:
   pull_request:
-    branches: [mXain]
+    branches: [main]
   # Allow workflow to be called by another workflow
   workflow_call:
     # Must define secrets here so that the calling workflow can pass in the NPM_TOKEN needed to install private packages.
