@@ -46,6 +46,7 @@
         :placeholder="messages.inputLabels.newPasswordPlaceholder"
         required
         type="password"
+        @change="handleNewPasswordChange"
       />
 
       <KInput
@@ -122,6 +123,18 @@ const formData = reactive({
   confirmPassword: '',
 })
 
+const atLeast1UpperCaseRegex = /(?=.*[A-Z])/
+const atLeast1LowerCaseRegex = /(?=.*[a-z])/
+const atLeast1NumberRegex = /(?=.*\d)/
+const atLeast1SpecialCharRegex = /(?=.*\W)/
+
+const passwordRequirementsMet = {
+  uppercase: computed((): boolean => atLeast1UpperCaseRegex.test(formData.newPassword)),
+  lowercase: computed((): boolean => atLeast1LowerCaseRegex.test(formData.newPassword)),
+  number: computed((): boolean => atLeast1NumberRegex.test(formData.newPassword)),
+  special: computed((): boolean => atLeast1SpecialCharRegex.test(formData.newPassword)),
+}
+
 const error = ref<any>(null)
 const passwordError = ref<boolean>(false)
 
@@ -161,6 +174,10 @@ const btnDisabled = computed((): boolean => {
 
 const changePassword = async (credentials: MeApiPatchUsersMePasswordRequest) => {
   return await api.v2.me.patchUsersMePassword(credentials)
+}
+
+const handleNewPasswordChange = (): void => {
+  emit('input-new-password', passwordRequirementsMet)
 }
 
 const submitForm = async (): Promise<void> => {

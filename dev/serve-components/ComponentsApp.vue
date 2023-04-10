@@ -50,6 +50,7 @@
           instruction-text="Please enter in your current password, new password and confirm it below."
           wrapper-id="kong-auth-change-password-wrapper"
           @change-password-success="showAlert('Change password success!')"
+          @input-new-password="showAlert('New password inputted')"
         />
       </div>
 
