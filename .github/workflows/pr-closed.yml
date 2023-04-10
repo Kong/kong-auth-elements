@@ -32,7 +32,7 @@ jobs:
           toUnpublish=()
 
           prNumber="${{github.event.number}}"
-          prNumber="pr-1003"
+          prNumber="1003"
 
           pkgName="@kong/kong-auth-elements"
 
