@@ -29,6 +29,14 @@ jobs:
     env:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
+
+      - name: Remove preview consumption comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: pr_preview_consumption
+          delete: true
+          GITHUB_TOKEN: ${{ secrets.KONGPONENTS_BOT_PAT }}
+
       - name: Checkout
         uses: actions/checkout@v3
 
