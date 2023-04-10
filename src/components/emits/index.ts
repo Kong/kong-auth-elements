@@ -46,6 +46,6 @@ export const resetPasswordEmits = {
 
 // ChangePasswordForm.vue
 export const changePasswordEmits = {
-  'input-new-password': null,
+  'password-requirements': null,
   'change-password-success': null,
 }

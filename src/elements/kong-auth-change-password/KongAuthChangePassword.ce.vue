@@ -3,7 +3,7 @@
     <BaseCustomElement>
       <ChangePasswordForm
         @change-password-success="$emit('change-password-success')"
-        @input-new-password="$emit('input-new-password')"
+        @password-requirements="$emit('password-requirements')"
       />
     </BaseCustomElement>
   </TeleportWrapper>
