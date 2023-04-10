@@ -1,3 +1,10 @@
+## [1.31.9](https://github.com/Kong/kong-auth-elements/compare/v1.31.8...v1.31.9) (2023-04-10)
+
+
+### Bug Fixes
+
+* add hidden email fields for a11y [KHCP-6910] ([#1006](https://github.com/Kong/kong-auth-elements/issues/1006)) ([3558b4b](https://github.com/Kong/kong-auth-elements/commit/3558b4b97983609744b4eab60caf19ac24b58593))
+
 ## [1.31.8](https://github.com/Kong/kong-auth-elements/compare/v1.31.7...v1.31.8) (2023-04-10)
 
 
