@@ -3,9 +3,6 @@ on:
   pull_request_target:
     types:
       - closed
-  push:
-    branches: [chore/KHCP-6878-pr-previews]
-
 
 jobs:
   unpublish:
@@ -32,7 +29,6 @@ jobs:
           toUnpublish=()
 
           prNumber="${{github.event.number}}"
-          prNumber="1003"
 
           pkgName="@kong/kong-auth-elements"
 
