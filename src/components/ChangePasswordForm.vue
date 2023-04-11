@@ -142,6 +142,7 @@ const atLeast1NumberRegex = /(?=.*\d)/
 const atLeast1SpecialCharRegex = /(?=.*\W)/
 
 const passwordRequirementsMet = {
+  // on password-requirements event firing, return object of booleans to indicate which password requirements are met
   uppercase: computed((): boolean => atLeast1UpperCaseRegex.test(formData.newPassword)),
   lowercase: computed((): boolean => atLeast1LowerCaseRegex.test(formData.newPassword)),
   number: computed((): boolean => atLeast1NumberRegex.test(formData.newPassword)),
