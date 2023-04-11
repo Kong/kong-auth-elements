@@ -469,10 +469,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@eslint/js@8.37.0":
-  version "8.37.0"
-  resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.37.0.tgz#cf1b5fa24217fe007f6487a26d765274925efa7d"
-  integrity sha512-x5vzdtOOGgFVDCUs81QRB2+liax8rFg3+7hqM+QhBG0/G3F1ZsoYl97UrqgHgQ9KKT7G6c4V+aTUCgu/n22v1A==
+"@eslint/js@8.38.0":
+  version "8.38.0"
+  resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.38.0.tgz#73a8a0d8aa8a8e6fe270431c5e72ae91b5337892"
+  integrity sha512-IoD2MfUnOV58ghIHCiil01PcohxjbYR/qCxsoC+xNgUwh1EY8jOOrYmu3d3a71+tJJ23uscEV4X2HJWMsPJu4g==
 
 "@gar/promisify@^1.1.3":
   version "1.1.3"
@@ -533,20 +533,20 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@kong/kauth-client-typescript-axios@^0.1877.0":
-  version "0.1877.0"
-  resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1877.0.tgz#80d2bb090ad54f2a2a5f1ab52df6951a37a29093"
-  integrity sha512-CiopZ4qs3G+3Ml1L/aGWF83rAz17PWa0DHrMA9yO7vWqz1pyZf+XiRlW90ZmuQ6xxTE3b+uZBG98d/evE8TTCA==
+"@kong/kauth-client-typescript-axios@^0.1878.0":
+  version "0.1878.0"
+  resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1878.0.tgz#b11d12e6e366419cf80c49fb05de6808062c030c"
+  integrity sha512-qLLuMrBXQsOiBIOl0tIRZjHLO3z06JJ7VcHEMNqdCcBBUd9VX1hvCTTdFCWkRgLaOuOnfBk57WoHx3f4es28gg==
 
 "@kong/kauth-client-v2-axios@^0.0.28":
   version "0.0.28"
   resolved "https://registry.yarnpkg.com/@kong/kauth-client-v2-axios/-/kauth-client-v2-axios-0.0.28.tgz#a7d44086e5cd05a6561850b87478823dcce11aec"
   integrity sha512-85EkGEufQ/rfWzCNh8vUuZLdEl6ez2hQAVXdfvG5jM/qaPXbjLwiFL33y51Zj8UxnnE107JO/SPLupu6Plyzzg==
 
-"@kong/kongponents@^8.42.0":
-  version "8.42.0"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.42.0.tgz#b21c5a32dde7262f0b2a5cd19edb56120153d1d6"
-  integrity sha512-uzzgxZWCSuvNsS6Rsg0nwgekvviLW8c4rdxspYAvCPPmEkFJqecSM5N0BIkG9n4O0Xzgb09GAx1nsJd8+tcI0g==
+"@kong/kongponents@^8.42.2":
+  version "8.42.2"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.42.2.tgz#5bd2133c355cfe9e1376b6e9a7e3d8a6d0248bde"
+  integrity sha512-ZXKAnQN4ig1+2T9FVzZtl7tRfgEG9wjcEnNjvRoku9S8LifWk7Ki7H9O1lJn2fM7yZvRQ+j9NUPPlmPa4HaGFA==
   dependencies:
     axios "^0.27.2"
     date-fns "^2.29.3"
@@ -3165,15 +3165,15 @@ eslint-visitor-keys@^3.1.0, eslint-visitor-keys@^3.3.0, eslint-visitor-keys@^3.4
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.4.0.tgz#c7f0f956124ce677047ddbc192a68f999454dedc"
   integrity sha512-HPpKPUBQcAsZOsHAFwTtIKcYlCje62XB7SEAcxjtmW6TD1WVpkS6i6/hOVtTZIl4zGj/mBqpFVGvaDneik+VoQ==
 
-eslint@^8.37.0:
-  version "8.37.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.37.0.tgz#1f660ef2ce49a0bfdec0b0d698e0b8b627287412"
-  integrity sha512-NU3Ps9nI05GUoVMxcZx1J8CNR6xOvUT4jAUMH5+z8lpp3aEdPVCImKw6PWG4PY+Vfkpr+jvMpxs/qoE7wq0sPw==
+eslint@^8.38.0:
+  version "8.38.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.38.0.tgz#a62c6f36e548a5574dd35728ac3c6209bd1e2f1a"
+  integrity sha512-pIdsD2jwlUGf/U38Jv97t8lq6HpaU/G9NKbYmpWpZGw3LdTNhZLbJePqxOXGB5+JEKfOPU/XLxYxFh03nr1KTg==
   dependencies:
     "@eslint-community/eslint-utils" "^4.2.0"
     "@eslint-community/regexpp" "^4.4.0"
     "@eslint/eslintrc" "^2.0.2"
-    "@eslint/js" "8.37.0"
+    "@eslint/js" "8.38.0"
     "@humanwhocodes/config-array" "^0.11.8"
     "@humanwhocodes/module-importer" "^1.0.1"
     "@nodelib/fs.walk" "^1.2.8"
