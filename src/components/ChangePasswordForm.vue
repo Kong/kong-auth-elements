@@ -63,36 +63,38 @@
         type="password"
       />
 
-      <KButton
-        id="change-password-cancel"
-        ref="changePasswordCancel"
-        appearance="outline"
-        class="justify-content-center type-lg mr-2"
-        data-testid="kong-auth-change-password-cancel"
-        :disabled="btnDisabled"
-        @click.prevent="handleCancel"
-      >
-        {{ messages.changePassword.cancelText }}
-      </KButton>
+      <div class="action-buttons">
+        <KButton
+          id="change-password-cancel"
+          ref="changePasswordCancel"
+          appearance="outline"
+          class="justify-content-center type-lg mr-1"
+          data-testid="kong-auth-change-password-cancel"
+          :disabled="btnDisabled"
+          @click.prevent="handleCancel"
+        >
+          {{ messages.changePassword.cancelText }}
+        </KButton>
 
-      <KButton
-        id="change-password-submit"
-        ref="changePasswordSubmit"
-        appearance="primary"
-        class="justify-content-center type-lg"
-        data-testid="kong-auth-change-password-submit"
-        :disabled="btnDisabled"
-        type="submit"
-      >
-        <KIcon
-          v-if="currentState.matches('pending')"
-          class="pr-0 mr-2"
-          color="var(--grey-400)"
-          icon="spinner"
-          size="16"
-        />
-        {{ btnText }}
-      </KButton>
+        <KButton
+          id="change-password-submit"
+          ref="changePasswordSubmit"
+          appearance="primary"
+          class="justify-content-center type-lg"
+          data-testid="kong-auth-change-password-submit"
+          :disabled="btnDisabled"
+          type="submit"
+        >
+          <KIcon
+            v-if="currentState.matches('pending')"
+            class="pr-0 mr-2"
+            color="var(--grey-400)"
+            icon="spinner"
+            size="16"
+          />
+          {{ btnText }}
+        </KButton>
+      </div>
     </form>
   </div>
 </template>
