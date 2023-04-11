@@ -590,7 +590,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 | Event                    |       Payload       | Description                              |
 | :----------------------- | :-----------------: | :--------------------------------------- |
-| `change-password-success`|       `null`        | User successfully changed their password.|
+| `change-password-success`|                     | User successfully changed their password.|
 | `password-requirements`  | `{uppercase: boolean, lowercase: boolean, number: boolean, special: boolean}` | Password requirements met after user inputs new password |
 
 To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
