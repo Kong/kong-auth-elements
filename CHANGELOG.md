@@ -1,3 +1,10 @@
+## [1.32.1](https://github.com/Kong/kong-auth-elements/compare/v1.32.0...v1.32.1) (2023-04-11)
+
+
+### Bug Fixes
+
+* **changePasswordForm:** add comment to trigger package release [KHCP-6618] ([#1016](https://github.com/Kong/kong-auth-elements/issues/1016)) ([9aa4602](https://github.com/Kong/kong-auth-elements/commit/9aa46025b078126e28729bc740649e6cb6b17456))
+
 # [1.32.0](https://github.com/Kong/kong-auth-elements/compare/v1.31.11...v1.32.0) (2023-04-11)
 
 
