@@ -1,9 +1,5 @@
 <template>
   <div class="kong-auth-change-password-form">
-    <div v-if="currentState.matches('error') && error" class="my-4">
-      <ErrorMessage :error="error" />
-    </div>
-
     <form
       v-if="!currentState.matches('success')"
       class="change-password-form"
@@ -62,6 +58,10 @@
         required
         type="password"
       />
+
+      <div v-if="currentState.matches('error') && error" class="my-4">
+        <ErrorMessage :error="error" />
+      </div>
 
       <div class="action-buttons">
         <KButton
