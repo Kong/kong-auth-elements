@@ -94,6 +94,7 @@
             :label="`${messages.inputLabels.email} *`"
             required
             type="email"
+            @animationstart="checkAutofill"
           />
 
           <KInput
@@ -106,6 +107,7 @@
             :label="`${messages.inputLabels.password} *`"
             required
             type="password"
+            @animationstart="checkAutofill"
           />
 
         <p v-if="showForgotPasswordLink" class="help mt-3">
@@ -292,7 +294,10 @@ const loginBtnText = computed((): string => {
   return messages.login.loginText
 })
 
-const loginBtnDisabled = computed((): boolean => (!formData.email || !formData.password) || ['pending', 'success'].some(currentState.value.matches))
+// Allow forcing the login button to be enabled if the form was autofilled
+const forceLoginBtnEnabled = ref<boolean>(false)
+const loginBtnDisabled = computed((): boolean => !forceLoginBtnEnabled.value && ((!formData.email || !formData.password) || ['pending', 'success'].some(currentState.value.matches)))
+
 const loginBtnSSODisabled = computed((): boolean => idpIsLoading.value || ['pending', 'success'].some(currentState.value.matches))
 
 const setUserStatusCookie = async () => {
@@ -428,6 +433,21 @@ const submitForm = async (): Promise<void> => {
 const loginWithCredentials = (): void => {
   // Redirect the user to the same login page without anything else in the path
   win.setLocationHref(win.getLocationOrigin() + '/login?basicAuth=true')
+}
+
+// Track the number of fields that have been autofilled
+const autofillCount = ref<number>(0)
+
+// On autofill, increment the autofillCount and enable the login button if the count is greater than one
+const checkAutofill = (e: any): void => {
+  if (e.animationName === 'onAutofillStart') {
+    autofillCount.value++
+    if (autofillCount.value > 1) {
+      forceLoginBtnEnabled.value = true
+    }
+  } else if (e.animationName === 'onAutofillCancel') {
+    forceLoginBtnEnabled.value = false
+  }
 }
 
 onMounted(async () => {

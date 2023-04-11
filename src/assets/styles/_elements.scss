@@ -29,6 +29,28 @@
   .idp-loading {
     justify-content: center;
   }
+
+  // Detect if the email and password fields have been auto-filled
+  // If autofilled, add an animation name to detect with JavaScript in LoginForm.vue
+  #email,
+  #password {
+    &:-webkit-autofill,
+    &:autofill {
+      animation-name: onAutofillStart;
+    }
+
+    &:not(:-webkit-autofill),
+    &:not(:autofill) {
+      animation-name: onAutofillCancel;
+    }
+  }
+
+  /* stylelint-disable */
+  @keyframes onAutofillStart {
+  }
+  @keyframes onAutofillCancel {
+  }
+  /* stylelint-enable */
 }
 
 .text-center {
