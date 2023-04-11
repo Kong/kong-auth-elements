@@ -1,3 +1,11 @@
+## [1.31.11](https://github.com/Kong/kong-auth-elements/compare/v1.31.10...v1.31.11) (2023-04-11)
+
+
+### Bug Fixes
+
+*  only do PR preview steps when test is executed from PR flow [KHCP-6878] ([#1013](https://github.com/Kong/kong-auth-elements/issues/1013)) ([6beed74](https://github.com/Kong/kong-auth-elements/commit/6beed74923523bb6e6d38b4afcc233790d9d6aa5))
+* **login:** enable button on autofill [KHCP-6887] ([#1012](https://github.com/Kong/kong-auth-elements/issues/1012)) ([de76794](https://github.com/Kong/kong-auth-elements/commit/de76794aa3547492a17616db7ccc686561005c5b))
+
 ## [1.31.10](https://github.com/Kong/kong-auth-elements/compare/v1.31.9...v1.31.10) (2023-04-10)
 
 
