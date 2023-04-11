@@ -1,6 +1,6 @@
 {
   "name": "@kong/kong-auth-elements",
-  "version": "1.31.9",
+  "version": "1.31.10",
   "type": "module",
   "main": "dist/kong-auth-elements.vue.umd.js",
   "module": "dist/kong-auth-elements.vue.es.js",
@@ -34,7 +34,7 @@
     "stylelint:fix": "stylelint './src/**/*.{css,scss,sass,less,styl,vue}' --fix"
   },
   "dependencies": {
-    "@kong/kauth-client-typescript-axios": "^0.1877.0",
+    "@kong/kauth-client-typescript-axios": "^0.1878.0",
     "@kong/kauth-client-v2-axios": "^0.0.28",
     "@xstate/vue": "^0.8.1",
     "axios": "^0.27.2",
@@ -50,7 +50,7 @@
     "@cypress/vite-dev-server": "^5.0.4",
     "@cypress/vue": "^5.0.4",
     "@digitalroute/cz-conventional-changelog-for-jira": "^7.5.1",
-    "@kong/kongponents": "^8.42.0",
+    "@kong/kongponents": "^8.42.2",
     "@rushstack/eslint-patch": "^1.2.0",
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/git": "^10.0.1",
@@ -66,7 +66,7 @@
     "cross-env": "^7.0.3",
     "cypress": "^12.7.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "^8.37.0",
+    "eslint": "^8.38.0",
     "eslint-plugin-cypress": "^2.13.2",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-node": "^11.1.0",
@@ -92,7 +92,7 @@
     "zxcvbn": "^4.4.2"
   },
   "peerDependencies": {
-    "@kong/kongponents": "^8.42.0",
+    "@kong/kongponents": "^8.42.2",
     "axios": "^0.27.2",
     "vue": "^3.2.47"
   },
