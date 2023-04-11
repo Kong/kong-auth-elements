@@ -31,6 +31,7 @@ jobs:
     steps:
 
       - name: Remove preview consumption comment
+        if: github.event_name == 'pull_request'
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           header: pr_preview_consumption
@@ -75,6 +76,7 @@ jobs:
           path: cypress/screenshots/
 
       - name: Build
+        if: github.event_name == 'pull_request'
         run: yarn build
 
       - name: Upload Cypress videos (always)
