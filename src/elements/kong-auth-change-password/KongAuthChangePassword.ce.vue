@@ -2,7 +2,8 @@
   <TeleportWrapper :parent-props="$props">
     <BaseCustomElement>
       <ChangePasswordForm
-        @change-password-success="$emit('change-password-success')"
+        @change-password-success=" $emit('change-password-success')"
+        @password-requirements="(emitData: any) => $emit('password-requirements', emitData)"
       />
     </BaseCustomElement>
   </TeleportWrapper>

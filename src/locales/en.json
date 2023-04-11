@@ -51,7 +51,8 @@
     "submittingText": "Submitting"
   },
   "changePassword": {
-    "submitText": "Change password"
+    "submitText": "Change password",
+    "cancelText": "Cancel"
   },
   "general": {
     "missingInfo": "Please complete all required fields.",

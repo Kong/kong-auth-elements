@@ -64,10 +64,22 @@
       />
 
       <KButton
+        id="change-password-cancel"
+        ref="changePasswordCancel"
+        appearance="outline"
+        class="justify-content-center type-lg mr-2"
+        data-testid="kong-auth-change-password-cancel"
+        :disabled="btnDisabled"
+        @click.prevent="handleCancel"
+      >
+        {{ messages.changePassword.cancelText }}
+      </KButton>
+
+      <KButton
         id="change-password-submit"
         ref="changePasswordSubmit"
         appearance="primary"
-        class="justify-content-center w-100 type-lg"
+        class="justify-content-center type-lg"
         data-testid="kong-auth-change-password-submit"
         :disabled="btnDisabled"
         type="submit"
@@ -86,7 +98,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, ref, Ref, reactive, computed } from 'vue'
+import { inject, ref, Ref, reactive, computed, watch } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import useConfigOptions from '@/composables/useConfigOptions'
@@ -121,6 +133,18 @@ const formData = reactive({
   newPassword: '',
   confirmPassword: '',
 })
+
+const atLeast1UpperCaseRegex = /(?=.*[A-Z])/
+const atLeast1LowerCaseRegex = /(?=.*[a-z])/
+const atLeast1NumberRegex = /(?=.*\d)/
+const atLeast1SpecialCharRegex = /(?=.*\W)/
+
+const passwordRequirementsMet = {
+  uppercase: computed((): boolean => atLeast1UpperCaseRegex.test(formData.newPassword)),
+  lowercase: computed((): boolean => atLeast1LowerCaseRegex.test(formData.newPassword)),
+  number: computed((): boolean => atLeast1NumberRegex.test(formData.newPassword)),
+  special: computed((): boolean => atLeast1SpecialCharRegex.test(formData.newPassword)),
+}
 
 const error = ref<any>(null)
 const passwordError = ref<boolean>(false)
@@ -159,10 +183,23 @@ const btnDisabled = computed((): boolean => {
   )
 })
 
+const handleCancel = (): void => {
+  formData.currentPassword = ''
+  formData.newPassword = ''
+  formData.confirmPassword = ''
+}
+
 const changePassword = async (credentials: MeApiPatchUsersMePasswordRequest) => {
   return await api.v2.me.patchUsersMePassword(credentials)
 }
 
+watch(() => formData.newPassword, () => {
+  const passwordRequirementsEventData = Object.entries(passwordRequirementsMet).reduce((accumulator: any, currentValue) => {
+    accumulator[currentValue[0]] = currentValue[1].value
+    return accumulator
+  }, {})
+  emit('password-requirements', passwordRequirementsEventData)
+})
 const submitForm = async (): Promise<void> => {
   send('CLICK_CHANGE_PASSWORD')
 
