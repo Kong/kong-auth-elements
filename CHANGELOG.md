@@ -1,3 +1,10 @@
+# [1.32.0](https://github.com/Kong/kong-auth-elements/compare/v1.31.11...v1.32.0) (2023-04-11)
+
+
+### Features
+
+* **changePassword:** add input-new-password event support in changePasswordForm ([#1007](https://github.com/Kong/kong-auth-elements/issues/1007)) ([4faf740](https://github.com/Kong/kong-auth-elements/commit/4faf740d61f69a8404d9364a11bf27b085c1beda))
+
 ## [1.31.11](https://github.com/Kong/kong-auth-elements/compare/v1.31.10...v1.31.11) (2023-04-11)
 
 
