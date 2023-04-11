@@ -1,3 +1,10 @@
+## [1.32.2](https://github.com/Kong/kong-auth-elements/compare/v1.32.1...v1.32.2) (2023-04-11)
+
+
+### Bug Fixes
+
+* **changePassword:** move error message element from top to bottom ([#1017](https://github.com/Kong/kong-auth-elements/issues/1017)) ([320872d](https://github.com/Kong/kong-auth-elements/commit/320872dd046b1e398234e628ba4c3936d9dda2df))
+
 ## [1.32.1](https://github.com/Kong/kong-auth-elements/compare/v1.32.0...v1.32.1) (2023-04-11)
 
 
