@@ -177,12 +177,17 @@ const passwordIsInvalid = computed((): boolean => formData.newPassword !== formD
 const btnText = computed((): string => ['pending', 'success'].some(currentState.value.matches) ? messages.resetPassword.submittingText : changePasswordButtonText.value)
 
 const btnDisabled = computed((): boolean => {
+  const countRequirementsMet = Object.values(passwordRequirementsMet).filter(val => val.value === true).length
+
   return (
     currentState.value.matches('pending') ||
-        !formData.currentPassword ||
-        !formData.newPassword ||
-        !formData.confirmPassword ||
-        passwordIsInvalid.value
+      !formData.currentPassword ||
+      !formData.newPassword ||
+      !formData.confirmPassword ||
+      passwordIsInvalid.value ||
+      countRequirementsMet < 3 ||
+      formData.newPassword.length < 8 ||
+      formData.newPassword.length > 128
   )
 })
 
