@@ -1,3 +1,10 @@
+## [1.32.5](https://github.com/Kong/kong-auth-elements/compare/v1.32.4...v1.32.5) (2023-04-12)
+
+
+### Bug Fixes
+
+* **changePasswordForm:** disable the update button until password criterias are met [KHCP-6958] ([#1021](https://github.com/Kong/kong-auth-elements/issues/1021)) ([cc8b6b9](https://github.com/Kong/kong-auth-elements/commit/cc8b6b9b1b1785f1c5a36a30c35ad45cbf856f2c))
+
 ## [1.32.4](https://github.com/Kong/kong-auth-elements/compare/v1.32.3...v1.32.4) (2023-04-12)
 
 
