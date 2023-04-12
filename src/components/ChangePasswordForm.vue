@@ -149,6 +149,12 @@ const passwordRequirementsMet = {
   special: computed((): boolean => atLeast1SpecialCharRegex.test(formData.newPassword)),
 }
 
+// a password is considered valid if it meets at least 3 out of the above 4 password requirements
+const arePasswordRequirementsMet = computed((): boolean => Object.values(passwordRequirementsMet).filter(requirement => requirement.value === true).length >= 3)
+
+// password must be at least 8 characters long and no more than 128 characters long
+const isPasswordRequiredLength = computed((): boolean => formData.newPassword.length >= 8 && formData.newPassword.length <= 128)
+
 const error = ref<any>(null)
 const passwordError = ref<boolean>(false)
 
@@ -177,17 +183,14 @@ const passwordIsInvalid = computed((): boolean => formData.newPassword !== formD
 const btnText = computed((): string => ['pending', 'success'].some(currentState.value.matches) ? messages.resetPassword.submittingText : changePasswordButtonText.value)
 
 const btnDisabled = computed((): boolean => {
-  const countRequirementsMet = Object.values(passwordRequirementsMet).filter(val => val.value === true).length
-
   return (
     currentState.value.matches('pending') ||
       !formData.currentPassword ||
       !formData.newPassword ||
       !formData.confirmPassword ||
       passwordIsInvalid.value ||
-      countRequirementsMet < 3 ||
-      formData.newPassword.length < 8 ||
-      formData.newPassword.length > 128
+      !arePasswordRequirementsMet.value ||
+      !isPasswordRequiredLength.value
   )
 })
 
