@@ -1,3 +1,10 @@
+## [1.32.8](https://github.com/Kong/kong-auth-elements/compare/v1.32.7...v1.32.8) (2023-04-13)
+
+
+### Bug Fixes
+
+* remove required asterisks [khcp-6982] ([#1027](https://github.com/Kong/kong-auth-elements/issues/1027)) ([4fb3982](https://github.com/Kong/kong-auth-elements/commit/4fb39824826fb89d5075db0289346dde85e6b3fe))
+
 ## [1.32.7](https://github.com/Kong/kong-auth-elements/compare/v1.32.6...v1.32.7) (2023-04-13)
 
 
