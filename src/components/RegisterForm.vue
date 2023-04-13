@@ -50,7 +50,7 @@
           class="w-100 mb-4"
           data-testid="kong-auth-register-full-name"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.fullName ? true : false"
-          :label="`${messages.inputLabels.fullName} *`"
+          :label="`${messages.inputLabels.fullName}`"
           required
           type="text"
         />
@@ -64,7 +64,7 @@
           class="w-100 mb-4"
           data-testid="kong-auth-register-organization"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.organization ? true : false"
-          :label="`${messages.inputLabels.organization} *`"
+          :label="`${messages.inputLabels.organization}`"
           required
           type="text"
         />
@@ -77,7 +77,7 @@
         class="w-100 mb-4"
         data-testid="kong-auth-register-email"
         :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.email ? true : false"
-        :label="`${messages.inputLabels.email} *`"
+        :label="`${messages.inputLabels.email}`"
         required
         type="email"
       />
@@ -90,7 +90,7 @@
           class="w-100 mb-4"
           data-testid="kong-auth-register-password"
           :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
-          :label="`${messages.inputLabels.password} *`"
+          :label="`${messages.inputLabels.password}`"
           required
           type="password"
         />
@@ -104,7 +104,7 @@
           class="w-100 mb-4"
           data-testid="kong-auth-register-access-code"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.accessCode ? true : false"
-          :label="`${messages.inputLabels.accessCode} *`"
+          :label="`${messages.inputLabels.accessCode}`"
           required
           type="password"
         />
