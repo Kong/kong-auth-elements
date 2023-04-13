@@ -29,7 +29,7 @@
           class="w-100 mb-4"
           data-testid="kong-auth-accept-invitation-full-name"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.fullName ? true : false"
-          :label="`${messages.inputLabels.fullName} *`"
+          :label="`${messages.inputLabels.fullName}`"
           required
           type="text"
         />
@@ -44,7 +44,6 @@
           data-testid="kong-auth-accept-invitation-preferred-name"
           :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
           :label="`${messages.inputLabels.preferredName}`"
-          required
           type="text"
         />
       </div>
@@ -56,7 +55,7 @@
         class="w-100 mb-4"
         data-testid="kong-auth-accept-invitation-email"
         :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.email ? true : false"
-        :label="`${messages.inputLabels.email} *`"
+        :label="`${messages.inputLabels.email}`"
         :readonly="formData.prepopulated"
         required
         type="email"
@@ -69,7 +68,7 @@
           class="w-100"
           data-testid="kong-auth-accept-invitation-password"
           :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
-          :label="`${messages.inputLabels.password} *`"
+          :label="`${messages.inputLabels.password}`"
           required
           type="password"
         />

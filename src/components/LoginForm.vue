@@ -91,7 +91,7 @@
             class="w-100 mb-5"
             data-testid="kong-auth-login-email"
             :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
-            :label="`${messages.inputLabels.email} *`"
+            :label="`${messages.inputLabels.email}`"
             required
             type="email"
             @animationstart="checkAutofill"
@@ -104,7 +104,7 @@
             class="w-100"
             data-testid="kong-auth-login-password"
             :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
-            :label="`${messages.inputLabels.password} *`"
+            :label="`${messages.inputLabels.password}`"
             required
             type="password"
             @animationstart="checkAutofill"

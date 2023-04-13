@@ -27,7 +27,7 @@
         class="w-100 mb-4"
         data-testid="kong-auth-reset-password-new-password"
         :has-error="currentState.matches('error') && error ? true : false"
-        :label="`${messages.inputLabels.newPassword} *`"
+        :label="`${messages.inputLabels.newPassword}`"
         required
         type="password"
       />
@@ -40,7 +40,7 @@
         data-testid="kong-auth-reset-password-confirm-new-password"
         :error-message="passwordIsInvalid ? messages.resetPassword.passwordMismatch : undefined"
         :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
-        :label="`${messages.inputLabels.confirmPassword} *`"
+        :label="`${messages.inputLabels.confirmPassword}`"
         required
         type="password"
       />

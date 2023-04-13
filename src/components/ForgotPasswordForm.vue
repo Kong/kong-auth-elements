@@ -39,7 +39,7 @@
         class="w-100 mb-5"
         data-testid="kong-auth-forgot-password-email"
         :has-error="currentState.matches('error') && error ? true : false"
-        :label="`${messages.inputLabels.email} *`"
+        :label="`${messages.inputLabels.email}`"
         placeholder="Email"
         required
         type="email"

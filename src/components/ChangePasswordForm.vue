@@ -24,7 +24,7 @@
         class="w-100 mb-4"
         data-testid="kong-auth-change-password-current-password"
         :has-error="currentState.matches('error') && error ? true : false"
-        :label="`${convertToTitleCase(messages.inputLabels.currentPassword)} *`"
+        :label="`${convertToTitleCase(messages.inputLabels.currentPassword)}`"
         :placeholder="messages.inputLabels.currentPasswordPlaceholder"
         required
         type="password"
@@ -38,7 +38,7 @@
         class="w-100 mb-4"
         data-testid="kong-auth-change-password-new-password"
         :has-error="currentState.matches('error') && error ? true : false"
-        :label="`${convertToTitleCase(messages.inputLabels.newPassword)} *`"
+        :label="`${convertToTitleCase(messages.inputLabels.newPassword)}`"
         :placeholder="messages.inputLabels.newPasswordPlaceholder"
         required
         type="password"
@@ -53,7 +53,7 @@
         data-testid="kong-auth-change-password-confirm-new-password"
         :error-message="passwordIsInvalid ? messages.resetPassword.passwordMismatch : undefined"
         :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
-        :label="`${convertToTitleCase(messages.inputLabels.confirmPassword)} *`"
+        :label="`${convertToTitleCase(messages.inputLabels.confirmPassword)}`"
         :placeholder="messages.inputLabels.confirmPasswordPlaceholder"
         required
         type="password"
