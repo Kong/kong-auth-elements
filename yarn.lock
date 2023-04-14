@@ -533,10 +533,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@kong/kauth-client-typescript-axios@^0.1889.0":
-  version "0.1889.0"
-  resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1889.0.tgz#584bca08c04179a01762c27fa4c0e45a64dccb9d"
-  integrity sha512-rR47ft5Pp95HjLOetCtVfOo9K8HXGXLJYfQMN1DWU1WfcTFtX1RPn+XBqNj46BlStt1L4VW3Ddw2XXdXPjLwww==
+"@kong/kauth-client-typescript-axios@^0.1890.0":
+  version "0.1890.0"
+  resolved "https://registry.yarnpkg.com/@kong/kauth-client-typescript-axios/-/kauth-client-typescript-axios-0.1890.0.tgz#b6b9b5368f66c9d2093a0291b7ebf6d01c2c65bc"
+  integrity sha512-x5vpWSnDn8/5Nz/HCLN9OLZ+qe8S8pSYxLEMC8o4BoLyvgdeLVMpdzvX65bVddPF6S7bKPmboIRvdzA/KJ2yAw==
 
 "@kong/kauth-client-v2-axios@^0.0.30":
   version "0.0.30"
