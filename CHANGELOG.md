@@ -1,3 +1,10 @@
+## [1.32.11](https://github.com/Kong/kong-auth-elements/compare/v1.32.10...v1.32.11) (2023-04-18)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/kauth-client-v2-axios from 0.0.30 to 0.0.31 ([#1033](https://github.com/Kong/kong-auth-elements/issues/1033)) ([eaeb6ad](https://github.com/Kong/kong-auth-elements/commit/eaeb6adac512126bcb56d4effaeb095d666915f7))
+
 ## [1.32.10](https://github.com/Kong/kong-auth-elements/compare/v1.32.9...v1.32.10) (2023-04-18)
 
 
