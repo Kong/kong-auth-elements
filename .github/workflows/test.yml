@@ -103,6 +103,7 @@ jobs:
           npm_instructions=""
           rm .npmrc
           pkg=$(npm publish  --no-git-checks --access restricted --report-summary --tag "${tag}" | grep "+ "| sed 's/+ //')
+          echo "|${pkg}|"
           npm_instructions="@$(echo ${pkg}|cut -d'@' -f2)@${tag}"
 
           echo "npm_instructions<<EOF" >> $GITHUB_ENV
