@@ -11,8 +11,6 @@ import useConfigOptions from '@/composables/useConfigOptions'
 export default function useAxios(options: AxiosRequestConfig = {}, version: 'v1' | 'v2' = 'v2') {
   const { apiBaseUrl } = useConfigOptions()
 
-  console.log('apiBaseUrl', apiBaseUrl)
-
   const axiosInstance = axios.create({
     baseURL: version === 'v1' ? apiBaseUrl : '',
     withCredentials: true,
