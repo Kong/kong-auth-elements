@@ -12,7 +12,7 @@ export default function useAxios(options: AxiosRequestConfig = {}, version: 'v1'
   const { apiBaseUrl } = useConfigOptions()
 
   const axiosInstance = axios.create({
-    baseURL: version === 'v1' ? apiBaseUrl : '',
+    baseURL: version === 'v1' ? apiBaseUrl : apiBaseUrl?.replace(/\/kauth$/gi, ''),
     withCredentials: true,
     timeout: 30000,
     ...options,
