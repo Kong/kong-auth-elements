@@ -165,9 +165,8 @@ import { inject, ref, reactive, Ref, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import useConfigOptions from '@/composables/useConfigOptions'
-import useKongAuthApi from '@/composables/useKongAuthApi'
+import useAxios from '@/composables/useAxios'
 import useI18n from '@/composables/useI18n'
-import { RegisterRegisterResponse } from '@kong/kauth-client-typescript-axios'
 import { registerEmits } from '@/components/emits'
 import { AxiosResponse } from 'axios'
 import { win } from '@/utils'
@@ -179,7 +178,6 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 const emit = defineEmits(registerEmits)
 
 const { userEntity, customErrorHandler, lang } = useConfigOptions()
-const { api } = useKongAuthApi()
 const { messages } = useI18n(lang)
 // ReCAPTCHA element ref
 const recaptcha = ref(null)
@@ -275,7 +273,10 @@ const btnText = computed((): string => ['pending', 'success'].some(currentState.
 
 const btnDisabled = computed((): boolean => currentState.value.matches('pending') || !userCanSubmitForm.value)
 
-const processRegistration = async (): Promise<AxiosResponse<RegisterRegisterResponse>> => {
+const { axiosInstance } = useAxios()
+const { axiosInstance: axiosInstanceV1 } = useAxios({}, 'v1')
+
+const processRegistration = async (): Promise<AxiosResponse> => {
   let body: any = {
     email: formData.email,
     fullName: formData.fullName,
@@ -297,10 +298,10 @@ const processRegistration = async (): Promise<AxiosResponse<RegisterRegisterResp
       }
     }
     // If custom endpoint (still passing all the values even though 'developer' only needs email and fullName)
-    return await api.client.post(registerRequestEndpoint.value, body)
+    return await axiosInstance.post(registerRequestEndpoint.value, body)
   } else {
     // default endpoint
-    return await api.registration.registerUser(body)
+    return await axiosInstanceV1.post('/api/v1/register', body)
   }
 }
 

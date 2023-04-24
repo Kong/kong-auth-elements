@@ -71,9 +71,8 @@ import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
-import useKongAuthApi from '@/composables/useKongAuthApi'
+import useAxios from '@/composables/useAxios'
 import useI18n from '@/composables/useI18n'
-import { PasswordresetsResetRequest, PasswordAPIV1ResetResponse } from '@kong/kauth-client-typescript-axios'
 import { resetPasswordEmits } from '@/components/emits'
 import { AxiosResponse } from 'axios'
 // Components
@@ -83,7 +82,6 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 const emit = defineEmits(resetPasswordEmits)
 
 const { userEntity, customErrorHandler, lang } = useConfigOptions()
-const { api } = useKongAuthApi()
 const { messages } = useI18n(lang)
 
 /**
@@ -138,12 +136,17 @@ const btnDisabled = computed((): boolean => {
   )
 })
 
-const resetPassword = async (credentials: PasswordresetsResetRequest) => {
+const { axiosInstance: axiosInstanceV1 } = useAxios({}, 'v1')
+
+const resetPassword = async (credentials: {
+  password: string,
+  token: string,
+}) => {
   if (userEntity === 'developer') {
-    return await api.passwords.resetDeveloperPassword(credentials)
+    return await axiosInstanceV1.patch('/api/v1/developer-password-resets', credentials)
   }
 
-  return await api.passwords.resetUserPassword(credentials)
+  return await axiosInstanceV1.patch('/api/v1/password-resets', credentials)
 }
 
 const submitForm = async (): Promise<void> => {
@@ -179,7 +182,7 @@ const submitForm = async (): Promise<void> => {
   await new Promise((resolve) => setTimeout(resolve, 250))
 
   try {
-    const response: AxiosResponse<PasswordAPIV1ResetResponse> = await resetPassword({
+    const response: AxiosResponse = await resetPassword({
       password: formData.password,
       token: formData.passwordToken,
     })

@@ -156,13 +156,12 @@
 import { inject, reactive, ref, Ref, computed, onMounted, watch } from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
-import useKongAuthApi from '@/composables/useKongAuthApi'
-import { DeveloperAPIV1VerifyRequest, DeveloperAPIV1VerifyResponse, EmailverificationsVerifyRequest, EmailverificationsVerifyResponse } from '@kong/kauth-client-typescript-axios'
 import { AxiosResponse } from 'axios'
 import { win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useIdentityProvider from '@/composables/useIdentityProvider'
 import useI18n from '@/composables/useI18n'
+import useAxios from '@/composables/useAxios'
 import { loginEmits } from '@/components/emits'
 
 // Components
@@ -172,7 +171,6 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 const emit = defineEmits(loginEmits)
 
 const { userEntity, developerConfig, customErrorHandler, lang } = useConfigOptions()
-const { api } = useKongAuthApi()
 const { messages } = useI18n(lang)
 
 /**
@@ -316,14 +314,16 @@ const setUserStatusCookie = async () => {
   document.cookie = `userStatus=active; path=/; ${getDomain()} expires=${date.toUTCString()};`
 }
 
-const verifyEmailAddress = async (token: EmailverificationsVerifyRequest | DeveloperAPIV1VerifyRequest): Promise<void> => {
+const { axiosInstance: axiosInstanceV1 } = useAxios({}, 'v1')
+
+const verifyEmailAddress = async (token: string): Promise<void> => {
   try {
     send('VERIFY_EMAIL')
 
     // setTimeout for simulated feedback
     await new Promise((resolve) => setTimeout(resolve, 250))
 
-    const verificationResponse: AxiosResponse<EmailverificationsVerifyResponse | DeveloperAPIV1VerifyResponse> = userEntity === 'developer' ? await api.emailVerification.verifyDeveloperEmail(token) : await api.emailVerification.verifyUserEmail(token)
+    const verificationResponse: AxiosResponse = userEntity === 'developer' ? await axiosInstanceV1.patch('/api/v1/developer-email-verifications', { token }) : await axiosInstanceV1.patch('/api/v1/email-verifications', { token })
 
     send('RESOLVE')
 
@@ -385,13 +385,13 @@ const submitForm = async (): Promise<void> => {
     let loginResponse
 
     if (userEntity === 'developer') {
-      loginResponse = await api.authentication.authenticateDeveloper({
+      loginResponse = await axiosInstanceV1.post('/api/v1/developer-authenticate', {
         username: formData.email,
         password: formData.password,
         portal_id: developerConfig?.portalId || '',
       })
     } else {
-      loginResponse = await api.authentication.authenticateUser({
+      loginResponse = await axiosInstanceV1.post('/api/v1/authenticate', {
         username: formData.email,
         password: formData.password,
       })
@@ -461,7 +461,7 @@ onMounted(async () => {
   const token = urlParams?.get('token')
   if (token) {
     // Verify email address and set email on success
-    await verifyEmailAddress({ token })
+    await verifyEmailAddress(token)
     return
   }
 
