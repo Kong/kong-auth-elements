@@ -1,3 +1,10 @@
+## [1.33.1](https://github.com/Kong/kong-auth-elements/compare/v1.33.0...v1.33.1) (2023-04-24)
+
+
+### Bug Fixes
+
+* **api:** fix the switch between v1/v2 apis ([#1047](https://github.com/Kong/kong-auth-elements/issues/1047)) ([f05cae5](https://github.com/Kong/kong-auth-elements/commit/f05cae5307d0a1699def9df2da2af3c43bcef0f7))
+
 # [1.33.0](https://github.com/Kong/kong-auth-elements/compare/v1.32.14...v1.33.0) (2023-04-24)
 
 
