@@ -1,3 +1,10 @@
+# [1.33.0](https://github.com/Kong/kong-auth-elements/compare/v1.32.14...v1.33.0) (2023-04-24)
+
+
+### Features
+
+* remove kauth sdk [KHCP-7072] ([#1045](https://github.com/Kong/kong-auth-elements/issues/1045)) ([742c1cf](https://github.com/Kong/kong-auth-elements/commit/742c1cfebfc30022b3db03e2924ac86b0e85d129))
+
 ## [1.32.14](https://github.com/Kong/kong-auth-elements/compare/v1.32.13...v1.32.14) (2023-04-21)
 
 
