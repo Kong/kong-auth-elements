@@ -23,7 +23,6 @@ Vue 3 Plugin and Native HTML Web Components used for KAuth UI implementation in 
   - [`kong-auth-change-password`](#kong-auth-change-password)
   - [`kong-auth-register`](#kong-auth-register)
   - [`kong-auth-accept-invitation`](#kong-auth-accept-invitation)
-- [KAuth API](#kauth-api)
 - [Contributing](#contributing)
   - [Creating a New Custom Element](#creating-a-new-custom-element)
   - [Custom Element Styles and the shadow DOM](#custom-element-styles-and-the-shadow-dom)
@@ -39,7 +38,7 @@ Vue 3 Plugin and Native HTML Web Components used for KAuth UI implementation in 
   - [Compile and minify for production](#compile-and-minify-for-production)
   - [Link the local, `@kong/kong-auth-elements` package into another local project for testing](#link-the-local-kongkong-auth-elements-package-into-another-local-project-for-testing)
 - [Current Issues](#current-issues)
-  - [Props](#props)
+  - [Props](#props-6)
   - [Axios](#axios)
 
 ## Installation
@@ -654,56 +653,6 @@ To respond to any of the emitted events in your app, simply provide a callback f
 | `email` | `true` | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string. |
 | `fullName` | `true` | Pass the user's URL encoded full name in the query string. |
 | `org` | `true` | Pass the user's URL encoded organization in the query string. |
-
-## KAuth API
-
-If you would also like to utilize the `KongAuthApi` class and methods, you will need to utilize the [`@kong/kauth-client-typescript-axios`](https://github.com/Kong/kauth-client-sdks/tree/main/packages/typescript-axios). You can add an interface via a JavaScript class as seen in this repository at `/src/services/KongAuthApi.ts`
-
-Once you create your own wrapper, you can do something like this in your project
-
-```js
-import KongAuthApi from './{path-to-your-api-class}'
-
-// Create API instance, and handle unauthorized/unauthenticated errors
-const kongAuthApi = new KongAuthApi((err) => {
-  if (err.message.includes('code 403')) {
-    return
-  }
-
-  // Example of using custom Vue Router function to redirect
-  if (err && !router.isAuthRoute(router.currentRoute.name)) {
-    globalStore.dispatch('auth/logout')
-    router.push({ name: 'login' })
-  }
-})
-
-// Vue 2
-// =========================================
-
-// Allow using api via `this.$kongAuthApi`, or within setup, context.$kongAuthApi
-Vue.prototype.$kongAuthApi = kongAuthApi
-
-// -- OR
-
-// Vue 3
-// =========================================
-
-// Allow using api via `this.$kongAuthApi`, or within setup, context.$kongAuthApi
-const app = createApp({})
-app.config.globalProperties.$kongAuthApi = kongAuthApi
-```
-
-If using TypeScript, you should also declare the module in an `src/api.d.ts` file (or similar) like the following (you can add this to existing shim files)
-
-```js
-import KongAuthApi from './{path-to-your-api-class}'
-
-declare module 'vue/types/vue' {
-  interface Vue {
-    $kongAuthApi: KongAuthApi
-  }
-}
-```
 
 ## Contributing
 

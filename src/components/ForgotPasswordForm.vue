@@ -81,7 +81,7 @@ import { inject, ref, Ref, reactive, computed } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import useConfigOptions from '@/composables/useConfigOptions'
-import useKongAuthApi from '@/composables/useKongAuthApi'
+import useAxios from '@/composables/useAxios'
 import useI18n from '@/composables/useI18n'
 import { forgotPasswordEmits } from '@/components/emits'
 import { AxiosResponse } from 'axios'
@@ -92,7 +92,6 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 const emit = defineEmits(forgotPasswordEmits)
 
 const { customErrorHandler, lang } = useConfigOptions()
-const { api } = useKongAuthApi()
 const { messages } = useI18n(lang)
 
 /**
@@ -137,6 +136,9 @@ const { state: currentState, send } = useMachine(
 const btnText = computed(() => ['pending', 'success'].some(currentState.value.matches) ? messages.forgotPassword.submittingText : messages.forgotPassword.submitText)
 const btnDisabled = computed(() => !formData.email || currentState.value.matches('pending'))
 
+const { axiosInstance } = useAxios()
+const { axiosInstance: axiosInstanceV1 } = useAxios({}, 'v1')
+
 const requestPasswordReset = async (): Promise<AxiosResponse<any>> => {
   let body: any = formData
 
@@ -157,11 +159,12 @@ const requestPasswordReset = async (): Promise<AxiosResponse<any>> => {
         data: body,
       }
     }
-    return await api.client.post(resetPasswordRequestEndpoint.value, body)
+
+    // Use custom endpoint
+    return await axiosInstance.post(resetPasswordRequestEndpoint.value, body)
   }
 
-  // Default endpoint
-  return await api.passwords.requestUserPasswordReset(body)
+  return await axiosInstanceV1.post('/api/v1/password-resets', body)
 }
 
 const submitForm = async (): Promise<void> => {

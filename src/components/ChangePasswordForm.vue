@@ -104,12 +104,10 @@ import { inject, ref, Ref, reactive, computed, watch } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import useConfigOptions from '@/composables/useConfigOptions'
-import useKongAuthApi from '@/composables/useKongAuthApi'
 import useI18n from '@/composables/useI18n'
-import { MeApiPatchUsersMePasswordRequest } from '@kong/kauth-client-v2-axios'
+import useAxios from '@/composables/useAxios'
 import { changePasswordEmits } from '@/components/emits'
 import { convertToTitleCase } from '../utils/index'
-import { AxiosResponse } from 'axios'
 // Components
 import { KButton, KIcon, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
@@ -117,7 +115,6 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 const emit = defineEmits(changePasswordEmits)
 
 const { customErrorHandler, lang } = useConfigOptions()
-const { api } = useKongAuthApi()
 const { messages } = useI18n(lang)
 
 /**
@@ -200,10 +197,6 @@ const handleCancel = (): void => {
   formData.confirmPassword = ''
 }
 
-const changePassword = async (credentials: MeApiPatchUsersMePasswordRequest) => {
-  return await api.v2.me.patchUsersMePassword(credentials)
-}
-
 watch(() => formData.newPassword, () => {
   const passwordRequirementsEventData = Object.entries(passwordRequirementsMet).reduce((accumulator: any, currentValue) => {
     accumulator[currentValue[0]] = currentValue[1].value
@@ -211,6 +204,9 @@ watch(() => formData.newPassword, () => {
   }, {})
   emit('password-requirements', passwordRequirementsEventData)
 })
+
+const { axiosInstance } = useAxios()
+
 const submitForm = async (): Promise<void> => {
   send('CLICK_CHANGE_PASSWORD')
 
@@ -244,12 +240,11 @@ const submitForm = async (): Promise<void> => {
   await new Promise((resolve) => setTimeout(resolve, 250))
 
   try {
-    const response: AxiosResponse = await changePassword({
-      patchUsersMePasswordRequest: {
-        old_password: formData.currentPassword,
-        new_password: formData.newPassword,
-      },
+    const response = await axiosInstance.patch('/v2/users/me/password', {
+      old_password: formData.currentPassword,
+      new_password: formData.newPassword,
     })
+
     if (response.status !== 202) {
       send('REJECT')
 

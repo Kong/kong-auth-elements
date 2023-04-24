@@ -50,7 +50,7 @@
           instruction-text="Please enter in your current password, new password and confirm it below."
           wrapper-id="kong-auth-change-password-wrapper"
           @change-password-success="showAlert('Change password success!')"
-          @password-requirements="showAlert('New password inputted')"
+          @password-requirements="logMessage('New password inputted')"
         />
       </div>
 
@@ -87,6 +87,13 @@ const showAlert = (text = ''): void => {
     return
   }
   alert(text)
+}
+
+const logMessage = (text = ''): void => {
+  if (!text) {
+    return
+  }
+  console.log(text)
 }
 
 const urlPath = ref('')

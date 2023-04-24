@@ -107,8 +107,8 @@ import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
-import useKongAuthApi from '@/composables/useKongAuthApi'
 import useI18n from '@/composables/useI18n'
+import useAxios from '@/composables/useAxios'
 import { acceptInvitationEmits } from '@/components/emits'
 import { AxiosResponse } from 'axios'
 // Components
@@ -118,7 +118,6 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 const emit = defineEmits(acceptInvitationEmits)
 
 const { customErrorHandler, lang } = useConfigOptions()
-const { api } = useKongAuthApi()
 const { messages } = useI18n(lang)
 
 /**
@@ -170,14 +169,13 @@ const userCanSubmitForm = computed((): boolean => !!(formData.email && formData.
 const btnText = computed((): string => ['pending', 'success'].some(currentState.value.matches) ? messages.acceptInvitation.submittingText : messages.acceptInvitation.submitText)
 const btnDisabled = computed((): boolean => currentState.value.matches('pending') || !userCanSubmitForm.value)
 
+const { axiosInstance } = useAxios()
 const acceptInvitation = async (): Promise<AxiosResponse<any>> => {
-  return await api.v2.invites.acceptInvite({
-    acceptInviteRequest: {
-      password: formData.password,
-      full_name: formData.fullName,
-      preferred_name: formData.preferredName || null, // send null to kauth if preferred_name is empty string or undefined
-      token: formData.inviteToken,
-    },
+  return await axiosInstance.post('/v2/accept-invite', {
+    password: formData.password,
+    full_name: formData.fullName,
+    preferred_name: formData.preferredName || null, // send null to kauth if preferred_name is empty string or undefined
+    token: formData.inviteToken,
   })
 }
 
