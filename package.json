@@ -52,7 +52,7 @@
     "@rushstack/eslint-patch": "^1.2.0",
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^16.18.24",
+    "@types/node": "^16.18.25",
     "@types/zxcvbn": "^4.4.1",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
