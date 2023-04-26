@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import ComponentsApp from './ComponentsApp.vue'
 import { KongAuthElementsPlugin } from '../../src/index'
 import type { KongAuthElementsOptions } from '../../src/utils'
+import router from './router'
 
 const app = createApp(ComponentsApp)
 
@@ -32,5 +33,7 @@ const pluginOptions: KongAuthElementsOptions = {
 }
 
 app.use(KongAuthElementsPlugin, pluginOptions)
+
+app.use(router)
 
 app.mount('#app')

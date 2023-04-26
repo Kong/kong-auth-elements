@@ -1,9 +1,13 @@
 <template>
+  <h1>Components App</h1>
   <div class="demo-container">
-    <h1>Components App</h1>
+    <div class="nav-container">
+      <AppNav />
+    </div>
 
     <div class="component-container">
-      <div v-if="urlPath.includes('/login') || urlPath === '/'" class="element-wrapper">
+
+      <div v-if="route.name === 'login'" class="element-wrapper">
         <h4>
           <code>KongAuthLogin.vue</code>
         </h4>
@@ -19,7 +23,7 @@
         />
       </div>
 
-      <div v-if="urlPath.includes('/forgot-password') || urlPath === '/'" class="element-wrapper">
+      <div v-if="route.name === 'forgot-password'" class="element-wrapper">
         <h4>
           <code>KongAuthForgotPassword.vue</code>
         </h4>
@@ -31,7 +35,7 @@
         />
       </div>
 
-      <div v-if="urlPath.includes('/reset-password') || urlPath === '/'" class="element-wrapper">
+      <div v-if="route.name === 'reset-password'" class="element-wrapper">
         <h4>
           <code>KongAuthResetPassword.vue</code>
         </h4>
@@ -42,7 +46,7 @@
         />
       </div>
 
-      <div v-if="urlPath.includes('/change-password') || urlPath === '/'" class="element-wrapper">
+      <div v-if="route.name === 'change-password'" class="element-wrapper">
         <h4>
           <code>KongAuthChangePassword.vue</code>
         </h4>
@@ -54,7 +58,7 @@
         />
       </div>
 
-      <div v-if="urlPath.includes('/register') || urlPath === '/'" class="element-wrapper">
+      <div v-if="route.name === 'register'" class="element-wrapper">
         <h4>
           <code>KongAuthRegister.vue</code>
         </h4>
@@ -65,7 +69,7 @@
           @register-success="showAlert('Register success!')" />
       </div>
 
-      <div v-if="urlPath.includes('/accept-invitation') || urlPath === '/'" class="element-wrapper">
+      <div v-if="route.name === 'accept-invitation'" class="element-wrapper">
         <h4>
           <code>KongAuthAcceptInvitation.vue</code>
         </h4>
@@ -79,8 +83,10 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { win } from '@/utils'
+import AppNav from './AppNav.vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const showAlert = (text = ''): void => {
   if (!text) {
@@ -95,12 +101,6 @@ const logMessage = (text = ''): void => {
   }
   console.log(text)
 }
-
-const urlPath = ref('')
-
-onMounted(() => {
-  urlPath.value = win.getLocationPathname()
-})
 </script>
 
 <style lang="scss">
@@ -111,8 +111,22 @@ body {
   background: #eee;
 }
 
+h1 {
+  text-align: center;
+}
+
 .demo-container {
   padding: 20px;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+
+  .nav-container {
+    @media (min-width: 768px) {
+      width: 240px;
+    }
+  }
 
   h1,
   h4 {
@@ -127,10 +141,10 @@ body {
     margin: 20px;
     padding: 40px;
 
-    @media screen and (min-width: 578px) {
-      max-width: 400px;
-      margin: 40px auto 0;
-    }
+    // @media screen and (min-width: 578px) {
+    //   max-width: 400px;
+    //   margin: 40px auto 0;
+    // }
 
     .element-wrapper {
       padding-bottom: 20px;
