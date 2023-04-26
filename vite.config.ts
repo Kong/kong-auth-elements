@@ -33,30 +33,30 @@ export default ({ mode }) => {
     },
     build: {
       sourcemap: true,
-      // If INCLUDE_VUE=yes, do not empty the dist folder on build
-      emptyOutDir: process.env.INCLUDE_VUE === 'yes',
+      // If INCLUDE_VUE=true, do not empty the dist folder on build
+      emptyOutDir: process.env.INCLUDE_VUE === 'true',
       // If PREVIEW=true, do not build as a library
       lib: process.env.PREVIEW === 'true'
         ? undefined
         : {
           name: 'KongAuthElements',
           entry: path.resolve(__dirname, 'src/index.ts'),
-          // If INCLUDE_VUE=yes, add `vue.` in the filename
-          fileName: (format: any) => `kong-auth-elements.${process.env.INCLUDE_VUE === 'yes' ? 'vue.' : ''}${format}.js`,
+          // If INCLUDE_VUE=true, add `vue.` in the filename
+          fileName: (format: any) => `kong-auth-elements.${process.env.INCLUDE_VUE === 'true' ? 'vue.' : ''}${format}.js`,
         },
       cssCodeSplit: false,
       rollupOptions: {
         // make sure to externalize deps that shouldn't be bundled into your library
         // Only enable to utilize as a Vue 3 Plugin
-        // If INCLUDE_VUE=yes, externalize Vue (for Kong/ui-shared-components)
-        external: process.env.INCLUDE_VUE === 'yes' ? undefined : ['vue', '@kong/kongponents'],
+        // If INCLUDE_VUE=true, externalize Vue (for Kong/ui-shared-components)
+        external: process.env.INCLUDE_VUE === 'true' ? undefined : ['vue', '@kong/kongponents'],
         output: {
           sourcemap: true,
           exports: 'named',
           // Provide global variables to use in the UMD build for externalized deps
           // Enable to utilize consuming app's vue instance
-          // If INCLUDE_VUE=yes, provide global Vue
-          globals: process.env.INCLUDE_VUE === 'yes' ? undefined : { vue: 'Vue' },
+          // If INCLUDE_VUE=true, provide global Vue
+          globals: process.env.INCLUDE_VUE === 'true' ? undefined : { vue: 'Vue' },
         },
         plugins: [
           // visualizer must remain last in the list of plugins
@@ -85,7 +85,7 @@ export default ({ mode }) => {
         '@/': fileURLToPath(new URL('./src/', import.meta.url)),
       },
     },
-    // Change the root when using yarn serve:*
+    // Change the root when using yarn dev:{components|elements}
     root: !process.env.SANDBOX ? process.cwd() : process.env.SANDBOX === 'components' ? './sandbox/components' : './sandbox/elements',
     server: {
       open: true,

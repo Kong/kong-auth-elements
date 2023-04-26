@@ -33,8 +33,9 @@ Vue 3 Plugin and Native HTML Web Components used for KAuth UI implementation in 
   - [Recommended IDE Setup](#recommended-ide-setup)
   - [Local Dev Against Non-Local API](#local-dev-against-non-local-api)
   - [Compile Components and hot-reload for development](#compile-components-and-hot-reload-for-development)
+  - [Build Components Sandbox and preview](#build-components-sandbox-and-preview)
   - [Compile Custom Elements and hot-reload for development](#compile-custom-elements-and-hot-reload-for-development)
-  - [Compile static HTML and demo native Web Components](#compile-static-html-and-demo-native-web-components)
+  - [Build Elements Sandbox and preview](#build-elements-sandbox-and-preview)
   - [Compile and minify for production](#compile-and-minify-for-production)
   - [Link the local, `@kong/kong-auth-elements` package into another local project for testing](#link-the-local-kongkong-auth-elements-package-into-another-local-project-for-testing)
 - [Current Issues](#current-issues)
@@ -768,9 +769,9 @@ A `pre-push` hook is configured to run Stylelint and ESLint before pushing your 
 
 ### Configure Environment Variables
 
-By default, the UI runs against a local backend ([Kong/kauth](https://github.com/Kong/kauth)) running on `localhost:8080`; however, **most development can be done by utlizing a remote backend** (e.g. the DEV environment) and is _**strongly**_ recommended.
+By default, the UI runs against a remote DEV backend.
 
-To utilize a remote backend, first duplicate the `.env.development.local.example` file and rename it to `.env.development.local`
+To utilize the remote backend, first duplicate the `.env.development.local.example` file and rename it to `.env.development.local`
 
 ```sh
 # Execute from the project root
@@ -778,6 +779,8 @@ cp .env.development.local.example .env.development.local
 ```
 
 After adding this new `env` file, your local frontend will utilize the **DEV** environment APIs.
+
+The same process can/should be repeated for the `.env.production.local.example` to utilize the `preview:components` and `preview:elements` commands.
 
 ### Install dependencies
 
@@ -809,6 +812,14 @@ _**Note**: This will not allow testing embedded styles and other Custom Element 
 yarn dev:components
 ```
 
+### Build Components Sandbox and preview
+
+Build the `/sandbox/components` app and preview locally (requires copying the `.env.production.local.example` to `.env.production.local` and configuring the production KAuth URL).
+
+```sh
+yarn preview:components
+```
+
 ### Compile Custom Elements and hot-reload for development
 
 Import elements as native HTML Web Components (may require additional imports in `/sandbox/elements/index.ts`).
@@ -819,14 +830,12 @@ _**Note**: This will not allow you to utilize Vue Dev Tools in the browser (cust
 yarn dev:elements
 ```
 
-### Compile static HTML and demo native Web Components
+### Build Elements Sandbox and preview
 
-Import elements as native HTML Web Components (may require changes in `/demo/index.html`).
-
-_**Note**: This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported)._
+Build the `/sandbox/elements` app and preview locally (requires copying the `.env.production.local.example` to `.env.production.local` and configuring the production KAuth URL).
 
 ```sh
-yarn serve:demo
+yarn preview:components
 ```
 
 ### Compile and minify for production
