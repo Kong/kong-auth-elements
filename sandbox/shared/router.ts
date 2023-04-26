@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import PageView from './PageView.vue'
 
-const componentRoutes = [
+const pageRoutes = [
   'login',
   'forgot-password',
   'reset-password',
@@ -12,7 +12,7 @@ const componentRoutes = [
 
 const routes: RouteRecordRaw[] = []
 
-componentRoutes.forEach((routePath: string) => {
+pageRoutes.forEach((routePath: string) => {
   routes.push({
     path: routePath,
     name: routePath,

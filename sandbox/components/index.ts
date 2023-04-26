@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import ComponentsApp from './ComponentsApp.vue'
 import { KongAuthElementsPlugin } from '../../src/index'
 import type { KongAuthElementsOptions } from '../../src/utils'
-import router from './router'
+import router from '../shared/router'
 
 const app = createApp(ComponentsApp)
 
