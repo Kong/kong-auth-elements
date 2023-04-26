@@ -1,3 +1,10 @@
+## [1.33.2](https://github.com/Kong/kong-auth-elements/compare/v1.33.1...v1.33.2) (2023-04-26)
+
+
+### Bug Fixes
+
+* **deps:** update vue-tsc to 1.5.3 ([#1052](https://github.com/Kong/kong-auth-elements/issues/1052)) ([d20fd61](https://github.com/Kong/kong-auth-elements/commit/d20fd6158dc9d5ff9c0fd909bec50493bcc54ede))
+
 ## [1.33.1](https://github.com/Kong/kong-auth-elements/compare/v1.33.0...v1.33.1) (2023-04-24)
 
 
