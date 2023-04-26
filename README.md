@@ -665,7 +665,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 3. The rest of the element's functionality should live within a child component (see existing examples) located in the `src/components/` directory and should not have any `props` of its own; the `props` from the parent `{PascalCaseName}.ce.vue` are injected with `provide/inject` (required).
 4. Custom elements must be added to the following path `/src/elements/{kebab-case-element-name}/{PascalCaseElementName}.ce.vue`
 5. Custom elements must have an export function added in the `/src/elements/index.ts` file that exports the registration function for the element. Note the proper names/paths in the file.
-6. The registration function (created in Step 5) must be imported and called in `/src/index.ts` (as well as in `/dev/serve-elements/index.ts` for testing).
+6. The registration function (created in Step 5) must be imported and called in `/src/index.ts` (as well as in `/sandbox/elements/index.ts` for testing).
 7. A corresponding `{PascalCaseName}.spec.ts` file must be created in the same directory as the custom element to provide Cypress Component Test Runner code coverage.
 8. Custom element templates (the contents of the `{PascalCaseElementName}.ce.vue` file) must utilize the template shown below:
 
@@ -801,22 +801,22 @@ How it works: Vue cli has a built in proxy. We use it to forward all requests th
 
 ### Compile Components and hot-reload for development
 
-Import elements as Vue components and utilize Vue Dev Tools during development (may require additional imports in `/dev/serve-components/ComponentsApp.vue`).
+Import elements as Vue components and utilize Vue Dev Tools during development (may require additional imports in `/sandbox/components/ComponentsApp.vue`).
 
 _**Note**: This will not allow testing embedded styles and other Custom Element features._
 
 ```sh
-yarn serve:components
+yarn dev:components
 ```
 
 ### Compile Custom Elements and hot-reload for development
 
-Import elements as native HTML Web Components (may require additional imports in `/dev/serve-elements/index.ts`).
+Import elements as native HTML Web Components (may require additional imports in `/sandbox/elements/index.ts`).
 
 _**Note**: This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported)._
 
 ```sh
-yarn serve:elements
+yarn dev:elements
 ```
 
 ### Compile static HTML and demo native Web Components

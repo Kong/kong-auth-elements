@@ -35,12 +35,15 @@ export default ({ mode }) => {
       sourcemap: true,
       // If INCLUDE_VUE=yes, do not empty the dist folder on build
       emptyOutDir: process.env.INCLUDE_VUE === 'yes',
-      lib: {
-        name: 'KongAuthElements',
-        entry: path.resolve(__dirname, 'src/index.ts'),
-        // If INCLUDE_VUE=yes, add `vue.` in the filename
-        fileName: (format) => `kong-auth-elements.${process.env.INCLUDE_VUE === 'yes' ? 'vue.' : ''}${format}.js`,
-      },
+      // If PREVIEW=true, do not build as a library
+      lib: process.env.PREVIEW === 'true'
+        ? undefined
+        : {
+          name: 'KongAuthElements',
+          entry: path.resolve(__dirname, 'src/index.ts'),
+          // If INCLUDE_VUE=yes, add `vue.` in the filename
+          fileName: (format: any) => `kong-auth-elements.${process.env.INCLUDE_VUE === 'yes' ? 'vue.' : ''}${format}.js`,
+        },
       cssCodeSplit: false,
       rollupOptions: {
         // make sure to externalize deps that shouldn't be bundled into your library
@@ -83,9 +86,9 @@ export default ({ mode }) => {
       },
     },
     // Change the root when using yarn serve:*
-    root: !process.env.SERVE_MODE ? process.cwd() : process.env.SERVE_MODE === 'components' ? './dev/serve-components' : './dev/serve-elements',
+    root: !process.env.SANDBOX ? process.cwd() : process.env.SANDBOX === 'components' ? './sandbox/components' : './sandbox/elements',
     server: {
-      port: 4080,
+      open: true,
       proxy: {
         '^/api': {
           target: process.env.VITE_AUTH_URL,

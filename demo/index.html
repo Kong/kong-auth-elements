@@ -96,7 +96,8 @@
         }
 
         window.registerKongAuthNativeElements({
-          // userEntity: 'developer',
+          apiBaseUrl: '/kauth',
+          userEntity: 'user',
         })
 
         document.querySelector('kong-auth-login').addEventListener('click-forgot-password-link', function() {
