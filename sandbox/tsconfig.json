@@ -4,9 +4,7 @@
     "baseUrl": "."
   },
   "include": [
-    "components/**/*",
-    "elements/**/*",
-    "shared/**/*"
+    "**/*"
   ],
   "exclude": [
     "node_modules",
