@@ -747,7 +747,7 @@ This repo uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.
 
 [Commitizen](https://github.com/commitizen/cz-cli) and [Commitlint](https://github.com/conventional-changelog/commitlint) are used to help build and enforce commit messages.
 
-It is __highly recommended__ to use the following command in order to create your commits:
+It is _highly recommended_ to use the following command in order to create your commits:
 
 ```sh
 yarn commit
@@ -769,16 +769,16 @@ We recommend using [VSCode](https://code.visualstudio.com/) along with the [Vola
 
 By default, the UI runs against a remote DEV backend.
 
-To utilize the remote backend, first duplicate the `.env.development.local.example` file and rename it to `.env.development.local`
+To utilize the remote backend, first duplicate the `.env.local.example` file and rename it to `.env.local`
 
 ```sh
 # Execute from the project root
-cp .env.development.local.example .env.development.local
+cp .env.local.example .env.local
 ```
 
 After adding this new `env` file, your local frontend will utilize the **DEV** environment APIs.
 
-The same process can/should be repeated for the `.env.production.local.example` to utilize the `preview:components` and `preview:elements` commands.
+The same process can/should be repeated for the `.env.local.example` to utilize the `preview:components` and `preview:elements` commands.
 
 ### Install dependencies
 
@@ -802,7 +802,7 @@ yarn dev:components
 
 #### Build Components Sandbox and preview
 
-Build the `/sandbox/components` app and preview locally (requires copying the `.env.production.local.example` to `.env.production.local` and configuring the production KAuth URL).
+Build the `/sandbox/components` app and preview locally (requires copying the `.env.local.example` to `.env.local` and configuring the DEV or PROD KAuth URL).
 
 ```sh
 yarn preview:components
@@ -822,7 +822,7 @@ yarn dev:elements
 
 #### Build Elements Sandbox and preview
 
-Build the `/sandbox/elements` app and preview locally (requires copying the `.env.production.local.example` to `.env.production.local` and configuring the production KAuth URL).
+Build the `/sandbox/elements` app and preview locally (requires copying the `.env.local.example` to `.env.local` and configuring the DEV or PROD KAuth URL).
 
 ```sh
 yarn preview:elements
@@ -834,7 +834,7 @@ The web components sandbox is different from the `components` and `elements` san
 
 #### Build Web Components Sandbox and preview
 
-Build the `/sandbox/web-components` app and preview locally (requires copying the `.env.production.local.example` to `.env.production.local` and configuring the production KAuth URL).
+Build the `/sandbox/web-components` app and preview locally (requires copying the `.env.local.example` to `.env.local` and configuring the DEV or PROD KAuth URL).
 
 ```sh
 yarn preview:web-components
