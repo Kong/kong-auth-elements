@@ -1,31 +1,39 @@
 <template>
-  <h1>{{ type === 'components' ? 'Components' : 'Elements' }} App</h1>
   <div class="demo-container">
     <div class="nav-container">
       <AppNav />
     </div>
 
     <div class="component-container">
+      <h1>{{ title }}</h1>
       <slot name="default" />
+
+      <p class="component-note">
+        <small>Note: The dotted blue border outlines the rendered component area.</small>
+      </p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { PropType } from 'vue'
+import { computed, PropType } from 'vue'
 import AppNav from '../shared/AppNav.vue'
 
-defineProps({
+const props = defineProps({
   type: {
     type: String as PropType<'components' | 'elements'>,
     required: true,
   },
 })
+
+const title = computed((): string => `${props.type === 'components' ? 'Components' : 'Elements'} App`)
 </script>
 
 <style lang="scss" scoped>
 h1 {
   text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
 }
 
 .demo-container {
@@ -33,28 +41,32 @@ h1 {
 
   @media (min-width: 768px) {
     display: flex;
+    gap: 16px;
   }
 
   .nav-container {
     margin-bottom: 20px;
 
     @media (min-width: 768px) {
-      width: 240px;
+      width: 300px;
     }
   }
 
   h1,
   h4,
   :deep(h4) {
-    margin: 10px 0 40px;
+    margin: 0 0 40px;
     text-align: center;
   }
 
   .component-container {
     position: relative;
     background: #fff;
-    padding: 40px;
-    width: 100%;
+    padding: 20px;
+
+    @media (min-width: 768px) {
+      width: 100%;
+    }
 
     :deep(.element-wrapper) {
       @media (min-width: 768px) {
@@ -67,6 +79,15 @@ h1 {
       }
     }
   }
+}
+
+.component-note {
+  font-size: 14px;
+  font-style: italic;
+  border-top: 1px solid #eee;
+  margin: 40px 0 0;
+  padding-top: 20px;
+  text-align: center;
 }
 </style>
 

@@ -1,14 +1,19 @@
 <template>
   <nav class="app-nav">
     <ul>
-      <li v-for="route in routes" :key="route">
-        <router-link :to="{ name: route }">{{ route }}</router-link>
+      <li v-for="routeName in routes" :key="routeName">
+        <router-link :to="{ name: routeName }">
+          <span>{{ routeName }}</span>
+          <span v-if="route.name === routeName">&rsaquo;</span>
+        </router-link>
       </li>
     </ul>
   </nav>
 </template>
 
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
+
 const routes = [
   'login',
   'forgot-password',
@@ -17,39 +22,61 @@ const routes = [
   'register',
   'accept-invitation',
 ]
+
+const route = useRoute()
 </script>
 
 <style lang="scss">
+$blue: #1155cb;
+$green: #07a88d;
+
 .app-nav {
   display: flex;
   justify-content: center;
+  width: 100%;
+  border: 1px solid darken($blue, 20%);
 
   ul {
     display: flex;
     flex-direction: column;
-    gap: 16px;
     list-style: none;
     margin: 0;
+    padding: 0;
+    width: 100%;
 
     li {
-      display: block;
+      border-bottom: 1px solid darken($blue, 20%);
+      font-size: 16px;
+
+      &:last-of-type {
+        border-bottom: 0;
+      }
 
       a {
         border-bottom: 1px solid transparent;
-        color: var(--blue-500, blue);
+        color: #fff;
+        background-color: $blue;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 16px;
         text-decoration: none;
         transition: all .2s ease-in-out;
 
         &:hover {
-          border-bottom-color: var(--blue-500, blue);
+          background-color: darken($blue, 10%);
         }
 
         &.router-link-active {
-          color: var(--green-500, green);
+          background-color: $green;
 
           &:hover {
-            border-bottom-color: var(--green-500, green);
+            cursor: default;
           }
+        }
+
+        > span {
+          display: block;
         }
       }
     }

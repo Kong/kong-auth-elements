@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import ElementsApp from './ElementsApp.vue'
 import registerKongAuthNativeElements from '../../src/index'
 import type { KongAuthElementsOptions } from '../../src/utils'
+import router from '../shared/router'
 
 const app = createApp(ElementsApp)
 
@@ -33,5 +34,7 @@ const options: KongAuthElementsOptions = {
 }
 
 registerKongAuthNativeElements(options)
+
+app.use(router)
 
 app.mount('#app')
