@@ -53,7 +53,6 @@
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/git": "^10.0.1",
     "@types/node": "^16.18.25",
-    "@types/zxcvbn": "^4.4.1",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vitejs/plugin-vue": "^4.2.1",
@@ -86,8 +85,7 @@
     "typescript": "~4.9.5",
     "vite": "^4.3.3",
     "vue-router": "^4.1.6",
-    "vue-tsc": "^1.6.0",
-    "zxcvbn": "^4.4.2"
+    "vue-tsc": "^1.6.0"
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.50.0",
