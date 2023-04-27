@@ -1,3 +1,10 @@
+# [1.34.0](https://github.com/Kong/kong-auth-elements/compare/v1.33.3...v1.34.0) (2023-04-27)
+
+
+### Features
+
+* sandbox and refactor components [KHCP-7084] ([#1059](https://github.com/Kong/kong-auth-elements/issues/1059)) ([35348cf](https://github.com/Kong/kong-auth-elements/commit/35348cf468a1ebfdd3745633f30e30a7a1043297))
+
 ## [1.33.3](https://github.com/Kong/kong-auth-elements/compare/v1.33.2...v1.33.3) (2023-04-26)
 
 
