@@ -56,7 +56,7 @@ h1 {
     padding: 40px;
     width: 100%;
 
-    :slotted(.element-wrapper) {
+    :deep(.element-wrapper) {
       @media (min-width: 768px) {
         max-width: 400px;
         margin: auto;
