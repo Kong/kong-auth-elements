@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="./lib/style.css" />
+    <script src="./lib/kong-auth-elements.vue.umd.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style type="text/css">
+      html,
+      body {
+        font-family: Inter, sans-serif;
+        font-weight: 400;
+      }
+
+    </style>
+    <style type="text/css">
+      body {
+        padding: 20px;
+      }
+
+      /* Styles for demo page only */
+      .demo-app {
+        max-width: 600px;
+        margin: 20px auto;
+      }
+
+      h1,
+      h4 {
+        text-align: center;
+      }
+
+      hr {
+        margin: 40px 0;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="demo-app">
+      <h1>Kong Auth Elements Demo</h1>
+      <br>
+
+      <h4><code>kong-auth-login</code></h4>
+      <div id="kong-auth-login-wrapper">
+        <kong-auth-login wrapper-id="kong-auth-login-wrapper" show-forgot-password-link
+          .login-success="showAlert('Login success!')"
+          .click-forgot-password-link="showAlert('User clicked forgot password')"
+          .click-register-link="showAlert('User clicked register')"></kong-auth-login>
+      </div>
+      <hr>
+
+      <h4><code>kong-auth-forgot-password</code></h4>
+      <div id="kong-auth-forgot-password-wrapper">
+        <kong-auth-forgot-password wrapper-id="kong-auth-forgot-password-wrapper"
+          instruction-text="Enter your verified email address and we will send you a password reset link."
+          .click-login-link="showAlert('User clicked login')"
+          .forgot-password-success="showAlert('Forgot password success!')">
+        </kong-auth-forgot-password>
+      </div>
+      <hr>
+
+      <h4><code>kong-auth-reset-password</code></h4>
+      <div id="kong-auth-reset-password-wrapper">
+        <kong-auth-reset-password wrapper-id="kong-auth-reset-password-wrapper"
+          instruction-text="Please enter in your new password and confirm it below."
+          .reset-password-success="showAlert('Reset password success!')">
+        </kong-auth-reset-password>
+      </div>
+      <hr>
+
+      <h4><code>kong-auth-change-password</code></h4>
+      <div id="kong-auth-change-password-wrapper">
+        <kong-auth-change-password wrapper-id="kong-auth-change-password-wrapper"
+          instruction-text="Please enter in your old password, new password and confirm it below."
+          .change-password-success="showAlert('Change password success!')"
+          .password-requirements="showAlert('New password inputted')">
+        </kong-auth-change-password>
+      </div>
+      <hr>
+
+      <h4><code>kong-auth-register</code></h4>
+      <div id="kong-auth-register-wrapper">
+        <kong-auth-register wrapper-id="kong-auth-register-wrapper"
+          .register-success="showAlert('Register success!')" />
+      </div>
+    </div>
+
+    <script>
+
+    </script>
+
+
+    <script>
+      (function() {
+        var showAlert = function(text = '') {
+          if (!text) {
+            return
+          }
+          alert(text)
+        }
+
+        window.registerKongAuthNativeElements({
+          apiBaseUrl: '/kauth',
+          userEntity: 'user',
+          shadowDom: true,
+        })
+
+        document.querySelector('kong-auth-login').addEventListener('click-forgot-password-link', function() {
+          showAlert('clicked')
+        })
+      })()
+    </script>
+
+  </body>
+
+</html>

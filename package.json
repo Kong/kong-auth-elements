@@ -21,6 +21,7 @@
     "build:visualize": "cross-env BUILD_VISUALIZER=true INCLUDE_VUE=false vite build -m production",
     "preview:components": "cross-env PREVIEW=true INCLUDE_VUE=true SANDBOX=components vite build --emptyOutDir && SANDBOX=components vite preview",
     "preview:elements": "cross-env PREVIEW=true INCLUDE_VUE=true SANDBOX=elements vite build --emptyOutDir && SANDBOX=elements vite preview",
+    "preview:web-components": "cross-env INCLUDE_VUE=true vite build --outDir './sandbox/web-components/dist/lib' && PREVIEW=true SANDBOX=web-components vite build --emptyOutDir=false && SANDBOX=web-components vite preview",
     "test": "cypress run --component -b chrome",
     "test:open": "cypress open --component -b chrome",
     "test:spec": "cypress run --component -b chrome --spec",

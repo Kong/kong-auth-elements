@@ -24,6 +24,20 @@ const buildVisualizerPlugin = process.env.BUILD_VISUALIZER
 export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
+  // Determine the root when using yarn dev:{components|elements}, otherwise use the package root (process.cwd())
+  const getRoot = () => {
+    console.log('SANDBOX', process.env.SANDBOX)
+    if (!process.env.SANDBOX) {
+      return process.cwd()
+    } else if (process.env.SANDBOX === 'components') {
+      return './sandbox/components'
+    } else if (process.env.SANDBOX === 'elements') {
+      return './sandbox/elements'
+    } else if (process.env.SANDBOX === 'web-components') {
+      return './sandbox/web-components'
+    }
+  }
+
   return defineConfig({
     // Define global constant replacements
     define: {
@@ -85,8 +99,7 @@ export default ({ mode }) => {
         '@/': fileURLToPath(new URL('./src/', import.meta.url)),
       },
     },
-    // Change the root when using yarn dev:{components|elements}
-    root: !process.env.SANDBOX ? process.cwd() : process.env.SANDBOX === 'components' ? './sandbox/components' : './sandbox/elements',
+    root: getRoot(),
     server: {
       open: true,
       proxy: {

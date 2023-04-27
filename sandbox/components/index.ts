@@ -11,25 +11,10 @@ const pluginOptions: KongAuthElementsOptions = {
   apiBaseUrl: '/kauth',
   userEntity: 'user',
   shadowDom: false,
-  // injectCss: ['input { color: red !important }'],
   developerConfig: {
     portalId: '83f1733c-862c-43e5-a005-acfb0addfcfb',
   },
   lang: 'en',
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // customErrorHandler: ({ error, request, element }): string => {
-  //   console.log('error', error)
-
-  //   if (request === 'reset-password-request') {
-  //     return 'Custom reset error message.'
-  //   }  else if (request === 'change-password-request') {
-  //     return 'Custom change error message.'
-  //   } else if (request === 'register-request') {
-  //     return 'Custom registration error message.'
-  //   }
-
-  //   return ''
-  // },
 }
 
 app.use(KongAuthElementsPlugin, pluginOptions)

@@ -38,8 +38,8 @@ export const KongAuthElementsPlugin = {
 export default function registerKongAuthNativeElements(options?: KongAuthElementsOptions): void {
   const userOptions = Object.assign({}, options)
 
-  // Since we are registering custom elements as native web components, force options.shadowDom to true
-  userOptions.shadowDom = true
+  // Since we are registering custom elements as native web components, force options.shadowDom to true if undefined
+  userOptions.shadowDom = options?.shadowDom !== undefined ? options.shadowDom : true
 
   registerCustomElement('kong-auth-accept-invitation', elements.KongAuthAcceptInvitation, userOptions)
   registerCustomElement('kong-auth-forgot-password', elements.KongAuthForgotPassword, userOptions)
