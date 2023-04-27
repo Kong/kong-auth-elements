@@ -2,7 +2,6 @@
 
 interface ImportMetaEnv {
   readonly VITE_AUTH_URL: string
-  readonly VITE_KAUTH_API_BASE_URL: string
 }
 
 interface ImportMeta {
