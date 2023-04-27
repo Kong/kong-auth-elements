@@ -193,7 +193,7 @@ The `id` attribute should then be passed to each [Custom Element](#custom-elemen
 
 ### Options
 
-Regardless if you're using in Vue 3, Vue 2, or the native web components, an idential set of options exist for configuring the `kong-auth-elements`.
+Regardless if you're using in Vue 3, Vue 2, or the native web components, an identical set of options exist for configuring the `kong-auth-elements`.
 
 | Option | Type | Default | Description |
 | :------------- | :--------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
