@@ -30,13 +30,10 @@ Vue 3 Plugin and Native HTML Web Components used for KAuth UI implementation in 
 - [Local Development](#local-development)
   - [Configure Environment Variables](#configure-environment-variables)
   - [Install dependencies](#install-dependencies)
-  - [Recommended IDE Setup](#recommended-ide-setup)
-  - [Local Dev Against Non-Local API](#local-dev-against-non-local-api)
-  - [Compile Components and hot-reload for development](#compile-components-and-hot-reload-for-development)
-  - [Compile Custom Elements and hot-reload for development](#compile-custom-elements-and-hot-reload-for-development)
-  - [Compile static HTML and demo native Web Components](#compile-static-html-and-demo-native-web-components)
+  - [Components Sandbox](#components-sandbox)
+  - [Elements Sandbox](#elements-sandbox)
+  - [Web Components Sandbox](#web-components-sandbox)
   - [Compile and minify for production](#compile-and-minify-for-production)
-  - [Link the local, `@kong/kong-auth-elements` package into another local project for testing](#link-the-local-kongkong-auth-elements-package-into-another-local-project-for-testing)
 - [Current Issues](#current-issues)
   - [Props](#props-6)
   - [Axios](#axios)
@@ -192,7 +189,7 @@ The `id` attribute should then be passed to each [Custom Element](#custom-elemen
 
 ### Options
 
-Regardless if you're using in Vue 3, Vue 2, or the native web components, an idential set of options exist for configuring the `kong-auth-elements`.
+Regardless if you're using in Vue 3, Vue 2, or the native web components, an identical set of options exist for configuring the `kong-auth-elements`.
 
 | Option | Type | Default | Description |
 | :------------- | :--------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -665,7 +662,7 @@ To respond to any of the emitted events in your app, simply provide a callback f
 3. The rest of the element's functionality should live within a child component (see existing examples) located in the `src/components/` directory and should not have any `props` of its own; the `props` from the parent `{PascalCaseName}.ce.vue` are injected with `provide/inject` (required).
 4. Custom elements must be added to the following path `/src/elements/{kebab-case-element-name}/{PascalCaseElementName}.ce.vue`
 5. Custom elements must have an export function added in the `/src/elements/index.ts` file that exports the registration function for the element. Note the proper names/paths in the file.
-6. The registration function (created in Step 5) must be imported and called in `/src/index.ts` (as well as in `/dev/serve-elements/index.ts` for testing).
+6. The registration function (created in Step 5) must be imported and called in `/src/index.ts` (as well as in `/sandbox/elements/index.ts` for testing).
 7. A corresponding `{PascalCaseName}.spec.ts` file must be created in the same directory as the custom element to provide Cypress Component Test Runner code coverage.
 8. Custom element templates (the contents of the `{PascalCaseElementName}.ce.vue` file) must utilize the template shown below:
 
@@ -750,7 +747,7 @@ This repo uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.
 
 [Commitizen](https://github.com/commitizen/cz-cli) and [Commitlint](https://github.com/conventional-changelog/commitlint) are used to help build and enforce commit messages.
 
-It is __highly recommended__ to use the following command in order to create your commits:
+It is _highly recommended_ to use the following command in order to create your commits:
 
 ```sh
 yarn commit
@@ -766,67 +763,81 @@ A `pre-push` hook is configured to run Stylelint and ESLint before pushing your 
 
 ## Local Development
 
+We recommend using [VSCode](https://code.visualstudio.com/) along with the [Volar extension](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar).
+
 ### Configure Environment Variables
 
-By default, the UI runs against a local backend ([Kong/kauth](https://github.com/Kong/kauth)) running on `localhost:8080`; however, **most development can be done by utlizing a remote backend** (e.g. the DEV environment) and is _**strongly**_ recommended.
+By default, the UI runs against a remote DEV backend.
 
-To utilize a remote backend, first duplicate the `.env.development.local.example` file and rename it to `.env.development.local`
+To utilize the remote backend, first duplicate the `.env.local.example` file and rename it to `.env.local`
 
 ```sh
 # Execute from the project root
-cp .env.development.local.example .env.development.local
+cp .env.local.example .env.local
 ```
 
 After adding this new `env` file, your local frontend will utilize the **DEV** environment APIs.
 
+The same process can/should be repeated for the `.env.local.example` to utilize the `preview:components` and `preview:elements` commands.
+
 ### Install dependencies
+
+Ensure you pull down the lastest from the `main` branch and then install dependencies, making sure not to update the lockfile.
 
 ```sh
 yarn install --frozen-lockfile
 ```
 
-### Recommended IDE Setup
+### Components Sandbox
 
-We recommend using [VSCode](https://code.visualstudio.com/) along with the [Volar extension](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+#### Compile Components and hot-reload for development
 
-#### Type Support For `.vue` Imports in TS
+Import elements as Vue components and utilize Vue Dev Tools during development (may require additional imports in `/sandbox/components/ComponentsApp.vue`).
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
-
-### Local Dev Against Non-Local API
-
-Create a file `.env.development.local` change `VUE_APP_AUTH_URL` to the environment you wish to hit. See `.env.development.local.example` for values.
-
-How it works: Vue cli has a built in proxy. We use it to forward all requests that go to /api/\* to the specified URL running on port 3000. You can see the configuration in vue.config.js file.
-
-### Compile Components and hot-reload for development
-
-Import elements as Vue components and utilize Vue Dev Tools during development (may require additional imports in `/dev/serve-components/ComponentsApp.vue`).
-
-_**Note**: This will not allow testing embedded styles and other Custom Element features._
+> **Note**: This will not allow testing embedded styles and other Custom Element features.
 
 ```sh
-yarn serve:components
+yarn dev:components
 ```
 
-### Compile Custom Elements and hot-reload for development
+#### Build Components Sandbox and preview
 
-Import elements as native HTML Web Components (may require additional imports in `/dev/serve-elements/index.ts`).
-
-_**Note**: This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported)._
+Build the `/sandbox/components` app and preview locally (requires copying the `.env.local.example` to `.env.local` and configuring the DEV or PROD KAuth URL).
 
 ```sh
-yarn serve:elements
+yarn preview:components
 ```
 
-### Compile static HTML and demo native Web Components
+### Elements Sandbox
 
-Import elements as native HTML Web Components (may require changes in `/demo/index.html`).
+#### Compile Custom Elements and hot-reload for development
 
-_**Note**: This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported)._
+Import elements as native HTML Web Components (may require additional imports in `/sandbox/elements/index.ts`).
+
+> **Note**: This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported).
 
 ```sh
-yarn serve:demo
+yarn dev:elements
+```
+
+#### Build Elements Sandbox and preview
+
+Build the `/sandbox/elements` app and preview locally (requires copying the `.env.local.example` to `.env.local` and configuring the DEV or PROD KAuth URL).
+
+```sh
+yarn preview:elements
+```
+
+### Web Components Sandbox
+
+The web components sandbox is different from the `components` and `elements` sandboxes in that it first builds the actual package exports and then registers the elements as native [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). See the `/sandbox/web-components` directory.
+
+#### Build Web Components Sandbox and preview
+
+Build the `/sandbox/web-components` app and preview locally (requires copying the `.env.local.example` to `.env.local` and configuring the DEV or PROD KAuth URL).
+
+```sh
+yarn preview:web-components
 ```
 
 ### Compile and minify for production
@@ -835,7 +846,7 @@ yarn serve:demo
 yarn build
 ```
 
-### Link the local, `@kong/kong-auth-elements` package into another local project for testing
+#### Link the local `@kong/kong-auth-elements` package into another local project for testing
 
 Inside `@kong/kong-auth-elements` run
 
@@ -843,10 +854,16 @@ Inside `@kong/kong-auth-elements` run
 yarn link
 ```
 
-Next, inside of the local consuming project (i.e. `khcp-ui`), run this from the project root
+Next, inside of the local consuming project run this command from the project root.
 
 ```sh
 yarn link "@kong/kong-auth-elements"
+```
+
+When you're finish testing locally, don't forget to run the `unlink` command and reinstall dependencies in your host application.
+
+```sh
+yarn unlink "@kong/kong-auth-elements"
 ```
 
 ---
@@ -861,4 +878,4 @@ There is currently an issue in Vue 3 custom elements (which we are using here) w
 
 ### Axios
 
-This package depends on [axios](https://github.com/axios/axios); specifically a minimum version of `0.24.0`. If your project is pinned to a version of **axios** less than `0.24.0` you will need to upgrade to prevent type interface conflicts.
+This package depends on [axios](https://github.com/axios/axios); specifically a minimum version of `0.27.2`. If your project is pinned to a version of **axios** less than `0.27.2` you will need to upgrade to prevent type interface conflicts.

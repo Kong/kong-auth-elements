@@ -13,25 +13,25 @@
     "./dist/*": "./dist/*"
   },
   "scripts": {
-    "commit": "cz",
-    "build": "yarn stylelint && yarn lint && yarn typecheck && yarn build:package && yarn build:package:omitVue && vue-tsc --emitDeclarationOnly",
-    "build:package": "cross-env INCLUDE_VUE=yes vite build",
-    "build:package:omitVue": "cross-env INCLUDE_VUE=no vite build",
-    "build:visualize": "cross-env BUILD_VISUALIZER=true INCLUDE_VUE=no vite build -m production",
-    "serve:components": "cross-env SERVE_MODE=components vite",
-    "serve:elements": "cross-env SERVE_MODE=elements vite",
-    "serve:demo": "rimraf ./demo/dist-copy && yarn build && cp -R ./dist ./demo/dist-copy && echo \"\n    \\x1b[30m\\x1b[103m Note: The demo does NOT support hot module reload \\x1b[0m\" && yarn serve",
-    "serve": "serve -p 3333 ./demo",
-    "serve:help": "echo \"\nRun 'yarn serve:components' to import components and use Vue Dev Tools.\n(may require additional imports in /dev/serve-components/ComponentsApp.vue)\n\\x1b[33m* This will not allow testing embedded styles and other Custom Element features. *\\x1b[0m\n\n-- OR --\n\nRun 'yarn serve:elements' to import native Web Components.\n(may require additional imports in /dev/serve-elements/index.ts)\n\\x1b[33m* This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported). *\\x1b[0m\n\n\"",
+    "dev:components": "cross-env SANDBOX=components vite",
+    "dev:elements": "cross-env SANDBOX=elements vite",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint '**/*.{js,ts,vue}'",
+    "lint:fix": "eslint '**/*.{js,ts,vue}' --fix",
+    "stylelint": "stylelint './src/**/*.{css,scss,sass,less,styl,vue}'",
+    "stylelint:fix": "stylelint './src/**/*.{css,scss,sass,less,styl,vue}' --fix",
     "test": "cypress run --component -b chrome",
     "test:open": "cypress open --component -b chrome",
     "test:spec": "cypress run --component -b chrome --spec",
-    "lint": "eslint '**/*.{js,ts,vue}'",
-    "lint:fix": "eslint '**/*.{js,ts,vue}' --fix",
-    "typecheck": "vue-tsc --noEmit",
+    "preview:components": "cross-env PREVIEW=true INCLUDE_VUE=true SANDBOX=components vite build --emptyOutDir && cross-env SANDBOX=components vite preview",
+    "preview:elements": "cross-env PREVIEW=true INCLUDE_VUE=true SANDBOX=elements vite build --emptyOutDir && cross-env SANDBOX=elements vite preview",
+    "preview:web-components": "cross-env INCLUDE_VUE=true vite build --outDir './sandbox/web-components/dist/lib' && cross-env PREVIEW=true SANDBOX=web-components vite build --emptyOutDir=false && cross-env SANDBOX=web-components vite preview",
+    "build": "yarn stylelint && yarn lint && yarn typecheck && yarn build:package && yarn build:package:omitVue && vue-tsc --emitDeclarationOnly",
+    "build:package": "cross-env INCLUDE_VUE=true vite build",
+    "build:package:omitVue": "cross-env INCLUDE_VUE=no vite build",
+    "build:visualize": "cross-env BUILD_VISUALIZER=true INCLUDE_VUE=false vite build -m production",
     "semantic-release": "semantic-release",
-    "stylelint": "stylelint './src/**/*.{css,scss,sass,less,styl,vue}'",
-    "stylelint:fix": "stylelint './src/**/*.{css,scss,sass,less,styl,vue}' --fix"
+    "commit": "cz"
   },
   "dependencies": {
     "@xstate/vue": "^0.8.1",
@@ -53,7 +53,6 @@
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/git": "^10.0.1",
     "@types/node": "^16.18.25",
-    "@types/zxcvbn": "^4.4.1",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vitejs/plugin-vue": "^4.2.1",
@@ -73,11 +72,9 @@
     "eslint-plugin-vue": "^8.7.1",
     "postcss-custom-properties": "^10.0.0",
     "postcss-html": "^1.5.0",
-    "rimraf": "^3.0.2",
     "rollup-plugin-visualizer": "^5.9.0",
     "sass": "^1.62.1",
     "semantic-release": "^19.0.5",
-    "serve": "^14.2.0",
     "start-server-and-test": "^1.15.4",
     "stylelint": "^14.16.1",
     "stylelint-config-html": "^1.1.0",
@@ -86,8 +83,8 @@
     "stylelint-order": "^6.0.3",
     "typescript": "~4.9.5",
     "vite": "^4.3.3",
-    "vue-tsc": "^1.6.0",
-    "zxcvbn": "^4.4.2"
+    "vue-router": "^4.1.6",
+    "vue-tsc": "^1.6.0"
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.50.0",
@@ -98,14 +95,19 @@
     "dist"
   ],
   "typings": "dist/types",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "author": "Kong, Inc.",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Kong/kong-auth-elements.git"
   },
-  "publishConfig": {
-    "access": "restricted"
+  "homepage": "https://github.com/Kong/kong-auth-elements",
+  "bugs": {
+    "url": "https://github.com/Kong/kong-auth-elements/issues"
   },
-  "license": "UNLICENSED",
   "release": {
     "branches": [
       "+([0-9])?(.{+([0-9]),x}).x",

@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import ElementsApp from './ElementsApp.vue'
 import registerKongAuthNativeElements from '../../src/index'
 import type { KongAuthElementsOptions } from '../../src/utils'
+import router from '../shared/router'
 
 const app = createApp(ElementsApp)
 
@@ -10,10 +11,10 @@ const options: KongAuthElementsOptions = {
   apiBaseUrl: '/kauth',
   userEntity: 'user',
   lang: 'en',
-  // injectCss: ['input { color: red !important }'],
   developerConfig: {
     portalId: 'dfc77af7-ba97-4c52-889e-b2ca75b51ed3',
   },
+  shadowDom: true, // set to true since we're using elements not vue components (we want the shadow DOM here)
   customErrorHandler: ({ error, request, element }): string => {
     console.log('error', error)
 
@@ -33,5 +34,7 @@ const options: KongAuthElementsOptions = {
 }
 
 registerKongAuthNativeElements(options)
+
+app.use(router)
 
 app.mount('#app')

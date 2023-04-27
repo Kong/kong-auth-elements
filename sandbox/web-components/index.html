@@ -6,8 +6,17 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
-    <link rel="stylesheet" href="./dist-copy/style.css" />
-    <script src="./dist-copy/kong-auth-elements.vue.umd.js"></script>
+    <link rel="stylesheet" href="./lib/style.css" />
+    <script src="./lib/kong-auth-elements.vue.umd.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style type="text/css">
+      html,
+      body {
+        font-family: Inter, sans-serif;
+        font-weight: 400;
+      }
+
+    </style>
     <style type="text/css">
       body {
         padding: 20px;
@@ -96,7 +105,9 @@
         }
 
         window.registerKongAuthNativeElements({
-          // userEntity: 'developer',
+          apiBaseUrl: '/kauth',
+          userEntity: 'user',
+          shadowDom: true,
         })
 
         document.querySelector('kong-auth-login').addEventListener('click-forgot-password-link', function() {
