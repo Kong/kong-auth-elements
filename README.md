@@ -30,14 +30,10 @@ Vue 3 Plugin and Native HTML Web Components used for KAuth UI implementation in 
 - [Local Development](#local-development)
   - [Configure Environment Variables](#configure-environment-variables)
   - [Install dependencies](#install-dependencies)
-  - [Recommended IDE Setup](#recommended-ide-setup)
-  - [Local Dev Against Non-Local API](#local-dev-against-non-local-api)
-  - [Compile Components and hot-reload for development](#compile-components-and-hot-reload-for-development)
-  - [Build Components Sandbox and preview](#build-components-sandbox-and-preview)
-  - [Compile Custom Elements and hot-reload for development](#compile-custom-elements-and-hot-reload-for-development)
-  - [Build Elements Sandbox and preview](#build-elements-sandbox-and-preview)
+  - [Components Sandbox](#components-sandbox)
+  - [Elements Sandbox](#elements-sandbox)
+  - [Web Components Sandbox](#web-components-sandbox)
   - [Compile and minify for production](#compile-and-minify-for-production)
-  - [Link the local, `@kong/kong-auth-elements` package into another local project for testing](#link-the-local-kongkong-auth-elements-package-into-another-local-project-for-testing)
 - [Current Issues](#current-issues)
   - [Props](#props-6)
   - [Axios](#axios)
@@ -767,6 +763,8 @@ A `pre-push` hook is configured to run Stylelint and ESLint before pushing your 
 
 ## Local Development
 
+We recommend using [VSCode](https://code.visualstudio.com/) along with the [Volar extension](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar).
+
 ### Configure Environment Variables
 
 By default, the UI runs against a remote DEV backend.
@@ -784,35 +782,25 @@ The same process can/should be repeated for the `.env.production.local.example` 
 
 ### Install dependencies
 
+Ensure you pull down the lastest from the `main` branch and then install dependencies, making sure not to update the lockfile.
+
 ```sh
 yarn install --frozen-lockfile
 ```
 
-### Recommended IDE Setup
+### Components Sandbox
 
-We recommend using [VSCode](https://code.visualstudio.com/) along with the [Volar extension](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
-
-#### Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
-
-### Local Dev Against Non-Local API
-
-Create a file `.env.development.local` change `VUE_APP_AUTH_URL` to the environment you wish to hit. See `.env.development.local.example` for values.
-
-How it works: Vue cli has a built in proxy. We use it to forward all requests that go to /api/\* to the specified URL running on port 3000. You can see the configuration in vue.config.js file.
-
-### Compile Components and hot-reload for development
+#### Compile Components and hot-reload for development
 
 Import elements as Vue components and utilize Vue Dev Tools during development (may require additional imports in `/sandbox/components/ComponentsApp.vue`).
 
-_**Note**: This will not allow testing embedded styles and other Custom Element features._
+> **Note**: This will not allow testing embedded styles and other Custom Element features.
 
 ```sh
 yarn dev:components
 ```
 
-### Build Components Sandbox and preview
+#### Build Components Sandbox and preview
 
 Build the `/sandbox/components` app and preview locally (requires copying the `.env.production.local.example` to `.env.production.local` and configuring the production KAuth URL).
 
@@ -820,22 +808,36 @@ Build the `/sandbox/components` app and preview locally (requires copying the `.
 yarn preview:components
 ```
 
-### Compile Custom Elements and hot-reload for development
+### Elements Sandbox
+
+#### Compile Custom Elements and hot-reload for development
 
 Import elements as native HTML Web Components (may require additional imports in `/sandbox/elements/index.ts`).
 
-_**Note**: This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported)._
+> **Note**: This will not allow you to utilize Vue Dev Tools in the browser (custom elements are not currently supported).
 
 ```sh
 yarn dev:elements
 ```
 
-### Build Elements Sandbox and preview
+#### Build Elements Sandbox and preview
 
 Build the `/sandbox/elements` app and preview locally (requires copying the `.env.production.local.example` to `.env.production.local` and configuring the production KAuth URL).
 
 ```sh
-yarn preview:components
+yarn preview:elements
+```
+
+### Web Components Sandbox
+
+The web components sandbox is different from the `components` and `elements` sandboxes in that it first builds the actual package exports and then registers the elements as native [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). See the `/sandbox/web-components` directory.
+
+#### Build Web Components Sandbox and preview
+
+Build the `/sandbox/web-components` app and preview locally (requires copying the `.env.production.local.example` to `.env.production.local` and configuring the production KAuth URL).
+
+```sh
+yarn preview:web-components
 ```
 
 ### Compile and minify for production
@@ -844,7 +846,7 @@ yarn preview:components
 yarn build
 ```
 
-### Link the local, `@kong/kong-auth-elements` package into another local project for testing
+#### Link the local `@kong/kong-auth-elements` package into another local project for testing
 
 Inside `@kong/kong-auth-elements` run
 
@@ -852,10 +854,16 @@ Inside `@kong/kong-auth-elements` run
 yarn link
 ```
 
-Next, inside of the local consuming project (i.e. `khcp-ui`), run this from the project root
+Next, inside of the local consuming project run this command from the project root.
 
 ```sh
 yarn link "@kong/kong-auth-elements"
+```
+
+When you're finish testing locally, don't forget to run the `unlink` command and reinstall dependencies in your host application.
+
+```sh
+yarn unlink "@kong/kong-auth-elements"
 ```
 
 ---
@@ -870,4 +878,4 @@ There is currently an issue in Vue 3 custom elements (which we are using here) w
 
 ### Axios
 
-This package depends on [axios](https://github.com/axios/axios); specifically a minimum version of `0.24.0`. If your project is pinned to a version of **axios** less than `0.24.0` you will need to upgrade to prevent type interface conflicts.
+This package depends on [axios](https://github.com/axios/axios); specifically a minimum version of `0.27.2`. If your project is pinned to a version of **axios** less than `0.27.2` you will need to upgrade to prevent type interface conflicts.
