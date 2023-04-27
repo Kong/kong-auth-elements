@@ -26,7 +26,6 @@ export default ({ mode }) => {
 
   // Determine the root when using yarn dev:{components|elements}, otherwise use the package root (process.cwd())
   const getRoot = () => {
-    console.log('SANDBOX', process.env.SANDBOX)
     if (!process.env.SANDBOX) {
       return process.cwd()
     } else if (process.env.SANDBOX === 'components') {
