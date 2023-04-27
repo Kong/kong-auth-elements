@@ -6,7 +6,7 @@
       </h4>
       <KongAuthLogin
         basic-auth-login-enabled
-        :idp-login-enabled="true"
+        idp-login-enabled
         idp-login-return-to="https://kompany795bb6b9.us.portal.konghq.tech"
         show-forgot-password-link
         @click-forgot-password-link="showAlert('User clicked forgot password')"
