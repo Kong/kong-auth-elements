@@ -96,7 +96,7 @@
   ],
   "typings": "dist/types",
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "author": "Kong, Inc.",
   "license": "Apache-2.0",
