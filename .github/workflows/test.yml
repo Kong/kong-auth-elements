@@ -80,6 +80,11 @@ jobs:
           name: cypress_videos
           path: cypress/videos/
 
+      - name: Create .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+
       - name: Publish Previews
         if: github.event_name == 'pull_request'
         env:
