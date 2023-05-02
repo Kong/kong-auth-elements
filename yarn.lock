@@ -1513,10 +1513,10 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.3.0-beta.3.tgz#dc19df6124e157030b3e7c8f471f497f9528a7be"
   integrity sha512-st1SnB/Bkbb9TsieeI4TRX9TqHYIR5wvIma3ZtEben55EYSWa1q5u2BhTNgABSdH+rv3Xwfrvpwh5PmCw6Y53g==
 
-"@vue/tsconfig@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@vue/tsconfig/-/tsconfig-0.1.3.tgz#4a61dbd29783d01ddab504276dcf0c2b6988654f"
-  integrity sha512-kQVsh8yyWPvHpb8gIc9l/HIDiiVUy1amynLNpCy8p+FoCiZXCo6fQos5/097MmnNZc9AtseDsCrfkhqCrJ8Olg==
+"@vue/tsconfig@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@vue/tsconfig/-/tsconfig-0.3.2.tgz#612ba0b6aefde5ac1a513545eee7d4ed01c407f5"
+  integrity sha512-jWzZbGyrZAEbHYGn0kPzJ+MMtIkIxb0+hL5+RghBowyOxMRs9jMdp5XvpXz3wgCzjRZiUucy29042HBe9cxoYA==
 
 "@xstate/vue@^0.8.1":
   version "0.8.2"
