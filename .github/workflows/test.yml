@@ -11,25 +11,22 @@ on:
         description: 'The NPM_TOKEN passed from the caller workflow as it is not available within workflow_call.'
         required: true
       VITE_AUTH_URL:
-        description: 'The base URL of the KAuth backend, e.g. https://konnect.konghq.tech'
+        description: 'The base URL of the KAuth backend, e.g. https://global.api.konghq.tech'
         required: true
   # Allow workflow to be called manually
   workflow_dispatch:
     inputs:
       VITE_AUTH_URL:
-        description: 'The base URL of the KAuth backend, e.g. https://konnect.konghq.tech'
+        description: 'The base URL of the KAuth backend, e.g. https://global.api.konghq.tech'
         type: string
-        default: https://konnect.konghq.tech
+        default: https://global.api.konghq.tech
         required: false
 
 jobs:
   test:
     name: Run Tests
     runs-on: ubuntu-latest
-    env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
-
       - name: Remove preview consumption comment
         if: github.event_name == 'pull_request'
         uses: marocchino/sticky-pull-request-comment@v2
@@ -42,9 +39,6 @@ jobs:
         uses: actions/checkout@v3
         with:
          fetch-depth: 0
-
-      - name: Create .npmrc
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
 
       - name: Use Node.js
         uses: actions/setup-node@v3
@@ -86,8 +80,15 @@ jobs:
           name: cypress_videos
           path: cypress/videos/
 
+      - name: Create .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+
       - name: Publish Previews
         if: github.event_name == 'pull_request'
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           git config user.email "konnectx-engineers+kongponents-bot@konghq.com"
           git config user.name "Kong UI Bot"
@@ -98,11 +99,11 @@ jobs:
 
           git checkout ${{ github.head_ref }}
 
-          yarn version --prerelease --preid ${preid} --allow-branch ${{ github.head_ref }} --no-git-tag-version  --yes --amend
+          yarn version --prerelease --preid ${preid} --allow-branch ${{ github.head_ref }} --no-git-tag-version --yes --amend
 
           npm_instructions=""
 
-          pkg=$(npm publish  --no-git-checks --access restricted --report-summary --tag "${tag}" | grep "+ "| sed 's/+ //')
+          pkg=$(npm publish --no-git-checks --access public --report-summary --tag "${tag}" | grep "+ "| sed 's/+ //')
 
           if [[ -z "${pkg}" ]]; then
             echo "Error publishing package"
