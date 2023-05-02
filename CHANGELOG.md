@@ -1,3 +1,18 @@
+# [2.0.0](https://github.com/Kong/kong-auth-elements/compare/v1.34.0...v2.0.0) (2023-05-02)
+
+
+### Features
+
+* open-source npm package and repository [KHCP-7073] ([#1065](https://github.com/Kong/kong-auth-elements/issues/1065)) ([a4f8045](https://github.com/Kong/kong-auth-elements/commit/a4f8045e7e62b44e774eb83d16fcbb28b14cc0a1))
+
+
+### BREAKING CHANGES
+
+* Version 2.x marks publishing the kong-auth-elements package as open-source
+software.
+
+* chore: udpate ci with npm token
+
 # [1.34.0](https://github.com/Kong/kong-auth-elements/compare/v1.33.3...v1.34.0) (2023-04-27)
 
 
