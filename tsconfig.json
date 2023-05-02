@@ -42,10 +42,5 @@
     "dist",
     "demo",
     "**/*.spec.ts"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.vite-config.json"
-    }
   ]
 }
