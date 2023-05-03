@@ -10,7 +10,7 @@ jobs:
     uses: ./.github/workflows/test.yml
     # Must pass in secrets here so that the calling workflow can pass in the NPM_TOKEN needed to install private packages.
     secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN_PUBLIC_PUBLISH }}
       VITE_AUTH_URL: ${{ secrets.VITE_AUTH_URL }}
   publish:
     needs: run-tests
@@ -38,7 +38,8 @@ jobs:
 
       - name: Create .npmrc
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_PUBLIC_PUBLISH }}
+        # Reference the env variable NPM_TOKEN here, not the secret
         run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
 
       - name: Semantic Release
@@ -46,7 +47,7 @@ jobs:
         env:
           # Since branch protections are on (pushing commits) you need to use a bot PAT
           GITHUB_TOKEN: ${{ secrets.KONGPONENTS_BOT_PAT }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_PUBLIC_PUBLISH }}
 
       - name: Trigger a build for packages.konghq.tech
         if: ${{ success() }}
