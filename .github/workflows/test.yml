@@ -82,13 +82,13 @@ jobs:
 
       - name: Create .npmrc
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_PUBLIC_PUBLISH }}
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN_PUBLIC_PUBLISH}" > .npmrc
 
       - name: Publish Previews
         if: github.event_name == 'pull_request'
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_PUBLIC_PUBLISH }}
         run: |
           git config user.email "konnectx-engineers+kongponents-bot@konghq.com"
           git config user.name "Kong UI Bot"
