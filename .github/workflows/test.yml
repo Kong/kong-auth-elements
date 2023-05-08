@@ -54,31 +54,9 @@ jobs:
       - name: Typecheck
         run: yarn typecheck
 
-      - name: Run Cypress component tests
-        uses: cypress-io/github-action@v5
-        with:
-          install: false
-          command: yarn test
-        env:
-          VITE_AUTH_URL: ${{ secrets.VITE_AUTH_URL || inputs.VITE_AUTH_URL }}
-
-      - name: Upload Cypress screenshots (on failure)
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: cypress_screenshots
-          path: cypress/screenshots/
-
       - name: Build
         if: github.event_name == 'pull_request'
         run: yarn build
-
-      - name: Upload Cypress videos (always)
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: cypress_videos
-          path: cypress/videos/
 
       - name: Create .npmrc
         env:
@@ -130,3 +108,24 @@ jobs:
              ```
           GITHUB_TOKEN: ${{ secrets.KONGPONENTS_BOT_PAT }}
 
+      - name: Run Cypress component tests
+        uses: cypress-io/github-action@v5
+        with:
+          install: false
+          command: yarn test
+        env:
+          VITE_AUTH_URL: ${{ secrets.VITE_AUTH_URL || inputs.VITE_AUTH_URL }}
+
+      - name: Upload Cypress screenshots (on failure)
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress_screenshots
+          path: cypress/screenshots/
+
+      - name: Upload Cypress videos (always)
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress_videos
+          path: cypress/videos/
