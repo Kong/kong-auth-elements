@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/Kong/kong-auth-elements/compare/v2.0.3...v2.0.4) (2023-06-07)
+
+
+### Bug Fixes
+
+* **vue:** downgrade Vue to 3.2.47 ([#1121](https://github.com/Kong/kong-auth-elements/issues/1121)) ([970b9a4](https://github.com/Kong/kong-auth-elements/commit/970b9a42bd426cb164a3bcf535c89061a7e838b7))
+
 ## [2.0.3](https://github.com/Kong/kong-auth-elements/compare/v2.0.2...v2.0.3) (2023-05-18)
 
 
