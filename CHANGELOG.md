@@ -1,3 +1,10 @@
+## [2.0.5](https://github.com/Kong/kong-auth-elements/compare/v2.0.4...v2.0.5) (2023-06-08)
+
+
+### Bug Fixes
+
+* do not publish already published PR version [KHCP-7476] ([#1125](https://github.com/Kong/kong-auth-elements/issues/1125)) ([7558084](https://github.com/Kong/kong-auth-elements/commit/7558084e79b03096f46415487d9050ab0d81dcc5))
+
 ## [2.0.4](https://github.com/Kong/kong-auth-elements/compare/v2.0.3...v2.0.4) (2023-06-07)
 
 
