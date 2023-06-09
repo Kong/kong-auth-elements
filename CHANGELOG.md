@@ -1,3 +1,10 @@
+## [2.0.6](https://github.com/Kong/kong-auth-elements/compare/v2.0.5...v2.0.6) (2023-06-09)
+
+
+### Bug Fixes
+
+* dependabot ignore vue ([cae277a](https://github.com/Kong/kong-auth-elements/commit/cae277a37a637a5d3e67107ae9a19b6b52a4bc23))
+
 ## [2.0.5](https://github.com/Kong/kong-auth-elements/compare/v2.0.4...v2.0.5) (2023-06-08)
 
 
