@@ -27,6 +27,8 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
+        # Ignore Vue version updates until we're ready for Vue 3.3
+      - dependency-name: "vue"
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: github-actions
