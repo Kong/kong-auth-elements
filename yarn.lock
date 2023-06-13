@@ -474,10 +474,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.41.0.tgz#080321c3b68253522f7646b55b577dd99d2950b3"
   integrity sha512-LxcyMGxwmTh2lY9FwHPGWOHmYFCZvbrFCBZL4FzSSsxsRPuhrYUg/49/0KDfW8tnIEaEHtfmn6+NPN+1DqaNmA==
 
-"@evilmartians/lefthook@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.4.1.tgz#38ae63503193883ce7b53a8d56ae397c5c99e9f3"
-  integrity sha512-9DV4lN4BK7M+NPHgxbWF52ikLDy1k2R27/Wlb24tWaYjY0ZrA+FPDZn/uoJtgEEDxoipEFhtc9jpP+x/4YN4mg==
+"@evilmartians/lefthook@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.4.2.tgz#66a95fbd4ce116d3abd00607f76e96a5222cc891"
+  integrity sha512-YTsQB9QzJcT5bHfzjQbLHFEtsHn0lxnd/yDpQnHwMUwTNfKGo9H+slCd24JN4snvifDVUyvQ5MX63FJWDHrIUw==
 
 "@gar/promisify@^1.1.3":
   version "1.1.3"
