@@ -143,7 +143,7 @@ const resetPassword = async (credentials: {
   token: string,
 }) => {
   if (userEntity === 'developer') {
-    return await axiosInstanceV1.patch('/api/v1/developer-password-resets', credentials)
+    return await axiosInstanceV1.post('/api/v2/developer/reset-password', credentials)
   }
 
   return await axiosInstanceV1.patch('/api/v1/password-resets', credentials)

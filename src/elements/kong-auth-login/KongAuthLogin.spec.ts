@@ -263,13 +263,9 @@ describe('KongAuthLogin.ce.vue', () => {
 
   it("emits a 'login-success' event on successful developer login", () => {
     // Stub userEntity
-    const portalId = '12345-67890'
     cy.stub(getConfigOptions, 'userEntity').returns('developer')
-    cy.stub(getConfigOptions, 'developerConfig').returns({
-      portalId: portalId,
-    })
 
-    cy.intercept('POST', '**/developer-authenticate', {
+    cy.intercept('POST', '**/developer/authenticate', {
       statusCode: 200,
     }).as('login-request')
 
@@ -279,7 +275,7 @@ describe('KongAuthLogin.ce.vue', () => {
     cy.getTestId(testids.password).type(user.password)
     cy.getTestId(testids.form).submit()
 
-    cy.wait('@login-request').its('request.body.portal_id').should('eq', portalId).then(() => {
+    cy.wait('@login-request').then(() => {
       // Check for emitted event
       cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'login-success')
     })
@@ -381,7 +377,7 @@ describe('KongAuthLogin.ce.vue', () => {
       // Stub search params
       cy.stub(win, 'getLocationSearch').returns('?token=12345')
 
-      cy.intercept('PATCH', '**/developer-email-verifications', {
+      cy.intercept('POST', '**/developer/verify-email', {
         statusCode: 200,
         body: {
           email: user.email,
@@ -497,7 +493,7 @@ describe('KongAuthLogin.ce.vue', () => {
       cy.stub(win, 'getLocationPathname').returns('/login/sso')
       cy.stub(win, 'setLocationHref').as('set-location')
       // Stub URL path
-      const redirectPath = `/developer-authenticate/${portalId}?returnTo=${encodeURIComponent(win.getLocationOrigin())}`
+      const redirectPath = `/developer/authenticate/sso?returnTo=${encodeURIComponent(win.getLocationOrigin())}`
 
       mount(KongAuthLogin, {
         props: {
