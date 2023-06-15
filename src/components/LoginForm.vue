@@ -387,7 +387,7 @@ const submitForm = async (): Promise<void> => {
 
     if (userEntity === 'developer') {
       loginResponse = await axiosInstanceV1.post('/api/v2/developer/authenticate', {
-        email: formData.email,
+        username: formData.email,
         password: formData.password,
       })
     } else {
