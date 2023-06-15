@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/Kong/kong-auth-elements/compare/v2.0.6...v2.1.0) (2023-06-15)
+
+
+### Features
+
+* **portal:** release portal v2 auth integration ([#1141](https://github.com/Kong/kong-auth-elements/issues/1141)) ([cc3b180](https://github.com/Kong/kong-auth-elements/commit/cc3b180a05803b56524459961a50f8e46181a319))
+
 ## [2.0.6](https://github.com/Kong/kong-auth-elements/compare/v2.0.5...v2.0.6) (2023-06-09)
 
 
