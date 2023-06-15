@@ -127,7 +127,7 @@ describe('KongAuthResetPassword.ce.vue', () => {
     cy.stub(getConfigOptions, 'userEntity').returns('developer')
 
     // Stub 200 response
-    cy.intercept('PATCH', '**/developer-password-resets', {
+    cy.intercept('POST', '**/developer/reset-password', {
       statusCode: 200,
       body: {
         email: 'user1@email.com',

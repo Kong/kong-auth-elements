@@ -130,7 +130,7 @@ export default function useIdentityProvider(
         return
       }
 
-      win.setLocationHref(`${apiBaseUrl}/api/${apiVersion.value}/developer-authenticate/${developerConfig?.portalId}${redirectParams}`)
+      win.setLocationHref(`${apiBaseUrl}/api/v2/developer/authenticate/sso${redirectParams}`)
 
       return
     }
@@ -194,7 +194,7 @@ export default function useIdentityProvider(
 
     if (userEntity === 'developer') {
       // Redirect developer to kauth endpoint
-      win.setLocationHref(`${apiBaseUrl}/api/${apiVersion.value}/developer-authenticate/oidc-callback?${oidcQueryParams.value?.toString()}`)
+      win.setLocationHref(`${apiBaseUrl}/api/v2/developer/authenticate/oidc-callback?${oidcQueryParams.value?.toString()}`)
       return
     }
 

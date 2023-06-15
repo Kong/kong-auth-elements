@@ -170,7 +170,7 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 
 const emit = defineEmits(loginEmits)
 
-const { userEntity, developerConfig, customErrorHandler, lang } = useConfigOptions()
+const { userEntity, customErrorHandler, lang } = useConfigOptions()
 const { messages } = useI18n(lang)
 
 /**
@@ -323,20 +323,21 @@ const verifyEmailAddress = async (token: string): Promise<void> => {
     // setTimeout for simulated feedback
     await new Promise((resolve) => setTimeout(resolve, 250))
 
-    const verificationResponse: AxiosResponse = userEntity === 'developer' ? await axiosInstanceV1.patch('/api/v1/developer-email-verifications', { token }) : await axiosInstanceV1.patch('/api/v1/email-verifications', { token })
+    const verificationResponse: AxiosResponse = userEntity === 'developer' ? await axiosInstanceV1.post('/api/v2/developer/verify-email', { token }) : await axiosInstanceV1.patch('/api/v1/email-verifications', { token })
 
     send('RESOLVE')
 
     setUserStatusCookie()
 
     formData.email = verificationResponse.data.email || ''
+    const resetToken = verificationResponse.data.resetToken || verificationResponse.data.token
     send('CONFIRMED_EMAIL')
 
     emit('verify-email-success', {
       email: formData.email,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      resetToken: verificationResponse.data.resetToken ? verificationResponse.data.resetToken : undefined,
+      resetToken: resetToken || undefined,
     })
   } catch (err: any) {
     send('REJECT')
@@ -385,10 +386,9 @@ const submitForm = async (): Promise<void> => {
     let loginResponse
 
     if (userEntity === 'developer') {
-      loginResponse = await axiosInstanceV1.post('/api/v1/developer-authenticate', {
-        username: formData.email,
+      loginResponse = await axiosInstanceV1.post('/api/v2/developer/authenticate', {
+        email: formData.email,
         password: formData.password,
-        portal_id: developerConfig?.portalId || '',
       })
     } else {
       loginResponse = await axiosInstanceV1.post('/api/v1/authenticate', {

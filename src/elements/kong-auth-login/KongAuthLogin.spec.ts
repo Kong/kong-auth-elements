@@ -269,7 +269,7 @@ describe('KongAuthLogin.ce.vue', () => {
       portalId: portalId,
     })
 
-    cy.intercept('POST', '**/developer-authenticate', {
+    cy.intercept('POST', '**/developer/authenticate', {
       statusCode: 200,
     }).as('login-request')
 
@@ -381,7 +381,7 @@ describe('KongAuthLogin.ce.vue', () => {
       // Stub search params
       cy.stub(win, 'getLocationSearch').returns('?token=12345')
 
-      cy.intercept('PATCH', '**/developer-email-verifications', {
+      cy.intercept('POST', '**/developer/verify-email', {
         statusCode: 200,
         body: {
           email: user.email,
@@ -497,7 +497,7 @@ describe('KongAuthLogin.ce.vue', () => {
       cy.stub(win, 'getLocationPathname').returns('/login/sso')
       cy.stub(win, 'setLocationHref').as('set-location')
       // Stub URL path
-      const redirectPath = `/developer-authenticate/${portalId}?returnTo=${encodeURIComponent(win.getLocationOrigin())}`
+      const redirectPath = `/developer/authenticate/sso?returnTo=${encodeURIComponent(win.getLocationOrigin())}`
 
       mount(KongAuthLogin, {
         props: {
