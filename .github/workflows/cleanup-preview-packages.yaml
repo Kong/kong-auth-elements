@@ -1,10 +1,6 @@
 name: Cleanup PR preview packages
 on:
-  push:
-    branches:
-      - fix/KHCP-7461_unpublish-pr-pkgs
   workflow_dispatch:
-
   schedule:
     - cron: '0 * * * 6,0'
 
