@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/Kong/kong-auth-elements/compare/v2.1.0...v2.2.0) (2023-06-22)
+
+
+### Features
+
+* cleanup PR preview published package versions [KHCP-7461] ([#1152](https://github.com/Kong/kong-auth-elements/issues/1152)) ([f1c419d](https://github.com/Kong/kong-auth-elements/commit/f1c419daf48704befb57a329de61a0361b40ea53))
+
 # [2.1.0](https://github.com/Kong/kong-auth-elements/compare/v2.0.6...v2.1.0) (2023-06-15)
 
 
