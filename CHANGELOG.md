@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/Kong/kong-auth-elements/compare/v2.2.0...v2.2.1) (2023-06-24)
+
+
+### Bug Fixes
+
+* change schedule to run every 6 hours [KHCP-7461] ([#1155](https://github.com/Kong/kong-auth-elements/issues/1155)) ([65bf689](https://github.com/Kong/kong-auth-elements/commit/65bf6895e8830ccd4b5f679538d8eb6db6a75c06))
+
 # [2.2.0](https://github.com/Kong/kong-auth-elements/compare/v2.1.0...v2.2.0) (2023-06-22)
 
 
