@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/Kong/kong-auth-elements/compare/v2.2.2...v2.2.3) (2023-06-27)
+
+
+### Bug Fixes
+
+* **register:** checkbox label text ([#1162](https://github.com/Kong/kong-auth-elements/issues/1162)) ([a090710](https://github.com/Kong/kong-auth-elements/commit/a0907102f38fc38e248918fb0fb2f26a3139af53))
+
 ## [2.2.2](https://github.com/Kong/kong-auth-elements/compare/v2.2.1...v2.2.2) (2023-06-26)
 
 
