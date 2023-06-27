@@ -65,7 +65,7 @@ jobs:
         run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
 
       - name: Publish Previews
-        if: github.event_name == 'pull_request'
+        if: ${{ github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' }}
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN_PUBLIC_PUBLISH }}
         run: |

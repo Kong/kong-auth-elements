@@ -1,3 +1,38 @@
+## [2.2.2](https://github.com/Kong/kong-auth-elements/compare/v2.2.1...v2.2.2) (2023-06-26)
+
+
+### Bug Fixes
+
+* **deps:** bump xstate from 4.37.2 to 4.38.0 ([#1158](https://github.com/Kong/kong-auth-elements/issues/1158)) ([4086713](https://github.com/Kong/kong-auth-elements/commit/408671319d894152d556a115058d7da7346ff54b))
+
+## [2.2.1](https://github.com/Kong/kong-auth-elements/compare/v2.2.0...v2.2.1) (2023-06-24)
+
+
+### Bug Fixes
+
+* change schedule to run every 6 hours [KHCP-7461] ([#1155](https://github.com/Kong/kong-auth-elements/issues/1155)) ([65bf689](https://github.com/Kong/kong-auth-elements/commit/65bf6895e8830ccd4b5f679538d8eb6db6a75c06))
+
+# [2.2.0](https://github.com/Kong/kong-auth-elements/compare/v2.1.0...v2.2.0) (2023-06-22)
+
+
+### Features
+
+* cleanup PR preview published package versions [KHCP-7461] ([#1152](https://github.com/Kong/kong-auth-elements/issues/1152)) ([f1c419d](https://github.com/Kong/kong-auth-elements/commit/f1c419daf48704befb57a329de61a0361b40ea53))
+
+# [2.1.0](https://github.com/Kong/kong-auth-elements/compare/v2.0.6...v2.1.0) (2023-06-15)
+
+
+### Features
+
+* **portal:** release portal v2 auth integration ([#1141](https://github.com/Kong/kong-auth-elements/issues/1141)) ([cc3b180](https://github.com/Kong/kong-auth-elements/commit/cc3b180a05803b56524459961a50f8e46181a319))
+
+## [2.0.6](https://github.com/Kong/kong-auth-elements/compare/v2.0.5...v2.0.6) (2023-06-09)
+
+
+### Bug Fixes
+
+* dependabot ignore vue ([cae277a](https://github.com/Kong/kong-auth-elements/commit/cae277a37a637a5d3e67107ae9a19b6b52a4bc23))
+
 ## [2.0.5](https://github.com/Kong/kong-auth-elements/compare/v2.0.4...v2.0.5) (2023-06-08)
 
 
