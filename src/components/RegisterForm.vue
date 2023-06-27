@@ -112,13 +112,15 @@
 
       <div v-if="userEntity !== 'developer'" class="color-black-45 type-sm">
         <KCheckbox v-model="formData.checked_agreement" data-testid="kong-auth-register-agree-checkbox">
-          I agree to the
-          <a
-            href="https://konghq.com/konnectcustomeragreement"
-            target="_blank"
-          >Konnect customer agreement</a>
-          and
-          <a href="https://konghq.com/privacy" target="_blank">privacy policy</a>.
+          <span>
+            I agree to the
+            <a
+              href="https://konghq.com/konnectcustomeragreement"
+              target="_blank"
+            >Konnect customer agreement</a>
+            and
+            <a href="https://konghq.com/privacy" target="_blank">privacy policy</a>.
+          </span>
         </KCheckbox>
       </div>
 
