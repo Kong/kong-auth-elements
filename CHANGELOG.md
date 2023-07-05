@@ -1,3 +1,10 @@
+## [2.2.4](https://github.com/Kong/kong-auth-elements/compare/v2.2.3...v2.2.4) (2023-07-05)
+
+
+### Bug Fixes
+
+* **deps:** update kongponents ([44b5dd2](https://github.com/Kong/kong-auth-elements/commit/44b5dd21bf2124c8bce4e0c023cdfde31d826fcd))
+
 ## [2.2.3](https://github.com/Kong/kong-auth-elements/compare/v2.2.2...v2.2.3) (2023-06-27)
 
 
