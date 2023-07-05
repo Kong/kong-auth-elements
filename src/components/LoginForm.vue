@@ -405,10 +405,6 @@ const submitForm = async (): Promise<void> => {
 
     send('REJECT')
     fieldsHaveError.value = true
-
-    if (loginResponse.status === 403) {
-      return
-    }
   } catch (err: any) {
     send('REJECT')
 
