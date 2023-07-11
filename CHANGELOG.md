@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/Kong/kong-auth-elements/compare/v2.2.4...v2.3.0) (2023-07-11)
+
+
+### Features
+
+* **sourcemaps:** dont generate sourcemap as part of npm package [KHCP-7565] ([#1184](https://github.com/Kong/kong-auth-elements/issues/1184)) ([1d2ff29](https://github.com/Kong/kong-auth-elements/commit/1d2ff2944b737962e50dc0435798ec9d457b4842))
+
 ## [2.2.4](https://github.com/Kong/kong-auth-elements/compare/v2.2.3...v2.2.4) (2023-07-05)
 
 
