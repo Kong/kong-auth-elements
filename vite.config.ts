@@ -45,7 +45,7 @@ export default ({ mode }) => {
       'process.env.development': JSON.stringify('development'),
     },
     build: {
-      sourcemap: true,
+      sourcemap: !!process.env.BUILD_VISUALIZER,
       // If INCLUDE_VUE=true, do not empty the dist folder on build
       emptyOutDir: process.env.INCLUDE_VUE === 'true',
       // If PREVIEW=true, do not build as a library
