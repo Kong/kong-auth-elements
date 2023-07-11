@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/Kong/kong-auth-elements/compare/v2.3.0...v2.3.1) (2023-07-11)
+
+
+### Bug Fixes
+
+* **deps:** bump semver from 5.7.1 to 5.7.2 ([#1185](https://github.com/Kong/kong-auth-elements/issues/1185)) ([ce63330](https://github.com/Kong/kong-auth-elements/commit/ce633304be8abb8d9e56d067de9e210a850a787d))
+
 # [2.3.0](https://github.com/Kong/kong-auth-elements/compare/v2.2.4...v2.3.0) (2023-07-11)
 
 
