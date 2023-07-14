@@ -1,3 +1,10 @@
+## [2.3.3](https://github.com/Kong/kong-auth-elements/compare/v2.3.2...v2.3.3) (2023-07-14)
+
+
+### Bug Fixes
+
+* ci package preview ([#1191](https://github.com/Kong/kong-auth-elements/issues/1191)) ([77e9be5](https://github.com/Kong/kong-auth-elements/commit/77e9be5a99db0aef127471280972adcc24133ca2))
+
 ## [2.3.2](https://github.com/Kong/kong-auth-elements/compare/v2.3.1...v2.3.2) (2023-07-12)
 
 
