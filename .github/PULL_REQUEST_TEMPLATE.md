@@ -2,12 +2,6 @@
 
 <!-- Be sure to add the JIRA ticket number to the title of your Pull Request -->
 
-
-<!--
-Be sure to include any changes that might require additional context or backstory to aid with reviewing. Always have in mind that we review PR's months or years later, so the more detailed the better.
-Include any information on how best to test the changes, but do not be overly prescriptive on how to test to minimize [anchoring bias](https://en.wikipedia.org/wiki/Anchoring_(cognitive_bias)).
--->
-
 ## Ready-To-Review Checklist
 
 <!--
