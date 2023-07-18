@@ -1,3 +1,10 @@
+## [2.3.4](https://github.com/Kong/kong-auth-elements/compare/v2.3.3...v2.3.4) (2023-07-18)
+
+
+### Bug Fixes
+
+* **deps:** bump word-wrap from 1.2.3 to 1.2.4 ([#1199](https://github.com/Kong/kong-auth-elements/issues/1199)) ([6d97f48](https://github.com/Kong/kong-auth-elements/commit/6d97f484763c787954adda8032000e14540181bc))
+
 ## [2.3.3](https://github.com/Kong/kong-auth-elements/compare/v2.3.2...v2.3.3) (2023-07-14)
 
 
