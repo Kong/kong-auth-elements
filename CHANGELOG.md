@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/Kong/kong-auth-elements/compare/v2.3.4...v2.4.0) (2023-07-19)
+
+
+### Features
+
+* upgrade to vue 3.3.x [KHCP-7567] ([#1200](https://github.com/Kong/kong-auth-elements/issues/1200)) ([d51968c](https://github.com/Kong/kong-auth-elements/commit/d51968c8561251698ae269e16dc1cfff723fa07e))
+
 ## [2.3.4](https://github.com/Kong/kong-auth-elements/compare/v2.3.3...v2.3.4) (2023-07-18)
 
 
