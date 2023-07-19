@@ -36,7 +36,7 @@
   "dependencies": {
     "@xstate/vue": "^0.8.1",
     "axios": "^0.27.2",
-    "vue": "3.2.47",
+    "vue": "^3.3.4",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.1"
   },
@@ -45,7 +45,7 @@
     "@commitlint/cli": "^16.3.0",
     "@commitlint/config-conventional": "^16.2.4",
     "@cypress/vite-dev-server": "^5.0.4",
-    "@cypress/vue": "^5.0.4",
+    "@cypress/vue": "^5.0.5",
     "@digitalroute/cz-conventional-changelog-for-jira": "^7.5.1",
     "@evilmartians/lefthook": "^1.4.6",
     "@kong/kongponents": "^8.93.1",
@@ -88,7 +88,7 @@
   "peerDependencies": {
     "@kong/kongponents": "^8.84.0",
     "axios": "^0.27.2",
-    "vue": ">= 3.2.47 < 3.3"
+    "vue": "<= 3.3.0"
   },
   "files": [
     "dist"
