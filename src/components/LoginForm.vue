@@ -188,6 +188,7 @@ const registerLinkText: Ref<string> = inject('register-link-text', ref(messages.
 const registerLinkHelpText: Ref<string> = inject('register-link-help-text', ref(messages.login.registerLinkHelpText))
 const registerSuccessText: Ref<string> = inject('register-success-text', ref(messages.login.registerSuccess))
 const basicAuthLoginEnabled: Ref<boolean> = inject('basic-auth-login-enabled', ref(true))
+const showBasicAuthLoginLink: Ref<boolean> = inject('show-basic-auth-login-link', ref(true))
 const idpLoginEnabled: Ref<boolean> = inject('idp-login-enabled', ref(false))
 const idpLoginReturnTo: Ref<string> = inject('idp-login-return-to', ref(''))
 
@@ -198,7 +199,7 @@ const formData = reactive({
 const error = ref<any>(null)
 const fieldsHaveError = ref(false)
 const forceBasicAuth = ref(false)
-const loginWithCredentialsLinkIsVisible = computed((): boolean => userEntity !== 'developer' && !basicAuthLoginEnabled.value && !forceBasicAuth.value)
+const loginWithCredentialsLinkIsVisible = computed((): boolean => userEntity !== 'developer' && !basicAuthLoginEnabled.value && !forceBasicAuth.value && showBasicAuthLoginLink.value)
 const loginDividerIsVisible = computed((): boolean => (basicAuthLoginEnabled.value && idpLoginEnabled.value && (userEntity === 'developer' || (userEntity === 'user' && isIdpLogin.value))) || forceBasicAuth.value)
 
 // Setup and automatically trigger IDP (or ignore it, depending on the props)
