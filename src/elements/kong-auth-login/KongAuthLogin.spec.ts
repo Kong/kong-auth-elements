@@ -150,8 +150,41 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
+    // SSO button and basic auth link should exist
+    cy.getTestId(testids.ssoBtn).should('be.visible')
+    cy.getTestId(testids.basicAuthLink).should('be.visible')
+    // Elements should not exist
+    cy.getTestId(testids.form).should('not.exist')
+    cy.getTestId(testids.submitBtn).should('not.exist')
+    cy.getTestId(testids.errorMessage).should('not.exist')
+    cy.getTestId(testids.instructionText).should('not.exist')
+    cy.getTestId(testids.forgotPasswordLink).should('not.exist')
+    cy.getTestId(testids.registerHelpText).should('not.exist')
+    cy.getTestId(testids.registerLink).should('not.exist')
+    cy.getTestId(testids.passwordResetMessage).should('not.exist')
+    cy.getTestId(testids.confirmedEmailMessage).should('not.exist')
+    cy.getTestId(testids.registerSuccessMessage).should('not.exist')
+    cy.getTestId(testids.loaderContainer).should('not.exist')
+  })
+
+  it('renders a SSO button and no basic auth form and hides the basic auth link if the `showBasicAuthLoginLink` prop is set to false', () => {
+    cy.stub(getConfigOptions, 'userEntity').returns('user')
+    const loginPath = 'test-login-path'
+    // Stub URL path
+    cy.stub(win, 'getLocationPathname').returns(`/login/${loginPath}`)
+    cy.stub(win, 'setLocationHref').as('set-location')
+    mount(KongAuthLogin, {
+      props: {
+        basicAuthLoginEnabled: false,
+        showBasicAuthLoginLink: false,
+        idpLoginEnabled: true,
+      },
+    })
+
     // SSO button should exist
     cy.getTestId(testids.ssoBtn).should('be.visible')
+    // Basic auth link should not exist
+    cy.getTestId(testids.basicAuthLink).should('not.exist')
     // Elements should not exist
     cy.getTestId(testids.form).should('not.exist')
     cy.getTestId(testids.submitBtn).should('not.exist')
