@@ -79,7 +79,7 @@
       >
         <p
           v-if="instructionText"
-          class="color-black-45"
+          class="instruction-text"
           data-testid="kong-auth-login-instruction-text"
         >{{ instructionText }}</p>
 
@@ -88,7 +88,7 @@
             v-model.trim="formData.email"
             autocapitalize="off"
             autocomplete="username"
-            class="w-100 mb-5"
+            class="kong-auth-input"
             data-testid="kong-auth-login-email"
             :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
             :label="`${messages.inputLabels.email}`"
@@ -101,7 +101,7 @@
             id="password"
             v-model.trim="formData.password"
             autocomplete="current-password"
-            class="w-100"
+            class="kong-auth-input"
             data-testid="kong-auth-login-password"
             :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
             :label="`${messages.inputLabels.password}`"

@@ -27,7 +27,7 @@
     >
       <p
         v-if="instructionText"
-        class="color-black-45"
+        class="instruction-text"
         data-testid="kong-auth-forgot-password-instruction-text"
       >{{ instructionText }}</p>
 
@@ -36,7 +36,7 @@
         v-model.trim="formData.email"
         autocapitalize="off"
         autocomplete="username"
-        class="w-100 mb-5"
+        class="kong-auth-input"
         data-testid="kong-auth-forgot-password-email"
         :has-error="currentState.matches('error') && error ? true : false"
         :label="`${messages.inputLabels.email}`"

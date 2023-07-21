@@ -61,6 +61,18 @@
   .action-buttons {
     display: flex;
     justify-content: end;
+
+    .k-button {
+      justify-content: center !important;
+
+      &:first-of-type {
+        margin-right: var(--kui-space-20, $kui-space-20);
+      }
+    }
+  }
+
+  .form-error {
+    margin: var(--kui-space-60, $kui-space-60) 0;
   }
 }
 
@@ -91,11 +103,6 @@
 
   .invitation-form-error {
     margin-bottom: var(--kui-space-60, $kui-space-60);
-  }
-
-  .invitation-form-input {
-    margin-bottom: var(--kui-space-60, $kui-space-60);
-    width: 100% !important;
   }
 }
 
@@ -180,6 +187,24 @@ a {
   }
 }
 
+.kong-auth-input {
+  margin-bottom: var(--kui-space-60, $kui-space-60);
+  width: 100% !important;
+}
+
 input.hidden-input {
   display: none !important;
+}
+
+.instruction-text {
+  color: var(--kui-color-text-neutral, $kui-color-text-neutral);
+}
+
+.checkbox-instruction-text {
+  color: var(--kui-color-text-neutral, $kui-color-text-neutral);
+  font-size: var(--kui-font-size-30, $kui-font-size-30);
+
+  .k-checkbox-label {
+    display: inline;
+  }
 }

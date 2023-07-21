@@ -17,7 +17,7 @@
     >
       <p
         v-if="instructionText"
-        class="color-black-45"
+        class="instruction-text"
         data-testid="kong-auth-register-instruction-text"
       >{{ instructionText }}</p>
 
@@ -47,7 +47,7 @@
           id="full_name"
           v-model.trim="formData.fullName"
           autocomplete="name"
-          class="w-100 mb-4"
+          class="kong-auth-input"
           data-testid="kong-auth-register-full-name"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.fullName ? true : false"
           :label="`${messages.inputLabels.fullName}`"
@@ -61,7 +61,7 @@
           id="organization"
           v-model.trim="formData.organization"
           autocomplete="organization"
-          class="w-100 mb-4"
+          class="kong-auth-input"
           data-testid="kong-auth-register-organization"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.organization ? true : false"
           :label="`${messages.inputLabels.organization}`"
@@ -74,7 +74,7 @@
         id="email"
         v-model.trim="formData.email"
         autocomplete="email"
-        class="w-100 mb-4"
+        class="kong-auth-input"
         data-testid="kong-auth-register-email"
         :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.email ? true : false"
         :label="`${messages.inputLabels.email}`"
@@ -87,7 +87,7 @@
           id="password"
           v-model.trim="formData.password"
           autocomplete="new-password"
-          class="w-100 mb-4"
+          class="kong-auth-input"
           data-testid="kong-auth-register-password"
           :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
           :label="`${messages.inputLabels.password}`"
@@ -101,7 +101,7 @@
           id="access_code"
           v-model="formData.accessCode"
           autocomplete="off"
-          class="w-100 mb-4"
+          class="kong-auth-input"
           data-testid="kong-auth-register-access-code"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.accessCode ? true : false"
           :label="`${messages.inputLabels.accessCode}`"
@@ -110,7 +110,7 @@
         />
       </div>
 
-      <div v-if="userEntity !== 'developer'" class="color-black-45 type-sm">
+      <div v-if="userEntity !== 'developer'" class="checkbox-instruction-text">
         <KCheckbox v-model="formData.checked_agreement" data-testid="kong-auth-register-agree-checkbox">
           <span>
             I agree to the

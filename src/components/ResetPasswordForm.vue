@@ -13,7 +13,7 @@
     >
       <p
         v-if="instructionText"
-        class="color-black-45"
+        class="instruction-text"
         data-testid="kong-auth-reset-password-instruction-text"
       >{{ instructionText }}</p>
 
@@ -24,7 +24,7 @@
         id="password"
         v-model.trim="formData.password"
         autocomplete="new-password"
-        class="w-100 mb-4"
+        class="kong-auth-input"
         data-testid="kong-auth-reset-password-new-password"
         :has-error="currentState.matches('error') && error ? true : false"
         :label="`${messages.inputLabels.newPassword}`"
@@ -36,7 +36,7 @@
         id="password-confirm"
         v-model.trim="formData.confirmPassword"
         autocomplete="new-password"
-        class="w-100 mb-4"
+        class="kong-auth-input"
         data-testid="kong-auth-reset-password-confirm-new-password"
         :error-message="passwordIsInvalid ? messages.resetPassword.passwordMismatch : undefined"
         :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
