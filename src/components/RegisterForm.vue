@@ -2,7 +2,7 @@
   <div class="kong-auth-register-form">
     <div
       v-if="currentState.matches('error') && !passwordError && error"
-      class="my-4"
+      class="form-error"
       data-testid="kong-auth-register-alert"
     >
       <ErrorMessage :error="error" />
@@ -29,7 +29,7 @@
           {{ messages.regionInformation.description }}
         </p>
 
-        <div class="mb-4 kong-auth-register-region">
+        <div class="kong-auth-register-region">
           <KSelect
             id="regionInformationTitle"
             v-model="formData.selectedRegionOption"
@@ -126,7 +126,7 @@
 
       <div
         v-if="currentState.matches('error') && passwordError && error"
-        class="mt-4"
+        class="kong-auth-register-alert"
         data-testid="kong-auth-register-alert"
       >
         <ErrorMessage :error="error" />
@@ -144,15 +144,14 @@
 
       <KButton
         appearance="primary"
-        class="justify-content-center w-100 type-lg mt-6"
+        class="register-submit"
         data-testid="kong-auth-register-submit"
         :disabled="btnDisabled"
         type="submit"
       >
         <KIcon
           v-if="currentState.matches('pending')"
-          class="pr-0 mr-2"
-          color="var(--grey-400)"
+          color="currentColor"
           icon="spinner"
           :size="KUI_ICON_SIZE_30"
         />

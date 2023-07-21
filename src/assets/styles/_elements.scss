@@ -12,13 +12,27 @@
       margin-top: calc(-1 * var(--kui-space-30, $kui-space-30));
     }
 
-    .kong-auth-register-region .k-select {
-      width: 100% !important;
+    .kong-auth-register-region {
+      margin-bottom: var(--kui-space-60, $kui-space-60);
 
-      .k-select-input {
-        height: 44px !important;
+      .k-select {
         width: 100% !important;
+
+        .k-select-input {
+          height: 44px !important;
+          width: 100% !important;
+        }
       }
+    }
+
+    .register-alert {
+      margin-top: var(--kui-space-60, $kui-space-60);
+    }
+
+    .register-submit {
+      justify-content: center !important;
+      margin-top: var(--kui-space-90, $kui-space-90);
+      width: 100% !important;
     }
   }
 }
