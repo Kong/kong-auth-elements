@@ -33,6 +33,29 @@
     justify-content: center;
   }
 
+  .login-seo-button,
+  .login-button {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .login-button {
+    margin-top: var(--kui-space-90, $kui-space-90);
+  }
+
+  .forgot-password-link {
+    font-size: var(--kui-font-size-30, $kui-font-size-30);
+    margin-top: var(--kui-space-50, $kui-space-50);
+  }
+
+  .register-link-wrapper {
+    color: var(--kui-color-text, $kui-color-text);
+    font-size: var(--kui-font-size-30, $kui-font-size-30);
+    font-weight: var(--kui-font-weight-medium, $kui-font-weight-medium);
+    margin-top: var(--kui-space-80, $kui-space-80);
+    text-align: center !important;
+  }
+
   // Detect if the email and password fields have been auto-filled
   // If autofilled, add an animation name to detect with JavaScript in LoginForm.vue
   #email,

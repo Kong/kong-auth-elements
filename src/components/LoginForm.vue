@@ -13,7 +13,7 @@
         <KButton
           appearance="outline"
           :aria-label="['pending', 'success'].some(currentState.matches) ? undefined : messages.login.loginTextSSOAriaLabel"
-          class="justify-content-center w-100 type-lg"
+          class="login-seo-button"
           data-testid="kong-auth-login-sso"
           :disabled="loginBtnSSODisabled"
           @click.prevent="redirectToIdp(idpLoginReturnTo)"
@@ -110,9 +110,8 @@
             @animationstart="checkAutofill"
           />
 
-        <p v-if="showForgotPasswordLink" class="help mt-3">
+        <p v-if="showForgotPasswordLink" class="forgot-password-link">
           <a
-            class="color-blue-500"
             data-testid="kong-auth-login-forgot-password-link"
             href="#"
             @click.prevent="$emit('click-forgot-password-link')"
@@ -121,26 +120,24 @@
 
         <KButton
           appearance="primary"
-          class="justify-content-center w-100 mt-6 type-lg"
+          class="login-button"
           data-testid="kong-auth-login-submit"
           :disabled="loginBtnDisabled"
           type="submit"
         >
           <KIcon
             v-if="['pending', 'success'].some(currentState.matches)"
-            class="pr-0 mr-2"
-            color="var(--grey-400)"
+            color="currentColor"
             icon="spinner"
             :size="KUI_ICON_SIZE_30"
           />
           {{ loginBtnText }}
         </KButton>
 
-        <div v-if="showRegisterLink" class="text-center mt-5">
-          <p class="color-black-85 bold-500">
-            <span data-testid="kong-auth-login-register-help-text">{{ registerLinkHelpText }}</span>
+        <div v-if="showRegisterLink" class="register-link-wrapper">
+          <p>
+            <span data-testid="kong-auth-login-register-help-text">{{ registerLinkHelpText }} &nbsp;</span>
             <a
-              class="color-blue-500"
               data-testid="kong-auth-login-register-link"
               href="#"
               @click.prevent="$emit('click-register-link')"
