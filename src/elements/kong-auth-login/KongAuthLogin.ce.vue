@@ -58,6 +58,10 @@ const props = defineProps({
     type: Boolean,
     default: false, // must be false by default
   },
+  showBasicAuthLoginLink: {
+    type: Boolean,
+    default: true, // must be true by default
+  },
   idpLoginEnabled: {
     type: Boolean,
     default: false,
@@ -94,6 +98,11 @@ provide(
 provide(
   'basic-auth-login-enabled',
   computed((): boolean => props.basicAuthLoginEnabled),
+)
+
+provide(
+  'show-basic-auth-login-link',
+  computed((): boolean => props.showBasicAuthLoginLink),
 )
 
 // IDP

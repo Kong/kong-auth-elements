@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/Kong/kong-auth-elements/compare/v2.4.0...v2.5.0) (2023-07-21)
+
+
+### Features
+
+* **login:** allow hiding basic auth link [KHCP-8307] ([#1206](https://github.com/Kong/kong-auth-elements/issues/1206)) ([367fb24](https://github.com/Kong/kong-auth-elements/commit/367fb24499bc907412e453ae1c4e746b9d9e369c))
+
 # [2.4.0](https://github.com/Kong/kong-auth-elements/compare/v2.3.4...v2.4.0) (2023-07-19)
 
 
