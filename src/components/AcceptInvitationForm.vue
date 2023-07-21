@@ -89,7 +89,7 @@
         type="submit"
       >
         <KIcon
-          v-if="!currentState.matches('pending')"
+          v-if="currentState.matches('pending')"
           color="currentColor"
           icon="spinner"
           :size="KUI_ICON_SIZE_30"
