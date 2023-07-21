@@ -563,10 +563,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@kong/design-tokens@^1.6.2":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.6.2.tgz#ac44a57326ecdcae648be4c6a4f70c65d5fed5da"
-  integrity sha512-OhFoYXyJGIPeotiNf7UGSP/f6HQdUPp0LMbBye1reuDEl4vvss3cVngIkcOCHMuqVXlhg9lPtVLvRGE+Sc7wWw==
+"@kong/design-tokens@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.7.1.tgz#e0e63c0422829c47260d69c4725793d4e51358c8"
+  integrity sha512-gKM0WuduLHotY3zbqiRYqLtyj+Qth0bEN2yKi8hjYTGDW/ri2fr5OAbXbwDzi7E6fpE4SOm0qTuIhuWXoEc5KA==
 
 "@kong/kongponents@^8.99.0":
   version "8.99.0"
