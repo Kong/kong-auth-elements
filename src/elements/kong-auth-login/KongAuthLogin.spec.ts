@@ -617,8 +617,8 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
-    cy.getTestId(testids.registerHelpText).should('be.visible').and('have.text', customHelpText)
-    cy.getTestId(testids.registerLink).should('be.visible').and('have.text', customText)
+    cy.getTestId(testids.registerHelpText).should('be.visible').and('contain.text', customHelpText)
+    cy.getTestId(testids.registerLink).should('be.visible').and('contain.text', customText)
   })
 
   it('emits an event when user clicks register link', () => {

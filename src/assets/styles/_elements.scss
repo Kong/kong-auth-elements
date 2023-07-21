@@ -208,7 +208,7 @@
   flex-direction: row;
   font-size: var(--kui-font-size-40, $kui-font-size-40);
   justify-content: center;
-  margin: var(--kui-space-80, $kui-space-80) auto;
+  margin: var(--kui-space-80, $kui-space-80) var(--kui-space-auto, $kui-space-auto);
 
   &:before,
   &:after {
@@ -248,7 +248,7 @@ a {
 }
 
 .form-error {
-  margin: var(--kui-space-60, $kui-space-60) 0;
+  margin: var(--kui-space-60, $kui-space-60) var(--kui-space-0, $kui-space-0);
 }
 
 input.hidden-input {
