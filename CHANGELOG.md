@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/Kong/kong-auth-elements/compare/v2.5.1...v2.6.0) (2023-07-21)
+
+
+### Features
+
+* implement @kong/design-tokens and replace utility classes [KHCP-8177] ([#1207](https://github.com/Kong/kong-auth-elements/issues/1207)) ([3c2ba47](https://github.com/Kong/kong-auth-elements/commit/3c2ba47ad46b68b403328ce5665ad1782b4f9a50))
+
 ## [2.5.1](https://github.com/Kong/kong-auth-elements/compare/v2.5.0...v2.5.1) (2023-07-21)
 
 
