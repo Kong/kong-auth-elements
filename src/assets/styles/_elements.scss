@@ -70,10 +70,6 @@
       }
     }
   }
-
-  .form-error {
-    margin: var(--kui-space-60, $kui-space-60) 0;
-  }
 }
 
 .text-center {
@@ -83,6 +79,23 @@
 .kong-auth-forgot-password-form {
   .k-alert.info .k-alert-msg {
     line-height: var(--kui-line-height-40, $kui-line-height-40);
+  }
+
+  .forgot-password-return-to-login-btn {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .forgot-password-submit {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .return-to-login-wrapper {
+    color: var(--kui-color-text, $kui-color-text);
+    font-weight: var(--kui-font-weight-medium, $kui-font-weight-medium);
+    margin-top: var(--kui-space-80, $kui-space-80);
+    text-align: center;
   }
 }
 
@@ -190,6 +203,10 @@ a {
 .kong-auth-input {
   margin-bottom: var(--kui-space-60, $kui-space-60);
   width: 100% !important;
+}
+
+.form-error {
+  margin: var(--kui-space-60, $kui-space-60) 0;
 }
 
 input.hidden-input {

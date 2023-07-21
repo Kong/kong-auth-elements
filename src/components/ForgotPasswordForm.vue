@@ -7,12 +7,12 @@
       <KAlert
         :alert-message="successText"
         appearance="info"
-        class="mb-6"
+        class="form-error"
         data-testid="kong-auth-forgot-password-success-message"
       />
       <KButton
         appearance="primary"
-        class="justify-content-center w-100 type-lg"
+        class="forgot-password-return-to-login-btn"
         data-testid="kong-auth-forgot-password-return-to-login-btn"
         @click.prevent="$emit('click-login-link')"
       >{{ loginLinkText }}</KButton>
@@ -47,15 +47,14 @@
 
       <KButton
         appearance="primary"
-        class="justify-content-center w-100 type-lg"
+        class="forgot-password-submit"
         data-testid="kong-auth-forgot-password-submit"
         :disabled="btnDisabled"
         type="submit"
       >
         <KIcon
           v-if="currentState.matches('pending')"
-          class="pr-0 mr-2"
-          color="var(--grey-400)"
+          color="currentColor"
           icon="spinner"
           :size="KUI_ICON_SIZE_30"
         />
@@ -63,10 +62,9 @@
       </KButton>
     </form>
 
-    <div v-if="!currentState.matches('success') && showLoginLink" class="text-center mt-5">
-      <p class="color-black-85 bold-500">
+    <div v-if="!currentState.matches('success') && showLoginLink" class="return-to-login-wrapper">
+      <p>
         <a
-          class="color-blue-500"
           data-testid="kong-auth-forgot-password-return-to-login-link"
           href="#"
           @click.prevent="$emit('click-login-link')"
