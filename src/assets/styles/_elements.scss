@@ -1,21 +1,38 @@
+// Import Kong Design Tokens
+@import "@kong/design-tokens/tokens/scss/_variables";
+
 // REGISTER
 .kong-auth-register-form {
   .register-form {
     .region-description {
-      color: var(--grey-500);
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 17px;
-      margin-top: -6px;
+      color: var(--kui-color-text-neutral, $kui-color-text-neutral);
+      font-size: var(--kui-font-size-30, $kui-font-size-30);
+      font-weight: var(--kui-font-weight-regular, $kui-font-weight-regular);
+      line-height: var(--kui-line-height-30, $kui-line-height-30);
+      margin-top: calc(-1 * var(--kui-space-30, $kui-space-30));
     }
 
-    .kong-auth-register-region .k-select {
-      width: 100% !important;
+    .kong-auth-register-region {
+      margin-bottom: var(--kui-space-60, $kui-space-60);
 
-      .k-select-input {
-        height: 44px !important;
+      .k-select {
         width: 100% !important;
+
+        .k-select-input {
+          height: 44px !important;
+          width: 100% !important;
+        }
       }
+    }
+
+    .register-alert {
+      margin-top: var(--kui-space-60, $kui-space-60);
+    }
+
+    .register-submit {
+      justify-content: center !important;
+      margin-top: var(--kui-space-90, $kui-space-90);
+      width: 100% !important;
     }
   }
 }
@@ -23,11 +40,36 @@
 // LOGIN
 .kong-auth-login-form {
   .basic-auth-link {
-    font-size: 14px;
+    font-size: var(--kui-font-size-30, $kui-font-size-30);
+    margin-top: var(--kui-space-80, $kui-space-80);
+    text-align: center !important;
   }
 
   .idp-loading {
     justify-content: center;
+  }
+
+  .login-seo-button,
+  .login-button {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .login-button {
+    margin-top: var(--kui-space-90, $kui-space-90);
+  }
+
+  .forgot-password-link {
+    font-size: var(--kui-font-size-30, $kui-font-size-30);
+    margin-top: var(--kui-space-50, $kui-space-50);
+  }
+
+  .register-link-wrapper {
+    color: var(--kui-color-text, $kui-color-text);
+    font-size: var(--kui-font-size-30, $kui-font-size-30);
+    font-weight: var(--kui-font-weight-medium, $kui-font-weight-medium);
+    margin-top: var(--kui-space-80, $kui-space-80);
+    text-align: center !important;
   }
 
   // Detect if the email and password fields have been auto-filled
@@ -58,43 +100,83 @@
   .action-buttons {
     display: flex;
     justify-content: end;
+
+    .k-button {
+      justify-content: center !important;
+
+      &:first-of-type {
+        margin-right: var(--kui-space-20, $kui-space-20);
+      }
+    }
   }
 }
 
-.text-center {
-  text-align: center;
+.kong-auth-reset-password-form {
+  .reset-password-submit {
+    justify-content: center !important;
+    width: 100% !important;
+  }
 }
 
 .kong-auth-forgot-password-form {
   .k-alert.info .k-alert-msg {
-    line-height: 1.3;
+    line-height: var(--kui-line-height-40, $kui-line-height-40);
+  }
+
+  .forgot-password-return-to-login-btn {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .forgot-password-submit {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .return-to-login-wrapper {
+    color: var(--kui-color-text, $kui-color-text);
+    font-weight: var(--kui-font-weight-medium, $kui-font-weight-medium);
+    margin-top: var(--kui-space-80, $kui-space-80);
+    text-align: center;
   }
 }
 
 .kong-auth-accept-invitation-form {
   .accept-invitation-subheader {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.3;
+    color: var(--kui-color-text-neutral-strong, $kui-color-text-neutral-strong);
+    font-size: var(--kui-font-size-60, $kui-font-size-60);
+    font-weight: var(--kui-font-weight-semibold, $kui-font-weight-semibold);
+    line-height: var(--kui-line-height-60, $kui-line-height-60);
+    margin-bottom: var(--kui-space-90, $kui-space-90);
+  }
+
+  .accept-invitation-submit {
+    justify-content: center !important;
+    margin-top: var(--kui-space-90, $kui-space-90) !important;
+    width: 100% !important;
+  }
+
+  .invitation-form-error {
+    margin-bottom: var(--kui-space-60, $kui-space-60);
   }
 }
 
 // ERROR MESSAGE
 .kong-auth-error-message.error-message {
   .k-alert-msg-text .k-alert-msg {
-    line-height: 24px;
+    line-height: var(--kui-line-height-40, $kui-line-height-40);
 
     p,
     ul {
-      line-height: 24px;
+      line-height: var(--kui-line-height-40, $kui-line-height-40);
 
       &:last-of-type {
-        margin-bottom: 0;
+        margin-bottom: var(--kui-space-0, $kui-space-0);
       }
     }
 
     p + ul {
-      margin-top: 10px;
+      margin-top: var(--kui-space-40, $kui-space-40);
     }
 
     li {
@@ -121,33 +203,33 @@
 
 .kong-auth-element-form-divider {
   align-items: center;
-  color: var(--KInputLabelColor, var(--black-85, rgba(0, 0, 0, 0.85)));
+  color: var(--kui-color-text-neutral, $kui-color-text-neutral);
   display: flex;
   flex-direction: row;
-  font-size: var(--type-md, 16px);
+  font-size: var(--kui-font-size-40, $kui-font-size-40);
   justify-content: center;
-  margin: 24px auto;
+  margin: var(--kui-space-80, $kui-space-80) var(--kui-space-auto, $kui-space-auto);
 
   &:before,
   &:after {
-    background: var(--KInputLabelColor, var(--black-85, rgba(0, 0, 0, 0.85)));
+    background: var(--kui-color-background-neutral-weak, $kui-color-background-neutral-weak);
     content: "";
     flex: 1;
     height: 1px;
-    margin: 0;
+    margin: var(--kui-space-0, $kui-space-0);
   }
 
   &:before {
-    margin-right: 12px;
+    margin-right: var(--kui-space-50, $kui-space-50);
   }
 
   &:after {
-    margin-left: 12px;
+    margin-left: var(--kui-space-50, $kui-space-50);
   }
 }
 
 a {
-  color: var(--blue-500);
+  color: var(--kui-color-text-primary, $kui-color-text-primary);
   text-decoration: none;
 
   &:hover,
@@ -156,10 +238,32 @@ a {
   }
 
   &:visited {
-    color: var(--blue-500);
+    color: var(--kui-color-text-primary, $kui-color-text-primary);
   }
+}
+
+.kong-auth-input {
+  margin-bottom: var(--kui-space-60, $kui-space-60);
+  width: 100% !important;
+}
+
+.form-error {
+  margin: var(--kui-space-60, $kui-space-60) var(--kui-space-0, $kui-space-0);
 }
 
 input.hidden-input {
   display: none !important;
+}
+
+.instruction-text {
+  color: var(--kui-color-text-neutral, $kui-color-text-neutral);
+}
+
+.checkbox-instruction-text {
+  color: var(--kui-color-text-neutral, $kui-color-text-neutral);
+  font-size: var(--kui-font-size-30, $kui-font-size-30);
+
+  .k-checkbox-label {
+    display: inline;
+  }
 }

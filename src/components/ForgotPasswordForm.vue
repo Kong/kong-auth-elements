@@ -1,18 +1,18 @@
 <template>
   <div class="kong-auth-forgot-password-form">
-    <div v-if="currentState.matches('error') && error" class="my-4">
+    <div v-if="currentState.matches('error') && error" class="form-error">
       <ErrorMessage :error="error" />
     </div>
     <div v-else-if="currentState.matches('success')">
       <KAlert
         :alert-message="successText"
         appearance="info"
-        class="mb-6"
+        class="form-error"
         data-testid="kong-auth-forgot-password-success-message"
       />
       <KButton
         appearance="primary"
-        class="justify-content-center w-100 type-lg"
+        class="forgot-password-return-to-login-btn"
         data-testid="kong-auth-forgot-password-return-to-login-btn"
         @click.prevent="$emit('click-login-link')"
       >{{ loginLinkText }}</KButton>
@@ -27,7 +27,7 @@
     >
       <p
         v-if="instructionText"
-        class="color-black-45"
+        class="instruction-text"
         data-testid="kong-auth-forgot-password-instruction-text"
       >{{ instructionText }}</p>
 
@@ -36,7 +36,7 @@
         v-model.trim="formData.email"
         autocapitalize="off"
         autocomplete="username"
-        class="w-100 mb-5"
+        class="kong-auth-input"
         data-testid="kong-auth-forgot-password-email"
         :has-error="currentState.matches('error') && error ? true : false"
         :label="`${messages.inputLabels.email}`"
@@ -47,26 +47,24 @@
 
       <KButton
         appearance="primary"
-        class="justify-content-center w-100 type-lg"
+        class="forgot-password-submit"
         data-testid="kong-auth-forgot-password-submit"
         :disabled="btnDisabled"
         type="submit"
       >
         <KIcon
           v-if="currentState.matches('pending')"
-          class="pr-0 mr-2"
-          color="var(--grey-400)"
+          color="currentColor"
           icon="spinner"
-          size="16"
+          :size="KUI_ICON_SIZE_30"
         />
         {{ btnText }}
       </KButton>
     </form>
 
-    <div v-if="!currentState.matches('success') && showLoginLink" class="text-center mt-5">
-      <p class="color-black-85 bold-500">
+    <div v-if="!currentState.matches('success') && showLoginLink" class="return-to-login-wrapper">
+      <p>
         <a
-          class="color-blue-500"
           data-testid="kong-auth-forgot-password-return-to-login-link"
           href="#"
           @click.prevent="$emit('click-login-link')"
@@ -85,6 +83,7 @@ import useAxios from '@/composables/useAxios'
 import useI18n from '@/composables/useI18n'
 import { forgotPasswordEmits } from '@/components/emits'
 import { AxiosResponse } from 'axios'
+import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
 // Components
 import { KAlert, KButton, KIcon, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'

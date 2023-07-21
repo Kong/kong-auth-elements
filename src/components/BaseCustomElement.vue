@@ -23,15 +23,4 @@ const { injectedStyles } = useInjectStyles()
 // Import custom app styles from a single entrypoint
 // (since this is wrapping all custom elements)
 @import "@/assets/styles/app";
-
-:root {
-  --font-family-sans: var(
-    --KongAuthFontFamily,
-    "Maison Neue",
-    "Roboto",
-    "Helvetica",
-    "Arial",
-    sans-serif
-  );
-}
 </style>

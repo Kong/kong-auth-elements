@@ -13,23 +13,21 @@
         <KButton
           appearance="outline"
           :aria-label="['pending', 'success'].some(currentState.matches) ? undefined : messages.login.loginTextSSOAriaLabel"
-          class="justify-content-center w-100 type-lg"
+          class="login-seo-button"
           data-testid="kong-auth-login-sso"
           :disabled="loginBtnSSODisabled"
           @click.prevent="redirectToIdp(idpLoginReturnTo)"
         >
           <KIcon
-            class="pr-0 mr-2"
-            :color="loginBtnSSODisabled ? 'var(--grey-400, #b6b6bd)' : 'var(--blue-500, #1155cb)'"
+            color="currentColor"
             :icon="idpIsLoading ? 'spinner' : 'organization'"
-            size="16"
+            :size="KUI_ICON_SIZE_30"
           />
           {{ messages.login.loginTextSSO }}
         </KButton>
 
-        <p v-if="loginWithCredentialsLinkIsVisible" class="basic-auth-link mt-5 text-center">
+        <p v-if="loginWithCredentialsLinkIsVisible" class="basic-auth-link">
           <a
-            class="color-blue-500"
             data-testid="kong-auth-login-basic-auth-link"
             href="#"
             @click.prevent="loginWithCredentials"
@@ -39,11 +37,11 @@
 
       <div v-if="loginDividerIsVisible" class="kong-auth-element-form-divider">{{ messages.general.dividerTextOr }}</div>
 
-      <div v-if="currentState.matches('error') && error" class="my-4">
+      <div v-if="currentState.matches('error') && error" class="form-error">
         <ErrorMessage :error="error" />
       </div>
 
-      <div v-else-if="currentState.matches('reset_password')" class="my-3">
+      <div v-else-if="currentState.matches('reset_password')" class="form-error">
         <KAlert
           :alert-message="messages.login.passwordResetSuccess"
           appearance="success"
@@ -52,7 +50,7 @@
         />
       </div>
 
-      <div v-else-if="currentState.matches('confirmed_email')" class="my-3">
+      <div v-else-if="currentState.matches('confirmed_email')" class="form-error">
         <KAlert
           :alert-message="messages.login.confirmedEmailSuccess"
           appearance="success"
@@ -61,7 +59,7 @@
         />
       </div>
 
-      <div v-else-if="currentState.matches('from_register')" class="my-3">
+      <div v-else-if="currentState.matches('from_register')" class="form-error">
         <KAlert
           :alert-message="registerSuccessText"
           appearance="success"
@@ -79,7 +77,7 @@
       >
         <p
           v-if="instructionText"
-          class="color-black-45"
+          class="instruction-text"
           data-testid="kong-auth-login-instruction-text"
         >{{ instructionText }}</p>
 
@@ -88,7 +86,7 @@
             v-model.trim="formData.email"
             autocapitalize="off"
             autocomplete="username"
-            class="w-100 mb-5"
+            class="kong-auth-input"
             data-testid="kong-auth-login-email"
             :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
             :label="`${messages.inputLabels.email}`"
@@ -101,7 +99,7 @@
             id="password"
             v-model.trim="formData.password"
             autocomplete="current-password"
-            class="w-100"
+            class="kong-auth-input"
             data-testid="kong-auth-login-password"
             :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
             :label="`${messages.inputLabels.password}`"
@@ -110,9 +108,8 @@
             @animationstart="checkAutofill"
           />
 
-        <p v-if="showForgotPasswordLink" class="help mt-3">
+        <p v-if="showForgotPasswordLink" class="forgot-password-link">
           <a
-            class="color-blue-500"
             data-testid="kong-auth-login-forgot-password-link"
             href="#"
             @click.prevent="$emit('click-forgot-password-link')"
@@ -121,26 +118,24 @@
 
         <KButton
           appearance="primary"
-          class="justify-content-center w-100 mt-6 type-lg"
+          class="login-button"
           data-testid="kong-auth-login-submit"
           :disabled="loginBtnDisabled"
           type="submit"
         >
           <KIcon
             v-if="['pending', 'success'].some(currentState.matches)"
-            class="pr-0 mr-2"
-            color="var(--grey-400)"
+            color="currentColor"
             icon="spinner"
-            size="16"
+            :size="KUI_ICON_SIZE_30"
           />
           {{ loginBtnText }}
         </KButton>
 
-        <div v-if="showRegisterLink" class="text-center mt-5">
-          <p class="color-black-85 bold-500">
-            <span data-testid="kong-auth-login-register-help-text">{{ registerLinkHelpText }}</span>
+        <div v-if="showRegisterLink" class="register-link-wrapper">
+          <p>
+            <span data-testid="kong-auth-login-register-help-text">{{ registerLinkHelpText }} &nbsp;</span>
             <a
-              class="color-blue-500"
               data-testid="kong-auth-login-register-link"
               href="#"
               @click.prevent="$emit('click-register-link')"
@@ -163,7 +158,7 @@ import useIdentityProvider from '@/composables/useIdentityProvider'
 import useI18n from '@/composables/useI18n'
 import useAxios from '@/composables/useAxios'
 import { loginEmits } from '@/components/emits'
-
+import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
 // Components
 import { KAlert, KButton, KIcon, KInput, KSkeleton } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'

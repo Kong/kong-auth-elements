@@ -2,9 +2,11 @@
   "recommendations": [
     "davidanson.vscode-markdownlint",
     "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
     "mrmlnc.vscode-scss",
     "Vue.volar",
-    "Vue.vscode-typescript-vue-plugin"
+    "Vue.vscode-typescript-vue-plugin",
+    "mrmlnc.vscode-scss"
   ],
   "unwantedRecommendations": []
 }

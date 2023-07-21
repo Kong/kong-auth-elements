@@ -9,12 +9,17 @@
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
   "eslint.codeActionsOnSave.mode": "problems",
-  "eslint.packageManager": "yarn",
   "eslint.format.enable": true,
   "eslint.validate": [
     "typescript",
     "javascript",
     "javascriptreact",
+    "vue"
+  ],
+  "stylelint.validate": [
+    "css",
+    "scss",
+    "sass",
     "vue"
   ],
   "files.associations": {
@@ -24,4 +29,8 @@
   "[vue]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
+  "scss.scannerExclude": [
+    "**/.git",
+    "**/bower_components"
+  ]
 }

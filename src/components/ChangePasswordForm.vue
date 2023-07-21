@@ -9,7 +9,7 @@
     >
       <p
         v-if="instructionText"
-        class="color-black-45"
+        class="instruction-text"
         data-testid="kong-auth-change-password-instruction-text"
       >{{ instructionText }}</p>
 
@@ -21,7 +21,7 @@
         ref="currentPassword"
         v-model.trim="formData.currentPassword"
         autocomplete="current-password"
-        class="w-100 mb-4"
+        class="kong-auth-input"
         data-testid="kong-auth-change-password-current-password"
         :has-error="currentState.matches('error') && error ? true : false"
         :label="`${convertToTitleCase(messages.inputLabels.currentPassword)}`"
@@ -35,7 +35,7 @@
         ref="newPassword"
         v-model.trim="formData.newPassword"
         autocomplete="new-password"
-        class="w-100 mb-4"
+        class="kong-auth-input"
         data-testid="kong-auth-change-password-new-password"
         :has-error="currentState.matches('error') && error ? true : false"
         :label="`${convertToTitleCase(messages.inputLabels.newPassword)}`"
@@ -49,7 +49,7 @@
         ref="passwordConfirm"
         v-model.trim="formData.confirmPassword"
         autocomplete="new-password"
-        class="w-100 mb-4"
+        class="kong-auth-input"
         data-testid="kong-auth-change-password-confirm-new-password"
         :error-message="passwordIsInvalid ? messages.resetPassword.passwordMismatch : undefined"
         :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
@@ -59,7 +59,7 @@
         type="password"
       />
 
-      <div v-if="currentState.matches('error') && error" class="my-4">
+      <div v-if="currentState.matches('error') && error" class="form-error">
         <ErrorMessage :error="error" />
       </div>
 
@@ -68,7 +68,6 @@
           id="change-password-cancel"
           ref="changePasswordCancel"
           appearance="outline"
-          class="justify-content-center type-lg mr-1"
           data-testid="kong-auth-change-password-cancel"
           :disabled="btnDisabled"
           @click.prevent="handleCancel"
@@ -80,17 +79,15 @@
           id="change-password-submit"
           ref="changePasswordSubmit"
           appearance="primary"
-          class="justify-content-center type-lg"
           data-testid="kong-auth-change-password-submit"
           :disabled="btnDisabled"
           type="submit"
         >
           <KIcon
             v-if="currentState.matches('pending')"
-            class="pr-0 mr-2"
-            color="var(--grey-400)"
+            color="currentColor"
             icon="spinner"
-            size="16"
+            :size="KUI_ICON_SIZE_30"
           />
           {{ btnText }}
         </KButton>
@@ -108,6 +105,7 @@ import useI18n from '@/composables/useI18n'
 import useAxios from '@/composables/useAxios'
 import { changePasswordEmits } from '@/components/emits'
 import { convertToTitleCase } from '../utils/index'
+import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
 // Components
 import { KButton, KIcon, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'

@@ -1,6 +1,6 @@
 <template>
   <div class="kong-auth-reset-password-form">
-    <div v-if="currentState.matches('error') && error" class="my-4">
+    <div v-if="currentState.matches('error') && error" class="form-error">
       <ErrorMessage :error="error" />
     </div>
 
@@ -13,7 +13,7 @@
     >
       <p
         v-if="instructionText"
-        class="color-black-45"
+        class="instruction-text"
         data-testid="kong-auth-reset-password-instruction-text"
       >{{ instructionText }}</p>
 
@@ -24,7 +24,7 @@
         id="password"
         v-model.trim="formData.password"
         autocomplete="new-password"
-        class="w-100 mb-4"
+        class="kong-auth-input"
         data-testid="kong-auth-reset-password-new-password"
         :has-error="currentState.matches('error') && error ? true : false"
         :label="`${messages.inputLabels.newPassword}`"
@@ -36,7 +36,7 @@
         id="password-confirm"
         v-model.trim="formData.confirmPassword"
         autocomplete="new-password"
-        class="w-100 mb-4"
+        class="kong-auth-input"
         data-testid="kong-auth-reset-password-confirm-new-password"
         :error-message="passwordIsInvalid ? messages.resetPassword.passwordMismatch : undefined"
         :has-error="(currentState.matches('error') && error) || passwordIsInvalid ? true : false"
@@ -47,17 +47,16 @@
 
       <KButton
         appearance="primary"
-        class="justify-content-center w-100 type-lg"
+        class="reset-password-submit"
         data-testid="kong-auth-reset-password-submit"
         :disabled="btnDisabled"
         type="submit"
       >
         <KIcon
           v-if="currentState.matches('pending')"
-          class="pr-0 mr-2"
-          color="var(--grey-400)"
+          color="currentColor"
           icon="spinner"
-          size="16"
+          :size="KUI_ICON_SIZE_30"
         />
         {{ btnText }}
       </KButton>
@@ -75,6 +74,7 @@ import useAxios from '@/composables/useAxios'
 import useI18n from '@/composables/useI18n'
 import { resetPasswordEmits } from '@/components/emits'
 import { AxiosResponse } from 'axios'
+import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
 // Components
 import { KButton, KIcon, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'

@@ -2,7 +2,7 @@
   <div class="kong-auth-register-form">
     <div
       v-if="currentState.matches('error') && !passwordError && error"
-      class="my-4"
+      class="form-error"
       data-testid="kong-auth-register-alert"
     >
       <ErrorMessage :error="error" />
@@ -17,7 +17,7 @@
     >
       <p
         v-if="instructionText"
-        class="color-black-45"
+        class="instruction-text"
         data-testid="kong-auth-register-instruction-text"
       >{{ instructionText }}</p>
 
@@ -29,7 +29,7 @@
           {{ messages.regionInformation.description }}
         </p>
 
-        <div class="mb-4 kong-auth-register-region">
+        <div class="kong-auth-register-region">
           <KSelect
             id="regionInformationTitle"
             v-model="formData.selectedRegionOption"
@@ -47,7 +47,7 @@
           id="full_name"
           v-model.trim="formData.fullName"
           autocomplete="name"
-          class="w-100 mb-4"
+          class="kong-auth-input"
           data-testid="kong-auth-register-full-name"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.fullName ? true : false"
           :label="`${messages.inputLabels.fullName}`"
@@ -61,7 +61,7 @@
           id="organization"
           v-model.trim="formData.organization"
           autocomplete="organization"
-          class="w-100 mb-4"
+          class="kong-auth-input"
           data-testid="kong-auth-register-organization"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.organization ? true : false"
           :label="`${messages.inputLabels.organization}`"
@@ -74,7 +74,7 @@
         id="email"
         v-model.trim="formData.email"
         autocomplete="email"
-        class="w-100 mb-4"
+        class="kong-auth-input"
         data-testid="kong-auth-register-email"
         :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.email ? true : false"
         :label="`${messages.inputLabels.email}`"
@@ -87,7 +87,7 @@
           id="password"
           v-model.trim="formData.password"
           autocomplete="new-password"
-          class="w-100 mb-4"
+          class="kong-auth-input"
           data-testid="kong-auth-register-password"
           :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
           :label="`${messages.inputLabels.password}`"
@@ -101,7 +101,7 @@
           id="access_code"
           v-model="formData.accessCode"
           autocomplete="off"
-          class="w-100 mb-4"
+          class="kong-auth-input"
           data-testid="kong-auth-register-access-code"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.accessCode ? true : false"
           :label="`${messages.inputLabels.accessCode}`"
@@ -110,7 +110,7 @@
         />
       </div>
 
-      <div v-if="userEntity !== 'developer'" class="color-black-45 type-sm">
+      <div v-if="userEntity !== 'developer'" class="checkbox-instruction-text">
         <KCheckbox v-model="formData.checked_agreement" data-testid="kong-auth-register-agree-checkbox">
           <span>
             I agree to the
@@ -126,7 +126,7 @@
 
       <div
         v-if="currentState.matches('error') && passwordError && error"
-        class="mt-4"
+        class="kong-auth-register-alert"
         data-testid="kong-auth-register-alert"
       >
         <ErrorMessage :error="error" />
@@ -144,17 +144,16 @@
 
       <KButton
         appearance="primary"
-        class="justify-content-center w-100 type-lg mt-6"
+        class="register-submit"
         data-testid="kong-auth-register-submit"
         :disabled="btnDisabled"
         type="submit"
       >
         <KIcon
           v-if="currentState.matches('pending')"
-          class="pr-0 mr-2"
-          color="var(--grey-400)"
+          color="currentColor"
           icon="spinner"
-          size="16"
+          :size="KUI_ICON_SIZE_30"
         />
         {{ btnText }}
       </KButton>
@@ -173,6 +172,7 @@ import { registerEmits } from '@/components/emits'
 import { AxiosResponse } from 'axios'
 import { win } from '@/utils'
 import { VueRecaptcha } from 'vue-recaptcha'
+import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
 // Components
 import { KButton, KIcon, KInput, KCheckbox, KSelect, KLabel } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
