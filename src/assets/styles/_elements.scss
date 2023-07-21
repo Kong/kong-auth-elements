@@ -41,6 +41,8 @@
 .kong-auth-login-form {
   .basic-auth-link {
     font-size: var(--kui-font-size-30, $kui-font-size-30);
+    margin-top: var(--kui-space-80, $kui-space-80);
+    text-align: center !important;
   }
 
   .idp-loading {
@@ -111,6 +113,13 @@
 
 .text-center {
   text-align: center;
+}
+
+.kong-auth-reset-password-form {
+  .reset-password-submit {
+    justify-content: center !important;
+    width: 100% !important;
+  }
 }
 
 .kong-auth-forgot-password-form {

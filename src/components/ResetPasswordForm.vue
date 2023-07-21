@@ -1,6 +1,6 @@
 <template>
   <div class="kong-auth-reset-password-form">
-    <div v-if="currentState.matches('error') && error" class="my-4">
+    <div v-if="currentState.matches('error') && error" class="form-error">
       <ErrorMessage :error="error" />
     </div>
 
@@ -47,15 +47,14 @@
 
       <KButton
         appearance="primary"
-        class="justify-content-center w-100 type-lg"
+        class="reset-password-submit"
         data-testid="kong-auth-reset-password-submit"
         :disabled="btnDisabled"
         type="submit"
       >
         <KIcon
           v-if="currentState.matches('pending')"
-          class="pr-0 mr-2"
-          color="var(--grey-400)"
+          color="currentColor"
           icon="spinner"
           :size="KUI_ICON_SIZE_30"
         />

@@ -19,17 +19,15 @@
           @click.prevent="redirectToIdp(idpLoginReturnTo)"
         >
           <KIcon
-            class="pr-0 mr-2"
-            :color="loginBtnSSODisabled ? 'var(--grey-400, #b6b6bd)' : 'var(--blue-500, #1155cb)'"
+            color="currentColor"
             :icon="idpIsLoading ? 'spinner' : 'organization'"
             :size="KUI_ICON_SIZE_30"
           />
           {{ messages.login.loginTextSSO }}
         </KButton>
 
-        <p v-if="loginWithCredentialsLinkIsVisible" class="basic-auth-link mt-5 text-center">
+        <p v-if="loginWithCredentialsLinkIsVisible" class="basic-auth-link">
           <a
-            class="color-blue-500"
             data-testid="kong-auth-login-basic-auth-link"
             href="#"
             @click.prevent="loginWithCredentials"
@@ -39,11 +37,11 @@
 
       <div v-if="loginDividerIsVisible" class="kong-auth-element-form-divider">{{ messages.general.dividerTextOr }}</div>
 
-      <div v-if="currentState.matches('error') && error" class="my-4">
+      <div v-if="currentState.matches('error') && error" class="form-error">
         <ErrorMessage :error="error" />
       </div>
 
-      <div v-else-if="currentState.matches('reset_password')" class="my-3">
+      <div v-else-if="currentState.matches('reset_password')" class="form-error">
         <KAlert
           :alert-message="messages.login.passwordResetSuccess"
           appearance="success"
@@ -52,7 +50,7 @@
         />
       </div>
 
-      <div v-else-if="currentState.matches('confirmed_email')" class="my-3">
+      <div v-else-if="currentState.matches('confirmed_email')" class="form-error">
         <KAlert
           :alert-message="messages.login.confirmedEmailSuccess"
           appearance="success"
@@ -61,7 +59,7 @@
         />
       </div>
 
-      <div v-else-if="currentState.matches('from_register')" class="my-3">
+      <div v-else-if="currentState.matches('from_register')" class="form-error">
         <KAlert
           :alert-message="registerSuccessText"
           appearance="success"

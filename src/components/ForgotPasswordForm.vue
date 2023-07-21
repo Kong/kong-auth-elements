@@ -1,6 +1,6 @@
 <template>
   <div class="kong-auth-forgot-password-form">
-    <div v-if="currentState.matches('error') && error" class="my-4">
+    <div v-if="currentState.matches('error') && error" class="form-error">
       <ErrorMessage :error="error" />
     </div>
     <div v-else-if="currentState.matches('success')">
