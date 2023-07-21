@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/Kong/kong-auth-elements/compare/v2.5.0...v2.5.1) (2023-07-21)
+
+
+### Bug Fixes
+
+* using correct env token to make it less confusing [KHCP-7461] ([#1156](https://github.com/Kong/kong-auth-elements/issues/1156)) ([871cc66](https://github.com/Kong/kong-auth-elements/commit/871cc66e3290cdfe047206e985631b9b443d4367))
+
 # [2.5.0](https://github.com/Kong/kong-auth-elements/compare/v2.4.0...v2.5.0) (2023-07-21)
 
 
