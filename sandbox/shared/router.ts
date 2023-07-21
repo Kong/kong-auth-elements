@@ -13,6 +13,15 @@ const pageRoutes = [
 const routes: RouteRecordRaw[] = []
 
 pageRoutes.forEach((routePath: string) => {
+  if (routePath === 'login') {
+    routes.push({
+      path: '/login/:login_path?',
+      name: routePath,
+      component: PageView,
+    })
+    return
+  }
+
   routes.push({
     path: routePath,
     name: routePath,
