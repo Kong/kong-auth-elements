@@ -154,7 +154,7 @@
           class="pr-0 mr-2"
           color="var(--grey-400)"
           icon="spinner"
-          size="16"
+          :size="KUI_ICON_SIZE_30"
         />
         {{ btnText }}
       </KButton>
@@ -173,6 +173,7 @@ import { registerEmits } from '@/components/emits'
 import { AxiosResponse } from 'axios'
 import { win } from '@/utils'
 import { VueRecaptcha } from 'vue-recaptcha'
+import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
 // Components
 import { KButton, KIcon, KInput, KCheckbox, KSelect, KLabel } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'

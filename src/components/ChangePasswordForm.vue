@@ -90,7 +90,7 @@
             class="pr-0 mr-2"
             color="var(--grey-400)"
             icon="spinner"
-            size="16"
+            :size="KUI_ICON_SIZE_30"
           />
           {{ btnText }}
         </KButton>
@@ -108,6 +108,7 @@ import useI18n from '@/composables/useI18n'
 import useAxios from '@/composables/useAxios'
 import { changePasswordEmits } from '@/components/emits'
 import { convertToTitleCase } from '../utils/index'
+import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
 // Components
 import { KButton, KIcon, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'

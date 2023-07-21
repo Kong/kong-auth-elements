@@ -76,9 +76,26 @@
 
 .kong-auth-accept-invitation-form {
   .accept-invitation-subheader {
+    color: var(--kui-color-text-neutral-strong, $kui-color-text-neutral-strong);
     font-size: var(--kui-font-size-60, $kui-font-size-60);
     font-weight: var(--kui-font-weight-semibold, $kui-font-weight-semibold);
     line-height: var(--kui-line-height-60, $kui-line-height-60);
+    margin-bottom: var(--kui-space-90, $kui-space-90);
+  }
+
+  .accept-invitation-submit {
+    justify-content: center !important;
+    margin-top: var(--kui-space-90, $kui-space-90) !important;
+    width: 100% !important;
+  }
+
+  .invitation-form-error {
+    margin-bottom: var(--kui-space-60, $kui-space-60);
+  }
+
+  .invitation-form-input {
+    margin-bottom: var(--kui-space-60, $kui-space-60);
+    width: 100% !important;
   }
 }
 
@@ -124,7 +141,7 @@
 
 .kong-auth-element-form-divider {
   align-items: center;
-  color: var(--kui-color-text, $kui-color-text);
+  color: var(--kui-color-text-neutral, $kui-color-text-neutral);
   display: flex;
   flex-direction: row;
   font-size: var(--kui-font-size-40, $kui-font-size-40);
@@ -133,24 +150,24 @@
 
   &:before,
   &:after {
-    background: var(--KInputLabelColor, var(--black-85, rgba(0, 0, 0, 0.85)));
+    background: var(--kui-color-background-neutral-weak, $kui-color-background-neutral-weak);
     content: "";
     flex: 1;
     height: 1px;
-    margin: 0;
+    margin: var(--kui-space-0, $kui-space-0);
   }
 
   &:before {
-    margin-right: 12px;
+    margin-right: var(--kui-space-50, $kui-space-50);
   }
 
   &:after {
-    margin-left: 12px;
+    margin-left: var(--kui-space-50, $kui-space-50);
   }
 }
 
 a {
-  color: var(--blue-500);
+  color: var(--kui-color-text-primary, $kui-color-text-primary);
   text-decoration: none;
 
   &:hover,
@@ -159,7 +176,7 @@ a {
   }
 
   &:visited {
-    color: var(--blue-500);
+    color: var(--kui-color-text-primary, $kui-color-text-primary);
   }
 }
 

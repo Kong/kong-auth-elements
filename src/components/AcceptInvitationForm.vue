@@ -1,13 +1,13 @@
 <template>
   <div class="kong-auth-accept-invitation-form">
     <h2 v-if="!currentState.matches('success') && formData.organization"
-      class="accept-invitation-subheader color-black-70 mb-6"
+      class="accept-invitation-subheader"
       data-testid="kong-auth-accept-invitation-subheader"
     ><span data-testid="kong-auth-accept-invitation-subheader-text">{{ subheaderText }}</span> <span data-testid="kong-auth-accept-invitation-org-name">{{ formData.organization }}</span>!</h2>
 
     <div
       v-if="currentState.matches('error') && !passwordError && error"
-      class="my-4"
+      class="invitation-form-error"
       data-testid="kong-auth-accept-invitation-alert"
     >
       <ErrorMessage :error="error" />
@@ -26,7 +26,7 @@
           id="full_name"
           v-model.trim="formData.fullName"
           autocomplete="name"
-          class="w-100 mb-4"
+          class="invitation-form-input"
           data-testid="kong-auth-accept-invitation-full-name"
           :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.fullName ? true : false"
           :label="`${messages.inputLabels.fullName}`"
@@ -40,7 +40,7 @@
           id="preferred_name"
           v-model.trim="formData.preferredName"
           autocomplete="name"
-          class="w-100 mb-4"
+          class="invitation-form-input"
           data-testid="kong-auth-accept-invitation-preferred-name"
           :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
           :label="`${messages.inputLabels.preferredName}`"
@@ -52,7 +52,7 @@
         id="email"
         v-model.trim="formData.email"
         autocomplete="email"
-        class="w-100 mb-4"
+        class="invitation-form-input"
         data-testid="kong-auth-accept-invitation-email"
         :has-error="currentState.matches('error') && error && fieldsHaveError && !formData.email ? true : false"
         :label="`${messages.inputLabels.email}`"
@@ -65,14 +65,14 @@
           id="password"
           v-model.trim="formData.password"
           autocomplete="new-password"
-          class="w-100"
+          class="invitation-form-input"
           data-testid="kong-auth-accept-invitation-password"
           :has-error="currentState.matches('error') && error && (fieldsHaveError || passwordError) ? true : false"
+          :help="messages.acceptInvitation.passwordHelpText"
           :label="`${messages.inputLabels.password}`"
           required
           type="password"
         />
-        <p class="help mb-4">{{ messages.acceptInvitation.passwordHelpText }}</p>
 
       <div
         v-if="currentState.matches('error') && passwordError && error"
@@ -83,17 +83,16 @@
 
       <KButton
         appearance="primary"
-        class="accept-invitation-submit justify-content-center w-100 type-lg mt-6"
+        class="accept-invitation-submit"
         data-testid="kong-auth-accept-invitation-submit"
         :disabled="btnDisabled"
         type="submit"
       >
         <KIcon
-          v-if="currentState.matches('pending')"
-          class="pr-0 mr-2"
-          color="var(--grey-400)"
+          v-if="!currentState.matches('pending')"
+          color="currentColor"
           icon="spinner"
-          size="16"
+          :size="KUI_ICON_SIZE_30"
         />
         {{ btnText }}
       </KButton>
@@ -111,6 +110,7 @@ import useI18n from '@/composables/useI18n'
 import useAxios from '@/composables/useAxios'
 import { acceptInvitationEmits } from '@/components/emits'
 import { AxiosResponse } from 'axios'
+import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
 // Components
 import { KButton, KIcon, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'

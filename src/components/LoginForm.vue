@@ -22,7 +22,7 @@
             class="pr-0 mr-2"
             :color="loginBtnSSODisabled ? 'var(--grey-400, #b6b6bd)' : 'var(--blue-500, #1155cb)'"
             :icon="idpIsLoading ? 'spinner' : 'organization'"
-            size="16"
+            :size="KUI_ICON_SIZE_30"
           />
           {{ messages.login.loginTextSSO }}
         </KButton>
@@ -131,7 +131,7 @@
             class="pr-0 mr-2"
             color="var(--grey-400)"
             icon="spinner"
-            size="16"
+            :size="KUI_ICON_SIZE_30"
           />
           {{ loginBtnText }}
         </KButton>
@@ -163,7 +163,7 @@ import useIdentityProvider from '@/composables/useIdentityProvider'
 import useI18n from '@/composables/useI18n'
 import useAxios from '@/composables/useAxios'
 import { loginEmits } from '@/components/emits'
-
+import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
 // Components
 import { KAlert, KButton, KIcon, KInput, KSkeleton } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
