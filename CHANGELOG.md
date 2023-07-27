@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/Kong/kong-auth-elements/compare/v2.6.0...v2.7.0) (2023-07-27)
+
+
+### Features
+
+* **ci:** add timeout-minutes to ci jobs [KHCP-8104] ([#1222](https://github.com/Kong/kong-auth-elements/issues/1222)) ([3d26758](https://github.com/Kong/kong-auth-elements/commit/3d267580b0d63b07f6e6091600edf0a48c381613))
+
 # [2.6.0](https://github.com/Kong/kong-auth-elements/compare/v2.5.1...v2.6.0) (2023-07-21)
 
 
