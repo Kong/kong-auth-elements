@@ -292,6 +292,11 @@ const processRegistration = async (): Promise<AxiosResponse> => {
     body = wrapRequest.value(body)
   }
 
+  if (userEntity === 'developer') {
+    delete body.organization
+    delete body.password
+  }
+
   // Register a new user
   if (registerRequestEndpoint.value) {
     if (!wrapRequest.value) {
