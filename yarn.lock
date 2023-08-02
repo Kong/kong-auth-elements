@@ -568,10 +568,10 @@
   resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.9.0.tgz#ebdce87c460e6095428ca37792d90e9540527f7d"
   integrity sha512-y68F8uUxLQZDRqN8365TPVsYPNPS9jGTlsap8A6N2MkYHYZ75Qnewl7cK6M+YUbG9AUx1YE64vt1yQe5+/Ydzg==
 
-"@kong/kongponents@^8.121.1":
-  version "8.121.1"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.121.1.tgz#398d92a46a997445c8aae6f0c9e680e02f9761d1"
-  integrity sha512-EuR/uek1kp6Yg0ELDlYilG4z5VQAJ35kNYOJBC6BaZrDU4Maja/w6XP6EDS6UK8Ty70S5lG+0L/6LJJkvA0oSg==
+"@kong/kongponents@^8.122.0":
+  version "8.122.0"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.122.0.tgz#508376b2990017d76a374d5a68a1feac4495c3d8"
+  integrity sha512-++bAT/1jLUB5yHZGOOujYtMb0UNPC+T39aTYG/YnZrURP/p5TPn3d2FHNAnP69XhI3KFnLQZHiqoBqTFBLmn8w==
   dependencies:
     axios "^0.27.2"
     date-fns "^2.29.3"
