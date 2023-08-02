@@ -1,3 +1,10 @@
+## [2.7.2](https://github.com/Kong/kong-auth-elements/compare/v2.7.1...v2.7.2) (2023-08-02)
+
+
+### Bug Fixes
+
+* remove unneeded params from developer registration ([#1232](https://github.com/Kong/kong-auth-elements/issues/1232)) ([5ebb5ea](https://github.com/Kong/kong-auth-elements/commit/5ebb5ea9214f6bddabc4d4f0fdee365ee2696dd5))
+
 ## [2.7.1](https://github.com/Kong/kong-auth-elements/compare/v2.7.0...v2.7.1) (2023-07-27)
 
 
