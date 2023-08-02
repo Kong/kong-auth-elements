@@ -292,6 +292,13 @@ const processRegistration = async (): Promise<AxiosResponse> => {
     body = wrapRequest.value(body)
   }
 
+  // The registration endpoint for developers don't need these fields
+  if (userEntity === 'developer') {
+    delete body.organization
+    delete body.password
+    delete body.defaultRegion
+  }
+
   // Register a new user
   if (registerRequestEndpoint.value) {
     if (!wrapRequest.value) {
