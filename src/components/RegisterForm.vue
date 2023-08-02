@@ -296,6 +296,7 @@ const processRegistration = async (): Promise<AxiosResponse> => {
   if (userEntity === 'developer') {
     delete body.organization
     delete body.password
+    delete body.defaultRegion
   }
 
   // Register a new user
