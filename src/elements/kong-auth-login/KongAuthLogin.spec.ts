@@ -501,15 +501,20 @@ describe('KongAuthLogin.ce.vue', () => {
     it("should initiate user IdP login if props are set and URL is '/login/{login-path}'", () => {
       cy.stub(getConfigOptions, 'userEntity').returns('user')
       const loginPath = 'test-login-path'
-      const redirectPath = `/authenticate/${loginPath}?returnTo=${encodeURIComponent(win.getLocationOrigin())}`
+      const callbackUrl = 'https://cloud.konghq.tech/login'
+      const redirectPath = `/authenticate/${loginPath}?returnTo=${encodeURIComponent(win.getLocationOrigin() + '/')}&callback_url=${encodeURIComponent(callbackUrl)}`
       // Stub URL path
       cy.stub(win, 'getLocationPathname').returns(`/login/${loginPath}`)
-      cy.stub(win, 'setLocationHref').as('set-location')
+      // cy.stub(win, 'setLocationHref').as('set-location')
+      cy.stub(win, 'setLocationHref', args => {
+        console.log('args', args)
+      }).as('set-location')
 
       mount(KongAuthLogin, {
         props: {
           idpLoginEnabled: true,
           idpLoginReturnTo: win.getLocationOrigin(),
+          idpLoginCallbackUrl: callbackUrl,
         },
       })
 
@@ -526,7 +531,7 @@ describe('KongAuthLogin.ce.vue', () => {
       cy.stub(win, 'getLocationPathname').returns('/login/sso')
       cy.stub(win, 'setLocationHref').as('set-location')
       // Stub URL path
-      const redirectPath = `/developer/authenticate/sso?returnTo=${encodeURIComponent(win.getLocationOrigin())}`
+      const redirectPath = `/developer/authenticate/sso?returnTo=${encodeURIComponent(win.getLocationOrigin() + '/')}`
 
       mount(KongAuthLogin, {
         props: {

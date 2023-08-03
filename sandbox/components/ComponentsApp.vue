@@ -6,8 +6,9 @@
       </h4>
       <KongAuthLogin
         basic-auth-login-enabled
+        idp-login-callback-url="http://localhost:5173/login"
         idp-login-enabled
-        idp-login-return-to="https://kompany795bb6b9.us.portal.konghq.tech"
+        idp-login-return-to="http://localhost:5173/"
         show-forgot-password-link
         @click-forgot-password-link="showAlert('User clicked forgot password')"
         @click-register-link="showAlert('User clicked register')"
