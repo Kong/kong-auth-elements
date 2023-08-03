@@ -66,6 +66,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  idpLoginCallbackUrl: {
+    type: String,
+    default: '',
+  },
   idpLoginReturnTo: {
     type: String,
     default: '',
@@ -109,6 +113,10 @@ provide(
 provide(
   'idp-login-enabled',
   computed((): boolean => props.idpLoginEnabled),
+)
+provide(
+  'idp-login-callback-url',
+  computed((): string => (props.idpLoginCallbackUrl ? props.idpLoginCallbackUrl : '')),
 )
 provide(
   'idp-login-return-to',

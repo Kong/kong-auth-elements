@@ -1,4 +1,4 @@
-import { onMounted, ref, Ref, watch } from 'vue'
+import { onMounted, ref, Ref, watchEffect } from 'vue'
 import useConfigOptions from '@/composables/useConfigOptions'
 import { win } from '@/utils'
 
@@ -7,7 +7,7 @@ export interface IdentityProviderComposable {
   idpIsLoading: Ref<boolean>
   shouldTriggerIdpLogin(): boolean
   shouldTriggerIdpAuthentication(): boolean
-  redirectToIdp(returnTo: string): void
+  redirectToIdp(callbackUrl: string, returnTo: string): void
   authenticateWithIdp(): void
 }
 
@@ -16,12 +16,14 @@ export interface IdentityProviderComposable {
  * @export IdentityProviderComposable
  * @param {ref<boolean>} basicAuthIsEnabled - If true, user can log in with basic auth credentials.
  * @param {ref<boolean>} idpIsEnabled - If true, automatically handle IDP in the onMounted lifecycle hook.
+ * @param {ref<string>} idpLoginCallbackUrl - Pass the OIDC callback URL; typically ends in `/login`
  * @param {ref<string>} idpLoginRedirectTo - Pass the returnTo URL.
  * @return {*} {IdentityProviderComposable}
  */
 export default function useIdentityProvider(
   basicAuthIsEnabled: Ref<boolean>,
   idpIsEnabled: Ref<boolean>,
+  idpLoginCallbackUrl: Ref<string>,
   idpLoginRedirectTo: Ref<string>,
 ): IdentityProviderComposable {
   const { apiBaseUrl, userEntity, developerConfig } = useConfigOptions()
@@ -89,7 +91,7 @@ export default function useIdentityProvider(
    * Redirect the user to the kauth/authenticate/{org-id} endpoint, and provide a returnTo path.
    * @param {string} [returnTo] - The full URL (including https://) where to return the user to with the code and state.
    */
-  const redirectToIdp = (returnTo: string): void => {
+  const redirectToIdp = (callbackUrl: string, returnTo: string): void => {
     idpIsLoading.value = true
 
     if (userEntity !== 'developer' && !organizationLoginPath.value) {
@@ -114,11 +116,39 @@ export default function useIdentityProvider(
       return
     }
 
+    // Create a URL from callbackUrl and encode for query string. Fail if not a valid URL.
+    let callbackUrlParam
+
+    try {
+      // Create new URL from callbackUrl, wrapped in try/catch to construct the URL object
+      // IMPORTANT: Fallback to `${window.location.origin}/login`
+      const oidcCallbackUrl = new URL(callbackUrl || win.getLocationOrigin() + '/login')
+
+      // Encode for query string param
+      callbackUrlParam = `callback_url=${encodeURIComponent(oidcCallbackUrl.href)}`
+    } catch (_) {
+      idpIsLoading.value = false
+      // Console warning references the element prop name instead of local variable
+      // eslint-disable-next-line no-console
+      console.error("'idpLoginCallbackUrl' must be a valid URL")
+      return
+    }
+
     // Prevent additional redirects while processing
     isRedirecting.value = true
 
+    // Create an array to hold the URL params
+    const urlParams = []
+
+    // Always add the returnTo param
+    urlParams.push(returnToParam)
+    // If `user`, add the callback_url param
+    if (userEntity === 'user') {
+      urlParams.push(callbackUrlParam)
+    }
+
     // Combine URL params, skipping any that are empty
-    const redirectParams = '?' + [returnToParam].filter(Boolean).join('&')
+    const redirectParams = '?' + urlParams.filter(Boolean).join('&')
 
     if (userEntity === 'developer') {
       if (!developerConfig?.portalId) {
@@ -204,9 +234,9 @@ export default function useIdentityProvider(
 
   // Add watcher to allow `kong-auth-login` element time to load and retrigger redirect.
   // `idp-login-return-to` prop value will likely not be available ASAP onMounted within containing app, so this will still fire.
-  watch(idpLoginRedirectTo, (loginUrl) => {
-    if (idpIsEnabled.value && !!loginUrl.trim() && shouldTriggerIdpLogin() && !isRedirecting.value) {
-      redirectToIdp(loginUrl)
+  watchEffect(() => {
+    if (idpIsEnabled.value && !!String(idpLoginRedirectTo.value || '').trim() && !!String(idpLoginCallbackUrl.value || '').trim() && shouldTriggerIdpLogin() && !isRedirecting.value) {
+      redirectToIdp(idpLoginCallbackUrl.value, idpLoginRedirectTo.value)
     }
   })
 
@@ -218,7 +248,7 @@ export default function useIdentityProvider(
 
     // Check for IDP login
     if (shouldTriggerIdpLogin()) {
-      redirectToIdp(idpLoginRedirectTo.value)
+      redirectToIdp(idpLoginCallbackUrl.value, idpLoginRedirectTo.value)
       return
     }
 

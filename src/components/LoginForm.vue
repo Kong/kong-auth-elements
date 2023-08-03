@@ -16,7 +16,7 @@
           class="login-seo-button"
           data-testid="kong-auth-login-sso"
           :disabled="loginBtnSSODisabled"
-          @click.prevent="redirectToIdp(idpLoginReturnTo)"
+          @click.prevent="redirectToIdp(idpLoginCallbackUrl, idpLoginReturnTo)"
         >
           <KIcon
             color="currentColor"
@@ -185,6 +185,7 @@ const registerSuccessText: Ref<string> = inject('register-success-text', ref(mes
 const basicAuthLoginEnabled: Ref<boolean> = inject('basic-auth-login-enabled', ref(true))
 const showBasicAuthLoginLink: Ref<boolean> = inject('show-basic-auth-login-link', ref(true))
 const idpLoginEnabled: Ref<boolean> = inject('idp-login-enabled', ref(false))
+const idpLoginCallbackUrl: Ref<string> = inject('idp-login-callback-url', ref(''))
 const idpLoginReturnTo: Ref<string> = inject('idp-login-return-to', ref(''))
 
 const formData = reactive({
@@ -199,7 +200,7 @@ const loginDividerIsVisible = computed((): boolean => (basicAuthLoginEnabled.val
 
 // Setup and automatically trigger IDP (or ignore it, depending on the props)
 // Passing the refs on purpose so values are reactive.
-const { isIdpLogin, idpIsLoading, redirectToIdp } = useIdentityProvider(basicAuthLoginEnabled, idpLoginEnabled, idpLoginReturnTo)
+const { isIdpLogin, idpIsLoading, redirectToIdp } = useIdentityProvider(basicAuthLoginEnabled, idpLoginEnabled, idpLoginCallbackUrl, idpLoginReturnTo)
 
 // Automatically trigger state change based on IDP
 watch(idpIsLoading, (val) => {

@@ -460,6 +460,7 @@ The login element **must** reside at the `{window.location.origin}/login` path i
 | `basicAuthLoginEnabled` | Boolean | `false` | Enable basic auth login. **To set to false, simply do not add the prop** |
 | `showBasicAuthLoginLink` | Boolean | `true` | Show a link to log in with basic auth credentials on the IdP login form. |
 | `idpLoginEnabled` | Boolean | `false` | Enable IdP login detection. |
+| `idpLoginCallbackUrl` | URL | `''` | Set the URL to return to in order to complete the OIDC flow. In most cases, this should be set to `${window.location.origin}/login` |
 | `idpLoginReturnTo` | URL | `''` | Set the URL to return to upon successful IdP login. In most cases, this should be set to `window.location.origin` |
 
 > **Note**: When utilizing the props as a native web component, you may need to use dot syntax, as shown here
