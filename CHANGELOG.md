@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/Kong/kong-auth-elements/compare/v2.7.2...v2.8.0) (2023-08-03)
+
+
+### Features
+
+* **idp:** add callback_url [KHCP-8139] ([#1238](https://github.com/Kong/kong-auth-elements/issues/1238)) ([3cf7908](https://github.com/Kong/kong-auth-elements/commit/3cf79080d75d710b91940c3ec0a80b3e272f7df9))
+
 ## [2.7.2](https://github.com/Kong/kong-auth-elements/compare/v2.7.1...v2.7.2) (2023-08-02)
 
 
