@@ -1,4 +1,4 @@
-import { onMounted, ref, Ref, watchEffect } from 'vue'
+import { onMounted, ref, Ref, watch } from 'vue'
 import useConfigOptions from '@/composables/useConfigOptions'
 import { win } from '@/utils'
 
@@ -91,7 +91,7 @@ export default function useIdentityProvider(
    * Redirect the user to the kauth/authenticate/{org-id} endpoint, and provide a returnTo path.
    * @param {string} [returnTo] - The full URL (including https://) where to return the user to with the code and state.
    */
-  const redirectToIdp = (callbackUrl: string, returnTo: string): void => {
+  const redirectToIdp = (callbackUrl = '', returnTo: string): void => {
     idpIsLoading.value = true
 
     if (userEntity !== 'developer' && !organizationLoginPath.value) {
@@ -234,9 +234,9 @@ export default function useIdentityProvider(
 
   // Add watcher to allow `kong-auth-login` element time to load and retrigger redirect.
   // `idp-login-return-to` prop value will likely not be available ASAP onMounted within containing app, so this will still fire.
-  watchEffect(() => {
-    if (idpIsEnabled.value && !!String(idpLoginRedirectTo.value || '').trim() && !!String(idpLoginCallbackUrl.value || '').trim() && shouldTriggerIdpLogin() && !isRedirecting.value) {
-      redirectToIdp(idpLoginCallbackUrl.value, idpLoginRedirectTo.value)
+  watch([idpLoginRedirectTo, idpLoginCallbackUrl], ([redirectTo, callbackUrl]) => {
+    if (idpIsEnabled.value && !!String(redirectTo || '').trim() && shouldTriggerIdpLogin() && !isRedirecting.value) {
+      redirectToIdp(callbackUrl, redirectTo)
     }
   })
 
