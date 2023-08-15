@@ -61,7 +61,7 @@
     "@vue/eslint-config-typescript": "^10.0.0",
     "commitizen": "^4.3.0",
     "cross-env": "^7.0.3",
-    "cypress": "^12.17.3",
+    "cypress": "^12.17.4",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.47.0",
     "eslint-plugin-cypress": "^2.14.0",
