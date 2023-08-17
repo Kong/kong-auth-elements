@@ -11,7 +11,7 @@
     <div v-else>
       <div v-if="idpLoginEnabled && (userEntity === 'developer' || (userEntity === 'user' && isIdpLogin))">
         <KButton
-        appearance="outline"
+          appearance="outline"
           :aria-label="['pending', 'success'].some(currentState.matches) ? undefined : messages.login.loginTextSSOAriaLabel"
           class="login-seo-button"
           data-testid="kong-auth-login-sso"
