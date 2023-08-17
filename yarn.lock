@@ -568,6 +568,11 @@
   resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.9.0.tgz#ebdce87c460e6095428ca37792d90e9540527f7d"
   integrity sha512-y68F8uUxLQZDRqN8365TPVsYPNPS9jGTlsap8A6N2MkYHYZ75Qnewl7cK6M+YUbG9AUx1YE64vt1yQe5+/Ydzg==
 
+"@kong/icons@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.2.0.tgz#e8a880591fcf9b2db20bb25b859c7f85cb7a7f0b"
+  integrity sha512-zQpwRtGjSTabAYODOUWxCUA8CahkQvrQM45SvLwK33jTMRNvW1L0u1CBUG0rUzR01xYwk3nScJ8XoEp35+Iu8g==
+
 "@kong/kongponents@^8.122.0":
   version "8.122.0"
   resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.122.0.tgz#508376b2990017d76a374d5a68a1feac4495c3d8"

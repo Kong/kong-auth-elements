@@ -11,18 +11,15 @@
     <div v-else>
       <div v-if="idpLoginEnabled && (userEntity === 'developer' || (userEntity === 'user' && isIdpLogin))">
         <KButton
-          appearance="outline"
+        appearance="outline"
           :aria-label="['pending', 'success'].some(currentState.matches) ? undefined : messages.login.loginTextSSOAriaLabel"
           class="login-seo-button"
           data-testid="kong-auth-login-sso"
           :disabled="loginBtnSSODisabled"
           @click.prevent="redirectToIdp(idpLoginCallbackUrl, idpLoginReturnTo)"
         >
-          <KIcon
-            color="currentColor"
-            :icon="idpIsLoading ? 'spinner' : 'organization'"
-            :size="KUI_ICON_SIZE_30"
-          />
+          <ProgressIcon v-if="idpIsLoading" class="spin-icon" :size="KUI_ICON_SIZE_40" />
+          <ProfileIcon v-else :size="KUI_ICON_SIZE_40" />
           {{ messages.login.loginTextSSO }}
         </KButton>
 
@@ -123,12 +120,7 @@
           :disabled="loginBtnDisabled"
           type="submit"
         >
-          <KIcon
-            v-if="['pending', 'success'].some(currentState.matches)"
-            color="currentColor"
-            icon="spinner"
-            :size="KUI_ICON_SIZE_30"
-          />
+          <ProgressIcon v-if="['pending', 'success'].some(currentState.matches)" class="spin-icon" :size="KUI_ICON_SIZE_40" />
           {{ loginBtnText }}
         </KButton>
 
@@ -158,9 +150,10 @@ import useIdentityProvider from '@/composables/useIdentityProvider'
 import useI18n from '@/composables/useI18n'
 import useAxios from '@/composables/useAxios'
 import { loginEmits } from '@/components/emits'
-import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
+import { ProfileIcon, ProgressIcon } from '@kong/icons'
+import { KUI_ICON_SIZE_40 } from '@kong/design-tokens'
 // Components
-import { KAlert, KButton, KIcon, KInput, KSkeleton } from '@kong/kongponents'
+import { KAlert, KButton, KInput, KSkeleton } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 const emit = defineEmits(loginEmits)

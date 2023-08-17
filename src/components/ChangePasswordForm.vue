@@ -83,12 +83,7 @@
           :disabled="btnDisabled"
           type="submit"
         >
-          <KIcon
-            v-if="currentState.matches('pending')"
-            color="currentColor"
-            icon="spinner"
-            :size="KUI_ICON_SIZE_30"
-          />
+          <ProgressIcon v-if="currentState.matches('pending')" class="spin-icon" :size="KUI_ICON_SIZE_40" />
           {{ btnText }}
         </KButton>
       </div>
@@ -105,9 +100,10 @@ import useI18n from '@/composables/useI18n'
 import useAxios from '@/composables/useAxios'
 import { changePasswordEmits } from '@/components/emits'
 import { convertToTitleCase } from '../utils/index'
-import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
+import { ProgressIcon } from '@kong/icons'
+import { KUI_ICON_SIZE_40 } from '@kong/design-tokens'
 // Components
-import { KButton, KIcon, KInput } from '@kong/kongponents'
+import { KButton, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 const emit = defineEmits(changePasswordEmits)

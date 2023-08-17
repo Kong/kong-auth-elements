@@ -149,12 +149,7 @@
         :disabled="btnDisabled"
         type="submit"
       >
-        <KIcon
-          v-if="currentState.matches('pending')"
-          color="currentColor"
-          icon="spinner"
-          :size="KUI_ICON_SIZE_30"
-        />
+        <ProgressIcon v-if="currentState.matches('pending')" class="spin-icon" :size="KUI_ICON_SIZE_40" />
         {{ btnText }}
       </KButton>
     </form>
@@ -172,9 +167,10 @@ import { registerEmits } from '@/components/emits'
 import { AxiosResponse } from 'axios'
 import { win } from '@/utils'
 import { VueRecaptcha } from 'vue-recaptcha'
-import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
+import { ProgressIcon } from '@kong/icons'
+import { KUI_ICON_SIZE_40 } from '@kong/design-tokens'
 // Components
-import { KButton, KIcon, KInput, KCheckbox, KSelect, KLabel } from '@kong/kongponents'
+import { KButton, KInput, KCheckbox, KSelect, KLabel } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 const emit = defineEmits(registerEmits)
