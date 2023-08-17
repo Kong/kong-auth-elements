@@ -1,3 +1,10 @@
+## [2.8.1](https://github.com/Kong/kong-auth-elements/compare/v2.8.0...v2.8.1) (2023-08-17)
+
+
+### Bug Fixes
+
+* **sso:** update buttons and icons for social login ([#1256](https://github.com/Kong/kong-auth-elements/issues/1256)) ([d25c9e5](https://github.com/Kong/kong-auth-elements/commit/d25c9e584d99d1a852b15e6fa099104dd7a31dfa))
+
 # [2.8.0](https://github.com/Kong/kong-auth-elements/compare/v2.7.2...v2.8.0) (2023-08-03)
 
 
