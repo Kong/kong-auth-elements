@@ -49,7 +49,7 @@ export default function registerKongAuthNativeElements(options?: KongAuthElement
   registerCustomElement('kong-auth-change-password', elements.KongAuthChangePassword, userOptions)
 }
 
-export {
+export type {
   CustomEndpointElement,
   CustomEndpointErrorEvent,
   CustomEndpointRequest,
