@@ -92,7 +92,8 @@
 </template>
 
 <script setup lang="ts">
-import { inject, ref, Ref, reactive, computed, watch } from 'vue'
+import type { Ref } from 'vue'
+import { inject, ref, reactive, computed, watch } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import useConfigOptions from '@/composables/useConfigOptions'

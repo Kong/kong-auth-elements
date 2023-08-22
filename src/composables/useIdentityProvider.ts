@@ -1,4 +1,5 @@
-import { onMounted, ref, Ref, watch } from 'vue'
+import type { Ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import useConfigOptions from '@/composables/useConfigOptions'
 import { win } from '@/utils'
 

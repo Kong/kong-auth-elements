@@ -157,14 +157,15 @@
 </template>
 
 <script setup lang="ts">
-import { inject, ref, reactive, Ref, computed, onMounted } from 'vue'
+import type { Ref } from 'vue'
+import { inject, ref, reactive, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useAxios from '@/composables/useAxios'
 import useI18n from '@/composables/useI18n'
 import { registerEmits } from '@/components/emits'
-import { AxiosResponse } from 'axios'
+import type { AxiosResponse } from 'axios'
 import { win } from '@/utils'
 import { VueRecaptcha } from 'vue-recaptcha'
 import { ProgressIcon } from '@kong/icons'

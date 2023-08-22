@@ -16,7 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, PropType } from 'vue'
+import type { PropType } from 'vue'
+import { computed } from 'vue'
 import AppNav from '../shared/AppNav.vue'
 
 const props = defineProps({

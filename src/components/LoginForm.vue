@@ -140,10 +140,11 @@
 </template>
 
 <script setup lang="ts">
-import { inject, reactive, ref, Ref, computed, onMounted, watch } from 'vue'
+import type { Ref } from 'vue'
+import { inject, reactive, ref, computed, onMounted, watch } from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
-import { AxiosResponse } from 'axios'
+import type { AxiosResponse } from 'axios'
 import { win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useIdentityProvider from '@/composables/useIdentityProvider'

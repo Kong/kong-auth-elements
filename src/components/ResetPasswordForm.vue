@@ -60,7 +60,8 @@
 </template>
 
 <script setup lang="ts">
-import { inject, ref, Ref, reactive, computed, onMounted } from 'vue'
+import type { Ref } from 'vue'
+import { inject, ref, reactive, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import { win } from '@/utils'
@@ -68,7 +69,7 @@ import useConfigOptions from '@/composables/useConfigOptions'
 import useAxios from '@/composables/useAxios'
 import useI18n from '@/composables/useI18n'
 import { resetPasswordEmits } from '@/components/emits'
-import { AxiosResponse } from 'axios'
+import type { AxiosResponse } from 'axios'
 import { ProgressIcon } from '@kong/icons'
 import { KUI_ICON_SIZE_40 } from '@kong/design-tokens'
 // Components
