@@ -1,3 +1,10 @@
+## [2.8.4](https://github.com/Kong/kong-auth-elements/compare/v2.8.3...v2.8.4) (2023-08-22)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/icons from 1.2.1 to 1.2.2 ([#1264](https://github.com/Kong/kong-auth-elements/issues/1264)) ([8c3b1c6](https://github.com/Kong/kong-auth-elements/commit/8c3b1c6f8f46490220133a4d2e5b6d6aa09f8eb4))
+
 ## [2.8.3](https://github.com/Kong/kong-auth-elements/compare/v2.8.2...v2.8.3) (2023-08-22)
 
 
