@@ -1,3 +1,10 @@
+## [2.8.3](https://github.com/Kong/kong-auth-elements/compare/v2.8.2...v2.8.3) (2023-08-22)
+
+
+### Bug Fixes
+
+* vue tsconfig ([#1262](https://github.com/Kong/kong-auth-elements/issues/1262)) ([a9874dc](https://github.com/Kong/kong-auth-elements/commit/a9874dcdeb87fda6e176ac25a39ed2d9b32ec52a))
+
 ## [2.8.2](https://github.com/Kong/kong-auth-elements/compare/v2.8.1...v2.8.2) (2023-08-18)
 
 
