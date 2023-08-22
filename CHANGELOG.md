@@ -1,3 +1,10 @@
+## [2.8.2](https://github.com/Kong/kong-auth-elements/compare/v2.8.1...v2.8.2) (2023-08-18)
+
+
+### Bug Fixes
+
+* update icons package ([4461860](https://github.com/Kong/kong-auth-elements/commit/4461860ab598a745bc3d6b87f24b5858fb72b1df))
+
 ## [2.8.1](https://github.com/Kong/kong-auth-elements/compare/v2.8.0...v2.8.1) (2023-08-17)
 
 
