@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 // Do not use '@' alias in utils paths here so that imports within a consuming project resolve properly.
 import { registerCustomElement } from './utils'
 import type {

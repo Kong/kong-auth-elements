@@ -1,5 +1,5 @@
 // Do not use '@' alias in paths here so that imports within a consuming project resolve properly.
-import { AxiosError } from 'axios'
+import type { AxiosError } from 'axios'
 export { default as convertToTitleCase } from './convertToTitleCase'
 export { default as registerCustomElement } from './registerCustomElement'
 export { default as kebabize } from './kebabize'

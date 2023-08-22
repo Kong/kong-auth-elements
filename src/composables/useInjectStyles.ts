@@ -1,4 +1,5 @@
-import { computed, ref, ComputedRef, onMounted, onUnmounted } from 'vue'
+import type { ComputedRef } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 import useConfigOptions from '@/composables/useConfigOptions'
 interface InjectStylesComposable {
   injectedStyles: ComputedRef<string>
