@@ -573,10 +573,10 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.2.2.tgz#8cf189bbdf55a4affff84a7fda6af09857ad4064"
   integrity sha512-357k5+Wzmnuyw+0+BuG/m227DK229RWuHu2b3ax7Q/fX77CmbJ0mb1nFOJQprZTxC9x21P+adRATfR0pJeLarA==
 
-"@kong/kongponents@^8.122.9":
-  version "8.122.9"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.122.9.tgz#fab7a7ca511d4c74081d4196c6e6824c445d1c87"
-  integrity sha512-VfM4vQZgGFkxDygagWOUCy46TrrVSgARnOM7R/vfxwzARuDaFhil1V6MBY/gkaKYQHG+vZ2oJ8hUHC9Td0OlPg==
+"@kong/kongponents@^8.123.0":
+  version "8.123.0"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.123.0.tgz#0aefadbd8727bf70fa61e4a5ca5633b1ca9812d8"
+  integrity sha512-rLrOHjAPcaBLjPr4JuUfnODgbEbrzVCxJnlWYthjckaddguOsZGxM6iotsinloF7rkCedFpaBXdZpKcq/bwCrw==
   dependencies:
     axios "^0.27.2"
     date-fns "^2.29.3"
