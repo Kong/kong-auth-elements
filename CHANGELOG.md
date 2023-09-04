@@ -1,3 +1,24 @@
+## [2.8.5](https://github.com/Kong/kong-auth-elements/compare/v2.8.4...v2.8.5) (2023-08-31)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/icons from 1.2.2 to 1.3.0 ([#1281](https://github.com/Kong/kong-auth-elements/issues/1281)) ([0db67a1](https://github.com/Kong/kong-auth-elements/commit/0db67a182d5689155208eab8d7d5d20261e0a94b))
+
+## [2.8.4](https://github.com/Kong/kong-auth-elements/compare/v2.8.3...v2.8.4) (2023-08-22)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/icons from 1.2.1 to 1.2.2 ([#1264](https://github.com/Kong/kong-auth-elements/issues/1264)) ([8c3b1c6](https://github.com/Kong/kong-auth-elements/commit/8c3b1c6f8f46490220133a4d2e5b6d6aa09f8eb4))
+
+## [2.8.3](https://github.com/Kong/kong-auth-elements/compare/v2.8.2...v2.8.3) (2023-08-22)
+
+
+### Bug Fixes
+
+* vue tsconfig ([#1262](https://github.com/Kong/kong-auth-elements/issues/1262)) ([a9874dc](https://github.com/Kong/kong-auth-elements/commit/a9874dcdeb87fda6e176ac25a39ed2d9b32ec52a))
+
 ## [2.8.2](https://github.com/Kong/kong-auth-elements/compare/v2.8.1...v2.8.2) (2023-08-18)
 
 

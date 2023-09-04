@@ -16,7 +16,7 @@ module.exports = {
     indent: 'off',
     camelcase: 'off',
     'space-before-function-paren': 'off',
-    quotes: ['error', 'single', { avoidEscape: true }],
+    quotes: ['error', 'single', {avoidEscape: true}],
     'no-multi-spaces': 'error',
     'no-trailing-spaces': 'error',
     'comma-dangle': ['error', 'always-multiline'],
@@ -40,6 +40,10 @@ module.exports = {
     '@typescript-eslint/func-call-spacing': ['error', 'never'],
     'vue/attributes-order': ['error', {
       alphabetical: true,
+    }],
+    '@typescript-eslint/consistent-type-imports': ['error', {
+      prefer: 'type-imports',
+      fixStyle: 'separate-type-imports',
     }],
   },
   overrides: [
