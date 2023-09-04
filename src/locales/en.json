@@ -30,8 +30,8 @@
     "registerSuccess": "Successfully registered!",
     "loginWithCredentials": "Log in with email and password",
     "loginText": "Log in",
-    "loginTextSSO": "Log in with SSO",
-    "loginTextSSOAriaLabel": "Log in with your single sign-on provider",
+    "loginTextSSO": "Continue with SSO",
+    "loginTextSSOAriaLabel": "Continue with your single sign-on provider",
     "submittingText": "Submitting"
   },
   "forgotPassword": {

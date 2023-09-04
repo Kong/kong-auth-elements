@@ -1,3 +1,66 @@
+## [2.8.5](https://github.com/Kong/kong-auth-elements/compare/v2.8.4...v2.8.5) (2023-08-31)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/icons from 1.2.2 to 1.3.0 ([#1281](https://github.com/Kong/kong-auth-elements/issues/1281)) ([0db67a1](https://github.com/Kong/kong-auth-elements/commit/0db67a182d5689155208eab8d7d5d20261e0a94b))
+
+## [2.8.4](https://github.com/Kong/kong-auth-elements/compare/v2.8.3...v2.8.4) (2023-08-22)
+
+
+### Bug Fixes
+
+* **deps:** bump @kong/icons from 1.2.1 to 1.2.2 ([#1264](https://github.com/Kong/kong-auth-elements/issues/1264)) ([8c3b1c6](https://github.com/Kong/kong-auth-elements/commit/8c3b1c6f8f46490220133a4d2e5b6d6aa09f8eb4))
+
+## [2.8.3](https://github.com/Kong/kong-auth-elements/compare/v2.8.2...v2.8.3) (2023-08-22)
+
+
+### Bug Fixes
+
+* vue tsconfig ([#1262](https://github.com/Kong/kong-auth-elements/issues/1262)) ([a9874dc](https://github.com/Kong/kong-auth-elements/commit/a9874dcdeb87fda6e176ac25a39ed2d9b32ec52a))
+
+## [2.8.2](https://github.com/Kong/kong-auth-elements/compare/v2.8.1...v2.8.2) (2023-08-18)
+
+
+### Bug Fixes
+
+* update icons package ([4461860](https://github.com/Kong/kong-auth-elements/commit/4461860ab598a745bc3d6b87f24b5858fb72b1df))
+
+## [2.8.1](https://github.com/Kong/kong-auth-elements/compare/v2.8.0...v2.8.1) (2023-08-17)
+
+
+### Bug Fixes
+
+* **sso:** update buttons and icons for social login ([#1256](https://github.com/Kong/kong-auth-elements/issues/1256)) ([d25c9e5](https://github.com/Kong/kong-auth-elements/commit/d25c9e584d99d1a852b15e6fa099104dd7a31dfa))
+
+# [2.8.0](https://github.com/Kong/kong-auth-elements/compare/v2.7.2...v2.8.0) (2023-08-03)
+
+
+### Features
+
+* **idp:** add callback_url [KHCP-8139] ([#1238](https://github.com/Kong/kong-auth-elements/issues/1238)) ([3cf7908](https://github.com/Kong/kong-auth-elements/commit/3cf79080d75d710b91940c3ec0a80b3e272f7df9))
+
+## [2.7.2](https://github.com/Kong/kong-auth-elements/compare/v2.7.1...v2.7.2) (2023-08-02)
+
+
+### Bug Fixes
+
+* remove unneeded params from developer registration ([#1232](https://github.com/Kong/kong-auth-elements/issues/1232)) ([5ebb5ea](https://github.com/Kong/kong-auth-elements/commit/5ebb5ea9214f6bddabc4d4f0fdee365ee2696dd5))
+
+## [2.7.1](https://github.com/Kong/kong-auth-elements/compare/v2.7.0...v2.7.1) (2023-07-27)
+
+
+### Bug Fixes
+
+* **deps:** bump xstate from 4.38.1 to 4.38.2 ([#1225](https://github.com/Kong/kong-auth-elements/issues/1225)) ([e56a8ac](https://github.com/Kong/kong-auth-elements/commit/e56a8ac1fad4d4f6596abdde6cb2ca516e232f6f))
+
+# [2.7.0](https://github.com/Kong/kong-auth-elements/compare/v2.6.0...v2.7.0) (2023-07-27)
+
+
+### Features
+
+* **ci:** add timeout-minutes to ci jobs [KHCP-8104] ([#1222](https://github.com/Kong/kong-auth-elements/issues/1222)) ([3d26758](https://github.com/Kong/kong-auth-elements/commit/3d267580b0d63b07f6e6091600edf0a48c381613))
+
 # [2.6.0](https://github.com/Kong/kong-auth-elements/compare/v2.5.1...v2.6.0) (2023-07-21)
 
 

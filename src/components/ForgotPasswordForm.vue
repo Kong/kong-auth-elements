@@ -52,12 +52,7 @@
         :disabled="btnDisabled"
         type="submit"
       >
-        <KIcon
-          v-if="currentState.matches('pending')"
-          color="currentColor"
-          icon="spinner"
-          :size="KUI_ICON_SIZE_30"
-        />
+        <ProgressIcon v-if="currentState.matches('pending')" class="spin-icon" :size="KUI_ICON_SIZE_40" />
         {{ btnText }}
       </KButton>
     </form>
@@ -75,17 +70,19 @@
 </template>
 
 <script setup lang="ts">
-import { inject, ref, Ref, reactive, computed } from 'vue'
+import type { Ref } from 'vue'
+import { inject, ref, reactive, computed } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useAxios from '@/composables/useAxios'
 import useI18n from '@/composables/useI18n'
 import { forgotPasswordEmits } from '@/components/emits'
-import { AxiosResponse } from 'axios'
-import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
+import type { AxiosResponse } from 'axios'
+import { ProgressIcon } from '@kong/icons'
+import { KUI_ICON_SIZE_40 } from '@kong/design-tokens'
 // Components
-import { KAlert, KButton, KIcon, KInput } from '@kong/kongponents'
+import { KAlert, KButton, KInput } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 const emit = defineEmits(forgotPasswordEmits)

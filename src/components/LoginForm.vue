@@ -16,13 +16,10 @@
           class="login-seo-button"
           data-testid="kong-auth-login-sso"
           :disabled="loginBtnSSODisabled"
-          @click.prevent="redirectToIdp(idpLoginReturnTo)"
+          @click.prevent="redirectToIdp(idpLoginCallbackUrl, idpLoginReturnTo)"
         >
-          <KIcon
-            color="currentColor"
-            :icon="idpIsLoading ? 'spinner' : 'organization'"
-            :size="KUI_ICON_SIZE_30"
-          />
+          <ProgressIcon v-if="idpIsLoading" class="spin-icon" :size="KUI_ICON_SIZE_40" />
+          <ProfileIcon v-else :size="KUI_ICON_SIZE_40" />
           {{ messages.login.loginTextSSO }}
         </KButton>
 
@@ -123,12 +120,7 @@
           :disabled="loginBtnDisabled"
           type="submit"
         >
-          <KIcon
-            v-if="['pending', 'success'].some(currentState.matches)"
-            color="currentColor"
-            icon="spinner"
-            :size="KUI_ICON_SIZE_30"
-          />
+          <ProgressIcon v-if="['pending', 'success'].some(currentState.matches)" class="spin-icon" :size="KUI_ICON_SIZE_40" />
           {{ loginBtnText }}
         </KButton>
 
@@ -148,19 +140,21 @@
 </template>
 
 <script setup lang="ts">
-import { inject, reactive, ref, Ref, computed, onMounted, watch } from 'vue'
+import type { Ref } from 'vue'
+import { inject, reactive, ref, computed, onMounted, watch } from 'vue'
 import { useMachine } from '@xstate/vue'
 import { createMachine } from 'xstate'
-import { AxiosResponse } from 'axios'
+import type { AxiosResponse } from 'axios'
 import { win } from '@/utils'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useIdentityProvider from '@/composables/useIdentityProvider'
 import useI18n from '@/composables/useI18n'
 import useAxios from '@/composables/useAxios'
 import { loginEmits } from '@/components/emits'
-import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
+import { ProfileIcon, ProgressIcon } from '@kong/icons'
+import { KUI_ICON_SIZE_40 } from '@kong/design-tokens'
 // Components
-import { KAlert, KButton, KIcon, KInput, KSkeleton } from '@kong/kongponents'
+import { KAlert, KButton, KInput, KSkeleton } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 const emit = defineEmits(loginEmits)
@@ -185,6 +179,7 @@ const registerSuccessText: Ref<string> = inject('register-success-text', ref(mes
 const basicAuthLoginEnabled: Ref<boolean> = inject('basic-auth-login-enabled', ref(true))
 const showBasicAuthLoginLink: Ref<boolean> = inject('show-basic-auth-login-link', ref(true))
 const idpLoginEnabled: Ref<boolean> = inject('idp-login-enabled', ref(false))
+const idpLoginCallbackUrl: Ref<string> = inject('idp-login-callback-url', ref(''))
 const idpLoginReturnTo: Ref<string> = inject('idp-login-return-to', ref(''))
 
 const formData = reactive({
@@ -199,7 +194,7 @@ const loginDividerIsVisible = computed((): boolean => (basicAuthLoginEnabled.val
 
 // Setup and automatically trigger IDP (or ignore it, depending on the props)
 // Passing the refs on purpose so values are reactive.
-const { isIdpLogin, idpIsLoading, redirectToIdp } = useIdentityProvider(basicAuthLoginEnabled, idpLoginEnabled, idpLoginReturnTo)
+const { isIdpLogin, idpIsLoading, redirectToIdp } = useIdentityProvider(basicAuthLoginEnabled, idpLoginEnabled, idpLoginCallbackUrl, idpLoginReturnTo)
 
 // Automatically trigger state change based on IDP
 watch(idpIsLoading, (val) => {

@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 // Do not use '@' alias in utils paths here so that imports within a consuming project resolve properly.
 import { registerCustomElement } from './utils'
 import type {
@@ -49,7 +49,7 @@ export default function registerKongAuthNativeElements(options?: KongAuthElement
   registerCustomElement('kong-auth-change-password', elements.KongAuthChangePassword, userOptions)
 }
 
-export {
+export type {
   CustomEndpointElement,
   CustomEndpointErrorEvent,
   CustomEndpointRequest,

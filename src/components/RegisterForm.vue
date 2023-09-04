@@ -149,12 +149,7 @@
         :disabled="btnDisabled"
         type="submit"
       >
-        <KIcon
-          v-if="currentState.matches('pending')"
-          color="currentColor"
-          icon="spinner"
-          :size="KUI_ICON_SIZE_30"
-        />
+        <ProgressIcon v-if="currentState.matches('pending')" class="spin-icon" :size="KUI_ICON_SIZE_40" />
         {{ btnText }}
       </KButton>
     </form>
@@ -162,19 +157,21 @@
 </template>
 
 <script setup lang="ts">
-import { inject, ref, reactive, Ref, computed, onMounted } from 'vue'
+import type { Ref } from 'vue'
+import { inject, ref, reactive, computed, onMounted } from 'vue'
 import { createMachine } from 'xstate'
 import { useMachine } from '@xstate/vue'
 import useConfigOptions from '@/composables/useConfigOptions'
 import useAxios from '@/composables/useAxios'
 import useI18n from '@/composables/useI18n'
 import { registerEmits } from '@/components/emits'
-import { AxiosResponse } from 'axios'
+import type { AxiosResponse } from 'axios'
 import { win } from '@/utils'
 import { VueRecaptcha } from 'vue-recaptcha'
-import { KUI_ICON_SIZE_30 } from '@kong/design-tokens'
+import { ProgressIcon } from '@kong/icons'
+import { KUI_ICON_SIZE_40 } from '@kong/design-tokens'
 // Components
-import { KButton, KIcon, KInput, KCheckbox, KSelect, KLabel } from '@kong/kongponents'
+import { KButton, KInput, KCheckbox, KSelect, KLabel } from '@kong/kongponents'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 const emit = defineEmits(registerEmits)
@@ -290,6 +287,13 @@ const processRegistration = async (): Promise<AxiosResponse> => {
 
   if (wrapRequest.value) {
     body = wrapRequest.value(body)
+  }
+
+  // The registration endpoint for developers don't need these fields
+  if (userEntity === 'developer') {
+    delete body.organization
+    delete body.password
+    delete body.defaultRegion
   }
 
   // Register a new user
