@@ -86,7 +86,7 @@
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vue-router": "^4.2.4",
-    "vue-tsc": "^1.8.8"
+    "vue-tsc": "^1.8.10"
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.84.0",
