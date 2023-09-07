@@ -10,7 +10,7 @@ on:
 jobs:
   run-tests:
     name: Tests
-    uses: ./.github/workflows/test.yml
+    uses: ./.github/workflows/test.yaml
     # Must pass in secrets here so that the calling workflow can pass in the NPM_TOKEN needed to install private packages.
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN_PUBLIC_PUBLISH }}

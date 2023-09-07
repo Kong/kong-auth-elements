@@ -2,7 +2,7 @@
 
 Vue 3 Plugin and Native HTML Web Components used for KAuth UI implementation in Kong apps
 
-[![Tests](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yml/badge.svg)](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yml)
+[![Tests](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yaml/badge.svg)](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yaml)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 - [Installation](#installation)
@@ -759,7 +759,7 @@ This will trigger the Commitizen interactive prompt for building your commit mes
 
 #### Enforcing Commit Format
 
-[Lefthook](https://github.com/evilmartians/lefthook) is used to manage Git Hooks within the repo. A `commit-msg` hook is automatically setup that enforces commit message stands with `commitlint`, see [`lefthook.yml`](./lefthook.yml).
+[Lefthook](https://github.com/evilmartians/lefthook) is used to manage Git Hooks within the repo. A `commit-msg` hook is automatically setup that enforces commit message stands with `commitlint`, see [`lefthook.yaml`](./lefthook.yaml).
 
 A `pre-push` hook is configured to run Stylelint and ESLint before pushing your changes to the remote repository.
 
