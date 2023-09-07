@@ -52,7 +52,7 @@
     "@kong/design-tokens": "^1.9.1",
     "@kong/kongponents": "^8.123.0",
     "@rushstack/eslint-patch": "^1.3.3",
-    "@semantic-release/changelog": "^6.0.2",
+    "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/node": "^16.18.48",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
@@ -69,8 +69,8 @@
     "eslint-plugin-cypress": "^2.14.0",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-standard": "^4.0.2",
     "eslint-plugin-vue": "^8.7.1",
     "postcss-custom-properties": "^10.0.0",
     "postcss-html": "^1.5.0",
@@ -89,7 +89,7 @@
     "vue-tsc": "^1.8.10"
   },
   "peerDependencies": {
-    "@kong/kongponents": "^8.84.0",
+    "@kong/kongponents": "^8.84.8",
     "axios": "^0.27.2",
     "vue": "<= 3.3.0"
   },
@@ -158,10 +158,10 @@
     }
   },
   "engines": {
-    "node": ">=16.19.0"
+    "node": ">=v16.19.1"
   },
   "volta": {
     "node": "18.17.1",
-    "yarn": "1.22.17"
+    "yarn": "1.22.19"
   }
 }
