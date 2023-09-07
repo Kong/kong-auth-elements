@@ -1,3 +1,10 @@
+## [2.8.7](https://github.com/Kong/kong-auth-elements/compare/v2.8.6...v2.8.7) (2023-09-07)
+
+
+### Bug Fixes
+
+* yaml files ([8a2f9f2](https://github.com/Kong/kong-auth-elements/commit/8a2f9f2b5cf538fe66799438c814257f25d9f848))
+
 ## [2.8.6](https://github.com/Kong/kong-auth-elements/compare/v2.8.5...v2.8.6) (2023-09-05)
 
 
