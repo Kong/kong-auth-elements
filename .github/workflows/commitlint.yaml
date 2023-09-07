@@ -5,10 +5,10 @@ on:
 
 jobs:
   commitlint:
-    if: ${{ github.actor != 'dependabot[bot]' && github.actor != 'flycode-app[bot]' }}
+    if: ${{ github.actor != 'renovate[bot]' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
