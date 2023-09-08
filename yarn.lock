@@ -560,20 +560,20 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@kong/design-tokens@^1.10.1":
+"@kong/design-tokens@^1.10.2":
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.10.2.tgz#2b9dc88bba73c2968ea1d06ba7b348910444cf10"
   integrity sha512-14LZsxQmhbpAxqDRREkHcQEiYg/I1mRMcI1p1aHRK5bY9rcEQkWmiuNXPRHhEpG+8/n099g1HwAaKFmJBwYwRg==
 
-"@kong/icons@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.4.1.tgz#d504e8d816fbe70a5daa4346e840c358da0f6197"
-  integrity sha512-0AbX96aF/y4MkX3LWZg/0LgrIKiPBtn593lY3lj5r9TvZpBRMGGka6fX+sUkMEaOfQWG10P1Vj4ah++bJnkAzQ==
+"@kong/icons@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.4.2.tgz#cf56b0750a5df5fffa4153c9418c2b794ceeb56b"
+  integrity sha512-cwAj13jEWPme7JcMTsKWYiYFvgNvcLGPkqgR2MMXD3geo+WnAU8qxZBhRyHUxkXHahX9Omh3pCS0g+kK6lXwaQ==
 
-"@kong/kongponents@^8.123.2":
-  version "8.123.2"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.123.2.tgz#016c2c3806e331d9563478bb34f5b151b32c86bc"
-  integrity sha512-dHLIzzAU/lLVlhiDfQQ6/npz4IqwfUqtDMlvu6QO9pJ3plcjjbuGhMwx3Y1PCIUcrutPZAHKbL3nD11kqPyaMA==
+"@kong/kongponents@^8.123.3":
+  version "8.123.3"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.123.3.tgz#038f5019f958d4a5da0db57a7b84dc1ab90b8212"
+  integrity sha512-nE0q69Imr5C5Q3rOW5mu+5h18Pi8WmnA1+s+yZNHlC5xvy3zSPo/xbpTfBqkk/VmQiu2oXqtQMMmxgtFoKF0Tg==
   dependencies:
     axios "^0.27.2"
     date-fns "^2.29.3"
