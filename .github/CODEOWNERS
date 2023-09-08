@@ -1,3 +1,9 @@
 * @Kong/team-core-ui
-package.json @adamdehaven @kongponents-bot @jillztom
-yarn.lock @adamdehaven @kongponents-bot @jillztom
+
+# =========================================================================
+# Renovate Bot approvals
+# These rules MUST remain at the bottom as the last entry
+
+# Root
+/yarn.lock @kongponents-bot @Kong/team-core-ui
+/package.json @kongponents-bot @Kong/team-core-ui
