@@ -1532,7 +1532,7 @@
     "@volar/typescript" "~1.10.0"
     "@vue/language-core" "1.8.10"
 
-"@xstate/vue@^0.8.1":
+"@xstate/vue@^0.8.2":
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/@xstate/vue/-/vue-0.8.2.tgz#6e4672fbb4d4211c34bcf9facd27769cc5189ec9"
   integrity sha512-JAFHSqvJo8tIWsn0L49Oz3dCRA3q7/wa8YTc/ltEbs3kDNEjvHhb12bQEOfoGuD3K5ZWH4nqo5quB9YVTd8Now==
