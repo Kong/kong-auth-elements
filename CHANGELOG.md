@@ -1,3 +1,11 @@
+## [2.8.9](https://github.com/Kong/kong-auth-elements/compare/v2.8.8...v2.8.9) (2023-09-08)
+
+
+### Bug Fixes
+
+* **deps:** update all kong scoped dependencies ([#1306](https://github.com/Kong/kong-auth-elements/issues/1306)) ([4f3c6ef](https://github.com/Kong/kong-auth-elements/commit/4f3c6efe0038f3dd59c952f325f30384cd522c1e))
+* renovate config ([#1305](https://github.com/Kong/kong-auth-elements/issues/1305)) ([40064c2](https://github.com/Kong/kong-auth-elements/commit/40064c2b367d76fc39ef009132b3e5f207ce7328))
+
 ## [2.8.8](https://github.com/Kong/kong-auth-elements/compare/v2.8.7...v2.8.8) (2023-09-08)
 
 
