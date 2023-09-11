@@ -1,3 +1,10 @@
+# [2.9.0](https://github.com/Kong/kong-auth-elements/compare/v2.8.10...v2.9.0) (2023-09-11)
+
+
+### Features
+
+* **idp:** allow disabling full screen loader ([#1318](https://github.com/Kong/kong-auth-elements/issues/1318)) ([4196229](https://github.com/Kong/kong-auth-elements/commit/41962292c669ffdf3f61b78e60af8da7cc41c2a2))
+
 ## [2.8.10](https://github.com/Kong/kong-auth-elements/compare/v2.8.9...v2.8.10) (2023-09-08)
 
 
