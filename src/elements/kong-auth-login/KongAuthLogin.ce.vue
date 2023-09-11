@@ -74,6 +74,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  idpFullScreenLoader: {
+    type: Boolean,
+    default: true,
+  },
 })
 
 // Import emits from child component with validation, where necessary
@@ -121,6 +125,10 @@ provide(
 provide(
   'idp-login-return-to',
   computed((): string => (props.idpLoginReturnTo ? props.idpLoginReturnTo : '')),
+)
+provide(
+  'idp-full-screen-loader',
+  computed((): boolean => props.idpFullScreenLoader),
 )
 
 // Message props: These provided values default to useI18n() message text so

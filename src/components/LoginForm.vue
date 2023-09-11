@@ -1,7 +1,7 @@
 <template>
   <div class="kong-auth-login-form">
     <KSkeleton
-      v-if="currentState.matches('from_url') || currentState.matches('verify_email')"
+      v-if="(idpFullScreenLoader && currentState.matches('from_url')) || currentState.matches('verify_email')"
       class="idp-loading"
       data-testid="kong-auth-login-gruce-loader"
       :delay-milliseconds="0"
@@ -181,6 +181,7 @@ const showBasicAuthLoginLink: Ref<boolean> = inject('show-basic-auth-login-link'
 const idpLoginEnabled: Ref<boolean> = inject('idp-login-enabled', ref(false))
 const idpLoginCallbackUrl: Ref<string> = inject('idp-login-callback-url', ref(''))
 const idpLoginReturnTo: Ref<string> = inject('idp-login-return-to', ref(''))
+const idpFullScreenLoader: Ref<boolean> = inject('idp-full-screen-loader', ref(true))
 
 const formData = reactive({
   email: '',
