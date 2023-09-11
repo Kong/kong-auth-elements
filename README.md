@@ -462,6 +462,7 @@ The login element **must** reside at the `{window.location.origin}/login` path i
 | `idpLoginEnabled` | Boolean | `false` | Enable IdP login detection. |
 | `idpLoginCallbackUrl` | URL | `''` | Set the URL to return to in order to complete the OIDC flow. In most cases, this should be set to `${window.location.origin}/login` |
 | `idpLoginReturnTo` | URL | `''` | Set the URL to return to upon successful IdP login. In most cases, this should be set to `window.location.origin` |
+| `idpFullScreenLoader` | Boolean | `true` | Show the full screen loading skeleton when IdP login is processing |
 
 > **Note**: When utilizing the props as a native web component, you may need to use dot syntax, as shown here
 >
