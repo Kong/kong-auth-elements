@@ -505,7 +505,7 @@ describe('KongAuthLogin.ce.vue', () => {
       const redirectPath = `/authenticate/${loginPath}?returnTo=${encodeURIComponent(win.getLocationOrigin() + '/')}&callback_url=${encodeURIComponent(callbackUrl)}`
       // Stub URL path
       cy.stub(win, 'getLocationPathname').returns(`/login/${loginPath}`)
-      // cy.stub(win, 'setLocationHref').as('set-location')
+
       cy.stub(win, 'setLocationHref', args => {
         console.log('args', args)
       }).as('set-location')
@@ -520,6 +520,32 @@ describe('KongAuthLogin.ce.vue', () => {
 
       cy.get('@set-location').should('have.been.calledOnce').and('have.been.calledWithMatch', redirectPath)
       cy.getTestId(testids.loaderContainer).should('exist').getTestId(testids.gruceLoader).should('be.visible')
+    })
+
+    it('should not show full screen loader during IdP login flow if `idpFullScreenLoader` prop is false', () => {
+      cy.stub(getConfigOptions, 'userEntity').returns('user')
+      const loginPath = 'test-login-path'
+      const callbackUrl = 'https://cloud.konghq.tech/login'
+      const redirectPath = `/authenticate/${loginPath}?returnTo=${encodeURIComponent(win.getLocationOrigin() + '/')}&callback_url=${encodeURIComponent(callbackUrl)}`
+      // Stub URL path
+      cy.stub(win, 'getLocationPathname').returns(`/login/${loginPath}`)
+
+      cy.stub(win, 'setLocationHref', args => {
+        console.log('args', args)
+      }).as('set-location')
+
+      mount(KongAuthLogin, {
+        props: {
+          idpLoginEnabled: true,
+          idpLoginReturnTo: win.getLocationOrigin(),
+          idpLoginCallbackUrl: callbackUrl,
+          idpFullScreenLoader: false,
+        },
+      })
+
+      cy.get('@set-location').should('have.been.calledOnce').and('have.been.calledWithMatch', redirectPath)
+      cy.getTestId(testids.loaderContainer).should('not.exist')
+      cy.getTestId(testids.gruceLoader).should('not.exist')
     })
 
     it("should initiate developer IdP login if props are set and URL is '/login/sso'", () => {
