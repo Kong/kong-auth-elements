@@ -1,14 +1,6 @@
 /*! KONG_AUTH_INJECT_STYLES */
 
-// @use "sass:meta";
-// Import Kong Design Tokens
-// @import "@kong/design-tokens/tokens/scss/_variables";
-// Import Kongponents Sass variables
-// @import "@kong/kongponents/dist/_variables";
-
 .kong-auth-element {
-  // Include and Scope Kongponents CSS Variables
-  // @include kongponents-css-variables;
   // Import Kongponents styles
   @include meta.load-css("@kong/kongponents/dist/style.css");
   // Import kong-auth-element styles
@@ -17,6 +9,6 @@
   font-family: var(--kui-font-family-text, $kui-font-family-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: var(--KongAuthFontWeight, var(--kui-font-weight-regular, $kui-font-weight-regular));
+  font-weight: var(--kui-font-weight-regular, $kui-font-weight-regular);
   position: relative;
 }
