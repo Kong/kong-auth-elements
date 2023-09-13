@@ -1,0 +1,16 @@
+name: Verify PR does not utilize package previews
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-packages:
+    name: No PR preview references
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: No PR preview references
+        uses: Kong/public-shared-actions/pr-previews/validate@main

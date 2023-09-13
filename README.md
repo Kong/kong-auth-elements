@@ -156,7 +156,7 @@ const options: KongAuthElementsOptions = {
   apiBaseUrl: 'https://us.api.konghq.com/kauth',
   userEntity: 'user',
   shadowDom: true,
-  injectCss: ['.kong-auth-login-form .k-input#email { background-color: var(--red-400, #ff0000) }'],
+  injectCss: ['.kong-auth-login-form .k-input#email { background-color: #ff0000 }'],
   lang: 'en', // Exclude to default to English
 }
 
@@ -276,7 +276,7 @@ const pluginOptions: KongAuthElementsOptions = {
   apiBaseUrl: 'https://us.api.konghq.com/kauth',
   userEntity: 'user',
   injectCss: [
-    '.kong-auth-login-form .k-input#email { background-color: var(--red-400, #ff0000) }',
+    '.kong-auth-login-form .k-input#email { background-color: #ff0000 }',
     `
     .kong-auth-register-form .k-input {
       width: 50%;
