@@ -92,6 +92,21 @@ export default ({ mode }) => {
         },
       }),
     ],
+    css: {
+      devSourcemap: true,
+      preprocessorOptions: {
+        scss: {
+          // We inject `@use "sass:meta" here as it is needed in the `src/assets/styles/app.scss` file before any other style rules.
+          // -----
+          // Inject the @kong/design-tokens SCSS variables to make them available for all components.
+          // This is not needed in host applications.
+          additionalData: `
+            @use "sass:meta";
+            @import "@kong/design-tokens/tokens/scss/variables";
+          `,
+        },
+      },
+    },
     resolve: {
       alias: {
         // Alias to the /src directory

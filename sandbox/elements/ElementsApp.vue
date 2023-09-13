@@ -8,7 +8,7 @@
         <kong-auth-login
           .basic-auth-login-enabled="true"
           .idp-login-enabled="true"
-          idp-login-return-to="https://hydrogen.ephemeral.konnect-dev.konghq.com/"
+          idp-login-return-to="https://cloud.konghq.tech/"
           instruction-text="This is the instruction text"
           show-forgot-password-link
           wrapper-id="kong-auth-login-wrapper"
