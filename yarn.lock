@@ -1510,10 +1510,10 @@
     "@volar/typescript" "~1.10.0"
     "@vue/language-core" "1.8.10"
 
-"@xstate/vue@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@xstate/vue/-/vue-0.8.2.tgz#6e4672fbb4d4211c34bcf9facd27769cc5189ec9"
-  integrity sha512-JAFHSqvJo8tIWsn0L49Oz3dCRA3q7/wa8YTc/ltEbs3kDNEjvHhb12bQEOfoGuD3K5ZWH4nqo5quB9YVTd8Now==
+"@xstate/vue@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@xstate/vue/-/vue-2.0.0.tgz#bb95f91600c5fad2e8a72f872cb8f69b3b154e10"
+  integrity sha512-JlrJ3d+I6rZCcFBuu3O4GP+mGJfd11O9o69wRedzPMqZ+hxcMRBsih9L5kKnJHcU9CTmdJTT172oxTaYF7thzA==
 
 JSONStream@^1.0.4, JSONStream@^1.3.5:
   version "1.3.5"
