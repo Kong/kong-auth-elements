@@ -552,7 +552,7 @@ describe('KongAuthLogin.ce.vue', () => {
       const portalId = '12345-67890'
       cy.stub(getConfigOptions, 'userEntity').returns('developer')
       cy.stub(getConfigOptions, 'developerConfig').returns({
-        portalId: portalId,
+        portalId,
       })
       cy.stub(win, 'getLocationPathname').returns('/login/sso')
       cy.stub(win, 'setLocationHref').as('set-location')
