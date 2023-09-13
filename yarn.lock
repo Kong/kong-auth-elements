@@ -577,12 +577,11 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.4.3.tgz#1686da86dd13b6cb6995933067dfcc2675a6e023"
   integrity sha512-MymjAY044yG633C/tsxtdITk92g+EiRFhloTNBkrg+d5LFaBjz6Zw7YGStAAy+4Spy8jGmrGlJPmWiavOU1+Bg==
 
-"@kong/kongponents@^9.0.0-pr.1725.1d9bb913.0":
-  version "9.0.0-pr.1725.1d9bb913.0"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.0.0-pr.1725.1d9bb913.0.tgz#4e6cf839effa6d73d5b4c033e7f38cf8e5335566"
-  integrity sha512-mG7DV0EF25o2p2u1hDQPdJMa4oHl+L5K1wLAKCBdseLl03nZa8RV7dvIId5jOAWQkGXGOeVXjIDCFcQopQ+ypQ==
+"@kong/kongponents@^8.123.7":
+  version "8.123.7"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.123.7.tgz#1229f1fc906fa355e96b0bba7e50c16e66fe5a2d"
+  integrity sha512-QYKAFzpxvK7zFt/t9YaEiic87+q/IEFdyFZzC4LwuzKFeFjatg3NSoQJXTj9C87LEWpxhvlI1qyruwAY1DxRMw==
   dependencies:
-    "@kong/icons" "^1.4.3"
     axios "^0.27.2"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.0"
