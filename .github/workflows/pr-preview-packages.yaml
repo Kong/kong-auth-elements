@@ -6,7 +6,7 @@ on:
 
 jobs:
   check-packages:
-    name: No PR preview references
+    name: No PR preview packages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
