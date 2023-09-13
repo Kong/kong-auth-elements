@@ -11,7 +11,7 @@ export default function useI18n(lang: SupportedLanguages = 'en') {
   let messages
 
   const languages: MessageLanguages = {
-    en: en,
+    en,
   }
 
   // If lang exists, set to use provided language

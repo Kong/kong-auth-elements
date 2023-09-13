@@ -92,6 +92,9 @@ export default ({ mode }) => {
         },
       }),
     ],
+    css: {
+      devSourcemap: true,
+    },
     resolve: {
       alias: {
         // Alias to the /src directory

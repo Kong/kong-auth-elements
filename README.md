@@ -156,7 +156,7 @@ const options: KongAuthElementsOptions = {
   apiBaseUrl: 'https://us.api.konghq.com/kauth',
   userEntity: 'user',
   shadowDom: true,
-  injectCss: ['.kong-auth-login-form .k-input#email { background-color: var(--red-400, #ff0000) }'],
+  injectCss: ['.kong-auth-login-form .k-input#email { background-color: #ff0000 }'],
   lang: 'en', // Exclude to default to English
 }
 
@@ -276,7 +276,7 @@ const pluginOptions: KongAuthElementsOptions = {
   apiBaseUrl: 'https://us.api.konghq.com/kauth',
   userEntity: 'user',
   injectCss: [
-    '.kong-auth-login-form .k-input#email { background-color: var(--red-400, #ff0000) }',
+    '.kong-auth-login-form .k-input#email { background-color: #ff0000 }',
     `
     .kong-auth-register-form .k-input {
       width: 50%;
@@ -338,31 +338,13 @@ document.querySelector('kong-auth-login').addEventListener('login-success', func
 
 ### Theming with CSS Variables
 
-Several custom CSS variables are available to impact the styling of custom elements, shown below
-
-| Variable               | Purpose                                        |
-| :--------------------- | :--------------------------------------------- |
-| `--KongAuthFontFamily` | Default font family                            |
-| `--KongAuthFontWeight` | Default font weight when not set by Kongponent |
-
-Simply define values for the variables in your consuming application to make them available to the custom elements
-
-```css
-<style>
-:root {
-  --KongAuthFontFamily: 'Roboto';
-  --KongAuthFontWeight: 400;
-}
-</style>
-```
-
-You may also utilize any CSS variables included in the [Kongponents component library](https://beta.kongponents.konghq.com/guide/theming.html).
+You may utilize any CSS variables included in the [Kongponents component library](https://kongponents.konghq.com).
 
 In order to override the built-in CSS variables, you will need to scope your custom values to the `.kong-auth-element` selector as shown here
 
 ```css
 .kong-auth-element {
-  --KButtonPrimaryBase: #007ac1; /* set .k-button.primary to a custom color */
+  --kui-color-text-primary: green;
 }
 ```
 
