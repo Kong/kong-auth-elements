@@ -1,3 +1,10 @@
+# [2.10.0](https://github.com/Kong/kong-auth-elements/compare/v2.9.0...v2.10.0) (2023-09-13)
+
+
+### Features
+
+* **style:** remove usage of kongponents css custom props [KHCP-8877] ([#1324](https://github.com/Kong/kong-auth-elements/issues/1324)) ([65adf7b](https://github.com/Kong/kong-auth-elements/commit/65adf7bb25ca431d3784d6b36fb3cd204ce337e8))
+
 # [2.9.0](https://github.com/Kong/kong-auth-elements/compare/v2.8.10...v2.9.0) (2023-09-11)
 
 
