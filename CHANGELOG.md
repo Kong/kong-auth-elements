@@ -1,3 +1,10 @@
+## [2.10.1](https://github.com/Kong/kong-auth-elements/compare/v2.10.0...v2.10.1) (2023-09-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @xstate/vue to v2 ([#1317](https://github.com/Kong/kong-auth-elements/issues/1317)) ([fb927ab](https://github.com/Kong/kong-auth-elements/commit/fb927abba152359213263707a540b5c54c49e289))
+
 # [2.10.0](https://github.com/Kong/kong-auth-elements/compare/v2.9.0...v2.10.0) (2023-09-13)
 
 
