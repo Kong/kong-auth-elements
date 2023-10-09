@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@babel/types": "^7.22.19",
-    "@commitlint/cli": "^17.7.1",
+    "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
     "@cypress/vite-dev-server": "^5.0.6",
     "@cypress/vue": "^6.0.0",
@@ -86,7 +86,7 @@
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vue-router": "^4.2.5",
-    "vue-tsc": "^1.8.14"
+    "vue-tsc": "^1.8.15"
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.123.9",
