@@ -42,7 +42,7 @@
     "xstate": "^4.38.2"
   },
   "devDependencies": {
-    "@babel/types": "^7.22.19",
+    "@babel/types": "^7.23.0",
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
     "@cypress/vite-dev-server": "^5.0.6",
@@ -51,7 +51,7 @@
     "@evilmartians/lefthook": "^1.5.0",
     "@kong/design-tokens": "^1.11.3",
     "@kong/kongponents": "^8.123.9",
-    "@rushstack/eslint-patch": "^1.4.0",
+    "@rushstack/eslint-patch": "^1.5.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/node": "^18.18.1",
@@ -63,10 +63,10 @@
     "@vue/tsconfig": "^0.4.0",
     "commitizen": "^4.3.0",
     "cross-env": "^7.0.3",
-    "cypress": "^13.2.0",
+    "cypress": "^13.3.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "^8.49.0",
-    "eslint-plugin-cypress": "^2.14.0",
+    "eslint": "^8.50.0",
+    "eslint-plugin-cypress": "^2.15.1",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
@@ -161,7 +161,7 @@
     "node": ">=v16.20.2"
   },
   "volta": {
-    "node": "18.17.1",
+    "node": "18.18.0",
     "yarn": "1.22.19"
   }
 }
