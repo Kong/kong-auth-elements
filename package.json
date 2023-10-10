@@ -54,7 +54,7 @@
     "@rushstack/eslint-patch": "^1.4.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^18.18.0",
+    "@types/node": "^18.18.1",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
     "@vitejs/plugin-vue": "^4.3.4",
