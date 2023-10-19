@@ -7550,7 +7550,7 @@ vue-template-compiler@^2.7.14:
     de-indent "^1.0.2"
     he "^1.2.0"
 
-vue-tsc@^1.8.16:
+vue-tsc@^1.8.18:
   version "1.8.19"
   resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-1.8.19.tgz#313481444e87aa2840b02644134c2fc2f3c92ba2"
   integrity sha512-tacMQLQ0CXAfbhRycCL5sWIy1qujXaIEtP1hIQpzHWOUuICbtTj9gJyFf91PvzG5KCNIkA5Eg7k2Fmgt28l5DQ==
