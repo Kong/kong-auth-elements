@@ -577,10 +577,10 @@
   resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.11.5.tgz#5e9e8a709ed221761ba9f6802eeb4db7e0052e7d"
   integrity sha512-jb6fLMSz/2UsVHGpZPr5YJL13PmM8Wk126peVUGmAB6/P59iYXSRORxAVxjk8t4zeoYrxpO0ZGCSKQu0M35AJA==
 
-"@kong/icons@^1.7.6":
-  version "1.7.6"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.7.6.tgz#e3b210f7d326ae2082a10e0bbc437cce86012685"
-  integrity sha512-1/hyEJGpfI1j7LIM1HjWBCoUlFyhWoj9fAOZsJKX70C87XkCzEfxutD2eeSvE7KZe688oDnx7jXSiSouyly5BA==
+"@kong/icons@^1.7.7":
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.7.7.tgz#fbf11f02830ffb4319e7c20248e09ae1421c5bab"
+  integrity sha512-CQHOXZ/S0SRTjW43ItRKFoA9e+roW/jh8vXE1X0HVHDy0LAymvX9nadoVUmtdjNHQnJvr4XZfGgdyXE+fYh6Fw==
 
 "@kong/kongponents@^8.124.1":
   version "8.124.1"
