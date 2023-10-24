@@ -572,10 +572,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@kong/design-tokens@^1.11.5":
-  version "1.11.5"
-  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.11.5.tgz#5e9e8a709ed221761ba9f6802eeb4db7e0052e7d"
-  integrity sha512-jb6fLMSz/2UsVHGpZPr5YJL13PmM8Wk126peVUGmAB6/P59iYXSRORxAVxjk8t4zeoYrxpO0ZGCSKQu0M35AJA==
+"@kong/design-tokens@^1.11.6":
+  version "1.11.6"
+  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.11.6.tgz#a5bdc240a2b935c329f81aa8117db7e20c2de35e"
+  integrity sha512-K09zObaYWD7rm9FrJCHI7muKI3npWeDeqdY64unAjmlFW17Ox+bFGsJkaJIOXzsssXMGspHqVkl41vmUEhY8OQ==
 
 "@kong/icons@^1.7.7":
   version "1.7.7"
