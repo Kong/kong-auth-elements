@@ -50,7 +50,7 @@
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
     "@evilmartians/lefthook": "^1.5.2",
     "@kong/design-tokens": "^1.11.6",
-    "@kong/kongponents": "^8.124.1",
+    "@kong/kongponents": "^8.125.0",
     "@rushstack/eslint-patch": "^1.5.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
@@ -89,7 +89,7 @@
     "vue-tsc": "^1.8.19"
   },
   "peerDependencies": {
-    "@kong/kongponents": "^8.124.1",
+    "@kong/kongponents": "^8.125.0",
     "axios": "^0.27.2",
     "vue": "<= 3.3.0"
   },
