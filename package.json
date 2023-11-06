@@ -71,7 +71,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-standard": "^4.1.0",
-    "eslint-plugin-vue": "^9.17.0",
+    "eslint-plugin-vue": "^9.18.0",
     "postcss-custom-properties": "^13.3.2",
     "postcss-html": "^1.5.0",
     "rollup-plugin-visualizer": "^5.9.2",
