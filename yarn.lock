@@ -609,10 +609,10 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.8.0.tgz#3fb6423fec31be4cc27af94f2912f52aee4f9077"
   integrity sha512-ynO3GXaJTh4yoJMZ7XeTbA+ZHvlrteleI+rWNGUbEr726Tw/jgHLdT6wZ1YWR65cA38FN0Q96vEX/7+6ExwaHA==
 
-"@kong/kongponents@^8.126.0":
-  version "8.126.0"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.126.0.tgz#e7d39d653d6b17172fe5b14bb44190f6b98c98b5"
-  integrity sha512-4rZ/bTkkiUIuxvEwbOO47dN7BXN3k3zZ2u5QBrugG1hYh+E3kqSJ/nu+UE5/bREGnPJQppO0YMC+nETd78d01g==
+"@kong/kongponents@^8.126.1":
+  version "8.126.1"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-8.126.1.tgz#f5f68e534a38df68c21c231c2e8ff728fbd2bd07"
+  integrity sha512-8GdHy+/pcALzabuTplnZZSsAnb8rBZhaMAx4nADfqrt6uPvfDHI6AQfLZg6Fc+D3CPjo9q2PL+o1kf2a5nuYLg==
   dependencies:
     date-fns "^2.30.0"
     date-fns-tz "^2.0.0"
