@@ -13,7 +13,7 @@
     }
 
     .kong-auth-register-region {
-      margin-bottom: var(--kui-space-60, $kui-space-60);
+      margin-bottom: var(--kui-space-70, $kui-space-70);
 
       .k-select {
         width: 100% !important;
@@ -26,12 +26,11 @@
     }
 
     .register-alert {
-      margin-top: var(--kui-space-60, $kui-space-60);
+      margin-top: var(--kui-space-70, $kui-space-70);
     }
 
     .register-submit {
-      justify-content: center !important;
-      margin-top: var(--kui-space-90, $kui-space-90);
+      margin-top: var(--kui-space-70, $kui-space-70);
       width: 100% !important;
     }
   }
@@ -51,12 +50,11 @@
 
   .login-seo-button,
   .login-button {
-    justify-content: center !important;
     width: 100% !important;
   }
 
   .login-button {
-    margin-top: var(--kui-space-90, $kui-space-90);
+    margin-top: var(--kui-space-40, $kui-space-40);
   }
 
   .forgot-password-link {
@@ -102,10 +100,8 @@
     justify-content: end;
 
     .k-button {
-      justify-content: center !important;
-
       &:first-of-type {
-        margin-right: var(--kui-space-20, $kui-space-20);
+        margin-right: var(--kui-space-70, $kui-space-70);
       }
     }
   }
@@ -113,7 +109,6 @@
 
 .kong-auth-reset-password-form {
   .reset-password-submit {
-    justify-content: center !important;
     width: 100% !important;
   }
 }
@@ -123,13 +118,8 @@
     line-height: var(--kui-line-height-40, $kui-line-height-40);
   }
 
-  .forgot-password-return-to-login-btn {
-    justify-content: center !important;
-    width: 100% !important;
-  }
-
+  .forgot-password-return-to-login-btn,
   .forgot-password-submit {
-    justify-content: center !important;
     width: 100% !important;
   }
 
@@ -147,17 +137,15 @@
     font-size: var(--kui-font-size-60, $kui-font-size-60);
     font-weight: var(--kui-font-weight-semibold, $kui-font-weight-semibold);
     line-height: var(--kui-line-height-60, $kui-line-height-60);
-    margin-bottom: var(--kui-space-90, $kui-space-90);
+    margin-bottom: var(--kui-space-70, $kui-space-70);
   }
 
   .accept-invitation-submit {
-    justify-content: center !important;
-    margin-top: var(--kui-space-90, $kui-space-90) !important;
     width: 100% !important;
   }
 
   .invitation-form-error {
-    margin-bottom: var(--kui-space-60, $kui-space-60);
+    margin-bottom: var(--kui-space-70, $kui-space-70);
   }
 }
 
@@ -243,12 +231,11 @@ a {
 }
 
 .kong-auth-input {
-  margin-bottom: var(--kui-space-60, $kui-space-60);
-  width: 100% !important;
+  margin-bottom: var(--kui-space-70, $kui-space-70);
 }
 
 .form-error {
-  margin: var(--kui-space-60, $kui-space-60) var(--kui-space-0, $kui-space-0);
+  margin: var(--kui-space-70, $kui-space-70) var(--kui-space-0, $kui-space-0);
 }
 
 input.hidden-input {
@@ -263,7 +250,7 @@ input.hidden-input {
   color: var(--kui-color-text-neutral, $kui-color-text-neutral);
   font-size: var(--kui-font-size-30, $kui-font-size-30);
 
-  .k-checkbox-label {
+  .k-label.checkbox-label {
     display: inline;
   }
 }

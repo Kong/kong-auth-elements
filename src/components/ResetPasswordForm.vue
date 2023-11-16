@@ -50,6 +50,7 @@
         class="reset-password-submit"
         data-testid="kong-auth-reset-password-submit"
         :disabled="btnDisabled"
+        size="large"
         type="submit"
       >
         <ProgressIcon v-if="currentState.matches('pending')" class="spin-icon" :size="KUI_ICON_SIZE_40" />

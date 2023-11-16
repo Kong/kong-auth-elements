@@ -67,9 +67,10 @@
         <KButton
           id="change-password-cancel"
           ref="changePasswordCancel"
-          appearance="outline"
+          appearance="secondary"
           data-testid="kong-auth-change-password-cancel"
           :disabled="btnDisabled"
+          size="large"
           @click.prevent="handleCancel"
         >
           {{ messages.changePassword.cancelText }}
@@ -81,6 +82,7 @@
           appearance="primary"
           data-testid="kong-auth-change-password-submit"
           :disabled="btnDisabled"
+          size="large"
           type="submit"
         >
           <ProgressIcon v-if="currentState.matches('pending')" class="spin-icon" :size="KUI_ICON_SIZE_40" />
