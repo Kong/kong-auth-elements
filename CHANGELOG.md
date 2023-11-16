@@ -1,3 +1,16 @@
+# [2.11.0](https://github.com/Kong/kong-auth-elements/compare/v2.10.12...v2.11.0) (2023-11-16)
+
+
+### Features
+
+* upgrade to kongponents alpha [KHCP-9642] ([3f76dc6](https://github.com/Kong/kong-auth-elements/commit/3f76dc63f30157d10fdf245e6004d5053d7c8841))
+* upgrade to kongponents alpha [KHCP-9642] ([#1399](https://github.com/Kong/kong-auth-elements/issues/1399)) ([44d853c](https://github.com/Kong/kong-auth-elements/commit/44d853c14db10a18c7c8b91057deaf6a5cc2b192))
+
+
+### Reverts
+
+* 3f76dc63 [skip-ci] ([2e22dc5](https://github.com/Kong/kong-auth-elements/commit/2e22dc55ed515a479b0f390ff172d4ace97e9e19))
+
 ## [2.10.12](https://github.com/Kong/kong-auth-elements/compare/v2.10.11...v2.10.12) (2023-11-07)
 
 
