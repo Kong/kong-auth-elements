@@ -147,7 +147,6 @@
         class="register-submit"
         data-testid="kong-auth-register-submit"
         :disabled="btnDisabled"
-        size="large"
         type="submit"
       >
         <ProgressIcon v-if="currentState.matches('pending')" class="spin-icon" :size="KUI_ICON_SIZE_40" />

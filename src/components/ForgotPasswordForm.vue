@@ -14,7 +14,6 @@
         appearance="primary"
         class="forgot-password-return-to-login-btn"
         data-testid="kong-auth-forgot-password-return-to-login-btn"
-        size="large"
         @click.prevent="$emit('click-login-link')"
       >{{ loginLinkText }}</KButton>
     </div>
@@ -51,7 +50,6 @@
         class="forgot-password-submit"
         data-testid="kong-auth-forgot-password-submit"
         :disabled="btnDisabled"
-        size="large"
         type="submit"
       >
         <ProgressIcon v-if="currentState.matches('pending')" class="spin-icon" :size="KUI_ICON_SIZE_40" />

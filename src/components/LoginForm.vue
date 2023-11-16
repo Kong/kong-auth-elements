@@ -11,12 +11,11 @@
     <div v-else>
       <div v-if="idpLoginEnabled && (userEntity === 'developer' || (userEntity === 'user' && isIdpLogin))">
         <KButton
-          appearance="secondary"
+          appearance="outline"
           :aria-label="['pending', 'success'].some(currentState.matches) ? undefined : messages.login.loginTextSSOAriaLabel"
           class="login-seo-button"
           data-testid="kong-auth-login-sso"
           :disabled="loginBtnSSODisabled"
-          size="large"
           @click.prevent="redirectToIdp(idpLoginCallbackUrl, idpLoginReturnTo)"
         >
           <ProgressIcon v-if="idpIsLoading" class="spin-icon" :size="KUI_ICON_SIZE_40" />
@@ -86,7 +85,7 @@
             autocomplete="username"
             class="kong-auth-input"
             data-testid="kong-auth-login-email"
-            :error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+            :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
             :label="`${messages.inputLabels.email}`"
             required
             type="email"
@@ -99,7 +98,7 @@
             autocomplete="current-password"
             class="kong-auth-input"
             data-testid="kong-auth-login-password"
-            :error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+            :has-error="currentState.matches('error') && error && fieldsHaveError ? true : false"
             :label="`${messages.inputLabels.password}`"
             required
             type="password"
@@ -119,7 +118,6 @@
           class="login-button"
           data-testid="kong-auth-login-submit"
           :disabled="loginBtnDisabled"
-          size="large"
           type="submit"
         >
           <ProgressIcon v-if="['pending', 'success'].some(currentState.matches)" class="spin-icon" :size="KUI_ICON_SIZE_40" />
