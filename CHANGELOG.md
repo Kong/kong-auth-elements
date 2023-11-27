@@ -1,3 +1,10 @@
+## [2.11.1](https://github.com/Kong/kong-auth-elements/compare/v2.11.0...v2.11.1) (2023-11-27)
+
+
+### Bug Fixes
+
+* bump axios to 1.6.0 ([#1400](https://github.com/Kong/kong-auth-elements/issues/1400)) ([015d378](https://github.com/Kong/kong-auth-elements/commit/015d37802640080d5756aa13dc25f25f0efc1bca))
+
 # [2.11.0](https://github.com/Kong/kong-auth-elements/compare/v2.10.12...v2.11.0) (2023-11-16)
 
 
