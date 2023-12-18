@@ -54,7 +54,7 @@
     "@rushstack/eslint-patch": "^1.5.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^18.18.8",
+    "@types/node": "^20.10.3",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "@typescript-eslint/parser": "^6.9.1",
     "@vitejs/plugin-vue": "^4.4.0",
@@ -158,10 +158,10 @@
     }
   },
   "engines": {
-    "node": ">=v16.20.2"
+    "node": ">=20.10.0"
   },
   "volta": {
-    "node": "18.18.2",
+    "node": "20.10.0",
     "yarn": "1.22.19"
   }
 }
