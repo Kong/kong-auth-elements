@@ -1,3 +1,10 @@
+## [2.11.6](https://github.com/Kong/kong-auth-elements/compare/v2.11.5...v2.11.6) (2023-12-21)
+
+
+### Bug Fixes
+
+* **types:** update types export ([cd632ea](https://github.com/Kong/kong-auth-elements/commit/cd632ea2a6665bde3a5db9122d34a7605071aa4c))
+
 ## [2.11.5](https://github.com/Kong/kong-auth-elements/compare/v2.11.4...v2.11.5) (2023-12-21)
 
 
