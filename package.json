@@ -43,7 +43,7 @@
     "xstate": "^4.38.3"
   },
   "devDependencies": {
-    "@babel/types": "^7.23.5",
+    "@babel/types": "^7.23.6",
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@cypress/vite-dev-server": "^5.0.6",
