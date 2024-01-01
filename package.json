@@ -38,7 +38,7 @@
     "@kong/icons": "^1.8.8",
     "@xstate/vue": "^2.0.0",
     "axios": "^1.6.2",
-    "vue": "^3.3.12",
+    "vue": "^3.3.13",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
   },
@@ -87,7 +87,7 @@
     "typescript": "^5.2.2",
     "vite": "^5.0.10",
     "vue-router": "^4.2.5",
-    "vue-tsc": "^1.8.25"
+    "vue-tsc": "^1.8.26"
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.126.2",
