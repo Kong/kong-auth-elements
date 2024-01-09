@@ -38,7 +38,7 @@
     "@kong/icons": "^1.8.10",
     "@xstate/vue": "^2.0.0",
     "axios": "^1.6.3",
-    "vue": "^3.4.0",
+    "vue": "^3.4.1",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
   },
@@ -55,7 +55,7 @@
     "@rushstack/eslint-patch": "^1.5.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^18.19.3",
+    "@types/node": "^18.19.4",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "@typescript-eslint/parser": "^6.9.1",
     "@vitejs/plugin-vue": "^4.5.2",
