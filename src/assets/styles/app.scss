@@ -2,7 +2,7 @@
 
 @use "sass:meta";
 // Import Kong Design Tokens - has to be done here afer `sass:meta`
-@import "@kong/design-tokens/tokens/scss/_variables";
+@import "@kong/design-tokens/tokens/scss/variables";
 
 .kong-auth-element {
   // Import Kongponents styles
