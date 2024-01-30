@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'url'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import VueDevTools from 'vite-plugin-vue-devtools'
 import dns from 'dns'
 import path from 'path'
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -91,6 +92,7 @@ export default ({ mode }) => {
           },
         },
       }),
+      VueDevTools(),
     ],
     css: {
       devSourcemap: true,
