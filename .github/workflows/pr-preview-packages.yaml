@@ -6,6 +6,7 @@ on:
 
 jobs:
   check-packages:
+    timeout-minutes: ${{ fromJSON(vars.GHA_DEFAULT_TIMEOUT) }}
     name: No PR preview packages
     runs-on: ubuntu-latest
     steps:
