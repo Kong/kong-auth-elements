@@ -1,3 +1,10 @@
+## [2.11.14](https://github.com/Kong/kong-auth-elements/compare/v2.11.13...v2.11.14) (2024-03-12)
+
+
+### Bug Fixes
+
+* kongponents alpha phase 9 [KHCP-10954] ([#1462](https://github.com/Kong/kong-auth-elements/issues/1462)) ([a34514a](https://github.com/Kong/kong-auth-elements/commit/a34514aeeffb8df70a4f483c900d1e4eec354914))
+
 ## [2.11.13](https://github.com/Kong/kong-auth-elements/compare/v2.11.12...v2.11.13) (2024-01-18)
 
 
