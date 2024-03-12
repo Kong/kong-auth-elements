@@ -41,28 +41,28 @@
 
       <div v-else-if="currentState.matches('reset_password')" class="form-error">
         <KAlert
-          :message="messages.login.passwordResetSuccess"
           appearance="success"
           class="justify-content-center"
           data-testid="kong-auth-login-password-reset-message"
+          :message="messages.login.passwordResetSuccess"
         />
       </div>
 
       <div v-else-if="currentState.matches('confirmed_email')" class="form-error">
         <KAlert
-          :message="messages.login.confirmedEmailSuccess"
           appearance="success"
           class="justify-content-center"
           data-testid="kong-auth-login-confirmed-email-message"
+          :message="messages.login.confirmedEmailSuccess"
         />
       </div>
 
       <div v-else-if="currentState.matches('from_register')" class="form-error">
         <KAlert
-          :alrt-message="registerSuccessText"
           appearance="success"
           class="justify-content-center"
           data-testid="kong-auth-login-register-success-message"
+          :message="registerSuccessText"
         />
       </div>
 

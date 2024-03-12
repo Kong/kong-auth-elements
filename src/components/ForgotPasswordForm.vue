@@ -5,10 +5,10 @@
     </div>
     <div v-else-if="currentState.matches('success')">
       <KAlert
-        :message="successText"
         appearance="info"
         class="form-error"
         data-testid="kong-auth-forgot-password-success-message"
+        :message="successText"
       />
       <KButton
         appearance="primary"
