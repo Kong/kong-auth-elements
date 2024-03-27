@@ -9,6 +9,7 @@ on: pull_request_target
 
 jobs:
   renovate-autoapprove:
+    timeout-minutes: ${{ fromJSON(vars.GHA_DEFAULT_TIMEOUT) }}
     runs-on: ubuntu-latest
     if: ${{ github.actor == 'renovate[bot]' }}
     steps:
