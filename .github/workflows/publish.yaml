@@ -9,6 +9,7 @@ on:
 
 jobs:
   run-tests:
+    timeout-minutes: ${{ fromJSON(vars.GHA_DEFAULT_TIMEOUT) }}
     name: Tests
     uses: ./.github/workflows/test.yaml
     # Must pass in secrets here so that the calling workflow can pass in the NPM_TOKEN needed to install private packages.
@@ -16,6 +17,7 @@ jobs:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN_PUBLIC_PUBLISH }}
       VITE_AUTH_URL: ${{ secrets.VITE_AUTH_URL }}
   publish:
+    timeout-minutes: ${{ fromJSON(vars.GHA_DEFAULT_TIMEOUT) }}
     needs: run-tests
     name: Build and Publish
     runs-on: ubuntu-latest
