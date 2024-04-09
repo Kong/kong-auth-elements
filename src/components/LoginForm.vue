@@ -19,9 +19,11 @@
           size="large"
           @click.prevent="redirectToIdp(idpLoginCallbackUrl, idpLoginReturnTo)"
         >
-          <ProgressIcon v-if="idpIsLoading" class="spin-icon" :size="KUI_ICON_SIZE_40" />
-          <ProfileIcon v-else :size="KUI_ICON_SIZE_40" />
-          {{ messages.login.loginTextSSO }}
+          <slot name="login-sso-button">
+            <ProgressIcon v-if="idpIsLoading" class="spin-icon" :size="KUI_ICON_SIZE_40" />
+            <ProfileIcon v-else :size="KUI_ICON_SIZE_40" />
+            <span data-testid="kong-auth-login-sso-button-default-text">{{ messages.login.loginTextSSO }}</span>
+          </slot>
         </KButton>
 
         <p v-if="loginWithCredentialsLinkIsVisible" class="basic-auth-link">
@@ -122,8 +124,10 @@
           size="large"
           type="submit"
         >
-          <ProgressIcon v-if="['pending', 'success'].some(currentState.matches)" class="spin-icon" :size="KUI_ICON_SIZE_40" />
-          {{ loginBtnText }}
+          <slot name="login-button">
+            <ProgressIcon v-if="['pending', 'success'].some(currentState.matches)" class="spin-icon" :size="KUI_ICON_SIZE_40" />
+            <span data-testid="kong-auth-login-button-default-text">{{ loginBtnText }}</span>
+          </slot>
         </KButton>
 
         <div v-if="showRegisterLink" class="register-link-wrapper">

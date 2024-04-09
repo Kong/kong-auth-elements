@@ -7,7 +7,14 @@
         @idp-is-loading="(emitData: any) => $emit('idp-is-loading', emitData)"
         @login-success="(emitData: any) => $emit('login-success', emitData)"
         @verify-email-success="(emitData: any) => $emit('verify-email-success', emitData)"
-        />
+      >
+        <template #login-sso-button>
+          <slot name="login-sso-button" />
+        </template>
+        <template #login-button>
+          <slot name="login-button" />
+        </template>
+    </LoginForm>
     </BaseCustomElement>
   </TeleportWrapper>
 </template>
