@@ -19,11 +19,11 @@
           size="large"
           @click.prevent="redirectToIdp(idpLoginCallbackUrl, idpLoginReturnTo)"
         >
-          <slot name="login-sso-button">
-            <ProgressIcon v-if="idpIsLoading" class="spin-icon" :size="KUI_ICON_SIZE_40" />
-            <ProfileIcon v-else :size="KUI_ICON_SIZE_40" />
-            <span data-testid="kong-auth-login-sso-button-default-text">{{ messages.login.loginTextSSO }}</span>
-          </slot>
+          <ProgressIcon v-if="idpIsLoading" class="spin-icon" :size="KUI_ICON_SIZE_40" />
+          <span v-else class="kong-auth-login-sso-button-icon-wrapper">
+            <ProfileIcon class="kong-auth-login-sso-button-icon" :size="KUI_ICON_SIZE_40" />
+          </span>
+          <span data-testid="kong-auth-login-sso-button-text">{{ loginSsoButtonText }}</span>
         </KButton>
 
         <p v-if="loginWithCredentialsLinkIsVisible" class="basic-auth-link">
@@ -124,10 +124,8 @@
           size="large"
           type="submit"
         >
-          <slot name="login-button">
-            <ProgressIcon v-if="['pending', 'success'].some(currentState.matches)" class="spin-icon" :size="KUI_ICON_SIZE_40" />
-            <span data-testid="kong-auth-login-button-default-text">{{ loginBtnText }}</span>
-          </slot>
+          <ProgressIcon v-if="['pending', 'success'].some(currentState.matches)" class="spin-icon" :size="KUI_ICON_SIZE_40" />
+          <span data-testid="kong-auth-login-button-text">{{ loginBtnText }}</span>
         </KButton>
 
         <div v-if="showRegisterLink" class="register-link-wrapper">
@@ -188,6 +186,8 @@ const idpLoginEnabled: Ref<boolean> = inject('idp-login-enabled', ref(false))
 const idpLoginCallbackUrl: Ref<string> = inject('idp-login-callback-url', ref(''))
 const idpLoginReturnTo: Ref<string> = inject('idp-login-return-to', ref(''))
 const idpFullScreenLoader: Ref<boolean> = inject('idp-full-screen-loader', ref(true))
+const loginSsoButtonText: Ref<string> = inject('login-sso-button-text', ref(messages.login.loginTextSSO))
+const loginButtonText: Ref<string> = inject('login-button-text', ref(messages.login.loginText))
 
 const formData = reactive({
   email: '',
@@ -287,7 +287,7 @@ const loginBtnText = computed((): string => {
     return ''
   }
 
-  return messages.login.loginText
+  return loginButtonText.value ? loginButtonText.value : messages.login.loginText
 })
 
 // Allow forcing the login button to be enabled if the form was autofilled
