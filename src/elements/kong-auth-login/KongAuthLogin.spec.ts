@@ -6,7 +6,6 @@ import KongAuthLogin from './KongAuthLogin.ce.vue'
 import { win } from '../../utils'
 import { getConfigOptions } from '../../composables/useConfigOptions'
 import useI18n from '../../composables/useI18n'
-import { h } from 'vue'
 
 const { messages } = useI18n('en')
 
