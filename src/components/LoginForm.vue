@@ -287,7 +287,7 @@ const loginBtnText = computed((): string => {
     return ''
   }
 
-  return loginButtonText.value ? loginButtonText.value : messages.login.loginText
+  return loginButtonText.value
 })
 
 // Allow forcing the login button to be enabled if the form was autofilled
