@@ -1,3 +1,10 @@
+## [2.11.17](https://github.com/Kong/kong-auth-elements/compare/v2.11.16...v2.11.17) (2024-04-10)
+
+
+### Bug Fixes
+
+* **deps:** widen peerDependency ([#1480](https://github.com/Kong/kong-auth-elements/issues/1480)) ([6a48a90](https://github.com/Kong/kong-auth-elements/commit/6a48a905f12e4631f2b3012f26b9ca487d4b5ab9))
+
 ## [2.11.16](https://github.com/Kong/kong-auth-elements/compare/v2.11.15...v2.11.16) (2024-04-09)
 
 
