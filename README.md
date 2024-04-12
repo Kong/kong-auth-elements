@@ -445,6 +445,8 @@ The login element **must** reside at the `{window.location.origin}/login` path i
 | `idpLoginCallbackUrl` | URL | `''` | Set the URL to return to in order to complete the OIDC flow. In most cases, this should be set to `${window.location.origin}/login` |
 | `idpLoginReturnTo` | URL | `''` | Set the URL to return to upon successful IdP login. In most cases, this should be set to `window.location.origin` |
 | `idpFullScreenLoader` | Boolean | `true` | Show the full screen loading skeleton when IdP login is processing |
+| `loginSsoButtonText` | String | `Continue with SSO` | Set the text for the SSO login button. |
+| `loginButtonText` | String | `Log in` | Set the text for the basic authentication login button.  |
 
 > **Note**: When utilizing the props as a native web component, you may need to use dot syntax, as shown here
 >

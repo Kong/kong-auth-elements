@@ -29,6 +29,9 @@ const testids = {
   loaderContainer: 'kong-auth-login-gruce-loader',
   gruceLoader: 'full-screen-loader',
   genericSpinnerLoader: 'full-screen-spinner-loader',
+  loginSsoButtonText: 'kong-auth-login-sso-button-text',
+  loginButtonText: 'kong-auth-login-button-text',
+
 }
 
 const user = {
@@ -37,6 +40,51 @@ const user = {
 }
 
 describe('KongAuthLogin.ce.vue', () => {
+  describe('Login Text Props', () => {
+    describe('loginSsoButtonText', () => {
+      it('shows default string if no prop is passed', () => {
+        cy.stub(getConfigOptions, 'userEntity').returns('developer')
+        mount(KongAuthLogin, {
+          props: {
+            basicAuthLoginEnabled: true,
+            idpLoginEnabled: true,
+          },
+        })
+
+        cy.getTestId(testids.loginSsoButtonText).should('be.visible').and('have.text', 'Continue with SSO')
+      })
+      it('shows custom string if prop is passed', () => {
+        const customText = 'custom text content'
+        cy.stub(getConfigOptions, 'userEntity').returns('developer')
+        mount(KongAuthLogin, {
+          props: {
+            loginSsoButtonText: customText,
+            basicAuthLoginEnabled: true,
+            idpLoginEnabled: true,
+          },
+        })
+
+        cy.getTestId(testids.loginSsoButtonText).should('be.visible').and('have.text', customText)
+      })
+    })
+    describe('loginButtonText', () => {
+      it('shows default string if no prop is passed', () => {
+        mount(KongAuthLogin)
+
+        cy.getTestId(testids.loginButtonText).should('be.visible').and('have.text', 'Log in')
+      })
+      it('shows custom string if prop is passed', () => {
+        const customText = 'custom text content'
+        mount(KongAuthLogin, {
+          props: {
+            loginButtonText: customText,
+          },
+        })
+
+        cy.getTestId(testids.loginButtonText).should('be.visible').and('have.text', customText)
+      })
+    })
+  })
   // Required for all Custom Elements
   it('has proper structure and required classes', () => {
     mount(KongAuthLogin)

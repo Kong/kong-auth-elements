@@ -7,7 +7,7 @@
         @idp-is-loading="(emitData: any) => $emit('idp-is-loading', emitData)"
         @login-success="(emitData: any) => $emit('login-success', emitData)"
         @verify-email-success="(emitData: any) => $emit('verify-email-success', emitData)"
-        />
+      />
     </BaseCustomElement>
   </TeleportWrapper>
 </template>
@@ -78,6 +78,14 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  loginSsoButtonText: {
+    type: String,
+    default: '',
+  },
+  loginButtonText: {
+    type: String,
+    default: '',
+  },
 })
 
 // Import emits from child component with validation, where necessary
@@ -131,12 +139,16 @@ provide(
   computed((): boolean => props.idpFullScreenLoader),
 )
 
+// Custom Strings
+
 // Message props: These provided values default to useI18n() message text so
 // they must be provided in this format so the default value can be set in the child component.
 props.forgotPasswordLinkText && provide('forgot-password-link-text', computed((): string => props.forgotPasswordLinkText))
 props.registerLinkHelpText && provide('register-link-help-text', computed((): string => props.registerLinkHelpText))
 props.registerLinkText && provide('register-link-text', computed((): string => props.registerLinkText))
 props.registerSuccessText && provide('register-success-text', computed((): string => props.registerSuccessText))
+props.loginSsoButtonText && provide('login-sso-button-text', computed((): string => props.loginSsoButtonText))
+props.loginButtonText && provide('login-button-text', computed((): string => props.loginButtonText))
 </script>
 
 <style lang="scss">
