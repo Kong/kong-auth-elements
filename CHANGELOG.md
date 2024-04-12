@@ -1,3 +1,10 @@
+# [2.12.0](https://github.com/Kong/kong-auth-elements/compare/v2.11.17...v2.12.0) (2024-04-12)
+
+
+### Features
+
+* props for updating login / sso login button text ([#1479](https://github.com/Kong/kong-auth-elements/issues/1479)) ([b3e9389](https://github.com/Kong/kong-auth-elements/commit/b3e9389ae8890fa9e3acea7f3e35bc2b097be3d0))
+
 ## [2.11.17](https://github.com/Kong/kong-auth-elements/compare/v2.11.16...v2.11.17) (2024-04-10)
 
 
