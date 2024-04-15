@@ -11,6 +11,13 @@
       </ul>
     </template>
     <template v-else #default>{{ errorMessage }}</template>
+    <template v-if="passwordRequirements.length" #alertMessage>
+      <p>{{ capitalizeFirstChar(errorMessage) }}:</p>
+      <ul>
+        <li v-for="(error, idx) in passwordRequirements" :key="idx">{{ capitalizeFirstChar(error) }}</li>
+      </ul>
+    </template>
+    <template v-else #alertMessage>{{ errorMessage }}</template>
   </KAlert>
 </template>
 
