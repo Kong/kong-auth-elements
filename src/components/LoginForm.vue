@@ -42,6 +42,7 @@
       </div>
 
       <div v-else-if="currentState.matches('reset_password')" class="form-error">
+        <!-- NOTE: alert-message is added for backwards compatibility of host apps that arent using kongponents alpha -->
         <KAlert
           :alert-message="messages.login.passwordResetSuccess"
           appearance="success"
@@ -52,6 +53,7 @@
       </div>
 
       <div v-else-if="currentState.matches('confirmed_email')" class="form-error">
+        <!-- NOTE: alert-message is added for backwards compatibility of host apps that arent using kongponents alpha -->
         <KAlert
           :alert-message="messages.login.confirmedEmailSuccess"
           appearance="success"
@@ -62,6 +64,7 @@
       </div>
 
       <div v-else-if="currentState.matches('from_register')" class="form-error">
+        <!-- NOTE: alert-message is added for backwards compatibility of host apps that arent using kongponents alpha -->
         <KAlert
           :alert-message="registerSuccessText"
           appearance="success"
