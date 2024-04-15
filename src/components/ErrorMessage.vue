@@ -1,5 +1,7 @@
 <template>
+  <!-- NOTE: alert-message is added for backwards compatibility of host apps that arent using kongponents alpha -->
   <KAlert
+    :alert-message="errorMessage"
     appearance="danger"
     class="kong-auth-error-message error-message"
     data-testid="kong-auth-error-message"

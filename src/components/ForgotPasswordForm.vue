@@ -4,7 +4,9 @@
       <ErrorMessage :error="error" />
     </div>
     <div v-else-if="currentState.matches('success')">
+      <!-- NOTE: alert-message is added for backwards compatibility of host apps that arent using kongponents alpha -->
       <KAlert
+        :alert-message="successText"
         appearance="info"
         class="form-error"
         data-testid="kong-auth-forgot-password-success-message"
