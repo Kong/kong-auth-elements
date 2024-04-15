@@ -1,3 +1,10 @@
+## [2.12.1](https://github.com/Kong/kong-auth-elements/compare/v2.12.0...v2.12.1) (2024-04-15)
+
+
+### Bug Fixes
+
+* backwards compatibility for kalert ([#1484](https://github.com/Kong/kong-auth-elements/issues/1484)) ([4c9e648](https://github.com/Kong/kong-auth-elements/commit/4c9e64881aacf20e8d0efdd61f128b698ae1e059))
+
 # [2.12.0](https://github.com/Kong/kong-auth-elements/compare/v2.11.17...v2.12.0) (2024-04-12)
 
 
