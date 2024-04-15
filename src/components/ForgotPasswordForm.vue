@@ -5,6 +5,7 @@
     </div>
     <div v-else-if="currentState.matches('success')">
       <KAlert
+        :alert-message="successText"
         appearance="info"
         class="form-error"
         data-testid="kong-auth-forgot-password-success-message"
