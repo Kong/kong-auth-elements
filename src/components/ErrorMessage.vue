@@ -1,16 +1,10 @@
 <template>
   <KAlert
+    :alert-message="errorMessage"
     appearance="danger"
     class="kong-auth-error-message error-message"
     data-testid="kong-auth-error-message"
   >
-    <template v-if="passwordRequirements.length" #alertMessage>
-      <p>{{ capitalizeFirstChar(errorMessage) }}:</p>
-      <ul>
-        <li v-for="(error, idx) in passwordRequirements" :key="idx">{{ capitalizeFirstChar(error) }}</li>
-      </ul>
-    </template>
-    <template v-else #alertMessage>{{ errorMessage }}</template>
     <template v-if="passwordRequirements.length" #default>
       <p>{{ capitalizeFirstChar(errorMessage) }}:</p>
       <ul>
