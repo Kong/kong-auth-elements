@@ -1,3 +1,10 @@
+## [2.12.2](https://github.com/Kong/kong-auth-elements/compare/v2.12.1...v2.12.2) (2024-04-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kong/icons to ^1.9.0 ([#1485](https://github.com/Kong/kong-auth-elements/issues/1485)) ([6606e14](https://github.com/Kong/kong-auth-elements/commit/6606e140eae1a8f5dadc5838712fd5985af461d8))
+
 ## [2.12.1](https://github.com/Kong/kong-auth-elements/compare/v2.12.0...v2.12.1) (2024-04-15)
 
 
