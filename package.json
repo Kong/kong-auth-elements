@@ -51,7 +51,7 @@
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
     "@evilmartians/lefthook": "^1.6.7",
     "@kong/design-tokens": "^1.12.11",
-    "@kong/kongponents": "9.0.0-alpha.123",
+    "@kong/kongponents": "9.0.0-alpha.146",
     "@rushstack/eslint-patch": "^1.10.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
