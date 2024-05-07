@@ -8857,7 +8857,7 @@ vite-plugin-inspect@^0.8.4:
     picocolors "^1.0.0"
     sirv "^2.0.4"
 
-vite-plugin-vue-devtools@^7.1.2:
+vite-plugin-vue-devtools@^7.1.3:
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/vite-plugin-vue-devtools/-/vite-plugin-vue-devtools-7.1.3.tgz#e1105b5fd98f308b0a3c1fd1b68c0b2521752f14"
   integrity sha512-qv8Z4yok9RYo6TEs89WnIAlmTHby/+XTim8tlSnMs3lAPcQqqcl/wGRY8gAeYrGCANngOqO+VuabW3Jb1HZtyw==
