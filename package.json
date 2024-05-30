@@ -37,7 +37,7 @@
   "dependencies": {
     "@kong/icons": "^1.9.2",
     "@xstate/vue": "^2.0.0",
-    "axios": "^1.6.8",
+    "axios": "^1.7.0",
     "vue": "^3.4.27",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
@@ -92,7 +92,7 @@
   },
   "peerDependencies": {
     "@kong/kongponents": ">= ^8.126.2 || < 10",
-    "axios": "^1.6.8",
+    "axios": "^1.7.0",
     "vue": "<= 3.3.0"
   },
   "files": [
