@@ -46,7 +46,7 @@
     "@babel/types": "^7.24.5",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@cypress/vite-dev-server": "^5.0.7",
+    "@cypress/vite-dev-server": "^5.1.0",
     "@cypress/vue": "^6.0.0",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
     "@evilmartians/lefthook": "^1.6.12",
