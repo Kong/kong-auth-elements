@@ -55,7 +55,7 @@ const setGeneralErrorMessage = (): void => {
     errorMessage.value = messages.general.invalidAccessCode
   } else if (status === 503) {
     errorMessage.value = messages.general.serviceUnavailable
-  } else if (status === 409) {
+  } else if (status === 429) {
     errorMessage.value = messages.general.rateLimited
   } else if (data && data.invalid_parameters && data.invalid_parameters?.length) {
     const { field, reason } = data.invalid_parameters[0]
