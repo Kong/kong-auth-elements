@@ -58,6 +58,7 @@
     "missingInfo": "Please complete all required fields.",
     "invalidAccessCode": "Invalid access code",
     "serviceUnavailable": "Service unavailable. Please try again later.",
+    "rateLimited": "Too many attempts. Please wait and try again shortly.",
     "dividerTextOr": "or",
     "recaptchaError": "We could not verify that you're human. Refresh the page to try again."
   },
