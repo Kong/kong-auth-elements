@@ -1,3 +1,10 @@
+## [2.12.6](https://github.com/Kong/kong-auth-elements/compare/v2.12.5...v2.12.6) (2024-06-03)
+
+
+### Bug Fixes
+
+* error code ([2bbb9da](https://github.com/Kong/kong-auth-elements/commit/2bbb9dad3de711ea0859b5f5d2eddeb88dc43542))
+
 ## [2.12.5](https://github.com/Kong/kong-auth-elements/compare/v2.12.4...v2.12.5) (2024-06-03)
 
 
