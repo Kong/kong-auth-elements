@@ -1,3 +1,10 @@
+## [2.12.5](https://github.com/Kong/kong-auth-elements/compare/v2.12.4...v2.12.5) (2024-06-03)
+
+
+### Bug Fixes
+
+* **errors:** add messaging for 429 reponse [KHCP-12150] ([#1516](https://github.com/Kong/kong-auth-elements/issues/1516)) ([60eea10](https://github.com/Kong/kong-auth-elements/commit/60eea10b56ff66c36242b9fc766ad810691f278c))
+
 ## [2.12.4](https://github.com/Kong/kong-auth-elements/compare/v2.12.3...v2.12.4) (2024-05-27)
 
 
