@@ -1,6 +1,9 @@
 <template>
   <SharedLayout type="components">
-    <div v-if="route.name === 'login'" class="element-wrapper">
+    <div
+      v-if="route.name === 'login'"
+      class="element-wrapper"
+    >
       <h4>
         <code>KongAuthLogin.vue</code>
       </h4>
@@ -17,7 +20,10 @@
       />
     </div>
 
-    <div v-if="route.name === 'forgot-password'" class="element-wrapper">
+    <div
+      v-if="route.name === 'forgot-password'"
+      class="element-wrapper"
+    >
       <h4>
         <code>KongAuthForgotPassword.vue</code>
       </h4>
@@ -29,7 +35,10 @@
       />
     </div>
 
-    <div v-if="route.name === 'reset-password'" class="element-wrapper">
+    <div
+      v-if="route.name === 'reset-password'"
+      class="element-wrapper"
+    >
       <h4>
         <code>KongAuthResetPassword.vue</code>
       </h4>
@@ -40,7 +49,10 @@
       />
     </div>
 
-    <div v-if="route.name === 'change-password'" class="element-wrapper">
+    <div
+      v-if="route.name === 'change-password'"
+      class="element-wrapper"
+    >
       <h4>
         <code>KongAuthChangePassword.vue</code>
       </h4>
@@ -52,7 +64,10 @@
       />
     </div>
 
-    <div v-if="route.name === 'register'" class="element-wrapper">
+    <div
+      v-if="route.name === 'register'"
+      class="element-wrapper"
+    >
       <h4>
         <code>KongAuthRegister.vue</code>
       </h4>
@@ -60,17 +75,22 @@
         access-code-required
         recaptcha
         wrapper-id="kong-auth-register-wrapper"
-        @register-success="showAlert('Register success!')" />
+        @register-success="showAlert('Register success!')"
+      />
     </div>
 
-    <div v-if="route.name === 'accept-invitation'" class="element-wrapper">
+    <div
+      v-if="route.name === 'accept-invitation'"
+      class="element-wrapper"
+    >
       <h4>
         <code>KongAuthAcceptInvitation.vue</code>
       </h4>
       <KongAuthAcceptInvitation
         subheader-text="This is custom text"
         wrapper-id="kong-auth-accept-invitation-wrapper"
-        @accept-invitation-success="showAlert('Accept invitation success!')" />
+        @accept-invitation-success="showAlert('Accept invitation success!')"
+      />
     </div>
   </SharedLayout>
 </template>

@@ -666,6 +666,7 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
+    // eslint-disable-next-line cypress/unsafe-to-chain-command
     cy.getTestId(testids.forgotPasswordLink).click().then(() => {
       cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'click-forgot-password-link')
     })
@@ -707,6 +708,7 @@ describe('KongAuthLogin.ce.vue', () => {
       },
     })
 
+    // eslint-disable-next-line cypress/unsafe-to-chain-command
     cy.getTestId(testids.registerLink).click().then(() => {
       cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'click-register-link')
     })

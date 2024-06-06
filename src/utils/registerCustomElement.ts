@@ -59,7 +59,7 @@ export default function(
 
     customElements.define(customElementName, vueCustomElement)
   } catch (err: any) {
-    // eslint-disable-next-line no-console
+
     console.error(err?.message)
   }
 }

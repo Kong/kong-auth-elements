@@ -11,10 +11,18 @@
         v-if="instructionText"
         class="instruction-text"
         data-testid="kong-auth-change-password-instruction-text"
-      >{{ instructionText }}</p>
+      >
+        {{ instructionText }}
+      </p>
 
       <!-- Hidden username input to assist password managers -->
-      <input id="email" autocomplete="username" class="hidden-input" name="email" type="email" />
+      <input
+        id="email"
+        autocomplete="username"
+        class="hidden-input"
+        name="email"
+        type="email"
+      >
 
       <KInput
         id="current-password"
@@ -59,7 +67,10 @@
         type="password"
       />
 
-      <div v-if="currentState.matches('error') && error" class="form-error">
+      <div
+        v-if="currentState.matches('error') && error"
+        class="form-error"
+      >
         <ErrorMessage :error="error" />
       </div>
 
@@ -85,7 +96,11 @@
           size="large"
           type="submit"
         >
-          <ProgressIcon v-if="currentState.matches('pending')" class="spin-icon" :size="KUI_ICON_SIZE_40" />
+          <ProgressIcon
+            v-if="currentState.matches('pending')"
+            class="spin-icon"
+            :size="KUI_ICON_SIZE_40"
+          />
           {{ btnText }}
         </KButton>
       </div>

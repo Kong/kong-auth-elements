@@ -1,6 +1,9 @@
 <template>
   <div class="kong-auth-forgot-password-form">
-    <div v-if="currentState.matches('error') && error" class="form-error">
+    <div
+      v-if="currentState.matches('error') && error"
+      class="form-error"
+    >
       <ErrorMessage :error="error" />
     </div>
     <div v-else-if="currentState.matches('success')">
@@ -18,7 +21,9 @@
         data-testid="kong-auth-forgot-password-return-to-login-btn"
         size="large"
         @click.prevent="$emit('click-login-link')"
-      >{{ loginLinkText }}</KButton>
+      >
+        {{ loginLinkText }}
+      </KButton>
     </div>
 
     <form
@@ -32,7 +37,9 @@
         v-if="instructionText"
         class="instruction-text"
         data-testid="kong-auth-forgot-password-instruction-text"
-      >{{ instructionText }}</p>
+      >
+        {{ instructionText }}
+      </p>
 
       <KInput
         id="email"
@@ -56,12 +63,19 @@
         size="large"
         type="submit"
       >
-        <ProgressIcon v-if="currentState.matches('pending')" class="spin-icon" :size="KUI_ICON_SIZE_40" />
+        <ProgressIcon
+          v-if="currentState.matches('pending')"
+          class="spin-icon"
+          :size="KUI_ICON_SIZE_40"
+        />
         {{ btnText }}
       </KButton>
     </form>
 
-    <div v-if="!currentState.matches('success') && showLoginLink" class="return-to-login-wrapper">
+    <div
+      v-if="!currentState.matches('success') && showLoginLink"
+      class="return-to-login-wrapper"
+    >
       <p>
         <a
           data-testid="kong-auth-forgot-password-return-to-login-link"

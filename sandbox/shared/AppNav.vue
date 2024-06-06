@@ -1,7 +1,10 @@
 <template>
   <nav class="app-nav">
     <ul>
-      <li v-for="routeName in routes" :key="routeName">
+      <li
+        v-for="routeName in routes"
+        :key="routeName"
+      >
         <router-link :to="{ name: routeName }">
           <span>{{ routeName }}</span>
           <span v-if="route.name === routeName">&rsaquo;</span>

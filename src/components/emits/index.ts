@@ -32,7 +32,7 @@ export const loginEmits = {
 
 // RegisterForm.vue
 export const registerEmits = {
-  'register-success': (payload: { email: string, organization: { id: string, name: string }}): boolean => {
+  'register-success': (payload: { email: string, organization: { id: string, name: string } }): boolean => {
     return !!payload?.email.trim() && !!payload?.organization?.id?.trim() && !!payload?.organization?.name?.trim()
   },
 }

@@ -6,13 +6,26 @@
     class="kong-auth-error-message error-message"
     data-testid="kong-auth-error-message"
   >
-    <template v-if="passwordRequirements.length" #default>
+    <template
+      v-if="passwordRequirements.length"
+      #default
+    >
       <p>{{ capitalizeFirstChar(errorMessage) }}:</p>
       <ul>
-        <li v-for="(error, idx) in passwordRequirements" :key="idx">{{ capitalizeFirstChar(error) }}</li>
+        <li
+          v-for="(err, idx) in passwordRequirements"
+          :key="idx"
+        >
+          {{ capitalizeFirstChar(err) }}
+        </li>
       </ul>
     </template>
-    <template v-else #default>{{ errorMessage }}</template>
+    <template
+      v-else
+      #default
+    >
+      {{ errorMessage }}
+    </template>
   </KAlert>
 </template>
 

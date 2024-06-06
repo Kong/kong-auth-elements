@@ -46,7 +46,7 @@ export default function useIdentityProvider(
   const shouldTriggerIdpLogin = (): boolean => {
     // If called before window exists, exit
     if (typeof window === 'undefined') {
-      // eslint-disable-next-line no-console
+
       console.error("'shouldTriggerIdpLogin' should only be called in the 'onMounted' lifecycle hook, or afterwards")
       return false
     }
@@ -112,7 +112,7 @@ export default function useIdentityProvider(
     } catch (_) {
       idpIsLoading.value = false
       // Console warning references the element prop name instead of local variable
-      // eslint-disable-next-line no-console
+
       console.error("'idpLoginReturnTo' must be a valid URL")
       return
     }
@@ -130,7 +130,7 @@ export default function useIdentityProvider(
     } catch (_) {
       idpIsLoading.value = false
       // Console warning references the element prop name instead of local variable
-      // eslint-disable-next-line no-console
+
       console.error("'idpLoginCallbackUrl' must be a valid URL")
       return
     }
@@ -177,7 +177,7 @@ export default function useIdentityProvider(
   const shouldTriggerIdpAuthentication = (): boolean => {
     // If called before window exists, exit
     if (typeof window === 'undefined') {
-      // eslint-disable-next-line no-console
+
       console.error(
         "'shouldTriggerIdpAuthentication' should only be called in the 'onMounted' lifecycle hook, or afterwards",
       )

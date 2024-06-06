@@ -1,6 +1,9 @@
 <template>
   <SharedLayout type="elements">
-    <div v-if="route.name === 'login'" class="element-wrapper">
+    <div
+      v-if="route.name === 'login'"
+      class="element-wrapper"
+    >
       <h4>
         <code>kong-auth-login</code>
       </h4>
@@ -21,7 +24,10 @@
       </div>
     </div>
 
-    <div v-if="route.name === 'forgot-password'" class="element-wrapper">
+    <div
+      v-if="route.name === 'forgot-password'"
+      class="element-wrapper"
+    >
       <h4>
         <code>kong-auth-forgot-password</code>
       </h4>
@@ -36,7 +42,10 @@
       </div>
     </div>
 
-    <div v-if="route.name === 'reset-password'" class="element-wrapper">
+    <div
+      v-if="route.name === 'reset-password'"
+      class="element-wrapper"
+    >
       <h4>
         <code>kong-auth-reset-password</code>
       </h4>
@@ -49,7 +58,10 @@
       </div>
     </div>
 
-    <div v-if="route.name === 'change-password'" class="element-wrapper">
+    <div
+      v-if="route.name === 'change-password'"
+      class="element-wrapper"
+    >
       <h4>
         <code>kong-auth-change-password</code>
       </h4>
@@ -63,7 +75,10 @@
       </div>
     </div>
 
-    <div v-if="route.name === 'register'" class="element-wrapper">
+    <div
+      v-if="route.name === 'register'"
+      class="element-wrapper"
+    >
       <h4>
         <code>KongAuthRegister.vue</code>
       </h4>
@@ -71,18 +86,23 @@
         <kong-auth-register
           access-code-required
           wrapper-id="kong-auth-register-wrapper"
-          @register-success="showAlert('Register success!')" />
+          @register-success="showAlert('Register success!')"
+        />
       </div>
     </div>
 
-    <div v-if="route.name === 'accept-invitation'" class="element-wrapper">
+    <div
+      v-if="route.name === 'accept-invitation'"
+      class="element-wrapper"
+    >
       <h4>
         <code>KongAuthAcceptInvitation.vue</code>
       </h4>
       <div id="kong-auth-accept-invitation-wrapper">
         <kong-auth-accept-invitation
           wrapper-id="kong-auth-accept-invitation-wrapper"
-          @accept-invitation-success="showAlert('Accept invitation success!')" />
+          @accept-invitation-success="showAlert('Accept invitation success!')"
+        />
       </div>
     </div>
   </SharedLayout>

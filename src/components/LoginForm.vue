@@ -19,14 +19,27 @@
           size="large"
           @click.prevent="redirectToIdp(idpLoginCallbackUrl, idpLoginReturnTo)"
         >
-          <ProgressIcon v-if="idpIsLoading" class="spin-icon" :size="KUI_ICON_SIZE_40" />
-          <span v-else class="kong-auth-login-sso-button-icon-wrapper">
-            <ProfileIcon class="kong-auth-login-sso-button-icon" :size="KUI_ICON_SIZE_40" />
+          <ProgressIcon
+            v-if="idpIsLoading"
+            class="spin-icon"
+            :size="KUI_ICON_SIZE_40"
+          />
+          <span
+            v-else
+            class="kong-auth-login-sso-button-icon-wrapper"
+          >
+            <ProfileIcon
+              class="kong-auth-login-sso-button-icon"
+              :size="KUI_ICON_SIZE_40"
+            />
           </span>
           <span data-testid="kong-auth-login-sso-button-text">{{ loginSsoButtonText }}</span>
         </KButton>
 
-        <p v-if="loginWithCredentialsLinkIsVisible" class="basic-auth-link">
+        <p
+          v-if="loginWithCredentialsLinkIsVisible"
+          class="basic-auth-link"
+        >
           <a
             data-testid="kong-auth-login-basic-auth-link"
             href="#"
@@ -35,13 +48,24 @@
         </p>
       </div>
 
-      <div v-if="loginDividerIsVisible" class="kong-auth-element-form-divider">{{ messages.general.dividerTextOr }}</div>
+      <div
+        v-if="loginDividerIsVisible"
+        class="kong-auth-element-form-divider"
+      >
+        {{ messages.general.dividerTextOr }}
+      </div>
 
-      <div v-if="currentState.matches('error') && error" class="form-error">
+      <div
+        v-if="currentState.matches('error') && error"
+        class="form-error"
+      >
         <ErrorMessage :error="error" />
       </div>
 
-      <div v-else-if="currentState.matches('reset_password')" class="form-error">
+      <div
+        v-else-if="currentState.matches('reset_password')"
+        class="form-error"
+      >
         <!-- NOTE: alert-message is added for backwards compatibility of host apps that arent using kongponents alpha -->
         <KAlert
           :alert-message="messages.login.passwordResetSuccess"
@@ -52,7 +76,10 @@
         />
       </div>
 
-      <div v-else-if="currentState.matches('confirmed_email')" class="form-error">
+      <div
+        v-else-if="currentState.matches('confirmed_email')"
+        class="form-error"
+      >
         <!-- NOTE: alert-message is added for backwards compatibility of host apps that arent using kongponents alpha -->
         <KAlert
           :alert-message="messages.login.confirmedEmailSuccess"
@@ -63,7 +90,10 @@
         />
       </div>
 
-      <div v-else-if="currentState.matches('from_register')" class="form-error">
+      <div
+        v-else-if="currentState.matches('from_register')"
+        class="form-error"
+      >
         <!-- NOTE: alert-message is added for backwards compatibility of host apps that arent using kongponents alpha -->
         <KAlert
           :alert-message="registerSuccessText"
@@ -85,36 +115,41 @@
           v-if="instructionText"
           class="instruction-text"
           data-testid="kong-auth-login-instruction-text"
-        >{{ instructionText }}</p>
+        >
+          {{ instructionText }}
+        </p>
 
-          <KInput
-            id="email"
-            v-model.trim="formData.email"
-            autocapitalize="off"
-            autocomplete="username"
-            class="kong-auth-input"
-            data-testid="kong-auth-login-email"
-            :error="currentState.matches('error') && error && fieldsHaveError ? true : false"
-            :label="`${messages.inputLabels.email}`"
-            required
-            type="email"
-            @animationstart="checkAutofill"
-          />
+        <KInput
+          id="email"
+          v-model.trim="formData.email"
+          autocapitalize="off"
+          autocomplete="username"
+          class="kong-auth-input"
+          data-testid="kong-auth-login-email"
+          :error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+          :label="`${messages.inputLabels.email}`"
+          required
+          type="email"
+          @animationstart="checkAutofill"
+        />
 
-          <KInput
-            id="password"
-            v-model.trim="formData.password"
-            autocomplete="current-password"
-            class="kong-auth-input"
-            data-testid="kong-auth-login-password"
-            :error="currentState.matches('error') && error && fieldsHaveError ? true : false"
-            :label="`${messages.inputLabels.password}`"
-            required
-            type="password"
-            @animationstart="checkAutofill"
-          />
+        <KInput
+          id="password"
+          v-model.trim="formData.password"
+          autocomplete="current-password"
+          class="kong-auth-input"
+          data-testid="kong-auth-login-password"
+          :error="currentState.matches('error') && error && fieldsHaveError ? true : false"
+          :label="`${messages.inputLabels.password}`"
+          required
+          type="password"
+          @animationstart="checkAutofill"
+        />
 
-        <p v-if="showForgotPasswordLink" class="forgot-password-link">
+        <p
+          v-if="showForgotPasswordLink"
+          class="forgot-password-link"
+        >
           <a
             data-testid="kong-auth-login-forgot-password-link"
             href="#"
@@ -130,11 +165,18 @@
           size="large"
           type="submit"
         >
-          <ProgressIcon v-if="['pending', 'success'].some(currentState.matches)" class="spin-icon" :size="KUI_ICON_SIZE_40" />
+          <ProgressIcon
+            v-if="['pending', 'success'].some(currentState.matches)"
+            class="spin-icon"
+            :size="KUI_ICON_SIZE_40"
+          />
           <span data-testid="kong-auth-login-button-text">{{ loginBtnText }}</span>
         </KButton>
 
-        <div v-if="showRegisterLink" class="register-link-wrapper">
+        <div
+          v-if="showRegisterLink"
+          class="register-link-wrapper"
+        >
           <p>
             <span data-testid="kong-auth-login-register-help-text">{{ registerLinkHelpText }} &nbsp;</span>
             <a

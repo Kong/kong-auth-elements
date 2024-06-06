@@ -1,11 +1,16 @@
 <template>
   <div class="kong-auth-element">
-    <div v-if="injectedStyles" data-testid="kong-auth-injected-styles">
+    <div
+      v-if="injectedStyles"
+      data-testid="kong-auth-injected-styles"
+    >
       <!-- This injected styles tag, the parent tag, and its corresponding logic in the setup function must be present to import styles from child components. -->
-      <div v-html="injectedStyles"></div>
+      <!-- eslint-disable vue/no-v-html -->
+      <div v-html="injectedStyles" />
+      <!-- eslint-enable vue/no-v-html -->
     </div>
 
-    <slot name="default"></slot>
+    <slot name="default" />
   </div>
 </template>
 

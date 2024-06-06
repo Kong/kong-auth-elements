@@ -72,6 +72,7 @@ describe('KongAuthForgotPassword.ce.vue', () => {
       },
     })
 
+    // eslint-disable-next-line cypress/unsafe-to-chain-command
     cy.getTestId(testids.loginLink).click().then(() => {
       cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'click-login-link')
     })

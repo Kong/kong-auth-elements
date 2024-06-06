@@ -19,10 +19,15 @@
         v-if="instructionText"
         class="instruction-text"
         data-testid="kong-auth-register-instruction-text"
-      >{{ instructionText }}</p>
+      >
+        {{ instructionText }}
+      </p>
 
       <div v-if="userEntity !== 'developer' && selectRegion">
-        <KLabel class="region-title" for="regionInformationTitle">
+        <KLabel
+          class="region-title"
+          for="regionInformationTitle"
+        >
           {{ `${messages.regionInformation.title} *` }}
         </KLabel>
         <p class="region-description">
@@ -38,7 +43,7 @@
             data-testid="kong-auth-register-region"
             :items="regions"
             @selected="(item: any) => handleItemSelect(formData.selectedRegionOption, item)"
-            />
+          />
         </div>
       </div>
 
@@ -110,8 +115,14 @@
         />
       </div>
 
-      <div v-if="userEntity !== 'developer'" class="checkbox-instruction-text">
-        <KCheckbox v-model="formData.checked_agreement" data-testid="kong-auth-register-agree-checkbox">
+      <div
+        v-if="userEntity !== 'developer'"
+        class="checkbox-instruction-text"
+      >
+        <KCheckbox
+          v-model="formData.checked_agreement"
+          data-testid="kong-auth-register-agree-checkbox"
+        >
           <span>
             I agree to the
             <a
@@ -119,7 +130,10 @@
               target="_blank"
             >Konnect customer agreement</a>
             and
-            <a href="https://konghq.com/privacy" target="_blank">privacy policy</a>.
+            <a
+              href="https://konghq.com/privacy"
+              target="_blank"
+            >privacy policy</a>.
           </span>
         </KCheckbox>
       </div>
@@ -140,7 +154,8 @@
         size="invisible"
         @error="onRecaptchaError"
         @expired="onRecaptchaExpired"
-        @verify="onRecaptchaVerify" />
+        @verify="onRecaptchaVerify"
+      />
 
       <KButton
         appearance="primary"
@@ -150,7 +165,11 @@
         size="large"
         type="submit"
       >
-        <ProgressIcon v-if="currentState.matches('pending')" class="spin-icon" :size="KUI_ICON_SIZE_40" />
+        <ProgressIcon
+          v-if="currentState.matches('pending')"
+          class="spin-icon"
+          :size="KUI_ICON_SIZE_40"
+        />
         {{ btnText }}
       </KButton>
     </form>
