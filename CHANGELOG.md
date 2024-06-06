@@ -1,3 +1,10 @@
+# [2.13.0](https://github.com/Kong/kong-auth-elements/compare/v2.12.6...v2.13.0) (2024-06-06)
+
+
+### Features
+
+* **eslint:** eslint v9 and shared configs [KHCP-11627] ([7474714](https://github.com/Kong/kong-auth-elements/commit/74747143cb5e9cb4dee968abc47e10dd9dc4649d))
+
 ## [2.12.6](https://github.com/Kong/kong-auth-elements/compare/v2.12.5...v2.12.6) (2024-06-03)
 
 
