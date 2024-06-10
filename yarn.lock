@@ -871,6 +871,35 @@
   resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.6.13.tgz#dd2c1f771acd7f5ff2249a3d85fe4b975d3b9b6a"
   integrity sha512-w89+h5IXkGzJQwxVycgDuVGAQkERKeB084lNdE/2Ree2e1TCFCWtXZxkrzuvFICcEXwDGiElvZbwRE/wnrqUKQ==
 
+"@floating-ui/core@^1.0.0":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.6.2.tgz#d37f3e0ac1f1c756c7de45db13303a266226851a"
+  integrity sha512-+2XpQV9LLZeanU4ZevzRnGFg2neDeKHgFLjP6YLW+tly0IvrhqT4u8enLGjLH3qeh85g19xY5rsAusfwTdn5lg==
+  dependencies:
+    "@floating-ui/utils" "^0.2.0"
+
+"@floating-ui/dom@^1.6.1":
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.6.5.tgz#323f065c003f1d3ecf0ff16d2c2c4d38979f4cb9"
+  integrity sha512-Nsdud2X65Dz+1RHjAIP0t8z5e2ff/IRbei6BqFrl1urT8sDVzM1HMQ+R0XcU5ceRfyO3I6ayeqIfh+6Wb8LGTw==
+  dependencies:
+    "@floating-ui/core" "^1.0.0"
+    "@floating-ui/utils" "^0.2.0"
+
+"@floating-ui/utils@^0.2.0", "@floating-ui/utils@^0.2.1":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.2.tgz#d8bae93ac8b815b2bd7a98078cf91e2724ef11e5"
+  integrity sha512-J4yDIIthosAsRZ5CPYP/jQvUAQtlZTTD/4suA08/FEnlxqW3sKS9iAhgsa9VYLZ6vDHn/ixJgIqRQPotoBjxIw==
+
+"@floating-ui/vue@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@floating-ui/vue/-/vue-1.0.6.tgz#31860a12f1135d19554c232d99c5bab631c5c576"
+  integrity sha512-EdrOljjkpkkqZnrpqUcPoz9NvHxuTjUtSInh6GMv3+Mcy+giY2cE2pHh9rpacRcZ2eMSCxel9jWkWXTjLmY55w==
+  dependencies:
+    "@floating-ui/dom" "^1.6.1"
+    "@floating-ui/utils" "^0.2.1"
+    vue-demi ">=0.13.0"
+
 "@hapi/hoek@^9.0.0":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.3.0.tgz#8368869dcb735be2e7f5cb7647de78e167a251fb"
@@ -989,23 +1018,18 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.13.0.tgz#34dc40ef4962a6504789cb117668c003481c531f"
   integrity sha512-obKpD/dg3Ma4fbr2W1oXyvD18LMI+EMYPGeSksj69azMDRV+oVZVMlQ62t+C26TkrjQxPuI4WWOjVvbGc50IYg==
 
-"@kong/icons@^1.9.1":
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.9.1.tgz#3947e3019710d306865eef19aef3ec6c89c5a5b6"
-  integrity sha512-8V21s7OEXcGAWDfPlcidjLlvAemz1KxgkpNSCWC9BCMGnmYRV/1hF7hzC0Dbjz6Q5uP3jnukI+e2bkKKrxANMQ==
-
-"@kong/kongponents@9.0.0-alpha.159":
-  version "9.0.0-alpha.159"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.0.0-alpha.159.tgz#14376dd49cf28995458f0d9a85d9bfad01ea61d7"
-  integrity sha512-qWMMI2musAewJVt2uSZ2B9oAALD1af3FjGBO9ErXmBIN3No1x27KeKLhttk6tqFjE7JBr0rsKIr9DC2P2M+yjA==
+"@kong/kongponents@9.0.0-alpha.166":
+  version "9.0.0-alpha.166"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.0.0-alpha.166.tgz#2280fdda884f2c66cc20f78e11c68c92891cf4b5"
+  integrity sha512-cXlUFC/IAR2hWi0tZYevZHjIoqSb7m+Dg+1KCoLtDDMIgiIwLK4fqLHsG63Shl0/6Hg9t2oI4ixBVbw1ioaeGw==
   dependencies:
-    "@kong/icons" "^1.9.1"
+    "@floating-ui/vue" "^1.0.6"
+    "@kong/icons" "^1.13.0"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
     focus-trap "^7.5.4"
     focus-trap-vue "^4.0.3"
-    popper.js "^1.16.1"
     sortablejs "^1.15.2"
     swrv "^1.0.4"
     uuid "^9.0.1"
@@ -6158,11 +6182,6 @@ pkg-conf@^2.1.0:
     find-up "^2.0.0"
     load-json-file "^4.0.0"
 
-popper.js@^1.16.1:
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
-  integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
-
 postcss-custom-properties@^13.3.10:
   version "13.3.10"
   resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-13.3.10.tgz#72a47708e6123f7757e419ad6f0bccb5f7a7ea6d"
@@ -7703,6 +7722,11 @@ vite@^5.2.11:
     rollup "^4.13.0"
   optionalDependencies:
     fsevents "~2.3.3"
+
+vue-demi@>=0.13.0:
+  version "0.14.8"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.14.8.tgz#00335e9317b45e4a68d3528aaf58e0cec3d5640a"
+  integrity sha512-Uuqnk9YE9SsWeReYqK2alDI5YzciATE0r2SkA6iMAtuXvNTMNACJLJEXNXaEy94ECuBe4Sk6RzRU80kjdbIo1Q==
 
 vue-demi@^0.13.11:
   version "0.13.11"
