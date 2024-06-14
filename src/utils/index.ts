@@ -9,7 +9,7 @@ export { default as win } from './window'
 export type UserEntities = 'user' | 'developer'
 
 // List of custom elements that accept a custom error handler
-export type CustomEndpointElement = 'kong-auth-login' | 'kong-auth-forgot-password' | 'kong-auth-register' | 'kong-auth-reset-password'| 'kong-auth-change-password' | 'kong-auth-accept-invitation'
+export type CustomEndpointElement = 'kong-auth-login' | 'kong-auth-forgot-password' | 'kong-auth-register' | 'kong-auth-reset-password' | 'kong-auth-change-password' | 'kong-auth-accept-invitation'
 
 // List of requests that support custom endpoints
 export type CustomEndpointRequest = 'authenticate-request' | 'verify-email-request' | 'reset-password-request' | 'change-password-request' | 'register-request' | 'set-new-password-request' | 'accept-invitation-request'

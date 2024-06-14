@@ -37,7 +37,7 @@ export default function useIdentityProvider(
   const code = ref<string>('')
   const state = ref<string>('')
   // When we redirect to the oidc-callback endpoint, we want to send along all provided query parameters
-  const oidcQueryParams = ref<URLSearchParams|null>(null)
+  const oidcQueryParams = ref<URLSearchParams | null>(null)
 
   /**
    * Returns true if user is on /login/{org-id} (user) or /login/sso (developer) route in container application, and no logout=true in query string.
