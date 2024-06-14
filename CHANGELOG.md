@@ -1,3 +1,10 @@
+## [2.13.1](https://github.com/Kong/kong-auth-elements/compare/v2.13.0...v2.13.1) (2024-06-14)
+
+
+### Bug Fixes
+
+* eslint config upgrade ([88f0069](https://github.com/Kong/kong-auth-elements/commit/88f00690b95b3b843812e96a29c1c5c30038cec5))
+
 # [2.13.0](https://github.com/Kong/kong-auth-elements/compare/v2.12.6...v2.13.0) (2024-06-06)
 
 
