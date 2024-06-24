@@ -1,3 +1,10 @@
+## [2.13.3](https://github.com/Kong/kong-auth-elements/compare/v2.13.2...v2.13.3) (2024-06-24)
+
+
+### Bug Fixes
+
+* **deps:** update all [@kong](https://github.com/kong) scoped dependencies ([#1525](https://github.com/Kong/kong-auth-elements/issues/1525)) ([d51abc9](https://github.com/Kong/kong-auth-elements/commit/d51abc9dcdf0a99c3a795cfe6f385c8bf4d7e02f))
+
 ## [2.13.2](https://github.com/Kong/kong-auth-elements/compare/v2.13.1...v2.13.2) (2024-06-24)
 
 
