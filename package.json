@@ -37,26 +37,26 @@
   "dependencies": {
     "@kong/icons": "^1.14.1",
     "@xstate/vue": "^2.0.0",
-    "axios": "^1.7.0",
-    "vue": "^3.4.27",
+    "axios": "^1.7.2",
+    "vue": "^3.4.29",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
   },
   "devDependencies": {
-    "@babel/types": "^7.24.5",
+    "@babel/types": "^7.24.7",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@cypress/vite-dev-server": "^5.1.0",
-    "@cypress/vue": "^6.0.0",
+    "@cypress/vite-dev-server": "^5.1.1",
+    "@cypress/vue": "^6.0.1",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
-    "@evilmartians/lefthook": "^1.6.12",
+    "@evilmartians/lefthook": "^1.6.16",
     "@kong/design-tokens": "^1.13.2",
     "@kong/eslint-config-kong-ui": "^1.1.0",
     "@kong/kongponents": "^9.0.4",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^18.19.33",
-    "@vitejs/plugin-vue": "^5.0.4",
+    "@types/node": "^18.19.36",
+    "@vitejs/plugin-vue": "^5.0.5",
     "@vue/tsconfig": "^0.5.1",
     "commitizen": "^4.3.0",
     "cross-env": "^7.0.3",
@@ -66,23 +66,23 @@
     "postcss-custom-properties": "^13.3.10",
     "postcss-html": "^1.7.0",
     "rollup-plugin-visualizer": "^5.12.0",
-    "sass": "^1.77.2",
+    "sass": "^1.77.6",
     "semantic-release": "^22.0.12",
-    "start-server-and-test": "^2.0.3",
-    "stylelint": "^16.6.0",
+    "start-server-and-test": "^2.0.4",
+    "stylelint": "^16.6.1",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-recommended-scss": "^14.0.0",
     "stylelint-config-recommended-vue": "^1.5.0",
     "stylelint-order": "^6.0.4",
     "typescript": "^5.4.5",
-    "vite": "^5.3.0",
-    "vite-plugin-vue-devtools": "^7.3.0",
-    "vue-router": "^4.3.2",
-    "vue-tsc": "^2.0.19"
+    "vite": "^5.3.1",
+    "vite-plugin-vue-devtools": "^7.3.1",
+    "vue-router": "^4.3.3",
+    "vue-tsc": "^2.0.21"
   },
   "peerDependencies": {
     "@kong/kongponents": ">= ^8.126.2 || < 10",
-    "axios": "^1.7.0",
+    "axios": "^1.7.2",
     "vue": "<= 3.3.0"
   },
   "files": [
@@ -153,7 +153,7 @@
     "node": ">=v16.20.2"
   },
   "volta": {
-    "node": "18.20.2",
+    "node": "18.20.3",
     "yarn": "1.22.22"
   }
 }
