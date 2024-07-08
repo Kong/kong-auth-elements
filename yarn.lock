@@ -876,33 +876,33 @@
   resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.6.13.tgz#dd2c1f771acd7f5ff2249a3d85fe4b975d3b9b6a"
   integrity sha512-w89+h5IXkGzJQwxVycgDuVGAQkERKeB084lNdE/2Ree2e1TCFCWtXZxkrzuvFICcEXwDGiElvZbwRE/wnrqUKQ==
 
-"@floating-ui/core@^1.0.0":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.6.2.tgz#d37f3e0ac1f1c756c7de45db13303a266226851a"
-  integrity sha512-+2XpQV9LLZeanU4ZevzRnGFg2neDeKHgFLjP6YLW+tly0IvrhqT4u8enLGjLH3qeh85g19xY5rsAusfwTdn5lg==
+"@floating-ui/core@^1.6.0":
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.6.4.tgz#0140cf5091c8dee602bff9da5ab330840ff91df6"
+  integrity sha512-a4IowK4QkXl4SCWTGUR0INAfEOX3wtsYw3rKK5InQEHMGObkR8Xk44qYQD9P4r6HHw0iIfK6GUKECmY8sTkqRA==
   dependencies:
-    "@floating-ui/utils" "^0.2.0"
+    "@floating-ui/utils" "^0.2.4"
 
-"@floating-ui/dom@^1.6.1":
-  version "1.6.5"
-  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.6.5.tgz#323f065c003f1d3ecf0ff16d2c2c4d38979f4cb9"
-  integrity sha512-Nsdud2X65Dz+1RHjAIP0t8z5e2ff/IRbei6BqFrl1urT8sDVzM1HMQ+R0XcU5ceRfyO3I6ayeqIfh+6Wb8LGTw==
+"@floating-ui/dom@^1.0.0":
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.6.7.tgz#85d22f731fcc5b209db504478fb1df5116a83015"
+  integrity sha512-wmVfPG5o2xnKDU4jx/m4w5qva9FWHcnZ8BvzEe90D/RpwsJaTAVYPEPdQ8sbr/N8zZTAHlZUTQdqg8ZUbzHmng==
   dependencies:
-    "@floating-ui/core" "^1.0.0"
-    "@floating-ui/utils" "^0.2.0"
+    "@floating-ui/core" "^1.6.0"
+    "@floating-ui/utils" "^0.2.4"
 
-"@floating-ui/utils@^0.2.0", "@floating-ui/utils@^0.2.1":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.2.tgz#d8bae93ac8b815b2bd7a98078cf91e2724ef11e5"
-  integrity sha512-J4yDIIthosAsRZ5CPYP/jQvUAQtlZTTD/4suA08/FEnlxqW3sKS9iAhgsa9VYLZ6vDHn/ixJgIqRQPotoBjxIw==
+"@floating-ui/utils@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.4.tgz#1d459cee5031893a08a0e064c406ad2130cced7c"
+  integrity sha512-dWO2pw8hhi+WrXq1YJy2yCuWoL20PddgGaqTgVe4cOS9Q6qklXCiA1tJEqX6BEwRNSCP84/afac9hd4MS+zEUA==
 
-"@floating-ui/vue@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@floating-ui/vue/-/vue-1.0.6.tgz#31860a12f1135d19554c232d99c5bab631c5c576"
-  integrity sha512-EdrOljjkpkkqZnrpqUcPoz9NvHxuTjUtSInh6GMv3+Mcy+giY2cE2pHh9rpacRcZ2eMSCxel9jWkWXTjLmY55w==
+"@floating-ui/vue@^1.0.7":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/vue/-/vue-1.1.1.tgz#008abc526108f3b01f005a7948f4f75e147d6321"
+  integrity sha512-cyawjk9etPZPl/RVtMRnWrwtAhWbPVSrRVYARgOzhLIqxr0k2up1APrrFjqP9QwRQ0AwjKSvbWg4YC6jESutow==
   dependencies:
-    "@floating-ui/dom" "^1.6.1"
-    "@floating-ui/utils" "^0.2.1"
+    "@floating-ui/dom" "^1.0.0"
+    "@floating-ui/utils" "^0.2.4"
     vue-demi ">=0.13.0"
 
 "@hapi/hoek@^9.0.0":
@@ -999,10 +999,10 @@
   resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.13.2.tgz#5c2c6ac3e22e7feac9ddaab49c99608555d0a2a8"
   integrity sha512-BXI7Nv+wucuG9mw0faXhBgb3ryN9pnMkHntI9HKf0h9BnBvuR8F+iLoCm/Fwo6TZ0tlO5bZTMVk1xc85lnlhBA==
 
-"@kong/eslint-config-kong-ui@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@kong/eslint-config-kong-ui/-/eslint-config-kong-ui-1.1.0.tgz#231e12849900720c9c1a215286b6afc0a0a74933"
-  integrity sha512-PSZaL7IhVLmbojwpBPaKIfxLIBBLnYFIjjrr5Nbz0Ia4cSYFqdwkdFB3t5PnjLHWwQr0IpLgN5e2vGe1n9Hpig==
+"@kong/eslint-config-kong-ui@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@kong/eslint-config-kong-ui/-/eslint-config-kong-ui-1.1.1.tgz#7b48d8f16783860707ad8d4f218e86701d8a5979"
+  integrity sha512-L66Nqif4KcWlaSX9xb9WToMh9JbcxGrRb6tF1hz36GsZZaBsk6cHdVKVXUjPA7jgtkE1aUHpzQO1IM/UMLQCQg==
   dependencies:
     "@eslint/compat" "^1.0.3"
     "@eslint/eslintrc" "^3.1.0"
@@ -1023,12 +1023,12 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.14.1.tgz#a6e63e3fc62023a3f19604fb67c4b33415facc1d"
   integrity sha512-2FbzPWQnHa5URm5jSw/JnRiJUDwVi5oSNLPg22LxckJoQ4wD0Q6i71CCG9I2HJ/Cd95a43eGfm2M9BCAHKPlwg==
 
-"@kong/kongponents@^9.0.4":
-  version "9.0.4"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.0.4.tgz#8d9e20120b8c85980a98e58f755c90448d527758"
-  integrity sha512-taj02megpZp8cRQ9Se9F4oH2gK3YjuUsdO2aqezD00dyISNsgIHBuF1q09ZstAvuxLpVva0K8749NDtMdi0t2w==
+"@kong/kongponents@^9.0.7":
+  version "9.0.7"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.0.7.tgz#7cc766cf790a400a29b2f8be2257428df0ba0697"
+  integrity sha512-H3Y+izKdEXl9bfOj2cBFQWXQyx/F/bZhOida8dAq9X7iEP6S3BLq9TLwQXa+Xe15cMKKX9tyOdSG3eDnt5Wr+g==
   dependencies:
-    "@floating-ui/vue" "^1.0.6"
+    "@floating-ui/vue" "^1.0.7"
     "@kong/icons" "^1.14.1"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
