@@ -896,7 +896,7 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.4.tgz#1d459cee5031893a08a0e064c406ad2130cced7c"
   integrity sha512-dWO2pw8hhi+WrXq1YJy2yCuWoL20PddgGaqTgVe4cOS9Q6qklXCiA1tJEqX6BEwRNSCP84/afac9hd4MS+zEUA==
 
-"@floating-ui/vue@^1.1.0":
+"@floating-ui/vue@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@floating-ui/vue/-/vue-1.1.1.tgz#008abc526108f3b01f005a7948f4f75e147d6321"
   integrity sha512-cyawjk9etPZPl/RVtMRnWrwtAhWbPVSrRVYARgOzhLIqxr0k2up1APrrFjqP9QwRQ0AwjKSvbWg4YC6jESutow==
@@ -994,10 +994,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@kong/design-tokens@^1.15.2":
-  version "1.15.2"
-  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.15.2.tgz#3ae4a089782d52bb6ec504edaebfc68899ef2ffd"
-  integrity sha512-ZdaYSm0WjX+ioLqWeWqkq2Jw/NbKFHNGkigFLZSH+Y9XaBY0T/5PiI93zOPL+K2oi3YSBX+61Sh6YUDyoPZlyw==
+"@kong/design-tokens@^1.15.3":
+  version "1.15.3"
+  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.15.3.tgz#8e1d1563dc30b5a315dd3b07f0b2019074fb0217"
+  integrity sha512-hRbUHnMR8kyecHsawFXzgIYZ53lt/6+6yNLNJWdKzrY77BJTe6ToRva3aSQD2a+vSY0r0pQ0yvOsYgRSF4u2+A==
 
 "@kong/eslint-config-kong-ui@^1.1.1":
   version "1.1.1"
@@ -1023,12 +1023,12 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.14.3.tgz#ca416daec9bc19656c6bac1baff81785ae576b85"
   integrity sha512-pY88KCDUCciWWc+0aJ41jvWNe6Xr0oRMWT3jfu997roWLSEQLSk4iSwusC4OAtP/coJRiTFlUP5JsTxeG8YzTg==
 
-"@kong/kongponents@^9.0.11":
-  version "9.0.11"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.0.11.tgz#e30582d44f3b6744f973d1d119b9f3d47c42d76a"
-  integrity sha512-1rnPwA5K2X+mZijtrbk7sxnbTyAHKhd9JXBCRgbzHOIDM1clziTKinufR8XjRyl3EEdNXJEU+fTHUNk4caZXSQ==
+"@kong/kongponents@^9.0.17":
+  version "9.0.17"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.0.17.tgz#639efd7d5e0562c52b3502e3e8fc3d6b54a25488"
+  integrity sha512-UsGFWHJVCaq++RvDnbSjlX3nJGy+bLpP0ajiz+oJUBBMFvA29zGw2sUOAyT3pTlrg0tBoYqvUcmBN8/RDyg9sQ==
   dependencies:
-    "@floating-ui/vue" "^1.1.0"
+    "@floating-ui/vue" "^1.1.1"
     "@kong/icons" "^1.14.3"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
