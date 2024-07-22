@@ -71,7 +71,7 @@
     "start-server-and-test": "^2.0.3",
     "stylelint": "^16.6.0",
     "stylelint-config-html": "^1.1.0",
-    "stylelint-config-recommended-scss": "^14.0.0",
+    "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-config-recommended-vue": "^1.5.0",
     "stylelint-order": "^6.0.4",
     "typescript": "^5.5.2",
