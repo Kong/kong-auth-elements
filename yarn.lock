@@ -2004,24 +2004,24 @@
   resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.6.1.tgz#7c14346383751d9f6ad4bea0963245b30220ef83"
   integrity sha512-LgPscpE3Vs0x96PzSSB4IGVSZXZBZHpfxs+ZA1d+VEPwHdOXowy/Y2CsvCAIFrf+ssVU1pD1jidj505EpUnfbA==
 
-"@vue/devtools-core@^7.3.6":
-  version "7.3.6"
-  resolved "https://registry.yarnpkg.com/@vue/devtools-core/-/devtools-core-7.3.6.tgz#5e836e08c2afb9b7766ddc42e7f99180caa49568"
-  integrity sha512-XqFYVkyS3eySHF4bgLt+KF6yL6nYzVY/JTJHnK6KIJXIE4GIAxmn5Gxfsb4cUG9sl0FGiMqRCnM37Q+P08wr8A==
+"@vue/devtools-core@^7.3.7":
+  version "7.3.7"
+  resolved "https://registry.yarnpkg.com/@vue/devtools-core/-/devtools-core-7.3.7.tgz#49e1450871014cb5fdee455de021ca6e9b78fc26"
+  integrity sha512-IapWbHUqvO6n+p5JFTCE5JyNjpsZ5IS1GYIRX0P7/SqYPgFCOdH0dG+u8PbBHYdnp+VPxHLO+GGZ/WBZFCZnsA==
   dependencies:
-    "@vue/devtools-kit" "^7.3.6"
-    "@vue/devtools-shared" "^7.3.6"
+    "@vue/devtools-kit" "^7.3.7"
+    "@vue/devtools-shared" "^7.3.7"
     mitt "^3.0.1"
     nanoid "^3.3.4"
     pathe "^1.1.2"
     vite-hot-client "^0.2.3"
 
-"@vue/devtools-kit@^7.3.6":
-  version "7.3.6"
-  resolved "https://registry.yarnpkg.com/@vue/devtools-kit/-/devtools-kit-7.3.6.tgz#dc08613a369e1168e905b00a4590be12bd36fa8f"
-  integrity sha512-5Ym9V3fkJenEoptqKoo+cgY5RTVwrSssFdzRsuyIgaeiskCT+rRJeQdwoo81tyrQ1mfS7Er1rYZlSzr3Y3L/ew==
+"@vue/devtools-kit@^7.3.7":
+  version "7.3.7"
+  resolved "https://registry.yarnpkg.com/@vue/devtools-kit/-/devtools-kit-7.3.7.tgz#c1c19d427e3b457cf91305c86ae2e6a58830442b"
+  integrity sha512-ktHhhjI4CoUrwdSUF5b/MFfjrtAtK8r4vhOkFyRN5Yp9kdXTwsRBYcwarHuP+wFPKf4/KM7DVBj2ELO8SBwdsw==
   dependencies:
-    "@vue/devtools-shared" "^7.3.6"
+    "@vue/devtools-shared" "^7.3.7"
     birpc "^0.2.17"
     hookable "^5.5.3"
     mitt "^3.0.1"
@@ -2029,10 +2029,10 @@
     speakingurl "^14.0.1"
     superjson "^2.2.1"
 
-"@vue/devtools-shared@^7.3.6":
-  version "7.3.6"
-  resolved "https://registry.yarnpkg.com/@vue/devtools-shared/-/devtools-shared-7.3.6.tgz#0a332f4d4d74d6eee056c6f7143e141a4b1b3e08"
-  integrity sha512-R/FOmdJV+hhuwcNoxp6e87RRkEeDMVhWH+nOsnHUrwjjsyeXJ2W1475Ozmw+cbZhejWQzftkHVKO28Fuo1yqCw==
+"@vue/devtools-shared@^7.3.7":
+  version "7.3.7"
+  resolved "https://registry.yarnpkg.com/@vue/devtools-shared/-/devtools-shared-7.3.7.tgz#765d2e0e4d3def891cdead22ef2a373d1d1f4df0"
+  integrity sha512-M9EU1/bWi5GNS/+IZrAhwGOVZmUTN4MH22Hvh35nUZZg9AZP2R2OhfCb+MG4EtAsrUEYlu3R43/SIj3G7EZYtQ==
   dependencies:
     rfdc "^1.4.1"
 
@@ -7758,23 +7758,23 @@ vite-plugin-inspect@^0.8.4:
     picocolors "^1.0.0"
     sirv "^2.0.4"
 
-vite-plugin-vue-devtools@^7.3.5:
-  version "7.3.6"
-  resolved "https://registry.yarnpkg.com/vite-plugin-vue-devtools/-/vite-plugin-vue-devtools-7.3.6.tgz#33eb1d5c252e05cc4666462771319747cd3aec27"
-  integrity sha512-j4Cssv6DVBtMZfyVBEm/4MZy7BiL6RedEn+f9jT3zFyGZKG1vNuEpTO86XvPPbHbYdITFyrkWb7VQuWyhfSgqA==
+vite-plugin-vue-devtools@^7.3.6:
+  version "7.3.7"
+  resolved "https://registry.yarnpkg.com/vite-plugin-vue-devtools/-/vite-plugin-vue-devtools-7.3.7.tgz#d435007a0d771cd4b828d027802fc84a132f9472"
+  integrity sha512-pPv6YJYrCIlWP+wwRk9gzDp2rK5M5jQ5oz//Nci3C3FDvORL1btKQqGvgthx3hs6xbx5acToJtkMGgDnZg8smw==
   dependencies:
-    "@vue/devtools-core" "^7.3.6"
-    "@vue/devtools-kit" "^7.3.6"
-    "@vue/devtools-shared" "^7.3.6"
+    "@vue/devtools-core" "^7.3.7"
+    "@vue/devtools-kit" "^7.3.7"
+    "@vue/devtools-shared" "^7.3.7"
     execa "^8.0.1"
     sirv "^2.0.4"
     vite-plugin-inspect "^0.8.4"
-    vite-plugin-vue-inspector "^5.1.2"
+    vite-plugin-vue-inspector "^5.1.3"
 
-vite-plugin-vue-inspector@^5.1.2:
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/vite-plugin-vue-inspector/-/vite-plugin-vue-inspector-5.1.2.tgz#e25fbda2382bff13b095e6de587b4f2f7e9cfafb"
-  integrity sha512-M+yH2LlQtVNzJAljQM+61CqDXBvHim8dU5ImGaQuwlo13tMDHue5D7IC20YwDJuWDODiYc/cZBUYspVlyPf2vQ==
+vite-plugin-vue-inspector@^5.1.3:
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/vite-plugin-vue-inspector/-/vite-plugin-vue-inspector-5.1.3.tgz#b85c85c2a2d5fe5aa382039f3230068cc0837996"
+  integrity sha512-pMrseXIDP1Gb38mOevY+BvtNGNqiqmqa2pKB99lnLsADQww9w9xMbAfT4GB6RUoaOkSPrtlXqpq2Fq+Dj2AgFg==
   dependencies:
     "@babel/core" "^7.23.0"
     "@babel/plugin-proposal-decorators" "^7.23.0"
