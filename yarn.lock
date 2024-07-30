@@ -876,10 +876,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/object-schema/-/object-schema-2.1.4.tgz#9e69f8bb4031e11df79e03db09f9dbbae1740843"
   integrity sha512-BsWiH1yFGjXXS2yvrf5LyuoSIIbPrGUWob917o+BTKuZ7qJdxX8aJLRxs1fS9n6r7vESrq1OUqb68dANcFXuQQ==
 
-"@evilmartians/lefthook@^1.7.3":
-  version "1.7.9"
-  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.7.9.tgz#7ea1e0450e6828d0cb481d0663abd6c00b51d38e"
-  integrity sha512-cld53WYCpP7fN8nCc9GBzmLvO5riyTEJt5uaXBfpogwe/sinQtqZArUEJiBTrcU5fStmoZ8kTobf7qo0rwN+0A==
+"@evilmartians/lefthook@^1.7.4":
+  version "1.7.11"
+  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.7.11.tgz#42b260808d305fb28d5d60c0384d8178858e5e14"
+  integrity sha512-zlpiLMfO5CmCRgRPq7gJiQ0yr5gt/O0QVefj9o6pMZPc83jpeA2Cjt/z3MZpxkKqRObwBjeekLFi8SUonD6BdQ==
 
 "@floating-ui/core@^1.6.0":
   version "1.6.4"
@@ -7873,7 +7873,7 @@ vue-tsc@^2.0.26:
     "@vue/language-core" "2.0.28"
     semver "^7.5.4"
 
-vue@^3.4.32:
+vue@^3.4.33:
   version "3.4.34"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.4.34.tgz#19d9a82854d54c4506d1e2854c9c038ee430484a"
   integrity sha512-VZze05HWlA3ItreQ/ka7Sx7PoD0/3St8FEiSlSTVgb6l4hL+RjtP2/8g5WQBzZgyf8WG2f+g1bXzC7zggLhAJA==
