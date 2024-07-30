@@ -38,7 +38,7 @@
     "@kong/icons": "^1.15.1",
     "@xstate/vue": "^2.0.0",
     "axios": "^1.7.2",
-    "vue": "^3.4.32",
+    "vue": "^3.4.33",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
   },
@@ -49,7 +49,7 @@
     "@cypress/vite-dev-server": "^5.1.1",
     "@cypress/vue": "^6.0.1",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
-    "@evilmartians/lefthook": "^1.7.3",
+    "@evilmartians/lefthook": "^1.7.4",
     "@kong/design-tokens": "^1.15.3",
     "@kong/eslint-config-kong-ui": "^1.1.1",
     "@kong/kongponents": "^9.1.0",
