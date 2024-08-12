@@ -37,8 +37,8 @@
   "dependencies": {
     "@kong/icons": "^1.15.1",
     "@xstate/vue": "^2.0.0",
-    "axios": "^1.7.2",
-    "vue": "^3.4.34",
+    "axios": "^1.7.3",
+    "vue": "^3.4.35",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
   },
@@ -56,11 +56,11 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/node": "^18.19.42",
-    "@vitejs/plugin-vue": "^5.1.1",
+    "@vitejs/plugin-vue": "^5.1.2",
     "@vue/tsconfig": "^0.5.1",
     "commitizen": "^4.3.0",
     "cross-env": "^7.0.3",
-    "cypress": "^13.13.1",
+    "cypress": "^13.13.2",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^9.8.0",
     "postcss-custom-properties": "^13.3.12",
@@ -77,12 +77,12 @@
     "typescript": "^5.5.4",
     "vite": "^5.3.5",
     "vite-plugin-vue-devtools": "^7.3.7",
-    "vue-router": "^4.4.0",
+    "vue-router": "^4.4.2",
     "vue-tsc": "^2.0.29"
   },
   "peerDependencies": {
     "@kong/kongponents": ">= ^8.126.2 || < 10",
-    "axios": "^1.7.2",
+    "axios": "^1.7.3",
     "vue": "<= 3.3.0"
   },
   "files": [
