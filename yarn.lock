@@ -1033,7 +1033,7 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.15.1.tgz#287966282032d094314a2b7e6f3ae3cd5fb163c4"
   integrity sha512-L6uiLGWhcsyn+jLOKY162pTybqTm4wvPQs7JEqRJfjcPX7v4K2CacieKMcFy6RHlDhyiSUwhQYNwvYGGZXKQ7A==
 
-"@kong/kongponents@^9.4.1":
+"@kong/kongponents@^9.5.1":
   version "9.5.1"
   resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.5.1.tgz#64be461344ad8606a4c787ae641b226ceed81fcf"
   integrity sha512-JWG+3dxPA9uaMY/V0tw4GTfI5VLQenoMBfv+lPfiFgbBBGsY5KixnJdu0ckajljdEhs/Liw+877P61WOhapeuQ==
