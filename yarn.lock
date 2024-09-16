@@ -1033,20 +1033,20 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.15.1.tgz#287966282032d094314a2b7e6f3ae3cd5fb163c4"
   integrity sha512-L6uiLGWhcsyn+jLOKY162pTybqTm4wvPQs7JEqRJfjcPX7v4K2CacieKMcFy6RHlDhyiSUwhQYNwvYGGZXKQ7A==
 
-"@kong/kongponents@^9.6.1":
-  version "9.6.1"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.6.1.tgz#776b4faf22be22683e536368e904ef31c76feace"
-  integrity sha512-A4eariEIBzL8f7/X2RP8H2fq9/7yBR6QH8PAk7EUCryzm8jWPbUhg4Me/L9fEYMeutlhit7m0CWqNJFpXR2ixg==
+"@kong/kongponents@^9.6.7":
+  version "9.6.7"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.6.7.tgz#075010080debcc6603c1cee81d30b81134ba8307"
+  integrity sha512-/5Ub3mzpx+CE4E8uWgbBWuatS9vooCJwjlTPDFW6fNJyjz8qSLRr6BmDLVez7m5lZL6QNlE1X+xtASD+jpfXrg==
   dependencies:
     "@floating-ui/vue" "^1.1.4"
     "@kong/icons" "^1.15.1"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
-    focus-trap "^7.5.4"
+    focus-trap "^7.6.0"
     focus-trap-vue "^4.0.3"
     nanoid "^5.0.7"
-    sortablejs "^1.15.2"
+    sortablejs "^1.15.3"
     swrv "^1.0.4"
     v-calendar "^3.1.2"
     vue-bind-once "^0.2.1"
@@ -3994,10 +3994,10 @@ focus-trap-vue@^4.0.3:
   resolved "https://registry.yarnpkg.com/focus-trap-vue/-/focus-trap-vue-4.0.3.tgz#c13f19d94e666c5144498793e93e51e0c46c2660"
   integrity sha512-cIX5rybkCAlNZ4IHYJ3nCFIsipDDljJHHjtTO2IgYWkVYg7X9ipUVdab3HzYp88kmHgMwjcB71LYnXRRsF6ZqQ==
 
-focus-trap@^7.5.4:
-  version "7.5.4"
-  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-7.5.4.tgz#6c4e342fe1dae6add9c2aa332a6e7a0bbd495ba2"
-  integrity sha512-N7kHdlgsO/v+iD/dMoJKtsSqs5Dz/dXZVebRgJw23LDk+jMi/974zyiOYDziY2JPp8xivq9BmUGwIJMiuSBi7w==
+focus-trap@^7.6.0:
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-7.6.0.tgz#7f3edab8135eaca92ab59b6e963eb5cc42ded715"
+  integrity sha512-1td0l3pMkWJLFipobUcGaf+5DTY4PLDDrcqoSaKP8ediO/CoWCCYk/fT/Y2A4e6TNB+Sh6clRJCjOPPnKoNHnQ==
   dependencies:
     tabbable "^6.2.0"
 
@@ -7007,10 +7007,10 @@ socks@^2.7.1:
     ip "^2.0.0"
     smart-buffer "^4.2.0"
 
-sortablejs@^1.15.2:
-  version "1.15.2"
-  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.15.2.tgz#4e9f7bda4718bd1838add9f1866ec77169149809"
-  integrity sha512-FJF5jgdfvoKn1MAKSdGs33bIqLi3LmsgVTliuX6iITj834F+JRQZN90Z93yql8h0K2t0RwDPBmxwlbZfDcxNZA==
+sortablejs@^1.15.3:
+  version "1.15.3"
+  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.15.3.tgz#033668db5ebfb11167d1249ab88e748f27959e29"
+  integrity sha512-zdK3/kwwAK1cJgy1rwl1YtNTbRmc8qW/+vgXf75A7NHag5of4pyI6uK86ktmQETyWRH7IGaE73uZOOBcGxgqZg==
 
 "source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.1, source-map-js@^1.0.2:
   version "1.0.2"
