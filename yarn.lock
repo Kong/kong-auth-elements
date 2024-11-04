@@ -1063,10 +1063,15 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.18.1.tgz#0b2ffa0b76cde019e8270bd787c29a320ee2a0c5"
   integrity sha512-1dQvgKYSS7phg8FiaEyizmy2vk2L412yzRT7FHUuLLtVr4yEAjbYsVgNeD2zHoWQCO0y/SDGVZoOa2SqP0kQ7g==
 
-"@kong/kongponents@^9.14.0":
-  version "9.14.0"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.14.0.tgz#335516e9e51ad8c97388529ee1d67a7ccb3d0539"
-  integrity sha512-URA4Mgk7xX8+4ajC81TadhSDZ4wqVcXIcPc0sRnhLpJvpRcBZIClJLHTtfCNEpI3aqQYUKJ2yb8DQRCTskKd4w==
+"@kong/icons@^1.18.2":
+  version "1.18.2"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.18.2.tgz#cae709ffc6238b8427d32ce2240ed6e2761fcda8"
+  integrity sha512-8h1j8O2syZG+gBKNYcXwtYkoS2DUIchBdQ83BiRx/RG1gRrbMoG9TfXXBBVcYG16VjoeJJqbBRqakYZ30bRd/w==
+
+"@kong/kongponents@^9.14.8":
+  version "9.14.8"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.14.8.tgz#31114ba2041b8ec06b754f341128f5f653e37372"
+  integrity sha512-rKOwzVG9kQJxLGk6cyedWyL5N0hgO5wDvHm/ir82Z+YGuEer8iF3wyGEh9EbcB6YukCNzBBcRASkR1PiyPS6Ag==
   dependencies:
     "@floating-ui/vue" "^1.1.5"
     "@kong/icons" "^1.18.1"
