@@ -1063,10 +1063,10 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.18.1.tgz#0b2ffa0b76cde019e8270bd787c29a320ee2a0c5"
   integrity sha512-1dQvgKYSS7phg8FiaEyizmy2vk2L412yzRT7FHUuLLtVr4yEAjbYsVgNeD2zHoWQCO0y/SDGVZoOa2SqP0kQ7g==
 
-"@kong/icons@^1.18.2":
-  version "1.18.2"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.18.2.tgz#cae709ffc6238b8427d32ce2240ed6e2761fcda8"
-  integrity sha512-8h1j8O2syZG+gBKNYcXwtYkoS2DUIchBdQ83BiRx/RG1gRrbMoG9TfXXBBVcYG16VjoeJJqbBRqakYZ30bRd/w==
+"@kong/icons@^1.19.1":
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.19.1.tgz#ae3f221c43ddd0aa4ce7e6f844f8f7c216c3fa49"
+  integrity sha512-YzwIQA4YH6N0Hwl2XT5ckEGXVzW2Ed1uoL8WjOGiyI6lUJa9W3n2DaHL+rQGZl/mW3KVR0J5+R7SzeYuzIvxzA==
 
 "@kong/kongponents@^9.14.8":
   version "9.14.8"

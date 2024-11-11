@@ -35,7 +35,7 @@
     "commit": "cz"
   },
   "dependencies": {
-    "@kong/icons": "^1.18.2",
+    "@kong/icons": "^1.19.1",
     "@xstate/vue": "^2.0.0",
     "axios": "^1.7.3",
     "vue": "^3.4.35",
