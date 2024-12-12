@@ -37,30 +37,30 @@
   "dependencies": {
     "@kong/icons": "^1.20.1",
     "@xstate/vue": "^2.0.0",
-    "axios": "^1.7.3",
-    "vue": "^3.4.35",
+    "axios": "^1.7.8",
+    "vue": "^3.4.38",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
   },
   "devDependencies": {
-    "@babel/types": "^7.25.2",
-    "@commitlint/cli": "^19.4.0",
+    "@babel/types": "^7.25.9",
+    "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.2.2",
     "@cypress/vite-dev-server": "^5.1.1",
     "@cypress/vue": "^6.0.1",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
-    "@evilmartians/lefthook": "^1.7.11",
+    "@evilmartians/lefthook": "^1.7.22",
     "@kong/design-tokens": "^1.17.2",
     "@kong/eslint-config-kong-ui": "^1.1.2",
     "@kong/kongponents": "^9.14.20",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^18.19.43",
-    "@vitejs/plugin-vue": "^5.1.2",
+    "@types/node": "^18.19.67",
+    "@vitejs/plugin-vue": "^5.1.5",
     "@vue/tsconfig": "^0.6.0",
-    "commitizen": "^4.3.0",
+    "commitizen": "^4.3.1",
     "cross-env": "^7.0.3",
-    "cypress": "^13.13.2",
+    "cypress": "^13.13.3",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^9.16.0",
     "postcss-custom-properties": "^13.3.12",
@@ -68,21 +68,21 @@
     "rollup-plugin-visualizer": "^5.12.0",
     "sass": "^1.77.8",
     "semantic-release": "^22.0.12",
-    "start-server-and-test": "^2.0.5",
-    "stylelint": "^16.8.1",
+    "start-server-and-test": "^2.0.8",
+    "stylelint": "^16.8.2",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-config-recommended-vue": "^1.5.0",
     "stylelint-order": "^6.0.4",
     "typescript": "^5.5.4",
-    "vite": "^5.4.0",
-    "vite-plugin-vue-devtools": "^7.3.7",
-    "vue-router": "^4.4.2",
+    "vite": "^5.4.11",
+    "vite-plugin-vue-devtools": "^7.3.9",
+    "vue-router": "^4.4.5",
     "vue-tsc": "^2.0.29"
   },
   "peerDependencies": {
     "@kong/kongponents": ">= ^8.126.2 || < 10",
-    "axios": "^1.7.3",
+    "axios": "^1.7.8",
     "vue": "<= 3.3.0"
   },
   "files": [
@@ -153,7 +153,7 @@
     "node": ">=v16.20.2"
   },
   "volta": {
-    "node": "18.20.4",
+    "node": "18.20.5",
     "yarn": "1.22.22"
   }
 }
