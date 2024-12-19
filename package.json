@@ -6,10 +6,12 @@
   "module": "dist/kong-auth-elements.vue.es.js",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/kong-auth-elements.vue.es.js",
-      "require": "./dist/kong-auth-elements.vue.umd.js",
-      "types": "./dist/types/index.d.ts"
+      "require": "./dist/kong-auth-elements.vue.umd.js"
     },
+    "./dist/style.css": "./dist/kong-auth-elements.css",
+    "./style.css": "./dist/kong-auth-elements.css",
     "./package.json": "./package.json",
     "./dist/*": "./dist/*"
   },

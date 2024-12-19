@@ -65,7 +65,6 @@ export default ({ mode }) => {
         // If INCLUDE_VUE=true, externalize Vue (for Kong/ui-shared-components)
         external: process.env.INCLUDE_VUE === 'true' ? undefined : ['vue', '@kong/kongponents'],
         output: {
-          sourcemap: true,
           exports: 'named',
           // Provide global variables to use in the UMD build for externalized deps
           // Enable to utilize consuming app's vue instance
