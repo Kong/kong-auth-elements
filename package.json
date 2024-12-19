@@ -6,10 +6,12 @@
   "module": "dist/kong-auth-elements.vue.es.js",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/kong-auth-elements.vue.es.js",
-      "require": "./dist/kong-auth-elements.vue.umd.js",
-      "types": "./dist/types/index.d.ts"
+      "require": "./dist/kong-auth-elements.vue.umd.js"
     },
+    "./dist/style.css": "./dist/kong-auth-elements.css",
+    "./style.css": "./dist/kong-auth-elements.css",
     "./package.json": "./package.json",
     "./dist/*": "./dist/*"
   },
@@ -75,7 +77,7 @@
     "stylelint-config-recommended-vue": "^1.5.0",
     "stylelint-order": "^6.0.4",
     "typescript": "^5.5.4",
-    "vite": "^5.4.0",
+    "vite": "^6.0.2",
     "vite-plugin-vue-devtools": "^7.3.7",
     "vue-router": "^4.4.2",
     "vue-tsc": "^2.0.29"

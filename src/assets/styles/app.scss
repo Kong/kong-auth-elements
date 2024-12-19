@@ -9,10 +9,14 @@
   @include meta.load-css("@kong/kongponents/dist/style.css");
   // Import kong-auth-element styles
   @include meta.load-css("./elements");
-  // Additional CSS rules
-  font-family: var(--kui-font-family-text, $kui-font-family-text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: var(--kui-font-weight-regular, $kui-font-weight-regular);
-  position: relative;
+
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    // Additional CSS rules
+    font-family: var(--kui-font-family-text, $kui-font-family-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: var(--kui-font-weight-regular, $kui-font-weight-regular);
+    position: relative;
+  }
 }
