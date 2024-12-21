@@ -944,12 +944,12 @@
     "@floating-ui/utils" "^0.2.8"
     vue-demi ">=0.13.0"
 
-"@hapi/hoek@^9.0.0":
+"@hapi/hoek@^9.0.0", "@hapi/hoek@^9.3.0":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.3.0.tgz#8368869dcb735be2e7f5cb7647de78e167a251fb"
   integrity sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==
 
-"@hapi/topo@^5.0.0":
+"@hapi/topo@^5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@hapi/topo/-/topo-5.1.0.tgz#dc448e332c6c6e37a4dc02fd84ba8d44b9afb012"
   integrity sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==
@@ -1726,10 +1726,10 @@
     lodash-es "^4.17.21"
     read-pkg-up "^11.0.0"
 
-"@sideway/address@^4.1.3":
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/@sideway/address/-/address-4.1.4.tgz#03dccebc6ea47fdc226f7d3d1ad512955d4783f0"
-  integrity sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==
+"@sideway/address@^4.1.5":
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/@sideway/address/-/address-4.1.5.tgz#4bc149a0076623ced99ca8208ba780d65a99b9d5"
+  integrity sha512-IqO/DUQHUkPeixNQ8n0JA6102hT9CmaljNTPmQ1u8MEhBo/R4Q8eKLN/vGZxuebwOroDB4cbpjheD4+/sKFK4Q==
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
@@ -1863,10 +1863,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.11.tgz#b3b790f09cb1696cffcec605de025b088fa4225f"
   integrity sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==
 
-"@types/node@^18.19.43":
-  version "18.19.44"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.44.tgz#875a8322d17ff12bf82b3af8c07b9310a00e72f8"
-  integrity sha512-ZsbGerYg72WMXUIE9fYxtvfzLEuq6q8mKERdWFnqTmOvudMxnz+CBNRoOwJ2kNpFOncrKjT1hZwxjlFgQ9qvQA==
+"@types/node@^18.19.67":
+  version "18.19.68"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.68.tgz#f4f10d9927a7eaf3568c46a6d739cc0967ccb701"
+  integrity sha512-QGtpFH1vB99ZmTa63K4/FU8twThj4fuVSBkGddTp7uIL/cuoLWIUSL2RcOaigBhfR+hg5pgGkBnkoOxrTVBMKw==
   dependencies:
     undici-types "~5.26.4"
 
@@ -2521,19 +2521,10 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.12.0.tgz#ce1c9d143389679e253b314241ea9aa5cec980d3"
   integrity sha512-NmWvPnx0F1SfrQbYwOi7OeaNGokp9XhzNioJ/CSBs8Qa4vxug81mhJEAVZwxXuBmYB5KDRfMq/F3RR0BIU7sWg==
 
-axios@^1.6.1:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.2.tgz#de67d42c755b571d3e698df1b6504cde9b0ee9f2"
-  integrity sha512-7i24Ri4pmDRfJTR7LDBhsOTtcm+9kjX5WiY1X3wIisx6G9So3pfMkEiU7emUBe46oceVImccTEM3k6C5dbVW8A==
-  dependencies:
-    follow-redirects "^1.15.0"
-    form-data "^4.0.0"
-    proxy-from-env "^1.1.0"
-
-axios@^1.7.3:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.3.tgz#a1125f2faf702bc8e8f2104ec3a76fab40257d85"
-  integrity sha512-Ar7ND9pU99eJ9GpoGQKhKf58GpUOgnzuaB7ueNQ5BMi0p+LZ5oaEnfF999fAArcTIBwXTCHAmGcHOZJaWPq9Nw==
+axios@^1.7.7, axios@^1.7.9:
+  version "1.7.9"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.9.tgz#d7d071380c132a24accda1b2cfc1535b79ec650a"
+  integrity sha512-LhLcE7Hbiryz8oMDdDptSrWowmB4Bl6RCt6sIJKpRB4XtVf0iEgewX3au/pJqm+Py1kCASkb/FFKjxQaLtxJvw==
   dependencies:
     follow-redirects "^1.15.6"
     form-data "^4.0.0"
@@ -2960,10 +2951,30 @@ commander@^6.2.1:
   resolved "https://registry.yarnpkg.com/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
   integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
 
-commitizen@^4.0.3, commitizen@^4.2.6, commitizen@^4.3.0:
+commitizen@^4.0.3, commitizen@^4.2.6:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/commitizen/-/commitizen-4.3.0.tgz#0d056c542a2d2b1f9b9aba981aa32575b2849924"
   integrity sha512-H0iNtClNEhT0fotHvGV3E9tDejDeS04sN1veIebsKYGMuGscFaswRoYJKmT3eW85eIJAs0F28bG2+a/9wCOfPw==
+  dependencies:
+    cachedir "2.3.0"
+    cz-conventional-changelog "3.3.0"
+    dedent "0.7.0"
+    detect-indent "6.1.0"
+    find-node-modules "^2.1.2"
+    find-root "1.1.0"
+    fs-extra "9.1.0"
+    glob "7.2.3"
+    inquirer "8.2.5"
+    is-utf8 "^0.2.1"
+    lodash "4.17.21"
+    minimist "1.2.7"
+    strip-bom "4.0.0"
+    strip-json-comments "3.1.1"
+
+commitizen@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/commitizen/-/commitizen-4.3.1.tgz#f0e0e4b7ae3fafc92e444bbb78f2ded5a1d4311a"
+  integrity sha512-gwAPAVTy/j5YcOOebcCRIijn+mSjWJC+IYKivTu6aG8Ei/scoXgfsMRnuAk6b0GRste2J4NGxVdMN3ZpfNaVaw==
   dependencies:
     cachedir "2.3.0"
     cz-conventional-changelog "3.3.0"
@@ -3306,12 +3317,12 @@ debug@4, debug@^4.0.0, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, d
   dependencies:
     ms "2.1.2"
 
-debug@4.3.6:
-  version "4.3.6"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.6.tgz#2ab2c38fbaffebf8aa95fdfe6d88438c7a13c52b"
-  integrity sha512-O/09Bd4Z1fBrU4VzkhFqVgpPzaGbw6Sm9FEkBT1A/YBXQFGuuSxa1dN2nxgxS34JmKXqYx8CZAwEVoJFImUXIg==
+debug@4.4.0, debug@^4.3.7:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.4.0.tgz#2b3f2aea2ffeb776477460267377dc8710faba8a"
+  integrity sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==
   dependencies:
-    ms "2.1.2"
+    ms "^2.1.3"
 
 debug@^3.1.0:
   version "3.2.7"
@@ -3319,13 +3330,6 @@ debug@^3.1.0:
   integrity sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==
   dependencies:
     ms "^2.1.1"
-
-debug@^4.3.7:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.4.0.tgz#2b3f2aea2ffeb776477460267377dc8710faba8a"
-  integrity sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==
-  dependencies:
-    ms "^2.1.3"
 
 dedent@0.7.0:
   version "0.7.0"
@@ -4240,11 +4244,6 @@ focus-trap@^7.6.0:
   integrity sha512-1td0l3pMkWJLFipobUcGaf+5DTY4PLDDrcqoSaKP8ediO/CoWCCYk/fT/Y2A4e6TNB+Sh6clRJCjOPPnKoNHnQ==
   dependencies:
     tabbable "^6.2.0"
-
-follow-redirects@^1.15.0:
-  version "1.15.3"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.3.tgz#fe2f3ef2690afce7e82ed0b44db08165b207123a"
-  integrity sha512-1VzOtuEM8pC9SFU1E+8KfTjZyMztRsgEfwQl44z8A25uy13jSzTj6dyK2Df52iV0vgHCfBwLhDWevLn95w5v6Q==
 
 follow-redirects@^1.15.6:
   version "1.15.6"
@@ -5168,14 +5167,14 @@ jiti@^2.4.1:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-2.4.2.tgz#d19b7732ebb6116b06e2038da74a55366faef560"
   integrity sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A==
 
-joi@^17.11.0:
-  version "17.11.0"
-  resolved "https://registry.yarnpkg.com/joi/-/joi-17.11.0.tgz#aa9da753578ec7720e6f0ca2c7046996ed04fc1a"
-  integrity sha512-NgB+lZLNoqISVy1rZocE9PZI36bL/77ie924Ri43yEvi9GUUMPeyVIr8KdFTMUlby1p0PBYMk9spIxEUQYqrJQ==
+joi@^17.13.3:
+  version "17.13.3"
+  resolved "https://registry.yarnpkg.com/joi/-/joi-17.13.3.tgz#0f5cc1169c999b30d344366d384b12d92558bcec"
+  integrity sha512-otDA4ldcIx+ZXsKHWmp0YizCweVRZG96J10b0FevjfuncLO1oX59THoAmHkNubYJ+9gWsYsp5k8v4ib6oDv1fA==
   dependencies:
-    "@hapi/hoek" "^9.0.0"
-    "@hapi/topo" "^5.0.0"
-    "@sideway/address" "^4.1.3"
+    "@hapi/hoek" "^9.3.0"
+    "@hapi/topo" "^5.1.0"
+    "@sideway/address" "^4.1.5"
     "@sideway/formula" "^3.0.1"
     "@sideway/pinpoint" "^2.0.0"
 
@@ -7465,19 +7464,19 @@ ssri@^10.0.0, ssri@^10.0.5:
   dependencies:
     minipass "^7.0.3"
 
-start-server-and-test@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-2.0.5.tgz#55397e581531ee54000c51c0078226ed7e35afa3"
-  integrity sha512-2CV4pz69NJVJKQmJeSr+O+SPtOreu0yxvhPmSXclzmAKkPREuMabyMh+Txpzemjx0RDzXOcG2XkhiUuxjztSQw==
+start-server-and-test@^2.0.8:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-2.0.9.tgz#a58160fa95e072aeb41e104472dea01b052b7443"
+  integrity sha512-DDceIvc4wdpr+z3Aqkot2QMho8TcUBh5qH0wEHDpEexBTzlheOcmh53d3dExABY4J5C7qS2UbSXqRWLtxpbWIQ==
   dependencies:
     arg "^5.0.2"
     bluebird "3.7.2"
     check-more-types "2.24.0"
-    debug "4.3.6"
+    debug "4.4.0"
     execa "5.1.1"
     lazy-ass "1.6.0"
     ps-tree "1.2.0"
-    wait-on "7.2.0"
+    wait-on "8.0.1"
 
 stream-combiner2@~1.1.1:
   version "1.1.1"
@@ -8205,10 +8204,10 @@ vite-plugin-vue-inspector@^5.3.1:
     kolorist "^1.8.0"
     magic-string "^0.30.4"
 
-vite@^6.0.2:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-6.0.3.tgz#cc01f403e326a9fc1e064235df8a6de084c8a491"
-  integrity sha512-Cmuo5P0ENTN6HxLSo6IHsjCLn/81Vgrp81oaiFFMRa8gGDj5xEjIcEpf2ZymZtZR8oU0P2JX5WuUp/rlXcHkAw==
+vite@^6.0.3:
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-6.0.4.tgz#fe7cfaedff7c701d5582be5c4ed6a2150538ea9d"
+  integrity sha512-zwlH6ar+6o6b4Wp+ydhtIKLrGM/LoqZzcdVmkGAFun0KHTzIzjh+h0kungEx7KJg/PYnC80I4TII9WkjciSR6Q==
   dependencies:
     esbuild "^0.24.0"
     postcss "^8.4.49"
@@ -8295,13 +8294,13 @@ vue@^3.5.13:
     "@vue/server-renderer" "3.5.13"
     "@vue/shared" "3.5.13"
 
-wait-on@7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/wait-on/-/wait-on-7.2.0.tgz#d76b20ed3fc1e2bebc051fae5c1ff93be7892928"
-  integrity sha512-wCQcHkRazgjG5XoAq9jbTMLpNIjoSlZslrJ2+N9MxDsGEv1HnFoVjOCexL0ESva7Y9cu350j+DWADdk54s4AFQ==
+wait-on@8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/wait-on/-/wait-on-8.0.1.tgz#13c8ec77115517f8fbc2d670521a444201f03f53"
+  integrity sha512-1wWQOyR2LVVtaqrcIL2+OM+x7bkpmzVROa0Nf6FryXkS+er5Sa1kzFGjzZRqLnHa3n1rACFLeTwUqE1ETL9Mig==
   dependencies:
-    axios "^1.6.1"
-    joi "^17.11.0"
+    axios "^1.7.7"
+    joi "^17.13.3"
     lodash "^4.17.21"
     minimist "^1.2.8"
     rxjs "^7.8.1"
