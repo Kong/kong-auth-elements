@@ -80,7 +80,7 @@
     "vite": "^6.0.2",
     "vite-plugin-vue-devtools": "^7.6.7",
     "vue-router": "^4.5.0",
-    "vue-tsc": "^2.1.10"
+    "vue-tsc": "^2.2.0"
   },
   "peerDependencies": {
     "@kong/kongponents": ">= ^8.126.2 || < 10",
