@@ -152,8 +152,8 @@ const btnDisabled = computed((): boolean => {
 const { axiosInstance: axiosInstanceV1 } = useAxios({}, 'v1')
 
 const resetPassword = async (credentials: {
-  password: string,
-  token: string,
+  password: string
+  token: string
 }) => {
   if (userEntity === 'developer') {
     return await axiosInstanceV1.post('/api/v2/developer/reset-password', credentials)
@@ -249,5 +249,5 @@ onMounted(() => {
 <style lang="scss" scoped>
 /*! KONG_AUTH_INJECT_STYLES */
 // No styles should be added to this component; add styles to the /assets/styles/_elements.scss partial
-@import "@/assets/styles/elements";
+@use "@/assets/styles/elements" as *;
 </style>
