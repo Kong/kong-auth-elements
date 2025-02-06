@@ -143,12 +143,29 @@ provide(
 
 // Message props: These provided values default to useI18n() message text so
 // they must be provided in this format so the default value can be set in the child component.
-props.forgotPasswordLinkText && provide('forgot-password-link-text', computed((): string => props.forgotPasswordLinkText))
-props.registerLinkHelpText && provide('register-link-help-text', computed((): string => props.registerLinkHelpText))
-props.registerLinkText && provide('register-link-text', computed((): string => props.registerLinkText))
-props.registerSuccessText && provide('register-success-text', computed((): string => props.registerSuccessText))
-props.loginSsoButtonText && provide('login-sso-button-text', computed((): string => props.loginSsoButtonText))
-props.loginButtonText && provide('login-button-text', computed((): string => props.loginButtonText))
+if (props.forgotPasswordLinkText) {
+  provide('forgot-password-link-text', computed((): string => props.forgotPasswordLinkText))
+}
+
+if (props.registerLinkHelpText) {
+  provide('register-link-help-text', computed((): string => props.registerLinkHelpText))
+}
+
+if (props.registerLinkText) {
+  provide('register-link-text', computed((): string => props.registerLinkText))
+}
+
+if (props.registerSuccessText) {
+  provide('register-success-text', computed((): string => props.registerSuccessText))
+}
+
+if (props.loginSsoButtonText) {
+  provide('login-sso-button-text', computed((): string => props.loginSsoButtonText))
+}
+
+if (props.loginButtonText) {
+  provide('login-button-text', computed((): string => props.loginButtonText))
+}
 </script>
 
 <style lang="scss">

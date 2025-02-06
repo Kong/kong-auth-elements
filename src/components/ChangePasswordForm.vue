@@ -304,5 +304,5 @@ const submitForm = async (): Promise<void> => {
 <style lang="scss" scoped>
 /*! KONG_AUTH_INJECT_STYLES */
 // No styles should be added to this component; add styles to the /assets/styles/_elements.scss partial
-@import "@/assets/styles/elements";
+@use "@/assets/styles/elements" as *;
 </style>

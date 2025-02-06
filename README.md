@@ -5,38 +5,74 @@ Vue 3 Plugin and Native HTML Web Components used for KAuth UI implementation in 
 [![Tests](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yaml/badge.svg)](https://github.com/Kong/kong-auth-elements/actions/workflows/test.yaml)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-- [Installation](#installation)
-  - [npm](#npm)
-  - [CDN](#cdn)
-- [Usage](#usage)
-  - [Vue 3 Plugin](#vue-3-plugin)
-  - [Vue 2 or no framework via native web components](#vue-2-or-no-framework-via-native-web-components)
-  - [Options](#options)
-  - [Events](#events)
-  - [Theming with CSS Variables](#theming-with-css-variables)
-  - [Webpack](#webpack)
-  - [Testing in your app](#testing-in-your-app)
-- [Custom Elements](#custom-elements)
-  - [`kong-auth-login`](#kong-auth-login)
-  - [`kong-auth-forgot-password`](#kong-auth-forgot-password)
-  - [`kong-auth-reset-password`](#kong-auth-reset-password)
-  - [`kong-auth-change-password`](#kong-auth-change-password)
-  - [`kong-auth-register`](#kong-auth-register)
-  - [`kong-auth-accept-invitation`](#kong-auth-accept-invitation)
-- [Contributing](#contributing)
-  - [Creating a New Custom Element](#creating-a-new-custom-element)
-  - [Custom Element Styles and the shadow DOM](#custom-element-styles-and-the-shadow-dom)
-  - [Committing Changes](#committing-changes)
-- [Local Development](#local-development)
-  - [Configure Environment Variables](#configure-environment-variables)
-  - [Install dependencies](#install-dependencies)
-  - [Components Sandbox](#components-sandbox)
-  - [Elements Sandbox](#elements-sandbox)
-  - [Web Components Sandbox](#web-components-sandbox)
-  - [Compile and minify for production](#compile-and-minify-for-production)
-- [Current Issues](#current-issues)
-  - [Props](#props-6)
-  - [Axios](#axios)
+- [@kong/kong-auth-elements](#kongkong-auth-elements)
+  - [Installation](#installation)
+    - [npm](#npm)
+    - [CDN](#cdn)
+      - [CDN Example](#cdn-example)
+  - [Usage](#usage)
+    - [Vue 3 Plugin](#vue-3-plugin)
+    - [Vue 2 or no framework via native web components](#vue-2-or-no-framework-via-native-web-components)
+      - [Teleport Wrapper](#teleport-wrapper)
+    - [Options](#options)
+      - [TypeScript](#typescript)
+      - [Custom Error Handler](#custom-error-handler)
+      - [Inject CSS](#inject-css)
+    - [Events](#events)
+    - [Theming with CSS Variables](#theming-with-css-variables)
+    - [Webpack](#webpack)
+    - [Testing in your app](#testing-in-your-app)
+      - [Cypress](#cypress)
+  - [Custom Elements](#custom-elements)
+    - [`kong-auth-login`](#kong-auth-login)
+      - [Props](#props)
+      - [Emits Events](#emits-events)
+      - [Query String Parameters](#query-string-parameters)
+      - [IdP Login](#idp-login)
+        - [Auto-initialization](#auto-initialization)
+          - [`userEntity = 'user'`](#userentity--user)
+          - [`userEntity = 'developer'`](#userentity--developer)
+        - [Logging back in](#logging-back-in)
+    - [`kong-auth-forgot-password`](#kong-auth-forgot-password)
+      - [Props](#props-1)
+      - [Emits Events](#emits-events-1)
+    - [`kong-auth-reset-password`](#kong-auth-reset-password)
+      - [Props](#props-2)
+      - [Emits Events](#emits-events-2)
+      - [Query String Parameters](#query-string-parameters-1)
+    - [`kong-auth-change-password`](#kong-auth-change-password)
+      - [Props](#props-3)
+      - [Emits Events](#emits-events-3)
+    - [`kong-auth-register`](#kong-auth-register)
+      - [Props](#props-4)
+      - [Query String Parameters](#query-string-parameters-2)
+      - [Emits Events](#emits-events-4)
+    - [`kong-auth-accept-invitation`](#kong-auth-accept-invitation)
+      - [Props](#props-5)
+      - [Emits Events](#emits-events-5)
+      - [Query String Parameters](#query-string-parameters-3)
+  - [Contributing](#contributing)
+    - [Creating a New Custom Element](#creating-a-new-custom-element)
+      - [Requirements](#requirements)
+    - [Custom Element Styles and the shadow DOM](#custom-element-styles-and-the-shadow-dom)
+    - [Committing Changes](#committing-changes)
+      - [Enforcing Commit Format](#enforcing-commit-format)
+  - [Local Development](#local-development)
+    - [Configure Environment Variables](#configure-environment-variables)
+    - [Install dependencies](#install-dependencies)
+    - [Components Sandbox](#components-sandbox)
+      - [Compile Components and hot-reload for development](#compile-components-and-hot-reload-for-development)
+      - [Build Components Sandbox and preview](#build-components-sandbox-and-preview)
+    - [Elements Sandbox](#elements-sandbox)
+      - [Compile Custom Elements and hot-reload for development](#compile-custom-elements-and-hot-reload-for-development)
+      - [Build Elements Sandbox and preview](#build-elements-sandbox-and-preview)
+    - [Web Components Sandbox](#web-components-sandbox)
+      - [Build Web Components Sandbox and preview](#build-web-components-sandbox-and-preview)
+    - [Compile and minify for production](#compile-and-minify-for-production)
+      - [Link the local `@kong/kong-auth-elements` package into another local project for testing](#link-the-local-kongkong-auth-elements-package-into-another-local-project-for-testing)
+  - [Current Issues](#current-issues)
+    - [Props](#props-6)
+    - [Axios](#axios)
 
 ## Installation
 
@@ -191,14 +227,14 @@ The `id` attribute should then be passed to each [Custom Element](#custom-elemen
 
 Regardless if you're using in Vue 3, Vue 2, or the native web components, an identical set of options exist for configuring the `kong-auth-elements`.
 
-| Option | Type | Default | Description |
-| :------------- | :--------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `apiBaseUrl`   | `string`   | `/kauth` | The `basePath` of the internal `axios` instance. <br><br>Unless using an absolute URL, this base path **must** start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users) |
-| `userEntity`   | `string`   | `user`   | The user entity for authentication; one of `user` or `developer`. |
-| `developerConfig`   | `DeveloperConfig`   | `{ portalId: string }`   | The developer config object. |
-| `customErrorHandler`    | `Function`  | `(event: CustomEndpointErrorEvent) => ''`  | Supply a custom error handler to use when utilizing an element that allows providing a custom  request endpoint. [See the example below](#custom-error-handler) |
-| `injectCss` | `string[]` | `[]`     | Pass an array of inlined CSS strings that will be injected into the DOM. [See the example below](#inject-css) |
-`lang` | `string` | `en` | Set the language to use for the component message strings. See `/src/locales/`
+| Option               | Type              | Default                                   | Description                                                                                                                                                                                                                                                                                         |
+| :------------------- | :---------------- | :---------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `apiBaseUrl`         | `string`          | `/kauth`                                  | The `basePath` of the internal `axios` instance. <br><br>Unless using an absolute URL, this base path **must** start with a leading slash (if setting the default) in order to properly resolve within container applications, especially when called from nested routes(e.g. /organizations/users) |
+| `userEntity`         | `string`          | `user`                                    | The user entity for authentication; one of `user` or `developer`.                                                                                                                                                                                                                                   |
+| `developerConfig`    | `DeveloperConfig` | `{ portalId: string }`                    | The developer config object.                                                                                                                                                                                                                                                                        |
+| `customErrorHandler` | `Function`        | `(event: CustomEndpointErrorEvent) => ''` | Supply a custom error handler to use when utilizing an element that allows providing a custom  request endpoint. [See the example below](#custom-error-handler)                                                                                                                                     |
+| `injectCss`          | `string[]`        | `[]`                                      | Pass an array of inlined CSS strings that will be injected into the DOM. [See the example below](#inject-css)                                                                                                                                                                                       |
+| `lang`               | `string`          | `en`                                      | Set the language to use for the component message strings. See `/src/locales/`                                                                                                                                                                                                                      |
 
 #### TypeScript
 
@@ -429,24 +465,24 @@ The login element **must** reside at the `{window.location.origin}/login` path i
 
 #### Props
 
-| Prop | Type | Default | Description |
-| :----------------------- | :------ | :------------------------- | :---------------------------------------------------------------------------------------------------------------- |
-| `wrapperId` | String  | `kong-auth-login-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element. |
-| `instructionText` | String  | `''` | Set the instruction text to display above the inputs. |
-| `showForgotPasswordLink` | Boolean | `false` | Show a forgot password link under the password field. |
-| `forgotPasswordLinkText` | String  | `Forgot your password?` | Set the text for the forgot password link. |
-| `showRegisterLink` | Boolean | `false` | Show a register link under the login button. |
-| `registerLinkHelpText` | String  | `Don't have an account?`   | Set the register link help text. |
-| `registerLinkText` | String  | `Sign Up` | Set the text for the register link. |
-| `registerSuccessText` | String  | `Successfully registered!` | Set the text for the register success message. |
-| `basicAuthLoginEnabled` | Boolean | `false` | Enable basic auth login. **To set to false, simply do not add the prop** |
-| `showBasicAuthLoginLink` | Boolean | `true` | Show a link to log in with basic auth credentials on the IdP login form. |
-| `idpLoginEnabled` | Boolean | `false` | Enable IdP login detection. |
-| `idpLoginCallbackUrl` | URL | `''` | Set the URL to return to in order to complete the OIDC flow. In most cases, this should be set to `${window.location.origin}/login` |
-| `idpLoginReturnTo` | URL | `''` | Set the URL to return to upon successful IdP login. In most cases, this should be set to `window.location.origin` |
-| `idpFullScreenLoader` | Boolean | `true` | Show the full screen loading skeleton when IdP login is processing |
-| `loginSsoButtonText` | String | `Continue with SSO` | Set the text for the SSO login button. |
-| `loginButtonText` | String | `Log in` | Set the text for the basic authentication login button.  |
+| Prop                     | Type    | Default                    | Description                                                                                                                                       |
+| :----------------------- | :------ | :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `wrapperId`              | String  | `kong-auth-login-wrapper`  | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element. |
+| `instructionText`        | String  | `''`                       | Set the instruction text to display above the inputs.                                                                                             |
+| `showForgotPasswordLink` | Boolean | `false`                    | Show a forgot password link under the password field.                                                                                             |
+| `forgotPasswordLinkText` | String  | `Forgot your password?`    | Set the text for the forgot password link.                                                                                                        |
+| `showRegisterLink`       | Boolean | `false`                    | Show a register link under the login button.                                                                                                      |
+| `registerLinkHelpText`   | String  | `Don't have an account?`   | Set the register link help text.                                                                                                                  |
+| `registerLinkText`       | String  | `Sign Up`                  | Set the text for the register link.                                                                                                               |
+| `registerSuccessText`    | String  | `Successfully registered!` | Set the text for the register success message.                                                                                                    |
+| `basicAuthLoginEnabled`  | Boolean | `false`                    | Enable basic auth login. **To set to false, simply do not add the prop**                                                                          |
+| `showBasicAuthLoginLink` | Boolean | `true`                     | Show a link to log in with basic auth credentials on the IdP login form.                                                                          |
+| `idpLoginEnabled`        | Boolean | `false`                    | Enable IdP login detection.                                                                                                                       |
+| `idpLoginCallbackUrl`    | URL     | `''`                       | Set the URL to return to in order to complete the OIDC flow. In most cases, this should be set to `${window.location.origin}/login`               |
+| `idpLoginReturnTo`       | URL     | `''`                       | Set the URL to return to upon successful IdP login. In most cases, this should be set to `window.location.origin`                                 |
+| `idpFullScreenLoader`    | Boolean | `true`                     | Show the full screen loading skeleton when IdP login is processing                                                                                |
+| `loginSsoButtonText`     | String  | `Continue with SSO`        | Set the text for the SSO login button.                                                                                                            |
+| `loginButtonText`        | String  | `Log in`                   | Set the text for the basic authentication login button.                                                                                           |
 
 > **Note**: When utilizing the props as a native web component, you may need to use dot syntax, as shown here
 >
@@ -473,13 +509,13 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 #### Query String Parameters
 
-| Param | Required | Description |
+| Param           | Required                                             | Description                                                                                                                                                                    |
 | :-------------- | :--------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `token` | `true` if email verification | Pass a valid `token` entry in the URL query string to verify the user's email address. |
-| `passwordReset` | `true` if password reset | To show the Reset Password Confirmation, the consuming app URL must include `passwordReset=true` in the query string. You can choose to include the `email` parameter as well. |
-| `registered`    | `true` if register success (from register or invite) | To show the Register Confirmation, the consuming app URL must include `registered=true` in the query string. You can choose to include the `email` parameter as well. |
-| `email` | `false` | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input. |
-| `basicAuth` | `false` | To force displaying basic authentication (e.g. for organization owners) the URL should include `basicAuth=true` in the query string. |
+| `token`         | `true` if email verification                         | Pass a valid `token` entry in the URL query string to verify the user's email address.                                                                                         |
+| `passwordReset` | `true` if password reset                             | To show the Reset Password Confirmation, the consuming app URL must include `passwordReset=true` in the query string. You can choose to include the `email` parameter as well. |
+| `registered`    | `true` if register success (from register or invite) | To show the Register Confirmation, the consuming app URL must include `registered=true` in the query string. You can choose to include the `email` parameter as well.          |
+| `email`         | `false`                                              | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input.            |
+| `basicAuth`     | `false`                                              | To force displaying basic authentication (e.g. for organization owners) the URL should include `basicAuth=true` in the query string.                                           |
 
 #### IdP Login
 
@@ -509,22 +545,22 @@ If the user clicks the link to login with credentials, they will be sent to `/lo
 
 #### Props
 
-| Prop | Type |  Default | Description |
-| :----------------------------- | :------ | :----------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
-| `wrapperId` | String  | `kong-auth-forgot-password-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element. |
-| `showLoginLink` | Boolean | `false` | Show a login link under the password fields. |
-| `loginLinkText` | String  | `Return to log in` | Set the text for the login link. |
-| `instructionText` | String  | `''` | Set the instruction text to display above the inputs. |
-| `successText` | String  | `Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.` | Set the text to display upon successful reset password request. |
-| `resetPasswordRequestEndpoint` | String  | `''` | Set the URL (relative or absolute) endpoint for the password reset request. |
+| Prop                           | Type    | Default                                                                                                                  | Description                                                                                                                                       |
+| :----------------------------- | :------ | :----------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `wrapperId`                    | String  | `kong-auth-forgot-password-wrapper`                                                                                      | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element. |
+| `showLoginLink`                | Boolean | `false`                                                                                                                  | Show a login link under the password fields.                                                                                                      |
+| `loginLinkText`                | String  | `Return to log in`                                                                                                       | Set the text for the login link.                                                                                                                  |
+| `instructionText`              | String  | `''`                                                                                                                     | Set the instruction text to display above the inputs.                                                                                             |
+| `successText`                  | String  | `Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.` | Set the text to display upon successful reset password request.                                                                                   |
+| `resetPasswordRequestEndpoint` | String  | `''`                                                                                                                     | Set the URL (relative or absolute) endpoint for the password reset request.                                                                       |
 
 #### Emits Events
 
-| Event | Payload | Description |
+| Event                     |       Payload       | Description                                         |
 | :------------------------ | :-----------------: | :-------------------------------------------------- |
-| `wrapperId` | String  | `kong-auth-reset-password-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element. |
+| `wrapperId`               |       String        | `kong-auth-reset-password-wrapper`                  | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element. |
 | `forgot-password-success` | `{ email: String }` | User successfully requested a reset password email. |
-| `click-login-link` | | User clicked the included login link. |
+| `click-login-link`        |                     | User clicked the included login link.               |
 
 To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
 
@@ -536,9 +572,9 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 #### Props
 
-| Prop                        | Type    | Default | Description                                          |
-| :-------------------------- | :------ | :------ | :--------------------------------------------------- |
-| `instructionText`           | String  | `''`    | Set the instruction text to display above the input. |
+| Prop              | Type   | Default | Description                                          |
+| :---------------- | :----- | :------ | :--------------------------------------------------- |
+| `instructionText` | String | `''`    | Set the instruction text to display above the input. |
 
 #### Emits Events
 
@@ -550,9 +586,9 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 #### Query String Parameters
 
-| Param | Required | Description |
+| Param   | Required | Description                                                                                                                                                                     |
 | :------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `token` | `true`   | Pass a valid `token` entry in the URL query string to send to the reset password request. |
+| `token` | `true`   | Pass a valid `token` entry in the URL query string to send to the reset password request.                                                                                       |
 | `email` | `false`  | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string to prepopulate the login form's email input on redirect. |
 
 ---
@@ -564,17 +600,17 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 #### Props
 
-| Prop                        | Type    | Default | Description                                          |
-| :-------------------------- | :------ | :------ | :--------------------------------------------------- |
-| `instructionText`           | String  | `''`    | Set the instruction text to display above the input. |
-| `changePasswordButtonText`  | String  | `Change Password` | Set the text for the change password button. |
+| Prop                       | Type   | Default           | Description                                          |
+| :------------------------- | :----- | :---------------- | :--------------------------------------------------- |
+| `instructionText`          | String | `''`              | Set the instruction text to display above the input. |
+| `changePasswordButtonText` | String | `Change Password` | Set the text for the change password button.         |
 
 #### Emits Events
 
-| Event                    |       Payload       | Description                              |
-| :----------------------- | :-----------------: | :--------------------------------------- |
-| `change-password-success`|                     | User successfully changed their password.|
-| `password-requirements`  | `{uppercase: boolean, lowercase: boolean, number: boolean, special: boolean}` | Password requirements met after user inputs new password |
+| Event                     |                                    Payload                                    | Description                                              |
+| :------------------------ | :---------------------------------------------------------------------------: | :------------------------------------------------------- |
+| `change-password-success` |                                                                               | User successfully changed their password.                |
+| `password-requirements`   | `{uppercase: boolean, lowercase: boolean, number: boolean, special: boolean}` | Password requirements met after user inputs new password |
 
 To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
 
@@ -587,25 +623,25 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 #### Props
 
-| Prop | Type    | Default | Description |
-| :-------------------------- | :------ | :----------------- | :----------------------------------- |
-| `wrapperId` | String  | `kong-auth-register-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element. |
-| `accessCodeRequired` | Boolean | `false` | An access code is required for registration. |
-| `instructionText` | String  | `''` | Set the instruction text to display above the form inputs. |
-| `registerButtonText` | String  | `Sign up for Free` | Set the text for the register button. |
-| `registerRequestEndpoint` | String  | `''` | Set the URL (relative or absolute) endpoint for the registration request. |
-| `recaptcha` | Boolean | `false` | Should reCAPTCHA be enabled for the register form. This feature is currently only available if the `userEntity` is set to `user`.|
+| Prop                      | Type    | Default                      | Description                                                                                                                                       |
+| :------------------------ | :------ | :--------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `wrapperId`               | String  | `kong-auth-register-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element. |
+| `accessCodeRequired`      | Boolean | `false`                      | An access code is required for registration.                                                                                                      |
+| `instructionText`         | String  | `''`                         | Set the instruction text to display above the form inputs.                                                                                        |
+| `registerButtonText`      | String  | `Sign up for Free`           | Set the text for the register button.                                                                                                             |
+| `registerRequestEndpoint` | String  | `''`                         | Set the URL (relative or absolute) endpoint for the registration request.                                                                         |
+| `recaptcha`               | Boolean | `false`                      | Should reCAPTCHA be enabled for the register form. This feature is currently only available if the `userEntity` is set to `user`.                 |
 
 #### Query String Parameters
 
-| Param | Required | Description |
-| :--------- | :-------------------- | :-------------------------------------------------- |
-| `selectRegion` | `false` | Pass `"selectRegion=true"` in the URL to show the Konnect region selection during registration for `userEntity === 'user'`. |
+| Param          | Required | Description                                                                                                                 |
+| :------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------- |
+| `selectRegion` | `false`  | Pass `"selectRegion=true"` in the URL to show the Konnect region selection during registration for `userEntity === 'user'`. |
 
 #### Emits Events
 
-| Event              |                 Payload                  | Description                   |
-| :----------------- | :--------------------------------------: | :---------------------------- |
+| Event              |                               Payload                               | Description                   |
+| :----------------- | :-----------------------------------------------------------------: | :---------------------------- |
 | `register-success` | `{ email: String, { organization: { id: String, name: String } } }` | User successfully registered. |
 
 To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
@@ -616,27 +652,27 @@ To respond to any of the emitted events in your app, simply provide a callback f
 
 #### Props
 
-| Prop | Type    | Default | Description |
-| :-------------------------- | :------ | :----------------- | :----------------------------------- |
-| `wrapperId` | String  | `kong-auth-accept-invitation-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element. |
-| `subheaderText` | String  | `You've been invited to join ` | Set the subheader text that appears before the organization name above the form. |
+| Prop            | Type   | Default                               | Description                                                                                                                                       |
+| :-------------- | :----- | :------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `wrapperId`     | String | `kong-auth-accept-invitation-wrapper` | Set the element selector of where the element should be rendered outside of the shadow DOM. This is normally the `id` of the parent HTML element. |
+| `subheaderText` | String | `You've been invited to join `        | Set the subheader text that appears before the organization name above the form.                                                                  |
 
 #### Emits Events
 
-| Event              |                 Payload                  | Description                   |
-| :----------------- | :--------------------------------------: | :---------------------------- |
+| Event                       |       Payload       | Description                                |
+| :-------------------------- | :-----------------: | :----------------------------------------- |
 | `accept-invitation-success` | `{ email: String }` | User successfully accepted the invitation. |
 
 To respond to any of the emitted events in your app, simply provide a callback for any of the events listed above. See the [Events reference](#events) for more details. All events return a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
 
 #### Query String Parameters
 
-| Param | Required | Description |
-| :--------- | :-------------------- | :-------------------------------------------------- |
-| `token` | `true` | Pass an invite token in the query string. |
-| `email` | `true` | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string. |
-| `fullName` | `true` | Pass the user's URL encoded full name in the query string. |
-| `org` | `true` | Pass the user's URL encoded organization in the query string. |
+| Param      | Required | Description                                                                                                             |
+| :--------- | :------- | :---------------------------------------------------------------------------------------------------------------------- |
+| `token`    | `true`   | Pass an invite token in the query string.                                                                               |
+| `email`    | `true`   | Pass the user's URL encoded email address (e.g. `email=user%40foo.com` via `encodeURIComponent()`) in the query string. |
+| `fullName` | `true`   | Pass the user's URL encoded full name in the query string.                                                              |
+| `org`      | `true`   | Pass the user's URL encoded organization in the query string.                                                           |
 
 ## Contributing
 
@@ -750,7 +786,7 @@ A `pre-push` hook is configured to run Stylelint and ESLint before pushing your 
 
 ## Local Development
 
-We recommend using [VSCode](https://code.visualstudio.com/) along with the [Volar extension](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar).
+We recommend using [VSCode](https://code.visualstudio.com/) along with the [Official Vue extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar).
 
 ### Configure Environment Variables
 

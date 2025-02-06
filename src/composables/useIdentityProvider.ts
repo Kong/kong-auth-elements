@@ -109,7 +109,7 @@ export default function useIdentityProvider(
 
       // Encode for query string param
       returnToParam = `returnTo=${encodeURIComponent(returnToUrl.href)}`
-    } catch (_) {
+    } catch {
       idpIsLoading.value = false
       // Console warning references the element prop name instead of local variable
 
@@ -127,7 +127,7 @@ export default function useIdentityProvider(
 
       // Encode for query string param
       callbackUrlParam = `callback_url=${encodeURIComponent(oidcCallbackUrl.href)}`
-    } catch (_) {
+    } catch {
       idpIsLoading.value = false
       // Console warning references the element prop name instead of local variable
 
@@ -188,7 +188,7 @@ export default function useIdentityProvider(
       // Create new URL from returnTo, wrapped in try/catch to construct the URL object
       const currentUrl = new URL(win.getLocationHref())
       oidcQueryParams.value = new URLSearchParams(currentUrl.search)
-    } catch (_) {
+    } catch {
       oidcQueryParams.value = null
       console.error(
         "'shouldTriggerIdpAuthentication' could not extract the required OIDC query parameters",

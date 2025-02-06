@@ -44,7 +44,9 @@ provide(
 )
 // Message props: These provided values default to useI18n() message text so
 // they must be provided in this format so the default value can be set in the child component.
-props.changePasswordButtonText && provide('change-password-button-text', computed((): string => props.changePasswordButtonText))
+if (props.changePasswordButtonText) {
+  provide('change-password-button-text', computed((): string => props.changePasswordButtonText))
+}
 </script>
 
 <style lang="scss" scoped>

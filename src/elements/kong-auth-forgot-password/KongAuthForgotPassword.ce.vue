@@ -76,8 +76,13 @@ provide(
 
 // Message props: These provided values default to useI18n() message text so
 // they must be provided in this format so the default value can be set in the child component.
-props.loginLinkText && provide('login-link-text', computed((): string => props.loginLinkText))
-props.successText && provide('success-text', computed((): string => props.successText))
+if (props.loginLinkText) {
+  provide('login-link-text', computed((): string => props.loginLinkText))
+}
+
+if (props.successText) {
+  provide('success-text', computed((): string => props.successText))
+}
 </script>
 
 <style lang="scss" scoped>
