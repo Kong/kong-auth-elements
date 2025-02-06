@@ -31,7 +31,9 @@ defineEmits(acceptInvitationEmits)
 
 // Message props: These provided values default to useI18n() message text so
 // they must be provided in this format so the default value can be set in the child component.
-props.subheaderText && provide('invite-subheader-text', computed((): string => props.subheaderText))
+if (props.subheaderText) {
+  provide('invite-subheader-text', computed((): string => props.subheaderText))
+}
 </script>
 
 <style lang="scss">
