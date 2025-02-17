@@ -928,18 +928,18 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.4.tgz#1d459cee5031893a08a0e064c406ad2130cced7c"
   integrity sha512-dWO2pw8hhi+WrXq1YJy2yCuWoL20PddgGaqTgVe4cOS9Q6qklXCiA1tJEqX6BEwRNSCP84/afac9hd4MS+zEUA==
 
-"@floating-ui/utils@^0.2.8":
-  version "0.2.8"
-  resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.8.tgz#21a907684723bbbaa5f0974cf7730bd797eb8e62"
-  integrity sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==
+"@floating-ui/utils@^0.2.9":
+  version "0.2.9"
+  resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.9.tgz#50dea3616bc8191fb8e112283b49eaff03e78429"
+  integrity sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==
 
-"@floating-ui/vue@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@floating-ui/vue/-/vue-1.1.5.tgz#dcbb5d7a2f9035b0c96a9c30cdf794977d360809"
-  integrity sha512-ynL1p5Z+woPVSwgMGqeDrx6HrJfGIDzFyESFkyqJKilGW1+h/8yVY29Khn0LaU6wHBRwZ13ntG6reiHWK6jyzw==
+"@floating-ui/vue@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@floating-ui/vue/-/vue-1.1.6.tgz#1c7e8f257fae5b71a72d10c1746e6b0ba338399c"
+  integrity sha512-XFlUzGHGv12zbgHNk5FN2mUB7ROul3oG2ENdTpWdE+qMFxyNxWSRmsoyhiEnpmabNm6WnUvR1OvJfUfN4ojC1A==
   dependencies:
     "@floating-ui/dom" "^1.0.0"
-    "@floating-ui/utils" "^0.2.8"
+    "@floating-ui/utils" "^0.2.9"
     vue-demi ">=0.13.0"
 
 "@hapi/hoek@^9.0.0", "@hapi/hoek@^9.3.0":
@@ -1078,32 +1078,29 @@
     typescript-eslint "^7.18.0"
     vue-eslint-parser "^9.4.3"
 
-"@kong/icons@^1.18.1":
-  version "1.18.1"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.18.1.tgz#0b2ffa0b76cde019e8270bd787c29a320ee2a0c5"
-  integrity sha512-1dQvgKYSS7phg8FiaEyizmy2vk2L412yzRT7FHUuLLtVr4yEAjbYsVgNeD2zHoWQCO0y/SDGVZoOa2SqP0kQ7g==
+"@kong/icons@^1.21.1":
+  version "1.21.1"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.21.1.tgz#497922f7185c3c731e6350bc4c06e5fc5e66ae71"
+  integrity sha512-WS0/ibjEQTDbZ+IBJzQOuqAMKPUsybvEgRXE7wrVU2Jss1oE1iiyZ6ZbpmqKZoKpsQIpZWQqxcoBprnH3ZY13w==
 
-"@kong/icons@^1.20.1":
-  version "1.20.1"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.20.1.tgz#e052164184958b0c6e0ea363ba5a044dbe1f501c"
-  integrity sha512-mcOsnEReXwMwRIWrMHxJECjMCY1I2URF+8jf/7svDHQvGjg2KHH3wq84k+vpUPVAePUUXsZJsBOGIqM4avRtKQ==
-
-"@kong/kongponents@^9.16.1":
-  version "9.16.1"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.16.1.tgz#32ec77bcffbf9f9f103279d145c9db8dd245bcc9"
-  integrity sha512-e6cEhjLnabggkWY2XggkPrq0G8hW43Lt4Ed5nbtEyLuFPjg5jS6EKrCRPXnent3SZqgFkvdSkoeq9mYyW8LOlA==
+"@kong/kongponents@^9.21.5":
+  version "9.21.5"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.21.5.tgz#7ef7064f68e49a661dc9604b658a29a6679ef578"
+  integrity sha512-OG7Ii5d65t877FJE+/YTpQzAnePecnm++BT5ryAN6sZ1KdeFRAMXc1e+TWw8V8VBCWS4hN4PKvvUatpUVSj3RA==
   dependencies:
-    "@floating-ui/vue" "^1.1.5"
-    "@kong/icons" "^1.18.1"
+    "@floating-ui/vue" "^1.1.6"
+    "@kong/icons" "^1.21.1"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
-    focus-trap "^7.6.0"
+    focus-trap "^7.6.4"
     focus-trap-vue "^4.0.3"
+    lodash-es "^4.17.21"
     nanoid "^5.0.9"
-    sortablejs "^1.15.3"
-    swrv "^1.0.4"
+    sortablejs "^1.15.6"
+    swrv "^1.1.0"
     v-calendar "^3.1.2"
+    virtua "^0.39.3"
     vue-draggable-next "^2.2.1"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -4236,10 +4233,10 @@ focus-trap-vue@^4.0.3:
   resolved "https://registry.yarnpkg.com/focus-trap-vue/-/focus-trap-vue-4.0.3.tgz#c13f19d94e666c5144498793e93e51e0c46c2660"
   integrity sha512-cIX5rybkCAlNZ4IHYJ3nCFIsipDDljJHHjtTO2IgYWkVYg7X9ipUVdab3HzYp88kmHgMwjcB71LYnXRRsF6ZqQ==
 
-focus-trap@^7.6.0:
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-7.6.0.tgz#7f3edab8135eaca92ab59b6e963eb5cc42ded715"
-  integrity sha512-1td0l3pMkWJLFipobUcGaf+5DTY4PLDDrcqoSaKP8ediO/CoWCCYk/fT/Y2A4e6TNB+Sh6clRJCjOPPnKoNHnQ==
+focus-trap@^7.6.4:
+  version "7.6.4"
+  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-7.6.4.tgz#455ec5c51fee5ae99604ca15142409ffbbf84db9"
+  integrity sha512-xx560wGBk7seZ6y933idtjJQc1l+ck+pI3sKvhKozdBV1dRZoKhkW5xoCaFv9tQiX5RH1xfSxjuNu6g+lmN/gw==
   dependencies:
     tabbable "^6.2.0"
 
@@ -7345,10 +7342,10 @@ socks@^2.7.1:
     ip "^2.0.0"
     smart-buffer "^4.2.0"
 
-sortablejs@^1.15.3:
-  version "1.15.3"
-  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.15.3.tgz#033668db5ebfb11167d1249ab88e748f27959e29"
-  integrity sha512-zdK3/kwwAK1cJgy1rwl1YtNTbRmc8qW/+vgXf75A7NHag5of4pyI6uK86ktmQETyWRH7IGaE73uZOOBcGxgqZg==
+sortablejs@^1.15.6:
+  version "1.15.6"
+  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.15.6.tgz#ff93699493f5b8ab8d828f933227b4988df1d393"
+  integrity sha512-aNfiuwMEpfBM/CN6LY0ibyhxPfPbyFeBTYJKCvzkJ2GkUpazIt3H+QIPAMHwqQ7tMKaHz1Qj+rJJCqljnf4p3A==
 
 "source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.1, source-map-js@^1.0.2:
   version "1.0.2"
@@ -7728,10 +7725,10 @@ svg-tags@^1.0.0:
   resolved "https://registry.yarnpkg.com/svg-tags/-/svg-tags-1.0.0.tgz#58f71cee3bd519b59d4b2a843b6c7de64ac04764"
   integrity sha512-ovssysQTa+luh7A5Weu3Rta6FJlFBBbInjOh722LIt6klpU2/HtdUbszju/G4devcvk8PGt7FCLv5wftu3THUA==
 
-swrv@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/swrv/-/swrv-1.0.4.tgz#278b4811ed4acbb1ae46654972a482fd1847e480"
-  integrity sha512-zjEkcP8Ywmj+xOJW3lIT65ciY/4AL4e/Or7Gj0MzU3zBJNMdJiT8geVZhINavnlHRMMCcJLHhraLTAiDOTmQ9g==
+swrv@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/swrv/-/swrv-1.1.0.tgz#e3825e1e825893391e34fd5b924ba8e6122c14ce"
+  integrity sha512-pjllRDr2s0iTwiE5Isvip51dZGR7GjLH1gCSVyE8bQnbAx6xackXsFdojau+1O5u98yHF5V73HQGOFxKUXO9gQ==
 
 synckit@^0.6.0:
   version "0.6.2"
@@ -8143,6 +8140,11 @@ verror@1.10.0:
     assert-plus "^1.0.0"
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
+
+virtua@^0.39.3:
+  version "0.39.3"
+  resolved "https://registry.yarnpkg.com/virtua/-/virtua-0.39.3.tgz#6c7389b993a305516f361107849cfa73c2816f66"
+  integrity sha512-Ep3aiJXSGPm1UUniThr5mGDfG0upAleP7pqQs5mvvCgM1wPhII1ZKa7eNCWAJRLkC+InpXKokKozyaaj/aMYOQ==
 
 vite-hot-client@^0.2.4:
   version "0.2.4"
