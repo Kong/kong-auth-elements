@@ -130,7 +130,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.KONGPONENTS_BOT_PAT }}
 
       - name: Run Cypress component tests
-        uses: cypress-io/github-action@b86ab8d33218c786a7c2d17dfea9724eb8aa8b6b # v6.7.9
+        uses: cypress-io/github-action@7271bed2a170d73c0b08939cd192db51a1c46c50 # v6.7.10
         with:
           install: false
           command: yarn test
