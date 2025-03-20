@@ -1090,10 +1090,10 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.21.2.tgz#c35b5b3374b77743ed0544b518aba6208a27a99e"
   integrity sha512-gTqtvJ/G4KoR0WGctb7CChJTAOmDAwG2nG8Oz66Yyu6/GYlR25PDwVDanWcWmpbOl0zvjrIgEPunndYNK/QIeQ==
 
-"@kong/kongponents@^9.24.1":
-  version "9.24.1"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.24.1.tgz#2399785afbe9ae3f3778d283bd420e3039cc26e5"
-  integrity sha512-e4q+wHT1r9xwq9MNuUvenLDeU2PMlcZku9OvRY9NCaiu87KmwXY+R7GQlCEaT6/yS9RTk5XGFI6vvqkSt254FQ==
+"@kong/kongponents@^9.24.2":
+  version "9.24.2"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.24.2.tgz#7272fd18fde6989f47fbadc5663b91d2185ce9e7"
+  integrity sha512-Si+pxKC2vT5U/7XnQ5zKFyDItlnlisDG/gJfPSurtJyD3rfgYUHRFXg9RgzM4Jcr6lkV4FNa/JsdKBN1hKdcGw==
   dependencies:
     "@floating-ui/vue" "^1.1.6"
     "@kong/icons" "^1.21.2"
@@ -1107,7 +1107,7 @@
     sortablejs "^1.15.6"
     swrv "^1.1.0"
     v-calendar "^3.1.2"
-    virtua "^0.40.0"
+    virtua "^0.40.1"
     vue-draggable-next "^2.2.1"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -8216,7 +8216,7 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-virtua@^0.40.0:
+virtua@^0.40.1:
   version "0.40.3"
   resolved "https://registry.yarnpkg.com/virtua/-/virtua-0.40.3.tgz#52eceb8e13bfd2c4f9524b7372db786e5f165fdb"
   integrity sha512-rfl6VohBFoT0U64fVdOGag2p0D+YZbki7HQ5bjFZObStWBaWjjataIHFDjl4KuSr3yHBMgGd/+Va7W4Z2Y0LRg==
