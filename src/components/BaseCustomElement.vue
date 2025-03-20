@@ -27,5 +27,5 @@ const { injectedStyles } = useInjectStyles()
 
 // Import custom app styles from a single entrypoint
 // (since this is wrapping all custom elements)
-@import "@/assets/styles/app";
+@use "@/assets/styles/app" as *;
 </style>

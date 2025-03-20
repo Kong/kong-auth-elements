@@ -78,7 +78,9 @@ provide(
 
 // Message props: These provided values default to useI18n() message text so
 // they must be provided in this format so the default value can be set in the child component.
-props.registerButtonText && provide('register-button-text', computed((): string => props.registerButtonText))
+if (props.registerButtonText) {
+  provide('register-button-text', computed((): string => props.registerButtonText))
+}
 </script>
 
 <style lang="scss">
