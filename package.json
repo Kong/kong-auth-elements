@@ -64,7 +64,7 @@
     "cross-env": "^7.0.3",
     "cypress": "^14.1.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "^9.19.0",
+    "eslint": "^9.22.0",
     "postcss-custom-properties": "^14.0.4",
     "postcss-html": "^1.8.0",
     "rollup-plugin-visualizer": "^5.14.0",
