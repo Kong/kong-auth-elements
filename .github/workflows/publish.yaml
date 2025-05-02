@@ -26,7 +26,7 @@ jobs:
           token: ${{ secrets.KONGPONENTS_BOT_PAT }}
 
       - name: Use Node.js
-        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version-file: '.nvmrc'
 
@@ -46,7 +46,7 @@ jobs:
         run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
 
       - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@b1b432f13acb7768e0c8efdec416d363a57546f2 # v4.1.1
+        uses: cycjimmy/semantic-release-action@0a51e81a6baff2acad3ee88f4121c589c73d0f0e # v4.2.0
         env:
           # Since branch protections are on (pushing commits) you need to use a bot PAT
           GITHUB_TOKEN: ${{ secrets.KONGPONENTS_BOT_PAT }}
