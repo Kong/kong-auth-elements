@@ -1103,18 +1103,18 @@
     typescript-eslint "^8.28.0"
     vue-eslint-parser "^9.4.3"
 
-"@kong/icons@^1.25.1", "@kong/icons@^1.26.0":
+"@kong/icons@^1.26.0":
   version "1.26.0"
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.26.0.tgz#8ff1bb450e23adaeed7aa4f96daff132657a80d1"
   integrity sha512-qyCkogdcJlsjcYIObbOGctcCpqZG3D4wT83T2uAKAM4bTiFC91DeZvhe4O8HfS84OxEbym6IagkAA58I1Cek6A==
 
-"@kong/kongponents@^9.29.10":
-  version "9.29.10"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.29.10.tgz#09cf8d60e880af7fc731347994f0a751c423ee84"
-  integrity sha512-jYqMDgItWUB9rbmBQOt6I337CTjZJYqlcGnEVFOmvX0KY0fuvtOk+JHuS+86at8tJm1HSN8n8G35yLNy4sr7PQ==
+"@kong/kongponents@^9.31.2":
+  version "9.31.2"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.31.2.tgz#9390dc8691c300048df2c0c59bd5cf04640a603f"
+  integrity sha512-KzWU/DUxSpuZMZ3jeaV1Mq72bw2Xf3q9TRv1nbtiUhfqgXCslqhgLocXkxAGkQ7bAJ3YhLBFe2B8ffaax7ivbg==
   dependencies:
     "@floating-ui/vue" "^1.1.6"
-    "@kong/icons" "^1.25.1"
+    "@kong/icons" "^1.26.0"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
@@ -1125,7 +1125,7 @@
     sortablejs "^1.15.6"
     swrv "^1.1.0"
     v-calendar "^3.1.2"
-    virtua "^0.40.3"
+    virtua "^0.40.4"
     vue-draggable-next "^2.2.1"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -8240,10 +8240,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-virtua@^0.40.3:
-  version "0.40.3"
-  resolved "https://registry.yarnpkg.com/virtua/-/virtua-0.40.3.tgz#52eceb8e13bfd2c4f9524b7372db786e5f165fdb"
-  integrity sha512-rfl6VohBFoT0U64fVdOGag2p0D+YZbki7HQ5bjFZObStWBaWjjataIHFDjl4KuSr3yHBMgGd/+Va7W4Z2Y0LRg==
+virtua@^0.40.4:
+  version "0.40.4"
+  resolved "https://registry.yarnpkg.com/virtua/-/virtua-0.40.4.tgz#a325b4243311544aa8daaa449e7f86556a89ca84"
+  integrity sha512-eV55eOm2b5Lzc9upivqIcAFPgfBrfcVrppW9T4vhTH+QAbaxfw5ypq25apkG83T5FuiFEoQYnefix1fQyx/GXQ==
 
 vite-hot-client@^2.0.4:
   version "2.0.4"
