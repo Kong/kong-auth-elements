@@ -57,7 +57,7 @@
     "@kong/kongponents": "^9.31.2",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^22.15.1",
+    "@types/node": "^22.15.2",
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/tsconfig": "^0.7.0",
     "commitizen": "^4.3.1",
@@ -71,7 +71,7 @@
     "sass": "^1.87.0",
     "semantic-release": "^22.0.12",
     "start-server-and-test": "^2.0.11",
-    "stylelint": "^16.19.0",
+    "stylelint": "^16.19.1",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-config-recommended-vue": "^1.6.0",
@@ -79,7 +79,7 @@
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
     "vite-plugin-vue-devtools": "^7.7.5",
-    "vue-router": "^4.5.0",
+    "vue-router": "^4.5.1",
     "vue-tsc": "^2.2.10"
   },
   "peerDependencies": {
