@@ -1089,10 +1089,10 @@
   resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.17.4.tgz#78f35e5d3c88696cb0c3faeed232733106e12c10"
   integrity sha512-3BrKJvwlQ27jrVQIE+cJ9baTVz6cvxO5f7vw0UWOiXz/E23z5ZOGDpUMiyK7q3Jks9t3x8OsMx3BKPRu87TPnw==
 
-"@kong/eslint-config-kong-ui@^1.2.7":
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/@kong/eslint-config-kong-ui/-/eslint-config-kong-ui-1.2.8.tgz#e0f8be970dd1a140f0356d77055a409dcec214e3"
-  integrity sha512-kBCl2kDi7ViYehCFkiKcqyP8yqOZ9Jz476Pqv1kbSb2hP4pvdGwasUlzjbWAVgMopt/dtgsnkU0OdMHBWStXwg==
+"@kong/eslint-config-kong-ui@^1.2.8":
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/@kong/eslint-config-kong-ui/-/eslint-config-kong-ui-1.2.9.tgz#2b9b03c1053cabb70a94799eb035630843df92c0"
+  integrity sha512-nRkecRUjYDaqP59KmGenj2tklDQ/CASHxgBIkTOLgtiflw+Cm9ex0nUNadW9ecKenUi3x0Sg6Bd/MuLQA9gcYQ==
   dependencies:
     "@eslint/compat" "^1.2.4"
     "@eslint/eslintrc" "^3.3.1"
