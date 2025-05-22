@@ -1108,23 +1108,23 @@
     typescript-eslint "^8.28.0"
     vue-eslint-parser "^9.4.3"
 
-"@kong/icons@^1.26.0":
-  version "1.26.0"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.26.0.tgz#8ff1bb450e23adaeed7aa4f96daff132657a80d1"
-  integrity sha512-qyCkogdcJlsjcYIObbOGctcCpqZG3D4wT83T2uAKAM4bTiFC91DeZvhe4O8HfS84OxEbym6IagkAA58I1Cek6A==
-
 "@kong/icons@^1.28.0":
   version "1.28.0"
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.28.0.tgz#c1f5cb49468d974002b6885af7364f4c36302df6"
   integrity sha512-y/fwiZ9bWY2lttZhP8qOQuZuIm04BJ6kjHCKMGQSUL6NGd5/g+mOjF/OQZXHogkfTCNDE2WH6WBorkx7Avetdw==
 
-"@kong/kongponents@^9.31.10":
-  version "9.32.0"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.32.0.tgz#2c71fa42ebe585f63f5819854bb8ef2326478b4b"
-  integrity sha512-uZkb5sTU3cd8SgYQA6ojsnUJvCn+g3xWEAO+0zSIun58L63HJY9MbtMhVJ8uCuBmLfTD7fL6D5elh3s5QHfC8A==
+"@kong/icons@^1.29.0":
+  version "1.29.0"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.29.0.tgz#ac67d2963d7270191bfe49de0ac9a20bd57db479"
+  integrity sha512-q4cUTRfqDR4wrSiiYI4xcwuj4oTwzYd8OWHPiKAjuUHlzqKPzF3LKIaTirZrWOYsSVRHEnMaSO13UMN9nHptVw==
+
+"@kong/kongponents@^9.32.4":
+  version "9.32.4"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.32.4.tgz#91a7ddf51855a5f2b69e10ae00b66af5b8dd9dc9"
+  integrity sha512-dVLqIH3EeudEJdsniT25M4oClj/ltlvIz+GwuoQfL2vqKkz3x2XNYLCU5VIF4JMtzG7zBtRHLf2Npmp0fyKbtg==
   dependencies:
     "@floating-ui/vue" "^1.1.6"
-    "@kong/icons" "^1.26.0"
+    "@kong/icons" "^1.29.0"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
@@ -1135,7 +1135,7 @@
     sortablejs "^1.15.6"
     swrv "^1.1.0"
     v-calendar "^3.1.2"
-    virtua "^0.40.4"
+    virtua "^0.41.0"
     vue-draggable-next "^2.2.1"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -8250,10 +8250,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-virtua@^0.40.4:
-  version "0.40.4"
-  resolved "https://registry.yarnpkg.com/virtua/-/virtua-0.40.4.tgz#a325b4243311544aa8daaa449e7f86556a89ca84"
-  integrity sha512-eV55eOm2b5Lzc9upivqIcAFPgfBrfcVrppW9T4vhTH+QAbaxfw5ypq25apkG83T5FuiFEoQYnefix1fQyx/GXQ==
+virtua@^0.41.0:
+  version "0.41.2"
+  resolved "https://registry.yarnpkg.com/virtua/-/virtua-0.41.2.tgz#d6293f6bd316ced2cefb9a73dc0b145506afa7d8"
+  integrity sha512-48jgdeXKagXEVxalTFf1bJe/5JZq41QG9LcwDweFJwOZgOvIgoHhBR+IMZPOVd0AjtwvLOaS3O7MYNdti9c4VQ==
 
 vite-hot-client@^2.0.4:
   version "2.0.4"
