@@ -68,7 +68,7 @@
     "postcss-custom-properties": "^14.0.4",
     "postcss-html": "^1.8.0",
     "rollup-plugin-visualizer": "^5.14.0",
-    "sass": "^1.87.0",
+    "sass": "^1.89.0",
     "semantic-release": "^22.0.12",
     "start-server-and-test": "^2.0.11",
     "stylelint": "^16.19.1",
@@ -152,10 +152,10 @@
     }
   },
   "engines": {
-    "node": ">=22.14.0"
+    "node": ">=22.15.1"
   },
   "volta": {
-    "node": "22.14.0",
+    "node": "22.15.1",
     "yarn": "1.22.22"
   }
 }
