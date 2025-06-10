@@ -67,7 +67,7 @@
     "eslint": "^9.27.0",
     "postcss-custom-properties": "^14.0.4",
     "postcss-html": "^1.8.0",
-    "rollup-plugin-visualizer": "^5.14.0",
+    "rollup-plugin-visualizer": "^6.0.0",
     "sass": "^1.87.0",
     "semantic-release": "^22.0.12",
     "start-server-and-test": "^2.0.11",
