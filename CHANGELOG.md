@@ -1,3 +1,10 @@
+## [2.13.23](https://github.com/Kong/kong-auth-elements/compare/v2.13.22...v2.13.23) (2025-06-12)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies with stable version ([#1665](https://github.com/Kong/kong-auth-elements/issues/1665)) ([7662319](https://github.com/Kong/kong-auth-elements/commit/766231937844dbf8f4491a788e869295c33642d3))
+
 ## [2.13.22](https://github.com/Kong/kong-auth-elements/compare/v2.13.21...v2.13.22) (2025-06-10)
 
 
