@@ -1130,17 +1130,17 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.30.0.tgz#d88bdc254d1295e16521f6a6eca6e389a71e72c8"
   integrity sha512-us214oXAYHZedbVkb1H/qR31LHBlwhpJJ18miJvx071u0UzUdOKo/8nkww16LWEgSm8YQz59wRnoqk5ALwCf0A==
 
-"@kong/kongponents@^9.33.3":
-  version "9.33.3"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.33.3.tgz#8b279e68c9f1688611c1214c64c6e2bd9f2162f1"
-  integrity sha512-LWoE+FM8Q78fvb+lIUFRpUYm2pT/nDUsv3fGy1afuvDJ2VdaCst1NMWPj74pHH935XhNlr6EAgLv2MEDQZUI7A==
+"@kong/kongponents@^9.34.1":
+  version "9.34.1"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.34.1.tgz#874069c0e92f1bf11c26618ffddb205122b892a2"
+  integrity sha512-pCAnBpQo9620HM/d1ib3HuJaEZye9dpSwqWXilll/pahskDSoI8aBCFwk1uRVMW/dqAuN2MU9KSZ3rOl4FlWEg==
   dependencies:
     "@floating-ui/vue" "^1.1.6"
     "@kong/icons" "^1.29.0"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
-    focus-trap "^7.6.4"
+    focus-trap "^7.6.5"
     focus-trap-vue "^4.0.3"
     lodash-es "^4.17.21"
     nanoid "^5.0.9"
@@ -4348,10 +4348,10 @@ focus-trap-vue@^4.0.3:
   resolved "https://registry.yarnpkg.com/focus-trap-vue/-/focus-trap-vue-4.0.3.tgz#c13f19d94e666c5144498793e93e51e0c46c2660"
   integrity sha512-cIX5rybkCAlNZ4IHYJ3nCFIsipDDljJHHjtTO2IgYWkVYg7X9ipUVdab3HzYp88kmHgMwjcB71LYnXRRsF6ZqQ==
 
-focus-trap@^7.6.4:
-  version "7.6.4"
-  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-7.6.4.tgz#455ec5c51fee5ae99604ca15142409ffbbf84db9"
-  integrity sha512-xx560wGBk7seZ6y933idtjJQc1l+ck+pI3sKvhKozdBV1dRZoKhkW5xoCaFv9tQiX5RH1xfSxjuNu6g+lmN/gw==
+focus-trap@^7.6.5:
+  version "7.6.5"
+  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-7.6.5.tgz#56f0814286d43c1a2688e9bc4f31f17ae047fb76"
+  integrity sha512-7Ke1jyybbbPZyZXFxEftUtxFGLMpE2n6A+z//m4CRDlj0hW+o3iYSmh8nFlYMurOiJVDmJRilUQtJr08KfIxlg==
   dependencies:
     tabbable "^6.2.0"
 
