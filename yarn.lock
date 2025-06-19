@@ -2308,10 +2308,10 @@
   resolved "https://registry.yarnpkg.com/@vue/tsconfig/-/tsconfig-0.7.0.tgz#67044c847b7a137b8cbfd6b23104c36dbaf80d1d"
   integrity sha512-ku2uNz5MaZ9IerPPUyOHzyjhXoX2kVJaVf7hL315DC17vS6IiZRmmCPfggNbU16QTvM80+uYYy3eYJB59WCtvg==
 
-"@xstate/vue@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@xstate/vue/-/vue-2.0.0.tgz#bb95f91600c5fad2e8a72f872cb8f69b3b154e10"
-  integrity sha512-JlrJ3d+I6rZCcFBuu3O4GP+mGJfd11O9o69wRedzPMqZ+hxcMRBsih9L5kKnJHcU9CTmdJTT172oxTaYF7thzA==
+"@xstate/vue@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@xstate/vue/-/vue-4.0.4.tgz#4881cc378ec81c7c4b9fca6386afee0f9c1ffba5"
+  integrity sha512-nX7eGsXb652ryZYjw7MwcJV2tudvq4pGWlqglU49K30+I/MG1Syvss5eiTD42i8qsEW5GFBYXPh4Tn/yBkA9Vw==
 
 JSONStream@^1.3.5:
   version "1.3.5"
@@ -8537,10 +8537,10 @@ xml-name-validator@^4.0.0:
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-4.0.0.tgz#79a006e2e63149a8600f15430f0a4725d1524835"
   integrity sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==
 
-xstate@^4.38.3:
-  version "4.38.3"
-  resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.38.3.tgz#4e15e7ad3aa0ca1eea2010548a5379966d8f1075"
-  integrity sha512-SH7nAaaPQx57dx6qvfcIgqKRXIh4L0A1iYEqim4s1u7c9VoCgzZc+63FY90AKU4ZzOC2cfJzTnpO4zK7fCUzzw==
+xstate@^5.19.4:
+  version "5.19.4"
+  resolved "https://registry.yarnpkg.com/xstate/-/xstate-5.19.4.tgz#d8ab35e0f62a0ccafe6f22651288178a1b01df67"
+  integrity sha512-h1UMSYOB564NXqAI+VpXrxwaBdOJUh6LOStooQ+Rn/+gqJWtGBfjZn265BwFI8Mp4ZoOyoLDNf8X1yp3faBUZQ==
 
 xtend@~4.0.1:
   version "4.0.2"
