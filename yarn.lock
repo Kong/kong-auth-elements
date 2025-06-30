@@ -1125,23 +1125,18 @@
     typescript-eslint "^8.28.0"
     vue-eslint-parser "^9.4.3"
 
-"@kong/icons@^1.29.0":
-  version "1.30.0"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.30.0.tgz#d88bdc254d1295e16521f6a6eca6e389a71e72c8"
-  integrity sha512-us214oXAYHZedbVkb1H/qR31LHBlwhpJJ18miJvx071u0UzUdOKo/8nkww16LWEgSm8YQz59wRnoqk5ALwCf0A==
-
 "@kong/icons@^1.31.0":
   version "1.31.0"
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.31.0.tgz#5d51cba0f1718da0153bc1af4f9b731b36e5bcba"
   integrity sha512-tphJTLicE+H1e64IUbHqXcGTj5AHKEvrroVc2WfFEbHketrVARsMZ0aBcgQa0Xuh5MSBK2/wabyt88mTXUYrAw==
 
-"@kong/kongponents@^9.35.1":
-  version "9.35.1"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.35.1.tgz#573393f97b369261e8c55857378e2d08803cdb62"
-  integrity sha512-SDJ0u25hs1oR2MVrAxdqCodwnepdsYC0z7A+Jz1vC0gA61H+sHRGBmMdtNr3UXlExvdcRymZByhhJgrsR/H3dw==
+"@kong/kongponents@^9.35.4":
+  version "9.35.4"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.35.4.tgz#48ac8c006bf0b58aaea4330cc4f929c94985d1fa"
+  integrity sha512-OCaeEiWxYcDkbOCDT9fQaJzd7Pa8t78Odl28BstSxjzhLi9YHjoB6bYx6Vjhqruppqg260EprSWmLEPP00mpBg==
   dependencies:
     "@floating-ui/vue" "^1.1.6"
-    "@kong/icons" "^1.29.0"
+    "@kong/icons" "^1.31.0"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
@@ -1152,7 +1147,7 @@
     sortablejs "^1.15.6"
     swrv "^1.1.0"
     v-calendar "^3.1.2"
-    virtua "^0.41.2"
+    virtua "^0.41.3"
     vue-draggable-next "^2.2.1"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -8301,10 +8296,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-virtua@^0.41.2:
-  version "0.41.3"
-  resolved "https://registry.yarnpkg.com/virtua/-/virtua-0.41.3.tgz#39bd61b9e1137910cb30d39b20ea08bc3cf673ba"
-  integrity sha512-X0eG4hIsJFrmgiq5kiyxdBqu+83mn2ArO9L16flRg1cN0BrafOmRVYmYijgClKElTlhqLJ57cdGby0X6az2LGw==
+virtua@^0.41.3:
+  version "0.41.5"
+  resolved "https://registry.yarnpkg.com/virtua/-/virtua-0.41.5.tgz#41d2524070b2285456d6fb6d2866ddcbdc10238a"
+  integrity sha512-x1vsA9qIQNBFcCs1rzCjyYdMvDu/kT6o6zwwQnyqFOFdOyIzqyzU3WfR/hJC8WxUZXSCo2LkuoqapL8VDDMQPg==
 
 vite-hot-client@^2.0.4:
   version "2.0.4"
