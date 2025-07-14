@@ -45,7 +45,7 @@
     "xstate": "^4.38.3"
   },
   "devDependencies": {
-    "@babel/types": "^7.27.7",
+    "@babel/types": "^7.28.0",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@cypress/vite-dev-server": "^6.0.3",
@@ -57,19 +57,19 @@
     "@kong/kongponents": "^9.35.11",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^22.15.34",
+    "@types/node": "^22.15.35",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vue/tsconfig": "^0.7.0",
     "commitizen": "^4.3.1",
     "cross-env": "^7.0.3",
-    "cypress": "^14.5.0",
+    "cypress": "^14.5.1",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^9.29.0",
     "postcss-custom-properties": "^14.0.6",
     "postcss-html": "^1.8.0",
     "rollup-plugin-visualizer": "^6.0.3",
     "sass": "^1.89.2",
-    "semantic-release": "^24.2.5",
+    "semantic-release": "^24.2.6",
     "start-server-and-test": "^2.0.12",
     "stylelint": "^16.21.0",
     "stylelint-config-html": "^1.1.0",
@@ -80,7 +80,7 @@
     "vite": "^6.3.5",
     "vite-plugin-vue-devtools": "^7.7.7",
     "vue-router": "^4.5.1",
-    "vue-tsc": "^2.2.10"
+    "vue-tsc": "^2.2.12"
   },
   "peerDependencies": {
     "@kong/kongponents": ">= ^8.126.2 || < 10",
