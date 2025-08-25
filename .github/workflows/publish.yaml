@@ -7,6 +7,18 @@ on:
       - alpha
       - beta
 
+  pull_request:
+    branches:
+      - main
+      - alpha
+      - beta
+
+permissions:
+  id-token: write
+  contents: read
+  actions: read
+
+
 jobs:
   run-tests:
     name: Tests

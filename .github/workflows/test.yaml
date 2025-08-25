@@ -1,11 +1,6 @@
 name: Tests
 
 on:
-  pull_request:
-    branches:
-      - main
-      - alpha
-      - beta
 
   # Allow workflow to be called by another workflow
   workflow_call:
