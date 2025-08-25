@@ -128,7 +128,12 @@
           "changelogFile": "CHANGELOG.md"
         }
       ],
-      "@semantic-release/npm",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
       [
         "@semantic-release/git",
         {
@@ -155,7 +160,7 @@
     "node": ">=22.18.0"
   },
   "volta": {
-    "node": "22.18.0",
+    "node": "24.6.0",
     "yarn": "1.22.22"
   }
 }
