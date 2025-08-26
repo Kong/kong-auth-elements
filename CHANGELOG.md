@@ -1,3 +1,14 @@
+## [2.13.27](https://github.com/Kong/kong-auth-elements/compare/v2.13.26...v2.13.27) (2025-08-26)
+
+
+### Bug Fixes
+
+* **deps:** update all [@kong](https://github.com/kong) scoped dependencies ([#1693](https://github.com/Kong/kong-auth-elements/issues/1693)) ([1f9e61b](https://github.com/Kong/kong-auth-elements/commit/1f9e61b23d52dee42c5660c07092ce865f6545aa))
+* **deps:** update all [@kong](https://github.com/kong) scoped dependencies ([#1701](https://github.com/Kong/kong-auth-elements/issues/1701)) ([df38b6e](https://github.com/Kong/kong-auth-elements/commit/df38b6e6419f238a1b969f6100ae936288bd5fd4))
+* **deps:** update dependency @kong/icons to ^1.34.0 ([#1719](https://github.com/Kong/kong-auth-elements/issues/1719)) ([fbc0676](https://github.com/Kong/kong-auth-elements/commit/fbc067622068ad6a2bf7d0118788a25349039103))
+* **deps:** update dependency axios to ^1.11.0 ([#1704](https://github.com/Kong/kong-auth-elements/issues/1704)) ([dd06573](https://github.com/Kong/kong-auth-elements/commit/dd06573b010e9f6426619a3716a95a17921e1973))
+* **deps:** update vue dependencies with stable version ([#1707](https://github.com/Kong/kong-auth-elements/issues/1707)) ([b4cfe08](https://github.com/Kong/kong-auth-elements/commit/b4cfe08bd316a4a024028e2b330a4b06a9cb8e44))
+
 ## [2.13.26](https://github.com/Kong/kong-auth-elements/compare/v2.13.25...v2.13.26) (2025-07-09)
 
 
