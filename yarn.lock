@@ -943,10 +943,10 @@
     "@eslint/core" "^0.15.2"
     levn "^0.4.1"
 
-"@evilmartians/lefthook@^1.12.2":
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.12.2.tgz#f03b449bc7dfdc8d4ceae1b3cafc0b39c9b61edc"
-  integrity sha512-PQ7ZE08JiRNWydJpDeVijg8GjoTFiXQTy5/mVXf5U7epNZWYUEfnwjfXFa+HvsegodQcTenl05twrRxB/vOR8Q==
+"@evilmartians/lefthook@^1.12.3":
+  version "1.12.3"
+  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.12.3.tgz#081eca59a6d33646616af844244ce6842cd6b5a5"
+  integrity sha512-MtXIt8h+EVTv5tCGLzh9UwbA/LRv6esdPJOHlxr8NDKHbFnbo8PvU5uVQcm3PAQTd4DZN3HoyokqrwGwntoq6w==
 
 "@floating-ui/core@^1.7.3":
   version "1.7.3"
@@ -1933,10 +1933,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.11.tgz#b3b790f09cb1696cffcec605de025b088fa4225f"
   integrity sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==
 
-"@types/node@^22.17.1":
-  version "22.17.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.17.2.tgz#47a93d6f4b79327da63af727e7c54e8cab8c4d33"
-  integrity sha512-gL6z5N9Jm9mhY+U2KXZpteb+09zyffliRkZyZOHODGATyC5B1Jt/7TzuuiLkFsSUMLbS1OLmlj/E+/3KF4Q/4w==
+"@types/node@^22.17.2":
+  version "22.18.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.18.0.tgz#9e4709be4f104e3568f7dd1c71e2949bf147a47b"
+  integrity sha512-m5ObIqwsUp6BZzyiy4RdZpzWGub9bqLJMvZDD0QMXhxjqMHMENlj+SqF5QxoUwaQNFe+8kz8XM8ZQhqkQPTgMQ==
   dependencies:
     undici-types "~6.21.0"
 
