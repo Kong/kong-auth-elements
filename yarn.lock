@@ -955,10 +955,10 @@
   dependencies:
     "@floating-ui/utils" "^0.2.10"
 
-"@floating-ui/dom@^1.7.3":
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.7.3.tgz#6174ac3409e6a064bbdf1f4bb07188ee9461f8cf"
-  integrity sha512-uZA413QEpNuhtb3/iIKoYMSK07keHPYeXF02Zhd6e213j+d1NamLix/mCLxBUDW/Gx52sPH2m+chlUsyaBs/Ag==
+"@floating-ui/dom@^1.7.4":
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.7.4.tgz#ee667549998745c9c3e3e84683b909c31d6c9a77"
+  integrity sha512-OOchDgh4F2CchOX94cRVqhvy7b3AFb+/rQXyswmzmGakRfkMgoWVjfnLWkRirfLEfuD4ysVW16eXzwt3jHIzKA==
   dependencies:
     "@floating-ui/core" "^1.7.3"
     "@floating-ui/utils" "^0.2.10"
@@ -968,12 +968,12 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.10.tgz#a2a1e3812d14525f725d011a73eceb41fef5bc1c"
   integrity sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==
 
-"@floating-ui/vue@^1.1.8":
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/@floating-ui/vue/-/vue-1.1.8.tgz#b6db22f97d4bb3782ea4c10e141513450f5543c6"
-  integrity sha512-SNJAa1jbT8Gh1LvWw2uIIViLL0saV2bCY59ISCvJzhbut5DSb2H3LKUK49Xkd7SixTNHKX4LFu59nbwIXt9jjQ==
+"@floating-ui/vue@^1.1.9":
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/@floating-ui/vue/-/vue-1.1.9.tgz#508c386bd3d595247f1dda8dbca00b76fe8fcaf9"
+  integrity sha512-BfNqNW6KA83Nexspgb9DZuz578R7HT8MZw1CfK9I6Ah4QReNWEJsXWHN+SdmOVLNGmTPDi+fDT535Df5PzMLbQ==
   dependencies:
-    "@floating-ui/dom" "^1.7.3"
+    "@floating-ui/dom" "^1.7.4"
     "@floating-ui/utils" "^0.2.10"
     vue-demi ">=0.13.0"
 
@@ -1123,35 +1123,35 @@
     typescript-eslint "^8.28.0"
     vue-eslint-parser "^9.4.3"
 
-"@kong/icons@^1.33.2":
-  version "1.33.2"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.33.2.tgz#f3d4f5364d702fe3ed8099a4842e439777f21e5b"
-  integrity sha512-t9cPc2ba3aLHZRnFUj4HJ8GrLbkEJbb2ijDwcVh8VxR3Hl1z9wHJB1XLTfv5wt//hG9TBUxiCjJITbrgnl3jEA==
-
 "@kong/icons@^1.34.0":
   version "1.34.0"
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.34.0.tgz#40819008810e723fe41b3efc2ace54e61d66d237"
   integrity sha512-q5pjECUalMlAoE5+/LGguQ05/I15RltAmwIeaS6RrxqhLHrMCXpv4MhM6pa6KiQRKvc0jq/hI9YZuUzIfN8Cug==
 
-"@kong/kongponents@^9.38.6":
-  version "9.38.6"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.38.6.tgz#e5b4e42e33c133c2a41c227fe0170f39a122f0a7"
-  integrity sha512-OT90mGK+guAS+7KpZQExy3b9Hx54rPF9jLsf5+SETr1/Zmo/Be/ehLf62soicG9z0TxpRErbhJqIzemUZD+b1w==
+"@kong/icons@^1.35.0":
+  version "1.37.0"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.37.0.tgz#b723622df6977107cd3320e21d5028c2237a38ce"
+  integrity sha512-uby+Djmg2lstnx/R3bzysth11g2pNb6kBNK85WY4pJFPuKTdYV2QIHbKR4uY3UU+yXwI2U227qJEzJyyhZ6Fwg==
+
+"@kong/kongponents@^9.38.13":
+  version "9.41.1"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.41.1.tgz#b3562e8e3146112ef74f7661fe90a5545a1a9ac3"
+  integrity sha512-LkOKbWGhANsPEIL+0c2GQgJY1w3zwFB17QeHixl10lrstE3fpun/kAQAHOdTfHVCG57lUlAmYh9WBEZmUXnzdw==
   dependencies:
-    "@floating-ui/vue" "^1.1.8"
-    "@kong/icons" "^1.33.2"
+    "@floating-ui/vue" "^1.1.9"
+    "@kong/icons" "^1.35.0"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
     focus-trap "^7.6.5"
-    focus-trap-vue "^4.0.3"
+    focus-trap-vue "^4.1.0"
     lodash-es "^4.17.21"
     nanoid "^5.1.5"
     sortablejs "^1.15.6"
     swrv "^1.1.0"
     v-calendar "^3.1.2"
     virtua "^0.41.5"
-    vue-draggable-next "^2.2.1"
+    vue-draggable-next "^2.3.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -4405,10 +4405,10 @@ flatted@^3.3.3:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.3.3.tgz#67c8fad95454a7c7abebf74bb78ee74a44023358"
   integrity sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==
 
-focus-trap-vue@^4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/focus-trap-vue/-/focus-trap-vue-4.0.3.tgz#c13f19d94e666c5144498793e93e51e0c46c2660"
-  integrity sha512-cIX5rybkCAlNZ4IHYJ3nCFIsipDDljJHHjtTO2IgYWkVYg7X9ipUVdab3HzYp88kmHgMwjcB71LYnXRRsF6ZqQ==
+focus-trap-vue@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/focus-trap-vue/-/focus-trap-vue-4.1.0.tgz#7bcc54975310443feae8c3002f3bcf047c4b0d03"
+  integrity sha512-RvK28mED+4fqoqnJQyadfoiKZU2G/QEez+EnJtdsg83DjiuKetimvDGas9ot4p5bn1J09rDmKLtKFMBkwQc+JA==
 
 focus-trap@^7.6.5:
   version "7.6.5"
@@ -8593,10 +8593,10 @@ vue-demi@^0.13.11:
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.13.11.tgz#7d90369bdae8974d87b1973564ad390182410d99"
   integrity sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==
 
-vue-draggable-next@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/vue-draggable-next/-/vue-draggable-next-2.2.1.tgz#adbe98c74610cca8f4eb63f92042681f96920451"
-  integrity sha512-EAMS1IRHF0kZO0o5PMOinsQsXIqsrKT1hKmbICxG3UEtn7zLFkLxlAtajcCcUTisNvQ6TtCB5COjD9a1raNADw==
+vue-draggable-next@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/vue-draggable-next/-/vue-draggable-next-2.3.0.tgz#ba83154f60b8a3c24059c18b8060b72200a4c673"
+  integrity sha512-ymbY0UIwfSdg0iDN/iyNNwUrTqZ/6KbPryzsvTNXBLuDCuOBdNijSK8yynNtmiSj6RapTPQfjLGQdJrZkzBd2w==
 
 vue-eslint-parser@^9.4.3:
   version "9.4.3"
