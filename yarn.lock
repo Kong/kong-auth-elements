@@ -1133,7 +1133,7 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.37.0.tgz#b723622df6977107cd3320e21d5028c2237a38ce"
   integrity sha512-uby+Djmg2lstnx/R3bzysth11g2pNb6kBNK85WY4pJFPuKTdYV2QIHbKR4uY3UU+yXwI2U227qJEzJyyhZ6Fwg==
 
-"@kong/kongponents@^9.38.13":
+"@kong/kongponents@^9.41.1":
   version "9.41.1"
   resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.41.1.tgz#b3562e8e3146112ef74f7661fe90a5545a1a9ac3"
   integrity sha512-LkOKbWGhANsPEIL+0c2GQgJY1w3zwFB17QeHixl10lrstE3fpun/kAQAHOdTfHVCG57lUlAmYh9WBEZmUXnzdw==
