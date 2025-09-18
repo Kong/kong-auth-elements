@@ -1,3 +1,10 @@
+## [2.13.28](https://github.com/Kong/kong-auth-elements/compare/v2.13.27...v2.13.28) (2025-09-18)
+
+
+### Bug Fixes
+
+* **deps:** update vue dependencies with stable version ([#1717](https://github.com/Kong/kong-auth-elements/issues/1717)) ([665b56a](https://github.com/Kong/kong-auth-elements/commit/665b56a76f48b35613dc2c2134f329b7ba23d8fc))
+
 ## [2.13.27](https://github.com/Kong/kong-auth-elements/compare/v2.13.26...v2.13.27) (2025-08-26)
 
 
