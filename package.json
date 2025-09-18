@@ -45,7 +45,7 @@
     "xstate": "^4.38.3"
   },
   "devDependencies": {
-    "@babel/types": "^7.28.2",
+    "@babel/types": "^7.28.4",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@cypress/vite-dev-server": "^7.0.0",
@@ -57,7 +57,7 @@
     "@kong/kongponents": "^9.41.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^22.17.2",
+    "@types/node": "^22.18.1",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.7.0",
     "commitizen": "^4.3.1",
