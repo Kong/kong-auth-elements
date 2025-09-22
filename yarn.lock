@@ -937,10 +937,10 @@
     "@eslint/core" "^0.15.2"
     levn "^0.4.1"
 
-"@evilmartians/lefthook@^1.12.3":
-  version "1.12.3"
-  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.12.3.tgz#081eca59a6d33646616af844244ce6842cd6b5a5"
-  integrity sha512-MtXIt8h+EVTv5tCGLzh9UwbA/LRv6esdPJOHlxr8NDKHbFnbo8PvU5uVQcm3PAQTd4DZN3HoyokqrwGwntoq6w==
+"@evilmartians/lefthook@^1.12.4":
+  version "1.13.2"
+  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.13.2.tgz#a903ad2fb6521e5c0e8d2f8bc32630a57076889a"
+  integrity sha512-LIqr2tpf10hpxaC22GOmW+uGZpJLycZSmmtE09mA1AduALrJHLVTcHmVEKsb98l2vZBaRbCUIWw6uf0iE+AXOw==
 
 "@floating-ui/core@^1.7.3":
   version "1.7.3"
