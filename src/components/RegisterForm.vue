@@ -241,7 +241,7 @@ const regions = [
 
 const formData = reactive({
   email: '',
-  selectedRegionOption: regions[0].value,
+  selectedRegionOption: regions[0]!.value,
   fullName: '',
   organization: '',
   accessCode: '',
