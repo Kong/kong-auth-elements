@@ -54,12 +54,12 @@ export default function useIdentityProvider(
     const urlPath: string = win.getLocationPathname()
     const urlPathArray: string[] = urlPath.split('/')
 
-    if (userEntity === 'user') {
+    if (userEntity === 'user' && urlPathArray[1] !== undefined) {
       // Check for IDP organization login path (only on login page, just in case)
       isIdpLogin.value = urlPathArray[1].toLowerCase() === 'login' && !!urlPathArray[2]
       // Set login path
-      organizationLoginPath.value = urlPathArray[2]
-    } else if (userEntity === 'developer') {
+      organizationLoginPath.value = urlPathArray[2] ?? ''
+    } else if (userEntity === 'developer' && urlPathArray[1] !== undefined) {
       // Check for /login/sso path (only on login page, and 'sso' is second part of URL split)
       isIdpLogin.value = urlPathArray[1].toLowerCase() === 'login' && !!urlPathArray[2] && urlPathArray[2] === 'sso'
 

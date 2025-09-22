@@ -83,7 +83,7 @@
     "vue-tsc": "^3.0.6"
   },
   "peerDependencies": {
-    "@kong/kongponents": ">= ^8.126.2 || < 10",
+    "@kong/kongponents": "^8.126.2 || ^9.0.0",
     "axios": "^1.11.0",
     "vue": "<= 3.3.0"
   },
