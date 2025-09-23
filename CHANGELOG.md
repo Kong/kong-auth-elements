@@ -1,3 +1,10 @@
+## [2.13.29](https://github.com/Kong/kong-auth-elements/compare/v2.13.28...v2.13.29) (2025-09-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1.12.0 [security] ([#1732](https://github.com/Kong/kong-auth-elements/issues/1732)) ([46ec7ee](https://github.com/Kong/kong-auth-elements/commit/46ec7ee05e00213ed2664412d6583cd0dd4d46c6))
+
 ## [2.13.28](https://github.com/Kong/kong-auth-elements/compare/v2.13.27...v2.13.28) (2025-09-18)
 
 
