@@ -57,7 +57,7 @@
     "@kong/kongponents": "^9.42.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^22.18.1",
+    "@types/node": "^22.18.3",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
     "commitizen": "^4.3.1",
