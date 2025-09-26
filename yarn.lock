@@ -1122,23 +1122,18 @@
     typescript-eslint "^8.39.0"
     vue-eslint-parser "^10.2.0"
 
-"@kong/icons@^1.35.0":
-  version "1.37.0"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.37.0.tgz#b723622df6977107cd3320e21d5028c2237a38ce"
-  integrity sha512-uby+Djmg2lstnx/R3bzysth11g2pNb6kBNK85WY4pJFPuKTdYV2QIHbKR4uY3UU+yXwI2U227qJEzJyyhZ6Fwg==
-
 "@kong/icons@^1.38.0":
   version "1.38.0"
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.38.0.tgz#4e2266b2bfd680ad0fa3a91c6ff55a518a8b5d5a"
   integrity sha512-pney4rgNJOUqp9L4KUHUmLtWLvzMtYN2R4dCiuv7x2LBEVxn1NvvqQsFtBEHQZ28og2mJNS1Fc7wobbW6o2bcg==
 
-"@kong/kongponents@^9.42.0":
-  version "9.42.0"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.42.0.tgz#f3f4fa7ef167552318ed81c924b1ae4f4d9df661"
-  integrity sha512-1lH5IFHzA0XLsNe9hl1Oau69/m0eOixouIIbEV1gEbE21Jj5fEHY0iWF3371OcW2lBwKAUJ4vPsYRSPsS9Ubmw==
+"@kong/kongponents@^9.42.3":
+  version "9.42.3"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.42.3.tgz#4ad5c9890d469830cd2036070483c604a78023e8"
+  integrity sha512-Ok9HZ3BiIZAaUMs+wU8WdkWfqrmrbLmKtYPCcEVdxPzi4jDaGQSyHoI+vpM5DKS+wPV83l1JUp4gyQ1TbjOy4Q==
   dependencies:
     "@floating-ui/vue" "^1.1.9"
-    "@kong/icons" "^1.35.0"
+    "@kong/icons" "^1.38.0"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
