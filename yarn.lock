@@ -7911,7 +7911,7 @@ stylelint-config-html@>=1.0.0, stylelint-config-html@^1.1.0:
   resolved "https://registry.yarnpkg.com/stylelint-config-html/-/stylelint-config-html-1.1.0.tgz#999db19aea713b7ff6dde92ada76e4c1bd812b66"
   integrity sha512-IZv4IVESjKLumUGi+HWeb7skgO6/g4VMuAYrJdlqQFndgbj6WJAXPhaysvBiXefX79upBdQVumgYcdd17gCpjQ==
 
-stylelint-config-recommended-scss@^16.0.0:
+stylelint-config-recommended-scss@^16.0.1:
   version "16.0.1"
   resolved "https://registry.yarnpkg.com/stylelint-config-recommended-scss/-/stylelint-config-recommended-scss-16.0.1.tgz#10ac6dab288832695a4f96f4cdc77a68aa7eca9f"
   integrity sha512-wfpU6kmTUwPEHMACYdpt5wLM/aS44+sqE8yk82LkOkA7yVpAuTZDwd3m9762d0mRnNCn0JMUx4XfDVDmbb8hTA==
