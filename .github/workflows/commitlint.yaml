@@ -5,7 +5,7 @@ on:
 
 jobs:
   commitlint:
-    if: ${{ github.actor != 'renovate[bot]' }}
+    if: ${{ github.actor != 'renovate[bot]' && github.actor != 'mend[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
