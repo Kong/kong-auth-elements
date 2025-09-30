@@ -61,14 +61,14 @@
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
     "commitizen": "^4.3.1",
-    "cross-env": "^10.0.0",
+    "cross-env": "^10.1.0",
     "cypress": "^14.5.4",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^9.36.0",
     "postcss-custom-properties": "^14.0.6",
     "postcss-html": "^1.8.0",
     "rollup-plugin-visualizer": "^6.0.3",
-    "sass": "^1.92.1",
+    "sass": "^1.93.2",
     "semantic-release": "^24.2.8",
     "start-server-and-test": "^2.1.0",
     "stylelint": "^16.24.0",
@@ -80,7 +80,7 @@
     "vite": "^6.3.5",
     "vite-plugin-vue-devtools": "^8.0.1",
     "vue-router": "^4.5.1",
-    "vue-tsc": "^3.0.6"
+    "vue-tsc": "^3.1.0"
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.126.2 || ^9.0.0",
@@ -157,10 +157,10 @@
     }
   },
   "engines": {
-    "node": ">=22.19.0"
+    "node": ">=22.20.0"
   },
   "volta": {
-    "node": "24.8.0",
+    "node": "24.9.0",
     "yarn": "1.22.22"
   }
 }
