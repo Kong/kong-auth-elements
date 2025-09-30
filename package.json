@@ -39,7 +39,7 @@
   "dependencies": {
     "@kong/icons": "^1.38.0",
     "@xstate/vue": "^2.0.0",
-    "axios": "^1.12.1",
+    "axios": "^1.12.2",
     "vue": "^3.5.22",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
@@ -51,13 +51,13 @@
     "@cypress/vite-dev-server": "^7.0.0",
     "@cypress/vue": "^6.0.2",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
-    "@evilmartians/lefthook": "^1.13.0",
+    "@evilmartians/lefthook": "^1.13.6",
     "@kong/design-tokens": "^1.18.0",
     "@kong/eslint-config-kong-ui": "^1.5.5",
     "@kong/kongponents": "^9.42.4",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^22.18.3",
+    "@types/node": "^22.18.7",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
     "commitizen": "^4.3.1",
@@ -69,8 +69,8 @@
     "postcss-html": "^1.8.0",
     "rollup-plugin-visualizer": "^6.0.3",
     "sass": "^1.93.2",
-    "semantic-release": "^24.2.8",
-    "start-server-and-test": "^2.1.0",
+    "semantic-release": "^24.2.9",
+    "start-server-and-test": "^2.1.2",
     "stylelint": "^16.24.0",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-recommended-scss": "^16.0.2",
@@ -84,7 +84,7 @@
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.126.2 || ^9.0.0",
-    "axios": "^1.12.1",
+    "axios": "^1.12.2",
     "vue": "<= 3.3.0"
   },
   "files": [
