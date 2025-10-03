@@ -1154,6 +1154,11 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.38.0.tgz#4e2266b2bfd680ad0fa3a91c6ff55a518a8b5d5a"
   integrity sha512-pney4rgNJOUqp9L4KUHUmLtWLvzMtYN2R4dCiuv7x2LBEVxn1NvvqQsFtBEHQZ28og2mJNS1Fc7wobbW6o2bcg==
 
+"@kong/icons@^1.39.0":
+  version "1.39.0"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.39.0.tgz#630927b5cd0904864b45fc2e8daf2b2c9aefcc2d"
+  integrity sha512-mduajtf+GMmmjpiRdsYfrwOwujNBIF7XaUq6yn9JpfVLzz0O1hAQ/oJ0jvx5VWbWquIjmvM09lJTAVNqurWtbg==
+
 "@kong/kongponents@^9.42.4":
   version "9.42.4"
   resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.42.4.tgz#80669b5ae787e37b197ecef318a098faa6f8a21a"
