@@ -37,7 +37,7 @@
     "commit": "cz"
   },
   "dependencies": {
-    "@kong/icons": "^1.39.0",
+    "@kong/icons": "^1.39.1",
     "@xstate/vue": "^2.0.0",
     "axios": "^1.12.2",
     "vue": "^3.5.22",
@@ -52,8 +52,8 @@
     "@cypress/vue": "^6.0.2",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
     "@evilmartians/lefthook": "^1.13.6",
-    "@kong/design-tokens": "^1.18.0",
-    "@kong/eslint-config-kong-ui": "^1.5.5",
+    "@kong/design-tokens": "^1.18.1",
+    "@kong/eslint-config-kong-ui": "^1.5.6",
     "@kong/kongponents": "^9.46.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
