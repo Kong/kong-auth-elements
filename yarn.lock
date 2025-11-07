@@ -1151,34 +1151,29 @@
     typescript-eslint "^8.39.0"
     vue-eslint-parser "^10.2.0"
 
-"@kong/icons@^1.38.0":
-  version "1.38.0"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.38.0.tgz#4e2266b2bfd680ad0fa3a91c6ff55a518a8b5d5a"
-  integrity sha512-pney4rgNJOUqp9L4KUHUmLtWLvzMtYN2R4dCiuv7x2LBEVxn1NvvqQsFtBEHQZ28og2mJNS1Fc7wobbW6o2bcg==
-
 "@kong/icons@^1.39.0":
   version "1.39.0"
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.39.0.tgz#630927b5cd0904864b45fc2e8daf2b2c9aefcc2d"
   integrity sha512-mduajtf+GMmmjpiRdsYfrwOwujNBIF7XaUq6yn9JpfVLzz0O1hAQ/oJ0jvx5VWbWquIjmvM09lJTAVNqurWtbg==
 
-"@kong/kongponents@^9.42.4":
-  version "9.42.4"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.42.4.tgz#80669b5ae787e37b197ecef318a098faa6f8a21a"
-  integrity sha512-dskmqsuRJg9NVXfa0TQS3DY5a+LTdaqxiIBF8RJJ/dLwddIhYYf/Jq7c5zns3JXeudpdKtZ0jTksNJ5r6LYr1w==
+"@kong/kongponents@^9.46.1":
+  version "9.46.1"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.46.1.tgz#4bbb9a9a69c42396f5388265bf79aa1ef51a2804"
+  integrity sha512-jwje6Dr0MkShIuITFE9NU0kJQeZupkxA8cl3wgXid33T704ayXA7TGUH5bTlhzqfIRuAXWKh2PP7qtrlKgEoPA==
   dependencies:
     "@floating-ui/vue" "^1.1.9"
-    "@kong/icons" "^1.38.0"
+    "@kong/icons" "^1.39.0"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
     focus-trap "^7.6.5"
     focus-trap-vue "^4.1.0"
     lodash-es "^4.17.21"
-    nanoid "^5.1.5"
+    nanoid "^5.1.6"
     sortablejs "^1.15.6"
     swrv "^1.1.0"
     v-calendar "^3.1.2"
-    virtua "^0.41.5"
+    virtua "^0.45.3"
     vue-draggable-next "^2.3.0"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -6221,6 +6216,11 @@ nanoid@^5.1.5:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-5.1.5.tgz#f7597f9d9054eb4da9548cdd53ca70f1790e87de"
   integrity sha512-Ir/+ZpE9fDsNH0hQ3C68uyThDXzYcim2EqcZ8zn8Chtt1iylPT9xXJB0kPCnqzgcEGikO9RxSrh63MsmVCU7Fw==
 
+nanoid@^5.1.6:
+  version "5.1.6"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-5.1.6.tgz#30363f664797e7d40429f6c16946d6bd7a3f26c9"
+  integrity sha512-c7+7RQ+dMB5dPwwCp4ee1/iV/q2P6aK1mTZcfr1BTuVlyW9hJYiMPybJCcnBlQtuSmTIWNeazm/zqNoZSSElBg==
+
 natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
@@ -8534,10 +8534,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-virtua@^0.41.5:
-  version "0.41.5"
-  resolved "https://registry.yarnpkg.com/virtua/-/virtua-0.41.5.tgz#41d2524070b2285456d6fb6d2866ddcbdc10238a"
-  integrity sha512-x1vsA9qIQNBFcCs1rzCjyYdMvDu/kT6o6zwwQnyqFOFdOyIzqyzU3WfR/hJC8WxUZXSCo2LkuoqapL8VDDMQPg==
+virtua@^0.45.3:
+  version "0.45.3"
+  resolved "https://registry.yarnpkg.com/virtua/-/virtua-0.45.3.tgz#1d1e554a82a8fe9c74f46823d15c7e64c11513a4"
+  integrity sha512-+nW3VOwXhlte3m4jbS9gVMked/cZo95IKChH0qol+XUApQVZpPaLDGee1BC/rVng0tsMfxs0vJPEPEUAAfKpkw==
 
 vite-dev-rpc@^1.1.0:
   version "1.1.0"
