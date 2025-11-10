@@ -999,10 +999,10 @@
     "@eslint/core" "^0.17.0"
     levn "^0.4.1"
 
-"@evilmartians/lefthook@^1.13.6":
-  version "1.13.6"
-  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.13.6.tgz#f715d8800dd942144f25020ae5c286859b104652"
-  integrity sha512-79vplrUBWL4Fkt59YkEBdSpqBVhNrY8t5+jEp+wX5QbsmbQLcSULqwS7FmbNRyECa2LWMrUWpe6ENIfNwB4jiw==
+"@evilmartians/lefthook@^2.0.2":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-2.0.3.tgz#050753dc6806cf580386c8a3f73f5baffaea6016"
+  integrity sha512-anRTB14HYR43p/1UR7oF6jaSiMAsVZlsS2vVJLV+UHs2VNvPLXvzxOZRs6kROcksDTK7c1W49jT7o5iAzpCTtg==
 
 "@fastify/busboy@^2.0.0":
   version "2.1.1"
