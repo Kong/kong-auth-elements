@@ -1228,17 +1228,17 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.39.1.tgz#a973eeb8015d5dd2e08b642d5885ea0c53b0321b"
   integrity sha512-AwhMPHLYFBdXuCxgKjJdeGj1U0R2oxmvIf5GZtgJ/TqGIJMV55ZPeWwEzHNbntdquxZP9lG6XWsTzzYP10sbjw==
 
-"@kong/kongponents@^9.46.1":
-  version "9.46.1"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.46.1.tgz#4bbb9a9a69c42396f5388265bf79aa1ef51a2804"
-  integrity sha512-jwje6Dr0MkShIuITFE9NU0kJQeZupkxA8cl3wgXid33T704ayXA7TGUH5bTlhzqfIRuAXWKh2PP7qtrlKgEoPA==
+"@kong/kongponents@^9.46.8":
+  version "9.46.8"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.46.8.tgz#f0294cb048531bf1b86ebe73a7099e5fbeb96058"
+  integrity sha512-jWNf1hMXCd1u7bh3EER8UoZLlJ/CvhW1Zv7fMJwzF4ILBkauosPIkPF3xq2KM/t69jl8itnKB6RoXgJGgJBSJg==
   dependencies:
     "@floating-ui/vue" "^1.1.9"
     "@kong/icons" "^1.39.0"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
-    focus-trap "^7.6.5"
+    focus-trap "^7.6.6"
     focus-trap-vue "^4.1.0"
     lodash-es "^4.17.21"
     nanoid "^5.1.6"
@@ -4609,12 +4609,12 @@ focus-trap-vue@^4.1.0:
   resolved "https://registry.yarnpkg.com/focus-trap-vue/-/focus-trap-vue-4.1.0.tgz#7bcc54975310443feae8c3002f3bcf047c4b0d03"
   integrity sha512-RvK28mED+4fqoqnJQyadfoiKZU2G/QEez+EnJtdsg83DjiuKetimvDGas9ot4p5bn1J09rDmKLtKFMBkwQc+JA==
 
-focus-trap@^7.6.5:
-  version "7.6.5"
-  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-7.6.5.tgz#56f0814286d43c1a2688e9bc4f31f17ae047fb76"
-  integrity sha512-7Ke1jyybbbPZyZXFxEftUtxFGLMpE2n6A+z//m4CRDlj0hW+o3iYSmh8nFlYMurOiJVDmJRilUQtJr08KfIxlg==
+focus-trap@^7.6.6:
+  version "7.6.6"
+  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-7.6.6.tgz#a255c1088ddc8cd4363b3023bf28b224fd38aff2"
+  integrity sha512-v/Z8bvMCajtx4mEXmOo7QEsIzlIOqRXTIwgUfsFOF9gEsespdbD0AkPIka1bSXZ8Y8oZ+2IVDQZePkTfEHZl7Q==
   dependencies:
-    tabbable "^6.2.0"
+    tabbable "^6.3.0"
 
 follow-redirects@^1.15.6:
   version "1.15.11"
@@ -8306,10 +8306,10 @@ systeminformation@5.27.7:
   resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.27.7.tgz#4dc9d436419948cd5e5f076779a1298220d19a72"
   integrity sha512-saaqOoVEEFaux4v0K8Q7caiauRwjXC4XbD2eH60dxHXbpKxQ8kH9Rf7Jh+nryKpOUSEFxtCdBlSUx0/lO6rwRg==
 
-tabbable@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-6.2.0.tgz#732fb62bc0175cfcec257330be187dcfba1f3b97"
-  integrity sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==
+tabbable@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-6.3.0.tgz#2e0e6163935387cdeacd44e9334616ca0115a8d3"
+  integrity sha512-EIHvdY5bPLuWForiR/AN2Bxngzpuwn1is4asboytXtpTgsArc+WmSJKVLlhdh71u7jFcryDqB2A8lQvj78MkyQ==
 
 table@^6.9.0:
   version "6.9.0"
