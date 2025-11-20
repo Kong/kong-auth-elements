@@ -1,6 +1,6 @@
 {
   "name": "@kong/kong-auth-elements",
-  "version": "2.13.35",
+  "version": "2.13.36",
   "type": "module",
   "main": "dist/kong-auth-elements.vue.umd.js",
   "module": "dist/kong-auth-elements.vue.es.js",
