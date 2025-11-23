@@ -1690,10 +1690,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
-"@rolldown/pluginutils@1.0.0-beta.29":
-  version "1.0.0-beta.29"
-  resolved "https://registry.yarnpkg.com/@rolldown/pluginutils/-/pluginutils-1.0.0-beta.29.tgz#f8fc9a8788757dccba0d3b7fee93183621773d4c"
-  integrity sha512-NIJgOsMjbxAXvoGq/X0gD7VPMQ8j9g0BiDaNjVNVjvl+iKXxL3Jre0v31RmBYeLEmkbj2s02v8vFTbUXi5XS2Q==
+"@rolldown/pluginutils@1.0.0-beta.50":
+  version "1.0.0-beta.50"
+  resolved "https://registry.yarnpkg.com/@rolldown/pluginutils/-/pluginutils-1.0.0-beta.50.tgz#a12f07e9095b8901debcc17d98b4350f0cc64633"
+  integrity sha512-5e76wQiQVeL1ICOZVUg4LSOVYg9jyhGCin+icYozhsUzM+fHE7kddi1bdiE0jwVqTfkjba3jUFbEkoC9WkdvyA==
 
 "@rollup/rollup-android-arm-eabi@4.53.1":
   version "4.53.1"
@@ -2192,12 +2192,12 @@
     "@typescript-eslint/types" "8.46.3"
     eslint-visitor-keys "^4.2.1"
 
-"@vitejs/plugin-vue@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-6.0.1.tgz#4c7f559621af104a22255c6ace5626e6d8349689"
-  integrity sha512-+MaE752hU0wfPFJEUAIxqw18+20euHHdxVtMvbFcOEpjEyfqXH/5DCoTHiVJ0J29EhTJdoTkjEv5YBKU9dnoTw==
+"@vitejs/plugin-vue@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-6.0.2.tgz#318d1828fe73e4a0b73f473040dcb3ad52db38ec"
+  integrity sha512-iHmwV3QcVGGvSC1BG5bZ4z6iwa1SOpAPWmnjOErd4Ske+lZua5K9TtAVdx0gMBClJ28DViCbSmZitjWZsWO3LA==
   dependencies:
-    "@rolldown/pluginutils" "1.0.0-beta.29"
+    "@rolldown/pluginutils" "1.0.0-beta.50"
 
 "@volar/language-core@2.4.23":
   version "2.4.23"
@@ -2721,15 +2721,6 @@ aws4@^1.8.0:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.12.0.tgz#ce1c9d143389679e253b314241ea9aa5cec980d3"
   integrity sha512-NmWvPnx0F1SfrQbYwOi7OeaNGokp9XhzNioJ/CSBs8Qa4vxug81mhJEAVZwxXuBmYB5KDRfMq/F3RR0BIU7sWg==
-
-axios@^1.12.1:
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.12.2.tgz#6c307390136cf7a2278d09cec63b136dfc6e6da7"
-  integrity sha512-vMJzPewAlRyOgxV2dU0Cuz2O8zzzx9VYtbJOaBgXFeLc4IV/Eg50n4LowmehOOR61S8ZMpc2K5Sa7g6A4jfkUw==
-  dependencies:
-    follow-redirects "^1.15.6"
-    form-data "^4.0.4"
-    proxy-from-env "^1.1.0"
 
 axios@^1.13.2:
   version "1.13.2"
@@ -7605,7 +7596,7 @@ safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-sass@^1.93.3:
+sass@^1.94.2:
   version "1.94.2"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.94.2.tgz#198511fc6fdd2fc0a71b8d1261735c12608d4ef3"
   integrity sha512-N+7WK20/wOr7CzA2snJcUSSNTCzeCGUTFY3OgeQP3mZ1aj9NMQ0mSTXwlrnd89j33zzQJGqIN52GIOmYrfq46A==
@@ -7980,10 +7971,10 @@ ssri@^12.0.0:
   dependencies:
     minipass "^7.0.3"
 
-start-server-and-test@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-2.1.2.tgz#8cbaa4e1b0cf0faaacd6059b7258669b1b616f5d"
-  integrity sha512-OIjfo3G6QV9Sh6IlMqj58oZwVhPVuU/l6uVACG7YNE9kAfDvcYoPThtb0NNT3tZMMC3wOYbXnC15yiCSNFkdRg==
+start-server-and-test@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-2.1.3.tgz#1f8f8f2666131c502a7f8be69cf35418dde3f719"
+  integrity sha512-k4EcbNjeg0odaDkAMlIeDVDByqX9PIgL4tivgP2tES6Zd8o+4pTq/HgbWCyA3VHIoZopB+wGnNPKYGGSByNriQ==
   dependencies:
     arg "^5.0.2"
     bluebird "3.7.2"
@@ -7992,7 +7983,7 @@ start-server-and-test@^2.1.2:
     execa "5.1.1"
     lazy-ass "1.6.0"
     ps-tree "1.2.0"
-    wait-on "8.0.5"
+    wait-on "9.0.3"
 
 stream-combiner2@~1.1.1:
   version "1.1.1"
@@ -8808,7 +8799,7 @@ vite-plugin-inspect@^11.3.3:
     unplugin-utils "^0.3.0"
     vite-dev-rpc "^1.1.0"
 
-vite-plugin-vue-devtools@^8.0.4:
+vite-plugin-vue-devtools@^8.0.5:
   version "8.0.5"
   resolved "https://registry.yarnpkg.com/vite-plugin-vue-devtools/-/vite-plugin-vue-devtools-8.0.5.tgz#bb2c4bc31159bd4800741c45e393fa6da7aafdda"
   integrity sha512-p619BlKFOqQXJ6uDWS1vUPQzuJOD6xJTfftj57JXBGoBD/yeQCowR7pnWcr/FEX4/HVkFbreI6w2uuGBmQOh6A==
@@ -8919,12 +8910,12 @@ vue@^3.5.24:
     "@vue/server-renderer" "3.5.24"
     "@vue/shared" "3.5.24"
 
-wait-on@8.0.5:
-  version "8.0.5"
-  resolved "https://registry.yarnpkg.com/wait-on/-/wait-on-8.0.5.tgz#63169c6979aea15cbfc813d91e4cf2513958632b"
-  integrity sha512-J3WlS0txVHkhLRb2FsmRg3dkMTCV1+M6Xra3Ho7HzZDHpE7DCOnoSoCJsZotrmW3uRMhvIJGSKUKrh/MeF4iag==
+wait-on@9.0.3:
+  version "9.0.3"
+  resolved "https://registry.yarnpkg.com/wait-on/-/wait-on-9.0.3.tgz#3ea858db0b854039e6aff5f323885aaef25e32bf"
+  integrity sha512-13zBnyYvFDW1rBvWiJ6Av3ymAaq8EDQuvxZnPIw3g04UqGi4TyoIJABmfJ6zrvKo9yeFQExNkOk7idQbDJcuKA==
   dependencies:
-    axios "^1.12.1"
+    axios "^1.13.2"
     joi "^18.0.1"
     lodash "^4.17.21"
     minimist "^1.2.8"
