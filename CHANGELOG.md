@@ -1,3 +1,10 @@
+## [2.13.37](https://github.com/Kong/kong-auth-elements/compare/v2.13.36...v2.13.37) (2025-11-25)
+
+
+### Bug Fixes
+
+* back to publishing using semantic-release [KHCP-17673] ([#1789](https://github.com/Kong/kong-auth-elements/issues/1789)) ([c614def](https://github.com/Kong/kong-auth-elements/commit/c614def3e7591540b55e384e560548b1c65d982f))
+
 ## [2.13.36](https://github.com/Kong/kong-auth-elements/compare/v2.13.35...v2.13.36) (2025-11-20)
 
 
