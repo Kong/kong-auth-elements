@@ -1183,10 +1183,10 @@
   resolved "https://registry.yarnpkg.com/@keyv/serialize/-/serialize-1.1.1.tgz#0c01dd3a3483882af7cf3878d4e71d505c81fc4a"
   integrity sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==
 
-"@kong/design-tokens@^1.18.1":
-  version "1.18.1"
-  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.18.1.tgz#3e574f6ce1d0fe84f4700e6abb979ed703fb9d01"
-  integrity sha512-b+cgC0kdXVEtGKcx1Lis3ZcDwrUzNbF3cXsxgQWQ/D/8ViXaQ+gL5Wt3zQJ3PGQ5tbBuwwebpVxtag4UHgoVjw==
+"@kong/design-tokens@^1.18.2":
+  version "1.18.2"
+  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.18.2.tgz#4d1b605ef1dc59dc8f8de2fc2198190c481de9dd"
+  integrity sha512-xYdj2b72Dtos8BIOqiLRJF2IYsB1bBx3OEjeGa7WnOTd9FK/0ZeaclwrL5N4fBFV9w+Vf4oJnXyYCBZ1gW1fOg==
 
 "@kong/eslint-config-kong-ui@^1.5.6":
   version "1.5.6"
@@ -1205,23 +1205,18 @@
     typescript-eslint "^8.46.1"
     vue-eslint-parser "^10.2.0"
 
-"@kong/icons@^1.39.0":
-  version "1.39.0"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.39.0.tgz#630927b5cd0904864b45fc2e8daf2b2c9aefcc2d"
-  integrity sha512-mduajtf+GMmmjpiRdsYfrwOwujNBIF7XaUq6yn9JpfVLzz0O1hAQ/oJ0jvx5VWbWquIjmvM09lJTAVNqurWtbg==
-
 "@kong/icons@^1.39.1":
   version "1.39.1"
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.39.1.tgz#a973eeb8015d5dd2e08b642d5885ea0c53b0321b"
   integrity sha512-AwhMPHLYFBdXuCxgKjJdeGj1U0R2oxmvIf5GZtgJ/TqGIJMV55ZPeWwEzHNbntdquxZP9lG6XWsTzzYP10sbjw==
 
-"@kong/kongponents@^9.46.8":
-  version "9.46.8"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.46.8.tgz#f0294cb048531bf1b86ebe73a7099e5fbeb96058"
-  integrity sha512-jWNf1hMXCd1u7bh3EER8UoZLlJ/CvhW1Zv7fMJwzF4ILBkauosPIkPF3xq2KM/t69jl8itnKB6RoXgJGgJBSJg==
+"@kong/kongponents@^9.46.13":
+  version "9.47.0"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.47.0.tgz#6cc4b9a0827386e69e076bbfe6a6f9111a634cc5"
+  integrity sha512-le35MMgEIuHBKgYofmAcVtTUfo/g8Kn46xZwNV0T+5E6CROl/CyfhFkhz03kC1yNAZ91qgzVdjXfyT48oeHyiQ==
   dependencies:
     "@floating-ui/vue" "^1.1.9"
-    "@kong/icons" "^1.39.0"
+    "@kong/icons" "^1.39.1"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
