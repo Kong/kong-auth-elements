@@ -85,7 +85,7 @@
   "peerDependencies": {
     "@kong/kongponents": "^8.126.2 || ^9.0.0",
     "axios": "^1.13.2",
-    "vue": "<= 3.3.0"
+    "vue": "<= 3.5.25"
   },
   "files": [
     "dist"
