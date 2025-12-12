@@ -52,7 +52,7 @@
     "@cypress/vue": "^6.0.2",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
     "@evilmartians/lefthook": "^2.0.4",
-    "@kong/design-tokens": "^1.18.1",
+    "@kong/design-tokens": "^1.18.2",
     "@kong/eslint-config-kong-ui": "^1.5.6",
     "@kong/kongponents": "^9.48.3",
     "@semantic-release/changelog": "^6.0.3",
