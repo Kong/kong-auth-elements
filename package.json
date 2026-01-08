@@ -51,7 +51,7 @@
     "@cypress/vite-dev-server": "^7.0.1",
     "@cypress/vue": "^6.0.2",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
-    "@evilmartians/lefthook": "^2.0.12",
+    "@evilmartians/lefthook": "^2.0.13",
     "@kong/design-tokens": "^1.18.2",
     "@kong/eslint-config-kong-ui": "^1.6.0",
     "@kong/kongponents": "^9.49.2",
