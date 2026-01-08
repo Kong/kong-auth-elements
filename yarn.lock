@@ -1224,10 +1224,10 @@
   resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.18.2.tgz#4d1b605ef1dc59dc8f8de2fc2198190c481de9dd"
   integrity sha512-xYdj2b72Dtos8BIOqiLRJF2IYsB1bBx3OEjeGa7WnOTd9FK/0ZeaclwrL5N4fBFV9w+Vf4oJnXyYCBZ1gW1fOg==
 
-"@kong/eslint-config-kong-ui@^1.5.6":
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/@kong/eslint-config-kong-ui/-/eslint-config-kong-ui-1.5.6.tgz#bd677f521bb3bac667df5d54cf8e65acf1782466"
-  integrity sha512-jSIG8Eav29/6s8Nf4NAJbVfCy1/VC0x8FrxH+9hjhjp5jNp1rDsAn7m92AbPpvVJ6eOuv0xvhdxZXi/lwoZIng==
+"@kong/eslint-config-kong-ui@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@kong/eslint-config-kong-ui/-/eslint-config-kong-ui-1.6.0.tgz#05db26914d7fe5c26f54528f9b7743bc932121aa"
+  integrity sha512-ZeFQLpoS3z/Wd1GPaDEt/1kTMeyc7SukWCoo088i6/zPKKzmOc89CG5IVTCQJa1+zGG7GDCOdb68fBFcLfnHnA==
   dependencies:
     "@eslint/js" "^9.37.0"
     "@stylistic/eslint-plugin" "^5.4.0"
@@ -1246,19 +1246,19 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.41.0.tgz#05d5552f2765e38a39d424cbe19e204ad15038a3"
   integrity sha512-I6V/lYVz4AgKaSAAmEp3P5mjgYskJb2Kv5Y85xRehmRqu+jQ9mbuxDtXq90k0RzvdtBh93DAdH0T+xCzl3XXnA==
 
-"@kong/kongponents@^9.48.6":
-  version "9.48.6"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.48.6.tgz#f9f469b8a7ef2b1b6962799cfe3ee7462ae9e8f4"
-  integrity sha512-DJ6EhuiAbiTAI1d4GuVSYTxqeIkjpcV/05JEmldUI7G9mlA1gM2GdqUWnJ0sVUCUsMGpRlIg4N7NNba59RXTRA==
+"@kong/kongponents@^9.49.2":
+  version "9.49.2"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.49.2.tgz#0395346911416e08a3faefd8045a4f52db69adc3"
+  integrity sha512-aa2eAFl2GZrwKVVzGjQmI6wSapmN/SzwMEcNnEMaWEv8yiG5dvRTICgdDtz752phEK9XvTOMPivY9REhlZR8Eg==
   dependencies:
     "@floating-ui/vue" "^1.1.9"
     "@kong/icons" "^1.41.0"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
-    focus-trap "^7.6.6"
+    focus-trap "^7.7.1"
     focus-trap-vue "^4.1.0"
-    lodash-es "^4.17.21"
+    lodash-es "^4.17.22"
     nanoid "^5.1.6"
     sortablejs "^1.15.6"
     swrv "^1.1.0"
@@ -4625,12 +4625,12 @@ focus-trap-vue@^4.1.0:
   resolved "https://registry.yarnpkg.com/focus-trap-vue/-/focus-trap-vue-4.1.0.tgz#7bcc54975310443feae8c3002f3bcf047c4b0d03"
   integrity sha512-RvK28mED+4fqoqnJQyadfoiKZU2G/QEez+EnJtdsg83DjiuKetimvDGas9ot4p5bn1J09rDmKLtKFMBkwQc+JA==
 
-focus-trap@^7.6.6:
-  version "7.6.6"
-  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-7.6.6.tgz#a255c1088ddc8cd4363b3023bf28b224fd38aff2"
-  integrity sha512-v/Z8bvMCajtx4mEXmOo7QEsIzlIOqRXTIwgUfsFOF9gEsespdbD0AkPIka1bSXZ8Y8oZ+2IVDQZePkTfEHZl7Q==
+focus-trap@^7.7.1:
+  version "7.7.1"
+  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-7.7.1.tgz#f6849d9e78917bcb59f31d6cce37293952959ee4"
+  integrity sha512-Pkp8m55GjxBLnhBoT6OXdMvfRr4TjMAKLvFM566zlIryq5plbhaTmLAJWTGR0EkRwLjEte1lCOG9MxF1ipJrOg==
   dependencies:
-    tabbable "^6.3.0"
+    tabbable "^6.4.0"
 
 follow-redirects@^1.15.6:
   version "1.15.11"
@@ -5950,6 +5950,11 @@ lodash-es@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
+
+lodash-es@^4.17.22:
+  version "4.17.22"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.22.tgz#eb7d123ec2470d69b911abe34f85cb694849b346"
+  integrity sha512-XEawp1t0gxSi9x01glktRZ5HDy0HXqrM0x5pXQM98EaI0NxO6jVM7omDOxsuEo5UIASAnm2bRp1Jt/e0a2XU8Q==
 
 lodash.camelcase@^4.3.0:
   version "4.3.0"
@@ -8337,10 +8342,10 @@ systeminformation@^5.27.14:
   resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.27.16.tgz#f1d2a392a4a7dcdce3f816f3a2111adcc3b94a01"
   integrity sha512-aimHO/bE7QFtu3uB3vtpwn7V2DXXGX7NyTY7V1g+hPa7in2k10Bp3AL+Enmg3X71n7HbgLfwy/bbf+2cBSKURQ==
 
-tabbable@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-6.3.0.tgz#2e0e6163935387cdeacd44e9334616ca0115a8d3"
-  integrity sha512-EIHvdY5bPLuWForiR/AN2Bxngzpuwn1is4asboytXtpTgsArc+WmSJKVLlhdh71u7jFcryDqB2A8lQvj78MkyQ==
+tabbable@^6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-6.4.0.tgz#36eb7a06d80b3924a22095daf45740dea3bf5581"
+  integrity sha512-05PUHKSNE8ou2dwIxTngl4EzcnsCDZGJ/iCLtDflR/SHB/ny14rXc+qU5P4mG9JkusiV7EivzY9Mhm55AzAvCg==
 
 table@^6.9.0:
   version "6.9.0"
