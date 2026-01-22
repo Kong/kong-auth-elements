@@ -65,7 +65,7 @@
     "cypress": "^15.9.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^9.39.2",
-    "postcss-custom-properties": "^14.0.6",
+    "postcss-custom-properties": "^15.0.0",
     "postcss-html": "^1.8.1",
     "rollup-plugin-visualizer": "^6.0.5",
     "sass": "^1.97.2",
