@@ -1032,10 +1032,10 @@
     "@eslint/core" "^0.17.0"
     levn "^0.4.1"
 
-"@evilmartians/lefthook@^2.0.15":
-  version "2.0.15"
-  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-2.0.15.tgz#d377844999f77f98b0e1410e00c3878aec18780b"
-  integrity sha512-ZyIFqvpLSDB+j2C9nUkgO4jYH8qZWH3E8YodXGb73a49X5RyezKpxhYqpsDt4k7OvVyGBFcRLo7N7oTE+9SrSA==
+"@evilmartians/lefthook@^2.0.16":
+  version "2.0.16"
+  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-2.0.16.tgz#7ee3195418ff5ee8dbdd3664d0e8f7031f6c9126"
+  integrity sha512-TsLvg2Sq/Cm1wgLDMQuAZHPLz82WxVvHvFzv3+deSxXft8/JxMy5IBsuIbDBsLK9ZlrTbaAtBBQU5tbFQoRS0w==
 
 "@fastify/busboy@^2.0.0":
   version "2.1.1"
@@ -2780,7 +2780,7 @@ axios@^1.13.2:
     form-data "^4.0.4"
     proxy-from-env "^1.1.0"
 
-axios@^1.13.3:
+axios@^1.13.4:
   version "1.13.4"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.13.4.tgz#15d109a4817fb82f73aea910d41a2c85606076bc"
   integrity sha512-1wVkUaAO6WyaYtCkcYCOx12ZgpGf9Zif+qXa4n+oYzK558YryKqiL6UWwd5DqiH3VRW0GYhTZQ/vlgJrCoNQlg==
