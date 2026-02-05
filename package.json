@@ -54,7 +54,7 @@
     "@evilmartians/lefthook": "^2.0.15",
     "@kong/design-tokens": "^1.18.2",
     "@kong/eslint-config-kong-ui": "^1.6.0",
-    "@kong/kongponents": "^9.50.1",
+    "@kong/kongponents": "^9.50.4",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/node": "^24.10.9",
