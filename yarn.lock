@@ -1231,10 +1231,10 @@
   resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.18.2.tgz#4d1b605ef1dc59dc8f8de2fc2198190c481de9dd"
   integrity sha512-xYdj2b72Dtos8BIOqiLRJF2IYsB1bBx3OEjeGa7WnOTd9FK/0ZeaclwrL5N4fBFV9w+Vf4oJnXyYCBZ1gW1fOg==
 
-"@kong/eslint-config-kong-ui@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@kong/eslint-config-kong-ui/-/eslint-config-kong-ui-1.6.0.tgz#05db26914d7fe5c26f54528f9b7743bc932121aa"
-  integrity sha512-ZeFQLpoS3z/Wd1GPaDEt/1kTMeyc7SukWCoo088i6/zPKKzmOc89CG5IVTCQJa1+zGG7GDCOdb68fBFcLfnHnA==
+"@kong/eslint-config-kong-ui@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@kong/eslint-config-kong-ui/-/eslint-config-kong-ui-1.6.1.tgz#8bc800d02ef4ff81ba1a74aeafd725d0fadfbe06"
+  integrity sha512-rjhdvOt/J6fMH05o0Wlc/gO2aUuUL5nDZj50sbKXK4kYGGdYuUV7VMvfWWcs2glLypZeE74CeWRHh83vflFuOw==
   dependencies:
     "@eslint/js" "^9.37.0"
     "@stylistic/eslint-plugin" "^5.4.0"
