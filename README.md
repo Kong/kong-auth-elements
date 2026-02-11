@@ -92,7 +92,7 @@ We also provide `kong-auth-elements.{umd|es}.js` bundles that do **NOT** interna
 
 To utilize, include the script tag on your page after including Vue, and then call `window.registerKongAuthNativeElements()` with the [options](#options) outlined below.
 
-You will also need to import the styles in the `document.head`
+You will also need to import the styles in the `document.head`.
 
 ```html
 <link rel="stylesheet" href="/{path}/dist/style.css"
