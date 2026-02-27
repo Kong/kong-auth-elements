@@ -40,7 +40,7 @@
     "@kong/icons": "^1.43.0",
     "@xstate/vue": "^2.0.0",
     "axios": "^1.13.5",
-    "vue": "^3.5.28",
+    "vue": "^3.5.29",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
   },
@@ -64,7 +64,7 @@
     "cross-env": "^10.1.0",
     "cypress": "^15.10.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "^10.0.1",
+    "eslint": "^10.0.2",
     "postcss-custom-properties": "^15.0.1",
     "postcss-html": "^1.8.1",
     "rollup-plugin-visualizer": "^6.0.5",
