@@ -46,8 +46,8 @@
   },
   "devDependencies": {
     "@babel/types": "^7.29.0",
-    "@commitlint/cli": "^20.4.3",
-    "@commitlint/config-conventional": "^20.4.3",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
     "@cypress/vite-dev-server": "^7.2.0",
     "@cypress/vue": "^6.0.2",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
@@ -68,7 +68,7 @@
     "postcss-custom-properties": "^15.0.1",
     "postcss-html": "^1.8.1",
     "rollup-plugin-visualizer": "^7.0.1",
-    "sass": "^1.97.3",
+    "sass": "^1.98.0",
     "semantic-release": "^25.0.3",
     "start-server-and-test": "^2.1.5",
     "stylelint": "^17.4.0",
@@ -78,7 +78,7 @@
     "stylelint-order": "^7.0.1",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
-    "vite-plugin-vue-devtools": "^8.0.7",
+    "vite-plugin-vue-devtools": "^8.1.0",
     "vue-router": "^5.0.3",
     "vue-tsc": "^3.2.5"
   },
