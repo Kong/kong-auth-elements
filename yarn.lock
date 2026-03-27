@@ -769,7 +769,7 @@
     "@eslint/core" "^1.1.1"
     levn "^0.4.1"
 
-"@evilmartians/lefthook@^2.1.3":
+"@evilmartians/lefthook@^2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-2.1.4.tgz#dc51b85a4e9955800907ea62949824d8f6886379"
   integrity sha512-OxJ4JgMnGHGsHU9hGH2ge9N+PCtdBKsCpNvQ0bOrIkD+a5noGNrwB3Ms0Ab3xSxYy6QOjSa0kLJ700uAOPxuwA==
@@ -1886,7 +1886,7 @@
     "@typescript-eslint/types" "8.57.2"
     eslint-visitor-keys "^5.0.0"
 
-"@vitejs/plugin-vue@^6.0.4":
+"@vitejs/plugin-vue@^6.0.5":
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-6.0.5.tgz#20ebb46c4da069753d9cfb1309c4334213cc3f7b"
   integrity sha512-bL3AxKuQySfk1iGcBsQnoRVexTPJq0Z/ixFVM8OhVJAP6ZXXXLtM7NFKWhLl30Kg7uTBqIaPXbh+nuQCuBDedg==
@@ -7735,7 +7735,7 @@ vite-plugin-inspect@^11.3.3:
     unplugin-utils "^0.3.0"
     vite-dev-rpc "^1.1.0"
 
-vite-plugin-vue-devtools@^8.1.0:
+vite-plugin-vue-devtools@^8.1.1:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/vite-plugin-vue-devtools/-/vite-plugin-vue-devtools-8.1.1.tgz#bf2fb3cf6e4bfadc174c01936ddc8a5ccc561ee0"
   integrity sha512-9qTpOmZ2vHpvlI9hdVXAQ1Ry4I8GcBArU7aPi0qfIaV7fQIXy0L1nb6X4mFY2Gw0dYshHuLbIl0Ulb572SCjsQ==
@@ -7815,7 +7815,7 @@ vue-recaptcha@^2.0.3:
   dependencies:
     vue-demi "^0.13.11"
 
-vue-router@^5.0.3:
+vue-router@^5.0.4:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-5.0.4.tgz#41ffc00bab448c406447115bbb29d49144cc1e7d"
   integrity sha512-lCqDLCI2+fKVRl2OzXuzdSWmxXFLQRxQbmHugnRpTMyYiT+hNaycV0faqG5FBHDXoYrZ6MQcX87BvbY8mQ20Bg==
@@ -7843,7 +7843,7 @@ vue-screen-utils@^1.0.0-beta.13:
   resolved "https://registry.yarnpkg.com/vue-screen-utils/-/vue-screen-utils-1.0.0-beta.13.tgz#0c739e19f6ffbffab63184aba7b6d710b6a63681"
   integrity sha512-EJ/8TANKhFj+LefDuOvZykwMr3rrLFPLNb++lNBqPOpVigT2ActRg6icH9RFQVm4nHwlHIHSGm5OY/Clar9yIg==
 
-vue-tsc@^3.2.5:
+vue-tsc@^3.2.6:
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-3.2.6.tgz#efeb12a6166d531304d2e1602b550254309be15d"
   integrity sha512-gYW/kWI0XrwGzd0PKc7tVB/qpdeAkIZLNZb10/InizkQjHjnT8weZ/vBarZoj4kHKbUTZT/bAVgoOr8x4NsQ/Q==
@@ -7851,7 +7851,7 @@ vue-tsc@^3.2.5:
     "@volar/typescript" "2.4.28"
     "@vue/language-core" "3.2.6"
 
-vue@^3.5.29:
+vue@^3.5.30:
   version "3.5.31"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.5.31.tgz#ff20b2ca7893b4f9ae576a2064dbd3e2f5850118"
   integrity sha512-iV/sU9SzOlmA/0tygSmjkEN6Jbs3nPoIPFhCMLD2STrjgOU8DX7ZtzMhg4ahVwf5Rp9KoFzcXeB1ZrVbLBp5/Q==
