@@ -932,10 +932,10 @@
   resolved "https://registry.yarnpkg.com/@keyv/serialize/-/serialize-1.1.1.tgz#0c01dd3a3483882af7cf3878d4e71d505c81fc4a"
   integrity sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==
 
-"@kong/design-tokens@^1.20.0":
-  version "1.20.0"
-  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.20.0.tgz#def5cd6580d563a54012e7c34d2df4daa6401c39"
-  integrity sha512-6j7A/+gxz8pY4xqUTPtqXhi5zGvEowQ1FikWR0nni13QbiOvHsNaJbXGHTG4x2+VOQt3amDs6jGpppHP9Pv95Q==
+"@kong/design-tokens@^1.20.1":
+  version "1.20.1"
+  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.20.1.tgz#1f1fe9bd1fe6e950063267e9389960269e69809b"
+  integrity sha512-F5WCq8hvsLh3xpWuIZ7YmC1n2ZDA93K8fHcLpnVaVRBtbAkS4mr4yuSAmQgeCrUg1ceWx/xRwU+T8rHA0X6+uw==
 
 "@kong/eslint-config-kong-ui@^1.6.2":
   version "1.6.2"
@@ -959,10 +959,10 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.48.0.tgz#8739e68c306b24aa64f0cd050ea589d8009d82a9"
   integrity sha512-jZ/gtEAU6dtl3uYlEK6gAgWNT1IXwOsIzA1GbEdTjqdpjmWwOQiGcZbLpQi2byYDPnc5XttiKDCg9NqqQulg+g==
 
-"@kong/kongponents@^9.52.7":
-  version "9.52.7"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.52.7.tgz#626162c2e29540a5b910d337103fa05854d9a6d3"
-  integrity sha512-ZARrICYEcx+SWT6oqjvH+ncZSLqqEJS4r0Ag+2ET99OLDf9+59U5Lv+s1S3wjYeEoE3c8Z8xpMBD8OanqWkOHg==
+"@kong/kongponents@^9.52.9":
+  version "9.52.9"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.52.9.tgz#42d96386b1e22c2519e17d92cadc56feca125f83"
+  integrity sha512-5ol+X7XajDj/sYio0nQAje/HmVq2+CMz+RU11ZD0INQcwZKXW8zqcleqxsOzhPLP/UAN/bUxKaqdaJicpGBMEA==
   dependencies:
     "@floating-ui/vue" "^1.1.11"
     "@kong/icons" "^1.45.0"
@@ -974,7 +974,7 @@
     lodash-es "^4.17.23"
     nanoid "^5.1.6"
     sortablejs "^1.15.7"
-    swrv "^1.1.0"
+    swrv "^1.2.0"
     v-calendar "^3.1.2"
     virtua "^0.45.3"
     vue-draggable-next "^2.3.0"
@@ -7253,7 +7253,7 @@ svg-tags@^1.0.0:
   resolved "https://registry.yarnpkg.com/svg-tags/-/svg-tags-1.0.0.tgz#58f71cee3bd519b59d4b2a843b6c7de64ac04764"
   integrity sha512-ovssysQTa+luh7A5Weu3Rta6FJlFBBbInjOh722LIt6klpU2/HtdUbszju/G4devcvk8PGt7FCLv5wftu3THUA==
 
-swrv@^1.1.0:
+swrv@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/swrv/-/swrv-1.2.0.tgz#5b848d08fdba213212c163fb5488a3eb962ae1b5"
   integrity sha512-lH/g4UcNyj+7lzK4eRGT4C68Q4EhQ6JtM9otPRIASfhhzfLWtbZPHcMuhuba7S9YVYuxkMUGImwMyGpfbkH07A==
