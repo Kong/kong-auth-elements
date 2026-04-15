@@ -2,6 +2,7 @@
   "extends": "@vue/tsconfig/tsconfig.json",
   "compilerOptions": {
     "moduleResolution": "bundler",
+    "rootDir": "./src",
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
