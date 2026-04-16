@@ -1,13 +1,13 @@
 {
   "extends": "@vue/tsconfig/tsconfig.json",
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "rootDir": "./src",
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
     "sourceMap": false,
     "noEmit": false,
-    "baseUrl": ".",
     "lib": [
       "esnext",
       "dom",
@@ -21,10 +21,10 @@
     ],
     "paths": {
       "@/*": [
-        "src/*"
+        "./src/*"
       ],
       "vue-recaptcha": [
-        "src/vue-recaptcha.d.ts"
+        "./src/vue-recaptcha.d.ts"
       ]
     },
   },
