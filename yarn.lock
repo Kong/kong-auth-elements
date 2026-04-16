@@ -954,10 +954,15 @@
     typescript-eslint "^8.46.1"
     vue-eslint-parser "^10.2.0"
 
-"@kong/icons@^1.45.0", "@kong/icons@^1.48.0":
+"@kong/icons@^1.45.0":
   version "1.48.0"
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.48.0.tgz#8739e68c306b24aa64f0cd050ea589d8009d82a9"
   integrity sha512-jZ/gtEAU6dtl3uYlEK6gAgWNT1IXwOsIzA1GbEdTjqdpjmWwOQiGcZbLpQi2byYDPnc5XttiKDCg9NqqQulg+g==
+
+"@kong/icons@^1.51.0":
+  version "1.51.0"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.51.0.tgz#f33a6b03bffbe5beef8c963026a332230726264d"
+  integrity sha512-m3vIYhMfb8aDXBdtQlZFxSiFozFRQtdGDdWjrMLpSbF4nev25d1otLkvcU46hDJLF6X2bNvzRcEjSOXfeTssbg==
 
 "@kong/kongponents@^9.52.9":
   version "9.52.9"
