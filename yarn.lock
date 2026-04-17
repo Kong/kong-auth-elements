@@ -1891,7 +1891,7 @@
     "@typescript-eslint/types" "8.58.1"
     eslint-visitor-keys "^5.0.0"
 
-"@vitejs/plugin-vue@^6.0.5":
+"@vitejs/plugin-vue@^6.0.6":
   version "6.0.6"
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-6.0.6.tgz#4d8a3a7941382cf2760ac5593364bea6856ae7b2"
   integrity sha512-u9HHgfrq3AjXlysn0eINFnWQOJQLO9WN6VprZ8FXl7A2bYisv3Hui9Ij+7QZ41F/WYWarHjwBbXtD7dKg3uxbg==
