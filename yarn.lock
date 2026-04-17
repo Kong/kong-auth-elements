@@ -551,10 +551,10 @@
     node-html-parser "5.3.3"
     semver "^7.7.3"
 
-"@cypress/vue@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@cypress/vue/-/vue-6.0.2.tgz#b015c24c6ae79686928e8dc3bbcc3b4bc23fef18"
-  integrity sha512-To+Ik4CnhTPMmDh7VGpl5k0Z1LuE0xrI0j6LF7QyjROY2bkQwUE50WTmVPCz/Dvez9WrVpkJjRmflR5KlVmGiQ==
+"@cypress/vue@^6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@cypress/vue/-/vue-6.0.3.tgz#577ea2547a86ea740431532569d2b5161354bc34"
+  integrity sha512-nJyjzvEaqD7i8NZ0mXudlwkth7+26OCM27x3SC9swFsN4NELe8+6yNch3z/Ja5Bq+tSwpP8LsF0O7zDHN2Q7zQ==
 
 "@cypress/xvfb@^1.2.4":
   version "1.2.4"
