@@ -959,10 +959,10 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.48.0.tgz#8739e68c306b24aa64f0cd050ea589d8009d82a9"
   integrity sha512-jZ/gtEAU6dtl3uYlEK6gAgWNT1IXwOsIzA1GbEdTjqdpjmWwOQiGcZbLpQi2byYDPnc5XttiKDCg9NqqQulg+g==
 
-"@kong/icons@^1.51.0":
-  version "1.51.0"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.51.0.tgz#f33a6b03bffbe5beef8c963026a332230726264d"
-  integrity sha512-m3vIYhMfb8aDXBdtQlZFxSiFozFRQtdGDdWjrMLpSbF4nev25d1otLkvcU46hDJLF6X2bNvzRcEjSOXfeTssbg==
+"@kong/icons@^1.52.0":
+  version "1.52.0"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.52.0.tgz#555bd49ba2196b657ce7735bf6abd25cd7153832"
+  integrity sha512-K56VpC9TeXE8nICq5onZtMq/Yar93+b0sFsHB6D5bpvjA35KHjsg31BLc39SqfSTYTy6i9D/eUZMCTD8BKvIfA==
 
 "@kong/kongponents@^9.52.10":
   version "9.52.10"
