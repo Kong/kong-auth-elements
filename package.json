@@ -39,8 +39,8 @@
   "dependencies": {
     "@kong/icons": "^1.52.0",
     "@xstate/vue": "^2.0.0",
-    "axios": "^1.15.0",
-    "vue": "^3.5.32",
+    "axios": "^1.15.2",
+    "vue": "^3.5.33",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
   },
@@ -79,12 +79,12 @@
     "typescript": "^6.0.3",
     "vite": "^7.3.2",
     "vite-plugin-vue-devtools": "^8.1.1",
-    "vue-router": "^5.0.4",
-    "vue-tsc": "^3.2.6"
+    "vue-router": "^5.0.6",
+    "vue-tsc": "^3.2.7"
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.126.2 || ^9.0.0",
-    "axios": "^1.15.0",
+    "axios": "^1.15.2",
     "vue": "<= 3.3.0"
   },
   "files": [
