@@ -537,7 +537,7 @@
     tunnel-agent "^0.6.0"
     uuid "^8.3.2"
 
-"@cypress/vite-dev-server@^7.2.1":
+"@cypress/vite-dev-server@^7.3.1":
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/@cypress/vite-dev-server/-/vite-dev-server-7.3.1.tgz#5ff641857eccea3857c4fcd92bddd9c59fa85ed6"
   integrity sha512-tP5pJ2I0elUMZynJK+sPGrhLkfWHvcRaMMlFOQmpeGdve+d1ubsiiqJAoy5FEa8g39zJyWOfMEl0iFePrc3zXw==
@@ -2980,7 +2980,7 @@ csstype@^3.2.3:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.2.3.tgz#ec48c0f3e993e50648c86da559e2610995cf989a"
   integrity sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==
 
-cypress@^15.13.1:
+cypress@^15.14.1:
   version "15.14.2"
   resolved "https://registry.yarnpkg.com/cypress/-/cypress-15.14.2.tgz#3890ec5a2340480ec055732cd28cf9983ea846e9"
   integrity sha512-xMWg/iEImeIThRQZdnf3BFJT1a84apM/R91Feoa4vVWGuYWDphMT5jLhRVTBVlCgi+6axegF1zqhNyjhug2SsQ==
