@@ -936,10 +936,10 @@
   resolved "https://registry.yarnpkg.com/@keyv/serialize/-/serialize-1.1.1.tgz#0c01dd3a3483882af7cf3878d4e71d505c81fc4a"
   integrity sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==
 
-"@kong/design-tokens@^1.21.0":
-  version "1.21.0"
-  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.21.0.tgz#15054a4637dd0e7bc17a8cfa8645880afa6ac6b8"
-  integrity sha512-Koo5HU2b54zGsR4FdupQOLsVHPFp3X+NhxUMI7wxZh2FkgA+AIHQy2SrAeI921rLRenlXLWlTYaI7X7P+TrExg==
+"@kong/design-tokens@^1.22.2":
+  version "1.22.2"
+  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.22.2.tgz#8dcf65fb2e1709e8a87f2034f4f77741bc56aa0e"
+  integrity sha512-gH/RCbo8vjL2OLy3l5SFuZv5nhRPw8xN5u7FUbKDZyrAnadtnvw/zhG4kmNgTYpIut0DJtFwG0SNwiz/pdCMwg==
 
 "@kong/eslint-config-kong-ui@^1.6.2":
   version "1.6.2"
@@ -958,15 +958,20 @@
     typescript-eslint "^8.46.1"
     vue-eslint-parser "^10.2.0"
 
-"@kong/icons@^1.45.0", "@kong/icons@^1.53.0":
+"@kong/icons@^1.45.0":
   version "1.53.0"
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.53.0.tgz#a366bcb45289656550a88bbca23989503c49b39f"
   integrity sha512-EqgBzskJ6fsq63RC0LM/JqIZGj3bfojaSccwJYqrHl19wiMP24b3/68JTXHiXkgh5gWmuPLYz+lG09oNYAO2PA==
 
-"@kong/kongponents@^9.54.0":
-  version "9.54.0"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.54.0.tgz#05ce7575376f8073ec13f451ad36b01ab638fc3f"
-  integrity sha512-0CXZz5h0q8k68UpjSEd0huLM5VrJc2dEiyOmrV6fHyUw0+fzUxtL0pzlt+5D5eVXRU7CrPuyCNvwUlmCmjdafw==
+"@kong/icons@^1.55.1":
+  version "1.55.1"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.55.1.tgz#6564ec18757e1f6e908f227524fdda6b54f8c454"
+  integrity sha512-5VHWvzS0S4fgXP+cRliJF+TXi7rnI2vMQfiJz6JJZ7FZDWFtJvA/DMV884474KbYcbdE0mMvoWWTyLRPhNUaAA==
+
+"@kong/kongponents@^9.55.1":
+  version "9.55.1"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.55.1.tgz#97b8d0609d8006dcf26c412a08c7c6e1f496a88f"
+  integrity sha512-H60HKL5Wtq5j4yJwr+K1FkNja90ryk5wk0J2KFKm/4sgMSu8KGOmnK3J5P3yE9Ux/PSDtekL9NqyStTStd6jjw==
   dependencies:
     "@floating-ui/vue" "^1.1.11"
     "@kong/icons" "^1.45.0"
