@@ -39,15 +39,15 @@
   "dependencies": {
     "@kong/icons": "^1.55.1",
     "@xstate/vue": "^2.0.0",
-    "axios": "^1.15.2",
-    "vue": "^3.5.33",
+    "axios": "^1.16.0",
+    "vue": "^3.5.34",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
   },
   "devDependencies": {
     "@babel/types": "^7.29.0",
-    "@commitlint/cli": "^20.5.0",
-    "@commitlint/config-conventional": "^20.5.0",
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
     "@cypress/vite-dev-server": "^7.3.1",
     "@cypress/vue": "^6.0.3",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
@@ -57,14 +57,14 @@
     "@kong/kongponents": "^9.55.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^24.12.2",
+    "@types/node": "^24.12.3",
     "@vitejs/plugin-vue": "^6.0.6",
     "@vue/tsconfig": "^0.9.1",
     "commitizen": "^4.3.1",
     "cross-env": "^10.1.0",
     "cypress": "^15.14.1",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "^10.2.1",
+    "eslint": "^10.3.0",
     "postcss-custom-properties": "^15.0.1",
     "postcss-html": "^1.8.1",
     "rollup-plugin-visualizer": "^7.0.1",
@@ -77,14 +77,14 @@
     "stylelint-config-recommended-vue": "^1.6.1",
     "stylelint-order": "^8.1.1",
     "typescript": "^6.0.3",
-    "vite": "^7.3.2",
-    "vite-plugin-vue-devtools": "^8.1.1",
+    "vite": "^7.3.3",
+    "vite-plugin-vue-devtools": "^8.1.2",
     "vue-router": "^5.0.6",
-    "vue-tsc": "^3.2.7"
+    "vue-tsc": "^3.2.8"
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.126.2 || ^9.0.0",
-    "axios": "^1.15.2",
+    "axios": "^1.16.0",
     "vue": "<= 3.3.0"
   },
   "files": [
