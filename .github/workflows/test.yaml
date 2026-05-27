@@ -24,7 +24,7 @@ jobs:
     timeout-minutes: 20
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@8d3c67de8e2fe68ef647c8db1e6a09f647780f40 # v2.19.0
+        uses: step-security/harden-runner@ab7a9404c0f3da075243ca237b5fac12c98deaa5 # v2.19.3
         with:
           egress-policy: audit
 
@@ -52,7 +52,7 @@ jobs:
         run: yarn typecheck
 
       - name: Run Cypress component tests
-        uses: cypress-io/github-action@783cb3f07983868532cabaedaa1e6c00ff4786a8 # v7.1.9
+        uses: cypress-io/github-action@c495c3ddffba403ba11be95fffb67e25203b3799 # v7.1.10
         with:
           install: false
           command: yarn test
