@@ -573,10 +573,10 @@
     tough-cookie "^5.0.0"
     tunnel-agent "^0.6.0"
 
-"@cypress/vite-dev-server@^7.3.1":
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/@cypress/vite-dev-server/-/vite-dev-server-7.3.1.tgz#5ff641857eccea3857c4fcd92bddd9c59fa85ed6"
-  integrity sha512-tP5pJ2I0elUMZynJK+sPGrhLkfWHvcRaMMlFOQmpeGdve+d1ubsiiqJAoy5FEa8g39zJyWOfMEl0iFePrc3zXw==
+"@cypress/vite-dev-server@^7.3.2":
+  version "7.3.3"
+  resolved "https://registry.yarnpkg.com/@cypress/vite-dev-server/-/vite-dev-server-7.3.3.tgz#822887a9e02b8ddfc30492e42e526db4e4dc1bbe"
+  integrity sha512-F8D3Iw9M+LZIzS/JHV4bMnSCq4weaFxbMRhbrzq+dThy+rpimCiQctW2EfY5W2P2TBB60Suo+MuzveiqbD17Ag==
   dependencies:
     debug "^4.3.4"
     find-up "6.3.0"
@@ -1799,13 +1799,6 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.24.tgz#4ae334fc62c0e915ca8ed8e35dcc6d4eeb29215f"
   integrity sha512-gIW7lQLZbue7lRSWEFql49QJJWThrTFFeIMJdp3eH4tKoxm1OvEPg02rm4wCCSHS0cL3/Fizimb35b7k8atwsQ==
 
-"@types/node@*":
-  version "25.6.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-25.6.0.tgz#4e09bad9b469871f2d0f68140198cbd714f4edca"
-  integrity sha512-+qIYRKdNYJwY3vRCZMdJbPLJAtGjQBudzZzdzwQYkEPQd+PJGixUL5QfvCLDaULoLv+RhT3LDkwEfKaAkgSmNQ==
-  dependencies:
-    undici-types "~7.19.0"
-
 "@types/node@^24.12.4":
   version "24.12.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-24.12.4.tgz#2709745569811dcbdc57c097fafdd387c6330382"
@@ -1837,13 +1830,6 @@
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/@types/tmp/-/tmp-0.2.6.tgz#d785ee90c52d7cc020e249c948c36f7b32d1e217"
   integrity sha512-chhaNf2oKHlRkDGt+tiKE2Z5aJ6qalm7Z9rlLdBwmOiAAf09YQvvoLXjWK4HWPF1xU/fqvMgfNfpVoBscA/tKA==
-
-"@types/yauzl@^2.9.1":
-  version "2.10.3"
-  resolved "https://registry.yarnpkg.com/@types/yauzl/-/yauzl-2.10.3.tgz#e9b2808b4f109504a03cda958259876f61017999"
-  integrity sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==
-  dependencies:
-    "@types/node" "*"
 
 "@typescript-eslint/eslint-plugin@8.59.2":
   version "8.59.2"
@@ -3034,10 +3020,10 @@ csstype@^3.2.3:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.2.3.tgz#ec48c0f3e993e50648c86da559e2610995cf989a"
   integrity sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==
 
-cypress@^15.14.2:
-  version "15.15.0"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-15.15.0.tgz#5f9d9e8304636f7add7cb296130c0262960648bc"
-  integrity sha512-N8qBv3AUYn6xfIG73O5O58kTClUBSZ7a3C08IQFkSGTUdEauJ3BqwTFb/f9KPZgadftoZjllC0XSwD7xNNolbA==
+cypress@^15.15.0:
+  version "15.16.0"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-15.16.0.tgz#482f77e6f85aee98b94a5ad844d36f69dc212c28"
+  integrity sha512-fy0M0c9xDLEp4v9y7LLKFeAQhIdDsobxDSKpD3JcZpqQefjy9TSzEyVV3HA0zu7hUi0bGHlSYlI7ASub8wgR9A==
   dependencies:
     "@cypress/request" "^4.0.0"
     "@cypress/xvfb" "^1.2.4"
@@ -3059,7 +3045,6 @@ cypress@^15.14.2:
     eventemitter2 "6.4.7"
     execa "4.1.0"
     executable "^4.1.1"
-    extract-zip "2.0.1"
     fs-extra "^9.1.0"
     hasha "5.2.2"
     is-installed-globally "~0.4.0"
@@ -3078,7 +3063,7 @@ cypress@^15.14.2:
     tree-kill "1.2.2"
     tslib "1.14.1"
     untildify "^4.0.0"
-    yauzl "^2.10.0"
+    yauzl "^3.3.1"
 
 cz-conventional-changelog@3.3.0, cz-conventional-changelog@^3.3.0:
   version "3.3.0"
@@ -3118,7 +3103,7 @@ dayjs@^1.10.4:
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.20.tgz#88d919fd639dc991415da5f4cb6f1b6650811938"
   integrity sha512-YbwwqR/uYpeoP4pu043q+LTDLFBLApUP6VxRihdfNTqu4ubqMlGDLd6ErXhEgsyvY0K6nCs7nggYumAN+9uEuQ==
 
-debug@4, debug@4.4.3, debug@^4.0.0, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4, debug@^4.4.0, debug@^4.4.1, debug@^4.4.3:
+debug@4, debug@4.4.3, debug@^4.0.0, debug@^4.1.0, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4, debug@^4.4.0, debug@^4.4.1, debug@^4.4.3:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.4.3.tgz#c6ae432d9bd9662582fce08709b038c58e9e3d6a"
   integrity sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==
@@ -3773,17 +3758,6 @@ external-editor@^3.0.3:
     iconv-lite "^0.4.24"
     tmp "^0.0.33"
 
-extract-zip@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/extract-zip/-/extract-zip-2.0.1.tgz#663dca56fe46df890d5f131ef4a06d22bb8ba13a"
-  integrity sha512-GDhU9ntwuKyGXdZBUgTIe+vXnWj0fppUEtMDL0+idd5Sta8TGpHssn/eusA9mrPr9qNDym6SxAYZjNvCn/9RBg==
-  dependencies:
-    debug "^4.1.1"
-    get-stream "^5.1.0"
-    yauzl "^2.10.0"
-  optionalDependencies:
-    "@types/yauzl" "^2.9.1"
-
 extsprintf@1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.3.0.tgz#96918440e3041a7a414f8c52e3c574eb3c3e1e05"
@@ -3841,13 +3815,6 @@ fastq@^1.6.0:
   integrity sha512-GGToxJ/w1x32s/D2EKND7kTil4n8OVk/9mycTc4VDza13lOvpUZTGX3mFSCtV9ksdGBVzvsyAVLM6mHFThxXxw==
   dependencies:
     reusify "^1.0.4"
-
-fd-slicer@~1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/fd-slicer/-/fd-slicer-1.1.0.tgz#25c7c89cb1f9077f8891bbe61d8f390eae256f1e"
-  integrity sha512-cE1qsB/VwyQozZ+q1dGxR8LBYNZeofhEdUNGSMbQD3Gw2lAzX9Zb3uIU6Ebc/Fmyjo9AWWfnn0AUCHqtevs/8g==
-  dependencies:
-    pend "~1.2.0"
 
 fdir@^6.5.0:
   version "6.5.0"
@@ -4103,7 +4070,7 @@ get-proto@^1.0.1:
     dunder-proto "^1.0.1"
     es-object-atoms "^1.0.0"
 
-get-stream@^5.0.0, get-stream@^5.1.0:
+get-stream@^5.0.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-5.2.0.tgz#4966a1795ee5ace65e706c4b7beb71257d6e22d3"
   integrity sha512-nBF+F1rAZVCu/p7rjzgA+Yb4lfYXrpl7a6VmJrU8wF9I1CKvP/QwPNZHnOlwbTkY6dvtFIzFMSyQXbLoTQPRpA==
@@ -7575,11 +7542,6 @@ undici-types@~7.16.0:
   resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-7.16.0.tgz#ffccdff36aea4884cbfce9a750a0580224f58a46"
   integrity sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==
 
-undici-types@~7.19.0:
-  version "7.19.2"
-  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-7.19.2.tgz#1b67fc26d0f157a0cba3a58a5b5c1e2276b8ba2a"
-  integrity sha512-qYVnV5OEm2AW8cJMCpdV20CDyaN3g0AjDlOGf1OW4iaDEx8MwdtChUp4zu4H0VP3nDRF/8RKWH+IPp9uW0YGZg==
-
 undici@^6.23.0, undici@^6.25.0:
   version "6.25.0"
   resolved "https://registry.yarnpkg.com/undici/-/undici-6.25.0.tgz#8c4efb8c998dc187fc1cfb5dde1ef19a211849fb"
@@ -8086,13 +8048,13 @@ yargs@^18.0.0:
     y18n "^5.0.5"
     yargs-parser "^22.0.0"
 
-yauzl@^2.10.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/yauzl/-/yauzl-2.10.0.tgz#c7eb17c93e112cb1086fa6d8e51fb0667b79a5f9"
-  integrity sha512-p4a9I6X6nu6IhoGmBqAcbJy1mlC4j27vEPZX9F4L4/vZT3Lyq1VkFHw/V/PUcB9Buo+DG3iHkT0x3Qya58zc3g==
+yauzl@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/yauzl/-/yauzl-3.3.1.tgz#b0de68ae3a862715e130849679a4236f54dba45f"
+  integrity sha512-RNPCUkiE/ZgO4w8i9U5yDQVHaFDdnzaFANElRvpJteCspvmv2VqrRb9lvS6odVD+jqI/zDsxAHJVsafpcheVQQ==
   dependencies:
     buffer-crc32 "~0.2.3"
-    fd-slicer "~1.1.0"
+    pend "~1.2.0"
 
 yocto-queue@^0.1.0:
   version "0.1.0"
