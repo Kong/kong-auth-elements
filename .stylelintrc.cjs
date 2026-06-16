@@ -30,10 +30,10 @@ module.exports = {
   ],
   plugins: [
     'stylelint-order',
-    '@kong/design-tokens/stylelint-plugin',
+    '@kong/stylelint-plugin-design-tokens',
   ],
   rules: {
     'order/properties-alphabetical-order': true,
-    '@kong/design-tokens/use-proper-token': [true, { disableFix: true }],
+    '@kong/stylelint-plugin-design-tokens/use-proper-token': [true, { disableFix: true }],
   },
 }
