@@ -1,6 +1,6 @@
 {
   "name": "@kong/kong-auth-elements",
-  "version": "2.13.59",
+  "version": "2.13.60",
   "type": "module",
   "main": "dist/kong-auth-elements.vue.umd.js",
   "module": "dist/kong-auth-elements.vue.es.js",
@@ -37,25 +37,25 @@
     "commit": "cz"
   },
   "dependencies": {
-    "@kong/icons": "^1.55.1",
+    "@kong/icons": "^1.57.0",
     "@xstate/vue": "^2.0.0",
     "axios": "^1.16.1",
-    "vue": "^3.5.34",
+    "vue": "^3.5.35",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
   },
   "devDependencies": {
-    "@babel/types": "^7.29.0",
+    "@babel/types": "^7.29.7",
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
     "@cypress/vite-dev-server": "^7.3.2",
     "@cypress/vue": "^6.0.3",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
-    "@evilmartians/lefthook": "^2.1.6",
+    "@evilmartians/lefthook": "^2.1.8",
     "@kong/design-tokens": "^1.23.1-pr.665.3947d19.0",
     "@kong/eslint-config-kong-ui": "^1.6.2",
     "@kong/eslint-plugin-design-tokens": "^0.0.2-pr.665.3947d19.0",
-    "@kong/kongponents": "^9.55.3",
+    "@kong/kongponents": "^9.57.0",
     "@kong/stylelint-plugin-design-tokens": "^0.0.2-pr.665.3947d19.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
@@ -70,7 +70,7 @@
     "postcss-custom-properties": "^15.0.1",
     "postcss-html": "^1.8.1",
     "rollup-plugin-visualizer": "^7.0.1",
-    "sass": "^1.99.0",
+    "sass": "^1.100.0",
     "semantic-release": "^25.0.3",
     "start-server-and-test": "^3.0.5",
     "stylelint": "^17.11.1",
@@ -82,7 +82,7 @@
     "vite": "^7.3.3",
     "vite-plugin-vue-devtools": "^8.1.2",
     "vue-router": "^5.0.7",
-    "vue-tsc": "^3.2.9"
+    "vue-tsc": "^3.3.2"
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.126.2 || ^9.0.0",
@@ -157,7 +157,7 @@
     "node": ">=22.20.0"
   },
   "volta": {
-    "node": "24.14.1",
+    "node": "24.16.0",
     "yarn": "1.22.22"
   }
 }
