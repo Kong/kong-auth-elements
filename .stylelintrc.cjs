@@ -35,5 +35,6 @@ module.exports = {
   rules: {
     'order/properties-alphabetical-order': true,
     '@kong/stylelint-plugin-design-tokens/use-proper-token': [true, { disableFix: true }],
+    '@kong/stylelint-plugin-design-tokens/token-var-usage': true,
   },
 }
