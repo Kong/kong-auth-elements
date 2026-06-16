@@ -990,10 +990,10 @@
   resolved "https://registry.yarnpkg.com/@keyv/serialize/-/serialize-1.1.1.tgz#0c01dd3a3483882af7cf3878d4e71d505c81fc4a"
   integrity sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==
 
-"@kong/design-tokens@^1.23.0":
-  version "1.23.0"
-  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.23.0.tgz#0d1c4c1e7e0964450cb128cf5a3aca873196eb0f"
-  integrity sha512-DKBmwvBb4FEb/L+Og3YziJSNr9fF67V2wit/ZIiSt+vldUT/Rc14H6nQf5yr/bxVJTqxaEL2Z5mN7tvDNKftdw==
+"@kong/design-tokens@^1.23.1-pr.665.3947d19.0":
+  version "1.23.1-pr.666.faf3d3a.0"
+  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.23.1-pr.666.faf3d3a.0.tgz#4a56dca4629e61033e8daa5d889607dfd2d2daad"
+  integrity sha512-XgaxkdRk2ZTEYQvU1SOmnqicqJy+IsMhTYGBPFaLd5cYoXCM9/1xdeYcHV06Aa/Yo3/5mzr2hQEMCLQCpWOYFA==
 
 "@kong/eslint-config-kong-ui@^1.6.2":
   version "1.6.2"
@@ -1011,6 +1011,11 @@
     jsonc-eslint-parser "^2.4.0"
     typescript-eslint "^8.46.1"
     vue-eslint-parser "^10.2.0"
+
+"@kong/eslint-plugin-design-tokens@^0.0.2-pr.665.3947d19.0":
+  version "0.0.2-pr.665.d8b14d4.0"
+  resolved "https://registry.yarnpkg.com/@kong/eslint-plugin-design-tokens/-/eslint-plugin-design-tokens-0.0.2-pr.665.d8b14d4.0.tgz#222efa8ebc3e9547b1332996bd3cb2aac3b44f79"
+  integrity sha512-mYNHkn149HPusF6xNPIxekZjbEhb9DadhSCOBrqM0I5m0SdVn2CEvB61MYFIx+elmm/FfYwbgpsEo/8oByZv9w==
 
 "@kong/icons@^1.45.0":
   version "1.53.0"
@@ -1041,6 +1046,11 @@
     v-calendar "^3.1.2"
     virtua "^0.49.0"
     vue-draggable-next "^2.3.0"
+
+"@kong/stylelint-plugin-design-tokens@^0.0.2-pr.665.3947d19.0":
+  version "0.0.2-pr.665.d8b14d4.0"
+  resolved "https://registry.yarnpkg.com/@kong/stylelint-plugin-design-tokens/-/stylelint-plugin-design-tokens-0.0.2-pr.665.d8b14d4.0.tgz#afab33a06ba4ea9d7dcf40e3848fb095d9477f6f"
+  integrity sha512-pzF2sg5MpisRrJkd/ZIHbdqdndawfBIepjU7149GajEAWyTJkTmhDHiV55PSiaFjdK0k3e8r7DcbTsCXSTmymg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
