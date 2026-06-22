@@ -990,17 +990,18 @@
   resolved "https://registry.yarnpkg.com/@keyv/serialize/-/serialize-1.1.1.tgz#0c01dd3a3483882af7cf3878d4e71d505c81fc4a"
   integrity sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==
 
-"@kong/design-tokens@^1.23.1-pr.665.3947d19.0":
-  version "1.23.1-pr.665.3947d19.0"
-  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-1.23.1-pr.665.3947d19.0.tgz#be6481a11e4613c161135d007e1c61371c7d46c4"
-  integrity sha512-z20oxWlUUInpRkTng2rk2L6OxP65IdnbQJ6QybfqQW0zXBam0JY1LuxPymD9zXdUTBOU797Hpz4fmABzLHO78A==
+"@kong/design-tokens@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-2.0.0.tgz#54b4511b0f6f1316711d12a10d64f17796ff2891"
+  integrity sha512-5IzpE2QK1PV2f+lQ697PlAB0sxBosjRpM4g955TQkSN3fKDUKRn6DPgKDRX7LGEkqNGLn1jwy8jN70CMRbEi7w==
 
-"@kong/eslint-config-kong-ui@^1.6.2":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@kong/eslint-config-kong-ui/-/eslint-config-kong-ui-1.6.2.tgz#0efd39ad94a766dfca9fd80404538d7507adeec4"
-  integrity sha512-e1ExwzkIYStLyY5W0UkWumUJMVNliCph1BS+4IM9HOll7BarKMdu4yyQQWbNVkkgvtq5cl09Lm31EZ8BfYJyLQ==
+"@kong/eslint-config-kong-ui@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@kong/eslint-config-kong-ui/-/eslint-config-kong-ui-1.7.1.tgz#11367cfb5287fdc9eadbc40ada605e53c515b6c5"
+  integrity sha512-LAvIZJtTpf7yWRdqlrYeI7nUWmG9x5QMy4m2OGBpDwt+MCxveH6xPRMMgQZwGjupl4odR5Kg4KN1AVMCFdlk6g==
   dependencies:
     "@eslint/js" "^9.37.0"
+    "@kong/eslint-plugin-design-tokens" "^1.0.1"
     "@stylistic/eslint-plugin" "^5.4.0"
     eslint-plugin-cypress "^5.2.0"
     eslint-plugin-jsonc "^2.21.0"
@@ -1012,10 +1013,10 @@
     typescript-eslint "^8.46.1"
     vue-eslint-parser "^10.2.0"
 
-"@kong/eslint-plugin-design-tokens@^0.0.2-pr.665.3947d19.0":
-  version "0.0.2-pr.665.3947d19.0"
-  resolved "https://registry.yarnpkg.com/@kong/eslint-plugin-design-tokens/-/eslint-plugin-design-tokens-0.0.2-pr.665.3947d19.0.tgz#78346c2f042cdd4cc734c428ed71bd6d871d8771"
-  integrity sha512-KqXalfCaTZFoRshft3iJfo0lPQp8cPszxFg23TizKM3vF7nKv8m4FiuislvBK6Svi350viE1vSDhiTofOioMuQ==
+"@kong/eslint-plugin-design-tokens@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@kong/eslint-plugin-design-tokens/-/eslint-plugin-design-tokens-1.0.1.tgz#510c102414b6e04439f55f9acae81414ad1e33ea"
+  integrity sha512-n31tvVfQ7rzk/DmlVkOHiPW+3WyxLuxWxBdvD6FxG1SyyvX9f0WMEf5tQfEUCZ2XmoY9y3Fw33G7BS6sw9LYIw==
 
 "@kong/icons@^1.45.0":
   version "1.53.0"
@@ -1047,10 +1048,10 @@
     virtua "^0.49.0"
     vue-draggable-next "^2.3.0"
 
-"@kong/stylelint-plugin-design-tokens@^0.0.2-pr.665.3947d19.0":
-  version "0.0.2-pr.665.3947d19.0"
-  resolved "https://registry.yarnpkg.com/@kong/stylelint-plugin-design-tokens/-/stylelint-plugin-design-tokens-0.0.2-pr.665.3947d19.0.tgz#6f01a89f6ba59308e46139bde42106864aa3dcbd"
-  integrity sha512-qdmGDFSAqHXBKAo0Q/AdDo2VAGXQ5hH0kCjE39oCckxprtfZUdy1dxs2yrt9GRQDhITUDLra071P3ujZJdFGZQ==
+"@kong/stylelint-plugin-design-tokens@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@kong/stylelint-plugin-design-tokens/-/stylelint-plugin-design-tokens-1.0.1.tgz#527f3091219f48671ca2d53e508ddcbcdfb455e1"
+  integrity sha512-OSyqM8VdcxBcETv8sQsBoUTstbwaFmuPmXI/m4E2Mtbvh5S2i9VGnbC6LJToZUudaE3ndLk8PLlQZA7j29a2sQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
