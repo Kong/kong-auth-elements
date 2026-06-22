@@ -1,3 +1,10 @@
+## [2.13.61](https://github.com/Kong/kong-auth-elements/compare/v2.13.60...v2.13.61) (2026-06-22)
+
+
+### Bug Fixes
+
+* **tokens:** enforce token css var usage ([#1934](https://github.com/Kong/kong-auth-elements/issues/1934)) ([b98f18e](https://github.com/Kong/kong-auth-elements/commit/b98f18e626892fa90ef693e6aa52df8965d645c1))
+
 ## [2.13.60](https://github.com/Kong/kong-auth-elements/compare/v2.13.59...v2.13.60) (2026-06-08)
 
 
