@@ -1023,15 +1023,15 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.53.0.tgz#a366bcb45289656550a88bbca23989503c49b39f"
   integrity sha512-EqgBzskJ6fsq63RC0LM/JqIZGj3bfojaSccwJYqrHl19wiMP24b3/68JTXHiXkgh5gWmuPLYz+lG09oNYAO2PA==
 
-"@kong/icons@^1.57.0":
-  version "1.57.0"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.57.0.tgz#ecdc2dcbf685b883a9387adc72bc364780efe435"
-  integrity sha512-BixqIvt9fQh7Srv6cRnNh2wJj1lvb7y+hEWRujVHOO3ruV6EQnLcIykL3OwjrQtoZTmCejS8aTVxyiNvKnv60w==
+"@kong/icons@^1.60.0":
+  version "1.60.0"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.60.0.tgz#719e164207ec4810d1126fcf450495c32e03b09c"
+  integrity sha512-WmGk/ugjTMh2+kr0TrtfKThW/oTGl79jJv0/vYOwAPqgtTun6sokJYvZtDw13aidDaLTpqiBqRO/1GnJDZhwzA==
 
-"@kong/kongponents@^9.57.0":
-  version "9.57.0"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.57.0.tgz#5b93a272f617d5c3bd236831bd78eef5f5df2a04"
-  integrity sha512-GldAsfyW5/SsDJS0ZXR+kM9qJPd5/fgQePdwk5DqMvkFhhoNNecr0ZQ7/m64B3jURDSH5OetRVTuDNlv2BiQAQ==
+"@kong/kongponents@^9.60.6":
+  version "9.60.6"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.60.6.tgz#2fda09b6814993a4b44f4269a73573b14c34553c"
+  integrity sha512-I5IRjcEaw5YqE3T4ZPCzDt1VZvD4iT43hzGQQ46As9p0ojJpacOToGscgKoPrkydHiS+7N7gf3SieJuXMDdxUw==
   dependencies:
     "@floating-ui/vue" "^1.1.11"
     "@kong/icons" "^1.45.0"
@@ -1040,8 +1040,8 @@
     date-fns-tz "^2.0.1"
     focus-trap "^7.8.0"
     focus-trap-vue "^4.1.0"
-    lodash-es "^4.17.23"
-    nanoid "^5.1.6"
+    lodash-es "^4.18.1"
+    nanoid "^5.1.11"
     sortablejs "^1.15.7"
     swrv "^1.2.0"
     v-calendar "^3.1.2"
@@ -5235,7 +5235,7 @@ locate-path@^7.1.0:
   dependencies:
     p-locate "^6.0.0"
 
-lodash-es@^4.17.21, lodash-es@^4.17.23:
+lodash-es@^4.17.21, lodash-es@^4.18.1:
   version "4.18.1"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.18.1.tgz#b962eeb80d9d983a900bf342961fb7418ca10b1d"
   integrity sha512-J8xewKD/Gk22OZbhpOVSwcs60zhd95ESDwezOFuA3/099925PdHJ7OFHNTGtajL3AlZkykD32HykiMo+BIBI8A==
@@ -5606,10 +5606,10 @@ nanoid@^3.3.11, nanoid@^3.3.12:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.12.tgz#ab3d912e217a6d0a514f00a72a16543a28982c05"
   integrity sha512-ZB9RH/39qpq5Vu6Y+NmUaFhQR6pp+M2Xt76XBnEwDaGcVAqhlvxrl3B2bKS5D3NH3QR76v3aSrKaF/Kiy7lEtQ==
 
-nanoid@^5.1.6:
-  version "5.1.11"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-5.1.11.tgz#559dbdbc41737da341ac938c25514563d2dd94c7"
-  integrity sha512-v+KEsUv2ps74PaSKv0gHTxTCgMXOIfBEbaqa6w6ISIGC7ZsvHN4N9oJ8d4cmf0n5oTzQz2SLmThbQWhjd/8eKg==
+nanoid@^5.1.11:
+  version "5.1.16"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-5.1.16.tgz#fe345c0a1f9007c32fbb5c139e1208bfd3f41ef7"
+  integrity sha512-kVrnsrJqMR8+oLJnGEmSWw9BivK5mt7H3FZatVRjrc5wGqFYuBxX1yG7+A7Gi5AefkX6t/oCkizcQgpu0cY1dQ==
 
 natural-compare@^1.4.0:
   version "1.4.0"
