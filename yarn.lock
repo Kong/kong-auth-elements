@@ -1009,10 +1009,10 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.61.2.tgz#2dd415568141cf18ffa7ce46c9454ce641e4b12f"
   integrity sha512-Q8fWPdrMIDQeFoNaA+cgtxRXooBp2P3HLjoGmmZkRd4TEYSrXh5rqXMGPWQ9HCxrEXJSHYKmIa4YMhVdhiE+jw==
 
-"@kong/kongponents@^9.61.6":
-  version "9.61.6"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.61.6.tgz#c3be5b128d5b1c3fa06a82f114ed62a7994725e7"
-  integrity sha512-K4z4mntu/xhNnmFVYuCH3uR8JmA+L+hh0YSHyyKmT2+l99E0xcljpU5yIgXFFCEmQSHLitZCZvw8Xmd58MFRrw==
+"@kong/kongponents@^9.62.1":
+  version "9.62.1"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.62.1.tgz#d85cdcd0a42ab26f2b86b4dfbc46dfe5a50fb7cb"
+  integrity sha512-LOP0TPYTk8WlgTrviyhGIKxQRyIxhzI9w6+CMKiCANSDU3OmuUExGpgldV3Bb6b8gs0QbZfzL7POpZ1+J1UJ9g==
   dependencies:
     "@floating-ui/vue" "^1.1.11"
     "@kong/icons" "^1.45.0"
