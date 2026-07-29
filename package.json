@@ -40,7 +40,7 @@
     "@kong/icons": "^1.61.2",
     "@xstate/vue": "^2.0.0",
     "axios": "^1.18.1",
-    "vue": "^3.5.39",
+    "vue": "^3.5.40",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
   },
@@ -80,13 +80,13 @@
     "typescript": "^6.0.3",
     "vite": "^7.3.6",
     "vite-plugin-vue-devtools": "^8.1.5",
-    "vue-router": "^5.1.0",
+    "vue-router": "^5.2.0",
     "vue-tsc": "^3.3.7"
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.126.2 || ^9.0.0",
     "axios": "^1.16.1",
-    "vue": "<= 3.5.39"
+    "vue": "<= 3.5.40"
   },
   "files": [
     "dist"
