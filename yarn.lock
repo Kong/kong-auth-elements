@@ -7709,7 +7709,7 @@ vue-recaptcha@^2.0.3:
   dependencies:
     vue-demi "^0.13.11"
 
-vue-router@^5.1.0:
+vue-router@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-5.2.0.tgz#34f03b1012729c33bb23184d96ad8e1b1b5c4546"
   integrity sha512-QAC5i0LEb1GLG0LXDQmHu8L7FX12j0KwU/JTKmLQUJMrn04gQdKP6Du+p0QwpHb3iy71vBlqnHQ8WAfOSAWhqw==
@@ -7746,7 +7746,7 @@ vue-tsc@^3.3.7:
     "@volar/typescript" "2.4.28"
     "@vue/language-core" "3.3.7"
 
-vue@^3.5.39:
+vue@^3.5.40:
   version "3.5.40"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.5.40.tgz#c4a9d4c62f98ea33aa811a75c3fbd476dc782184"
   integrity sha512-+8PJ4SJXdn/cHGImF4CKdxlWHIN5Dkt7DoufRREM6h6uVCx2m7QxgcEQmmzyOK8A9mcafg7sFbJFYsdFVubTig==
