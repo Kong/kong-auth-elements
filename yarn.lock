@@ -976,7 +976,7 @@
   resolved "https://registry.yarnpkg.com/@keyv/serialize/-/serialize-1.1.1.tgz#0c01dd3a3483882af7cf3878d4e71d505c81fc4a"
   integrity sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==
 
-"@kong/design-tokens@^3.0.3":
+"@kong/design-tokens@^3.0.7":
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-3.2.2.tgz#c7768fa3533340b5208aaf106f6fd3112288dd30"
   integrity sha512-+rIGKmvbDLQTk103FYIjDPkRMZ2/BVogXJPs3V43L/5vdqhx4O+Ao/R362Yt+LNs4jvAMAm+mGY8KeUhHTkLyw==
