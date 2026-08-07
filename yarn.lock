@@ -976,10 +976,10 @@
   resolved "https://registry.yarnpkg.com/@keyv/serialize/-/serialize-1.1.1.tgz#0c01dd3a3483882af7cf3878d4e71d505c81fc4a"
   integrity sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==
 
-"@kong/design-tokens@^3.0.7":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-3.2.2.tgz#c7768fa3533340b5208aaf106f6fd3112288dd30"
-  integrity sha512-+rIGKmvbDLQTk103FYIjDPkRMZ2/BVogXJPs3V43L/5vdqhx4O+Ao/R362Yt+LNs4jvAMAm+mGY8KeUhHTkLyw==
+"@kong/design-tokens@^3.2.8":
+  version "3.2.8"
+  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-3.2.8.tgz#416e26356a03433a4bb51576b07f20a89ac9f54a"
+  integrity sha512-fMD+wM2N5kk0ux2c2+Gk8V/6y8GrLans+BKZ3/iWYtYiQIFKzkbPMh2JE8CHr3NFeOwNRlsujH/tL2Dc3sqUwg==
 
 "@kong/eslint-config-kong-ui@^1.7.1":
   version "1.7.1"
@@ -1009,15 +1009,15 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.61.2.tgz#2dd415568141cf18ffa7ce46c9454ce641e4b12f"
   integrity sha512-Q8fWPdrMIDQeFoNaA+cgtxRXooBp2P3HLjoGmmZkRd4TEYSrXh5rqXMGPWQ9HCxrEXJSHYKmIa4YMhVdhiE+jw==
 
-"@kong/icons@^1.62.0":
-  version "1.62.0"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.62.0.tgz#ef6eaffeb0ea6368931fb2dba72b8f3ae7924426"
-  integrity sha512-FqkZFVCROHxUg5VqePswfo84GjHqB8DFKEKBVITvUzcI6lhcpK2JwfYnxLsDzNHdp/atec9FtfjuJTf5pGq58Q==
+"@kong/icons@^1.62.1":
+  version "1.62.1"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.62.1.tgz#2cacbc120daaca107867591b5a400bfc00c93889"
+  integrity sha512-RB+WWaQ7OglHPkKquB65bN9gy5cqEWTepYz/ZqaVW/QgENzV5Fitp+IjXokgopTKpvDSlkHJl191Bx/Zj1pxfw==
 
-"@kong/kongponents@^9.64.2":
-  version "9.64.2"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.64.2.tgz#cf8c6e9de5760136f17fec10bfd53158bddd4298"
-  integrity sha512-QNhFvyB7axvrw1ZY2yOQoEzaj0KDX0O71eTZQMkjsFi9vkbpYTf0YAb/Eg6O7uxTb/QC+Nh8yBXiCi94nJyuJw==
+"@kong/kongponents@^9.64.3":
+  version "9.64.3"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.64.3.tgz#4c0bcf7c41c73e813286a5f6f3a1d8c9c4cfc7ee"
+  integrity sha512-aXYixZdGBW/0BvBcLCxNs+nGE3yqcRy/aLgaldXeQK0WJ5lihpewG4Dc30tuz14komUY+TZcYridnNb4YPD4sA==
   dependencies:
     "@floating-ui/vue" "^1.1.11"
     "@kong/icons" "^1.45.0"
