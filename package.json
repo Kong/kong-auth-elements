@@ -69,7 +69,7 @@
     "postcss-custom-properties": "^15.0.1",
     "postcss-html": "^1.8.1",
     "rollup-plugin-visualizer": "^7.0.1",
-    "sass": "^1.101.7",
+    "sass": "^1.102.0",
     "semantic-release": "^25.0.8",
     "start-server-and-test": "^3.0.11",
     "stylelint": "^17.14.1",
