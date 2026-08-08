@@ -976,10 +976,10 @@
   resolved "https://registry.yarnpkg.com/@keyv/serialize/-/serialize-1.1.1.tgz#0c01dd3a3483882af7cf3878d4e71d505c81fc4a"
   integrity sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==
 
-"@kong/design-tokens@^3.2.8":
-  version "3.2.8"
-  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-3.2.8.tgz#416e26356a03433a4bb51576b07f20a89ac9f54a"
-  integrity sha512-fMD+wM2N5kk0ux2c2+Gk8V/6y8GrLans+BKZ3/iWYtYiQIFKzkbPMh2JE8CHr3NFeOwNRlsujH/tL2Dc3sqUwg==
+"@kong/design-tokens@^3.2.9":
+  version "3.2.9"
+  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-3.2.9.tgz#2e83f5ccf894676b08f924e4a235d8ebc55702e5"
+  integrity sha512-zh3OKyrW+wBayRvlCgejAjBnKpd8faQ1OMb6eeaDAXjwqPL08uqc8//AqVgrO9142qnfldOT/hebT5B/c9QrxA==
 
 "@kong/eslint-config-kong-ui@^1.7.1":
   version "1.7.1"
@@ -1004,30 +1004,25 @@
   resolved "https://registry.yarnpkg.com/@kong/eslint-plugin-design-tokens/-/eslint-plugin-design-tokens-1.0.3.tgz#c57c234f6b25e3ec81e4cc1c46d12accb06c08f5"
   integrity sha512-Je7EdVxpi4SqHTmtKvph80qCE/EDUStioDSZ7oaVjQylukTrmkL542OmaBMWWtEXJkSmwvegrk0BFZD6T78vXg==
 
-"@kong/icons@^1.45.0":
-  version "1.61.2"
-  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.61.2.tgz#2dd415568141cf18ffa7ce46c9454ce641e4b12f"
-  integrity sha512-Q8fWPdrMIDQeFoNaA+cgtxRXooBp2P3HLjoGmmZkRd4TEYSrXh5rqXMGPWQ9HCxrEXJSHYKmIa4YMhVdhiE+jw==
-
 "@kong/icons@^1.62.1":
   version "1.62.1"
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.62.1.tgz#2cacbc120daaca107867591b5a400bfc00c93889"
   integrity sha512-RB+WWaQ7OglHPkKquB65bN9gy5cqEWTepYz/ZqaVW/QgENzV5Fitp+IjXokgopTKpvDSlkHJl191Bx/Zj1pxfw==
 
-"@kong/kongponents@^9.64.3":
-  version "9.64.3"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.64.3.tgz#4c0bcf7c41c73e813286a5f6f3a1d8c9c4cfc7ee"
-  integrity sha512-aXYixZdGBW/0BvBcLCxNs+nGE3yqcRy/aLgaldXeQK0WJ5lihpewG4Dc30tuz14komUY+TZcYridnNb4YPD4sA==
+"@kong/kongponents@^9.64.5":
+  version "9.64.5"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.64.5.tgz#030deaea861dd7ec920da28b6907957ee22cb884"
+  integrity sha512-3Mw7T/cQrdEkQdW+T4pxpImtzx4S+Wr87t9FaoUHdEaXE3IDGqSLMwV9htyp/nNk4q6QpOTaPJk1jUaV0dhl4A==
   dependencies:
     "@floating-ui/vue" "^1.1.11"
-    "@kong/icons" "^1.45.0"
+    "@kong/icons" "^1.62.1"
     "@popperjs/core" "^2.11.8"
     date-fns "^2.30.0"
     date-fns-tz "^2.0.1"
     focus-trap "^7.8.0"
     focus-trap-vue "^4.1.0"
     lodash-es "^4.18.1"
-    nanoid "^5.1.11"
+    nanoid "^5.1.16"
     sortablejs "^1.15.7"
     swrv "^1.2.0"
     v-calendar "^3.1.2"
@@ -5497,7 +5492,7 @@ nanoid@^3.3.16:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.16.tgz#a04d8ec4b1f10009d2d533947aefe4293737816c"
   integrity sha512-bzlKTyNJ7+LdGIIwy8ijFpIqEQIvafahV7eYykJ8Cvh42EdJeODoJ6gUJXpQJvej1BddH8OqTXZNE/KfbWAu8Q==
 
-nanoid@^5.1.11:
+nanoid@^5.1.16:
   version "5.1.16"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-5.1.16.tgz#fe345c0a1f9007c32fbb5c139e1208bfd3f41ef7"
   integrity sha512-kVrnsrJqMR8+oLJnGEmSWw9BivK5mt7H3FZatVRjrc5wGqFYuBxX1yG7+A7Gi5AefkX6t/oCkizcQgpu0cY1dQ==
