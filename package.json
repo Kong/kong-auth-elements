@@ -67,7 +67,7 @@
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^10.8.0",
     "postcss-custom-properties": "^15.0.1",
-    "postcss-html": "^1.8.1",
+    "postcss-html": "^2.0.0",
     "rollup-plugin-visualizer": "^7.0.1",
     "sass": "^1.101.7",
     "semantic-release": "^25.0.8",
