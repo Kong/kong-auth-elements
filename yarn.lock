@@ -976,10 +976,10 @@
   resolved "https://registry.yarnpkg.com/@keyv/serialize/-/serialize-1.1.1.tgz#0c01dd3a3483882af7cf3878d4e71d505c81fc4a"
   integrity sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==
 
-"@kong/design-tokens@^3.2.10":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-3.3.0.tgz#e541e970a1e09b3040ff4517b02287027ff21dc8"
-  integrity sha512-eP2qnh3P0L6PJPnTdAdW37B6o4y/dFQ8PjeP/FRKItlc8e5LbX1nzTwrh+2kUAj8Ujtknk1I/U3F+o0FjslfGQ==
+"@kong/design-tokens@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-3.3.1.tgz#74e19172ae917df67649aad47b76aae42fb43531"
+  integrity sha512-2nwOiWmFZt2I5S7FxpcK9iOpvpr4XhetNTIetL9HG9+pmgaeUISywFBHflq6OOwuYFPRbGGiPRNfM9YOzeWtHw==
 
 "@kong/eslint-config-kong-ui@^1.7.1":
   version "1.7.1"
@@ -1009,10 +1009,10 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.62.1.tgz#2cacbc120daaca107867591b5a400bfc00c93889"
   integrity sha512-RB+WWaQ7OglHPkKquB65bN9gy5cqEWTepYz/ZqaVW/QgENzV5Fitp+IjXokgopTKpvDSlkHJl191Bx/Zj1pxfw==
 
-"@kong/kongponents@^9.64.10":
-  version "9.64.10"
-  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.64.10.tgz#0c5d6fabbb421877cc9e6a0b26bcfb8f502bd229"
-  integrity sha512-ZfxCq9X48nLzhg0Lp0ynJcBbj95X8+Fphqq3fy/jwEZ1RhK5ZxFtMBrh6JRsxSy4ehf/UsdvH+HN+qWNYMtr5Q==
+"@kong/kongponents@^9.64.12":
+  version "9.64.12"
+  resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.64.12.tgz#f2ff50af28903a1ef807600e153eac38072c10df"
+  integrity sha512-we8TmEZIOWsFgbZ0XeYaVwMeWwjOV2tgi0GX9Hbts8GhBemQMsTtBF94Cd7bbjZMKnO59sLyDWXlehQBhvXwnQ==
   dependencies:
     "@floating-ui/vue" "^1.1.11"
     "@kong/icons" "^1.62.1"
@@ -1027,6 +1027,7 @@
     swrv "^1.2.0"
     v-calendar "^3.1.2"
     virtua "^0.49.0"
+    vue-clamp "^1.5.1"
     vue-draggable-next "^2.3.0"
 
 "@kong/stylelint-plugin-design-tokens@^2.0.0":
@@ -7693,6 +7694,11 @@ vscode-uri@^3.0.8:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-3.1.0.tgz#dd09ec5a66a38b5c3fffc774015713496d14e09c"
   integrity sha512-/BpdSx+yCQGnCvecbyXdxHDkuk55/G3xwnC0GqY4gmQ3j+A+g8kzzgB4Nk/SINjqn6+waqw3EgbVF2QKExkRxQ==
+
+vue-clamp@^1.5.1:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/vue-clamp/-/vue-clamp-1.6.0.tgz#1c034672b87c3a7c58a0becf73d8c6882022c50b"
+  integrity sha512-NLvC+IY0IFHoFUmHIQGUtU16rcj2DUTxmk8NN5Qela6Dhxx31x40hvvF75ZrJLkI80kC9wMBtdRpFcRF4oKAEg==
 
 vue-demi@>=0.13.0:
   version "0.14.10"
