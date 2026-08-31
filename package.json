@@ -63,7 +63,7 @@
     "@vue/tsconfig": "^0.9.1",
     "commitizen": "^4.3.2",
     "cross-env": "^10.1.0",
-    "cypress": "^15.19.0",
+    "cypress": "^15.21.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^10.8.0",
     "postcss-custom-properties": "^15.0.1",
