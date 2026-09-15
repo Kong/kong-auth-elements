@@ -832,10 +832,10 @@
   resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-3.3.1.tgz#74e19172ae917df67649aad47b76aae42fb43531"
   integrity sha512-2nwOiWmFZt2I5S7FxpcK9iOpvpr4XhetNTIetL9HG9+pmgaeUISywFBHflq6OOwuYFPRbGGiPRNfM9YOzeWtHw==
 
-"@kong/eslint-config-kong-ui@^1.7.1":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@kong/eslint-config-kong-ui/-/eslint-config-kong-ui-1.7.1.tgz#11367cfb5287fdc9eadbc40ada605e53c515b6c5"
-  integrity sha512-LAvIZJtTpf7yWRdqlrYeI7nUWmG9x5QMy4m2OGBpDwt+MCxveH6xPRMMgQZwGjupl4odR5Kg4KN1AVMCFdlk6g==
+"@kong/eslint-config-kong-ui@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@kong/eslint-config-kong-ui/-/eslint-config-kong-ui-1.8.0.tgz#0810c423ce4fac00ec8639f595d57800d2144d1f"
+  integrity sha512-fXLIXR/qKz6f949glvjqy4UrvYGH/9GuTbTfTJyqnVqnunmv/+NfGzxj5mQZBolbczspjl+XnzENEemqWwMdhg==
   dependencies:
     "@eslint/js" "^9.37.0"
     "@kong/eslint-plugin-design-tokens" "^1.0.1"
@@ -843,6 +843,7 @@
     eslint-plugin-cypress "^5.2.0"
     eslint-plugin-jsonc "^2.21.0"
     eslint-plugin-n "^17.23.1"
+    eslint-plugin-playwright "^2.11.0"
     eslint-plugin-promise "^7.2.1"
     eslint-plugin-vue "^10.5.0"
     globals "^15.15.0"
@@ -3311,6 +3312,13 @@ eslint-plugin-n@^17.23.1:
     ignore "^5.3.2"
     semver "^7.6.3"
     ts-declaration-location "^1.0.6"
+
+eslint-plugin-playwright@^2.11.0:
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-playwright/-/eslint-plugin-playwright-2.12.0.tgz#3e7d3610ca3c06b04ae22854b45320735bf5cfa0"
+  integrity sha512-7HpSKR/D2oCH4RKRauFskcrnDrHvLQKopW7Nen8lqrFZtx/SB+FgqVaH+zyQd32noZSZy9Lrsa+DsYrVUpn6hg==
+  dependencies:
+    globals "^17.3.0"
 
 eslint-plugin-promise@^7.2.1:
   version "7.3.0"
