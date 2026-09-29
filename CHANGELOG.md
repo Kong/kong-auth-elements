@@ -1,3 +1,10 @@
+## [2.13.68](https://github.com/Kong/kong-auth-elements/compare/v2.13.67...v2.13.68) (2026-09-29)
+
+
+### Bug Fixes
+
+* switching ci from pat to app token [KHCP-2195] - [#726](https://github.com/Kong/kong-auth-elements/issues/726) ([#1996](https://github.com/Kong/kong-auth-elements/issues/1996)) ([e358863](https://github.com/Kong/kong-auth-elements/commit/e358863f2420ecc548e6b61bfb5ff291cedee1c5))
+
 ## [2.13.67](https://github.com/Kong/kong-auth-elements/compare/v2.13.66...v2.13.67) (2026-09-02)
 
 
