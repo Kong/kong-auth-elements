@@ -7,6 +7,9 @@ jobs:
   remove-pr-preview-comment:
     name: Remove PR preview comment from PR
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
@@ -20,4 +23,4 @@ jobs:
         with:
           header: pr_preview_consumption
           delete: true
-          GITHUB_TOKEN: ${{ secrets.KONGPONENTS_BOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
