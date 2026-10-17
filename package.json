@@ -58,15 +58,15 @@
     "@kong/stylelint-plugin-design-tokens": "^2.0.1",
     "@semantic-release/changelog": "^7.0.0",
     "@semantic-release/git": "^11.0.1",
-    "@types/node": "^24.19.0",
+    "@types/node": "^24.19.1",
     "@vitejs/plugin-vue": "^6.0.9",
     "@vue/tsconfig": "^0.9.1",
     "commitizen": "^4.3.2",
     "cross-env": "^10.1.0",
     "cypress": "^16.1.1",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "^10.11.0",
-    "postcss-custom-properties": "^15.0.3",
+    "eslint": "^10.12.0",
+    "postcss-custom-properties": "^15.0.4",
     "postcss-html": "^2.0.0",
     "rollup-plugin-visualizer": "^7.1.1",
     "sass": "^1.105.1",
@@ -81,7 +81,7 @@
     "vite": "^8.3.2",
     "vite-plugin-vue-devtools": "^8.2.1",
     "vue-router": "^5.3.1",
-    "vue-tsc": "^3.3.11"
+    "vue-tsc": "^3.3.12"
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.126.2 || ^9.0.0",
