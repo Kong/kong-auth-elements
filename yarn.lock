@@ -6931,7 +6931,7 @@ stylelint-scss@^7.0.0:
     postcss-selector-parser "^7.1.6"
     postcss-value-parser "^4.2.0"
 
-stylelint@^17.15.0:
+stylelint@^17.16.0:
   version "17.16.0"
   resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-17.16.0.tgz#1d35ff4963122bcd55fa20573856689c3d43b366"
   integrity sha512-ejlWnbJ13x1GU32+zZXa6sYQJsKKkwSdv2B4rAdO3OWdEmvhSJKcXi5pOphQYSzyaj1kXpuGJr7pcMBNfDIuPw==
