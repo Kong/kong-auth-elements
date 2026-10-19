@@ -55,7 +55,7 @@
     "@kong/design-tokens": "^3.4.1",
     "@kong/eslint-config-kong-ui": "^1.8.1",
     "@kong/kongponents": "^9.66.1",
-    "@kong/stylelint-plugin-design-tokens": "^2.0.1",
+    "@kong/stylelint-plugin-design-tokens": "^2.0.2",
     "@semantic-release/changelog": "^7.0.0",
     "@semantic-release/git": "^11.0.1",
     "@types/node": "^24.19.1",
