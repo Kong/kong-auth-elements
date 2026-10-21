@@ -52,7 +52,7 @@ jobs:
         run: yarn typecheck
 
       - name: Run Cypress component tests
-        uses: cypress-io/github-action@789d836053c5ca389c2905fc0c9f2909da778c46 # v7.4.5
+        uses: cypress-io/github-action@c541a95ea92d9239347a2355f2e895cd4b3f8060 # v7.4.6
         with:
           install: false
           command: yarn test
@@ -60,14 +60,14 @@ jobs:
           VITE_AUTH_URL: ${{ secrets.VITE_AUTH_URL || inputs.VITE_AUTH_URL }}
 
       - name: Upload Cypress screenshots (on failure)
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure()
         with:
           name: cypress_screenshots
           path: cypress/screenshots/
 
       - name: Upload Cypress videos (always)
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: cypress_videos
