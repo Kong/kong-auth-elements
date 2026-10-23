@@ -873,6 +873,11 @@
   resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.63.1.tgz#c3229a86dfac1265d3133b77b4047a7316093bb3"
   integrity sha512-gZ7c5tnNleu9ZFsGpF/ygZjsVbmu9W1hG8f3la8fpeIfA4Tyqdn9UgJiAImH4azbFUdACi3NowroKQsv0E9tPA==
 
+"@kong/icons@^1.64.0":
+  version "1.64.0"
+  resolved "https://registry.yarnpkg.com/@kong/icons/-/icons-1.64.0.tgz#08534ab1221eefecc2f167ffef5e4c91f8c1e036"
+  integrity sha512-OQWI1OtVFD0qA1ngDOVnCmK2EFUbtjCcyqG8S8y0rPI+9dQNVw/3kXO2yargA0deu4JdDMb3+KsP5WaoKuGFTA==
+
 "@kong/kongponents@^9.66.1":
   version "9.66.1"
   resolved "https://registry.yarnpkg.com/@kong/kongponents/-/kongponents-9.66.1.tgz#cb6bb6ebd40ccaa1c21f5c99710ca5f6fc26b82b"
