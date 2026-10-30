@@ -6911,7 +6911,7 @@ stylelint-config-recommended@^18.0.0:
   resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-18.0.0.tgz#1d86be73565c3cd5e6babb8abcc932012a86bd76"
   integrity sha512-mxgT2XY6YZ3HWWe3Di8umG6aBmWmHTblTgu/f10rqFXnyWxjKWwNdjSWkgkwCtxIKnqjSJzvFmPT5yabVIRxZg==
 
-stylelint-order@^8.1.1:
+stylelint-order@^8.1.2:
   version "8.1.2"
   resolved "https://registry.yarnpkg.com/stylelint-order/-/stylelint-order-8.1.2.tgz#a804ca5431881a11310d57525e9f0c71192b8ad1"
   integrity sha512-A+bxnIMVmzkWr6KlIwHnjQqTWBXPlIixoJa962BpK1N5bkhq3lXhKHjs4fY8ecooktjd3B3TtRiqoLSj+MfbxQ==
@@ -6936,7 +6936,7 @@ stylelint-scss@^7.0.0:
     postcss-selector-parser "^7.1.6"
     postcss-value-parser "^4.2.0"
 
-stylelint@^17.15.0:
+stylelint@^17.16.0:
   version "17.16.0"
   resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-17.16.0.tgz#1d35ff4963122bcd55fa20573856689c3d43b366"
   integrity sha512-ejlWnbJ13x1GU32+zZXa6sYQJsKKkwSdv2B4rAdO3OWdEmvhSJKcXi5pOphQYSzyaj1kXpuGJr7pcMBNfDIuPw==
