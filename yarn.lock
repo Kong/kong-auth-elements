@@ -839,10 +839,10 @@
   resolved "https://registry.yarnpkg.com/@keyv/serialize/-/serialize-1.1.1.tgz#0c01dd3a3483882af7cf3878d4e71d505c81fc4a"
   integrity sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==
 
-"@kong/design-tokens@^3.4.6":
-  version "3.4.6"
-  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-3.4.6.tgz#8cf4c75de2a0222b34ca68baaeaa3649ad1932ee"
-  integrity sha512-fO8o/8YrgIltiuBBlyN7bwIxZOTgofBu8vJ2JZ7pUvVseJmqvi2TZeHkdB/lu6kbjkpIjfVfU4pXkySNoXAslQ==
+"@kong/design-tokens@^3.5.1":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@kong/design-tokens/-/design-tokens-3.5.1.tgz#fb0f3c862727fe55995142ccb8c565cf8c485408"
+  integrity sha512-3SLavrJ5G5AJ6AEpK+PROi9wE6t6FsyYoztrdTl+rq7kMCAKbCHe2q6HiOxRrgi7voUMhBotVizDOhAbb0cg4g==
 
 "@kong/eslint-config-kong-ui@^1.8.1":
   version "1.8.1"
