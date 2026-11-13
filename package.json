@@ -58,7 +58,7 @@
     "@kong/stylelint-plugin-design-tokens": "^2.0.3",
     "@semantic-release/changelog": "^7.0.0",
     "@semantic-release/git": "^11.0.1",
-    "@types/node": "^24.19.2",
+    "@types/node": "^26.6.6",
     "@vitejs/plugin-vue": "^6.0.10",
     "@vue/tsconfig": "^0.9.1",
     "commitizen": "^4.3.2",
@@ -156,7 +156,7 @@
     "node": ">=22.20.0"
   },
   "volta": {
-    "node": "24.21.0",
+    "node": "26.13.0",
     "yarn": "1.22.22"
   }
 }
