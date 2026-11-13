@@ -39,13 +39,13 @@
   "dependencies": {
     "@kong/icons": "^1.64.0",
     "@xstate/vue": "^2.0.0",
-    "axios": "^1.20.0",
+    "axios": "^1.21.0",
     "vue": "^3.5.44",
     "vue-recaptcha": "^2.0.3",
     "xstate": "^4.38.3"
   },
   "devDependencies": {
-    "@babel/types": "^8.0.8",
+    "@babel/types": "^8.0.10",
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
     "@cypress/vite-dev-server": "^8.0.0",
@@ -69,7 +69,7 @@
     "postcss-custom-properties": "^15.0.4",
     "postcss-html": "^2.0.0",
     "rollup-plugin-visualizer": "^7.1.1",
-    "sass": "^1.105.2",
+    "sass": "^1.107.1",
     "semantic-release": "^25.0.9",
     "start-server-and-test": "^3.0.13",
     "stylelint": "^17.16.0",
@@ -156,7 +156,7 @@
     "node": ">=22.20.0"
   },
   "volta": {
-    "node": "24.21.0",
+    "node": "24.22.2",
     "yarn": "1.22.22"
   }
 }
