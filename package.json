@@ -65,7 +65,7 @@
     "cross-env": "^10.1.0",
     "cypress": "^16.2.1",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "^10.13.0",
+    "eslint": "^10.14.0",
     "postcss-custom-properties": "^15.0.4",
     "postcss-html": "^2.0.0",
     "rollup-plugin-visualizer": "^7.1.1",
@@ -81,7 +81,7 @@
     "vite": "^8.3.5",
     "vite-plugin-vue-devtools": "^8.2.1",
     "vue-router": "^5.4.0",
-    "vue-tsc": "^3.3.13"
+    "vue-tsc": "^3.3.14"
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.126.2 || ^9.0.0",
